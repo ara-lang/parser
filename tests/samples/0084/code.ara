@@ -1,0 +1,61 @@
+use Async;
+use Await;
+use Concurrently;
+
+use function async;
+use function await;
+use function concurrently;
+
+class Async {}
+class Await {}
+class Concurrently {}
+
+// async, await, and concurrently operations.
+function async(): void {
+    $a = async bar();
+    $b = await $a;
+    ($c, $d) = concurrently {
+        await baz(),
+        await qux(),
+    };
+}
+
+// async, await, and concurrently function calls.
+function await(): void {
+    $a = async(bar());
+    $b = await($a);
+    ($c, $d) = concurrently(
+        await(baz()),
+        await(qux()),
+    );
+}
+
+// async, await, and concurrently function calls with generic type parameters.
+function concurrently(): void {
+    $a = async::<int>(bar());
+    $b = await::<int>($a);
+    ($c, $d) = concurrently::<int>(
+        await::<int>(baz()),
+        await::<int>(qux()),
+    );
+}
+
+// async, await, and concurrently static method calls.
+function _(): void {
+    Async::async();
+    Await::await(Async::async());
+    Concurrently::concurrently(
+        Await::await(),
+        Await::await(),
+    );
+}
+
+// async, await, and concurrently method calls.
+function _(): void {
+    $async->async();
+    $await->await($async->async());
+    $concurrently->concurrently(
+        $await->await(),
+        $await->await(),
+    );
+}
