@@ -8,7 +8,7 @@ use crate::lexer::iterator::TokenIterator;
 use crate::lexer::token::Token;
 use crate::parser::issue;
 use crate::parser::result::ParseResult;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::identifier::Identifier;
 
 #[derive(Debug)]
@@ -16,7 +16,7 @@ pub struct State<'a> {
     pub source: &'a Source,
     pub iterator: &'a mut TokenIterator<'a>,
     pub namespace: Option<Identifier>,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub issues: Vec<Issue>,
     pub ignored_shift_at: Option<&'a Token>,
 }
@@ -33,11 +33,11 @@ impl<'a> State<'a> {
         }
     }
 
-    pub fn attribute(&mut self, attr: AttributeDefinitionGroup) {
+    pub fn attribute(&mut self, attr: AttributeGroupDefinition) {
         self.attributes.push(attr);
     }
 
-    pub fn get_attributes(&mut self) -> Vec<AttributeDefinitionGroup> {
+    pub fn get_attributes(&mut self) -> Vec<AttributeGroupDefinition> {
         let mut attributes = vec![];
 
         std::mem::swap(&mut self.attributes, &mut attributes);

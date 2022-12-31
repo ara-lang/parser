@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::constant::ClassishConstantDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::expression::Expression;
@@ -23,7 +23,7 @@ pub enum EnumDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub r#enum: usize,
     pub name: Identifier,
     pub implements: Option<EnumImplementsDefinition>,
@@ -56,7 +56,7 @@ pub enum UnitEnumMemberDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumCaseDefinition {
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub start: usize,
     pub name: Identifier,
     pub end: usize,
@@ -66,7 +66,7 @@ pub struct UnitEnumCaseDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub r#enum: usize,
     pub name: Identifier,
     pub backed_type: BackedEnumTypeDefinition,
@@ -100,7 +100,7 @@ pub enum BackedEnumMemberDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumCaseDefinition {
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub case: usize,
     pub name: Identifier,
     pub equals: usize,

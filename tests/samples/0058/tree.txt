@@ -6,7 +6,7 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [
-                    AttributeDefinitionGroup {
+                    AttributeGroupDefinition {
                         hash_left_bracket: 0,
                         members: CommaSeparated {
                             inner: [

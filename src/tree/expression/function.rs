@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::function::FunctionLikeParameterListDefinition;
 use crate::tree::definition::function::FunctionLikeReturnTypeDefinition;
 use crate::tree::expression::Expression;
@@ -18,7 +18,7 @@ pub struct ArrowFunctionExpression {
     pub comments: CommentGroup,
     pub r#static: Option<usize>,
     pub r#fn: usize,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
     pub double_arrow: usize,
@@ -29,7 +29,7 @@ pub struct ArrowFunctionExpression {
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousFunctionExpression {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub r#static: Option<usize>,
     pub function: usize,
     pub parameters: FunctionLikeParameterListDefinition,

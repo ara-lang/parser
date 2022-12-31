@@ -6,7 +6,7 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [
-                    AttributeDefinitionGroup {
+                    AttributeGroupDefinition {
                         hash_left_bracket: 0,
                         members: CommaSeparated {
                             inner: [
@@ -31,7 +31,7 @@ DefinitionTree {
                         },
                         right_bracket: 6,
                     },
-                    AttributeDefinitionGroup {
+                    AttributeGroupDefinition {
                         hash_left_bracket: 8,
                         members: CommaSeparated {
                             inner: [
@@ -98,7 +98,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 47,
                                         members: CommaSeparated {
                                             inner: [
@@ -151,7 +151,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 76,
                                         members: CommaSeparated {
                                             inner: [
@@ -208,7 +208,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 112,
                                         members: CommaSeparated {
                                             inner: [
@@ -224,7 +224,7 @@ DefinitionTree {
                                         },
                                         right_bracket: 115,
                                     },
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 121,
                                         members: CommaSeparated {
                                             inner: [
@@ -304,7 +304,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 172,
                                         members: CommaSeparated {
                                             inner: [
@@ -320,7 +320,7 @@ DefinitionTree {
                                         },
                                         right_bracket: 175,
                                     },
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 181,
                                         members: CommaSeparated {
                                             inner: [
@@ -377,7 +377,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 215,
                                         members: CommaSeparated {
                                             inner: [
@@ -434,7 +434,7 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 258,
                                         members: CommaSeparated {
                                             inner: [
@@ -450,7 +450,7 @@ DefinitionTree {
                                         },
                                         right_bracket: 261,
                                     },
-                                    AttributeDefinitionGroup {
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 267,
                                         members: CommaSeparated {
                                             inner: [

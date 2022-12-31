@@ -5,14 +5,14 @@ use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::attribute::AttributeDefinition;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 
 pub fn gather(state: &mut State) -> ParseResult<bool> {
     if state.iterator.current().kind != TokenKind::Attribute {
         return Ok(false);
     }
 
-    let attributes = AttributeDefinitionGroup {
+    let attributes = AttributeGroupDefinition {
         hash_left_bracket: utils::skip(state, TokenKind::Attribute)?,
         members: utils::comma_separated(
             state,

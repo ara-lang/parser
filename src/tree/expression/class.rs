@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::class::ClassDefinitionExtends;
 use crate::tree::definition::class::ClassDefinitionImplements;
 use crate::tree::definition::constant::ClassishConstantDefinition;
@@ -17,7 +17,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousClassExpression {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub class: usize,
     pub arguments: ArgumentListExpression,
     pub extends: Option<ClassDefinitionExtends>,

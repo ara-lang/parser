@@ -2,7 +2,7 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::Expression;
@@ -12,7 +12,7 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct PropertyDefinition {
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: PropertyModifierDefinitionGroup,
     pub type_definition: TypeDefinition,

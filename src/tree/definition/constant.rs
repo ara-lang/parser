@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
@@ -31,7 +31,7 @@ pub struct ConstantDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct ClassishConstantDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: ConstantModifierDefinitionGroup,
     pub r#const: usize,

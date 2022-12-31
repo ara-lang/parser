@@ -9,7 +9,7 @@ use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct AttributeDefinitionGroup {
+pub struct AttributeGroupDefinition {
     pub hash_left_bracket: usize,
     pub members: CommaSeparated<AttributeDefinition>,
     pub right_bracket: usize,
@@ -22,7 +22,7 @@ pub struct AttributeDefinition {
     pub arguments: Option<ArgumentListExpression>,
 }
 
-impl Node for AttributeDefinitionGroup {
+impl Node for AttributeGroupDefinition {
     fn initial_position(&self) -> usize {
         self.hash_left_bracket
     }

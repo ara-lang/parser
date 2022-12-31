@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::constant::ClassishConstantDefinition;
 use crate::tree::definition::function::AbstractConstructorDefinition;
 use crate::tree::definition::function::AbstractMethodDefinition;
@@ -17,7 +17,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub interface: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,

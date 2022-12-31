@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
-use crate::tree::definition::attribute::AttributeDefinitionGroup;
+use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::modifier::MethodModifierDefinitionGroup;
 use crate::tree::definition::modifier::PromotedPropertyModifierDefinitionGroup;
 use crate::tree::definition::r#type::TypeDefinition;
@@ -26,7 +26,7 @@ pub struct FunctionLikeReturnTypeDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub type_definition: TypeDefinition,
     pub ellipsis: Option<usize>,
     pub variable: Variable,
@@ -53,7 +53,7 @@ pub struct FunctionLikeParameterListDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct FunctionDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub function: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
@@ -65,7 +65,7 @@ pub struct FunctionDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ConstructorParameterDefinition {
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     pub comments: CommentGroup,
     #[serde(flatten)]
     pub modifiers: PromotedPropertyModifierDefinitionGroup,
@@ -88,7 +88,7 @@ pub struct ConstructorParameterListDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct AbstractConstructorDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
     pub function: usize,
@@ -101,7 +101,7 @@ pub struct AbstractConstructorDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct ConcreteConstructorDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
     pub function: usize,
@@ -131,7 +131,7 @@ pub struct MethodDefinitionTypeConstraintGroup {
 #[serde(rename_all = "snake_case")]
 pub struct AbstractMethodDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
     pub function: usize,
@@ -147,7 +147,7 @@ pub struct AbstractMethodDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct ConcreteMethodDefinition {
     pub comments: CommentGroup,
-    pub attributes: Vec<AttributeDefinitionGroup>,
+    pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
     pub function: usize,
