@@ -1,5 +1,9 @@
 # `Ara` Parser
 
+[![Actions Status](https://github.com/ara-lang/parser/workflows/ci/badge.svg)](https://github.com/ara-lang/parser/actions)
+[![Crates.io](https://img.shields.io/crates/v/ara_parser.svg)](https://crates.io/crates/ara_parser)
+[![Docs](https://docs.rs/ara_parser/badge.svg)](https://docs.rs/ara_parser/latest/ara_parser/)
+
 A fault-tolerant, recursive-descent parser for `Ara` Programming Language 🌲
 
 > **Note:** This project is a hard-fork of [`php-rust-tools/parser`](https://github.com/php-rust-tools/parser)
@@ -562,3 +566,8 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
+
+## Credits
+
+* [Saif Eddin Gmati](https://github.com/azjezz)
+* [All contributors](https://github.com/ara-lang/parser/graphs/contributors)
