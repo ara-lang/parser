@@ -215,6 +215,7 @@ expressions! {
         | TokenKind::Readonly   | TokenKind::Self_ | TokenKind::Parent
         | TokenKind::Enum       | TokenKind::From  | TokenKind::Where
         | TokenKind::Type       | TokenKind::Dict  | TokenKind::Vec
+        | TokenKind::Async      | TokenKind::Await | TokenKind::Concurrently
     ), peek(TokenKind::LeftParen | TokenKind::Generic)]
     reserved_identifier_function_call({
         let ident = identifier::identifier_maybe_soft_reserved(state)?;
@@ -225,8 +226,9 @@ expressions! {
     })
 
     #[before(anonymous_class), current(
-        | TokenKind::Enum | TokenKind::From | TokenKind::Where
-        | TokenKind::Type | TokenKind::Vec  | TokenKind::Dict
+        | TokenKind::Enum   | TokenKind::From   | TokenKind::Where
+        | TokenKind::Type   | TokenKind::Vec    | TokenKind::Dict
+        | TokenKind::Async  | TokenKind::Await  | TokenKind::Concurrently
     ), peek(TokenKind::DoubleColon)]
     reserved_identifier_static_call({
         let ident = identifier::classname_identifier(state)?;

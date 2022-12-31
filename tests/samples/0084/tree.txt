@@ -1,0 +1,1790 @@
+DefinitionTree {
+    definitions: [
+        Use(
+            Default {
+                use: 0,
+                name: Identifier {
+                    position: 4,
+                    value: "Async",
+                },
+                alias: None,
+                semicolon: 9,
+            },
+        ),
+        Use(
+            Default {
+                use: 11,
+                name: Identifier {
+                    position: 15,
+                    value: "Await",
+                },
+                alias: None,
+                semicolon: 20,
+            },
+        ),
+        Use(
+            Default {
+                use: 22,
+                name: Identifier {
+                    position: 26,
+                    value: "Concurrently",
+                },
+                alias: None,
+                semicolon: 38,
+            },
+        ),
+        Use(
+            Function {
+                use: 41,
+                function: 45,
+                name: Identifier {
+                    position: 54,
+                    value: "async",
+                },
+                alias: None,
+                semicolon: 59,
+            },
+        ),
+        Use(
+            Function {
+                use: 61,
+                function: 65,
+                name: Identifier {
+                    position: 74,
+                    value: "await",
+                },
+                alias: None,
+                semicolon: 79,
+            },
+        ),
+        Use(
+            Function {
+                use: 81,
+                function: 85,
+                name: Identifier {
+                    position: 94,
+                    value: "concurrently",
+                },
+                alias: None,
+                semicolon: 106,
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: 109,
+                name: Identifier {
+                    position: 115,
+                    value: "Async",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: 121,
+                    members: [],
+                    right_brace: 122,
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: 124,
+                name: Identifier {
+                    position: 130,
+                    value: "Await",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: 136,
+                    members: [],
+                    right_brace: 137,
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: 139,
+                name: Identifier {
+                    position: 145,
+                    value: "Concurrently",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: 158,
+                    members: [],
+                    right_brace: 159,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 162,
+                            format: SingleLine,
+                            content: "// async, await, and concurrently operations.",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 208,
+                name: Identifier {
+                    position: 217,
+                    value: "async",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 222,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 223,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 224,
+                    type_definition: Void(
+                        226,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 231,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 237,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 240,
+                                        right: AsyncOperation(
+                                            Async {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                async: 242,
+                                                expression: FunctionOperation(
+                                                    Call {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        function: Identifier(
+                                                            Identifier {
+                                                                position: 248,
+                                                                value: "bar",
+                                                            },
+                                                        ),
+                                                        generics: None,
+                                                        arguments: ArgumentListExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left_parenthesis: 251,
+                                                            arguments: CommaSeparated {
+                                                                inner: [],
+                                                                commas: [],
+                                                            },
+                                                            right_parenthesis: 252,
+                                                        },
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 253,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 259,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        equals: 262,
+                                        right: AsyncOperation(
+                                            Await {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                await: 264,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 270,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 272,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 278,
+                                                members: CommaSeparated {
+                                                    inner: [
+                                                        Variable(
+                                                            Variable {
+                                                                position: 279,
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                        Variable(
+                                                            Variable {
+                                                                position: 283,
+                                                                name: "$d",
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        281,
+                                                    ],
+                                                },
+                                                right_parenthesis: 285,
+                                            },
+                                        ),
+                                        equals: 287,
+                                        right: AsyncOperation(
+                                            Concurrently {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                concurrently: 289,
+                                                left_brace: 302,
+                                                expressions: CommaSeparated {
+                                                    inner: [
+                                                        AsyncOperation(
+                                                            Await {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                await: 312,
+                                                                expression: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 318,
+                                                                                value: "baz",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 321,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 322,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ),
+                                                        AsyncOperation(
+                                                            Await {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                await: 333,
+                                                                expression: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 339,
+                                                                                value: "qux",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 342,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 343,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        323,
+                                                        344,
+                                                    ],
+                                                },
+                                                right_brace: 350,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 351,
+                            },
+                        ),
+                    ],
+                    right_brace: 353,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 356,
+                            format: SingleLine,
+                            content: "// async, await, and concurrently function calls.",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 406,
+                name: Identifier {
+                    position: 415,
+                    value: "await",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 420,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 421,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 422,
+                    type_definition: Void(
+                        424,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 429,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 435,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 438,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 440,
+                                                        value: "async",
+                                                    },
+                                                ),
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 445,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 446,
+                                                                                value: "bar",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 449,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 450,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 451,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 452,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 458,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        equals: 461,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 463,
+                                                        value: "await",
+                                                    },
+                                                ),
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 468,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 469,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 471,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 472,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 478,
+                                                members: CommaSeparated {
+                                                    inner: [
+                                                        Variable(
+                                                            Variable {
+                                                                position: 479,
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                        Variable(
+                                                            Variable {
+                                                                position: 483,
+                                                                name: "$d",
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        481,
+                                                    ],
+                                                },
+                                                right_parenthesis: 485,
+                                            },
+                                        ),
+                                        equals: 487,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 489,
+                                                        value: "concurrently",
+                                                    },
+                                                ),
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 501,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 511,
+                                                                                value: "await",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 516,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [
+                                                                                    Positional {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        ellipsis: None,
+                                                                                        value: FunctionOperation(
+                                                                                            Call {
+                                                                                                comments: CommentGroup {
+                                                                                                    comments: [],
+                                                                                                },
+                                                                                                function: Identifier(
+                                                                                                    Identifier {
+                                                                                                        position: 517,
+                                                                                                        value: "baz",
+                                                                                                    },
+                                                                                                ),
+                                                                                                generics: None,
+                                                                                                arguments: ArgumentListExpression {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    left_parenthesis: 520,
+                                                                                                    arguments: CommaSeparated {
+                                                                                                        inner: [],
+                                                                                                        commas: [],
+                                                                                                    },
+                                                                                                    right_parenthesis: 521,
+                                                                                                },
+                                                                                            },
+                                                                                        ),
+                                                                                    },
+                                                                                ],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 522,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 533,
+                                                                                value: "await",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 538,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [
+                                                                                    Positional {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        ellipsis: None,
+                                                                                        value: FunctionOperation(
+                                                                                            Call {
+                                                                                                comments: CommentGroup {
+                                                                                                    comments: [],
+                                                                                                },
+                                                                                                function: Identifier(
+                                                                                                    Identifier {
+                                                                                                        position: 539,
+                                                                                                        value: "qux",
+                                                                                                    },
+                                                                                                ),
+                                                                                                generics: None,
+                                                                                                arguments: ArgumentListExpression {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    left_parenthesis: 542,
+                                                                                                    arguments: CommaSeparated {
+                                                                                                        inner: [],
+                                                                                                        commas: [],
+                                                                                                    },
+                                                                                                    right_parenthesis: 543,
+                                                                                                },
+                                                                                            },
+                                                                                        ),
+                                                                                    },
+                                                                                ],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 544,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            523,
+                                                            545,
+                                                        ],
+                                                    },
+                                                    right_parenthesis: 551,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 552,
+                            },
+                        ),
+                    ],
+                    right_brace: 554,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 557,
+                            format: SingleLine,
+                            content: "// async, await, and concurrently function calls with generic type parameters.",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 636,
+                name: Identifier {
+                    position: 645,
+                    value: "concurrently",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 657,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 658,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 659,
+                    type_definition: Void(
+                        661,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 666,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 672,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 675,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 677,
+                                                        value: "async",
+                                                    },
+                                                ),
+                                                generics: Some(
+                                                    GenericGroupExpression {
+                                                        double_colon_less_than: 682,
+                                                        types: CommaSeparated {
+                                                            inner: [
+                                                                Integer(
+                                                                    685,
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 688,
+                                                    },
+                                                ),
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 689,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 690,
+                                                                                value: "bar",
+                                                                            },
+                                                                        ),
+                                                                        generics: None,
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 693,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 694,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 695,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 696,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 702,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        equals: 705,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 707,
+                                                        value: "await",
+                                                    },
+                                                ),
+                                                generics: Some(
+                                                    GenericGroupExpression {
+                                                        double_colon_less_than: 712,
+                                                        types: CommaSeparated {
+                                                            inner: [
+                                                                Integer(
+                                                                    715,
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 718,
+                                                    },
+                                                ),
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 719,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 720,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 722,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 723,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 729,
+                                                members: CommaSeparated {
+                                                    inner: [
+                                                        Variable(
+                                                            Variable {
+                                                                position: 730,
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                        Variable(
+                                                            Variable {
+                                                                position: 734,
+                                                                name: "$d",
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        732,
+                                                    ],
+                                                },
+                                                right_parenthesis: 736,
+                                            },
+                                        ),
+                                        equals: 738,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 740,
+                                                        value: "concurrently",
+                                                    },
+                                                ),
+                                                generics: Some(
+                                                    GenericGroupExpression {
+                                                        double_colon_less_than: 752,
+                                                        types: CommaSeparated {
+                                                            inner: [
+                                                                Integer(
+                                                                    755,
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 758,
+                                                    },
+                                                ),
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 759,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 769,
+                                                                                value: "await",
+                                                                            },
+                                                                        ),
+                                                                        generics: Some(
+                                                                            GenericGroupExpression {
+                                                                                double_colon_less_than: 774,
+                                                                                types: CommaSeparated {
+                                                                                    inner: [
+                                                                                        Integer(
+                                                                                            777,
+                                                                                        ),
+                                                                                    ],
+                                                                                    commas: [],
+                                                                                },
+                                                                                greater_than: 780,
+                                                                            },
+                                                                        ),
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 781,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [
+                                                                                    Positional {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        ellipsis: None,
+                                                                                        value: FunctionOperation(
+                                                                                            Call {
+                                                                                                comments: CommentGroup {
+                                                                                                    comments: [],
+                                                                                                },
+                                                                                                function: Identifier(
+                                                                                                    Identifier {
+                                                                                                        position: 782,
+                                                                                                        value: "baz",
+                                                                                                    },
+                                                                                                ),
+                                                                                                generics: None,
+                                                                                                arguments: ArgumentListExpression {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    left_parenthesis: 785,
+                                                                                                    arguments: CommaSeparated {
+                                                                                                        inner: [],
+                                                                                                        commas: [],
+                                                                                                    },
+                                                                                                    right_parenthesis: 786,
+                                                                                                },
+                                                                                            },
+                                                                                        ),
+                                                                                    },
+                                                                                ],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 787,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: FunctionOperation(
+                                                                    Call {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        function: Identifier(
+                                                                            Identifier {
+                                                                                position: 798,
+                                                                                value: "await",
+                                                                            },
+                                                                        ),
+                                                                        generics: Some(
+                                                                            GenericGroupExpression {
+                                                                                double_colon_less_than: 803,
+                                                                                types: CommaSeparated {
+                                                                                    inner: [
+                                                                                        Integer(
+                                                                                            806,
+                                                                                        ),
+                                                                                    ],
+                                                                                    commas: [],
+                                                                                },
+                                                                                greater_than: 809,
+                                                                            },
+                                                                        ),
+                                                                        arguments: ArgumentListExpression {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left_parenthesis: 810,
+                                                                            arguments: CommaSeparated {
+                                                                                inner: [
+                                                                                    Positional {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        ellipsis: None,
+                                                                                        value: FunctionOperation(
+                                                                                            Call {
+                                                                                                comments: CommentGroup {
+                                                                                                    comments: [],
+                                                                                                },
+                                                                                                function: Identifier(
+                                                                                                    Identifier {
+                                                                                                        position: 811,
+                                                                                                        value: "qux",
+                                                                                                    },
+                                                                                                ),
+                                                                                                generics: None,
+                                                                                                arguments: ArgumentListExpression {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    left_parenthesis: 814,
+                                                                                                    arguments: CommaSeparated {
+                                                                                                        inner: [],
+                                                                                                        commas: [],
+                                                                                                    },
+                                                                                                    right_parenthesis: 815,
+                                                                                                },
+                                                                                            },
+                                                                                        ),
+                                                                                    },
+                                                                                ],
+                                                                                commas: [],
+                                                                            },
+                                                                            right_parenthesis: 816,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            788,
+                                                            817,
+                                                        ],
+                                                    },
+                                                    right_parenthesis: 823,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 824,
+                            },
+                        ),
+                    ],
+                    right_brace: 826,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 829,
+                            format: SingleLine,
+                            content: "// async, await, and concurrently static method calls.",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 884,
+                name: Identifier {
+                    position: 893,
+                    value: "_",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 894,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 895,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 896,
+                    type_definition: Void(
+                        898,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 903,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ClassOperation(
+                                    StaticMethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 909,
+                                                value: "Async",
+                                            },
+                                        ),
+                                        double_colon: 914,
+                                        method: Identifier {
+                                            position: 916,
+                                            value: "async",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 921,
+                                            arguments: CommaSeparated {
+                                                inner: [],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 922,
+                                        },
+                                    },
+                                ),
+                                semicolon: 923,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ClassOperation(
+                                    StaticMethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 929,
+                                                value: "Await",
+                                            },
+                                        ),
+                                        double_colon: 934,
+                                        method: Identifier {
+                                            position: 936,
+                                            value: "await",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 941,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ClassOperation(
+                                                            StaticMethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 942,
+                                                                        value: "Async",
+                                                                    },
+                                                                ),
+                                                                double_colon: 947,
+                                                                method: Identifier {
+                                                                    position: 949,
+                                                                    value: "async",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 954,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 955,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 956,
+                                        },
+                                    },
+                                ),
+                                semicolon: 957,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ClassOperation(
+                                    StaticMethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 963,
+                                                value: "Concurrently",
+                                            },
+                                        ),
+                                        double_colon: 975,
+                                        method: Identifier {
+                                            position: 977,
+                                            value: "concurrently",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 989,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ClassOperation(
+                                                            StaticMethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 999,
+                                                                        value: "Await",
+                                                                    },
+                                                                ),
+                                                                double_colon: 1004,
+                                                                method: Identifier {
+                                                                    position: 1006,
+                                                                    value: "await",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1011,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1012,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ClassOperation(
+                                                            StaticMethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 1023,
+                                                                        value: "Await",
+                                                                    },
+                                                                ),
+                                                                double_colon: 1028,
+                                                                method: Identifier {
+                                                                    position: 1030,
+                                                                    value: "await",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1035,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1036,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [
+                                                    1013,
+                                                    1037,
+                                                ],
+                                            },
+                                            right_parenthesis: 1043,
+                                        },
+                                    },
+                                ),
+                                semicolon: 1044,
+                            },
+                        ),
+                    ],
+                    right_brace: 1046,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 1049,
+                            format: SingleLine,
+                            content: "// async, await, and concurrently method calls.",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 1097,
+                name: Identifier {
+                    position: 1106,
+                    value: "_",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 1107,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 1108,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 1109,
+                    type_definition: Void(
+                        1111,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 1116,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ObjectOperation(
+                                    MethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        object: Variable(
+                                            Variable {
+                                                position: 1122,
+                                                name: "$async",
+                                            },
+                                        ),
+                                        arrow: 1128,
+                                        method: Identifier {
+                                            position: 1130,
+                                            value: "async",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 1135,
+                                            arguments: CommaSeparated {
+                                                inner: [],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 1136,
+                                        },
+                                    },
+                                ),
+                                semicolon: 1137,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ObjectOperation(
+                                    MethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        object: Variable(
+                                            Variable {
+                                                position: 1143,
+                                                name: "$await",
+                                            },
+                                        ),
+                                        arrow: 1149,
+                                        method: Identifier {
+                                            position: 1151,
+                                            value: "await",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 1156,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ObjectOperation(
+                                                            MethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 1157,
+                                                                        name: "$async",
+                                                                    },
+                                                                ),
+                                                                arrow: 1163,
+                                                                method: Identifier {
+                                                                    position: 1165,
+                                                                    value: "async",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1170,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1171,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 1172,
+                                        },
+                                    },
+                                ),
+                                semicolon: 1173,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ObjectOperation(
+                                    MethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        object: Variable(
+                                            Variable {
+                                                position: 1179,
+                                                name: "$concurrently",
+                                            },
+                                        ),
+                                        arrow: 1192,
+                                        method: Identifier {
+                                            position: 1194,
+                                            value: "concurrently",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 1206,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ObjectOperation(
+                                                            MethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 1216,
+                                                                        name: "$await",
+                                                                    },
+                                                                ),
+                                                                arrow: 1222,
+                                                                method: Identifier {
+                                                                    position: 1224,
+                                                                    value: "await",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1229,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1230,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                    Positional {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: None,
+                                                        value: ObjectOperation(
+                                                            MethodCall {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 1241,
+                                                                        name: "$await",
+                                                                    },
+                                                                ),
+                                                                arrow: 1247,
+                                                                method: Identifier {
+                                                                    position: 1249,
+                                                                    value: "await",
+                                                                },
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1254,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1255,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [
+                                                    1231,
+                                                    1256,
+                                                ],
+                                            },
+                                            right_parenthesis: 1262,
+                                        },
+                                    },
+                                ),
+                                semicolon: 1263,
+                            },
+                        ),
+                    ],
+                    right_brace: 1265,
+                },
+            },
+        ),
+    ],
+    eof: 1267,
+}

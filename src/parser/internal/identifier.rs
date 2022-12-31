@@ -70,10 +70,13 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
         }
         TokenKind::Enum
         | TokenKind::From
-        | TokenKind::Vec
-        | TokenKind::Dict
         | TokenKind::Where
-        | TokenKind::Type => {
+        | TokenKind::Type
+        | TokenKind::Dict
+        | TokenKind::Vec
+        | TokenKind::Async
+        | TokenKind::Await
+        | TokenKind::Concurrently => {
             let position = current.position;
             let name = current.to_string().into();
 
@@ -291,7 +294,15 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
                 value: current.value.clone(),
             })
         }
-        TokenKind::Enum | TokenKind::From | TokenKind::Where | TokenKind::Type => {
+        TokenKind::Enum
+        | TokenKind::From
+        | TokenKind::Where
+        | TokenKind::Type
+        | TokenKind::Dict
+        | TokenKind::Vec
+        | TokenKind::Async
+        | TokenKind::Await
+        | TokenKind::Concurrently => {
             let position = current.position;
             let name = current.to_string().into();
 
@@ -360,7 +371,12 @@ pub fn fully_qualified_type_identifier_including_self(
         | TokenKind::Static
         | TokenKind::Parent
         | TokenKind::Type
-        | TokenKind::Where => {
+        | TokenKind::Where
+        | TokenKind::Dict
+        | TokenKind::Vec
+        | TokenKind::Async
+        | TokenKind::Await
+        | TokenKind::Concurrently => {
             let position = current.position;
             let name = current.to_string().into();
 
