@@ -1,0 +1,52 @@
+error[P0001]: PHP opening tag `<?php` is not supported
+  --> 0083/code.ara:1:1
+  |
+1 | <?php
+  | ^^^^^ PHP opening tag `<?php` is not supported
+  |
+  = help: try removing the opening tag
+
+error[P0004]: case `Foo::Bar` of backed enum `Foo` must have a value
+  --> 0083/code.ara:4:10
+  |
+3 | enum Foo: int {
+  |      ---
+4 |     case Bar;
+  |          ^^^^ case `Foo::Bar` of backed enum `Foo` must have a value
+
+error[P0005]: enum `Foo` cannot have constructor
+  --> 0083/code.ara:6:5
+  |
+3 | enum Foo: int {
+  |      ---
+  .
+6 |     public function __construct() {}
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ enum `Foo` cannot have constructor
+
+error[P0003]: case `Bar::Baz` of unit enum `Bar` cannot have a value
+   --> 0083/code.ara:10:10
+   |
+ 9 | enum Bar {
+   |      ---
+10 |     case Baz = 1;
+   |          ^^^^^^^^
+   |          |
+   |          case `Bar::Baz` of unit enum `Bar` cannot have a value
+
+error[P0006]: enum `Bar` cannot have magic method
+   --> 0083/code.ara:12:5
+   |  
+ 9 |   enum Bar {
+   |        ---
+   .  
+12 | /     public function __get(string $name): mixed {
+13 | |         return get_var($name);
+14 | |     }
+   | \-----^ enum `Bar` cannot have magic method
+
+error[P0042]: unexpected token `?>`, expected a definition
+   --> 0083/code.ara:17:1
+   |
+17 | ?>
+   | ^^ unexpected token `?>`, expected a definition
+

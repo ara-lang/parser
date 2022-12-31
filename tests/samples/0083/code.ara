@@ -1,0 +1,17 @@
+<?php
+
+enum Foo: int {
+    case Bar;
+
+    public function __construct() {}
+}
+
+enum Bar {
+    case Baz = 1;
+
+    public function __get(string $name): mixed {
+        return get_var($name);
+    }
+}
+
+?>
