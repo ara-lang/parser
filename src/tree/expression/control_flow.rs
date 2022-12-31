@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::utils::CommaSeparated;
@@ -12,7 +11,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct MatchExpression {
     pub comments: CommentGroup,
-    pub r#match: Span,
+    pub r#match: usize,
     pub expression: Box<Expression>,
     pub body: MatchBodyExpression,
 }
@@ -20,16 +19,16 @@ pub struct MatchExpression {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct MatchBodyExpression {
-    pub left_brace: Span,
+    pub left_brace: usize,
     pub arms: CommaSeparated<MatchArmExpression>,
-    pub right_brace: Span,
+    pub right_brace: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct MatchArmExpression {
     pub condition: MatchArmConditionExpression,
-    pub arrow: Span,
+    pub arrow: usize,
     pub expression: Expression,
 }
 
@@ -37,7 +36,7 @@ pub struct MatchArmExpression {
 #[serde(rename_all = "snake_case")]
 pub enum MatchArmConditionExpression {
     Expressions(CommaSeparated<Expression>),
-    Default(Span),
+    Default(usize),
 }
 
 impl Node for MatchExpression {
@@ -46,7 +45,7 @@ impl Node for MatchExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#match.position
+        self.r#match
     }
 
     fn final_position(&self) -> usize {
@@ -60,11 +59,11 @@ impl Node for MatchExpression {
 
 impl Node for MatchBodyExpression {
     fn initial_position(&self) -> usize {
-        self.left_brace.position
+        self.left_brace
     }
 
     fn final_position(&self) -> usize {
-        self.right_brace.position + 1
+        self.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -90,14 +89,14 @@ impl Node for MatchArmConditionExpression {
     fn initial_position(&self) -> usize {
         match self {
             Self::Expressions(expressions) => expressions.inner.first().unwrap().initial_position(),
-            Self::Default(default) => default.position,
+            Self::Default(default) => *default,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
             Self::Expressions(expressions) => expressions.inner.last().unwrap().final_position(),
-            Self::Default(default) => default.position + 7,
+            Self::Default(default) => default + 7,
         }
     }
 

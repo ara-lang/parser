@@ -1,4 +1,3 @@
-use crate::lexer::token::Span;
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::r#type;
 use crate::parser::internal::identifier;
@@ -28,7 +27,7 @@ pub fn template_group_definition(state: &mut State) -> ParseResult<TemplateGroup
                         TokenKind::Plus => {
                             state.iterator.next();
 
-                            TemplateDefinitionVariance::Covariance(current.span)
+                            TemplateDefinitionVariance::Covariance(current.position)
                         }
                         _ => TemplateDefinitionVariance::Invaraint,
                     };
@@ -41,7 +40,7 @@ pub fn template_group_definition(state: &mut State) -> ParseResult<TemplateGroup
                             state.iterator.next();
 
                             TemplateDefinitionTypeConstraint::SubType(
-                                current.span,
+                                current.position,
                                 r#type::type_definition(state)?,
                             )
                         }
@@ -60,7 +59,7 @@ pub fn template_group_definition(state: &mut State) -> ParseResult<TemplateGroup
                     break;
                 }
 
-                commas.push(current.span);
+                commas.push(current.position);
 
                 state.iterator.next();
                 current = state.iterator.current();
@@ -74,16 +73,11 @@ pub fn template_group_definition(state: &mut State) -> ParseResult<TemplateGroup
             if let Some(token) = state.ignored_shift_at {
                 utils::skip(state, TokenKind::RightShift)?;
                 state.ignored_shift_at = None;
-
-                Span {
-                    line: token.span.line,
-                    column: token.span.column + 1,
-                    position: token.span.position + 1,
-                }
+                token.position + 1
             } else if current.kind == TokenKind::RightShift {
                 state.ignored_shift_at = Some(current);
 
-                current.span
+                current.position
             } else {
                 utils::skip(state, TokenKind::GreaterThan)?
             }
@@ -110,7 +104,7 @@ pub fn type_template_group_definition(
                     break;
                 }
 
-                commas.push(current.span);
+                commas.push(current.position);
 
                 state.iterator.next();
                 current = state.iterator.current();
@@ -124,16 +118,11 @@ pub fn type_template_group_definition(
             if let Some(token) = state.ignored_shift_at {
                 utils::skip(state, TokenKind::RightShift)?;
                 state.ignored_shift_at = None;
-
-                Span {
-                    line: token.span.line,
-                    column: token.span.column + 1,
-                    position: token.span.position + 1,
-                }
+                token.position + 1
             } else if current.kind == TokenKind::RightShift {
                 state.ignored_shift_at = Some(current);
 
-                current.span
+                current.position
             } else {
                 utils::skip(state, TokenKind::GreaterThan)?
             }

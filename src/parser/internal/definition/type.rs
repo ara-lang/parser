@@ -110,7 +110,7 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
 fn single(state: &mut State) -> ParseResult<TypeDefinition> {
     let current = state.iterator.current();
 
-    let span = current.span;
+    let position = current.position;
     let name = &current.value[..];
     let lowered_name = name.to_ascii_lowercase();
     let value = lowered_name.as_slice();
@@ -122,7 +122,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
             let r#fn = utils::skip(state, TokenKind::Fn)?;
 
             Ok(TypeDefinition::Function {
-                outer_left_parenthesis: current.span,
+                outer_left_parenthesis: current.position,
                 r#fn,
                 left_parenthesis: utils::skip(state, TokenKind::LeftParen)?,
                 parameter_type_definitions: utils::comma_separated(
@@ -152,88 +152,88 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         TokenKind::Null => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Null(span))
+            Ok(TypeDefinition::Null(position))
         }
         TokenKind::True => {
             state.iterator.next();
 
-            Ok(TypeDefinition::True(span))
+            Ok(TypeDefinition::True(position))
         }
         TokenKind::False => {
             state.iterator.next();
 
-            Ok(TypeDefinition::False(span))
+            Ok(TypeDefinition::False(position))
         }
         TokenKind::Vec => {
             state.iterator.next();
 
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Vec(span, templates))
+            Ok(TypeDefinition::Vec(position, templates))
         }
         TokenKind::Dict => {
             state.iterator.next();
 
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Dict(span, templates))
+            Ok(TypeDefinition::Dict(position, templates))
         }
         _ if value == b"iterable" => {
             state.iterator.next();
 
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Iterable(span, templates))
+            Ok(TypeDefinition::Iterable(position, templates))
         }
         _ if value == b"void" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Void(span))
+            Ok(TypeDefinition::Void(position))
         }
         _ if value == b"never" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Never(span))
+            Ok(TypeDefinition::Never(position))
         }
         _ if value == b"float" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Float(span))
+            Ok(TypeDefinition::Float(position))
         }
         _ if value == b"bool" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Boolean(span))
+            Ok(TypeDefinition::Boolean(position))
         }
         _ if value == b"int" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Integer(span))
+            Ok(TypeDefinition::Integer(position))
         }
         _ if value == b"string" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::String(span))
+            Ok(TypeDefinition::String(position))
         }
         _ if value == b"object" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Object(span))
+            Ok(TypeDefinition::Object(position))
         }
         _ if value == b"mixed" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Mixed(span))
+            Ok(TypeDefinition::Mixed(position))
         }
         _ if value == b"nonnull" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::NonNull(span))
+            Ok(TypeDefinition::NonNull(position))
         }
         _ if value == b"resource" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Resource(span))
+            Ok(TypeDefinition::Resource(position))
         }
         TokenKind::Identifier
         | TokenKind::QualifiedIdentifier
@@ -264,10 +264,13 @@ fn nullable(state: &mut State) -> ParseResult<TypeDefinition> {
     let ty = single(state)?;
 
     if ty.is_standalone() {
-        issue::report!(state, standalone_type_cannot_be_nullable(&ty, current.span));
+        issue::report!(
+            state,
+            standalone_type_cannot_be_nullable(&ty, current.position)
+        );
     }
 
-    Ok(TypeDefinition::Nullable(current.span, Box::new(ty)))
+    Ok(TypeDefinition::Nullable(current.position, Box::new(ty)))
 }
 
 fn union(
@@ -295,7 +298,7 @@ fn union(
                 // don't allow nesting.
                 issue::report!(
                     state,
-                    disjunctive_normal_form_types_cannot_be_nested(current.span)
+                    disjunctive_normal_form_types_cannot_be_nested(current.position)
                 );
             }
 
@@ -363,7 +366,7 @@ fn intersection(
                 // don't allow nesting.
                 issue::report!(
                     state,
-                    disjunctive_normal_form_types_cannot_be_nested(current.span)
+                    disjunctive_normal_form_types_cannot_be_nested(current.position)
                 );
             }
 

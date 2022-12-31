@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::statement::Statement;
 use crate::tree::Node;
@@ -11,9 +10,9 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct BlockStatement {
     pub comments: CommentGroup,
-    pub left_brace: Span,
+    pub left_brace: usize,
     pub statements: Vec<Statement>,
-    pub right_brace: Span,
+    pub right_brace: usize,
 }
 
 impl Node for BlockStatement {
@@ -22,11 +21,11 @@ impl Node for BlockStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_brace.position
+        self.left_brace
     }
 
     fn final_position(&self) -> usize {
-        self.right_brace.position + 1
+        self.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

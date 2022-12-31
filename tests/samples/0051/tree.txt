@@ -6,33 +6,17 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                interface: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 11,
-                        position: 10,
-                    },
+                    position: 10,
                     value: "A",
                 },
                 templates: None,
                 extends: None,
                 body: InterfaceDefinitionBody {
-                    left_brace: Span {
-                        line: 1,
-                        column: 13,
-                        position: 12,
-                    },
+                    left_brace: 12,
                     members: [],
-                    right_brace: Span {
-                        line: 1,
-                        column: 14,
-                        position: 13,
-                    },
+                    right_brace: 13,
                 },
             },
         ),
@@ -42,33 +26,17 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: Span {
-                    line: 2,
-                    column: 1,
-                    position: 15,
-                },
+                interface: 15,
                 name: Identifier {
-                    span: Span {
-                        line: 2,
-                        column: 11,
-                        position: 25,
-                    },
+                    position: 25,
                     value: "B",
                 },
                 templates: None,
                 extends: None,
                 body: InterfaceDefinitionBody {
-                    left_brace: Span {
-                        line: 2,
-                        column: 13,
-                        position: 27,
-                    },
+                    left_brace: 27,
                     members: [],
-                    right_brace: Span {
-                        line: 2,
-                        column: 14,
-                        position: 28,
-                    },
+                    right_brace: 28,
                 },
             },
         ),
@@ -78,33 +46,17 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: Span {
-                    line: 3,
-                    column: 1,
-                    position: 30,
-                },
+                interface: 30,
                 name: Identifier {
-                    span: Span {
-                        line: 3,
-                        column: 11,
-                        position: 40,
-                    },
+                    position: 40,
                     value: "C",
                 },
                 templates: None,
                 extends: None,
                 body: InterfaceDefinitionBody {
-                    left_brace: Span {
-                        line: 3,
-                        column: 13,
-                        position: 42,
-                    },
+                    left_brace: 42,
                     members: [],
-                    right_brace: Span {
-                        line: 3,
-                        column: 14,
-                        position: 43,
-                    },
+                    right_brace: 43,
                 },
             },
         ),
@@ -114,33 +66,17 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: Span {
-                    line: 4,
-                    column: 1,
-                    position: 45,
-                },
+                interface: 45,
                 name: Identifier {
-                    span: Span {
-                        line: 4,
-                        column: 11,
-                        position: 55,
-                    },
+                    position: 55,
                     value: "D",
                 },
                 templates: None,
                 extends: None,
                 body: InterfaceDefinitionBody {
-                    left_brace: Span {
-                        line: 4,
-                        column: 13,
-                        position: 57,
-                    },
+                    left_brace: 57,
                     members: [],
-                    right_brace: Span {
-                        line: 4,
-                        column: 14,
-                        position: 58,
-                    },
+                    right_brace: 58,
                 },
             },
         ),
@@ -150,17 +86,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 6,
-                    column: 1,
-                    position: 61,
-                },
+                function: 61,
                 name: Identifier {
-                    span: Span {
-                        line: 6,
-                        column: 10,
-                        position: 70,
-                    },
+                    position: 70,
                     value: "foo",
                 },
                 templates: None,
@@ -168,11 +96,7 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 6,
-                        column: 13,
-                        position: 73,
-                    },
+                    left_parenthesis: 73,
                     parameters: CommaSeparated {
                         inner: [
                             FunctionLikeParameterDefinition {
@@ -185,11 +109,7 @@ DefinitionTree {
                                         Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {
-                                                    span: Span {
-                                                        line: 6,
-                                                        column: 14,
-                                                        position: 74,
-                                                    },
+                                                    position: 74,
                                                     value: "A",
                                                 },
                                                 templates: None,
@@ -200,11 +120,7 @@ DefinitionTree {
                                                 Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
-                                                            span: Span {
-                                                                line: 6,
-                                                                column: 17,
-                                                                position: 77,
-                                                            },
+                                                            position: 77,
                                                             value: "B",
                                                         },
                                                         templates: None,
@@ -213,11 +129,7 @@ DefinitionTree {
                                                 Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
-                                                            span: Span {
-                                                                line: 6,
-                                                                column: 19,
-                                                                position: 79,
-                                                            },
+                                                            position: 79,
                                                             value: "C",
                                                         },
                                                         templates: None,
@@ -226,11 +138,7 @@ DefinitionTree {
                                                 Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
-                                                            span: Span {
-                                                                line: 6,
-                                                                column: 21,
-                                                                position: 81,
-                                                            },
+                                                            position: 81,
                                                             value: "D",
                                                         },
                                                         templates: None,
@@ -242,11 +150,7 @@ DefinitionTree {
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    span: Span {
-                                        line: 6,
-                                        column: 24,
-                                        position: 84,
-                                    },
+                                    position: 84,
                                     name: "$a",
                                 },
                                 default: None,
@@ -254,28 +158,16 @@ DefinitionTree {
                         ],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 6,
-                        column: 26,
-                        position: 86,
-                    },
+                    right_parenthesis: 86,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 6,
-                        column: 27,
-                        position: 87,
-                    },
+                    colon: 87,
                     type_definition: Intersection(
                         [
                             Identifier(
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 6,
-                                            column: 29,
-                                            position: 89,
-                                        },
+                                        position: 89,
                                         value: "A",
                                     },
                                     templates: None,
@@ -286,11 +178,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 32,
-                                                    position: 92,
-                                                },
+                                                position: 92,
                                                 value: "B",
                                             },
                                             templates: None,
@@ -299,11 +187,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 34,
-                                                    position: 94,
-                                                },
+                                                position: 94,
                                                 value: "C",
                                             },
                                             templates: None,
@@ -312,11 +196,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 36,
-                                                    position: 96,
-                                                },
+                                                position: 96,
                                                 value: "D",
                                             },
                                             templates: None,
@@ -331,11 +211,7 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 6,
-                        column: 39,
-                        position: 99,
-                    },
+                    left_brace: 99,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -347,16 +223,8 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        exit: Span {
-                                            line: 7,
-                                            column: 5,
-                                            position: 105,
-                                        },
-                                        left_parenthesis: Span {
-                                            line: 7,
-                                            column: 9,
-                                            position: 109,
-                                        },
+                                        exit: 105,
+                                        left_parenthesis: 109,
                                         value: Some(
                                             Literal(
                                                 Integer(
@@ -365,42 +233,22 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "0",
-                                                        span: Span {
-                                                            line: 7,
-                                                            column: 10,
-                                                            position: 110,
-                                                        },
+                                                        position: 110,
                                                     },
                                                 ),
                                             ),
                                         ),
-                                        right_parenthesis: Span {
-                                            line: 7,
-                                            column: 11,
-                                            position: 111,
-                                        },
+                                        right_parenthesis: 111,
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 7,
-                                    column: 12,
-                                    position: 112,
-                                },
+                                semicolon: 112,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 8,
-                        column: 1,
-                        position: 114,
-                    },
+                    right_brace: 114,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 9,
-        column: 1,
-        position: 116,
-    },
+    eof: 116,
 }

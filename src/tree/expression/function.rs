@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::function::FunctionLikeParameterListDefinition;
@@ -17,12 +16,12 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct ArrowFunctionExpression {
     pub comments: CommentGroup,
-    pub r#static: Option<Span>,
-    pub r#fn: Span,
+    pub r#static: Option<usize>,
+    pub r#fn: usize,
     pub attributes: Vec<AttributeDefinitionGroup>,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
-    pub double_arrow: Span,
+    pub double_arrow: usize,
     pub body: Box<Expression>,
 }
 
@@ -31,8 +30,8 @@ pub struct ArrowFunctionExpression {
 pub struct AnonymousFunctionExpression {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeDefinitionGroup>,
-    pub r#static: Option<Span>,
-    pub function: Span,
+    pub r#static: Option<usize>,
+    pub function: usize,
     pub parameters: FunctionLikeParameterListDefinition,
     pub use_clause: Option<AnonymousFunctionUseClauseExpression>,
     pub return_type: FunctionLikeReturnTypeDefinition,
@@ -43,10 +42,10 @@ pub struct AnonymousFunctionExpression {
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousFunctionUseClauseExpression {
     pub comments: CommentGroup,
-    pub r#use: Span,
-    pub left_parenthesis: Span,
+    pub r#use: usize,
+    pub left_parenthesis: usize,
     pub variables: CommaSeparated<AnonymousFunctionUseClauseVariableExpression>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -62,7 +61,7 @@ impl Node for ArrowFunctionExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#fn.position
+        self.r#fn
     }
 
     fn final_position(&self) -> usize {
@@ -90,7 +89,7 @@ impl Node for AnonymousFunctionExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {
@@ -118,11 +117,11 @@ impl Node for AnonymousFunctionUseClauseExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#use.position
+        self.r#use
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position
+        self.right_parenthesis
     }
 
     fn children(&self) -> Vec<&dyn Node> {

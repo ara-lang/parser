@@ -2,185 +2,89 @@ DefinitionTree {
     definitions: [
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 2,
-                    column: 1,
-                    position: 1,
-                },
+                type: 1,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 2,
-                            column: 6,
-                            position: 6,
-                        },
+                        position: 6,
                         value: "a",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 2,
-                    column: 8,
-                    position: 8,
-                },
+                equals: 8,
                 data_type: Null(
-                    Span {
-                        line: 2,
-                        column: 10,
-                        position: 10,
-                    },
+                    10,
                 ),
-                semicolon: Span {
-                    line: 2,
-                    column: 14,
-                    position: 14,
-                },
+                semicolon: 14,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 3,
-                    column: 1,
-                    position: 16,
-                },
+                type: 16,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 3,
-                            column: 6,
-                            position: 21,
-                        },
+                        position: 21,
                         value: "b",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 3,
-                    column: 8,
-                    position: 23,
-                },
+                equals: 23,
                 data_type: False(
-                    Span {
-                        line: 3,
-                        column: 10,
-                        position: 25,
-                    },
+                    25,
                 ),
-                semicolon: Span {
-                    line: 3,
-                    column: 15,
-                    position: 30,
-                },
+                semicolon: 30,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 4,
-                    column: 1,
-                    position: 32,
-                },
+                type: 32,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 4,
-                            column: 6,
-                            position: 37,
-                        },
+                        position: 37,
                         value: "c",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 4,
-                    column: 8,
-                    position: 39,
-                },
+                equals: 39,
                 data_type: True(
-                    Span {
-                        line: 4,
-                        column: 10,
-                        position: 41,
-                    },
+                    41,
                 ),
-                semicolon: Span {
-                    line: 4,
-                    column: 14,
-                    position: 45,
-                },
+                semicolon: 45,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 5,
-                    column: 1,
-                    position: 47,
-                },
+                type: 47,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 5,
-                            column: 6,
-                            position: 52,
-                        },
+                        position: 52,
                         value: "d",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 5,
-                    column: 8,
-                    position: 54,
-                },
+                equals: 54,
                 data_type: NonNull(
-                    Span {
-                        line: 5,
-                        column: 10,
-                        position: 56,
-                    },
+                    56,
                 ),
-                semicolon: Span {
-                    line: 5,
-                    column: 17,
-                    position: 63,
-                },
+                semicolon: 63,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 6,
-                    column: 1,
-                    position: 65,
-                },
+                type: 65,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 6,
-                            column: 6,
-                            position: 70,
-                        },
+                        position: 70,
                         value: "e",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 6,
-                    column: 8,
-                    position: 72,
-                },
+                equals: 72,
                 data_type: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 6,
-                                        column: 10,
-                                        position: 74,
-                                    },
+                                    position: 74,
                                     value: "a",
                                 },
                                 templates: None,
@@ -189,11 +93,7 @@ DefinitionTree {
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 6,
-                                        column: 12,
-                                        position: 76,
-                                    },
+                                    position: 76,
                                     value: "b",
                                 },
                                 templates: None,
@@ -202,11 +102,7 @@ DefinitionTree {
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 6,
-                                        column: 14,
-                                        position: 78,
-                                    },
+                                    position: 78,
                                     value: "c",
                                 },
                                 templates: None,
@@ -215,11 +111,7 @@ DefinitionTree {
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 6,
-                                        column: 16,
-                                        position: 80,
-                                    },
+                                    position: 80,
                                     value: "d",
                                 },
                                 templates: None,
@@ -227,52 +119,24 @@ DefinitionTree {
                         ),
                     ],
                 ),
-                semicolon: Span {
-                    line: 6,
-                    column: 17,
-                    position: 81,
-                },
+                semicolon: 81,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 7,
-                    column: 1,
-                    position: 83,
-                },
+                type: 83,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 7,
-                            column: 6,
-                            position: 88,
-                        },
+                        position: 88,
                         value: "f",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 7,
-                    column: 8,
-                    position: 90,
-                },
+                equals: 90,
                 data_type: Function {
-                    outer_left_parenthesis: Span {
-                        line: 7,
-                        column: 10,
-                        position: 92,
-                    },
-                    fn: Span {
-                        line: 7,
-                        column: 11,
-                        position: 93,
-                    },
-                    left_parenthesis: Span {
-                        line: 7,
-                        column: 13,
-                        position: 95,
-                    },
+                    outer_left_parenthesis: 92,
+                    fn: 93,
+                    left_parenthesis: 95,
                     parameter_type_definitions: CommaSeparated {
                         inner: [
                             Union(
@@ -280,11 +144,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 7,
-                                                    column: 14,
-                                                    position: 96,
-                                                },
+                                                position: 96,
                                                 value: "a",
                                             },
                                             templates: None,
@@ -293,11 +153,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 7,
-                                                    column: 16,
-                                                    position: 98,
-                                                },
+                                                position: 98,
                                                 value: "b",
                                             },
                                             templates: None,
@@ -308,26 +164,14 @@ DefinitionTree {
                         ],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 7,
-                        column: 17,
-                        position: 99,
-                    },
-                    colon: Span {
-                        line: 7,
-                        column: 18,
-                        position: 100,
-                    },
+                    right_parenthesis: 99,
+                    colon: 100,
                     return_type_definition: Union(
                         [
                             Identifier(
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 7,
-                                            column: 20,
-                                            position: 102,
-                                        },
+                                        position: 102,
                                         value: "c",
                                     },
                                     templates: None,
@@ -336,11 +180,7 @@ DefinitionTree {
                             Identifier(
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 7,
-                                            column: 22,
-                                            position: 104,
-                                        },
+                                        position: 104,
                                         value: "d",
                                     },
                                     templates: None,
@@ -348,116 +188,60 @@ DefinitionTree {
                             ),
                         ],
                     ),
-                    outer_right_parenthesis: Span {
-                        line: 7,
-                        column: 23,
-                        position: 105,
-                    },
+                    outer_right_parenthesis: 105,
                 },
-                semicolon: Span {
-                    line: 7,
-                    column: 24,
-                    position: 106,
-                },
+                semicolon: 106,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 8,
-                    column: 1,
-                    position: 108,
-                },
+                type: 108,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 8,
-                            column: 6,
-                            position: 113,
-                        },
+                        position: 113,
                         value: "g",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 8,
-                    column: 8,
-                    position: 115,
-                },
+                equals: 115,
                 data_type: Vec(
-                    Span {
-                        line: 8,
-                        column: 10,
-                        position: 117,
-                    },
+                    117,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
                         },
-                        less_than: Span {
-                            line: 8,
-                            column: 13,
-                            position: 120,
-                        },
+                        less_than: 120,
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    Span {
-                                        line: 8,
-                                        column: 14,
-                                        position: 121,
-                                    },
+                                    121,
                                 ),
                             ],
                             commas: [],
                         },
-                        greater_than: Span {
-                            line: 8,
-                            column: 17,
-                            position: 124,
-                        },
+                        greater_than: 124,
                     },
                 ),
-                semicolon: Span {
-                    line: 8,
-                    column: 18,
-                    position: 125,
-                },
+                semicolon: 125,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 9,
-                    column: 1,
-                    position: 127,
-                },
+                type: 127,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 9,
-                            column: 6,
-                            position: 132,
-                        },
+                        position: 132,
                         value: "h",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 9,
-                    column: 8,
-                    position: 134,
-                },
+                equals: 134,
                 data_type: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 9,
-                                        column: 10,
-                                        position: 136,
-                                    },
+                                    position: 136,
                                     value: "Foo",
                                 },
                                 templates: Some(
@@ -465,28 +249,16 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: Span {
-                                            line: 9,
-                                            column: 13,
-                                            position: 139,
-                                        },
+                                        less_than: 139,
                                         members: CommaSeparated {
                                             inner: [
                                                 String(
-                                                    Span {
-                                                        line: 9,
-                                                        column: 14,
-                                                        position: 140,
-                                                    },
+                                                    140,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: Span {
-                                            line: 9,
-                                            column: 20,
-                                            position: 146,
-                                        },
+                                        greater_than: 146,
                                     },
                                 ),
                             },
@@ -494,11 +266,7 @@ DefinitionTree {
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    span: Span {
-                                        line: 9,
-                                        column: 22,
-                                        position: 148,
-                                    },
+                                    position: 148,
                                     value: "Bar",
                                 },
                                 templates: Some(
@@ -506,82 +274,42 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: Span {
-                                            line: 9,
-                                            column: 25,
-                                            position: 151,
-                                        },
+                                        less_than: 151,
                                         members: CommaSeparated {
                                             inner: [
                                                 NonNull(
-                                                    Span {
-                                                        line: 9,
-                                                        column: 26,
-                                                        position: 152,
-                                                    },
+                                                    152,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: Span {
-                                            line: 9,
-                                            column: 33,
-                                            position: 159,
-                                        },
+                                        greater_than: 159,
                                     },
                                 ),
                             },
                         ),
                     ],
                 ),
-                semicolon: Span {
-                    line: 9,
-                    column: 34,
-                    position: 160,
-                },
+                semicolon: 160,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 10,
-                    column: 1,
-                    position: 162,
-                },
+                type: 162,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 10,
-                            column: 6,
-                            position: 167,
-                        },
+                        position: 167,
                         value: "i",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 10,
-                    column: 8,
-                    position: 169,
-                },
+                equals: 169,
                 data_type: Union(
                     [
                         Function {
-                            outer_left_parenthesis: Span {
-                                line: 10,
-                                column: 10,
-                                position: 171,
-                            },
-                            fn: Span {
-                                line: 10,
-                                column: 11,
-                                position: 172,
-                            },
-                            left_parenthesis: Span {
-                                line: 10,
-                                column: 13,
-                                position: 174,
-                            },
+                            outer_left_parenthesis: 171,
+                            fn: 172,
+                            left_parenthesis: 174,
                             parameter_type_definitions: CommaSeparated {
                                 inner: [
                                     Union(
@@ -589,11 +317,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 14,
-                                                            position: 175,
-                                                        },
+                                                        position: 175,
                                                         value: "a",
                                                     },
                                                     templates: None,
@@ -602,11 +326,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 16,
-                                                            position: 177,
-                                                        },
+                                                        position: 177,
                                                         value: "b",
                                                     },
                                                     templates: None,
@@ -617,51 +337,23 @@ DefinitionTree {
                                 ],
                                 commas: [],
                             },
-                            right_parenthesis: Span {
-                                line: 10,
-                                column: 17,
-                                position: 178,
-                            },
-                            colon: Span {
-                                line: 10,
-                                column: 18,
-                                position: 179,
-                            },
+                            right_parenthesis: 178,
+                            colon: 179,
                             return_type_definition: Identifier(
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 10,
-                                            column: 20,
-                                            position: 181,
-                                        },
+                                        position: 181,
                                         value: "g",
                                     },
                                     templates: None,
                                 },
                             ),
-                            outer_right_parenthesis: Span {
-                                line: 10,
-                                column: 21,
-                                position: 182,
-                            },
+                            outer_right_parenthesis: 182,
                         },
                         Function {
-                            outer_left_parenthesis: Span {
-                                line: 10,
-                                column: 23,
-                                position: 184,
-                            },
-                            fn: Span {
-                                line: 10,
-                                column: 24,
-                                position: 185,
-                            },
-                            left_parenthesis: Span {
-                                line: 10,
-                                column: 26,
-                                position: 187,
-                            },
+                            outer_left_parenthesis: 184,
+                            fn: 185,
+                            left_parenthesis: 187,
                             parameter_type_definitions: CommaSeparated {
                                 inner: [
                                     Union(
@@ -669,11 +361,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 27,
-                                                            position: 188,
-                                                        },
+                                                        position: 188,
                                                         value: "a",
                                                     },
                                                     templates: None,
@@ -682,11 +370,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 29,
-                                                            position: 190,
-                                                        },
+                                                        position: 190,
                                                         value: "b",
                                                     },
                                                     templates: None,
@@ -697,51 +381,23 @@ DefinitionTree {
                                 ],
                                 commas: [],
                             },
-                            right_parenthesis: Span {
-                                line: 10,
-                                column: 30,
-                                position: 191,
-                            },
-                            colon: Span {
-                                line: 10,
-                                column: 31,
-                                position: 192,
-                            },
+                            right_parenthesis: 191,
+                            colon: 192,
                             return_type_definition: Identifier(
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 10,
-                                            column: 33,
-                                            position: 194,
-                                        },
+                                        position: 194,
                                         value: "h",
                                     },
                                     templates: None,
                                 },
                             ),
-                            outer_right_parenthesis: Span {
-                                line: 10,
-                                column: 34,
-                                position: 195,
-                            },
+                            outer_right_parenthesis: 195,
                         },
                         Function {
-                            outer_left_parenthesis: Span {
-                                line: 10,
-                                column: 36,
-                                position: 197,
-                            },
-                            fn: Span {
-                                line: 10,
-                                column: 37,
-                                position: 198,
-                            },
-                            left_parenthesis: Span {
-                                line: 10,
-                                column: 39,
-                                position: 200,
-                            },
+                            outer_left_parenthesis: 197,
+                            fn: 198,
+                            left_parenthesis: 200,
                             parameter_type_definitions: CommaSeparated {
                                 inner: [
                                     Union(
@@ -749,11 +405,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 40,
-                                                            position: 201,
-                                                        },
+                                                        position: 201,
                                                         value: "a",
                                                     },
                                                     templates: None,
@@ -762,11 +414,7 @@ DefinitionTree {
                                             Identifier(
                                                 TemplatedIdentifier {
                                                     name: Identifier {
-                                                        span: Span {
-                                                            line: 10,
-                                                            column: 42,
-                                                            position: 203,
-                                                        },
+                                                        position: 203,
                                                         value: "b",
                                                     },
                                                     templates: None,
@@ -777,26 +425,14 @@ DefinitionTree {
                                 ],
                                 commas: [],
                             },
-                            right_parenthesis: Span {
-                                line: 10,
-                                column: 43,
-                                position: 204,
-                            },
-                            colon: Span {
-                                line: 10,
-                                column: 44,
-                                position: 205,
-                            },
+                            right_parenthesis: 204,
+                            colon: 205,
                             return_type_definition: Union(
                                 [
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 10,
-                                                    column: 46,
-                                                    position: 207,
-                                                },
+                                                position: 207,
                                                 value: "a",
                                             },
                                             templates: None,
@@ -805,11 +441,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 10,
-                                                    column: 48,
-                                                    position: 209,
-                                                },
+                                                position: 209,
                                                 value: "b",
                                             },
                                             templates: None,
@@ -818,11 +450,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 10,
-                                                    column: 50,
-                                                    position: 211,
-                                                },
+                                                position: 211,
                                                 value: "c",
                                             },
                                             templates: None,
@@ -830,22 +458,14 @@ DefinitionTree {
                                     ),
                                 ],
                             ),
-                            outer_right_parenthesis: Span {
-                                line: 10,
-                                column: 51,
-                                position: 212,
-                            },
+                            outer_right_parenthesis: 212,
                         },
                         Intersection(
                             [
                                 Identifier(
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            span: Span {
-                                                line: 10,
-                                                column: 54,
-                                                position: 215,
-                                            },
+                                            position: 215,
                                             value: "Foo",
                                         },
                                         templates: None,
@@ -854,11 +474,7 @@ DefinitionTree {
                                 Identifier(
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            span: Span {
-                                                line: 10,
-                                                column: 58,
-                                                position: 219,
-                                            },
+                                            position: 219,
                                             value: "Bar",
                                         },
                                         templates: None,
@@ -868,52 +484,24 @@ DefinitionTree {
                         ),
                     ],
                 ),
-                semicolon: Span {
-                    line: 10,
-                    column: 62,
-                    position: 223,
-                },
+                semicolon: 223,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 11,
-                    column: 1,
-                    position: 225,
-                },
+                type: 225,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 11,
-                            column: 6,
-                            position: 230,
-                        },
+                        position: 230,
                         value: "j",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 11,
-                    column: 8,
-                    position: 232,
-                },
+                equals: 232,
                 data_type: Function {
-                    outer_left_parenthesis: Span {
-                        line: 11,
-                        column: 10,
-                        position: 234,
-                    },
-                    fn: Span {
-                        line: 11,
-                        column: 11,
-                        position: 235,
-                    },
-                    left_parenthesis: Span {
-                        line: 11,
-                        column: 13,
-                        position: 237,
-                    },
+                    outer_left_parenthesis: 234,
+                    fn: 235,
+                    left_parenthesis: 237,
                     parameter_type_definitions: CommaSeparated {
                         inner: [
                             Union(
@@ -921,11 +509,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 11,
-                                                    column: 14,
-                                                    position: 238,
-                                                },
+                                                position: 238,
                                                 value: "a",
                                             },
                                             templates: None,
@@ -934,11 +518,7 @@ DefinitionTree {
                                     Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 11,
-                                                    column: 16,
-                                                    position: 240,
-                                                },
+                                                position: 240,
                                                 value: "b",
                                             },
                                             templates: None,
@@ -949,150 +529,74 @@ DefinitionTree {
                         ],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 11,
-                        column: 17,
-                        position: 241,
-                    },
-                    colon: Span {
-                        line: 11,
-                        column: 18,
-                        position: 242,
-                    },
+                    right_parenthesis: 241,
+                    colon: 242,
                     return_type_definition: Identifier(
                         TemplatedIdentifier {
                             name: Identifier {
-                                span: Span {
-                                    line: 11,
-                                    column: 20,
-                                    position: 244,
-                                },
+                                position: 244,
                                 value: "i",
                             },
                             templates: None,
                         },
                     ),
-                    outer_right_parenthesis: Span {
-                        line: 11,
-                        column: 21,
-                        position: 245,
-                    },
+                    outer_right_parenthesis: 245,
                 },
-                semicolon: Span {
-                    line: 11,
-                    column: 22,
-                    position: 246,
-                },
+                semicolon: 246,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: Span {
-                    line: 12,
-                    column: 1,
-                    position: 248,
-                },
+                type: 248,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        span: Span {
-                            line: 12,
-                            column: 6,
-                            position: 253,
-                        },
+                        position: 253,
                         value: "k",
                     },
                     templates: None,
                 },
-                equals: Span {
-                    line: 12,
-                    column: 8,
-                    position: 255,
-                },
+                equals: 255,
                 data_type: Dict(
-                    Span {
-                        line: 12,
-                        column: 10,
-                        position: 257,
-                    },
+                    257,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
                         },
-                        less_than: Span {
-                            line: 12,
-                            column: 14,
-                            position: 261,
-                        },
+                        less_than: 261,
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    Span {
-                                        line: 12,
-                                        column: 15,
-                                        position: 262,
-                                    },
+                                    262,
                                 ),
                                 Iterable(
-                                    Span {
-                                        line: 12,
-                                        column: 20,
-                                        position: 267,
-                                    },
+                                    267,
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: Span {
-                                            line: 12,
-                                            column: 28,
-                                            position: 275,
-                                        },
+                                        less_than: 275,
                                         members: CommaSeparated {
                                             inner: [
                                                 Integer(
-                                                    Span {
-                                                        line: 12,
-                                                        column: 29,
-                                                        position: 276,
-                                                    },
+                                                    276,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: Span {
-                                            line: 12,
-                                            column: 32,
-                                            position: 279,
-                                        },
+                                        greater_than: 279,
                                     },
                                 ),
                             ],
                             commas: [
-                                Span {
-                                    line: 12,
-                                    column: 18,
-                                    position: 265,
-                                },
+                                265,
                             ],
                         },
-                        greater_than: Span {
-                            line: 12,
-                            column: 33,
-                            position: 280,
-                        },
+                        greater_than: 280,
                     },
                 ),
-                semicolon: Span {
-                    line: 12,
-                    column: 34,
-                    position: 281,
-                },
+                semicolon: 281,
             },
         ),
     ],
-    eof: Span {
-        line: 13,
-        column: 1,
-        position: 283,
-    },
+    eof: 283,
 }

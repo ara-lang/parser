@@ -7,20 +7,12 @@ DefinitionTree {
                 },
                 attributes: [
                     AttributeDefinitionGroup {
-                        hash_left_bracket: Span {
-                            line: 1,
-                            column: 1,
-                            position: 0,
-                        },
+                        hash_left_bracket: 0,
                         members: CommaSeparated {
                             inner: [
                                 AttributeDefinition {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 1,
-                                            column: 3,
-                                            position: 2,
-                                        },
+                                        position: 2,
                                         value: "foo",
                                     },
                                     arguments: Some(
@@ -28,11 +20,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: Span {
-                                                line: 1,
-                                                column: 6,
-                                                position: 5,
-                                            },
+                                            left_parenthesis: 5,
                                             arguments: CommaSeparated {
                                                 inner: [
                                                     Positional {
@@ -47,25 +35,13 @@ DefinitionTree {
                                                                 },
                                                                 class: Identifier(
                                                                     Identifier {
-                                                                        span: Span {
-                                                                            line: 1,
-                                                                            column: 7,
-                                                                            position: 6,
-                                                                        },
+                                                                        position: 6,
                                                                         value: "self",
                                                                     },
                                                                 ),
-                                                                double_colon: Span {
-                                                                    line: 1,
-                                                                    column: 11,
-                                                                    position: 10,
-                                                                },
+                                                                double_colon: 10,
                                                                 constant: Identifier {
-                                                                    span: Span {
-                                                                        line: 1,
-                                                                        column: 13,
-                                                                        position: 12,
-                                                                    },
+                                                                    position: 12,
                                                                     value: "class",
                                                                 },
                                                             },
@@ -74,21 +50,13 @@ DefinitionTree {
                                                 ],
                                                 commas: [],
                                             },
-                                            right_parenthesis: Span {
-                                                line: 1,
-                                                column: 18,
-                                                position: 17,
-                                            },
+                                            right_parenthesis: 17,
                                         },
                                     ),
                                 },
                                 AttributeDefinition {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 1,
-                                            column: 21,
-                                            position: 20,
-                                        },
+                                        position: 20,
                                         value: "bar",
                                     },
                                     arguments: Some(
@@ -96,11 +64,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: Span {
-                                                line: 1,
-                                                column: 24,
-                                                position: 23,
-                                            },
+                                            left_parenthesis: 23,
                                             arguments: CommaSeparated {
                                                 inner: [
                                                     Positional {
@@ -113,17 +77,9 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: Span {
-                                                                    line: 1,
-                                                                    column: 25,
-                                                                    position: 24,
-                                                                },
+                                                                new: 24,
                                                                 class: Identifier {
-                                                                    span: Span {
-                                                                        line: 1,
-                                                                        column: 29,
-                                                                        position: 28,
-                                                                    },
+                                                                    position: 28,
                                                                     value: "self",
                                                                 },
                                                                 generics: None,
@@ -131,20 +87,12 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    left_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 33,
-                                                                        position: 32,
-                                                                    },
+                                                                    left_parenthesis: 32,
                                                                     arguments: CommaSeparated {
                                                                         inner: [],
                                                                         commas: [],
                                                                     },
-                                                                    right_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 34,
-                                                                        position: 33,
-                                                                    },
+                                                                    right_parenthesis: 33,
                                                                 },
                                                             },
                                                         ),
@@ -159,17 +107,9 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: Span {
-                                                                    line: 1,
-                                                                    column: 37,
-                                                                    position: 36,
-                                                                },
+                                                                new: 36,
                                                                 class: Identifier {
-                                                                    span: Span {
-                                                                        line: 1,
-                                                                        column: 41,
-                                                                        position: 40,
-                                                                    },
+                                                                    position: 40,
                                                                     value: "parent",
                                                                 },
                                                                 generics: None,
@@ -177,20 +117,12 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    left_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 47,
-                                                                        position: 46,
-                                                                    },
+                                                                    left_parenthesis: 46,
                                                                     arguments: CommaSeparated {
                                                                         inner: [],
                                                                         commas: [],
                                                                     },
-                                                                    right_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 48,
-                                                                        position: 47,
-                                                                    },
+                                                                    right_parenthesis: 47,
                                                                 },
                                                             },
                                                         ),
@@ -205,17 +137,9 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: Span {
-                                                                    line: 1,
-                                                                    column: 51,
-                                                                    position: 50,
-                                                                },
+                                                                new: 50,
                                                                 class: Identifier {
-                                                                    span: Span {
-                                                                        line: 1,
-                                                                        column: 55,
-                                                                        position: 54,
-                                                                    },
+                                                                    position: 54,
                                                                     value: "static",
                                                                 },
                                                                 generics: None,
@@ -223,100 +147,52 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    left_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 61,
-                                                                        position: 60,
-                                                                    },
+                                                                    left_parenthesis: 60,
                                                                     arguments: CommaSeparated {
                                                                         inner: [],
                                                                         commas: [],
                                                                     },
-                                                                    right_parenthesis: Span {
-                                                                        line: 1,
-                                                                        column: 62,
-                                                                        position: 61,
-                                                                    },
+                                                                    right_parenthesis: 61,
                                                                 },
                                                             },
                                                         ),
                                                     },
                                                 ],
                                                 commas: [
-                                                    Span {
-                                                        line: 1,
-                                                        column: 35,
-                                                        position: 34,
-                                                    },
-                                                    Span {
-                                                        line: 1,
-                                                        column: 49,
-                                                        position: 48,
-                                                    },
+                                                    34,
+                                                    48,
                                                 ],
                                             },
-                                            right_parenthesis: Span {
-                                                line: 1,
-                                                column: 63,
-                                                position: 62,
-                                            },
+                                            right_parenthesis: 62,
                                         },
                                     ),
                                 },
                             ],
                             commas: [
-                                Span {
-                                    line: 1,
-                                    column: 19,
-                                    position: 18,
-                                },
+                                18,
                             ],
                         },
-                        right_bracket: Span {
-                            line: 1,
-                            column: 64,
-                            position: 63,
-                        },
+                        right_bracket: 63,
                     },
                 ],
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: Span {
-                    line: 2,
-                    column: 1,
-                    position: 65,
-                },
+                class: 65,
                 name: Identifier {
-                    span: Span {
-                        line: 2,
-                        column: 7,
-                        position: 71,
-                    },
+                    position: 71,
                     value: "a",
                 },
                 templates: None,
                 extends: None,
                 implements: None,
                 body: ClassDefinitionBody {
-                    left_brace: Span {
-                        line: 2,
-                        column: 9,
-                        position: 73,
-                    },
+                    left_brace: 73,
                     members: [],
-                    right_brace: Span {
-                        line: 4,
-                        column: 1,
-                        position: 76,
-                    },
+                    right_brace: 76,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 5,
-        column: 1,
-        position: 78,
-    },
+    eof: 78,
 }

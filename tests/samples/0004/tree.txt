@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "q",
                 },
                 templates: None,
@@ -24,44 +16,24 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 11,
-                        position: 10,
-                    },
+                    left_parenthesis: 10,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 12,
-                        position: 11,
-                    },
+                    right_parenthesis: 11,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 13,
-                        position: 12,
-                    },
+                    colon: 12,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 15,
-                            position: 14,
-                        },
+                        14,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 20,
-                        position: 19,
-                    },
+                    left_brace: 19,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -75,19 +47,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 5,
-                                                    position: 25,
-                                                },
+                                                position: 25,
                                                 name: "$a",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 2,
-                                            column: 8,
-                                            position: 28,
-                                        },
+                                        equals: 28,
                                         right: ArithmeticOperation(
                                             Exponentiation {
                                                 comments: CommentGroup {
@@ -100,19 +64,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "2",
-                                                            span: Span {
-                                                                line: 2,
-                                                                column: 10,
-                                                                position: 30,
-                                                            },
+                                                            position: 30,
                                                         },
                                                     ),
                                                 ),
-                                                pow: Span {
-                                                    line: 2,
-                                                    column: 12,
-                                                    position: 32,
-                                                },
+                                                pow: 32,
                                                 right: Literal(
                                                     Integer(
                                                         LiteralInteger {
@@ -120,11 +76,7 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "2",
-                                                            span: Span {
-                                                                line: 2,
-                                                                column: 15,
-                                                                position: 35,
-                                                            },
+                                                            position: 35,
                                                         },
                                                     ),
                                                 ),
@@ -132,11 +84,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 2,
-                                    column: 16,
-                                    position: 36,
-                                },
+                                semicolon: 36,
                             },
                         ),
                         Expression(
@@ -151,19 +99,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 4,
-                                                    column: 5,
-                                                    position: 43,
-                                                },
+                                                position: 43,
                                                 name: "$b",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 4,
-                                            column: 8,
-                                            position: 46,
-                                        },
+                                        equals: 46,
                                         right: TernaryOperation(
                                             Ternary {
                                                 comments: CommentGroup {
@@ -176,19 +116,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "1",
-                                                            span: Span {
-                                                                line: 4,
-                                                                column: 10,
-                                                                position: 48,
-                                                            },
+                                                            position: 48,
                                                         },
                                                     ),
                                                 ),
-                                                question: Span {
-                                                    line: 4,
-                                                    column: 12,
-                                                    position: 50,
-                                                },
+                                                question: 50,
                                                 if_true: Literal(
                                                     Integer(
                                                         LiteralInteger {
@@ -196,19 +128,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "2",
-                                                            span: Span {
-                                                                line: 4,
-                                                                column: 14,
-                                                                position: 52,
-                                                            },
+                                                            position: 52,
                                                         },
                                                     ),
                                                 ),
-                                                colon: Span {
-                                                    line: 4,
-                                                    column: 16,
-                                                    position: 54,
-                                                },
+                                                colon: 54,
                                                 if_false: Literal(
                                                     Integer(
                                                         LiteralInteger {
@@ -216,11 +140,7 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "3",
-                                                            span: Span {
-                                                                line: 4,
-                                                                column: 18,
-                                                                position: 56,
-                                                            },
+                                                            position: 56,
                                                         },
                                                     ),
                                                 ),
@@ -228,11 +148,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 4,
-                                    column: 19,
-                                    position: 57,
-                                },
+                                semicolon: 57,
                             },
                         ),
                         Expression(
@@ -247,19 +163,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 5,
-                                                    position: 64,
-                                                },
+                                                position: 64,
                                                 name: "$c",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 6,
-                                            column: 8,
-                                            position: 67,
-                                        },
+                                        equals: 67,
                                         right: TernaryOperation(
                                             Ternary {
                                                 comments: CommentGroup {
@@ -272,19 +180,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "1",
-                                                            span: Span {
-                                                                line: 6,
-                                                                column: 10,
-                                                                position: 69,
-                                                            },
+                                                            position: 69,
                                                         },
                                                     ),
                                                 ),
-                                                question: Span {
-                                                    line: 6,
-                                                    column: 12,
-                                                    position: 71,
-                                                },
+                                                question: 71,
                                                 if_true: TernaryOperation(
                                                     Ternary {
                                                         comments: CommentGroup {
@@ -297,19 +197,11 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "2",
-                                                                    span: Span {
-                                                                        line: 6,
-                                                                        column: 14,
-                                                                        position: 73,
-                                                                    },
+                                                                    position: 73,
                                                                 },
                                                             ),
                                                         ),
-                                                        question: Span {
-                                                            line: 6,
-                                                            column: 16,
-                                                            position: 75,
-                                                        },
+                                                        question: 75,
                                                         if_true: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -317,19 +209,11 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "3",
-                                                                    span: Span {
-                                                                        line: 6,
-                                                                        column: 18,
-                                                                        position: 77,
-                                                                    },
+                                                                    position: 77,
                                                                 },
                                                             ),
                                                         ),
-                                                        colon: Span {
-                                                            line: 6,
-                                                            column: 20,
-                                                            position: 79,
-                                                        },
+                                                        colon: 79,
                                                         if_false: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -337,21 +221,13 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "4",
-                                                                    span: Span {
-                                                                        line: 6,
-                                                                        column: 22,
-                                                                        position: 81,
-                                                                    },
+                                                                    position: 81,
                                                                 },
                                                             ),
                                                         ),
                                                     },
                                                 ),
-                                                colon: Span {
-                                                    line: 6,
-                                                    column: 24,
-                                                    position: 83,
-                                                },
+                                                colon: 83,
                                                 if_false: Literal(
                                                     Integer(
                                                         LiteralInteger {
@@ -359,11 +235,7 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "5",
-                                                            span: Span {
-                                                                line: 6,
-                                                                column: 26,
-                                                                position: 85,
-                                                            },
+                                                            position: 85,
                                                         },
                                                     ),
                                                 ),
@@ -371,11 +243,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 6,
-                                    column: 27,
-                                    position: 86,
-                                },
+                                semicolon: 86,
                             },
                         ),
                         Expression(
@@ -390,19 +258,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 8,
-                                                    column: 5,
-                                                    position: 93,
-                                                },
+                                                position: 93,
                                                 name: "$d",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 8,
-                                            column: 8,
-                                            position: 96,
-                                        },
+                                        equals: 96,
                                         right: TernaryOperation(
                                             ShortTernary {
                                                 comments: CommentGroup {
@@ -415,19 +275,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "1",
-                                                            span: Span {
-                                                                line: 8,
-                                                                column: 10,
-                                                                position: 98,
-                                                            },
+                                                            position: 98,
                                                         },
                                                     ),
                                                 ),
-                                                question_colon: Span {
-                                                    line: 8,
-                                                    column: 12,
-                                                    position: 100,
-                                                },
+                                                question_colon: 100,
                                                 if_false: TernaryOperation(
                                                     ShortTernary {
                                                         comments: CommentGroup {
@@ -440,19 +292,11 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "2",
-                                                                    span: Span {
-                                                                        line: 8,
-                                                                        column: 15,
-                                                                        position: 103,
-                                                                    },
+                                                                    position: 103,
                                                                 },
                                                             ),
                                                         ),
-                                                        question_colon: Span {
-                                                            line: 8,
-                                                            column: 17,
-                                                            position: 105,
-                                                        },
+                                                        question_colon: 105,
                                                         if_false: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -460,11 +304,7 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "3",
-                                                                    span: Span {
-                                                                        line: 8,
-                                                                        column: 20,
-                                                                        position: 108,
-                                                                    },
+                                                                    position: 108,
                                                                 },
                                                             ),
                                                         ),
@@ -474,11 +314,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 8,
-                                    column: 21,
-                                    position: 109,
-                                },
+                                semicolon: 109,
                             },
                         ),
                         Expression(
@@ -493,19 +329,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 10,
-                                                    column: 5,
-                                                    position: 116,
-                                                },
+                                                position: 116,
                                                 name: "$e",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 10,
-                                            column: 8,
-                                            position: 119,
-                                        },
+                                        equals: 119,
                                         right: CoalesceOperation(
                                             Coalesce {
                                                 comments: CommentGroup {
@@ -518,19 +346,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "1",
-                                                            span: Span {
-                                                                line: 10,
-                                                                column: 10,
-                                                                position: 121,
-                                                            },
+                                                            position: 121,
                                                         },
                                                     ),
                                                 ),
-                                                double_question: Span {
-                                                    line: 10,
-                                                    column: 12,
-                                                    position: 123,
-                                                },
+                                                double_question: 123,
                                                 right: Literal(
                                                     Integer(
                                                         LiteralInteger {
@@ -538,11 +358,7 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "2",
-                                                            span: Span {
-                                                                line: 10,
-                                                                column: 15,
-                                                                position: 126,
-                                                            },
+                                                            position: 126,
                                                         },
                                                     ),
                                                 ),
@@ -550,11 +366,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 10,
-                                    column: 16,
-                                    position: 127,
-                                },
+                                semicolon: 127,
                             },
                         ),
                         Expression(
@@ -569,19 +381,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 12,
-                                                    column: 5,
-                                                    position: 134,
-                                                },
+                                                position: 134,
                                                 name: "$f",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 12,
-                                            column: 8,
-                                            position: 137,
-                                        },
+                                        equals: 137,
                                         right: CoalesceOperation(
                                             Coalesce {
                                                 comments: CommentGroup {
@@ -594,19 +398,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "1",
-                                                            span: Span {
-                                                                line: 12,
-                                                                column: 10,
-                                                                position: 139,
-                                                            },
+                                                            position: 139,
                                                         },
                                                     ),
                                                 ),
-                                                double_question: Span {
-                                                    line: 12,
-                                                    column: 12,
-                                                    position: 141,
-                                                },
+                                                double_question: 141,
                                                 right: CoalesceOperation(
                                                     Coalesce {
                                                         comments: CommentGroup {
@@ -619,19 +415,11 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "2",
-                                                                    span: Span {
-                                                                        line: 12,
-                                                                        column: 15,
-                                                                        position: 144,
-                                                                    },
+                                                                    position: 144,
                                                                 },
                                                             ),
                                                         ),
-                                                        double_question: Span {
-                                                            line: 12,
-                                                            column: 17,
-                                                            position: 146,
-                                                        },
+                                                        double_question: 146,
                                                         right: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -639,11 +427,7 @@ DefinitionTree {
                                                                         comments: [],
                                                                     },
                                                                     value: "3",
-                                                                    span: Span {
-                                                                        line: 12,
-                                                                        column: 20,
-                                                                        position: 149,
-                                                                    },
+                                                                    position: 149,
                                                                 },
                                                             ),
                                                         ),
@@ -653,26 +437,14 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 12,
-                                    column: 21,
-                                    position: 150,
-                                },
+                                semicolon: 150,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 13,
-                        column: 1,
-                        position: 152,
-                    },
+                    right_brace: 152,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 14,
-        column: 1,
-        position: 154,
-    },
+    eof: 154,
 }

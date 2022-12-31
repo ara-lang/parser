@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::block::BlockStatement;
@@ -13,7 +12,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct TryStatement {
     pub comments: CommentGroup,
-    pub r#try: Span,
+    pub r#try: usize,
     pub block: BlockStatement,
     pub catches: Vec<TryStatementCatchBlock>,
     pub finally: Option<TryStatementFinallyBlock>,
@@ -23,11 +22,11 @@ pub struct TryStatement {
 #[serde(rename_all = "snake_case")]
 pub struct TryStatementCatchBlock {
     pub comments: CommentGroup,
-    pub catch: Span,
-    pub left_parenthesis: Span,
+    pub catch: usize,
+    pub left_parenthesis: usize,
     pub types: TryStatementCatchType,
     pub variable: Option<Variable>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
     pub block: BlockStatement,
 }
 
@@ -42,7 +41,7 @@ pub enum TryStatementCatchType {
 #[serde(rename_all = "snake_case")]
 pub struct TryStatementFinallyBlock {
     pub comments: CommentGroup,
-    pub finally: Span,
+    pub finally: usize,
     pub block: BlockStatement,
 }
 
@@ -52,7 +51,7 @@ impl Node for TryStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#try.position
+        self.r#try
     }
 
     fn final_position(&self) -> usize {
@@ -80,7 +79,7 @@ impl Node for TryStatementCatchBlock {
     }
 
     fn initial_position(&self) -> usize {
-        self.catch.position
+        self.catch
     }
 
     fn final_position(&self) -> usize {
@@ -106,7 +105,7 @@ impl Node for TryStatementFinallyBlock {
     }
 
     fn initial_position(&self) -> usize {
-        self.finally.position
+        self.finally
     }
 
     fn final_position(&self) -> usize {

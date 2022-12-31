@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::Node;
@@ -12,7 +11,7 @@ use crate::tree::Node;
 pub struct ExpressionStatement {
     pub comments: CommentGroup,
     pub expression: Expression,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 impl Node for ExpressionStatement {
@@ -25,7 +24,7 @@ impl Node for ExpressionStatement {
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

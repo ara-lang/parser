@@ -7,81 +7,45 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: Span {
-                        line: 1,
-                        column: 1,
-                        position: 0,
-                    },
+                    enum: 0,
                     name: Identifier {
-                        span: Span {
-                            line: 1,
-                            column: 6,
-                            position: 5,
-                        },
+                        position: 5,
                         value: "A",
                     },
                     implements: Some(
                         EnumImplementsDefinition {
-                            implements: Span {
-                                line: 1,
-                                column: 8,
-                                position: 7,
-                            },
+                            implements: 7,
                             interfaces: CommaSeparated {
                                 inner: [
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            span: Span {
-                                                line: 1,
-                                                column: 19,
-                                                position: 18,
-                                            },
+                                            position: 18,
                                             value: "B",
                                         },
                                         templates: None,
                                     },
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            span: Span {
-                                                line: 1,
-                                                column: 22,
-                                                position: 21,
-                                            },
+                                            position: 21,
                                             value: "C",
                                         },
                                         templates: None,
                                     },
                                 ],
                                 commas: [
-                                    Span {
-                                        line: 1,
-                                        column: 20,
-                                        position: 19,
-                                    },
+                                    19,
                                 ],
                             },
                         },
                     ),
                     body: UnitEnumBodyDefinition {
-                        left_brace: Span {
-                            line: 1,
-                            column: 24,
-                            position: 23,
-                        },
+                        left_brace: 23,
                         members: [],
-                        right_brace: Span {
-                            line: 1,
-                            column: 25,
-                            position: 24,
-                        },
+                        right_brace: 24,
                     },
                 },
             ),
         ),
     ],
-    eof: Span {
-        line: 2,
-        column: 1,
-        position: 26,
-    },
+    eof: 26,
 }

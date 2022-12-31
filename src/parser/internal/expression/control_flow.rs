@@ -27,7 +27,7 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
                     let (condition, default) = if current.kind == TokenKind::Default {
                         state.iterator.next();
 
-                        (MatchArmConditionExpression::Default(current.span), true)
+                        (MatchArmConditionExpression::Default(current.position), true)
                     } else {
                         (
                             MatchArmConditionExpression::Expressions(utils::comma_separated(
@@ -64,7 +64,7 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
                     let current = state.iterator.current();
                     if current.kind == TokenKind::Comma {
                         state.iterator.next();
-                        commas.push(current.span);
+                        commas.push(current.position);
                     } else {
                         break;
                     }

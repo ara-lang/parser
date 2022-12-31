@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::Node;
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -16,18 +15,18 @@ pub enum Visibility {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum VisibilityModifierDefinition {
-    Public(Span),
-    Protected(Span),
-    Private(Span),
+    Public(usize),
+    Protected(usize),
+    Private(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum PromotedPropertyModifierDefinition {
-    Public(Span),
-    Protected(Span),
-    Private(Span),
-    Readonly(Span),
+    Public(usize),
+    Protected(usize),
+    Private(usize),
+    Readonly(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -40,11 +39,11 @@ pub struct PromotedPropertyModifierDefinitionGroup {
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum PropertyModifierDefinition {
-    Public(Span),
-    Protected(Span),
-    Private(Span),
-    Static(Span),
-    Readonly(Span),
+    Public(usize),
+    Protected(usize),
+    Private(usize),
+    Static(usize),
+    Readonly(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -57,12 +56,12 @@ pub struct PropertyModifierDefinitionGroup {
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum MethodModifierDefinition {
-    Final(Span),
-    Static(Span),
-    Abstract(Span),
-    Public(Span),
-    Protected(Span),
-    Private(Span),
+    Final(usize),
+    Static(usize),
+    Abstract(usize),
+    Public(usize),
+    Protected(usize),
+    Private(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -75,9 +74,9 @@ pub struct MethodModifierDefinitionGroup {
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ClassModifierDefinition {
-    Final(Span),
-    Abstract(Span),
-    Readonly(Span),
+    Final(usize),
+    Abstract(usize),
+    Readonly(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -90,10 +89,10 @@ pub struct ClassModifierDefinitionGroup {
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ConstantModifierDefinition {
-    Final(Span),
-    Public(Span),
-    Protected(Span),
-    Private(Span),
+    Final(usize),
+    Public(usize),
+    Protected(usize),
+    Private(usize),
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -101,18 +100,6 @@ pub enum ConstantModifierDefinition {
 #[repr(transparent)]
 pub struct ConstantModifierDefinitionGroup {
     pub modifiers: Vec<ConstantModifierDefinition>,
-}
-
-impl PromotedPropertyModifierDefinition {
-    // TODO(azjezz): remove
-    pub fn span(&self) -> Span {
-        match self {
-            PromotedPropertyModifierDefinition::Public(span) => *span,
-            PromotedPropertyModifierDefinition::Protected(span) => *span,
-            PromotedPropertyModifierDefinition::Private(span) => *span,
-            PromotedPropertyModifierDefinition::Readonly(span) => *span,
-        }
-    }
 }
 
 impl PromotedPropertyModifierDefinitionGroup {
@@ -286,17 +273,17 @@ impl ConstantModifierDefinitionGroup {
 impl Node for VisibilityModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            VisibilityModifierDefinition::Public(span) => span.position,
-            VisibilityModifierDefinition::Protected(span) => span.position,
-            VisibilityModifierDefinition::Private(span) => span.position,
+            VisibilityModifierDefinition::Public(position) => *position,
+            VisibilityModifierDefinition::Protected(position) => *position,
+            VisibilityModifierDefinition::Private(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            VisibilityModifierDefinition::Public(span) => span.position + 6,
-            VisibilityModifierDefinition::Protected(span) => span.position + 9,
-            VisibilityModifierDefinition::Private(span) => span.position + 7,
+            VisibilityModifierDefinition::Public(position) => position + 6,
+            VisibilityModifierDefinition::Protected(position) => position + 9,
+            VisibilityModifierDefinition::Private(position) => position + 7,
         }
     }
 
@@ -308,19 +295,19 @@ impl Node for VisibilityModifierDefinition {
 impl Node for PromotedPropertyModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            PromotedPropertyModifierDefinition::Public(span) => span.position,
-            PromotedPropertyModifierDefinition::Protected(span) => span.position,
-            PromotedPropertyModifierDefinition::Private(span) => span.position,
-            PromotedPropertyModifierDefinition::Readonly(span) => span.position,
+            PromotedPropertyModifierDefinition::Public(position) => *position,
+            PromotedPropertyModifierDefinition::Protected(position) => *position,
+            PromotedPropertyModifierDefinition::Private(position) => *position,
+            PromotedPropertyModifierDefinition::Readonly(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            PromotedPropertyModifierDefinition::Public(span) => span.position + 6,
-            PromotedPropertyModifierDefinition::Protected(span) => span.position + 9,
-            PromotedPropertyModifierDefinition::Private(span) => span.position + 7,
-            PromotedPropertyModifierDefinition::Readonly(span) => span.position + 8,
+            PromotedPropertyModifierDefinition::Public(position) => position + 6,
+            PromotedPropertyModifierDefinition::Protected(position) => position + 9,
+            PromotedPropertyModifierDefinition::Private(position) => position + 7,
+            PromotedPropertyModifierDefinition::Readonly(position) => position + 8,
         }
     }
 
@@ -332,21 +319,21 @@ impl Node for PromotedPropertyModifierDefinition {
 impl Node for PropertyModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            PropertyModifierDefinition::Static(span) => span.position,
-            PropertyModifierDefinition::Public(span) => span.position,
-            PropertyModifierDefinition::Protected(span) => span.position,
-            PropertyModifierDefinition::Private(span) => span.position,
-            PropertyModifierDefinition::Readonly(span) => span.position,
+            PropertyModifierDefinition::Static(position) => *position,
+            PropertyModifierDefinition::Public(position) => *position,
+            PropertyModifierDefinition::Protected(position) => *position,
+            PropertyModifierDefinition::Private(position) => *position,
+            PropertyModifierDefinition::Readonly(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            PropertyModifierDefinition::Static(span) => span.position + 6,
-            PropertyModifierDefinition::Public(span) => span.position + 6,
-            PropertyModifierDefinition::Protected(span) => span.position + 9,
-            PropertyModifierDefinition::Private(span) => span.position + 7,
-            PropertyModifierDefinition::Readonly(span) => span.position + 8,
+            PropertyModifierDefinition::Static(position) => position + 6,
+            PropertyModifierDefinition::Public(position) => position + 6,
+            PropertyModifierDefinition::Protected(position) => position + 9,
+            PropertyModifierDefinition::Private(position) => position + 7,
+            PropertyModifierDefinition::Readonly(position) => position + 8,
         }
     }
 
@@ -358,23 +345,23 @@ impl Node for PropertyModifierDefinition {
 impl Node for MethodModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            MethodModifierDefinition::Static(span) => span.position,
-            MethodModifierDefinition::Public(span) => span.position,
-            MethodModifierDefinition::Protected(span) => span.position,
-            MethodModifierDefinition::Private(span) => span.position,
-            MethodModifierDefinition::Final(span) => span.position,
-            MethodModifierDefinition::Abstract(span) => span.position,
+            MethodModifierDefinition::Static(position) => *position,
+            MethodModifierDefinition::Public(position) => *position,
+            MethodModifierDefinition::Protected(position) => *position,
+            MethodModifierDefinition::Private(position) => *position,
+            MethodModifierDefinition::Final(position) => *position,
+            MethodModifierDefinition::Abstract(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            MethodModifierDefinition::Static(span) => span.position + 6,
-            MethodModifierDefinition::Public(span) => span.position + 6,
-            MethodModifierDefinition::Protected(span) => span.position + 9,
-            MethodModifierDefinition::Private(span) => span.position + 7,
-            MethodModifierDefinition::Final(span) => span.position + 5,
-            MethodModifierDefinition::Abstract(span) => span.position + 8,
+            MethodModifierDefinition::Static(position) => position + 6,
+            MethodModifierDefinition::Public(position) => position + 6,
+            MethodModifierDefinition::Protected(position) => position + 9,
+            MethodModifierDefinition::Private(position) => position + 7,
+            MethodModifierDefinition::Final(position) => *position + 5,
+            MethodModifierDefinition::Abstract(position) => position + 8,
         }
     }
 
@@ -386,17 +373,17 @@ impl Node for MethodModifierDefinition {
 impl Node for ClassModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            ClassModifierDefinition::Final(span) => span.position,
-            ClassModifierDefinition::Abstract(span) => span.position,
-            ClassModifierDefinition::Readonly(span) => span.position,
+            ClassModifierDefinition::Final(position) => *position,
+            ClassModifierDefinition::Abstract(position) => *position,
+            ClassModifierDefinition::Readonly(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            ClassModifierDefinition::Final(span) => span.position + 5,
-            ClassModifierDefinition::Abstract(span) => span.position + 8,
-            ClassModifierDefinition::Readonly(span) => span.position + 8,
+            ClassModifierDefinition::Final(position) => *position + 5,
+            ClassModifierDefinition::Abstract(position) => position + 8,
+            ClassModifierDefinition::Readonly(position) => position + 8,
         }
     }
 
@@ -408,19 +395,19 @@ impl Node for ClassModifierDefinition {
 impl Node for ConstantModifierDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            ConstantModifierDefinition::Final(span) => span.position,
-            ConstantModifierDefinition::Public(span) => span.position,
-            ConstantModifierDefinition::Protected(span) => span.position,
-            ConstantModifierDefinition::Private(span) => span.position,
+            ConstantModifierDefinition::Final(position) => *position,
+            ConstantModifierDefinition::Public(position) => *position,
+            ConstantModifierDefinition::Protected(position) => *position,
+            ConstantModifierDefinition::Private(position) => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            ConstantModifierDefinition::Final(span) => span.position + 5,
-            ConstantModifierDefinition::Public(span) => span.position + 6,
-            ConstantModifierDefinition::Protected(span) => span.position + 9,
-            ConstantModifierDefinition::Private(span) => span.position + 7,
+            ConstantModifierDefinition::Final(position) => position + 5,
+            ConstantModifierDefinition::Public(position) => position + 6,
+            ConstantModifierDefinition::Protected(position) => position + 9,
+            ConstantModifierDefinition::Private(position) => position + 7,
         }
     }
 

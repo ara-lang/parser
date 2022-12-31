@@ -18,7 +18,7 @@ use crate::tree::identifier::Identifier;
 
 pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinition> {
     let comments = state.iterator.comments();
-    let span = utils::skip(state, TokenKind::Interface)?;
+    let position = utils::skip(state, TokenKind::Interface)?;
     let name = identifier::classname_identifier(state)?;
     let templates = if state.iterator.current().kind == TokenKind::LessThan {
         Some(template::template_group_definition(state)?)
@@ -28,7 +28,7 @@ pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinitio
 
     let current = state.iterator.current();
     let extends = if current.kind == TokenKind::Extends {
-        let span = current.span;
+        let position = current.position;
 
         state.iterator.next();
 
@@ -39,7 +39,7 @@ pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinitio
         )?;
 
         Some(InterfaceDefinitionExtends {
-            extends: span,
+            extends: position,
             parents,
         })
     } else {
@@ -64,7 +64,7 @@ pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinitio
     Ok(InterfaceDefinition {
         comments,
         attributes,
-        interface: span,
+        interface: position,
         name,
         templates,
         extends,

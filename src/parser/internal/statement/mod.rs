@@ -55,7 +55,7 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
 
             Statement::Return(Box::new(ReturnStatement::Explicit {
                 comments: state.iterator.comments(),
-                r#return: current.span,
+                r#return: current.position,
                 expression: if matches!(state.iterator.current().kind, TokenKind::SemiColon) {
                     None
                 } else {

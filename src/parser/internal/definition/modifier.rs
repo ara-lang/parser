@@ -1,4 +1,3 @@
-use crate::lexer::token::Span;
 use crate::lexer::token::TokenKind;
 use crate::parser::issue;
 use crate::parser::result::ParseResult;
@@ -17,19 +16,19 @@ use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
 #[inline(always)]
 pub fn class_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<ClassModifierDefinitionGroup> {
     let mut final_modifier: Option<ClassModifierDefinition> = None;
     let mut abstract_modifier: Option<ClassModifierDefinition> = None;
 
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Readonly => {
-                modifiers.push(ClassModifierDefinition::Readonly(span));
+                modifiers.push(ClassModifierDefinition::Readonly(position));
             }
             TokenKind::Final => {
-                let modifier = ClassModifierDefinition::Final(span);
+                let modifier = ClassModifierDefinition::Final(position);
                 modifiers.push(modifier.clone());
 
                 if final_modifier.is_none() {
@@ -37,7 +36,7 @@ pub fn class_modifier_definition_group(
                 }
             }
             TokenKind::Abstract => {
-                let modifier = ClassModifierDefinition::Final(span);
+                let modifier = ClassModifierDefinition::Final(position);
                 modifiers.push(modifier.clone());
 
                 if abstract_modifier.is_none() {
@@ -47,7 +46,7 @@ pub fn class_modifier_definition_group(
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_class(token.to_string(), span)
+                    modifier_cannot_be_used_on_class(token.to_string(), position)
                 );
             }
         }
@@ -66,28 +65,28 @@ pub fn class_modifier_definition_group(
 #[inline(always)]
 pub fn method_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<MethodModifierDefinitionGroup> {
     let mut final_modifier: Option<MethodModifierDefinition> = None;
     let mut abstract_modifier: Option<MethodModifierDefinition> = None;
 
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Private => {
-                modifiers.push(MethodModifierDefinition::Private(span));
+                modifiers.push(MethodModifierDefinition::Private(position));
             }
             TokenKind::Protected => {
-                modifiers.push(MethodModifierDefinition::Protected(span));
+                modifiers.push(MethodModifierDefinition::Protected(position));
             }
             TokenKind::Public => {
-                modifiers.push(MethodModifierDefinition::Public(span));
+                modifiers.push(MethodModifierDefinition::Public(position));
             }
             TokenKind::Static => {
-                modifiers.push(MethodModifierDefinition::Static(span));
+                modifiers.push(MethodModifierDefinition::Static(position));
             }
             TokenKind::Final => {
-                let modifier = MethodModifierDefinition::Final(span);
+                let modifier = MethodModifierDefinition::Final(position);
                 modifiers.push(modifier.clone());
 
                 if final_modifier.is_none() {
@@ -95,7 +94,7 @@ pub fn method_modifier_definition_group(
                 }
             }
             TokenKind::Abstract => {
-                let modifier = MethodModifierDefinition::Final(span);
+                let modifier = MethodModifierDefinition::Final(position);
                 modifiers.push(modifier.clone());
 
                 if abstract_modifier.is_none() {
@@ -105,7 +104,7 @@ pub fn method_modifier_definition_group(
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_class_method(token.to_string(), span)
+                    modifier_cannot_be_used_on_class_method(token.to_string(), position)
                 );
             }
         }
@@ -124,21 +123,21 @@ pub fn method_modifier_definition_group(
 #[inline(always)]
 pub fn interface_method_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<MethodModifierDefinitionGroup> {
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Public => {
-                modifiers.push(MethodModifierDefinition::Public(span));
+                modifiers.push(MethodModifierDefinition::Public(position));
             }
             TokenKind::Static => {
-                modifiers.push(MethodModifierDefinition::Static(span));
+                modifiers.push(MethodModifierDefinition::Static(position));
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_interface_method(token.to_string(), span)
+                    modifier_cannot_be_used_on_interface_method(token.to_string(), position)
                 );
             }
         }
@@ -150,30 +149,30 @@ pub fn interface_method_modifier_definition_group(
 #[inline(always)]
 pub fn enum_method_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<MethodModifierDefinitionGroup> {
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Private => {
-                modifiers.push(MethodModifierDefinition::Private(span));
+                modifiers.push(MethodModifierDefinition::Private(position));
             }
             TokenKind::Protected => {
-                modifiers.push(MethodModifierDefinition::Protected(span));
+                modifiers.push(MethodModifierDefinition::Protected(position));
             }
             TokenKind::Public => {
-                modifiers.push(MethodModifierDefinition::Public(span));
+                modifiers.push(MethodModifierDefinition::Public(position));
             }
             TokenKind::Static => {
-                modifiers.push(MethodModifierDefinition::Static(span));
+                modifiers.push(MethodModifierDefinition::Static(position));
             }
             TokenKind::Final => {
-                modifiers.push(MethodModifierDefinition::Final(span));
+                modifiers.push(MethodModifierDefinition::Final(position));
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_enum_method(token.to_string(), span)
+                    modifier_cannot_be_used_on_enum_method(token.to_string(), position)
                 );
             }
         }
@@ -185,30 +184,30 @@ pub fn enum_method_modifier_definition_group(
 #[inline(always)]
 pub fn property_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<PropertyModifierDefinitionGroup> {
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Private => {
-                modifiers.push(PropertyModifierDefinition::Private(span));
+                modifiers.push(PropertyModifierDefinition::Private(position));
             }
             TokenKind::Protected => {
-                modifiers.push(PropertyModifierDefinition::Protected(span));
+                modifiers.push(PropertyModifierDefinition::Protected(position));
             }
             TokenKind::Public => {
-                modifiers.push(PropertyModifierDefinition::Public(span));
+                modifiers.push(PropertyModifierDefinition::Public(position));
             }
             TokenKind::Static => {
-                modifiers.push(PropertyModifierDefinition::Static(span));
+                modifiers.push(PropertyModifierDefinition::Static(position));
             }
             TokenKind::Readonly => {
-                modifiers.push(PropertyModifierDefinition::Readonly(span));
+                modifiers.push(PropertyModifierDefinition::Readonly(position));
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_property(token.to_string(), span)
+                    modifier_cannot_be_used_on_property(token.to_string(), position)
                 );
             }
         }
@@ -220,27 +219,27 @@ pub fn property_modifier_definition_group(
 #[inline(always)]
 pub fn promoted_property_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<PromotedPropertyModifierDefinitionGroup> {
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Private => {
-                modifiers.push(PromotedPropertyModifierDefinition::Private(span));
+                modifiers.push(PromotedPropertyModifierDefinition::Private(position));
             }
             TokenKind::Protected => {
-                modifiers.push(PromotedPropertyModifierDefinition::Protected(span));
+                modifiers.push(PromotedPropertyModifierDefinition::Protected(position));
             }
             TokenKind::Public => {
-                modifiers.push(PromotedPropertyModifierDefinition::Public(span));
+                modifiers.push(PromotedPropertyModifierDefinition::Public(position));
             }
             TokenKind::Readonly => {
-                modifiers.push(PromotedPropertyModifierDefinition::Readonly(span));
+                modifiers.push(PromotedPropertyModifierDefinition::Readonly(position));
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_promoted_property(token.to_string(), span)
+                    modifier_cannot_be_used_on_promoted_property(token.to_string(), position)
                 );
             }
         }
@@ -251,34 +250,34 @@ pub fn promoted_property_modifier_definition_group(
 
 pub fn constant_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<ConstantModifierDefinitionGroup> {
     let mut final_modifier = None;
     let mut private_modifier = None;
 
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Private => {
-                let modifier = ConstantModifierDefinition::Private(span);
+                let modifier = ConstantModifierDefinition::Private(position);
                 modifiers.push(modifier.clone());
                 private_modifier = Some(modifier);
             }
             TokenKind::Protected => {
-                modifiers.push(ConstantModifierDefinition::Protected(span));
+                modifiers.push(ConstantModifierDefinition::Protected(position));
             }
             TokenKind::Public => {
-                modifiers.push(ConstantModifierDefinition::Public(span));
+                modifiers.push(ConstantModifierDefinition::Public(position));
             }
             TokenKind::Final => {
-                let modifier = ConstantModifierDefinition::Final(span);
+                let modifier = ConstantModifierDefinition::Final(position);
                 modifiers.push(modifier.clone());
                 final_modifier = Some(modifier);
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_constant(token.to_string(), span)
+                    modifier_cannot_be_used_on_constant(token.to_string(), position)
                 );
             }
         }
@@ -297,21 +296,21 @@ pub fn constant_modifier_definition_group(
 #[inline(always)]
 pub fn interface_constant_modifier_definition_group(
     state: &mut State,
-    input: Vec<(Span, TokenKind)>,
+    input: Vec<(usize, TokenKind)>,
 ) -> ParseResult<ConstantModifierDefinitionGroup> {
     let mut modifiers = vec![];
-    for (span, token) in input {
+    for (position, token) in input {
         match token {
             TokenKind::Public => {
-                modifiers.push(ConstantModifierDefinition::Public(span));
+                modifiers.push(ConstantModifierDefinition::Public(position));
             }
             TokenKind::Final => {
-                modifiers.push(ConstantModifierDefinition::Final(span));
+                modifiers.push(ConstantModifierDefinition::Final(position));
             }
             _ => {
                 issue::report!(
                     state,
-                    modifier_cannot_be_used_on_interface_constant(token.to_string(), span)
+                    modifier_cannot_be_used_on_interface_constant(token.to_string(), position)
                 );
             }
         }
@@ -320,8 +319,8 @@ pub fn interface_constant_modifier_definition_group(
     Ok(ConstantModifierDefinitionGroup { modifiers })
 }
 
-pub fn collect(state: &mut State) -> ParseResult<Vec<(Span, TokenKind)>> {
-    let mut collected: Vec<(Span, TokenKind)> = vec![];
+pub fn collect(state: &mut State) -> ParseResult<Vec<(usize, TokenKind)>> {
+    let mut collected: Vec<(usize, TokenKind)> = vec![];
 
     let collectable_tokens = vec![
         TokenKind::Private,
@@ -335,13 +334,13 @@ pub fn collect(state: &mut State) -> ParseResult<Vec<(Span, TokenKind)>> {
 
     let mut current = state.iterator.current().clone();
     let mut current_kind = current.kind;
-    let mut current_span = current.span;
+    let mut current_position = current.position;
 
     while collectable_tokens.contains(&current_kind) {
-        if let Some((span, _)) = collected.iter().find(|(_, kind)| kind == &current_kind) {
+        if let Some((position, _)) = collected.iter().find(|(_, kind)| kind == &current_kind) {
             issue::report!(
                 state,
-                duplicate_modifier(current_kind.to_string(), *span, current_span)
+                duplicate_modifier(current_kind.to_string(), *position, current_position)
             );
         }
 
@@ -350,7 +349,7 @@ pub fn collect(state: &mut State) -> ParseResult<Vec<(Span, TokenKind)>> {
             current_kind,
             TokenKind::Public | TokenKind::Protected | TokenKind::Private
         ) {
-            if let Some((span, visibility)) = collected.iter().find(|(_, kind)| {
+            if let Some((position, visibility)) = collected.iter().find(|(_, kind)| {
                 matches!(
                     kind,
                     TokenKind::Public | TokenKind::Protected | TokenKind::Private
@@ -359,20 +358,20 @@ pub fn collect(state: &mut State) -> ParseResult<Vec<(Span, TokenKind)>> {
                 issue::report!(
                     state,
                     multiple_visibility_modifiers(
-                        (*span, visibility.to_string()),
-                        (current_span, current_kind.to_string()),
+                        (*position, visibility.to_string()),
+                        (current_position, current_kind.to_string()),
                     )
                 );
             }
         }
 
-        collected.push((current_span, current_kind));
+        collected.push((current_position, current_kind));
 
         state.iterator.next();
 
         current = state.iterator.current().clone();
         current_kind = current.kind;
-        current_span = current.span;
+        current_position = current.position;
     }
 
     Ok(collected)

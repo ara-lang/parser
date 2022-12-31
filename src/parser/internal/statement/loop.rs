@@ -40,7 +40,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
 
                     break 'iterator if current.kind == TokenKind::DoubleArrow {
                         state.iterator.next();
-                        let double_arrow = current.span;
+                        let double_arrow = current.position;
                         let mut key = variable::parse(state)?;
                         std::mem::swap(&mut value, &mut key);
 
@@ -85,7 +85,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
             let current = state.iterator.current();
             if current.kind == TokenKind::DoubleArrow {
                 state.iterator.next();
-                let double_arrow = current.span;
+                let double_arrow = current.position;
                 let mut key = variable::parse(state)?;
                 std::mem::swap(&mut value, &mut key);
 
@@ -247,7 +247,7 @@ pub fn break_statement(state: &mut State) -> ParseResult<BreakStatement> {
 fn maybe_loop_level(state: &mut State) -> Option<LiteralInteger> {
     if let Token {
         kind: TokenKind::LiteralInteger,
-        span,
+        position,
         value,
     } = state.iterator.current()
     {
@@ -256,7 +256,7 @@ fn maybe_loop_level(state: &mut State) -> Option<LiteralInteger> {
         return Some(LiteralInteger {
             comments: state.iterator.comments(),
             value: value.clone(),
-            span: *span,
+            position: *position,
         });
     }
 

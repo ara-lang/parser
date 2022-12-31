@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::constant::ClassishConstantDefinition;
@@ -19,7 +18,7 @@ use crate::tree::Node;
 pub struct InterfaceDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeDefinitionGroup>,
-    pub interface: Span,
+    pub interface: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub extends: Option<InterfaceDefinitionExtends>,
@@ -29,16 +28,16 @@ pub struct InterfaceDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinitionExtends {
-    pub extends: Span,
+    pub extends: usize,
     pub parents: CommaSeparated<TemplatedIdentifier>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinitionBody {
-    pub left_brace: Span,
+    pub left_brace: usize,
     pub members: Vec<InterfaceDefinitionMember>,
-    pub right_brace: Span,
+    pub right_brace: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -58,12 +57,12 @@ impl Node for InterfaceDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.interface.position
+            self.interface
         }
     }
 
     fn final_position(&self) -> usize {
-        self.body.right_brace.position + 1
+        self.body.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -89,14 +88,14 @@ impl Node for InterfaceDefinition {
 
 impl Node for InterfaceDefinitionExtends {
     fn initial_position(&self) -> usize {
-        self.extends.position
+        self.extends
     }
 
     fn final_position(&self) -> usize {
         if let Some(last_interface) = self.parents.inner.last() {
             let last_interface_position = last_interface.final_position();
             if let Some(last_comma) = self.parents.commas.last() {
-                let last_comma_position = last_comma.position + 1;
+                let last_comma_position = last_comma + 1;
                 if last_comma_position > last_interface_position {
                     return last_comma_position;
                 }
@@ -105,7 +104,7 @@ impl Node for InterfaceDefinitionExtends {
             return last_interface_position;
         }
 
-        self.extends.position + 7
+        self.extends + 7
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -119,11 +118,11 @@ impl Node for InterfaceDefinitionExtends {
 
 impl Node for InterfaceDefinitionBody {
     fn initial_position(&self) -> usize {
-        self.left_brace.position
+        self.left_brace
     }
 
     fn final_position(&self) -> usize {
-        self.right_brace.position + 1
+        self.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

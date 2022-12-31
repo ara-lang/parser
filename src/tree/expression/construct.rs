@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::Node;
@@ -12,15 +11,15 @@ use crate::tree::Node;
 pub enum ExitConstructExpression {
     Exit {
         comments: CommentGroup,
-        exit: Span,
+        exit: usize,
     },
     // `exit(42)`
     ExitWith {
         comments: CommentGroup,
-        exit: Span,
-        left_parenthesis: Span,
+        exit: usize,
+        left_parenthesis: usize,
         value: Option<Box<Expression>>,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
 }
 
@@ -34,17 +33,17 @@ impl Node for ExitConstructExpression {
 
     fn initial_position(&self) -> usize {
         match self {
-            ExitConstructExpression::Exit { exit, .. } => exit.position,
-            ExitConstructExpression::ExitWith { exit, .. } => exit.position,
+            ExitConstructExpression::Exit { exit, .. } => *exit,
+            ExitConstructExpression::ExitWith { exit, .. } => *exit,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            ExitConstructExpression::Exit { exit, .. } => exit.position + 4,
+            ExitConstructExpression::Exit { exit, .. } => exit + 4,
             ExitConstructExpression::ExitWith {
                 right_parenthesis, ..
-            } => right_parenthesis.position + 1,
+            } => right_parenthesis + 1,
         }
     }
 

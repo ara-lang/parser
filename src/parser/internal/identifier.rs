@@ -16,21 +16,24 @@ pub fn namespace_identifier(state: &mut State) -> ParseResult<Identifier> {
 
     match &current.kind {
         TokenKind::Identifier | TokenKind::QualifiedIdentifier => {
-            let span = current.span;
+            let position = current.position;
 
             state.iterator.next();
 
             Ok(Identifier {
-                span,
+                position,
                 value: current.value.clone(),
             })
         }
         _ if is_reserved_identifier(&current.kind) => {
             let name = current.to_string().into();
-            let span = current.span;
+            let position = current.position;
             state.iterator.next();
 
-            Ok(Identifier { span, value: name })
+            Ok(Identifier {
+                position,
+                value: name,
+            })
         }
         _ => {
             issue::bail!(
@@ -56,12 +59,12 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
     let current = state.iterator.current();
     match &current.kind {
         TokenKind::Identifier => {
-            let span = current.span;
+            let position = current.position;
 
             state.iterator.next();
 
             Ok(Identifier {
-                span,
+                position,
                 value: current.value.clone(),
             })
         }
@@ -71,18 +74,21 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
         | TokenKind::Dict
         | TokenKind::Where
         | TokenKind::Type => {
-            let span = current.span;
+            let position = current.position;
             let name = current.to_string().into();
 
             state.iterator.next();
 
-            Ok(Identifier { span, value: name })
+            Ok(Identifier {
+                position,
+                value: name,
+            })
         }
         t if is_reserved_identifier(t) => {
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -116,22 +122,25 @@ pub fn constant_identifier(state: &mut State) -> ParseResult<Identifier> {
     let current = state.iterator.current();
     match &current.kind {
         TokenKind::Identifier => {
-            let span = current.span;
+            let position = current.position;
 
             state.iterator.next();
 
             Ok(Identifier {
-                span,
+                position,
                 value: current.value.clone(),
             })
         }
         TokenKind::Class => {
-            let span = current.span;
+            let position = current.position;
             let name = current.to_string().into();
 
             state.iterator.next();
 
-            let identifier = Identifier { span, value: name };
+            let identifier = Identifier {
+                position,
+                value: name,
+            };
 
             issue::report!(
                 state,
@@ -144,7 +153,7 @@ pub fn constant_identifier(state: &mut State) -> ParseResult<Identifier> {
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -178,7 +187,7 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
             state.iterator.next();
 
             Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.value.clone(),
             }
         }
@@ -186,7 +195,7 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
             state.iterator.next();
 
             Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.value.clone(),
             }
         }
@@ -194,7 +203,7 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -250,12 +259,12 @@ pub fn fully_qualified_templated_identifier_including_self(
 pub fn identifier(state: &mut State) -> ParseResult<Identifier> {
     let current = state.iterator.current();
     if let TokenKind::Identifier = &current.kind {
-        let span = current.span;
+        let position = current.position;
 
         state.iterator.next();
 
         Ok(Identifier {
-            span,
+            position,
             value: current.value.clone(),
         })
     } else {
@@ -273,28 +282,31 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
         TokenKind::Identifier
         | TokenKind::QualifiedIdentifier
         | TokenKind::FullyQualifiedIdentifier => {
-            let span = current.span;
+            let position = current.position;
 
             state.iterator.next();
 
             Ok(Identifier {
-                span,
+                position,
                 value: current.value.clone(),
             })
         }
         TokenKind::Enum | TokenKind::From | TokenKind::Where | TokenKind::Type => {
-            let span = current.span;
+            let position = current.position;
             let name = current.to_string().into();
 
             state.iterator.next();
 
-            Ok(Identifier { span, value: name })
+            Ok(Identifier {
+                position,
+                value: name,
+            })
         }
         TokenKind::Self_ | TokenKind::Static | TokenKind::Parent => {
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -306,7 +318,7 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -333,12 +345,12 @@ pub fn fully_qualified_type_identifier_including_self(
         TokenKind::Identifier
         | TokenKind::QualifiedIdentifier
         | TokenKind::FullyQualifiedIdentifier => {
-            let span = current.span;
+            let position = current.position;
 
             state.iterator.next();
 
             Ok(Identifier {
-                span,
+                position,
                 value: current.value.clone(),
             })
         }
@@ -349,18 +361,21 @@ pub fn fully_qualified_type_identifier_including_self(
         | TokenKind::Parent
         | TokenKind::Type
         | TokenKind::Where => {
-            let span = current.span;
+            let position = current.position;
             let name = current.to_string().into();
 
             state.iterator.next();
 
-            Ok(Identifier { span, value: name })
+            Ok(Identifier {
+                position,
+                value: name,
+            })
         }
         t if is_reserved_identifier(t) => {
             state.iterator.next();
 
             let identifier = Identifier {
-                span: current.span,
+                position: current.position,
                 value: current.to_string().into(),
             };
 
@@ -383,10 +398,13 @@ pub fn identifier_maybe_reserved(state: &mut State) -> ParseResult<Identifier> {
 
     if is_reserved_identifier(&current.kind) {
         let name = current.to_string().into();
-        let span = current.span;
+        let position = current.position;
         state.iterator.next();
 
-        Ok(Identifier { span, value: name })
+        Ok(Identifier {
+            position,
+            value: name,
+        })
     } else {
         identifier(state)
     }
@@ -397,10 +415,13 @@ pub fn identifier_maybe_soft_reserved(state: &mut State) -> ParseResult<Identifi
 
     if is_soft_reserved_identifier(&current.kind) {
         let name = current.to_string().into();
-        let span = current.span;
+        let position = current.position;
         state.iterator.next();
 
-        Ok(Identifier { span, value: name })
+        Ok(Identifier {
+            position,
+            value: name,
+        })
     } else {
         identifier(state)
     }
@@ -422,6 +443,9 @@ pub fn is_soft_reserved_identifier(kind: &TokenKind) -> bool {
         | TokenKind::Is
         | TokenKind::List
         | TokenKind::Null
+        | TokenKind::Concurrently
+        | TokenKind::Async
+        | TokenKind::Await
         | TokenKind::Where
         | TokenKind::Enum
         | TokenKind::From

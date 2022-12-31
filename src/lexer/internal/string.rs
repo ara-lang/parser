@@ -94,7 +94,7 @@ pub fn tokenize_double_quote(
                 buffer.push(b);
             }
             &[b'\\', b'u', b'{'] => {
-                let start = state.bytes.span().position;
+                let start = state.bytes.position();
 
                 state.bytes.skip(3);
 
@@ -127,7 +127,7 @@ pub fn tokenize_double_quote(
                 }
             }
             &[b'\\', b @ b'0'..=b'7', ..] => {
-                let start = state.bytes.span().position;
+                let start = state.bytes.position();
                 state.bytes.skip(2);
 
                 let mut octal = String::from(b as char);

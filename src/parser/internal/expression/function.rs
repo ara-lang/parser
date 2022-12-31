@@ -22,7 +22,7 @@ pub fn anonymous_function_expression(
     let r#static = if current.kind == TokenKind::Static {
         state.iterator.next();
 
-        Some(current.span)
+        Some(current.position)
     } else {
         None
     };
@@ -36,7 +36,7 @@ pub fn anonymous_function_expression(
 
         Some(AnonymousFunctionUseClauseExpression {
             comments: state.iterator.comments(),
-            r#use: current.span,
+            r#use: current.position,
             left_parenthesis: utils::skip_left_parenthesis(state)?,
             variables: utils::comma_separated::<AnonymousFunctionUseClauseVariableExpression>(
                 state,
@@ -84,7 +84,7 @@ pub fn arrow_function_expression(state: &mut State) -> ParseResult<ArrowFunction
         r#static: if current.kind == TokenKind::Static {
             state.iterator.next();
 
-            Some(current.span)
+            Some(current.position)
         } else {
             None
         },

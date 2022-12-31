@@ -2,24 +2,12 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                namespace: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 11,
-                        position: 10,
-                    },
+                    position: 10,
                     value: "Foo\Bar",
                 },
-                semicolon: Span {
-                    line: 1,
-                    column: 18,
-                    position: 17,
-                },
+                semicolon: 17,
                 definitions: [
                     Class(
                         ClassDefinition {
@@ -30,36 +18,20 @@ DefinitionTree {
                             modifiers: ClassModifierDefinitionGroup {
                                 modifiers: [
                                     Final(
-                                        Span {
-                                            line: 3,
-                                            column: 1,
-                                            position: 20,
-                                        },
+                                        20,
                                     ),
                                 ],
                             },
-                            class: Span {
-                                line: 3,
-                                column: 7,
-                                position: 26,
-                            },
+                            class: 26,
                             name: Identifier {
-                                span: Span {
-                                    line: 3,
-                                    column: 13,
-                                    position: 32,
-                                },
+                                position: 32,
                                 value: "Baz",
                             },
                             templates: None,
                             extends: None,
                             implements: None,
                             body: ClassDefinitionBody {
-                                left_brace: Span {
-                                    line: 3,
-                                    column: 17,
-                                    position: 36,
-                                },
+                                left_brace: 36,
                                 members: [
                                     Property(
                                         PropertyDefinition {
@@ -67,51 +39,27 @@ DefinitionTree {
                                             modifiers: PropertyModifierDefinitionGroup {
                                                 modifiers: [
                                                     Public(
-                                                        Span {
-                                                            line: 4,
-                                                            column: 6,
-                                                            position: 43,
-                                                        },
+                                                        43,
                                                     ),
                                                     Readonly(
-                                                        Span {
-                                                            line: 4,
-                                                            column: 13,
-                                                            position: 50,
-                                                        },
+                                                        50,
                                                     ),
                                                 ],
                                             },
                                             type_definition: String(
-                                                Span {
-                                                    line: 4,
-                                                    column: 22,
-                                                    position: 59,
-                                                },
+                                                59,
                                             ),
                                             entry: Uninitialized {
                                                 variable: Variable {
-                                                    span: Span {
-                                                        line: 4,
-                                                        column: 29,
-                                                        position: 66,
-                                                    },
+                                                    position: 66,
                                                     name: "$foo",
                                                 },
                                             },
-                                            semicolon: Span {
-                                                line: 4,
-                                                column: 33,
-                                                position: 70,
-                                            },
+                                            semicolon: 70,
                                         },
                                     ),
                                 ],
-                                right_brace: Span {
-                                    line: 5,
-                                    column: 1,
-                                    position: 72,
-                                },
+                                right_brace: 72,
                             },
                         },
                     ),
@@ -119,9 +67,5 @@ DefinitionTree {
             },
         ),
     ],
-    eof: Span {
-        line: 6,
-        column: 1,
-        position: 74,
-    },
+    eof: 74,
 }

@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::lexer::byte_string::ByteString;
-use crate::lexer::token::Span;
+
 use crate::tree::comment::CommentGroup;
 use crate::tree::Node;
 
@@ -23,7 +23,7 @@ pub enum Literal {
 pub struct LiteralString {
     pub comments: CommentGroup,
     pub value: ByteString,
-    pub span: Span,
+    pub position: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -31,7 +31,7 @@ pub struct LiteralString {
 pub struct LiteralInteger {
     pub comments: CommentGroup,
     pub value: ByteString,
-    pub span: Span,
+    pub position: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -39,28 +39,28 @@ pub struct LiteralInteger {
 pub struct LiteralFloat {
     pub comments: CommentGroup,
     pub value: ByteString,
-    pub span: Span,
+    pub position: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct LiteralNull {
     pub comments: CommentGroup,
-    pub span: Span,
+    pub position: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct LiteralTrue {
     pub comments: CommentGroup,
-    pub span: Span,
+    pub position: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct LiteralFalse {
     pub comments: CommentGroup,
-    pub span: Span,
+    pub position: usize,
 }
 
 impl Node for Literal {
@@ -115,11 +115,11 @@ impl Node for LiteralString {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + self.value.len()
+        self.position + self.value.len()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -133,11 +133,11 @@ impl Node for LiteralInteger {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + self.value.len()
+        self.position + self.value.len()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -151,11 +151,11 @@ impl Node for LiteralFloat {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + self.value.len()
+        self.position + self.value.len()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -169,11 +169,11 @@ impl Node for LiteralNull {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + 4
+        self.position + 4
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -187,11 +187,11 @@ impl Node for LiteralTrue {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + 4
+        self.position + 4
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -205,11 +205,11 @@ impl Node for LiteralFalse {
     }
 
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + 5
+        self.position + 5
     }
 
     fn children(&self) -> Vec<&dyn Node> {

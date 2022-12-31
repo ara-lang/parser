@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "main",
                 },
                 templates: None,
@@ -24,44 +16,24 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 14,
-                        position: 13,
-                    },
+                    left_parenthesis: 13,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 15,
-                        position: 14,
-                    },
+                    right_parenthesis: 14,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 16,
-                        position: 15,
-                    },
+                    colon: 15,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 18,
-                            position: 17,
-                        },
+                        17,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 23,
-                        position: 22,
-                    },
+                    left_brace: 22,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -85,19 +57,11 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "'foo'",
-                                                            span: Span {
-                                                                line: 2,
-                                                                column: 5,
-                                                                position: 28,
-                                                            },
+                                                            position: 28,
                                                         },
                                                     ),
                                                 ),
-                                                dot: Span {
-                                                    line: 2,
-                                                    column: 11,
-                                                    position: 34,
-                                                },
+                                                dot: 34,
                                                 right: Literal(
                                                     String(
                                                         LiteralString {
@@ -105,21 +69,13 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             value: "'bar'",
-                                                            span: Span {
-                                                                line: 2,
-                                                                column: 13,
-                                                                position: 36,
-                                                            },
+                                                            position: 36,
                                                         },
                                                     ),
                                                 ),
                                             },
                                         ),
-                                        dot: Span {
-                                            line: 2,
-                                            column: 19,
-                                            position: 42,
-                                        },
+                                        dot: 42,
                                         right: Literal(
                                             String(
                                                 LiteralString {
@@ -127,36 +83,20 @@ DefinitionTree {
                                                         comments: [],
                                                     },
                                                     value: "'baz'",
-                                                    span: Span {
-                                                        line: 2,
-                                                        column: 21,
-                                                        position: 44,
-                                                    },
+                                                    position: 44,
                                                 },
                                             ),
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 2,
-                                    column: 26,
-                                    position: 49,
-                                },
+                                semicolon: 49,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 3,
-                        column: 1,
-                        position: 51,
-                    },
+                    right_brace: 51,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 4,
-        column: 1,
-        position: 53,
-    },
+    eof: 53,
 }

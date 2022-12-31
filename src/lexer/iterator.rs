@@ -132,37 +132,37 @@ impl<'a> TokenIterator<'a> {
                 .map(|token| match token {
                     Token {
                         kind: TokenKind::SingleLineComment,
-                        span,
+                        position,
                         value,
                     } => Comment {
-                        span: *span,
+                        position: *position,
                         format: CommentFormat::SingleLine,
                         content: value.clone(),
                     },
                     Token {
                         kind: TokenKind::MultiLineComment,
-                        span,
+                        position,
                         value,
                     } => Comment {
-                        span: *span,
+                        position: *position,
                         format: CommentFormat::MultiLine,
                         content: value.clone(),
                     },
                     Token {
                         kind: TokenKind::HashMarkComment,
-                        span,
+                        position,
                         value,
                     } => Comment {
-                        span: *span,
+                        position: *position,
                         format: CommentFormat::HashMark,
                         content: value.clone(),
                     },
                     Token {
                         kind: TokenKind::DocumentComment,
-                        span,
+                        position,
                         value,
                     } => Comment {
-                        span: *span,
+                        position: *position,
                         format: CommentFormat::Document,
                         content: value.clone(),
                     },

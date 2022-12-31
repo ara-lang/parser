@@ -3,14 +3,14 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::lexer::byte_string::ByteString;
-use crate::lexer::token::Span;
+
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct Identifier {
-    pub span: Span,
+    pub position: usize,
     pub value: ByteString, // `Bar`
 }
 
@@ -23,11 +23,11 @@ pub struct TemplatedIdentifier {
 
 impl Node for Identifier {
     fn initial_position(&self) -> usize {
-        self.span.position
+        self.position
     }
 
     fn final_position(&self) -> usize {
-        self.span.position + self.value.len()
+        self.position + self.value.len()
     }
 
     fn children(&self) -> Vec<&dyn Node> {

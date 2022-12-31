@@ -21,7 +21,7 @@ use crate::tree::identifier::Identifier;
 pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseResult<Expression> {
     Ok(match kind {
         TokenKind::DoubleQuestion => {
-            let double_question = state.iterator.current().span;
+            let double_question = state.iterator.current().position;
             state.iterator.next();
 
             let comments = state.iterator.comments();
@@ -76,7 +76,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
             let current = state.iterator.current();
             if current.kind == TokenKind::RightBracket {
                 state.iterator.next();
-                let right_bracket = current.span;
+                let right_bracket = current.position;
 
                 Expression::ArrayOperation(ArrayOperationExpression::Push {
                     comments,
@@ -97,7 +97,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
             }
         }
         TokenKind::DoubleColon => {
-            let span = utils::skip_double_colon(state)?;
+            let position = utils::skip_double_colon(state)?;
 
             let current = state.iterator.current();
 
@@ -106,7 +106,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                     Expression::ClassOperation(ClassOperationExpression::StaticPropertyFetch {
                         comments: state.iterator.comments(),
                         class: Box::new(left),
-                        double_colon: span,
+                        double_colon: position,
                         property: variable::parse(state)?,
                     })
                 }
@@ -129,7 +129,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                                 ClassOperationExpression::StaticMethodClosureCreation {
                                     comments,
                                     class: Box::new(left),
-                                    double_colon: span,
+                                    double_colon: position,
                                     method: identifier,
                                     generics,
                                     placeholder: ArgumentPlaceholderExpression {
@@ -147,7 +147,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                             Expression::ClassOperation(ClassOperationExpression::StaticMethodCall {
                                 comments,
                                 class: Box::new(left),
-                                double_colon: span,
+                                double_colon: position,
                                 method: identifier,
                                 generics,
                                 arguments: argument::argument_list_expression(state)?,
@@ -157,7 +157,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                         Expression::ClassOperation(ClassOperationExpression::ConstantFetch {
                             comments,
                             class: Box::new(left),
-                            double_colon: span,
+                            double_colon: position,
                             constant: identifier,
                         })
                     }
@@ -168,9 +168,9 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                     Expression::ClassOperation(ClassOperationExpression::ConstantFetch {
                         comments: state.iterator.comments(),
                         class: Box::new(left),
-                        double_colon: span,
+                        double_colon: position,
                         constant: Identifier {
-                            span: current.span,
+                            position: current.position,
                             value: current.value.clone(),
                         },
                     })
@@ -184,7 +184,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
             }
         }
         TokenKind::Arrow | TokenKind::QuestionArrow => {
-            let span = state.iterator.current().span;
+            let position = state.iterator.current().position;
             state.iterator.next();
 
             let identifier = identifier::identifier_maybe_reserved(state)?;
@@ -206,7 +206,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                         object: Box::new(left),
                         method: identifier,
                         generics,
-                        question_arrow: span,
+                        question_arrow: position,
                         arguments,
                     })
                 } else {
@@ -220,7 +220,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                                 object: Box::new(left),
                                 method: identifier,
                                 generics,
-                                arrow: span,
+                                arrow: position,
                                 placeholder: ArgumentPlaceholderExpression {
                                     left_parenthesis: utils::skip(state, TokenKind::LeftParen)?,
                                     ellipsis: utils::skip(state, TokenKind::Ellipsis)?,
@@ -237,7 +237,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                             object: Box::new(left),
                             method: identifier,
                             generics,
-                            arrow: span,
+                            arrow: position,
                             arguments,
                         })
                     }
@@ -246,34 +246,34 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                 Expression::ObjectOperation(ObjectOperationExpression::NullsafePropertyFetch {
                     comments,
                     object: Box::new(left),
-                    question_arrow: span,
+                    question_arrow: position,
                     property: identifier,
                 })
             } else {
                 Expression::ObjectOperation(ObjectOperationExpression::PropertyFetch {
                     comments,
                     object: Box::new(left),
-                    arrow: span,
+                    arrow: position,
                     property: identifier,
                 })
             }
         }
         TokenKind::Increment => {
-            let span = state.iterator.current().span;
+            let position = state.iterator.current().position;
             state.iterator.next();
 
             Expression::ArithmeticOperation(ArithmeticOperationExpression::PostIncrement {
                 left: Box::new(left),
-                increment: span,
+                increment: position,
             })
         }
         TokenKind::Decrement => {
-            let span = state.iterator.current().span;
+            let position = state.iterator.current().position;
             state.iterator.next();
 
             Expression::ArithmeticOperation(ArithmeticOperationExpression::PostDecrement {
                 left: Box::new(left),
-                decrement: span,
+                decrement: position,
             })
         }
         _ => unreachable!(),

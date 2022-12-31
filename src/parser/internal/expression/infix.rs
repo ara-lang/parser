@@ -24,7 +24,7 @@ pub fn infix(
 ) -> ParseResult<Expression> {
     let comments = state.iterator.comments();
 
-    let span = state.iterator.current().span;
+    let position = state.iterator.current().position;
     state.iterator.next();
     let op = state.iterator.current();
 
@@ -37,15 +37,15 @@ pub fn infix(
                 Expression::TernaryOperation(TernaryOperationExpression::ImplicitShortTernary {
                     comments,
                     condition: Box::new(left),
-                    question: span,
-                    colon: op.span,
+                    question: position,
+                    colon: op.position,
                     if_false: Box::new(expression::create(state)?),
                 })
             } else {
                 Expression::TernaryOperation(TernaryOperationExpression::Ternary {
                     comments,
                     condition: Box::new(left),
-                    question: span,
+                    question: position,
                     if_true: Box::new(expression::create(state)?),
                     colon: utils::skip_colon(state)?,
                     if_false: Box::new(expression::create(state)?),
@@ -56,26 +56,26 @@ pub fn infix(
             Expression::TernaryOperation(TernaryOperationExpression::ShortTernary {
                 comments,
                 condition: Box::new(left),
-                question_colon: span,
+                question_colon: position,
                 if_false: Box::new(expression::create(state)?),
             })
         }
         TokenKind::Is => Expression::TypeOperation(TypeOperationExpression::Is {
             comments,
             left: Box::new(left),
-            is: span,
+            is: position,
             right: r#type::type_definition(state)?,
         }),
         TokenKind::As => Expression::TypeOperation(TypeOperationExpression::As {
             comments,
             left: Box::new(left),
-            r#as: span,
+            r#as: position,
             right: r#type::type_definition(state)?,
         }),
         TokenKind::Instanceof => Expression::TypeOperation(TypeOperationExpression::Instanceof {
             comments,
             left: Box::new(left),
-            r#instanceof: span,
+            r#instanceof: position,
             right: identifier::fully_qualified_type_identifier_including_self(state)?,
         }),
         _ => {
@@ -87,7 +87,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Addition {
                         comments,
                         left,
-                        plus: span,
+                        plus: position,
                         right,
                     })
                 }
@@ -95,7 +95,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Subtraction {
                         comments,
                         left,
-                        minus: span,
+                        minus: position,
                         right,
                     })
                 }
@@ -103,7 +103,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Multiplication {
                         comments,
                         left,
-                        asterisk: span,
+                        asterisk: position,
                         right,
                     })
                 }
@@ -111,7 +111,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Division {
                         comments,
                         left,
-                        slash: span,
+                        slash: position,
                         right,
                     })
                 }
@@ -119,7 +119,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Modulo {
                         comments,
                         left,
-                        percent: span,
+                        percent: position,
                         right,
                     })
                 }
@@ -127,7 +127,7 @@ pub fn infix(
                     Expression::ArithmeticOperation(ArithmeticOperationExpression::Exponentiation {
                         comments,
                         left,
-                        pow: span,
+                        pow: position,
                         right,
                     })
                 }
@@ -135,7 +135,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Assignment {
                         comments,
                         left,
-                        equals: span,
+                        equals: position,
                         right,
                     })
                 }
@@ -143,7 +143,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Addition {
                         comments,
                         left,
-                        plus_equals: span,
+                        plus_equals: position,
                         right,
                     })
                 }
@@ -151,7 +151,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Subtraction {
                         comments,
                         left,
-                        minus_equals: span,
+                        minus_equals: position,
                         right,
                     })
                 }
@@ -159,7 +159,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Multiplication {
                         comments,
                         left,
-                        asterisk_equals: span,
+                        asterisk_equals: position,
                         right,
                     })
                 }
@@ -167,7 +167,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Division {
                         comments,
                         left,
-                        slash_equals: span,
+                        slash_equals: position,
                         right,
                     })
                 }
@@ -175,7 +175,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Modulo {
                         comments,
                         left,
-                        percent_equals: span,
+                        percent_equals: position,
                         right,
                     })
                 }
@@ -183,7 +183,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Exponentiation {
                         comments,
                         left,
-                        pow_equals: span,
+                        pow_equals: position,
                         right,
                     })
                 }
@@ -191,7 +191,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::BitwiseAnd {
                         comments,
                         left,
-                        ampersand_equals: span,
+                        ampersand_equals: position,
                         right,
                     })
                 }
@@ -199,7 +199,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::BitwiseOr {
                         comments,
                         left,
-                        pipe_equals: span,
+                        pipe_equals: position,
                         right,
                     })
                 }
@@ -207,7 +207,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::BitwiseXor {
                         comments,
                         left,
-                        caret_equals: span,
+                        caret_equals: position,
                         right,
                     })
                 }
@@ -215,7 +215,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::LeftShift {
                         comments,
                         left,
-                        left_shift_equals: span,
+                        left_shift_equals: position,
                         right,
                     })
                 }
@@ -223,7 +223,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::RightShift {
                         comments,
                         left,
-                        right_shift_equals: span,
+                        right_shift_equals: position,
                         right,
                     })
                 }
@@ -231,7 +231,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Coalesce {
                         comments,
                         left,
-                        coalesce_equals: span,
+                        coalesce_equals: position,
                         right,
                     })
                 }
@@ -239,7 +239,7 @@ pub fn infix(
                     Expression::AssignmentOperation(AssignmentOperationExpression::Concat {
                         comments,
                         left,
-                        dot_equals: span,
+                        dot_equals: position,
                         right,
                     })
                 }
@@ -247,27 +247,27 @@ pub fn infix(
                     Expression::BitwiseOperation(BitwiseOperationExpression::And {
                         comments,
                         left,
-                        and: span,
+                        and: position,
                         right,
                     })
                 }
                 TokenKind::Pipe => Expression::BitwiseOperation(BitwiseOperationExpression::Or {
                     comments,
                     left,
-                    or: span,
+                    or: position,
                     right,
                 }),
                 TokenKind::Caret => Expression::BitwiseOperation(BitwiseOperationExpression::Xor {
                     comments,
                     left,
-                    xor: span,
+                    xor: position,
                     right,
                 }),
                 TokenKind::LeftShift => {
                     Expression::BitwiseOperation(BitwiseOperationExpression::LeftShift {
                         comments,
                         left,
-                        left_shift: span,
+                        left_shift: position,
                         right,
                     })
                 }
@@ -275,7 +275,7 @@ pub fn infix(
                     Expression::BitwiseOperation(BitwiseOperationExpression::RightShift {
                         comments,
                         left,
-                        right_shift: span,
+                        right_shift: position,
                         right,
                     })
                 }
@@ -283,7 +283,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::Equal {
                         comments,
                         left,
-                        double_equals: span,
+                        double_equals: position,
                         right,
                     })
                 }
@@ -291,7 +291,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::Identical {
                         comments,
                         left,
-                        triple_equals: span,
+                        triple_equals: position,
                         right,
                     })
                 }
@@ -299,7 +299,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::NotEqual {
                         comments,
                         left,
-                        bang_equals: span,
+                        bang_equals: position,
                         right,
                     })
                 }
@@ -307,7 +307,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::AngledNotEqual {
                         comments,
                         left,
-                        angled_left_right: span,
+                        angled_left_right: position,
                         right,
                     })
                 }
@@ -315,7 +315,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::NotIdentical {
                         comments,
                         left,
-                        bang_double_equals: span,
+                        bang_double_equals: position,
                         right,
                     })
                 }
@@ -323,7 +323,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::LessThan {
                         comments,
                         left,
-                        less_than: span,
+                        less_than: position,
                         right,
                     })
                 }
@@ -331,7 +331,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::GreaterThan {
                         comments,
                         left,
-                        greater_than: span,
+                        greater_than: position,
                         right,
                     })
                 }
@@ -339,7 +339,7 @@ pub fn infix(
                     ComparisonOperationExpression::LessThanOrEqual {
                         comments,
                         left,
-                        less_than_equals: span,
+                        less_than_equals: position,
                         right,
                     },
                 ),
@@ -347,7 +347,7 @@ pub fn infix(
                     ComparisonOperationExpression::GreaterThanOrEqual {
                         comments,
                         left,
-                        greater_than_equals: span,
+                        greater_than_equals: position,
                         right,
                     },
                 ),
@@ -355,7 +355,7 @@ pub fn infix(
                     Expression::ComparisonOperation(ComparisonOperationExpression::Spaceship {
                         comments,
                         left,
-                        spaceship: span,
+                        spaceship: position,
                         right,
                     })
                 }
@@ -363,7 +363,7 @@ pub fn infix(
                     Expression::LogicalOperation(LogicalOperationExpression::And {
                         comments,
                         left,
-                        double_ampersand: span,
+                        double_ampersand: position,
                         right,
                     })
                 }
@@ -371,7 +371,7 @@ pub fn infix(
                     Expression::LogicalOperation(LogicalOperationExpression::Or {
                         comments,
                         left,
-                        double_pipe: span,
+                        double_pipe: position,
                         right,
                     })
                 }
@@ -379,7 +379,7 @@ pub fn infix(
                     Expression::LogicalOperation(LogicalOperationExpression::LogicalAnd {
                         comments,
                         left,
-                        and: span,
+                        and: position,
                         right,
                     })
                 }
@@ -387,7 +387,7 @@ pub fn infix(
                     Expression::LogicalOperation(LogicalOperationExpression::LogicalOr {
                         comments,
                         left,
-                        or: span,
+                        or: position,
                         right,
                     })
                 }
@@ -395,14 +395,14 @@ pub fn infix(
                     Expression::LogicalOperation(LogicalOperationExpression::LogicalXor {
                         comments,
                         left,
-                        xor: span,
+                        xor: position,
                         right,
                     })
                 }
                 TokenKind::Dot => Expression::StringOperation(StringOperationExpression::Concat {
                     comments,
                     left,
-                    dot: span,
+                    dot: position,
                     right,
                 }),
                 _ => unreachable!(),

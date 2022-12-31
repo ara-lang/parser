@@ -28,7 +28,7 @@ pub fn tree(state: &mut State) -> ParseResult<DefinitionTree> {
 
     Ok(DefinitionTree {
         definitions,
-        eof: state.iterator.current().span,
+        eof: state.iterator.current().position,
     })
 }
 

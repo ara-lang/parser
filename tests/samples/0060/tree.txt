@@ -7,63 +7,31 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: Span {
-                        line: 1,
-                        column: 1,
-                        position: 0,
-                    },
+                    enum: 0,
                     name: Identifier {
-                        span: Span {
-                            line: 1,
-                            column: 6,
-                            position: 5,
-                        },
+                        position: 5,
                         value: "a",
                     },
                     backed_type: Int(
-                        Span {
-                            line: 1,
-                            column: 7,
-                            position: 6,
-                        },
+                        6,
                         Identifier {
-                            span: Span {
-                                line: 1,
-                                column: 9,
-                                position: 8,
-                            },
+                            position: 8,
                             value: "int",
                         },
                     ),
                     implements: None,
                     body: BackedEnumBodyDefinition {
-                        left_brace: Span {
-                            line: 1,
-                            column: 13,
-                            position: 12,
-                        },
+                        left_brace: 12,
                         members: [
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 2,
-                                        column: 5,
-                                        position: 18,
-                                    },
+                                    case: 18,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 2,
-                                            column: 10,
-                                            position: 23,
-                                        },
+                                        position: 23,
                                         value: "static",
                                     },
-                                    equals: Span {
-                                        line: 2,
-                                        column: 17,
-                                        position: 30,
-                                    },
+                                    equals: 30,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -71,42 +39,22 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "2413",
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 19,
-                                                    position: 32,
-                                                },
+                                                position: 32,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 2,
-                                        column: 23,
-                                        position: 36,
-                                    },
+                                    semicolon: 36,
                                 },
                             ),
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 3,
-                                        column: 5,
-                                        position: 42,
-                                    },
+                                    case: 42,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 3,
-                                            column: 10,
-                                            position: 47,
-                                        },
+                                        position: 47,
                                         value: "self",
                                     },
-                                    equals: Span {
-                                        line: 3,
-                                        column: 15,
-                                        position: 52,
-                                    },
+                                    equals: 52,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -114,42 +62,22 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "2432",
-                                                span: Span {
-                                                    line: 3,
-                                                    column: 17,
-                                                    position: 54,
-                                                },
+                                                position: 54,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 3,
-                                        column: 21,
-                                        position: 58,
-                                    },
+                                    semicolon: 58,
                                 },
                             ),
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 4,
-                                        column: 5,
-                                        position: 64,
-                                    },
+                                    case: 64,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 4,
-                                            column: 10,
-                                            position: 69,
-                                        },
+                                        position: 69,
                                         value: "return",
                                     },
-                                    equals: Span {
-                                        line: 4,
-                                        column: 17,
-                                        position: 76,
-                                    },
+                                    equals: 76,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -157,42 +85,22 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "2433",
-                                                span: Span {
-                                                    line: 4,
-                                                    column: 19,
-                                                    position: 78,
-                                                },
+                                                position: 78,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 4,
-                                        column: 23,
-                                        position: 82,
-                                    },
+                                    semicolon: 82,
                                 },
                             ),
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 5,
-                                        column: 5,
-                                        position: 88,
-                                    },
+                                    case: 88,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 5,
-                                            column: 10,
-                                            position: 93,
-                                        },
+                                        position: 93,
                                         value: "parent",
                                     },
-                                    equals: Span {
-                                        line: 5,
-                                        column: 17,
-                                        position: 100,
-                                    },
+                                    equals: 100,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -200,42 +108,22 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "2543",
-                                                span: Span {
-                                                    line: 5,
-                                                    column: 19,
-                                                    position: 102,
-                                                },
+                                                position: 102,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 5,
-                                        column: 23,
-                                        position: 106,
-                                    },
+                                    semicolon: 106,
                                 },
                             ),
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 6,
-                                        column: 5,
-                                        position: 112,
-                                    },
+                                    case: 112,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 6,
-                                            column: 10,
-                                            position: 117,
-                                        },
+                                        position: 117,
                                         value: "enum",
                                     },
-                                    equals: Span {
-                                        line: 6,
-                                        column: 15,
-                                        position: 122,
-                                    },
+                                    equals: 122,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -243,42 +131,22 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "24133",
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 17,
-                                                    position: 124,
-                                                },
+                                                position: 124,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 6,
-                                        column: 22,
-                                        position: 129,
-                                    },
+                                    semicolon: 129,
                                 },
                             ),
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: Span {
-                                        line: 7,
-                                        column: 5,
-                                        position: 135,
-                                    },
+                                    case: 135,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 7,
-                                            column: 10,
-                                            position: 140,
-                                        },
+                                        position: 140,
                                         value: "from",
                                     },
-                                    equals: Span {
-                                        line: 7,
-                                        column: 15,
-                                        position: 145,
-                                    },
+                                    equals: 145,
                                     value: Literal(
                                         Integer(
                                             LiteralInteger {
@@ -286,27 +154,15 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "25443",
-                                                span: Span {
-                                                    line: 7,
-                                                    column: 17,
-                                                    position: 147,
-                                                },
+                                                position: 147,
                                             },
                                         ),
                                     ),
-                                    semicolon: Span {
-                                        line: 7,
-                                        column: 22,
-                                        position: 152,
-                                    },
+                                    semicolon: 152,
                                 },
                             ),
                         ],
-                        right_brace: Span {
-                            line: 8,
-                            column: 1,
-                            position: 154,
-                        },
+                        right_brace: 154,
                     },
                 },
             ),
@@ -320,28 +176,16 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: Span {
-                    line: 10,
-                    column: 1,
-                    position: 157,
-                },
+                class: 157,
                 name: Identifier {
-                    span: Span {
-                        line: 10,
-                        column: 7,
-                        position: 163,
-                    },
+                    position: 163,
                     value: "f",
                 },
                 templates: None,
                 extends: None,
                 implements: None,
                 body: ClassDefinitionBody {
-                    left_brace: Span {
-                        line: 10,
-                        column: 9,
-                        position: 165,
-                    },
+                    left_brace: 165,
                     members: [
                         Constant(
                             ClassishConstantDefinition {
@@ -352,27 +196,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 11,
-                                    column: 5,
-                                    position: 171,
-                                },
+                                const: 171,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 11,
-                                                    column: 11,
-                                                    position: 177,
-                                                },
+                                                position: 177,
                                                 value: "static",
                                             },
-                                            equals: Span {
-                                                line: 11,
-                                                column: 18,
-                                                position: 184,
-                                            },
+                                            equals: 184,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -380,11 +212,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "2413",
-                                                        span: Span {
-                                                            line: 11,
-                                                            column: 20,
-                                                            position: 186,
-                                                        },
+                                                        position: 186,
                                                     },
                                                 ),
                                             ),
@@ -392,11 +220,7 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 11,
-                                    column: 24,
-                                    position: 190,
-                                },
+                                semicolon: 190,
                             },
                         ),
                         Constant(
@@ -408,27 +232,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 12,
-                                    column: 5,
-                                    position: 196,
-                                },
+                                const: 196,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 12,
-                                                    column: 11,
-                                                    position: 202,
-                                                },
+                                                position: 202,
                                                 value: "self",
                                             },
-                                            equals: Span {
-                                                line: 12,
-                                                column: 16,
-                                                position: 207,
-                                            },
+                                            equals: 207,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -436,11 +248,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "2432",
-                                                        span: Span {
-                                                            line: 12,
-                                                            column: 18,
-                                                            position: 209,
-                                                        },
+                                                        position: 209,
                                                     },
                                                 ),
                                             ),
@@ -448,11 +256,7 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 12,
-                                    column: 22,
-                                    position: 213,
-                                },
+                                semicolon: 213,
                             },
                         ),
                         Constant(
@@ -464,27 +268,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 13,
-                                    column: 5,
-                                    position: 219,
-                                },
+                                const: 219,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 13,
-                                                    column: 11,
-                                                    position: 225,
-                                                },
+                                                position: 225,
                                                 value: "return",
                                             },
-                                            equals: Span {
-                                                line: 13,
-                                                column: 18,
-                                                position: 232,
-                                            },
+                                            equals: 232,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -492,11 +284,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "2433",
-                                                        span: Span {
-                                                            line: 13,
-                                                            column: 20,
-                                                            position: 234,
-                                                        },
+                                                        position: 234,
                                                     },
                                                 ),
                                             ),
@@ -504,11 +292,7 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 13,
-                                    column: 24,
-                                    position: 238,
-                                },
+                                semicolon: 238,
                             },
                         ),
                         Constant(
@@ -520,27 +304,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 14,
-                                    column: 5,
-                                    position: 244,
-                                },
+                                const: 244,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 14,
-                                                    column: 11,
-                                                    position: 250,
-                                                },
+                                                position: 250,
                                                 value: "parent",
                                             },
-                                            equals: Span {
-                                                line: 14,
-                                                column: 18,
-                                                position: 257,
-                                            },
+                                            equals: 257,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -548,11 +320,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "2543",
-                                                        span: Span {
-                                                            line: 14,
-                                                            column: 20,
-                                                            position: 259,
-                                                        },
+                                                        position: 259,
                                                     },
                                                 ),
                                             ),
@@ -560,11 +328,7 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 14,
-                                    column: 24,
-                                    position: 263,
-                                },
+                                semicolon: 263,
                             },
                         ),
                         Constant(
@@ -576,27 +340,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 15,
-                                    column: 5,
-                                    position: 269,
-                                },
+                                const: 269,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 15,
-                                                    column: 11,
-                                                    position: 275,
-                                                },
+                                                position: 275,
                                                 value: "enum",
                                             },
-                                            equals: Span {
-                                                line: 15,
-                                                column: 16,
-                                                position: 280,
-                                            },
+                                            equals: 280,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -604,11 +356,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "24133",
-                                                        span: Span {
-                                                            line: 15,
-                                                            column: 18,
-                                                            position: 282,
-                                                        },
+                                                        position: 282,
                                                     },
                                                 ),
                                             ),
@@ -616,11 +364,7 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 15,
-                                    column: 23,
-                                    position: 287,
-                                },
+                                semicolon: 287,
                             },
                         ),
                         Constant(
@@ -632,27 +376,15 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: Span {
-                                    line: 16,
-                                    column: 5,
-                                    position: 293,
-                                },
+                                const: 293,
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 16,
-                                                    column: 11,
-                                                    position: 299,
-                                                },
+                                                position: 299,
                                                 value: "from",
                                             },
-                                            equals: Span {
-                                                line: 16,
-                                                column: 16,
-                                                position: 304,
-                                            },
+                                            equals: 304,
                                             value: Literal(
                                                 Integer(
                                                     LiteralInteger {
@@ -660,11 +392,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         value: "25443",
-                                                        span: Span {
-                                                            line: 16,
-                                                            column: 18,
-                                                            position: 306,
-                                                        },
+                                                        position: 306,
                                                     },
                                                 ),
                                             ),
@@ -672,19 +400,11 @@ DefinitionTree {
                                     ],
                                     commas: [],
                                 },
-                                semicolon: Span {
-                                    line: 16,
-                                    column: 23,
-                                    position: 311,
-                                },
+                                semicolon: 311,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 17,
-                        column: 1,
-                        position: 313,
-                    },
+                    right_brace: 313,
                 },
             },
         ),
@@ -693,27 +413,15 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: Span {
-                    line: 19,
-                    column: 1,
-                    position: 316,
-                },
+                const: 316,
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {
                             name: Identifier {
-                                span: Span {
-                                    line: 19,
-                                    column: 7,
-                                    position: 322,
-                                },
+                                position: 322,
                                 value: "from",
                             },
-                            equals: Span {
-                                line: 19,
-                                column: 12,
-                                position: 327,
-                            },
+                            equals: 327,
                             value: Literal(
                                 Integer(
                                     LiteralInteger {
@@ -721,11 +429,7 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         value: "243",
-                                        span: Span {
-                                            line: 19,
-                                            column: 14,
-                                            position: 329,
-                                        },
+                                        position: 329,
                                     },
                                 ),
                             ),
@@ -733,11 +437,7 @@ DefinitionTree {
                     ],
                     commas: [],
                 },
-                semicolon: Span {
-                    line: 19,
-                    column: 17,
-                    position: 332,
-                },
+                semicolon: 332,
             },
         ),
         Constant(
@@ -745,27 +445,15 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: Span {
-                    line: 20,
-                    column: 1,
-                    position: 334,
-                },
+                const: 334,
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {
                             name: Identifier {
-                                span: Span {
-                                    line: 20,
-                                    column: 7,
-                                    position: 340,
-                                },
+                                position: 340,
                                 value: "enum",
                             },
-                            equals: Span {
-                                line: 20,
-                                column: 12,
-                                position: 345,
-                            },
+                            equals: 345,
                             value: Literal(
                                 Integer(
                                     LiteralInteger {
@@ -773,11 +461,7 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         value: "243",
-                                        span: Span {
-                                            line: 20,
-                                            column: 14,
-                                            position: 347,
-                                        },
+                                        position: 347,
                                     },
                                 ),
                             ),
@@ -785,17 +469,9 @@ DefinitionTree {
                     ],
                     commas: [],
                 },
-                semicolon: Span {
-                    line: 20,
-                    column: 17,
-                    position: 350,
-                },
+                semicolon: 350,
             },
         ),
     ],
-    eof: Span {
-        line: 21,
-        column: 1,
-        position: 352,
-    },
+    eof: 352,
 }

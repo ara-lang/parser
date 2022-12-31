@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::modifier::MethodModifierDefinitionGroup;
@@ -19,7 +18,7 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeReturnTypeDefinition {
-    pub colon: Span,
+    pub colon: usize,
     pub type_definition: TypeDefinition,
 }
 
@@ -29,7 +28,7 @@ pub struct FunctionLikeParameterDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeDefinitionGroup>,
     pub type_definition: TypeDefinition,
-    pub ellipsis: Option<Span>,
+    pub ellipsis: Option<usize>,
     pub variable: Variable,
     pub default: Option<FunctionLikeParameterDefaultValueDefinition>,
 }
@@ -37,7 +36,7 @@ pub struct FunctionLikeParameterDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterDefaultValueDefinition {
-    pub equals: Span,
+    pub equals: usize,
     pub value: Expression,
 }
 
@@ -45,9 +44,9 @@ pub struct FunctionLikeParameterDefaultValueDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterListDefinition {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
+    pub left_parenthesis: usize,
     pub parameters: CommaSeparated<FunctionLikeParameterDefinition>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -55,7 +54,7 @@ pub struct FunctionLikeParameterListDefinition {
 pub struct FunctionDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeDefinitionGroup>,
-    pub function: Span,
+    pub function: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
@@ -71,7 +70,7 @@ pub struct ConstructorParameterDefinition {
     #[serde(flatten)]
     pub modifiers: PromotedPropertyModifierDefinitionGroup,
     pub type_definition: TypeDefinition,
-    pub ellipsis: Option<Span>,
+    pub ellipsis: Option<usize>,
     pub variable: Variable,
     pub default: Option<FunctionLikeParameterDefaultValueDefinition>,
 }
@@ -80,9 +79,9 @@ pub struct ConstructorParameterDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct ConstructorParameterListDefinition {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
+    pub left_parenthesis: usize,
     pub parameters: CommaSeparated<ConstructorParameterDefinition>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -92,10 +91,10 @@ pub struct AbstractConstructorDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: Span,
+    pub function: usize,
     pub name: Identifier,
     pub parameters: FunctionLikeParameterListDefinition,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -105,7 +104,7 @@ pub struct ConcreteConstructorDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: Span,
+    pub function: usize,
     pub name: Identifier,
     pub parameters: ConstructorParameterListDefinition,
     pub body: BlockStatement,
@@ -116,7 +115,7 @@ pub struct ConcreteConstructorDefinition {
 pub struct MethodDefinitionTypeConstraint {
     pub comments: CommentGroup,
     pub identifier: Identifier,
-    pub r#is: Span,
+    pub r#is: usize,
     pub type_definition: TypeDefinition,
 }
 
@@ -124,7 +123,7 @@ pub struct MethodDefinitionTypeConstraint {
 #[serde(rename_all = "snake_case")]
 pub struct MethodDefinitionTypeConstraintGroup {
     pub comments: CommentGroup,
-    pub r#where: Span,
+    pub r#where: usize,
     pub constraints: CommaSeparated<MethodDefinitionTypeConstraint>,
 }
 
@@ -135,13 +134,13 @@ pub struct AbstractMethodDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: Span,
+    pub function: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
     pub constraints: Option<MethodDefinitionTypeConstraintGroup>,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -151,7 +150,7 @@ pub struct ConcreteMethodDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: Span,
+    pub function: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
@@ -162,7 +161,7 @@ pub struct ConcreteMethodDefinition {
 
 impl Node for FunctionLikeReturnTypeDefinition {
     fn initial_position(&self) -> usize {
-        self.colon.position
+        self.colon
     }
 
     fn final_position(&self) -> usize {
@@ -208,7 +207,7 @@ impl Node for FunctionLikeParameterDefinition {
 
 impl Node for FunctionLikeParameterDefaultValueDefinition {
     fn initial_position(&self) -> usize {
-        self.equals.position
+        self.equals
     }
 
     fn final_position(&self) -> usize {
@@ -226,11 +225,11 @@ impl Node for FunctionLikeParameterListDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -254,7 +253,7 @@ impl Node for FunctionDefinition {
             return attributes.initial_position();
         }
 
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {
@@ -324,11 +323,11 @@ impl Node for ConstructorParameterListDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -356,11 +355,11 @@ impl Node for AbstractConstructorDefinition {
             return modifier.initial_position();
         }
 
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -395,7 +394,7 @@ impl Node for ConcreteConstructorDefinition {
             return modifier.initial_position();
         }
 
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {
@@ -435,11 +434,11 @@ impl Node for AbstractMethodDefinition {
             return modifier.initial_position();
         }
 
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -490,14 +489,14 @@ impl Node for MethodDefinitionTypeConstraintGroup {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#where.position
+        self.r#where
     }
 
     fn final_position(&self) -> usize {
         if let Some(last_constraint) = self.constraints.inner.last() {
             let last_constraint_position = last_constraint.final_position();
             if let Some(last_comma) = self.constraints.commas.last() {
-                let last_comma_position = last_comma.position + 1;
+                let last_comma_position = last_comma + 1;
                 if last_comma_position >= last_constraint_position {
                     return last_comma_position;
                 }
@@ -505,7 +504,7 @@ impl Node for MethodDefinitionTypeConstraintGroup {
 
             last_constraint_position
         } else {
-            self.r#where.position + 5
+            self.r#where + 5
         }
     }
 
@@ -534,7 +533,7 @@ impl Node for ConcreteMethodDefinition {
             return modifier.initial_position();
         }
 
-        self.function.position
+        self.function
     }
 
     fn final_position(&self) -> usize {

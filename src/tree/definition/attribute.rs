@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::expression::argument::ArgumentListExpression;
 use crate::tree::identifier::Identifier;
 use crate::tree::utils::CommaSeparated;
@@ -11,9 +10,9 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AttributeDefinitionGroup {
-    pub hash_left_bracket: Span,
+    pub hash_left_bracket: usize,
     pub members: CommaSeparated<AttributeDefinition>,
-    pub right_bracket: Span,
+    pub right_bracket: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -25,11 +24,11 @@ pub struct AttributeDefinition {
 
 impl Node for AttributeDefinitionGroup {
     fn initial_position(&self) -> usize {
-        self.hash_left_bracket.position
+        self.hash_left_bracket
     }
 
     fn final_position(&self) -> usize {
-        self.right_bracket.position + 1
+        self.right_bracket + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

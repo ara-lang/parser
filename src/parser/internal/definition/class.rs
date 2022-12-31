@@ -35,13 +35,13 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
 
     let current = state.iterator.current();
     let extends = if current.kind == TokenKind::Extends {
-        let span = current.span;
+        let position = current.position;
 
         state.iterator.next();
         let parent = identifier::fully_qualified_templated_identifier(state)?;
 
         Some(ClassDefinitionExtends {
-            extends: span,
+            extends: position,
             parent,
         })
     } else {
@@ -50,7 +50,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
 
     let current = state.iterator.current();
     let implements = if current.kind == TokenKind::Implements {
-        let span = current.span;
+        let position = current.position;
 
         state.iterator.next();
 
@@ -61,7 +61,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
         )?;
 
         Some(ClassDefinitionImplements {
-            implements: span,
+            implements: position,
             interfaces,
         })
     } else {

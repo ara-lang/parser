@@ -34,7 +34,7 @@ pub fn lex(source: &Source) -> SyntaxResult<Vec<Token>> {
 
     tokens.push(Token {
         kind: TokenKind::Eof,
-        span: state.bytes.span(),
+        position: state.bytes.position(),
         value: ByteString::default(),
     });
 

@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::Node;
@@ -12,9 +11,9 @@ use crate::tree::Node;
 pub enum ReturnStatement {
     Explicit {
         comments: CommentGroup,
-        r#return: Span,
+        r#return: usize,
         expression: Option<Expression>,
-        semicolon: Span,
+        semicolon: usize,
     },
     Implicit {
         comments: CommentGroup,
@@ -32,14 +31,14 @@ impl Node for ReturnStatement {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ReturnStatement::Explicit { r#return, .. } => r#return.position,
+            ReturnStatement::Explicit { r#return, .. } => *r#return,
             ReturnStatement::Implicit { expression, .. } => expression.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ReturnStatement::Explicit { semicolon, .. } => semicolon.position + 1,
+            ReturnStatement::Explicit { semicolon, .. } => semicolon + 1,
             ReturnStatement::Implicit { expression, .. } => expression.final_position(),
         }
     }

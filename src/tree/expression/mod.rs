@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::array::DictExpression;
 use crate::tree::expression::array::TupleExpression;
@@ -81,9 +80,9 @@ pub enum Expression {
 #[serde(rename_all = "snake_case")]
 pub struct ParenthesizedExpression {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
+    pub left_parenthesis: usize,
     pub expression: Box<Expression>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 impl Node for ParenthesizedExpression {
@@ -92,11 +91,11 @@ impl Node for ParenthesizedExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

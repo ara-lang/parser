@@ -3,7 +3,6 @@
 use ara_reporting::annotation::Annotation;
 use ara_reporting::issue::Issue;
 
-use crate::lexer::token::Span;
 use crate::lexer::token::Token;
 use crate::lexer::token::TokenKind;
 use crate::parser::state::State as ParserState;
@@ -639,8 +638,8 @@ pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) 
         ParserIssueCode::PHPOpeningTagNotSupported,
         format!("PHP opening tag `{}` is not supported", token.value),
         origin,
-        token.span.position,
-        token.span.position + token.value.len(),
+        token.position,
+        token.position + token.value.len(),
     )
     .with_help("try removing the opening tag")
 }
@@ -652,8 +651,8 @@ pub(crate) fn php_closing_tag_not_supported(state: &ParserState, token: &Token) 
         ParserIssueCode::PHPClosingTagNotSupported,
         format!("PHP closing tag `{}` is not supported", token.value),
         origin,
-        token.span.position,
-        token.span.position + token.value.len(),
+        token.position,
+        token.position + token.value.len(),
     )
     .with_help("try removing the closing tag")
 }
@@ -662,7 +661,7 @@ pub(crate) fn unit_enum_case_cannot_have_value(
     state: &ParserState,
     r#enum: &Identifier,
     case: &Identifier,
-    semicolon_span: Span,
+    semicolon: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -676,7 +675,7 @@ pub(crate) fn unit_enum_case_cannot_have_value(
         ),
         origin,
         case.initial_position(),
-        semicolon_span.position + 1,
+        semicolon + 1,
     )
     .with_annotation(Annotation::new(
         origin,
@@ -694,7 +693,7 @@ pub(crate) fn backed_enum_case_must_have_value(
     state: &ParserState,
     r#enum: &Identifier,
     case: &Identifier,
-    semicolon_span: Span,
+    semicolon: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -708,7 +707,7 @@ pub(crate) fn backed_enum_case_must_have_value(
         ),
         origin,
         case.initial_position(),
-        semicolon_span.position + 1,
+        semicolon + 1,
     )
     .with_annotation(Annotation::new(
         origin,
@@ -767,8 +766,8 @@ pub(crate) fn missing_item_definition_after_attributes(state: &ParserState) -> I
         ParserIssueCode::MissingItemDefinitionAfterAttributes,
         "missing item definition after attribute(s)",
         origin,
-        current.span.position,
-        current.span.position + current.value.len(),
+        current.position,
+        current.position + current.value.len(),
     )
     .with_help("try adding an item definition after the attribute(s).")
     .with_note("an item definition can be a class, an interface, an enum, or a function.");
@@ -786,8 +785,8 @@ pub(crate) fn missing_item_definition_after_attributes(state: &ParserState) -> I
 
 pub(crate) fn multiple_visibility_modifiers(
     state: &ParserState,
-    first: (Span, String),
-    second: (Span, String),
+    first: (usize, String),
+    second: (usize, String),
 ) -> Issue {
     let origin = state.source.name();
 
@@ -795,21 +794,17 @@ pub(crate) fn multiple_visibility_modifiers(
         ParserIssueCode::MultipleVisibilityModifiers,
         "multiple visibility modifiers are not allowed",
         origin,
-        second.0.position,
-        second.0.position + second.1.len(),
+        second.0,
+        second.0 + second.1.len(),
     )
-    .with_annotation(Annotation::new(
-        origin,
-        first.0.position,
-        first.0.position + first.1.len(),
-    ))
+    .with_annotation(Annotation::new(origin, first.0, first.0 + first.1.len()))
 }
 
 pub(crate) fn duplicate_modifier(
     state: &ParserState,
     modifier: String,
-    first: Span,
-    second: Span,
+    first: usize,
+    second: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -817,14 +812,10 @@ pub(crate) fn duplicate_modifier(
         ParserIssueCode::DuplicateModifier,
         format!("multiple `{}` modifiers are not allowed", modifier),
         origin,
-        second.position,
-        second.position + modifier.len(),
+        second,
+        second + modifier.len(),
     )
-    .with_annotation(Annotation::new(
-        origin,
-        first.position,
-        first.position + modifier.len(),
-    ))
+    .with_annotation(Annotation::new(origin, first, first + modifier.len()))
 }
 
 pub(crate) fn bottom_type_cannot_be_used_for_parameter(
@@ -897,7 +888,7 @@ pub(crate) fn bottom_type_cannot_be_used_for_property(
 pub(crate) fn standalone_type_cannot_be_used_in_union(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    pipe: Span,
+    pipe: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -911,7 +902,7 @@ pub(crate) fn standalone_type_cannot_be_used_in_union(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, pipe.position, pipe.position + 1))
+    .with_annotation(Annotation::new(origin, pipe, pipe + 1))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
     .with_help("try using a different type for the union.")
 }
@@ -919,7 +910,7 @@ pub(crate) fn standalone_type_cannot_be_used_in_union(
 pub(crate) fn standalone_type_cannot_be_used_in_intersection(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    ampersand: Span,
+    ampersand: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -935,8 +926,8 @@ pub(crate) fn standalone_type_cannot_be_used_in_intersection(
     )
     .with_annotation(Annotation::new(
         origin,
-        ampersand.position,
-        ampersand.position + 1,
+        ampersand,
+        ampersand + 1,
     ))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
     .with_help("try using a different type for the intersection.")
@@ -945,7 +936,7 @@ pub(crate) fn standalone_type_cannot_be_used_in_intersection(
 pub(crate) fn standalone_type_cannot_be_nullable(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    question_mark: Span,
+    question_mark: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -958,8 +949,8 @@ pub(crate) fn standalone_type_cannot_be_nullable(
     )
     .with_annotation(Annotation::new(
         origin,
-        question_mark.position,
-        question_mark.position + 1,
+        question_mark,
+        question_mark + 1,
     ))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
     .with_help("try removing `?`.")
@@ -968,7 +959,7 @@ pub(crate) fn standalone_type_cannot_be_nullable(
 pub(crate) fn scalar_type_cannot_be_used_in_intersection(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    ampersand: Span,
+    ampersand: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -982,11 +973,7 @@ pub(crate) fn scalar_type_cannot_be_used_in_intersection(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
-        origin,
-        ampersand.position,
-        ampersand.position + 1,
-    ))
+    .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
     .with_note("a scalar type is either `int`, `float`, `string`, or `bool`.")
     .with_help("try using a different type for the intersection.")
 }
@@ -1082,7 +1069,7 @@ pub(crate) fn readonly_property_cannot_have_default_value(
 pub(crate) fn bottom_type_cannot_be_used_in_fn_type_parameter(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    r#fn: Span,
+    r#fn: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1096,14 +1083,14 @@ pub(crate) fn bottom_type_cannot_be_used_in_fn_type_parameter(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, r#fn.position, r#fn.position + 2))
+    .with_annotation(Annotation::new(origin, r#fn, r#fn + 2))
     .with_note("bottom types are types that have no values, such as `never` and `void`.")
     .with_help("try using a different type for the `fn` type parameter.")
 }
 
 pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
     state: &ParserState,
-    parenthesis: Span,
+    parenthesis: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1111,8 +1098,8 @@ pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
         ParserIssueCode::DisjunctiveNormalFormTypesCannotBeNested,
         "cannot nest disjunctive normal form types",
         origin,
-        parenthesis.position,
-        parenthesis.position + 1,
+        parenthesis,
+        parenthesis + 1,
     )
     .with_note(
         "disjunctive normal form types are types that are separated by `|`, or `&` and are enclosed in `(` and `)`.",
@@ -1185,8 +1172,8 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
         ParserIssueCode::MissingItemExpressionAfterAttributes,
         "missing item expression after attribute(s)",
         origin,
-        current.span.position,
-        current.span.position + current.value.len(),
+        current.position,
+        current.position + current.value.len(),
     )
     .with_help("try adding an item expression after the attribute(s)")
     .with_note("an item expression can be an anonymous function, or an arrow function.");
@@ -1278,7 +1265,7 @@ pub(crate) fn private_constant_cannot_be_final(
 pub(crate) fn modifier_cannot_be_used_on_class(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1286,8 +1273,8 @@ pub(crate) fn modifier_cannot_be_used_on_class(
         ParserIssueCode::ModifierCannotBeUsedOnClass,
         format!("modifier `{}` cannot be used on a class", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note("only the `final`, `abstract`, and `readonly` modifiers can be used on a class.")
@@ -1296,7 +1283,7 @@ pub(crate) fn modifier_cannot_be_used_on_class(
 pub(crate) fn modifier_cannot_be_used_on_class_method(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1304,8 +1291,8 @@ pub(crate) fn modifier_cannot_be_used_on_class_method(
         ParserIssueCode::ModifierCannotBeUsedOnClassMethod,
         format!("modifier `{}` cannot be used on a class method", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note(
@@ -1316,7 +1303,7 @@ pub(crate) fn modifier_cannot_be_used_on_class_method(
 pub(crate) fn modifier_cannot_be_used_on_interface_method(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1327,8 +1314,8 @@ pub(crate) fn modifier_cannot_be_used_on_interface_method(
             modifier
         ),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note("only the `static`, and `public` modifiers can be used on an interface method.")
@@ -1337,7 +1324,7 @@ pub(crate) fn modifier_cannot_be_used_on_interface_method(
 pub(crate) fn modifier_cannot_be_used_on_enum_method(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1345,8 +1332,8 @@ pub(crate) fn modifier_cannot_be_used_on_enum_method(
         ParserIssueCode::ModifierCannotBeUsedOnEnumMethod,
         format!("modifier `{}` cannot be used on an enum method", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note("only the `final`, `static`, and `public`, `protected`, `private` modifiers can be used on an enum method.")
@@ -1355,7 +1342,7 @@ pub(crate) fn modifier_cannot_be_used_on_enum_method(
 pub(crate) fn modifier_cannot_be_used_on_property(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1363,8 +1350,8 @@ pub(crate) fn modifier_cannot_be_used_on_property(
         ParserIssueCode::ModifierCannotBeUsedOnProperty,
         format!("modifier `{}` cannot be used on a property", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note(
@@ -1375,7 +1362,7 @@ pub(crate) fn modifier_cannot_be_used_on_property(
 pub(crate) fn modifier_cannot_be_used_on_promoted_property(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1383,8 +1370,8 @@ pub(crate) fn modifier_cannot_be_used_on_promoted_property(
         ParserIssueCode::ModifierCannotBeUsedOnPromotedProperty,
         format!("modifier `{}` cannot be used on a promoted property", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note(
@@ -1395,7 +1382,7 @@ pub(crate) fn modifier_cannot_be_used_on_promoted_property(
 pub(crate) fn modifier_cannot_be_used_on_constant(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1403,8 +1390,8 @@ pub(crate) fn modifier_cannot_be_used_on_constant(
         ParserIssueCode::ModifierCannotBeUsedOnConstant,
         format!("modifier `{}` cannot be used on a constant", modifier),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note(
@@ -1415,7 +1402,7 @@ pub(crate) fn modifier_cannot_be_used_on_constant(
 pub(crate) fn modifier_cannot_be_used_on_interface_constant(
     state: &ParserState,
     modifier: String,
-    span: Span,
+    position: usize,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1426,8 +1413,8 @@ pub(crate) fn modifier_cannot_be_used_on_interface_constant(
             modifier
         ),
         origin,
-        span.position,
-        span.position + modifier.len(),
+        position,
+        position + modifier.len(),
     )
     .with_help("try removing the modifier.")
     .with_note("only the `final`, and `public` modifiers can be used on an interface constant.")
@@ -1463,7 +1450,7 @@ pub(crate) fn promoted_property_cannot_be_variadic(
 ) -> Issue {
     let origin = state.source.name();
 
-    let span = promoted_property.ellipsis.unwrap();
+    let position = promoted_property.ellipsis.unwrap();
 
     let mut issue = Issue::error(
         ParserIssueCode::PromotedPropertyCannotBeVariadic,
@@ -1475,8 +1462,8 @@ pub(crate) fn promoted_property_cannot_be_variadic(
             promoted_property.variable,
         ),
         origin,
-        span.position,
-        span.position + 3,
+        position,
+        position + 3,
     )
     .with_annotation(Annotation::new(
         origin,
@@ -1589,8 +1576,8 @@ pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -
         ParserIssueCode::UnexpectedEmptyStatement,
         "unexpected empty statement",
         origin,
-        current.span.position,
-        current.span.position + current.value.len(),
+        current.position,
+        current.position + current.value.len(),
     )
     .with_help("try removing the `;`")
 }
@@ -1651,8 +1638,8 @@ pub(crate) fn unexpected_token<T: ToString>(
         ParserIssueCode::UnexpectedToken,
         message,
         origin,
-        found.span.position,
-        found.span.position + found.value.len(),
+        found.position,
+        found.position + found.value.len(),
     )
 }
 

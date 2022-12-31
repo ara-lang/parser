@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::identifier::Identifier;
@@ -12,14 +11,14 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateDefinitionVariance {
-    Covariance(Span),
+    Covariance(usize),
     Invaraint,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateDefinitionTypeConstraint {
-    SubType(Span, TypeDefinition),
+    SubType(usize, TypeDefinition),
     None,
 }
 
@@ -35,24 +34,24 @@ pub struct TemplateDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct TemplateGroupDefinition {
     pub comments: CommentGroup,
-    pub less_than: Span,
+    pub less_than: usize,
     pub members: CommaSeparated<TemplateDefinition>,
-    pub greater_than: Span,
+    pub greater_than: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TypeTemplateGroupDefinition {
     pub comments: CommentGroup,
-    pub less_than: Span,
+    pub less_than: usize,
     pub members: CommaSeparated<TypeDefinition>,
-    pub greater_than: Span,
+    pub greater_than: usize,
 }
 
 impl Node for TemplateDefinition {
     fn initial_position(&self) -> usize {
         match &self.variance {
-            TemplateDefinitionVariance::Covariance(s) => s.position,
+            TemplateDefinitionVariance::Covariance(position) => *position,
             TemplateDefinitionVariance::Invaraint => self.name.initial_position(),
         }
     }
@@ -84,11 +83,11 @@ impl Node for TemplateGroupDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.less_than.position
+        self.less_than
     }
 
     fn final_position(&self) -> usize {
-        self.greater_than.position + 1
+        self.greater_than + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -102,11 +101,11 @@ impl Node for TypeTemplateGroupDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.less_than.position
+        self.less_than
     }
 
     fn final_position(&self) -> usize {
-        self.greater_than.position + 1
+        self.greater_than + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

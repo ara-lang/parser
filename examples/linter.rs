@@ -27,13 +27,13 @@ impl NodeVisitor<Issue> for NoVariadicParameterRuleVisitor {
         _parent: Option<&dyn Node>,
     ) -> Result<(), Issue> {
         if let Some(parameter) = cast::<FunctionLikeParameterDefinition>(node) {
-            if let Some(span) = parameter.ellipsis {
+            if let Some(position) = parameter.ellipsis {
                 let issue = Issue::warning(
                     "some-code",
                     "variadic parameters are forbidden",
                     source.name(),
-                    span.position,
-                    span.position + 3,
+                    position,
+                    position + 3,
                 )
                 .with_annotation(Annotation::new(
                     source.name(),
