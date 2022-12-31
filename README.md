@@ -8,7 +8,7 @@ A fault-tolerant, recursive-descent parser for `Ara` Programming Language 🌲
 
 > **Note:** This project is a hard-fork of [`php-rust-tools/parser`](https://github.com/php-rust-tools/parser)
 >
-> Special thanks to the original [authors](https:://github.com/php-rust-tools/parser/graphs/contributors) for their work.
+> Special thanks to the original [authors](https://github.com/php-rust-tools/parser/graphs/contributors) for their work.
 
 ---
 
