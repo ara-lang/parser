@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "foo",
                 },
                 templates: None,
@@ -24,44 +16,24 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 13,
-                        position: 12,
-                    },
+                    left_parenthesis: 12,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 14,
-                        position: 13,
-                    },
+                    right_parenthesis: 13,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 15,
-                        position: 14,
-                    },
+                    colon: 14,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 17,
-                            position: 16,
-                        },
+                        16,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 22,
-                        position: 21,
-                    },
+                    left_brace: 21,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -75,29 +47,17 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 5,
-                                                    position: 27,
-                                                },
+                                                position: 27,
                                                 name: "$a",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 2,
-                                            column: 8,
-                                            position: 30,
-                                        },
+                                        equals: 30,
                                         right: AsyncOperation(
                                             Async {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: Span {
-                                                    line: 2,
-                                                    column: 10,
-                                                    position: 32,
-                                                },
+                                                async: 32,
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -105,11 +65,7 @@ DefinitionTree {
                                                         },
                                                         function: Identifier(
                                                             Identifier {
-                                                                span: Span {
-                                                                    line: 2,
-                                                                    column: 16,
-                                                                    position: 38,
-                                                                },
+                                                                position: 38,
                                                                 value: "bar",
                                                             },
                                                         ),
@@ -118,20 +74,12 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: Span {
-                                                                line: 2,
-                                                                column: 19,
-                                                                position: 41,
-                                                            },
+                                                            left_parenthesis: 41,
                                                             arguments: CommaSeparated {
                                                                 inner: [],
                                                                 commas: [],
                                                             },
-                                                            right_parenthesis: Span {
-                                                                line: 2,
-                                                                column: 20,
-                                                                position: 42,
-                                                            },
+                                                            right_parenthesis: 42,
                                                         },
                                                     },
                                                 ),
@@ -139,11 +87,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 2,
-                                    column: 21,
-                                    position: 43,
-                                },
+                                semicolon: 43,
                             },
                         ),
                         Expression(
@@ -158,36 +102,20 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 4,
-                                                    column: 5,
-                                                    position: 50,
-                                                },
+                                                position: 50,
                                                 name: "$b",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 4,
-                                            column: 8,
-                                            position: 53,
-                                        },
+                                        equals: 53,
                                         right: AsyncOperation(
                                             Await {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                await: Span {
-                                                    line: 4,
-                                                    column: 10,
-                                                    position: 55,
-                                                },
+                                                await: 55,
                                                 expression: Variable(
                                                     Variable {
-                                                        span: Span {
-                                                            line: 4,
-                                                            column: 16,
-                                                            position: 61,
-                                                        },
+                                                        position: 61,
                                                         name: "$a",
                                                     },
                                                 ),
@@ -195,11 +123,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 4,
-                                    column: 18,
-                                    position: 63,
-                                },
+                                semicolon: 63,
                             },
                         ),
                         Expression(
@@ -214,29 +138,17 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 6,
-                                                    column: 5,
-                                                    position: 70,
-                                                },
+                                                position: 70,
                                                 name: "$c",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 6,
-                                            column: 8,
-                                            position: 73,
-                                        },
+                                        equals: 73,
                                         right: AsyncOperation(
                                             Async {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: Span {
-                                                    line: 6,
-                                                    column: 10,
-                                                    position: 75,
-                                                },
+                                                async: 75,
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -244,11 +156,7 @@ DefinitionTree {
                                                         },
                                                         function: Identifier(
                                                             Identifier {
-                                                                span: Span {
-                                                                    line: 6,
-                                                                    column: 16,
-                                                                    position: 81,
-                                                                },
+                                                                position: 81,
                                                                 value: "baz",
                                                             },
                                                         ),
@@ -257,20 +165,12 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: Span {
-                                                                line: 6,
-                                                                column: 19,
-                                                                position: 84,
-                                                            },
+                                                            left_parenthesis: 84,
                                                             arguments: CommaSeparated {
                                                                 inner: [],
                                                                 commas: [],
                                                             },
-                                                            right_parenthesis: Span {
-                                                                line: 6,
-                                                                column: 20,
-                                                                position: 85,
-                                                            },
+                                                            right_parenthesis: 85,
                                                         },
                                                     },
                                                 ),
@@ -278,11 +178,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 6,
-                                    column: 21,
-                                    position: 86,
-                                },
+                                semicolon: 86,
                             },
                         ),
                         Expression(
@@ -297,29 +193,17 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 7,
-                                                    column: 5,
-                                                    position: 92,
-                                                },
+                                                position: 92,
                                                 name: "$d",
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 7,
-                                            column: 8,
-                                            position: 95,
-                                        },
+                                        equals: 95,
                                         right: AsyncOperation(
                                             Async {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: Span {
-                                                    line: 7,
-                                                    column: 10,
-                                                    position: 97,
-                                                },
+                                                async: 97,
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -327,11 +211,7 @@ DefinitionTree {
                                                         },
                                                         function: Identifier(
                                                             Identifier {
-                                                                span: Span {
-                                                                    line: 7,
-                                                                    column: 16,
-                                                                    position: 103,
-                                                                },
+                                                                position: 103,
                                                                 value: "qux",
                                                             },
                                                         ),
@@ -340,20 +220,12 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: Span {
-                                                                line: 7,
-                                                                column: 19,
-                                                                position: 106,
-                                                            },
+                                                            left_parenthesis: 106,
                                                             arguments: CommaSeparated {
                                                                 inner: [],
                                                                 commas: [],
                                                             },
-                                                            right_parenthesis: Span {
-                                                                line: 7,
-                                                                column: 20,
-                                                                position: 107,
-                                                            },
+                                                            right_parenthesis: 107,
                                                         },
                                                     },
                                                 ),
@@ -361,11 +233,7 @@ DefinitionTree {
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 7,
-                                    column: 21,
-                                    position: 108,
-                                },
+                                semicolon: 108,
                             },
                         ),
                         Expression(
@@ -383,69 +251,37 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left_parenthesis: Span {
-                                                    line: 9,
-                                                    column: 5,
-                                                    position: 115,
-                                                },
+                                                left_parenthesis: 115,
                                                 members: CommaSeparated {
                                                     inner: [
                                                         Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 9,
-                                                                    column: 6,
-                                                                    position: 116,
-                                                                },
+                                                                position: 116,
                                                                 name: "$e",
                                                             },
                                                         ),
                                                         Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 9,
-                                                                    column: 10,
-                                                                    position: 120,
-                                                                },
+                                                                position: 120,
                                                                 name: "$f",
                                                             },
                                                         ),
                                                     ],
                                                     commas: [
-                                                        Span {
-                                                            line: 9,
-                                                            column: 8,
-                                                            position: 118,
-                                                        },
+                                                        118,
                                                     ],
                                                 },
-                                                right_parenthesis: Span {
-                                                    line: 9,
-                                                    column: 12,
-                                                    position: 122,
-                                                },
+                                                right_parenthesis: 122,
                                             },
                                         ),
-                                        equals: Span {
-                                            line: 9,
-                                            column: 14,
-                                            position: 124,
-                                        },
+                                        equals: 124,
                                         right: AsyncOperation(
                                             Concurrently {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                concurrently: Span {
-                                                    line: 9,
-                                                    column: 16,
-                                                    position: 126,
-                                                },
-                                                left_brace: Span {
-                                                    line: 9,
-                                                    column: 29,
-                                                    position: 139,
-                                                },
+                                                concurrently: 126,
+                                                left_brace: 139,
                                                 expressions: CommaSeparated {
                                                     inner: [
                                                         AsyncOperation(
@@ -453,18 +289,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: Span {
-                                                                    line: 10,
-                                                                    column: 9,
-                                                                    position: 149,
-                                                                },
+                                                                await: 149,
                                                                 expression: Variable(
                                                                     Variable {
-                                                                        span: Span {
-                                                                            line: 10,
-                                                                            column: 15,
-                                                                            position: 155,
-                                                                        },
+                                                                        position: 155,
                                                                         name: "$c",
                                                                     },
                                                                 ),
@@ -475,18 +303,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: Span {
-                                                                    line: 11,
-                                                                    column: 9,
-                                                                    position: 167,
-                                                                },
+                                                                await: 167,
                                                                 expression: Variable(
                                                                     Variable {
-                                                                        span: Span {
-                                                                            line: 11,
-                                                                            column: 15,
-                                                                            position: 173,
-                                                                        },
+                                                                        position: 173,
                                                                         name: "$d",
                                                                     },
                                                                 ),
@@ -494,47 +314,23 @@ DefinitionTree {
                                                         ),
                                                     ],
                                                     commas: [
-                                                        Span {
-                                                            line: 10,
-                                                            column: 17,
-                                                            position: 157,
-                                                        },
-                                                        Span {
-                                                            line: 11,
-                                                            column: 17,
-                                                            position: 175,
-                                                        },
+                                                        157,
+                                                        175,
                                                     ],
                                                 },
-                                                right_brace: Span {
-                                                    line: 12,
-                                                    column: 5,
-                                                    position: 181,
-                                                },
+                                                right_brace: 181,
                                             },
                                         ),
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 12,
-                                    column: 6,
-                                    position: 182,
-                                },
+                                semicolon: 182,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 13,
-                        column: 1,
-                        position: 184,
-                    },
+                    right_brace: 184,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 14,
-        column: 1,
-        position: 186,
-    },
+    eof: 186,
 }

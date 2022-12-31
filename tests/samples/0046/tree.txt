@@ -6,27 +6,15 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                interface: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 11,
-                        position: 10,
-                    },
+                    position: 10,
                     value: "foo",
                 },
                 templates: None,
                 extends: None,
                 body: InterfaceDefinitionBody {
-                    left_brace: Span {
-                        line: 1,
-                        column: 15,
-                        position: 14,
-                    },
+                    left_brace: 14,
                     members: [
                         Method(
                             AbstractMethodDefinition {
@@ -37,25 +25,13 @@ DefinitionTree {
                                 modifiers: MethodModifierDefinitionGroup {
                                     modifiers: [
                                         Public(
-                                            Span {
-                                                line: 2,
-                                                column: 5,
-                                                position: 20,
-                                            },
+                                            20,
                                         ),
                                     ],
                                 },
-                                function: Span {
-                                    line: 2,
-                                    column: 12,
-                                    position: 27,
-                                },
+                                function: 27,
                                 name: Identifier {
-                                    span: Span {
-                                        line: 2,
-                                        column: 21,
-                                        position: 36,
-                                    },
+                                    position: 36,
                                     value: "bar",
                                 },
                                 templates: None,
@@ -63,35 +39,19 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_parenthesis: Span {
-                                        line: 2,
-                                        column: 24,
-                                        position: 39,
-                                    },
+                                    left_parenthesis: 39,
                                     parameters: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    right_parenthesis: Span {
-                                        line: 2,
-                                        column: 25,
-                                        position: 40,
-                                    },
+                                    right_parenthesis: 40,
                                 },
                                 return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: Span {
-                                        line: 2,
-                                        column: 26,
-                                        position: 41,
-                                    },
+                                    colon: 41,
                                     type_definition: Identifier(
                                         TemplatedIdentifier {
                                             name: Identifier {
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 28,
-                                                    position: 43,
-                                                },
+                                                position: 43,
                                                 value: "parent",
                                             },
                                             templates: None,
@@ -99,26 +59,14 @@ DefinitionTree {
                                     ),
                                 },
                                 constraints: None,
-                                semicolon: Span {
-                                    line: 2,
-                                    column: 34,
-                                    position: 49,
-                                },
+                                semicolon: 49,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 3,
-                        column: 1,
-                        position: 51,
-                    },
+                    right_brace: 51,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 4,
-        column: 1,
-        position: 53,
-    },
+    eof: 53,
 }

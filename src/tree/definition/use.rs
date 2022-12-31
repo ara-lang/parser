@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::identifier::Identifier;
 use crate::tree::Node;
 
@@ -10,32 +9,32 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum UseDefinition {
     Default {
-        r#use: Span,
+        r#use: usize,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
-        semicolon: Span,
+        semicolon: usize,
     },
     // use function a as b;
     Function {
-        r#use: Span,
-        function: Span,
+        r#use: usize,
+        function: usize,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
-        semicolon: Span,
+        semicolon: usize,
     },
     Constant {
-        r#use: Span,
-        r#const: Span,
+        r#use: usize,
+        r#const: usize,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
-        semicolon: Span,
+        semicolon: usize,
     },
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UseDefinitionSymbolAlias {
-    pub r#as: Span,
+    pub r#as: usize,
     pub alias: Identifier,
 }
 
@@ -44,7 +43,7 @@ impl Node for UseDefinition {
         match self {
             UseDefinition::Default { r#use, .. }
             | UseDefinition::Function { r#use, .. }
-            | UseDefinition::Constant { r#use, .. } => r#use.position,
+            | UseDefinition::Constant { r#use, .. } => *r#use,
         }
     }
 
@@ -52,7 +51,7 @@ impl Node for UseDefinition {
         match self {
             UseDefinition::Default { semicolon, .. }
             | UseDefinition::Function { semicolon, .. }
-            | UseDefinition::Constant { semicolon, .. } => semicolon.position + 1,
+            | UseDefinition::Constant { semicolon, .. } => semicolon + 1,
         }
     }
 
@@ -75,7 +74,7 @@ impl Node for UseDefinition {
 
 impl Node for UseDefinitionSymbolAlias {
     fn initial_position(&self) -> usize {
-        self.r#as.position
+        self.r#as
     }
 
     fn final_position(&self) -> usize {

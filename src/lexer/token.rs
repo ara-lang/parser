@@ -6,24 +6,6 @@ use std::fmt::Display;
 
 use crate::lexer::byte_string::ByteString;
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, Serialize, JsonSchema)]
-#[serde(rename_all = "snake_case")]
-pub struct Span {
-    pub line: usize,
-    pub column: usize,
-    pub position: usize,
-}
-
-impl Span {
-    pub fn new(line: usize, column: usize, position: usize) -> Self {
-        Self {
-            line,
-            column,
-            position,
-        }
-    }
-}
-
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OpenTagKind {
@@ -223,7 +205,7 @@ pub enum TokenKind {
 #[serde(rename_all = "snake_case")]
 pub struct Token {
     pub kind: TokenKind,
-    pub span: Span,
+    pub position: usize,
     pub value: ByteString,
 }
 
@@ -231,7 +213,7 @@ impl Default for Token {
     fn default() -> Self {
         Self {
             kind: TokenKind::Eof,
-            span: Span::new(0, 0, 0),
+            position: 0,
             value: ByteString::default(),
         }
     }

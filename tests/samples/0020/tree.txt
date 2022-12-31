@@ -9,82 +9,46 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                class: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 7,
-                        position: 6,
-                    },
+                    position: 6,
                     value: "Foo",
                 },
                 templates: None,
                 extends: None,
                 implements: Some(
                     ClassDefinitionImplements {
-                        implements: Span {
-                            line: 1,
-                            column: 11,
-                            position: 10,
-                        },
+                        implements: 10,
                         interfaces: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 1,
-                                            column: 22,
-                                            position: 21,
-                                        },
+                                        position: 21,
                                         value: "Bar",
                                     },
                                     templates: None,
                                 },
                                 TemplatedIdentifier {
                                     name: Identifier {
-                                        span: Span {
-                                            line: 1,
-                                            column: 27,
-                                            position: 26,
-                                        },
+                                        position: 26,
                                         value: "Baz",
                                     },
                                     templates: None,
                                 },
                             ],
                             commas: [
-                                Span {
-                                    line: 1,
-                                    column: 25,
-                                    position: 24,
-                                },
+                                24,
                             ],
                         },
                     },
                 ),
                 body: ClassDefinitionBody {
-                    left_brace: Span {
-                        line: 1,
-                        column: 31,
-                        position: 30,
-                    },
+                    left_brace: 30,
                     members: [],
-                    right_brace: Span {
-                        line: 1,
-                        column: 32,
-                        position: 31,
-                    },
+                    right_brace: 31,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 1,
-        column: 33,
-        position: 32,
-    },
+    eof: 32,
 }

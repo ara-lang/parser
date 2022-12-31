@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
@@ -11,55 +10,55 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TypeAliasDefinition {
-    pub r#type: Span,
+    pub r#type: usize,
     pub name: TemplatedIdentifier,
-    pub equals: Span,
+    pub equals: usize,
     pub data_type: TypeDefinition,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum TypeDefinition {
     Identifier(TemplatedIdentifier),
-    Nullable(Span, Box<TypeDefinition>),
+    Nullable(usize, Box<TypeDefinition>),
     Union(Vec<TypeDefinition>),
     Intersection(Vec<TypeDefinition>),
-    Void(Span),
-    Null(Span),
-    True(Span),
-    False(Span),
-    Never(Span),
-    Float(Span),
-    Boolean(Span),
-    Integer(Span),
-    String(Span),
-    Dict(Span, TypeTemplateGroupDefinition),
-    Vec(Span, TypeTemplateGroupDefinition),
-    Object(Span),
-    Mixed(Span),
-    NonNull(Span),
-    Resource(Span),
-    Iterable(Span, TypeTemplateGroupDefinition),
+    Void(usize),
+    Null(usize),
+    True(usize),
+    False(usize),
+    Never(usize),
+    Float(usize),
+    Boolean(usize),
+    Integer(usize),
+    String(usize),
+    Dict(usize, TypeTemplateGroupDefinition),
+    Vec(usize, TypeTemplateGroupDefinition),
+    Object(usize),
+    Mixed(usize),
+    NonNull(usize),
+    Resource(usize),
+    Iterable(usize, TypeTemplateGroupDefinition),
     Function {
-        outer_left_parenthesis: Span,
-        r#fn: Span,
-        left_parenthesis: Span,
+        outer_left_parenthesis: usize,
+        r#fn: usize,
+        left_parenthesis: usize,
         parameter_type_definitions: CommaSeparated<TypeDefinition>,
-        right_parenthesis: Span,
-        colon: Span,
+        right_parenthesis: usize,
+        colon: usize,
         return_type_definition: Box<TypeDefinition>,
-        outer_right_parenthesis: Span,
+        outer_right_parenthesis: usize,
     },
     Tuple {
-        left_parenthesis: Span,
+        left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
     Parenthesized {
-        left_parenthesis: Span,
+        left_parenthesis: usize,
         type_definition: Box<TypeDefinition>,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
 }
 
@@ -97,11 +96,11 @@ impl TypeDefinition {
 
 impl Node for TypeAliasDefinition {
     fn initial_position(&self) -> usize {
-        self.r#type.position
+        self.r#type
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -113,35 +112,35 @@ impl Node for TypeDefinition {
     fn initial_position(&self) -> usize {
         match &self {
             TypeDefinition::Identifier(inner) => inner.initial_position(),
-            TypeDefinition::Nullable(span, _) => span.position,
+            TypeDefinition::Nullable(position, _) => *position,
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
-            TypeDefinition::Void(span) => span.position,
-            TypeDefinition::Null(span) => span.position,
-            TypeDefinition::True(span) => span.position,
-            TypeDefinition::False(span) => span.position,
-            TypeDefinition::Never(span) => span.position,
-            TypeDefinition::Float(span) => span.position,
-            TypeDefinition::Boolean(span) => span.position,
-            TypeDefinition::Integer(span) => span.position,
-            TypeDefinition::String(span) => span.position,
-            TypeDefinition::Dict(span, _) => span.position,
-            TypeDefinition::Vec(span, _) => span.position,
-            TypeDefinition::Object(span) => span.position,
-            TypeDefinition::Mixed(span) => span.position,
-            TypeDefinition::NonNull(span) => span.position,
-            TypeDefinition::Resource(span) => span.position,
-            TypeDefinition::Iterable(span, _) => span.position,
+            TypeDefinition::Void(position) => *position,
+            TypeDefinition::Null(position) => *position,
+            TypeDefinition::True(position) => *position,
+            TypeDefinition::False(position) => *position,
+            TypeDefinition::Never(position) => *position,
+            TypeDefinition::Float(position) => *position,
+            TypeDefinition::Boolean(position) => *position,
+            TypeDefinition::Integer(position) => *position,
+            TypeDefinition::String(position) => *position,
+            TypeDefinition::Dict(position, _) => *position,
+            TypeDefinition::Vec(position, _) => *position,
+            TypeDefinition::Object(position) => *position,
+            TypeDefinition::Mixed(position) => *position,
+            TypeDefinition::NonNull(position) => *position,
+            TypeDefinition::Resource(position) => *position,
+            TypeDefinition::Iterable(position, _) => *position,
             TypeDefinition::Function {
                 outer_left_parenthesis,
                 ..
-            } => outer_left_parenthesis.position,
+            } => *outer_left_parenthesis,
             TypeDefinition::Tuple {
                 left_parenthesis, ..
-            } => left_parenthesis.position,
+            } => *left_parenthesis,
             TypeDefinition::Parenthesized {
                 left_parenthesis, ..
-            } => left_parenthesis.position,
+            } => *left_parenthesis,
         }
     }
 
@@ -151,32 +150,32 @@ impl Node for TypeDefinition {
             TypeDefinition::Nullable(_, inner) => inner.final_position(),
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
-            TypeDefinition::Void(span) => span.position + 4,
-            TypeDefinition::Null(span) => span.position + 4,
-            TypeDefinition::True(span) => span.position + 4,
-            TypeDefinition::False(span) => span.position + 5,
-            TypeDefinition::Never(span) => span.position + 5,
-            TypeDefinition::Float(span) => span.position + 5,
-            TypeDefinition::Boolean(span) => span.position + 7,
-            TypeDefinition::Integer(span) => span.position + 7,
-            TypeDefinition::String(span) => span.position + 6,
+            TypeDefinition::Void(position) => position + 4,
+            TypeDefinition::Null(position) => position + 4,
+            TypeDefinition::True(position) => position + 4,
+            TypeDefinition::False(position) => position + 5,
+            TypeDefinition::Never(position) => position + 5,
+            TypeDefinition::Float(position) => position + 5,
+            TypeDefinition::Boolean(position) => position + 7,
+            TypeDefinition::Integer(position) => position + 7,
+            TypeDefinition::String(position) => position + 6,
             TypeDefinition::Dict(_, template) => template.final_position(),
             TypeDefinition::Vec(_, template) => template.final_position(),
-            TypeDefinition::Object(span) => span.position + 6,
-            TypeDefinition::Mixed(span) => span.position + 5,
-            TypeDefinition::NonNull(span) => span.position + 7,
-            TypeDefinition::Resource(span) => span.position + 8,
+            TypeDefinition::Object(position) => position + 6,
+            TypeDefinition::Mixed(position) => position + 5,
+            TypeDefinition::NonNull(position) => position + 7,
+            TypeDefinition::Resource(position) => position + 8,
             TypeDefinition::Iterable(_, template) => template.final_position(),
             TypeDefinition::Function {
                 outer_right_parenthesis,
                 ..
-            } => outer_right_parenthesis.position + 1,
+            } => outer_right_parenthesis + 1,
             TypeDefinition::Tuple {
                 right_parenthesis, ..
-            } => right_parenthesis.position + 1,
+            } => right_parenthesis + 1,
             TypeDefinition::Parenthesized {
                 right_parenthesis, ..
-            } => right_parenthesis.position + 1,
+            } => right_parenthesis + 1,
         }
     }
 

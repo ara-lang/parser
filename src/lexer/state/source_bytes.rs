@@ -1,10 +1,8 @@
-use crate::lexer::token::Span;
-
 #[derive(Debug)]
 pub struct SourceBytes<'a> {
     input: &'a [u8],
     length: usize,
-    span: Span,
+    position: usize,
 }
 
 impl<'a> SourceBytes<'a> {
@@ -15,30 +13,20 @@ impl<'a> SourceBytes<'a> {
         Self {
             input,
             length,
-            span: Span::new(1, 1, 0),
+            position: 0,
         }
     }
 
-    pub const fn span(&self) -> Span {
-        self.span
+    pub const fn position(&self) -> usize {
+        self.position
     }
 
     pub const fn eof(&self) -> bool {
-        self.span.position >= self.length
+        self.position >= self.length
     }
 
     pub fn next(&mut self) {
-        if !self.eof() {
-            match self.input[self.span.position] {
-                b'\n' => {
-                    self.span.line += 1;
-                    self.span.column = 1;
-                }
-                _ => self.span.column += 1,
-            }
-        }
-
-        self.span.position += 1;
+        self.position += 1;
     }
 
     pub fn skip(&mut self, count: usize) {
@@ -56,10 +44,10 @@ impl<'a> SourceBytes<'a> {
     }
 
     pub fn current(&self) -> Option<&'a u8> {
-        if self.span.position >= self.length {
+        if self.position >= self.length {
             None
         } else {
-            Some(&self.input[self.span.position])
+            Some(&self.input[self.position])
         }
     }
 
@@ -78,7 +66,7 @@ impl<'a> SourceBytes<'a> {
     }
 
     pub fn peek(&self, i: usize, n: usize) -> &'a [u8] {
-        let from = self.span.position + i;
+        let from = self.position + i;
         if from >= self.length {
             return &self.input[self.length..self.length];
         }
@@ -92,16 +80,16 @@ impl<'a> SourceBytes<'a> {
     }
 
     const fn to_bound(&self, n: usize) -> (usize, usize) {
-        if self.span.position >= self.length {
+        if self.position >= self.length {
             return (self.length, self.length);
         }
 
-        let mut until = self.span.position + n;
+        let mut until = self.position + n;
 
         if until >= self.length {
             until = self.length;
         }
 
-        (self.span.position, until)
+        (self.position, until)
     }
 }

@@ -1,4 +1,3 @@
-use crate::lexer::token::Span;
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::attribute;
 use crate::parser::internal::definition::constant;
@@ -33,17 +32,17 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
 
     let backed_type: Option<BackedEnumTypeDefinition> =
         if state.iterator.current().kind == TokenKind::Colon {
-            let span = utils::skip_colon(state)?;
+            let position = utils::skip_colon(state)?;
 
             let identifier = identifier::identifier(state)?;
             Some(match &identifier.value[..] {
-                b"string" => BackedEnumTypeDefinition::String(span, identifier),
-                b"int" => BackedEnumTypeDefinition::Int(span, identifier),
+                b"string" => BackedEnumTypeDefinition::String(position, identifier),
+                b"int" => BackedEnumTypeDefinition::Int(position, identifier),
                 _ => {
                     issue::report!(state, invalid_enum_backing_type(&identifier));
 
                     // don't panic, just return a dummy value
-                    BackedEnumTypeDefinition::String(span, identifier)
+                    BackedEnumTypeDefinition::String(position, identifier)
                 }
             })
         } else {
@@ -52,7 +51,7 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
 
     let current = state.iterator.current();
     let implements = if current.kind == TokenKind::Implements {
-        let span = current.span;
+        let position = current.position;
 
         state.iterator.next();
 
@@ -63,7 +62,7 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
         )?;
 
         Some(EnumImplementsDefinition {
-            implements: span,
+            implements: position,
             interfaces,
         })
     } else {
@@ -131,7 +130,7 @@ fn unit_enum_definition_member(
     if current.kind == TokenKind::Case {
         let attributes = state.get_attributes();
 
-        let start = current.span;
+        let start = current.position;
         state.iterator.next();
 
         let name = identifier::identifier_maybe_reserved(state)?;
@@ -141,11 +140,11 @@ fn unit_enum_definition_member(
             // parse the value, but don't do anything with it.
             let _ = utils::skip(state, TokenKind::Equals)?;
             let _ = expression::create(state)?;
-            let semicolon_span = utils::skip_semicolon(state)?;
+            let semicolon = utils::skip_semicolon(state)?;
 
             issue::report!(
                 state,
-                unit_enum_case_cannot_have_value(enum_name, &name, semicolon_span)
+                unit_enum_case_cannot_have_value(enum_name, &name, semicolon)
             );
 
             return Ok(None);
@@ -187,7 +186,7 @@ fn backed_enum_definition_member(
     if current.kind == TokenKind::Case {
         let attributes = state.get_attributes();
 
-        let case = current.span;
+        let case = current.position;
         state.iterator.next();
 
         let name = identifier::identifier_maybe_reserved(state)?;
@@ -195,11 +194,11 @@ fn backed_enum_definition_member(
         let current = state.iterator.current();
         if current.kind == TokenKind::SemiColon {
             // parse the semicolon, but don't do anything with it.
-            let semicolon_span = utils::skip_semicolon(state)?;
+            let semicolon = utils::skip_semicolon(state)?;
 
             issue::report!(
                 state,
-                backed_enum_case_must_have_value(enum_name, &name, semicolon_span)
+                backed_enum_case_must_have_value(enum_name, &name, semicolon)
             );
 
             return Ok(None);
@@ -233,7 +232,7 @@ fn backed_enum_definition_member(
 
 fn concrete_method_definition(
     state: &mut State,
-    modifiers: Vec<(Span, TokenKind)>,
+    modifiers: Vec<(usize, TokenKind)>,
     enum_name: &Identifier,
 ) -> ParseResult<Option<ConcreteMethodDefinition>> {
     let modifiers = modifier::enum_method_modifier_definition_group(state, modifiers)?;

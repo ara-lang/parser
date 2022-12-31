@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "main",
                 },
                 templates: None,
@@ -24,127 +16,71 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 14,
-                        position: 13,
-                    },
+                    left_parenthesis: 13,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 15,
-                        position: 14,
-                    },
+                    right_parenthesis: 14,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 16,
-                        position: 15,
-                    },
+                    colon: 15,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 18,
-                            position: 17,
-                        },
+                        17,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 23,
-                        position: 22,
-                    },
+                    left_brace: 22,
                     statements: [
                         If(
                             IfStatement {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: Span {
-                                    line: 2,
-                                    column: 5,
-                                    position: 28,
-                                },
+                                if: 28,
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        left_parenthesis: Span {
-                                            line: 2,
-                                            column: 7,
-                                            position: 30,
-                                        },
+                                        left_parenthesis: 30,
                                         expression: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 8,
-                                                    position: 31,
-                                                },
+                                                position: 31,
                                                 name: "$foo",
                                             },
                                         ),
-                                        right_parenthesis: Span {
-                                            line: 2,
-                                            column: 12,
-                                            position: 35,
-                                        },
+                                        right_parenthesis: 35,
                                     },
                                 ),
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: Span {
-                                        line: 2,
-                                        column: 14,
-                                        position: 37,
-                                    },
+                                    left_brace: 37,
                                     statements: [
                                         Return(
                                             Explicit {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: Span {
-                                                    line: 2,
-                                                    column: 16,
-                                                    position: 39,
-                                                },
+                                                return: 39,
                                                 expression: Some(
                                                     Variable(
                                                         Variable {
-                                                            span: Span {
-                                                                line: 2,
-                                                                column: 23,
-                                                                position: 46,
-                                                            },
+                                                            position: 46,
                                                             name: "$foo",
                                                         },
                                                     ),
                                                 ),
-                                                semicolon: Span {
-                                                    line: 2,
-                                                    column: 27,
-                                                    position: 50,
-                                                },
+                                                semicolon: 50,
                                             },
                                         ),
                                     ],
-                                    right_brace: Span {
-                                        line: 2,
-                                        column: 29,
-                                        position: 52,
-                                    },
+                                    right_brace: 52,
                                 },
                                 elseifs: [],
                                 else: Some(
@@ -152,57 +88,33 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: Span {
-                                            line: 2,
-                                            column: 31,
-                                            position: 54,
-                                        },
+                                        else: 54,
                                         block: Block(
                                             BlockStatement {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left_brace: Span {
-                                                    line: 2,
-                                                    column: 36,
-                                                    position: 59,
-                                                },
+                                                left_brace: 59,
                                                 statements: [
                                                     Return(
                                                         Explicit {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            return: Span {
-                                                                line: 2,
-                                                                column: 38,
-                                                                position: 61,
-                                                            },
+                                                            return: 61,
                                                             expression: Some(
                                                                 Variable(
                                                                     Variable {
-                                                                        span: Span {
-                                                                            line: 2,
-                                                                            column: 45,
-                                                                            position: 68,
-                                                                        },
+                                                                        position: 68,
                                                                         name: "$foo",
                                                                     },
                                                                 ),
                                                             ),
-                                                            semicolon: Span {
-                                                                line: 2,
-                                                                column: 49,
-                                                                position: 72,
-                                                            },
+                                                            semicolon: 72,
                                                         },
                                                     ),
                                                 ],
-                                                right_brace: Span {
-                                                    line: 2,
-                                                    column: 51,
-                                                    position: 74,
-                                                },
+                                                right_brace: 74,
                                             },
                                         ),
                                     },
@@ -210,18 +122,10 @@ DefinitionTree {
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 3,
-                        column: 1,
-                        position: 76,
-                    },
+                    right_brace: 76,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 4,
-        column: 1,
-        position: 78,
-    },
+    eof: 78,
 }

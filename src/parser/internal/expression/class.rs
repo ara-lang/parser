@@ -39,7 +39,7 @@ pub fn anonymous_class_expression(state: &mut State) -> ParseResult<AnonymousCla
     let extends = if current.kind == TokenKind::Extends {
         state.iterator.next();
 
-        let extends = current.span;
+        let extends = current.position;
         let parent = identifier::fully_qualified_templated_identifier(state)?;
 
         Some(ClassDefinitionExtends { extends, parent })
@@ -51,7 +51,7 @@ pub fn anonymous_class_expression(state: &mut State) -> ParseResult<AnonymousCla
     let implements = if current.kind == TokenKind::Implements {
         state.iterator.next();
 
-        let implements = current.span;
+        let implements = current.position;
         let interfaces = utils::at_least_one_comma_separated(
             state,
             &identifier::fully_qualified_templated_identifier,

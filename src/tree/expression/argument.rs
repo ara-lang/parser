@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
@@ -14,14 +13,14 @@ use crate::tree::Node;
 pub enum ArgumentExpression {
     Positional {
         comments: CommentGroup,
-        ellipsis: Option<Span>,
+        ellipsis: Option<usize>,
         value: Expression,
     },
     Named {
         comments: CommentGroup,
         name: Identifier,
-        colon: Span,
-        ellipsis: Option<Span>,
+        colon: usize,
+        ellipsis: Option<usize>,
         value: Expression,
     },
 }
@@ -30,18 +29,18 @@ pub enum ArgumentExpression {
 #[serde(rename_all = "snake_case")]
 pub struct ArgumentListExpression {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
+    pub left_parenthesis: usize,
     pub arguments: CommaSeparated<ArgumentExpression>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ArgumentPlaceholderExpression {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
-    pub ellipsis: Span,
-    pub right_parenthesis: Span,
+    pub left_parenthesis: usize,
+    pub ellipsis: usize,
+    pub right_parenthesis: usize,
 }
 
 impl Node for ArgumentExpression {
@@ -56,9 +55,7 @@ impl Node for ArgumentExpression {
         match self {
             ArgumentExpression::Positional {
                 ellipsis, value, ..
-            } => ellipsis
-                .map(|ellipsis| ellipsis.position)
-                .unwrap_or_else(|| value.initial_position()),
+            } => ellipsis.unwrap_or_else(|| value.initial_position()),
             ArgumentExpression::Named { name, .. } => name.initial_position(),
         }
     }
@@ -84,11 +81,11 @@ impl Node for ArgumentListExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -106,11 +103,11 @@ impl Node for ArgumentPlaceholderExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

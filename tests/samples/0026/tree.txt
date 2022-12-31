@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 3,
-                    column: 1,
-                    position: 2,
-                },
+                function: 2,
                 name: Identifier {
-                    span: Span {
-                        line: 3,
-                        column: 10,
-                        position: 11,
-                    },
+                    position: 11,
                     value: "foo",
                 },
                 templates: None,
@@ -24,123 +16,63 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 3,
-                        column: 13,
-                        position: 14,
-                    },
+                    left_parenthesis: 14,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 3,
-                        column: 14,
-                        position: 15,
-                    },
+                    right_parenthesis: 15,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 3,
-                        column: 15,
-                        position: 16,
-                    },
+                    colon: 16,
                     type_definition: Void(
-                        Span {
-                            line: 3,
-                            column: 17,
-                            position: 18,
-                        },
+                        18,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 3,
-                        column: 22,
-                        position: 23,
-                    },
+                    left_brace: 23,
                     statements: [
                         DoWhile(
                             DoWhileStatement {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                do: Span {
-                                    line: 4,
-                                    column: 5,
-                                    position: 29,
-                                },
+                                do: 29,
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: Span {
-                                        line: 4,
-                                        column: 8,
-                                        position: 32,
-                                    },
+                                    left_brace: 32,
                                     statements: [],
-                                    right_brace: Span {
-                                        line: 4,
-                                        column: 10,
-                                        position: 34,
-                                    },
+                                    right_brace: 34,
                                 },
-                                while: Span {
-                                    line: 4,
-                                    column: 12,
-                                    position: 36,
-                                },
+                                while: 36,
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        left_parenthesis: Span {
-                                            line: 4,
-                                            column: 18,
-                                            position: 42,
-                                        },
+                                        left_parenthesis: 42,
                                         expression: Variable(
                                             Variable {
-                                                span: Span {
-                                                    line: 4,
-                                                    column: 19,
-                                                    position: 43,
-                                                },
+                                                position: 43,
                                                 name: "$a",
                                             },
                                         ),
-                                        right_parenthesis: Span {
-                                            line: 4,
-                                            column: 21,
-                                            position: 45,
-                                        },
+                                        right_parenthesis: 45,
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 4,
-                                    column: 22,
-                                    position: 46,
-                                },
+                                semicolon: 46,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 5,
-                        column: 1,
-                        position: 48,
-                    },
+                    right_brace: 48,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 6,
-        column: 1,
-        position: 50,
-    },
+    eof: 50,
 }

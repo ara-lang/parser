@@ -1,4 +1,3 @@
-use crate::lexer::token::Span;
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::r#type;
 use crate::parser::internal::utils;
@@ -23,7 +22,7 @@ pub fn generic_group(state: &mut State) -> ParseResult<GenericGroupExpression> {
                     break;
                 }
 
-                commas.push(current.span);
+                commas.push(current.position);
 
                 state.iterator.next();
                 current = state.iterator.current();
@@ -37,16 +36,11 @@ pub fn generic_group(state: &mut State) -> ParseResult<GenericGroupExpression> {
             if let Some(token) = state.ignored_shift_at {
                 utils::skip(state, TokenKind::RightShift)?;
                 state.ignored_shift_at = None;
-
-                Span {
-                    line: token.span.line,
-                    column: token.span.column + 1,
-                    position: token.span.position + 1,
-                }
+                token.position + 1
             } else if current.kind == TokenKind::RightShift {
                 state.ignored_shift_at = Some(current);
 
-                current.span
+                current.position
             } else {
                 utils::skip(state, TokenKind::GreaterThan)?
             }

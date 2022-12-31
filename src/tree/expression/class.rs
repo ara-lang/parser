@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::class::ClassDefinitionExtends;
@@ -19,7 +18,7 @@ use crate::tree::Node;
 pub struct AnonymousClassExpression {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeDefinitionGroup>,
-    pub class: Span,
+    pub class: usize,
     pub arguments: ArgumentListExpression,
     pub extends: Option<ClassDefinitionExtends>,
     pub implements: Option<ClassDefinitionImplements>,
@@ -29,9 +28,9 @@ pub struct AnonymousClassExpression {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousClassExpressionBody {
-    pub left_brace: Span,
+    pub left_brace: usize,
     pub members: Vec<AnonymousClassExpressionMember>,
-    pub right_brace: Span,
+    pub right_brace: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -49,7 +48,7 @@ impl Node for AnonymousClassExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.class.position
+        self.class
     }
 
     fn final_position(&self) -> usize {
@@ -125,11 +124,11 @@ impl Node for AnonymousClassExpressionBody {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_brace.position
+        self.left_brace
     }
 
     fn final_position(&self) -> usize {
-        self.right_brace.position + 1
+        self.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

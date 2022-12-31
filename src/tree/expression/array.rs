@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::utils::CommaSeparated;
@@ -12,10 +11,10 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct VecExpression {
     pub comments: CommentGroup,
-    pub vec: Span,
-    pub left_bracket: Span,
+    pub vec: usize,
+    pub left_bracket: usize,
     pub members: CommaSeparated<VecExpressionItem>,
-    pub right_bracket: Span,
+    pub right_bracket: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -28,17 +27,17 @@ pub struct VecExpressionItem {
 #[serde(rename_all = "snake_case")]
 pub struct DictExpression {
     pub comments: CommentGroup,
-    pub dict: Span,
-    pub left_bracket: Span,
+    pub dict: usize,
+    pub left_bracket: usize,
     pub members: CommaSeparated<DictExpressionItem>,
-    pub right_bracket: Span,
+    pub right_bracket: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct DictExpressionItem {
     pub key: Expression,
-    pub double_arrow: Span,
+    pub double_arrow: usize,
     pub value: Expression,
 }
 
@@ -46,9 +45,9 @@ pub struct DictExpressionItem {
 #[serde(rename_all = "snake_case")]
 pub struct TupleExpression {
     pub comments: CommentGroup,
-    pub left_parenthesis: Span,
+    pub left_parenthesis: usize,
     pub members: CommaSeparated<Expression>,
-    pub right_parenthesis: Span,
+    pub right_parenthesis: usize,
 }
 
 impl Node for VecExpressionItem {
@@ -71,11 +70,11 @@ impl Node for VecExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.vec.position
+        self.vec
     }
 
     fn final_position(&self) -> usize {
-        self.right_bracket.position + 1
+        self.right_bracket + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -107,11 +106,11 @@ impl Node for DictExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.dict.position
+        self.dict
     }
 
     fn final_position(&self) -> usize {
-        self.right_bracket.position + 1
+        self.right_bracket + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -129,11 +128,11 @@ impl Node for TupleExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.left_parenthesis.position
+        self.left_parenthesis
     }
 
     fn final_position(&self) -> usize {
-        self.right_parenthesis.position + 1
+        self.right_parenthesis + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

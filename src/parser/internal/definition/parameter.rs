@@ -31,7 +31,7 @@ pub fn function_like_parameter_list_definition(
             let ellipsis = if current.kind == TokenKind::Ellipsis {
                 state.iterator.next();
 
-                Some(current.span)
+                Some(current.position)
             } else {
                 None
             };
@@ -51,7 +51,7 @@ pub fn function_like_parameter_list_definition(
                 state.iterator.next();
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
-                    equals: current.span,
+                    equals: current.position,
                     value: expression::create(state)?,
                 })
             } else {
@@ -103,7 +103,7 @@ pub fn constructor_parameter_list_definition(
                 state.iterator.next();
                 let variable = variable::parse(state)?;
 
-                (Some(current.span), variable)
+                (Some(current.position), variable)
             } else {
                 (None, variable::parse(state)?)
             };
@@ -120,7 +120,7 @@ pub fn constructor_parameter_list_definition(
                 state.iterator.next();
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
-                    equals: current.span,
+                    equals: current.position,
                     value: expression::create(state)?,
                 })
             } else {

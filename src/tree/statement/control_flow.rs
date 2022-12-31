@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::statement::block::BlockStatement;
@@ -12,7 +11,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct IfStatement {
     pub comments: CommentGroup,
-    pub r#if: Span,
+    pub r#if: usize,
     pub condition: Expression,
     pub block: BlockStatement,
     pub elseifs: Vec<IfStatementElseIf>,
@@ -23,7 +22,7 @@ pub struct IfStatement {
 #[serde(rename_all = "snake_case")]
 pub struct IfStatementElseIf {
     pub comments: CommentGroup,
-    pub elseif: Span,
+    pub elseif: usize,
     pub condition: Expression,
     pub block: BlockStatement,
 }
@@ -32,7 +31,7 @@ pub struct IfStatementElseIf {
 #[serde(rename_all = "snake_case")]
 pub struct IfStatementElse {
     pub comments: CommentGroup,
-    pub r#else: Span,
+    pub r#else: usize,
     pub block: IfStatementElseBlock,
 }
 
@@ -49,7 +48,7 @@ impl Node for IfStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#if.position
+        self.r#if
     }
 
     fn final_position(&self) -> usize {
@@ -76,7 +75,7 @@ impl Node for IfStatementElseIf {
     }
 
     fn initial_position(&self) -> usize {
-        self.elseif.position
+        self.elseif
     }
 
     fn final_position(&self) -> usize {
@@ -94,7 +93,7 @@ impl Node for IfStatementElse {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#else.position
+        self.r#else
     }
 
     fn final_position(&self) -> usize {

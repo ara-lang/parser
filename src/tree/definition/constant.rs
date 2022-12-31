@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
@@ -15,7 +14,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct ConstantDefinitionEntry {
     pub name: Identifier,
-    pub equals: Span,
+    pub equals: usize,
     pub value: Expression,
 }
 
@@ -23,9 +22,9 @@ pub struct ConstantDefinitionEntry {
 #[serde(rename_all = "snake_case")]
 pub struct ConstantDefinition {
     pub comments: CommentGroup,
-    pub r#const: Span,
+    pub r#const: usize,
     pub entries: CommaSeparated<ConstantDefinitionEntry>,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -35,9 +34,9 @@ pub struct ClassishConstantDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: ConstantModifierDefinitionGroup,
-    pub r#const: Span,
+    pub r#const: usize,
     pub entries: CommaSeparated<ConstantDefinitionEntry>,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 impl Node for ConstantDefinitionEntry {
@@ -60,11 +59,11 @@ impl Node for ConstantDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#const.position
+        self.r#const
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position
+        self.semicolon
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -87,12 +86,12 @@ impl Node for ClassishConstantDefinition {
         } else if let Some(modifier) = self.modifiers.modifiers.first() {
             modifier.initial_position()
         } else {
-            self.r#const.position
+            self.r#const
         }
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position
+        self.semicolon
     }
 
     fn children(&self) -> Vec<&dyn Node> {

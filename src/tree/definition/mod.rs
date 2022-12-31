@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::definition::class::ClassDefinition;
 use crate::tree::definition::constant::ConstantDefinition;
 use crate::tree::definition::function::FunctionDefinition;
@@ -30,7 +29,7 @@ pub mod r#use;
 #[serde(rename_all = "snake_case")]
 pub struct DefinitionTree {
     pub definitions: Vec<Definition>,
-    pub eof: Span,
+    pub eof: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -52,7 +51,7 @@ impl Node for DefinitionTree {
     }
 
     fn final_position(&self) -> usize {
-        self.eof.position
+        self.eof
     }
     fn children(&self) -> Vec<&dyn Node> {
         self.definitions.iter().map(|d| d as &dyn Node).collect()

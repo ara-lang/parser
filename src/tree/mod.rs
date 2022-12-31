@@ -32,10 +32,10 @@ pub trait Node: Any {
         None
     }
 
-    /// The span of the first token in the node.
+    /// The position of the first token in the node.
     fn initial_position(&self) -> usize;
 
-    /// The span of the last token in the node.
+    /// The position of the last token in the node, including the last token itself.
     ///
     /// This is not necessarily the same as the last token in the node's children.
     fn final_position(&self) -> usize;

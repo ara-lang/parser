@@ -7,26 +7,14 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: Span {
-                        line: 1,
-                        column: 1,
-                        position: 0,
-                    },
+                    enum: 0,
                     name: Identifier {
-                        span: Span {
-                            line: 1,
-                            column: 6,
-                            position: 5,
-                        },
+                        position: 5,
                         value: "foo",
                     },
                     implements: None,
                     body: UnitEnumBodyDefinition {
-                        left_brace: Span {
-                            line: 1,
-                            column: 10,
-                            position: 9,
-                        },
+                        left_brace: 9,
                         members: [
                             Method(
                                 ConcreteMethodDefinition {
@@ -37,25 +25,13 @@ DefinitionTree {
                                     modifiers: MethodModifierDefinitionGroup {
                                         modifiers: [
                                             Public(
-                                                Span {
-                                                    line: 2,
-                                                    column: 5,
-                                                    position: 15,
-                                                },
+                                                15,
                                             ),
                                         ],
                                     },
-                                    function: Span {
-                                        line: 2,
-                                        column: 12,
-                                        position: 22,
-                                    },
+                                    function: 22,
                                     name: Identifier {
-                                        span: Span {
-                                            line: 2,
-                                            column: 21,
-                                            position: 31,
-                                        },
+                                        position: 31,
                                         value: "bar",
                                     },
                                     templates: None,
@@ -63,35 +39,19 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        left_parenthesis: Span {
-                                            line: 2,
-                                            column: 24,
-                                            position: 34,
-                                        },
+                                        left_parenthesis: 34,
                                         parameters: CommaSeparated {
                                             inner: [],
                                             commas: [],
                                         },
-                                        right_parenthesis: Span {
-                                            line: 2,
-                                            column: 25,
-                                            position: 35,
-                                        },
+                                        right_parenthesis: 35,
                                     },
                                     return_type: FunctionLikeReturnTypeDefinition {
-                                        colon: Span {
-                                            line: 2,
-                                            column: 26,
-                                            position: 36,
-                                        },
+                                        colon: 36,
                                         type_definition: Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {
-                                                    span: Span {
-                                                        line: 2,
-                                                        column: 28,
-                                                        position: 38,
-                                                    },
+                                                    position: 38,
                                                     value: "parent",
                                                 },
                                                 templates: None,
@@ -103,11 +63,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        left_brace: Span {
-                                            line: 2,
-                                            column: 35,
-                                            position: 45,
-                                        },
+                                        left_brace: 45,
                                         statements: [
                                             Expression(
                                                 ExpressionStatement {
@@ -119,16 +75,8 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            exit: Span {
-                                                                line: 3,
-                                                                column: 9,
-                                                                position: 55,
-                                                            },
-                                                            left_parenthesis: Span {
-                                                                line: 3,
-                                                                column: 13,
-                                                                position: 59,
-                                                            },
+                                                            exit: 55,
+                                                            left_parenthesis: 59,
                                                             value: Some(
                                                                 Literal(
                                                                     Integer(
@@ -137,52 +85,28 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "1",
-                                                                            span: Span {
-                                                                                line: 3,
-                                                                                column: 14,
-                                                                                position: 60,
-                                                                            },
+                                                                            position: 60,
                                                                         },
                                                                     ),
                                                                 ),
                                                             ),
-                                                            right_parenthesis: Span {
-                                                                line: 3,
-                                                                column: 15,
-                                                                position: 61,
-                                                            },
+                                                            right_parenthesis: 61,
                                                         },
                                                     ),
-                                                    semicolon: Span {
-                                                        line: 3,
-                                                        column: 16,
-                                                        position: 62,
-                                                    },
+                                                    semicolon: 62,
                                                 },
                                             ),
                                         ],
-                                        right_brace: Span {
-                                            line: 4,
-                                            column: 5,
-                                            position: 68,
-                                        },
+                                        right_brace: 68,
                                     },
                                 },
                             ),
                         ],
-                        right_brace: Span {
-                            line: 5,
-                            column: 1,
-                            position: 70,
-                        },
+                        right_brace: 70,
                     },
                 },
             ),
         ),
     ],
-    eof: Span {
-        line: 6,
-        column: 1,
-        position: 72,
-    },
+    eof: 72,
 }

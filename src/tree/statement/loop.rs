@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::literal::LiteralInteger;
 use crate::tree::expression::Expression;
@@ -15,7 +14,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct ForeachStatement {
     pub comments: CommentGroup,
-    pub foreach: Span,
+    pub foreach: usize,
     pub iterator: ForeachStatementIterator,
     pub block: BlockStatement,
 }
@@ -25,31 +24,31 @@ pub struct ForeachStatement {
 pub enum ForeachStatementIterator {
     Value {
         expression: Expression,
-        r#as: Span,
+        r#as: usize,
         value: Variable,
     },
     ParenthesizedValue {
-        left_parenthesis: Span,
+        left_parenthesis: usize,
         expression: Expression,
-        r#as: Span,
+        r#as: usize,
         value: Variable,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
     KeyAndValue {
         expression: Expression,
-        r#as: Span,
+        r#as: usize,
         key: Variable,
-        double_arrow: Span,
+        double_arrow: usize,
         value: Variable,
     },
     ParenthesizedKeyAndValue {
-        left_parenthesis: Span,
+        left_parenthesis: usize,
         expression: Expression,
-        r#as: Span,
+        r#as: usize,
         key: Variable,
-        double_arrow: Span,
+        double_arrow: usize,
         value: Variable,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
 }
 
@@ -57,7 +56,7 @@ pub enum ForeachStatementIterator {
 #[serde(rename_all = "snake_case")]
 pub struct ForStatement {
     pub comments: CommentGroup,
-    pub r#for: Span,
+    pub r#for: usize,
     pub iterator: ForStatementIterator,
     pub block: BlockStatement,
 }
@@ -67,19 +66,19 @@ pub struct ForStatement {
 pub enum ForStatementIterator {
     Standalone {
         initializations: CommaSeparated<Expression>,
-        initializations_semicolon: Span,
+        initializations_semicolon: usize,
         conditions: CommaSeparated<Expression>,
-        conditions_semicolon: Span,
+        conditions_semicolon: usize,
         r#loop: CommaSeparated<Expression>,
     },
     Parenthesized {
-        left_parenthesis: Span,
+        left_parenthesis: usize,
         initializations: CommaSeparated<Expression>,
-        initializations_semicolon: Span,
+        initializations_semicolon: usize,
         conditions: CommaSeparated<Expression>,
-        conditions_semicolon: Span,
+        conditions_semicolon: usize,
         r#loop: CommaSeparated<Expression>,
-        right_parenthesis: Span,
+        right_parenthesis: usize,
     },
 }
 
@@ -87,18 +86,18 @@ pub enum ForStatementIterator {
 #[serde(rename_all = "snake_case")]
 pub struct DoWhileStatement {
     pub comments: CommentGroup,
-    pub r#do: Span,
+    pub r#do: usize,
     pub block: BlockStatement,
-    pub r#while: Span,
+    pub r#while: usize,
     pub condition: Expression,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct WhileStatement {
     pub comments: CommentGroup,
-    pub r#while: Span,
+    pub r#while: usize,
     pub condition: Expression,
     pub block: BlockStatement,
 }
@@ -107,18 +106,18 @@ pub struct WhileStatement {
 #[serde(rename_all = "snake_case")]
 pub struct BreakStatement {
     pub comments: CommentGroup,
-    pub r#break: Span,
+    pub r#break: usize,
     pub level: Option<LiteralInteger>,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ContinueStatement {
     pub comments: CommentGroup,
-    pub r#continue: Span,
+    pub r#continue: usize,
     pub level: Option<LiteralInteger>,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 impl ForeachStatementIterator {
@@ -156,7 +155,7 @@ impl Node for ForeachStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.foreach.position
+        self.foreach
     }
 
     fn final_position(&self) -> usize {
@@ -184,7 +183,7 @@ impl Node for ForeachStatementIterator {
             }
             | ForeachStatementIterator::ParenthesizedKeyAndValue {
                 left_parenthesis, ..
-            } => left_parenthesis.position,
+            } => *left_parenthesis,
         }
     }
 
@@ -197,7 +196,7 @@ impl Node for ForeachStatementIterator {
             }
             | ForeachStatementIterator::ParenthesizedKeyAndValue {
                 right_parenthesis, ..
-            } => right_parenthesis.position + 1,
+            } => right_parenthesis + 1,
         }
     }
 
@@ -235,7 +234,7 @@ impl Node for ForStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#for.position
+        self.r#for
     }
 
     fn final_position(&self) -> usize {
@@ -262,12 +261,12 @@ impl Node for ForStatementIterator {
                 if let Some(expression) = initializations.inner.first() {
                     expression.initial_position()
                 } else {
-                    initializations_semicolon.position
+                    *initializations_semicolon
                 }
             }
             ForStatementIterator::Parenthesized {
                 left_parenthesis, ..
-            } => left_parenthesis.position,
+            } => *left_parenthesis,
         }
     }
 
@@ -281,12 +280,12 @@ impl Node for ForStatementIterator {
                 if let Some(expression) = r#loop.inner.last() {
                     expression.final_position()
                 } else {
-                    conditions_semicolon.position + 1
+                    conditions_semicolon + 1
                 }
             }
             ForStatementIterator::Parenthesized {
                 right_parenthesis, ..
-            } => right_parenthesis.position + 1,
+            } => right_parenthesis + 1,
         }
     }
 
@@ -330,11 +329,11 @@ impl Node for DoWhileStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#do.position
+        self.r#do
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -348,7 +347,7 @@ impl Node for WhileStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#while.position
+        self.r#while
     }
 
     fn final_position(&self) -> usize {
@@ -366,11 +365,11 @@ impl Node for BreakStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#break.position
+        self.r#break
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -388,11 +387,11 @@ impl Node for ContinueStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#continue.position
+        self.r#continue
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

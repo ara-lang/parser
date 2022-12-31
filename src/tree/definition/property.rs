@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
 use crate::tree::definition::r#type::TypeDefinition;
@@ -18,7 +17,7 @@ pub struct PropertyDefinition {
     pub modifiers: PropertyModifierDefinitionGroup,
     pub type_definition: TypeDefinition,
     pub entry: PropertyEntryDefinition,
-    pub semicolon: Span,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -29,7 +28,7 @@ pub enum PropertyEntryDefinition {
     },
     Initialized {
         variable: Variable,
-        equals: Span,
+        equals: usize,
         value: Expression,
     },
 }
@@ -57,7 +56,7 @@ impl Node for PropertyDefinition {
     }
 
     fn final_position(&self) -> usize {
-        self.semicolon.position + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

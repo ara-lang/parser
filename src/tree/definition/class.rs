@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeDefinitionGroup;
 use crate::tree::definition::constant::ClassishConstantDefinition;
@@ -25,7 +24,7 @@ pub struct ClassDefinition {
     pub attributes: Vec<AttributeDefinitionGroup>,
     #[serde(flatten)]
     pub modifiers: ClassModifierDefinitionGroup,
-    pub class: Span,
+    pub class: usize,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub extends: Option<ClassDefinitionExtends>,
@@ -36,23 +35,23 @@ pub struct ClassDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ClassDefinitionExtends {
-    pub extends: Span,
+    pub extends: usize,
     pub parent: TemplatedIdentifier,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ClassDefinitionImplements {
-    pub implements: Span,
+    pub implements: usize,
     pub interfaces: CommaSeparated<TemplatedIdentifier>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ClassDefinitionBody {
-    pub left_brace: Span,
+    pub left_brace: usize,
     pub members: Vec<ClassDefinitionMember>,
-    pub right_brace: Span,
+    pub right_brace: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -80,7 +79,7 @@ impl Node for ClassDefinition {
             return modifier.initial_position();
         }
 
-        self.class.position
+        self.class
     }
 
     fn final_position(&self) -> usize {
@@ -120,7 +119,7 @@ impl Node for ClassDefinition {
 
 impl Node for ClassDefinitionExtends {
     fn initial_position(&self) -> usize {
-        self.extends.position
+        self.extends
     }
 
     fn final_position(&self) -> usize {
@@ -134,14 +133,14 @@ impl Node for ClassDefinitionExtends {
 
 impl Node for ClassDefinitionImplements {
     fn initial_position(&self) -> usize {
-        self.implements.position
+        self.implements
     }
 
     fn final_position(&self) -> usize {
         if let Some(last_interface) = self.interfaces.inner.last() {
             let last_interface_position = last_interface.final_position();
             if let Some(last_comma) = self.interfaces.commas.last() {
-                let last_comma_position = last_comma.position + 1;
+                let last_comma_position = last_comma + 1;
                 if last_comma_position > last_interface_position {
                     return last_comma_position;
                 }
@@ -150,7 +149,7 @@ impl Node for ClassDefinitionImplements {
             return last_interface_position;
         }
 
-        self.implements.position + 10
+        self.implements + 10
     }
 
     fn children(&self) -> Vec<&dyn Node> {
@@ -164,11 +163,11 @@ impl Node for ClassDefinitionImplements {
 
 impl Node for ClassDefinitionBody {
     fn initial_position(&self) -> usize {
-        self.left_brace.position
+        self.left_brace
     }
 
     fn final_position(&self) -> usize {
-        self.right_brace.position + 1
+        self.right_brace + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {

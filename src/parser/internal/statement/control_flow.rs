@@ -23,7 +23,7 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
 
         elseifs.push(IfStatementElseIf {
             comments: state.iterator.comments(),
-            elseif: current.span,
+            elseif: current.position,
             condition: expression::create(state)?,
             block: block::block_statement(state)?,
         });
@@ -36,7 +36,7 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
 
         Some(IfStatementElse {
             comments: state.iterator.comments(),
-            r#else: current.span,
+            r#else: current.position,
             block: if state.iterator.current().kind == TokenKind::If {
                 IfStatementElseBlock::If(Box::new(if_statement(state)?))
             } else {

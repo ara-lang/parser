@@ -13,7 +13,7 @@ use crate::tree::statement::r#try::TryStatementFinallyBlock;
 
 pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
     let comments = state.iterator.comments();
-    let r#try = state.iterator.current().span;
+    let r#try = state.iterator.current().position;
 
     state.iterator.next();
 
@@ -26,7 +26,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
             break;
         }
 
-        let catch = current.span;
+        let catch = current.position;
 
         state.iterator.next();
         let left_parenthesis = utils::skip_left_parenthesis(state)?;
@@ -57,7 +57,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
     let finally = if current.kind == TokenKind::Finally {
         Some(TryStatementFinallyBlock {
             comments: state.iterator.comments(),
-            finally: current.span,
+            finally: current.position,
             block: {
                 state.iterator.next();
                 block::block_statement(state)?

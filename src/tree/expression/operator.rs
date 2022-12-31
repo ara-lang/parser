@@ -2,7 +2,6 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::lexer::token::Span;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::argument::ArgumentListExpression;
@@ -21,66 +20,66 @@ pub enum ArithmeticOperationExpression {
     Addition {
         comments: CommentGroup,
         left: Box<Expression>,
-        plus: Span,
+        plus: usize,
         right: Box<Expression>,
     },
     Subtraction {
         comments: CommentGroup,
         left: Box<Expression>,
-        minus: Span,
+        minus: usize,
         right: Box<Expression>,
     },
     Multiplication {
         comments: CommentGroup,
         left: Box<Expression>,
-        asterisk: Span,
+        asterisk: usize,
         right: Box<Expression>,
     },
     Division {
         comments: CommentGroup,
         left: Box<Expression>,
-        slash: Span,
+        slash: usize,
         right: Box<Expression>,
     },
     Modulo {
         comments: CommentGroup,
         left: Box<Expression>,
-        percent: Span,
+        percent: usize,
         right: Box<Expression>,
     },
     Exponentiation {
         comments: CommentGroup,
         left: Box<Expression>,
-        pow: Span,
+        pow: usize,
         right: Box<Expression>,
     },
     Negative {
         comments: CommentGroup,
-        minus: Span,
+        minus: usize,
         right: Box<Expression>,
     },
     Positive {
         comments: CommentGroup,
-        plus: Span,
+        plus: usize,
         right: Box<Expression>,
     },
     PreIncrement {
         comments: CommentGroup,
-        increment: Span,
+        increment: usize,
         right: Box<Expression>,
     },
     PostIncrement {
         left: Box<Expression>,
-        increment: Span,
+        increment: usize,
     },
     PreDecrement {
         comments: CommentGroup,
-        decrement: Span,
+        decrement: usize,
         right: Box<Expression>,
     },
     PostDecrement {
         left: Box<Expression>,
-        decrement: Span,
+        decrement: usize,
     },
 }
 
@@ -90,85 +89,85 @@ pub enum AssignmentOperationExpression {
     Assignment {
         comments: CommentGroup,
         left: Box<Expression>,
-        equals: Span,
+        equals: usize,
         right: Box<Expression>,
     },
     Addition {
         comments: CommentGroup,
         left: Box<Expression>,
-        plus_equals: Span,
+        plus_equals: usize,
         right: Box<Expression>,
     },
     Subtraction {
         comments: CommentGroup,
         left: Box<Expression>,
-        minus_equals: Span,
+        minus_equals: usize,
         right: Box<Expression>,
     },
     Multiplication {
         comments: CommentGroup,
         left: Box<Expression>,
-        asterisk_equals: Span,
+        asterisk_equals: usize,
         right: Box<Expression>,
     },
     Division {
         comments: CommentGroup,
         left: Box<Expression>,
-        slash_equals: Span,
+        slash_equals: usize,
         right: Box<Expression>,
     },
     Modulo {
         comments: CommentGroup,
         left: Box<Expression>,
-        percent_equals: Span,
+        percent_equals: usize,
         right: Box<Expression>,
     },
     Exponentiation {
         comments: CommentGroup,
         left: Box<Expression>,
-        pow_equals: Span,
+        pow_equals: usize,
         right: Box<Expression>,
     },
     Concat {
         comments: CommentGroup,
         left: Box<Expression>,
-        dot_equals: Span,
+        dot_equals: usize,
         right: Box<Expression>,
     },
     BitwiseAnd {
         comments: CommentGroup,
         left: Box<Expression>,
-        ampersand_equals: Span,
+        ampersand_equals: usize,
         right: Box<Expression>,
     },
     BitwiseOr {
         comments: CommentGroup,
         left: Box<Expression>,
-        pipe_equals: Span,
+        pipe_equals: usize,
         right: Box<Expression>,
     },
     BitwiseXor {
         comments: CommentGroup,
         left: Box<Expression>,
-        caret_equals: Span,
+        caret_equals: usize,
         right: Box<Expression>,
     },
     LeftShift {
         comments: CommentGroup,
         left: Box<Expression>,
-        left_shift_equals: Span,
+        left_shift_equals: usize,
         right: Box<Expression>,
     },
     RightShift {
         comments: CommentGroup,
         left: Box<Expression>,
-        right_shift_equals: Span,
+        right_shift_equals: usize,
         right: Box<Expression>,
     },
     Coalesce {
         comments: CommentGroup,
         left: Box<Expression>,
-        coalesce_equals: Span,
+        coalesce_equals: usize,
         right: Box<Expression>,
     },
 }
@@ -179,36 +178,36 @@ pub enum BitwiseOperationExpression {
     And {
         comments: CommentGroup,
         left: Box<Expression>,
-        and: Span,
+        and: usize,
         right: Box<Expression>,
     },
     Or {
         comments: CommentGroup,
         left: Box<Expression>,
-        or: Span,
+        or: usize,
         right: Box<Expression>,
     },
     Xor {
         comments: CommentGroup,
         left: Box<Expression>,
-        xor: Span,
+        xor: usize,
         right: Box<Expression>,
     },
     LeftShift {
         comments: CommentGroup,
         left: Box<Expression>,
-        left_shift: Span,
+        left_shift: usize,
         right: Box<Expression>,
     },
     RightShift {
         comments: CommentGroup,
         left: Box<Expression>,
-        right_shift: Span,
+        right_shift: usize,
         right: Box<Expression>,
     },
     Not {
         comments: CommentGroup,
-        not: Span,
+        not: usize,
         right: Box<Expression>,
     },
 }
@@ -219,61 +218,61 @@ pub enum ComparisonOperationExpression {
     Equal {
         comments: CommentGroup,
         left: Box<Expression>,
-        double_equals: Span,
+        double_equals: usize,
         right: Box<Expression>,
     },
     Identical {
         comments: CommentGroup,
         left: Box<Expression>,
-        triple_equals: Span,
+        triple_equals: usize,
         right: Box<Expression>,
     },
     NotEqual {
         comments: CommentGroup,
         left: Box<Expression>,
-        bang_equals: Span,
+        bang_equals: usize,
         right: Box<Expression>,
     },
     AngledNotEqual {
         comments: CommentGroup,
         left: Box<Expression>,
-        angled_left_right: Span,
+        angled_left_right: usize,
         right: Box<Expression>,
     },
     NotIdentical {
         comments: CommentGroup,
         left: Box<Expression>,
-        bang_double_equals: Span,
+        bang_double_equals: usize,
         right: Box<Expression>,
     },
     LessThan {
         comments: CommentGroup,
         left: Box<Expression>,
-        less_than: Span,
+        less_than: usize,
         right: Box<Expression>,
     },
     GreaterThan {
         comments: CommentGroup,
         left: Box<Expression>,
-        greater_than: Span,
+        greater_than: usize,
         right: Box<Expression>,
     },
     LessThanOrEqual {
         comments: CommentGroup,
         left: Box<Expression>,
-        less_than_equals: Span,
+        less_than_equals: usize,
         right: Box<Expression>,
     },
     GreaterThanOrEqual {
         comments: CommentGroup,
         left: Box<Expression>,
-        greater_than_equals: Span,
+        greater_than_equals: usize,
         right: Box<Expression>,
     },
     Spaceship {
         comments: CommentGroup,
         left: Box<Expression>,
-        spaceship: Span,
+        spaceship: usize,
         right: Box<Expression>,
     },
 }
@@ -284,36 +283,36 @@ pub enum LogicalOperationExpression {
     And {
         comments: CommentGroup,
         left: Box<Expression>,
-        double_ampersand: Span,
+        double_ampersand: usize,
         right: Box<Expression>,
     },
     Or {
         comments: CommentGroup,
         left: Box<Expression>,
-        double_pipe: Span,
+        double_pipe: usize,
         right: Box<Expression>,
     },
     Not {
         comments: CommentGroup,
-        bang: Span,
+        bang: usize,
         right: Box<Expression>,
     },
     LogicalAnd {
         comments: CommentGroup,
         left: Box<Expression>,
-        and: Span,
+        and: usize,
         right: Box<Expression>,
     },
     LogicalOr {
         comments: CommentGroup,
         left: Box<Expression>,
-        or: Span,
+        or: usize,
         right: Box<Expression>,
     },
     LogicalXor {
         comments: CommentGroup,
         left: Box<Expression>,
-        xor: Span,
+        xor: usize,
         right: Box<Expression>,
     },
 }
@@ -324,7 +323,7 @@ pub enum StringOperationExpression {
     Concat {
         comments: CommentGroup,
         left: Box<Expression>,
-        dot: Span,
+        dot: usize,
         right: Box<Expression>,
     },
 }
@@ -335,15 +334,15 @@ pub enum ArrayOperationExpression {
     Access {
         comments: CommentGroup,
         array: Box<Expression>,
-        left_bracket: Span,
+        left_bracket: usize,
         index: Box<Expression>,
-        right_bracket: Span,
+        right_bracket: usize,
     },
     Push {
         comments: CommentGroup,
         array: Box<Expression>,
-        left_bracket: Span,
-        right_bracket: Span,
+        left_bracket: usize,
+        right_bracket: usize,
     },
 }
 
@@ -353,7 +352,7 @@ pub enum CoalesceOperationExpression {
     Coalesce {
         comments: CommentGroup,
         left: Box<Expression>,
-        double_question: Span,
+        double_question: usize,
         right: Box<Expression>,
     },
 }
@@ -364,22 +363,22 @@ pub enum TernaryOperationExpression {
     Ternary {
         comments: CommentGroup,
         condition: Box<Expression>,
-        question: Span,
+        question: usize,
         if_true: Box<Expression>,
-        colon: Span,
+        colon: usize,
         if_false: Box<Expression>,
     },
     ImplicitShortTernary {
         comments: CommentGroup,
         condition: Box<Expression>,
-        question: Span,
-        colon: Span,
+        question: usize,
+        colon: usize,
         if_false: Box<Expression>,
     },
     ShortTernary {
         comments: CommentGroup,
         condition: Box<Expression>,
-        question_colon: Span,
+        question_colon: usize,
         if_false: Box<Expression>,
     },
 }
@@ -390,19 +389,19 @@ pub enum TypeOperationExpression {
     Instanceof {
         comments: CommentGroup,
         left: Box<Expression>,
-        instanceof: Span,
+        instanceof: usize,
         right: Identifier,
     },
     Is {
         comments: CommentGroup,
         left: Box<Expression>,
-        is: Span,
+        is: usize,
         right: TypeDefinition,
     },
     As {
         comments: CommentGroup,
         left: Box<Expression>,
-        r#as: Span,
+        r#as: usize,
         right: TypeDefinition,
     },
 }
@@ -412,24 +411,24 @@ pub enum TypeOperationExpression {
 pub enum GeneratorOperationExpression {
     Yield {
         comments: CommentGroup,
-        r#yield: Span,
+        r#yield: usize,
     },
     YieldValue {
         comments: CommentGroup,
-        r#yield: Span,
+        r#yield: usize,
         value: Box<Expression>,
     },
     YieldKeyValue {
         comments: CommentGroup,
-        r#yield: Span,
+        r#yield: usize,
         key: Box<Expression>,
-        double_arrow: Span,
+        double_arrow: usize,
         value: Box<Expression>,
     },
     YieldFrom {
         comments: CommentGroup,
-        r#yield: Span,
-        from: Span,
+        r#yield: usize,
+        from: usize,
         value: Box<Expression>,
     },
 }
@@ -439,7 +438,7 @@ pub enum GeneratorOperationExpression {
 pub enum ExceptionOperationExpression {
     Throw {
         comments: CommentGroup,
-        r#throw: Span,
+        r#throw: usize,
         value: Box<Expression>,
     },
 }
@@ -449,13 +448,13 @@ pub enum ExceptionOperationExpression {
 pub enum ObjectOperationExpression {
     Clone {
         comments: CommentGroup,
-        clone: Span,
+        clone: usize,
         object: Box<Expression>,
     },
     MethodCall {
         comments: CommentGroup,
         object: Box<Expression>,
-        arrow: Span,
+        arrow: usize,
         method: Identifier,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
@@ -463,7 +462,7 @@ pub enum ObjectOperationExpression {
     NullsafeMethodCall {
         comments: CommentGroup,
         object: Box<Expression>,
-        question_arrow: Span,
+        question_arrow: usize,
         method: Identifier,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
@@ -471,7 +470,7 @@ pub enum ObjectOperationExpression {
     MethodClosureCreation {
         comments: CommentGroup,
         object: Box<Expression>,
-        arrow: Span,
+        arrow: usize,
         method: Identifier,
         generics: Option<GenericGroupExpression>,
         placeholder: ArgumentPlaceholderExpression,
@@ -479,13 +478,13 @@ pub enum ObjectOperationExpression {
     PropertyFetch {
         comments: CommentGroup,
         object: Box<Expression>,
-        arrow: Span,
+        arrow: usize,
         property: Identifier,
     },
     NullsafePropertyFetch {
         comments: CommentGroup,
         object: Box<Expression>,
-        question_arrow: Span,
+        question_arrow: usize,
         property: Identifier,
     },
 }
@@ -495,20 +494,20 @@ pub enum ObjectOperationExpression {
 pub enum ClassOperationExpression {
     Initialization {
         comments: CommentGroup,
-        new: Span,
+        new: usize,
         class: Identifier,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
     },
     AnonymousInitialization {
         comments: CommentGroup,
-        new: Span,
+        new: usize,
         class: AnonymousClassExpression,
     },
     StaticMethodCall {
         comments: CommentGroup,
         class: Box<Expression>,
-        double_colon: Span,
+        double_colon: usize,
         method: Identifier,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
@@ -516,7 +515,7 @@ pub enum ClassOperationExpression {
     StaticMethodClosureCreation {
         comments: CommentGroup,
         class: Box<Expression>,
-        double_colon: Span,
+        double_colon: usize,
         method: Identifier,
         generics: Option<GenericGroupExpression>,
         placeholder: ArgumentPlaceholderExpression,
@@ -524,13 +523,13 @@ pub enum ClassOperationExpression {
     StaticPropertyFetch {
         comments: CommentGroup,
         class: Box<Expression>,
-        double_colon: Span,
+        double_colon: usize,
         property: Variable,
     },
     ConstantFetch {
         comments: CommentGroup,
         class: Box<Expression>,
-        double_colon: Span,
+        double_colon: usize,
         constant: Identifier,
     },
 }
@@ -557,20 +556,20 @@ pub enum FunctionOperationExpression {
 pub enum AsyncOperationExpression {
     Async {
         comments: CommentGroup,
-        r#async: Span,
+        r#async: usize,
         expression: Box<Expression>,
     },
     Await {
         comments: CommentGroup,
-        r#await: Span,
+        r#await: usize,
         expression: Box<Expression>,
     },
     Concurrently {
         comments: CommentGroup,
-        concurrently: Span,
-        left_brace: Span,
+        concurrently: usize,
+        left_brace: usize,
         expressions: CommaSeparated<Expression>,
-        right_brace: Span,
+        right_brace: usize,
     },
 }
 
@@ -600,10 +599,10 @@ impl Node for ArithmeticOperationExpression {
             ArithmeticOperationExpression::Division { left, .. } => left.initial_position(),
             ArithmeticOperationExpression::Modulo { left, .. } => left.initial_position(),
             ArithmeticOperationExpression::Exponentiation { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Negative { minus, .. } => minus.position,
-            ArithmeticOperationExpression::Positive { plus, .. } => plus.position,
-            ArithmeticOperationExpression::PreIncrement { increment, .. } => increment.position,
-            ArithmeticOperationExpression::PreDecrement { decrement, .. } => decrement.position,
+            ArithmeticOperationExpression::Negative { minus, .. } => *minus,
+            ArithmeticOperationExpression::Positive { plus, .. } => *plus,
+            ArithmeticOperationExpression::PreIncrement { increment, .. } => *increment,
+            ArithmeticOperationExpression::PreDecrement { decrement, .. } => *decrement,
             ArithmeticOperationExpression::PostIncrement { left, .. } => left.initial_position(),
             ArithmeticOperationExpression::PostDecrement { left, .. } => left.initial_position(),
         }
@@ -621,8 +620,8 @@ impl Node for ArithmeticOperationExpression {
             ArithmeticOperationExpression::Positive { right, .. } => right.final_position(),
             ArithmeticOperationExpression::PreIncrement { right, .. } => right.final_position(),
             ArithmeticOperationExpression::PreDecrement { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::PostIncrement { increment, .. } => increment.position,
-            ArithmeticOperationExpression::PostDecrement { decrement, .. } => decrement.position,
+            ArithmeticOperationExpression::PostIncrement { increment, .. } => *increment,
+            ArithmeticOperationExpression::PostDecrement { decrement, .. } => *decrement,
         }
     }
 
@@ -747,7 +746,7 @@ impl Node for BitwiseOperationExpression {
             BitwiseOperationExpression::Xor { left, .. } => left.initial_position(),
             BitwiseOperationExpression::LeftShift { left, .. } => left.initial_position(),
             BitwiseOperationExpression::RightShift { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::Not { not, .. } => not.position,
+            BitwiseOperationExpression::Not { not, .. } => *not,
         }
     }
 
@@ -860,7 +859,7 @@ impl Node for LogicalOperationExpression {
         match &self {
             LogicalOperationExpression::And { left, .. } => left.initial_position(),
             LogicalOperationExpression::Or { left, .. } => left.initial_position(),
-            LogicalOperationExpression::Not { bang, .. } => bang.position,
+            LogicalOperationExpression::Not { bang, .. } => *bang,
             LogicalOperationExpression::LogicalAnd { left, .. } => left.initial_position(),
             LogicalOperationExpression::LogicalOr { left, .. } => left.initial_position(),
             LogicalOperationExpression::LogicalXor { left, .. } => left.initial_position(),
@@ -937,8 +936,8 @@ impl Node for ArrayOperationExpression {
 
     fn final_position(&self) -> usize {
         match &self {
-            ArrayOperationExpression::Access { right_bracket, .. } => right_bracket.position + 1,
-            ArrayOperationExpression::Push { right_bracket, .. } => right_bracket.position + 1,
+            ArrayOperationExpression::Access { right_bracket, .. } => right_bracket + 1,
+            ArrayOperationExpression::Push { right_bracket, .. } => right_bracket + 1,
         }
     }
 
@@ -1083,16 +1082,16 @@ impl Node for GeneratorOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield.position,
-            GeneratorOperationExpression::YieldValue { r#yield, .. } => r#yield.position,
-            GeneratorOperationExpression::YieldKeyValue { r#yield, .. } => r#yield.position,
-            GeneratorOperationExpression::YieldFrom { r#yield, .. } => r#yield.position,
+            GeneratorOperationExpression::Yield { r#yield, .. }
+            | GeneratorOperationExpression::YieldValue { r#yield, .. }
+            | GeneratorOperationExpression::YieldKeyValue { r#yield, .. }
+            | GeneratorOperationExpression::YieldFrom { r#yield, .. } => *r#yield,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield.position + 5,
+            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield + 5,
             GeneratorOperationExpression::YieldValue { value, .. } => value.final_position(),
             GeneratorOperationExpression::YieldKeyValue { value, .. } => value.final_position(),
             GeneratorOperationExpression::YieldFrom { value, .. } => value.final_position(),
@@ -1120,7 +1119,7 @@ impl Node for ExceptionOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ExceptionOperationExpression::Throw { r#throw, .. } => r#throw.position,
+            ExceptionOperationExpression::Throw { r#throw, .. } => *r#throw,
         }
     }
 
@@ -1151,7 +1150,7 @@ impl Node for ObjectOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ObjectOperationExpression::Clone { clone, .. } => clone.position,
+            ObjectOperationExpression::Clone { clone, .. } => *clone,
             ObjectOperationExpression::MethodCall { object, .. } => object.initial_position(),
             ObjectOperationExpression::NullsafeMethodCall { object, .. } => {
                 object.initial_position()
@@ -1253,8 +1252,8 @@ impl Node for ClassOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ClassOperationExpression::Initialization { new, .. } => new.position,
-            ClassOperationExpression::AnonymousInitialization { new, .. } => new.position,
+            ClassOperationExpression::Initialization { new, .. } => *new,
+            ClassOperationExpression::AnonymousInitialization { new, .. } => *new,
             ClassOperationExpression::StaticMethodCall { class, .. } => class.initial_position(),
             ClassOperationExpression::StaticMethodClosureCreation { class, .. } => {
                 class.initial_position()
@@ -1424,9 +1423,9 @@ impl Node for AsyncOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            AsyncOperationExpression::Await { r#await, .. } => r#await.position,
-            AsyncOperationExpression::Async { r#async, .. } => r#async.position,
-            AsyncOperationExpression::Concurrently { concurrently, .. } => concurrently.position,
+            AsyncOperationExpression::Await { r#await, .. } => *r#await,
+            AsyncOperationExpression::Async { r#async, .. } => *r#async,
+            AsyncOperationExpression::Concurrently { concurrently, .. } => *concurrently,
         }
     }
 
@@ -1434,7 +1433,7 @@ impl Node for AsyncOperationExpression {
         match &self {
             AsyncOperationExpression::Await { expression, .. } => expression.final_position(),
             AsyncOperationExpression::Async { expression, .. } => expression.final_position(),
-            AsyncOperationExpression::Concurrently { right_brace, .. } => right_brace.position + 1,
+            AsyncOperationExpression::Concurrently { right_brace, .. } => right_brace + 1,
         }
     }
 

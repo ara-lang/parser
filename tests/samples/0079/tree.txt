@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 2,
-                    column: 1,
-                    position: 1,
-                },
+                function: 1,
                 name: Identifier {
-                    span: Span {
-                        line: 2,
-                        column: 10,
-                        position: 10,
-                    },
+                    position: 10,
                     value: "foo",
                 },
                 templates: None,
@@ -24,175 +16,99 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 2,
-                        column: 13,
-                        position: 13,
-                    },
+                    left_parenthesis: 13,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 2,
-                        column: 14,
-                        position: 14,
-                    },
+                    right_parenthesis: 14,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 2,
-                        column: 15,
-                        position: 15,
-                    },
+                    colon: 15,
                     type_definition: Object(
-                        Span {
-                            line: 2,
-                            column: 17,
-                            position: 17,
-                        },
+                        17,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 2,
-                        column: 24,
-                        position: 24,
-                    },
+                    left_brace: 24,
                     statements: [
                         Return(
                             Explicit {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: Span {
-                                    line: 3,
-                                    column: 5,
-                                    position: 30,
-                                },
+                                return: 30,
                                 expression: Some(
                                     ClassOperation(
                                         AnonymousInitialization {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            new: Span {
-                                                line: 3,
-                                                column: 12,
-                                                position: 37,
-                                            },
+                                            new: 37,
                                             class: AnonymousClassExpression {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
                                                 attributes: [],
-                                                class: Span {
-                                                    line: 3,
-                                                    column: 16,
-                                                    position: 41,
-                                                },
+                                                class: 41,
                                                 arguments: ArgumentListExpression {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_parenthesis: Span {
-                                                        line: 3,
-                                                        column: 21,
-                                                        position: 46,
-                                                    },
+                                                    left_parenthesis: 46,
                                                     arguments: CommaSeparated {
                                                         inner: [],
                                                         commas: [],
                                                     },
-                                                    right_parenthesis: Span {
-                                                        line: 3,
-                                                        column: 22,
-                                                        position: 47,
-                                                    },
+                                                    right_parenthesis: 47,
                                                 },
                                                 extends: None,
                                                 implements: Some(
                                                     ClassDefinitionImplements {
-                                                        implements: Span {
-                                                            line: 3,
-                                                            column: 24,
-                                                            position: 49,
-                                                        },
+                                                        implements: 49,
                                                         interfaces: CommaSeparated {
                                                             inner: [
                                                                 TemplatedIdentifier {
                                                                     name: Identifier {
-                                                                        span: Span {
-                                                                            line: 3,
-                                                                            column: 35,
-                                                                            position: 60,
-                                                                        },
+                                                                        position: 60,
                                                                         value: "Foo",
                                                                     },
                                                                     templates: None,
                                                                 },
                                                                 TemplatedIdentifier {
                                                                     name: Identifier {
-                                                                        span: Span {
-                                                                            line: 3,
-                                                                            column: 40,
-                                                                            position: 65,
-                                                                        },
+                                                                        position: 65,
                                                                         value: "Bar",
                                                                     },
                                                                     templates: None,
                                                                 },
                                                             ],
                                                             commas: [
-                                                                Span {
-                                                                    line: 3,
-                                                                    column: 38,
-                                                                    position: 63,
-                                                                },
+                                                                63,
                                                             ],
                                                         },
                                                     },
                                                 ),
                                                 body: AnonymousClassExpressionBody {
-                                                    left_brace: Span {
-                                                        line: 3,
-                                                        column: 44,
-                                                        position: 69,
-                                                    },
+                                                    left_brace: 69,
                                                     members: [],
-                                                    right_brace: Span {
-                                                        line: 3,
-                                                        column: 45,
-                                                        position: 70,
-                                                    },
+                                                    right_brace: 70,
                                                 },
                                             },
                                         },
                                     ),
                                 ),
-                                semicolon: Span {
-                                    line: 3,
-                                    column: 46,
-                                    position: 71,
-                                },
+                                semicolon: 71,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 4,
-                        column: 1,
-                        position: 73,
-                    },
+                    right_brace: 73,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 5,
-        column: 1,
-        position: 75,
-    },
+    eof: 75,
 }

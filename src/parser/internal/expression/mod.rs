@@ -188,7 +188,7 @@ expressions! {
 
     #[before(reserved_identifier_function_call), current(TokenKind::Exit)]
     exit({
-        let exit = state.iterator.current().span;
+        let exit = state.iterator.current().position;
         state.iterator.next();
         if state.iterator.current().kind == TokenKind::LeftParen {
             Ok(Expression::ExitConstruct(ExitConstructExpression::ExitWith {
@@ -244,7 +244,7 @@ expressions! {
 
     #[before(throw), current(TokenKind::New)]
     new({
-        let new = state.iterator.current().span;
+        let new = state.iterator.current().position;
 
         state.iterator.next();
 
@@ -265,7 +265,7 @@ expressions! {
 
     #[before(r#async), current(TokenKind::Throw)]
     throw({
-        let throw = state.iterator.current().span;
+        let throw = state.iterator.current().position;
         state.iterator.next();
 
         Ok(Expression::ExceptionOperation(ExceptionOperationExpression::Throw {
@@ -277,7 +277,7 @@ expressions! {
 
     #[before(r#await), current(TokenKind::Async)]
     r#async({
-        let r#async = state.iterator.current().span;
+        let r#async = state.iterator.current().position;
         state.iterator.next();
 
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Async {
@@ -289,7 +289,7 @@ expressions! {
 
     #[before(concurrently), current(TokenKind::Await)]
     r#await({
-        let r#await = state.iterator.current().span;
+        let r#await = state.iterator.current().position;
         state.iterator.next();
 
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Await {
@@ -301,7 +301,7 @@ expressions! {
 
     #[before(r#yield), current(TokenKind::Concurrently)]
     concurrently({
-        let concurrently = state.iterator.current().span;
+        let concurrently = state.iterator.current().position;
         state.iterator.next();
 
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Concurrently {
@@ -315,7 +315,7 @@ expressions! {
 
     #[before(clone), current(TokenKind::Yield)]
     r#yield({
-        let r#yield = state.iterator.current().span;
+        let r#yield = state.iterator.current().position;
         state.iterator.next();
         let comments = state.iterator.comments();
         let current = state.iterator.current();
@@ -330,7 +330,7 @@ expressions! {
             Ok(Expression::GeneratorOperation(GeneratorOperationExpression::YieldFrom {
                 comments,
                 r#yield,
-                from: current.span,
+                from: current.position,
                 value: Box::new(for_precedence(
                     state,
                     Precedence::YieldFrom,
@@ -354,7 +354,7 @@ expressions! {
                     comments,
                     r#yield,
                     key,
-                    double_arrow: current.span,
+                    double_arrow: current.position,
                     value,
                 }))
             } else {
@@ -369,54 +369,54 @@ expressions! {
 
     #[before(r#true), current(TokenKind::Clone)]
     clone({
-        let span = state.iterator.current().span;
+        let position = state.iterator.current().position;
         state.iterator.next();
 
         Ok(Expression::ObjectOperation(ObjectOperationExpression::Clone {
             comments: state.iterator.comments(),
-            clone: span,
+            clone: position,
             object: Box::new(for_precedence(state, Precedence::CloneOrNew)?),
         }))
     })
 
     #[before(r#false), current(TokenKind::True)]
     r#true({
-        let span = state.iterator.current().span;
+        let position = state.iterator.current().position;
 
         state.iterator.next();
 
         Ok(Expression::Literal(Literal::True(
             LiteralTrue {
                 comments: state.iterator.comments(),
-                span,
+                position,
             }
         )))
     })
 
     #[before(null), current(TokenKind::False)]
     r#false({
-        let span = state.iterator.current().span;
+        let position = state.iterator.current().position;
 
         state.iterator.next();
 
         Ok(Expression::Literal(Literal::False(
             LiteralFalse {
                 comments: state.iterator.comments(),
-                span,
+                position,
             }
         )))
     })
 
     #[before(literal_integer), current(TokenKind::Null)]
     null({
-        let span = state.iterator.current().span;
+        let position = state.iterator.current().position;
 
         state.iterator.next();
 
         Ok(Expression::Literal(Literal::Null(
             LiteralNull {
                 comments: state.iterator.comments(),
-                span,
+                position,
             }
         )))
     })
@@ -431,7 +431,7 @@ expressions! {
             Ok(Expression::Literal(Literal::Integer(
                 LiteralInteger {
                     comments: state.iterator.comments(),
-                    span: current.span,
+                    position: current.position,
                     value: current.value.clone()
                 }
             )))
@@ -450,7 +450,7 @@ expressions! {
             Ok(Expression::Literal(
                 Literal::Float(LiteralFloat {
                     comments: state.iterator.comments(),
-                    span: current.span,
+                    position: current.position,
                     value: current.value.clone()
                 })
             ))
@@ -469,7 +469,7 @@ expressions! {
             Ok(Expression::Literal(
                 Literal::String(LiteralString {
                     comments: state.iterator.comments(),
-                    span: current.span,
+                    position: current.position,
                     value: current.value.clone()
                 })
             ))
@@ -494,7 +494,7 @@ expressions! {
         state.iterator.next();
 
         Ok(Expression::Identifier(Identifier {
-            span: current.span,
+            position: current.position,
             value: current.value.clone(),
         }))
     })
@@ -502,7 +502,7 @@ expressions! {
     #[before(r#match), current(TokenKind::LeftParen)]
     left_parenthesis({
         let comments = state.iterator.comments();
-        let left_parenthesis = state.iterator.current().span;
+        let left_parenthesis = state.iterator.current().position;
         state.iterator.next();
         let expression = create(state)?;
 
@@ -514,7 +514,7 @@ expressions! {
                 comments,
                 left_parenthesis,
                 expression: Box::new(expression),
-                right_parenthesis: current.span,
+                right_parenthesis: current.position,
             }))
         } else {
             let comma = utils::skip(state, TokenKind::Comma)?;
@@ -560,13 +560,13 @@ expressions! {
     #[before(file_magic_constant), current(TokenKind::DirConstant)]
     directory_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Directory {
-            span,
+            position,
             value,
         }))
     })
@@ -574,13 +574,13 @@ expressions! {
     #[before(line_magic_constant), current(TokenKind::FileConstant)]
     file_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::File {
-            span,
+            position,
             value,
         }))
     })
@@ -588,13 +588,13 @@ expressions! {
     #[before(function_magic_constant), current(TokenKind::LineConstant)]
     line_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Line {
-            span,
+            position,
             value,
         }))
     })
@@ -602,13 +602,13 @@ expressions! {
     #[before(class_magic_constant), current(TokenKind::FunctionConstant)]
     function_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Function {
-            span,
+            position,
             value,
         }))
     })
@@ -616,13 +616,13 @@ expressions! {
     #[before(method_magic_constant), current(TokenKind::ClassConstant)]
     class_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Class {
-            span,
+            position,
             value,
         }))
     })
@@ -630,13 +630,13 @@ expressions! {
     #[before(namespace_magic_constant), current(TokenKind::MethodConstant)]
     method_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Method {
-            span,
+            position,
             value,
         }))
     })
@@ -644,13 +644,13 @@ expressions! {
     #[before(numeric_prefix), current(TokenKind::NamespaceConstant)]
     namespace_magic_constant({
         let current = state.iterator.current();
-        let span = current.span;
+        let position = current.position;
         let value = current.value.clone();
 
         state.iterator.next();
 
         Ok(Expression::MagicConstant(MagicConstant::Namespace {
-            span,
+            position,
             value,
         }))
     })
@@ -659,7 +659,7 @@ expressions! {
     numeric_prefix({
         let current = state.iterator.current();
 
-        let span = current.span;
+        let position = current.position;
         let op = current.kind.clone();
 
         state.iterator.next();
@@ -667,22 +667,22 @@ expressions! {
         let expr = match op {
             TokenKind::Minus => Expression::ArithmeticOperation(ArithmeticOperationExpression::Negative {
                 comments: state.iterator.comments(),
-                minus: span,
+                minus: position,
                 right: Box::new(for_precedence(state, Precedence::Prefix)?),
             }),
             TokenKind::Plus => Expression::ArithmeticOperation(ArithmeticOperationExpression::Positive {
                 comments: state.iterator.comments(),
-                plus: span,
+                plus: position,
                 right: Box::new(for_precedence(state, Precedence::Prefix)?)
             }),
             TokenKind::Decrement => Expression::ArithmeticOperation(ArithmeticOperationExpression::PreDecrement {
                 comments: state.iterator.comments(),
-                decrement: span,
+                decrement: position,
                 right: Box::new(for_precedence(state, Precedence::Prefix)?)
             }),
             TokenKind::Increment => Expression::ArithmeticOperation(ArithmeticOperationExpression::PreIncrement {
                 comments: state.iterator.comments(),
-                increment: span,
+                increment: position,
                 right: Box::new(for_precedence(state, Precedence::Prefix)?)
             }),
             _ => unreachable!(),

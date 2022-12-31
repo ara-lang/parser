@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "foo",
                 },
                 templates: None,
@@ -24,57 +16,29 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 13,
-                        position: 12,
-                    },
+                    left_parenthesis: 12,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 14,
-                        position: 13,
-                    },
+                    right_parenthesis: 13,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 15,
-                        position: 14,
-                    },
+                    colon: 14,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 17,
-                            position: 16,
-                        },
+                        16,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 22,
-                        position: 21,
-                    },
+                    left_brace: 21,
                     statements: [],
-                    right_brace: Span {
-                        line: 1,
-                        column: 23,
-                        position: 22,
-                    },
+                    right_brace: 22,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 1,
-        column: 24,
-        position: 23,
-    },
+    eof: 23,
 }

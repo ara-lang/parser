@@ -12,7 +12,7 @@ pub mod string;
 pub mod variable;
 
 pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
-    let span = state.bytes.span();
+    let position = state.bytes.position();
     let (kind, value): (TokenKind, ByteString) = match state.bytes.read(3) {
         [b'!', b'=', b'='] => {
             state.bytes.skip(3);
@@ -106,22 +106,22 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
         }
         // Single quoted string.
         [b'\'', ..] => {
-            let opening_position = state.bytes.span().position;
+            let opening_position = state.bytes.position();
             let opening = state.bytes.read_and_skip(1);
             string::tokenize_single_quote(state, opening, opening_position)?
         }
         [b'b' | b'B', b'\'', ..] => {
-            let opening_position = state.bytes.span().position;
+            let opening_position = state.bytes.position();
             let opening = state.bytes.read_and_skip(2);
             string::tokenize_single_quote(state, opening, opening_position)?
         }
         [b'"', ..] => {
-            let opening_position = state.bytes.span().position;
+            let opening_position = state.bytes.position();
             let opening = state.bytes.read_and_skip(1);
             string::tokenize_double_quote(state, opening, opening_position)?
         }
         [b'b' | b'B', b'"', ..] => {
-            let opening_position = state.bytes.span().position;
+            let opening_position = state.bytes.position();
             let opening = state.bytes.read_and_skip(2);
             string::tokenize_double_quote(state, opening, opening_position)?
         }
@@ -417,5 +417,9 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
         [] => unreachable!(),
     };
 
-    Ok(Token { kind, span, value })
+    Ok(Token {
+        kind,
+        position,
+        value,
+    })
 }

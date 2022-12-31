@@ -6,17 +6,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: Span {
-                    line: 1,
-                    column: 1,
-                    position: 0,
-                },
+                function: 0,
                 name: Identifier {
-                    span: Span {
-                        line: 1,
-                        column: 10,
-                        position: 9,
-                    },
+                    position: 9,
                     value: "foo",
                 },
                 templates: None,
@@ -24,11 +16,7 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: Span {
-                        line: 1,
-                        column: 13,
-                        position: 12,
-                    },
+                    left_parenthesis: 12,
                     parameters: CommaSeparated {
                         inner: [
                             FunctionLikeParameterDefinition {
@@ -37,19 +25,11 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    Span {
-                                        line: 1,
-                                        column: 14,
-                                        position: 13,
-                                    },
+                                    13,
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    span: Span {
-                                        line: 1,
-                                        column: 21,
-                                        position: 20,
-                                    },
+                                    position: 20,
                                     name: "$a",
                                 },
                                 default: None,
@@ -60,19 +40,11 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    Span {
-                                        line: 1,
-                                        column: 25,
-                                        position: 24,
-                                    },
+                                    24,
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    span: Span {
-                                        line: 1,
-                                        column: 32,
-                                        position: 31,
-                                    },
+                                    position: 31,
                                     name: "$b",
                                 },
                                 default: None,
@@ -83,19 +55,11 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    Span {
-                                        line: 1,
-                                        column: 36,
-                                        position: 35,
-                                    },
+                                    35,
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    span: Span {
-                                        line: 1,
-                                        column: 43,
-                                        position: 42,
-                                    },
+                                    position: 42,
                                     name: "$c",
                                 },
                                 default: None,
@@ -106,77 +70,37 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    Span {
-                                        line: 1,
-                                        column: 47,
-                                        position: 46,
-                                    },
+                                    46,
                                 ),
                                 ellipsis: Some(
-                                    Span {
-                                        line: 1,
-                                        column: 54,
-                                        position: 53,
-                                    },
+                                    53,
                                 ),
                                 variable: Variable {
-                                    span: Span {
-                                        line: 1,
-                                        column: 57,
-                                        position: 56,
-                                    },
+                                    position: 56,
                                     name: "$d",
                                 },
                                 default: None,
                             },
                         ],
                         commas: [
-                            Span {
-                                line: 1,
-                                column: 23,
-                                position: 22,
-                            },
-                            Span {
-                                line: 1,
-                                column: 34,
-                                position: 33,
-                            },
-                            Span {
-                                line: 1,
-                                column: 45,
-                                position: 44,
-                            },
+                            22,
+                            33,
+                            44,
                         ],
                     },
-                    right_parenthesis: Span {
-                        line: 1,
-                        column: 59,
-                        position: 58,
-                    },
+                    right_parenthesis: 58,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: Span {
-                        line: 1,
-                        column: 60,
-                        position: 59,
-                    },
+                    colon: 59,
                     type_definition: Void(
-                        Span {
-                            line: 1,
-                            column: 62,
-                            position: 61,
-                        },
+                        61,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: Span {
-                        line: 1,
-                        column: 67,
-                        position: 66,
-                    },
+                    left_brace: 66,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -190,11 +114,7 @@ DefinitionTree {
                                         },
                                         function: Identifier(
                                             Identifier {
-                                                span: Span {
-                                                    line: 2,
-                                                    column: 5,
-                                                    position: 72,
-                                                },
+                                                position: 72,
                                                 value: "foo",
                                             },
                                         ),
@@ -203,11 +123,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: Span {
-                                                line: 2,
-                                                column: 8,
-                                                position: 75,
-                                            },
+                                            left_parenthesis: 75,
                                             arguments: CommaSeparated {
                                                 inner: [
                                                     Positional {
@@ -217,11 +133,7 @@ DefinitionTree {
                                                         ellipsis: None,
                                                         value: Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 2,
-                                                                    column: 9,
-                                                                    position: 76,
-                                                                },
+                                                                position: 76,
                                                                 name: "$a",
                                                             },
                                                         ),
@@ -233,11 +145,7 @@ DefinitionTree {
                                                         ellipsis: None,
                                                         value: Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 2,
-                                                                    column: 13,
-                                                                    position: 80,
-                                                                },
+                                                                position: 80,
                                                                 name: "$b",
                                                             },
                                                         ),
@@ -249,11 +157,7 @@ DefinitionTree {
                                                         ellipsis: None,
                                                         value: Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 2,
-                                                                    column: 17,
-                                                                    position: 84,
-                                                                },
+                                                                position: 84,
                                                                 name: "$c",
                                                             },
                                                         ),
@@ -263,70 +167,34 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         ellipsis: Some(
-                                                            Span {
-                                                                line: 2,
-                                                                column: 21,
-                                                                position: 88,
-                                                            },
+                                                            88,
                                                         ),
                                                         value: Variable(
                                                             Variable {
-                                                                span: Span {
-                                                                    line: 2,
-                                                                    column: 24,
-                                                                    position: 91,
-                                                                },
+                                                                position: 91,
                                                                 name: "$d",
                                                             },
                                                         ),
                                                     },
                                                 ],
                                                 commas: [
-                                                    Span {
-                                                        line: 2,
-                                                        column: 11,
-                                                        position: 78,
-                                                    },
-                                                    Span {
-                                                        line: 2,
-                                                        column: 15,
-                                                        position: 82,
-                                                    },
-                                                    Span {
-                                                        line: 2,
-                                                        column: 19,
-                                                        position: 86,
-                                                    },
+                                                    78,
+                                                    82,
+                                                    86,
                                                 ],
                                             },
-                                            right_parenthesis: Span {
-                                                line: 2,
-                                                column: 26,
-                                                position: 93,
-                                            },
+                                            right_parenthesis: 93,
                                         },
                                     },
                                 ),
-                                semicolon: Span {
-                                    line: 2,
-                                    column: 27,
-                                    position: 94,
-                                },
+                                semicolon: 94,
                             },
                         ),
                     ],
-                    right_brace: Span {
-                        line: 3,
-                        column: 1,
-                        position: 96,
-                    },
+                    right_brace: 96,
                 },
             },
         ),
     ],
-    eof: Span {
-        line: 4,
-        column: 1,
-        position: 98,
-    },
+    eof: 98,
 }
