@@ -1,0 +1,13 @@
+function foo(): void {
+    $foo = new Foo();
+    $foo->bar();
+    $foo?->bar();
+    $bar = $foo?->bar;
+    $baz = $foo->bar?->baz;
+    $a = $foo->a(...);
+    $b = $foo::b(...);
+    $c = $foo::c();
+    $d = $foo->d;
+    $e = $foo::$d;
+    $f = $foo?->b?->c();
+}

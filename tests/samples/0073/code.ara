@@ -1,0 +1,29 @@
+type Predicate<T> = (fn(T): bool);
+
+function filter<T>(vec<T> $vec, Predicate<T> $predicate): vec<T> {
+    $result = vec[];
+    foreach $vec as $item {
+        if $predicate($item) {
+            $result[] = $item;
+        }
+    }
+
+    return $result;
+}
+
+type Mapper<K, V, U> = (fn(K, V): U)|SomeOtherType<K, V, U>;
+
+function map<K, V, U>(dict<K, V> $dict, Mapper<K, V, U> $mapper): dict<K, U> {
+    $result = dict[];
+    if $mapper is SomeOtherType<K, V, U> {
+        foreach $dict as $key => $value {
+            $result[$key] = $mapper->doMap($key, $value);
+        }
+    } else {
+        foreach $dict as $key => $value {
+            $result[$key] = $mapper($key, $value);
+        }
+    }
+
+    return $result;
+}

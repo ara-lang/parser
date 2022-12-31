@@ -1,0 +1,55 @@
+name: benchmark
+
+on:
+  pull_request:
+
+jobs:
+  tests:
+    name: benchmark
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: pull-request
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: pull-request-base
+
+      - name: install php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          tools: composer:v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: install rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+
+      - name: cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+            path: |
+              ~/.cargo/bin/
+              ~/.cargo/registry/index/
+              ~/.cargo/registry/cache/
+              ~/.cargo/git/db/
+              pull-request/target/
+              pull-request-base/target/
+            key: cargo-${{ hashFiles('pull-request-base/Cargo.lock') }}
+
+      - name: install hyperfine
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cargo install hyperfine
+
+      - name: benchmark
+        run: |
+          hyperfine --runs 10 --warmup 2 "cd pull-request && cargo test -r php_standard_library" "cd pull-request-base && cargo test -r php_standard_library"

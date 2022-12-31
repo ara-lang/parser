@@ -1,0 +1,9 @@
+
+function foo(): void {
+    $foo = give_me_foo();
+
+    $a = [
+        'single' => $foo instanceof Foo,
+        'multiple' => $foo instanceof Bar && $foo instanceof Baz
+    ];
+}

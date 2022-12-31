@@ -1,0 +1,7 @@
+namespace Psl\Str;
+
+type scalar = bool | float | int | string;
+
+function format(string $format, scalar ...$args): string {
+    return \sprintf($format, ...$args);
+}

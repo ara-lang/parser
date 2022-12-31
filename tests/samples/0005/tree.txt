@@ -1,0 +1,302 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 10,
+                        position: 9,
+                    },
+                    value: "h",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 1,
+                        column: 12,
+                        position: 11,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 1,
+                        column: 13,
+                        position: 12,
+                    },
+                    type_definition: Void(
+                        Span {
+                            line: 1,
+                            column: 15,
+                            position: 14,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 1,
+                        column: 20,
+                        position: 19,
+                    },
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Access {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        array: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 2,
+                                                    column: 5,
+                                                    position: 25,
+                                                },
+                                                name: "$foo",
+                                            },
+                                        ),
+                                        left_bracket: Span {
+                                            line: 2,
+                                            column: 9,
+                                            position: 29,
+                                        },
+                                        index: Literal(
+                                            String(
+                                                LiteralString {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "'bar'",
+                                                    span: Span {
+                                                        line: 2,
+                                                        column: 10,
+                                                        position: 30,
+                                                    },
+                                                },
+                                            ),
+                                        ),
+                                        right_bracket: Span {
+                                            line: 2,
+                                            column: 15,
+                                            position: 35,
+                                        },
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 2,
+                                    column: 16,
+                                    position: 36,
+                                },
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Access {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        array: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        span: Span {
+                                                            line: 3,
+                                                            column: 5,
+                                                            position: 42,
+                                                        },
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                left_bracket: Span {
+                                                    line: 3,
+                                                    column: 9,
+                                                    position: 46,
+                                                },
+                                                index: Literal(
+                                                    String(
+                                                        LiteralString {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "'bar'",
+                                                            span: Span {
+                                                                line: 3,
+                                                                column: 10,
+                                                                position: 47,
+                                                            },
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: Span {
+                                                    line: 3,
+                                                    column: 15,
+                                                    position: 52,
+                                                },
+                                            },
+                                        ),
+                                        left_bracket: Span {
+                                            line: 3,
+                                            column: 16,
+                                            position: 53,
+                                        },
+                                        index: Literal(
+                                            String(
+                                                LiteralString {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "'baz'",
+                                                    span: Span {
+                                                        line: 3,
+                                                        column: 17,
+                                                        position: 54,
+                                                    },
+                                                },
+                                            ),
+                                        ),
+                                        right_bracket: Span {
+                                            line: 3,
+                                            column: 22,
+                                            position: 59,
+                                        },
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 3,
+                                    column: 23,
+                                    position: 60,
+                                },
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        span: Span {
+                                                            line: 4,
+                                                            column: 5,
+                                                            position: 66,
+                                                        },
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                left_bracket: Span {
+                                                    line: 4,
+                                                    column: 9,
+                                                    position: 70,
+                                                },
+                                                index: Literal(
+                                                    String(
+                                                        LiteralString {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "'bar'",
+                                                            span: Span {
+                                                                line: 4,
+                                                                column: 10,
+                                                                position: 71,
+                                                            },
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: Span {
+                                                    line: 4,
+                                                    column: 15,
+                                                    position: 76,
+                                                },
+                                            },
+                                        ),
+                                        equals: Span {
+                                            line: 4,
+                                            column: 17,
+                                            position: 78,
+                                        },
+                                        right: Literal(
+                                            String(
+                                                LiteralString {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "'baz'",
+                                                    span: Span {
+                                                        line: 4,
+                                                        column: 19,
+                                                        position: 80,
+                                                    },
+                                                },
+                                            ),
+                                        ),
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 4,
+                                    column: 24,
+                                    position: 85,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 5,
+                        column: 1,
+                        position: 87,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 89,
+    },
+}

@@ -1,0 +1,57 @@
+DefinitionTree {
+    definitions: [
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [
+                        Readonly(
+                            Span {
+                                line: 1,
+                                column: 1,
+                                position: 0,
+                            },
+                        ),
+                    ],
+                },
+                class: Span {
+                    line: 1,
+                    column: 10,
+                    position: 9,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 16,
+                        position: 15,
+                    },
+                    value: "Foo",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 20,
+                        position: 19,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 1,
+                        column: 21,
+                        position: 20,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 1,
+        column: 22,
+        position: 21,
+    },
+}

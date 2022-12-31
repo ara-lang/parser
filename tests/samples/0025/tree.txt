@@ -1,0 +1,88 @@
+DefinitionTree {
+    definitions: [
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 7,
+                        position: 6,
+                    },
+                    value: "MyClass",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 15,
+                        position: 14,
+                    },
+                    members: [
+                        Property(
+                            PropertyDefinition {
+                                attributes: [],
+                                modifiers: PropertyModifierDefinitionGroup {
+                                    modifiers: [
+                                        Protected(
+                                            Span {
+                                                line: 2,
+                                                column: 5,
+                                                position: 20,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                type_definition: String(
+                                    Span {
+                                        line: 2,
+                                        column: 15,
+                                        position: 30,
+                                    },
+                                ),
+                                entry: Uninitialized {
+                                    variable: Variable {
+                                        span: Span {
+                                            line: 2,
+                                            column: 22,
+                                            position: 37,
+                                        },
+                                        name: "$a",
+                                    },
+                                },
+                                semicolon: Span {
+                                    line: 2,
+                                    column: 24,
+                                    position: 39,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 4,
+                        column: 1,
+                        position: 59,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 5,
+        column: 1,
+        position: 61,
+    },
+}

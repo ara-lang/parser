@@ -1,0 +1,148 @@
+DefinitionTree {
+    definitions: [
+        Enum(
+            Backed(
+                BackedEnumDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    attributes: [],
+                    enum: Span {
+                        line: 1,
+                        column: 1,
+                        position: 0,
+                    },
+                    name: Identifier {
+                        span: Span {
+                            line: 1,
+                            column: 6,
+                            position: 5,
+                        },
+                        value: "Foo",
+                    },
+                    backed_type: Int(
+                        Span {
+                            line: 1,
+                            column: 9,
+                            position: 8,
+                        },
+                        Identifier {
+                            span: Span {
+                                line: 1,
+                                column: 11,
+                                position: 10,
+                            },
+                            value: "int",
+                        },
+                    ),
+                    implements: None,
+                    body: BackedEnumBodyDefinition {
+                        left_brace: Span {
+                            line: 1,
+                            column: 15,
+                            position: 14,
+                        },
+                        members: [
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 2,
+                                        column: 5,
+                                        position: 20,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 2,
+                                            column: 10,
+                                            position: 25,
+                                        },
+                                        value: "Bar",
+                                    },
+                                    equals: Span {
+                                        line: 2,
+                                        column: 14,
+                                        position: 29,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2",
+                                                span: Span {
+                                                    line: 2,
+                                                    column: 16,
+                                                    position: 31,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 2,
+                                        column: 17,
+                                        position: 32,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 3,
+                                        column: 5,
+                                        position: 38,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 10,
+                                            position: 43,
+                                        },
+                                        value: "Baz",
+                                    },
+                                    equals: Span {
+                                        line: 3,
+                                        column: 14,
+                                        position: 47,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "4",
+                                                span: Span {
+                                                    line: 3,
+                                                    column: 16,
+                                                    position: 49,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 3,
+                                        column: 17,
+                                        position: 50,
+                                    },
+                                },
+                            ),
+                        ],
+                        right_brace: Span {
+                            line: 4,
+                            column: 1,
+                            position: 52,
+                        },
+                    },
+                },
+            ),
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 55,
+    },
+}

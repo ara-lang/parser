@@ -1,0 +1,80 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 10,
+                        position: 9,
+                    },
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 1,
+                        column: 13,
+                        position: 12,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 1,
+                        column: 14,
+                        position: 13,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 1,
+                        column: 15,
+                        position: 14,
+                    },
+                    type_definition: String(
+                        Span {
+                            line: 1,
+                            column: 17,
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 1,
+                        column: 24,
+                        position: 23,
+                    },
+                    statements: [],
+                    right_brace: Span {
+                        line: 1,
+                        column: 25,
+                        position: 24,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 1,
+        column: 26,
+        position: 25,
+    },
+}

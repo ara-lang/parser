@@ -1,0 +1,287 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 10,
+                        position: 9,
+                    },
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 1,
+                        column: 13,
+                        position: 12,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 1,
+                        column: 14,
+                        position: 13,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 1,
+                        column: 15,
+                        position: 14,
+                    },
+                    type_definition: Void(
+                        Span {
+                            line: 1,
+                            column: 17,
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 1,
+                        column: 22,
+                        position: 21,
+                    },
+                    statements: [
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 2,
+                                    column: 5,
+                                    position: 27,
+                                },
+                                iterator: Parenthesized {
+                                    left_parenthesis: Span {
+                                        line: 2,
+                                        column: 9,
+                                        position: 31,
+                                    },
+                                    initializations: CommaSeparated {
+                                        inner: [
+                                            AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 2,
+                                                                column: 10,
+                                                                position: 32,
+                                                            },
+                                                            name: "$i",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 2,
+                                                        column: 13,
+                                                        position: 35,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "0",
+                                                                span: Span {
+                                                                    line: 2,
+                                                                    column: 15,
+                                                                    position: 37,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                            AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 2,
+                                                                column: 18,
+                                                                position: 40,
+                                                            },
+                                                            name: "$i",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 2,
+                                                        column: 21,
+                                                        position: 43,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "1",
+                                                                span: Span {
+                                                                    line: 2,
+                                                                    column: 23,
+                                                                    position: 45,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [
+                                            Span {
+                                                line: 2,
+                                                column: 16,
+                                                position: 38,
+                                            },
+                                        ],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 2,
+                                        column: 24,
+                                        position: 46,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [
+                                            ComparisonOperation(
+                                                LessThan {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 2,
+                                                                column: 26,
+                                                                position: 48,
+                                                            },
+                                                            name: "$j",
+                                                        },
+                                                    ),
+                                                    less_than: Span {
+                                                        line: 2,
+                                                        column: 29,
+                                                        position: 51,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "2",
+                                                                span: Span {
+                                                                    line: 2,
+                                                                    column: 31,
+                                                                    position: 53,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                            ArithmeticOperation(
+                                                PostDecrement {
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 2,
+                                                                column: 34,
+                                                                position: 56,
+                                                            },
+                                                            name: "$j",
+                                                        },
+                                                    ),
+                                                    decrement: Span {
+                                                        line: 2,
+                                                        column: 36,
+                                                        position: 58,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [
+                                            Span {
+                                                line: 2,
+                                                column: 32,
+                                                position: 54,
+                                            },
+                                        ],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 2,
+                                        column: 38,
+                                        position: 60,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 2,
+                                        column: 39,
+                                        position: 61,
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 2,
+                                        column: 41,
+                                        position: 63,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 4,
+                                        column: 5,
+                                        position: 70,
+                                    },
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 5,
+                        column: 1,
+                        position: 72,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 74,
+    },
+}

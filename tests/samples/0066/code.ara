@@ -1,0 +1,4 @@
+function bar(): void {
+    $a = vec[];
+    $a = vec[1, 2, 3];
+}

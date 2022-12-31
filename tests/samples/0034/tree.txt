@@ -1,0 +1,93 @@
+DefinitionTree {
+    definitions: [
+        Enum(
+            Unit(
+                UnitEnumDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    attributes: [],
+                    enum: Span {
+                        line: 1,
+                        column: 1,
+                        position: 0,
+                    },
+                    name: Identifier {
+                        span: Span {
+                            line: 1,
+                            column: 6,
+                            position: 5,
+                        },
+                        value: "Foo",
+                    },
+                    implements: None,
+                    body: UnitEnumBodyDefinition {
+                        left_brace: Span {
+                            line: 1,
+                            column: 10,
+                            position: 9,
+                        },
+                        members: [
+                            Case(
+                                UnitEnumCaseDefinition {
+                                    attributes: [],
+                                    start: Span {
+                                        line: 2,
+                                        column: 5,
+                                        position: 15,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 2,
+                                            column: 10,
+                                            position: 20,
+                                        },
+                                        value: "Bar",
+                                    },
+                                    end: Span {
+                                        line: 2,
+                                        column: 13,
+                                        position: 23,
+                                    },
+                                },
+                            ),
+                            Case(
+                                UnitEnumCaseDefinition {
+                                    attributes: [],
+                                    start: Span {
+                                        line: 3,
+                                        column: 5,
+                                        position: 29,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 10,
+                                            position: 34,
+                                        },
+                                        value: "Baz",
+                                    },
+                                    end: Span {
+                                        line: 3,
+                                        column: 13,
+                                        position: 37,
+                                    },
+                                },
+                            ),
+                        ],
+                        right_brace: Span {
+                            line: 4,
+                            column: 1,
+                            position: 39,
+                        },
+                    },
+                },
+            ),
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 42,
+    },
+}

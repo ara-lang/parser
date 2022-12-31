@@ -1,0 +1,6 @@
+error[P0042]: unexpected token `implements`, expected `(`
+  --> 0023/code.ara:3:22
+  |
+3 |     return new class implements Foo, Bar {};
+  |                      ^^^^^^^^^^ unexpected token `implements`, expected `(`
+

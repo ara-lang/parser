@@ -1,0 +1,4 @@
+#[foo(self::class), bar(new self(), new parent(), new static())]
+class a {
+
+}

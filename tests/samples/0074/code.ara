@@ -1,0 +1,25 @@
+
+type scalar = string | int | float | bool;
+
+function scalar_to_string(scalar $value): string {
+    if $value is string {
+        $value
+    } else if $value is int || $value is float {
+        if $value is int {
+            Str\format("%d", $value)
+        } else {
+            Str\format("%.2f", $value)
+        }
+    }
+
+    $value ? "true" : "false"
+}
+
+function is_scalar(mixed $value): bool {
+    $value is scalar
+}
+
+function as_scalar(mixed $value): scalar {
+    $value as scalar
+}
+

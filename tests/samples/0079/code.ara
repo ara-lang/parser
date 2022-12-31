@@ -1,0 +1,4 @@
+
+function foo(): object {
+    return new class() implements Foo, Bar {};
+}

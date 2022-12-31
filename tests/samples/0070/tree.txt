@@ -1,0 +1,2579 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 10,
+                        position: 9,
+                    },
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 1,
+                        column: 13,
+                        position: 12,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 1,
+                        column: 14,
+                        position: 13,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 1,
+                        column: 15,
+                        position: 14,
+                    },
+                    type_definition: Void(
+                        Span {
+                            line: 1,
+                            column: 17,
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 1,
+                        column: 22,
+                        position: 21,
+                    },
+                    statements: [
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 2,
+                                    column: 5,
+                                    position: 27,
+                                },
+                                condition: Variable(
+                                    Variable {
+                                        span: Span {
+                                            line: 2,
+                                            column: 8,
+                                            position: 30,
+                                        },
+                                        name: "$a",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 2,
+                                        column: 11,
+                                        position: 33,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 2,
+                                        column: 14,
+                                        position: 36,
+                                    },
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 3,
+                                    column: 5,
+                                    position: 42,
+                                },
+                                condition: Parenthesized(
+                                    ParenthesizedExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 3,
+                                            column: 8,
+                                            position: 45,
+                                        },
+                                        expression: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 3,
+                                                    column: 9,
+                                                    position: 46,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 3,
+                                            column: 11,
+                                            position: 48,
+                                        },
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 3,
+                                        column: 13,
+                                        position: 50,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 3,
+                                        column: 14,
+                                        position: 51,
+                                    },
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 5,
+                                    column: 5,
+                                    position: 58,
+                                },
+                                condition: Variable(
+                                    Variable {
+                                        span: Span {
+                                            line: 5,
+                                            column: 8,
+                                            position: 61,
+                                        },
+                                        name: "$a",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 5,
+                                        column: 11,
+                                        position: 64,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 5,
+                                        column: 15,
+                                        position: 68,
+                                    },
+                                },
+                                elseifs: [
+                                    IfStatementElseIf {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        elseif: Span {
+                                            line: 5,
+                                            column: 17,
+                                            position: 70,
+                                        },
+                                        condition: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 5,
+                                                    column: 24,
+                                                    position: 77,
+                                                },
+                                                name: "$b",
+                                            },
+                                        ),
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 5,
+                                                column: 27,
+                                                position: 80,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 5,
+                                                column: 31,
+                                                position: 84,
+                                            },
+                                        },
+                                    },
+                                ],
+                                else: Some(
+                                    IfStatementElse {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        else: Span {
+                                            line: 5,
+                                            column: 33,
+                                            position: 86,
+                                        },
+                                        block: If(
+                                            IfStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                if: Span {
+                                                    line: 5,
+                                                    column: 38,
+                                                    position: 91,
+                                                },
+                                                condition: Variable(
+                                                    Variable {
+                                                        span: Span {
+                                                            line: 5,
+                                                            column: 41,
+                                                            position: 94,
+                                                        },
+                                                        name: "$c",
+                                                    },
+                                                ),
+                                                block: BlockStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_brace: Span {
+                                                        line: 5,
+                                                        column: 44,
+                                                        position: 97,
+                                                    },
+                                                    statements: [],
+                                                    right_brace: Span {
+                                                        line: 5,
+                                                        column: 47,
+                                                        position: 100,
+                                                    },
+                                                },
+                                                elseifs: [],
+                                                else: Some(
+                                                    IfStatementElse {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        else: Span {
+                                                            line: 5,
+                                                            column: 49,
+                                                            position: 102,
+                                                        },
+                                                        block: Block(
+                                                            BlockStatement {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_brace: Span {
+                                                                    line: 5,
+                                                                    column: 54,
+                                                                    position: 107,
+                                                                },
+                                                                statements: [],
+                                                                right_brace: Span {
+                                                                    line: 5,
+                                                                    column: 55,
+                                                                    position: 108,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 6,
+                                    column: 5,
+                                    position: 114,
+                                },
+                                condition: Parenthesized(
+                                    ParenthesizedExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 6,
+                                            column: 8,
+                                            position: 117,
+                                        },
+                                        expression: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 9,
+                                                    position: 118,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 6,
+                                            column: 11,
+                                            position: 120,
+                                        },
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 6,
+                                        column: 13,
+                                        position: 122,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 6,
+                                        column: 15,
+                                        position: 124,
+                                    },
+                                },
+                                elseifs: [
+                                    IfStatementElseIf {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        elseif: Span {
+                                            line: 6,
+                                            column: 17,
+                                            position: 126,
+                                        },
+                                        condition: Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: Span {
+                                                    line: 6,
+                                                    column: 24,
+                                                    position: 133,
+                                                },
+                                                expression: Variable(
+                                                    Variable {
+                                                        span: Span {
+                                                            line: 6,
+                                                            column: 25,
+                                                            position: 134,
+                                                        },
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                right_parenthesis: Span {
+                                                    line: 6,
+                                                    column: 27,
+                                                    position: 136,
+                                                },
+                                            },
+                                        ),
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 6,
+                                                column: 29,
+                                                position: 138,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 6,
+                                                column: 31,
+                                                position: 140,
+                                            },
+                                        },
+                                    },
+                                ],
+                                else: Some(
+                                    IfStatementElse {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        else: Span {
+                                            line: 6,
+                                            column: 33,
+                                            position: 142,
+                                        },
+                                        block: If(
+                                            IfStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                if: Span {
+                                                    line: 6,
+                                                    column: 38,
+                                                    position: 147,
+                                                },
+                                                condition: Parenthesized(
+                                                    ParenthesizedExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: Span {
+                                                            line: 6,
+                                                            column: 41,
+                                                            position: 150,
+                                                        },
+                                                        expression: Variable(
+                                                            Variable {
+                                                                span: Span {
+                                                                    line: 6,
+                                                                    column: 42,
+                                                                    position: 151,
+                                                                },
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                        right_parenthesis: Span {
+                                                            line: 6,
+                                                            column: 44,
+                                                            position: 153,
+                                                        },
+                                                    },
+                                                ),
+                                                block: BlockStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_brace: Span {
+                                                        line: 6,
+                                                        column: 46,
+                                                        position: 155,
+                                                    },
+                                                    statements: [],
+                                                    right_brace: Span {
+                                                        line: 6,
+                                                        column: 47,
+                                                        position: 156,
+                                                    },
+                                                },
+                                                elseifs: [],
+                                                else: Some(
+                                                    IfStatementElse {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        else: Span {
+                                                            line: 6,
+                                                            column: 49,
+                                                            position: 158,
+                                                        },
+                                                        block: Block(
+                                                            BlockStatement {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_brace: Span {
+                                                                    line: 6,
+                                                                    column: 54,
+                                                                    position: 163,
+                                                                },
+                                                                statements: [],
+                                                                right_brace: Span {
+                                                                    line: 6,
+                                                                    column: 55,
+                                                                    position: 164,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 8,
+                                    column: 5,
+                                    position: 171,
+                                },
+                                condition: Variable(
+                                    Variable {
+                                        span: Span {
+                                            line: 8,
+                                            column: 8,
+                                            position: 174,
+                                        },
+                                        name: "$a",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 8,
+                                        column: 11,
+                                        position: 177,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 8,
+                                        column: 14,
+                                        position: 180,
+                                    },
+                                },
+                                elseifs: [],
+                                else: Some(
+                                    IfStatementElse {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        else: Span {
+                                            line: 8,
+                                            column: 16,
+                                            position: 182,
+                                        },
+                                        block: Block(
+                                            BlockStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_brace: Span {
+                                                    line: 8,
+                                                    column: 21,
+                                                    position: 187,
+                                                },
+                                                statements: [],
+                                                right_brace: Span {
+                                                    line: 8,
+                                                    column: 22,
+                                                    position: 188,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Span {
+                                    line: 9,
+                                    column: 5,
+                                    position: 194,
+                                },
+                                condition: Parenthesized(
+                                    ParenthesizedExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 9,
+                                            column: 8,
+                                            position: 197,
+                                        },
+                                        expression: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 9,
+                                                    column: 9,
+                                                    position: 198,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 9,
+                                            column: 11,
+                                            position: 200,
+                                        },
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 9,
+                                        column: 13,
+                                        position: 202,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 9,
+                                        column: 14,
+                                        position: 203,
+                                    },
+                                },
+                                elseifs: [],
+                                else: Some(
+                                    IfStatementElse {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        else: Span {
+                                            line: 9,
+                                            column: 16,
+                                            position: 205,
+                                        },
+                                        block: Block(
+                                            BlockStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_brace: Span {
+                                                    line: 9,
+                                                    column: 21,
+                                                    position: 210,
+                                                },
+                                                statements: [],
+                                                right_brace: Span {
+                                                    line: 9,
+                                                    column: 22,
+                                                    position: 211,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ),
+                        While(
+                            WhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                while: Span {
+                                    line: 11,
+                                    column: 5,
+                                    position: 218,
+                                },
+                                condition: Variable(
+                                    Variable {
+                                        span: Span {
+                                            line: 11,
+                                            column: 11,
+                                            position: 224,
+                                        },
+                                        name: "$a",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 11,
+                                        column: 14,
+                                        position: 227,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 11,
+                                        column: 17,
+                                        position: 230,
+                                    },
+                                },
+                            },
+                        ),
+                        While(
+                            WhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                while: Span {
+                                    line: 12,
+                                    column: 5,
+                                    position: 236,
+                                },
+                                condition: Parenthesized(
+                                    ParenthesizedExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 12,
+                                            column: 11,
+                                            position: 242,
+                                        },
+                                        expression: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 12,
+                                                    position: 243,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 12,
+                                            column: 14,
+                                            position: 245,
+                                        },
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 12,
+                                        column: 16,
+                                        position: 247,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 12,
+                                        column: 17,
+                                        position: 248,
+                                    },
+                                },
+                            },
+                        ),
+                        DoWhile(
+                            DoWhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                do: Span {
+                                    line: 14,
+                                    column: 5,
+                                    position: 255,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 14,
+                                        column: 8,
+                                        position: 258,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 14,
+                                        column: 9,
+                                        position: 259,
+                                    },
+                                },
+                                while: Span {
+                                    line: 14,
+                                    column: 11,
+                                    position: 261,
+                                },
+                                condition: Variable(
+                                    Variable {
+                                        span: Span {
+                                            line: 14,
+                                            column: 17,
+                                            position: 267,
+                                        },
+                                        name: "$a",
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 14,
+                                    column: 19,
+                                    position: 269,
+                                },
+                            },
+                        ),
+                        DoWhile(
+                            DoWhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                do: Span {
+                                    line: 15,
+                                    column: 5,
+                                    position: 275,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 15,
+                                        column: 8,
+                                        position: 278,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 15,
+                                        column: 9,
+                                        position: 279,
+                                    },
+                                },
+                                while: Span {
+                                    line: 15,
+                                    column: 11,
+                                    position: 281,
+                                },
+                                condition: Parenthesized(
+                                    ParenthesizedExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 15,
+                                            column: 17,
+                                            position: 287,
+                                        },
+                                        expression: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 15,
+                                                    column: 18,
+                                                    position: 288,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 15,
+                                            column: 20,
+                                            position: 290,
+                                        },
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 15,
+                                    column: 21,
+                                    position: 291,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 17,
+                                    column: 5,
+                                    position: 298,
+                                },
+                                iterator: Value {
+                                    expression: Variable(
+                                        Variable {
+                                            span: Span {
+                                                line: 17,
+                                                column: 13,
+                                                position: 306,
+                                            },
+                                            name: "$a",
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 17,
+                                        column: 16,
+                                        position: 309,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 17,
+                                            column: 19,
+                                            position: 312,
+                                        },
+                                        name: "$b",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 17,
+                                        column: 22,
+                                        position: 315,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 17,
+                                        column: 25,
+                                        position: 318,
+                                    },
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 18,
+                                    column: 5,
+                                    position: 324,
+                                },
+                                iterator: Value {
+                                    expression: Parenthesized(
+                                        ParenthesizedExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: Span {
+                                                line: 18,
+                                                column: 13,
+                                                position: 332,
+                                            },
+                                            expression: Variable(
+                                                Variable {
+                                                    span: Span {
+                                                        line: 18,
+                                                        column: 14,
+                                                        position: 333,
+                                                    },
+                                                    name: "$a",
+                                                },
+                                            ),
+                                            right_parenthesis: Span {
+                                                line: 18,
+                                                column: 16,
+                                                position: 335,
+                                            },
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 18,
+                                        column: 18,
+                                        position: 337,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 18,
+                                            column: 21,
+                                            position: 340,
+                                        },
+                                        name: "$b",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 18,
+                                        column: 24,
+                                        position: 343,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 18,
+                                        column: 25,
+                                        position: 344,
+                                    },
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 19,
+                                    column: 5,
+                                    position: 350,
+                                },
+                                iterator: ParenthesizedValue {
+                                    left_parenthesis: Span {
+                                        line: 19,
+                                        column: 13,
+                                        position: 358,
+                                    },
+                                    expression: Variable(
+                                        Variable {
+                                            span: Span {
+                                                line: 19,
+                                                column: 14,
+                                                position: 359,
+                                            },
+                                            name: "$a",
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 19,
+                                        column: 17,
+                                        position: 362,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 19,
+                                            column: 20,
+                                            position: 365,
+                                        },
+                                        name: "$b",
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 19,
+                                        column: 22,
+                                        position: 367,
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 19,
+                                        column: 24,
+                                        position: 369,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 19,
+                                        column: 25,
+                                        position: 370,
+                                    },
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 20,
+                                    column: 5,
+                                    position: 376,
+                                },
+                                iterator: KeyAndValue {
+                                    expression: Variable(
+                                        Variable {
+                                            span: Span {
+                                                line: 20,
+                                                column: 13,
+                                                position: 384,
+                                            },
+                                            name: "$a",
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 20,
+                                        column: 16,
+                                        position: 387,
+                                    },
+                                    key: Variable {
+                                        span: Span {
+                                            line: 20,
+                                            column: 19,
+                                            position: 390,
+                                        },
+                                        name: "$b",
+                                    },
+                                    double_arrow: Span {
+                                        line: 20,
+                                        column: 22,
+                                        position: 393,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 20,
+                                            column: 25,
+                                            position: 396,
+                                        },
+                                        name: "$c",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 20,
+                                        column: 28,
+                                        position: 399,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 20,
+                                        column: 31,
+                                        position: 402,
+                                    },
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 21,
+                                    column: 5,
+                                    position: 408,
+                                },
+                                iterator: KeyAndValue {
+                                    expression: Parenthesized(
+                                        ParenthesizedExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: Span {
+                                                line: 21,
+                                                column: 13,
+                                                position: 416,
+                                            },
+                                            expression: Variable(
+                                                Variable {
+                                                    span: Span {
+                                                        line: 21,
+                                                        column: 14,
+                                                        position: 417,
+                                                    },
+                                                    name: "$a",
+                                                },
+                                            ),
+                                            right_parenthesis: Span {
+                                                line: 21,
+                                                column: 16,
+                                                position: 419,
+                                            },
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 21,
+                                        column: 18,
+                                        position: 421,
+                                    },
+                                    key: Variable {
+                                        span: Span {
+                                            line: 21,
+                                            column: 21,
+                                            position: 424,
+                                        },
+                                        name: "$b",
+                                    },
+                                    double_arrow: Span {
+                                        line: 21,
+                                        column: 24,
+                                        position: 427,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 21,
+                                            column: 27,
+                                            position: 430,
+                                        },
+                                        name: "$c",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 21,
+                                        column: 30,
+                                        position: 433,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 21,
+                                        column: 31,
+                                        position: 434,
+                                    },
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Span {
+                                    line: 22,
+                                    column: 5,
+                                    position: 440,
+                                },
+                                iterator: ParenthesizedKeyAndValue {
+                                    left_parenthesis: Span {
+                                        line: 22,
+                                        column: 13,
+                                        position: 448,
+                                    },
+                                    expression: Variable(
+                                        Variable {
+                                            span: Span {
+                                                line: 22,
+                                                column: 14,
+                                                position: 449,
+                                            },
+                                            name: "$a",
+                                        },
+                                    ),
+                                    as: Span {
+                                        line: 22,
+                                        column: 17,
+                                        position: 452,
+                                    },
+                                    key: Variable {
+                                        span: Span {
+                                            line: 22,
+                                            column: 20,
+                                            position: 455,
+                                        },
+                                        name: "$b",
+                                    },
+                                    double_arrow: Span {
+                                        line: 22,
+                                        column: 23,
+                                        position: 458,
+                                    },
+                                    value: Variable {
+                                        span: Span {
+                                            line: 22,
+                                            column: 26,
+                                            position: 461,
+                                        },
+                                        name: "$c",
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 22,
+                                        column: 28,
+                                        position: 463,
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 22,
+                                        column: 30,
+                                        position: 465,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 22,
+                                        column: 31,
+                                        position: 466,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 24,
+                                    column: 5,
+                                    position: 473,
+                                },
+                                iterator: Standalone {
+                                    initializations: CommaSeparated {
+                                        inner: [
+                                            AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 24,
+                                                                column: 9,
+                                                                position: 477,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 24,
+                                                        column: 12,
+                                                        position: 480,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "0",
+                                                                span: Span {
+                                                                    line: 24,
+                                                                    column: 14,
+                                                                    position: 482,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 24,
+                                        column: 15,
+                                        position: 483,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [
+                                            ComparisonOperation(
+                                                LessThan {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 24,
+                                                                column: 17,
+                                                                position: 485,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    less_than: Span {
+                                                        line: 24,
+                                                        column: 20,
+                                                        position: 488,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                span: Span {
+                                                                    line: 24,
+                                                                    column: 22,
+                                                                    position: 490,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 24,
+                                        column: 24,
+                                        position: 492,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [
+                                            ArithmeticOperation(
+                                                PostIncrement {
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 24,
+                                                                column: 26,
+                                                                position: 494,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    increment: Span {
+                                                        line: 24,
+                                                        column: 28,
+                                                        position: 496,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 24,
+                                        column: 31,
+                                        position: 499,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 24,
+                                        column: 34,
+                                        position: 502,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 25,
+                                    column: 5,
+                                    position: 508,
+                                },
+                                iterator: Parenthesized {
+                                    left_parenthesis: Span {
+                                        line: 25,
+                                        column: 9,
+                                        position: 512,
+                                    },
+                                    initializations: CommaSeparated {
+                                        inner: [
+                                            AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 25,
+                                                                column: 10,
+                                                                position: 513,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 25,
+                                                        column: 13,
+                                                        position: 516,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "0",
+                                                                span: Span {
+                                                                    line: 25,
+                                                                    column: 15,
+                                                                    position: 518,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 25,
+                                        column: 16,
+                                        position: 519,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [
+                                            ComparisonOperation(
+                                                LessThan {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 25,
+                                                                column: 18,
+                                                                position: 521,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    less_than: Span {
+                                                        line: 25,
+                                                        column: 21,
+                                                        position: 524,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                span: Span {
+                                                                    line: 25,
+                                                                    column: 23,
+                                                                    position: 526,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 25,
+                                        column: 25,
+                                        position: 528,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [
+                                            ArithmeticOperation(
+                                                PostIncrement {
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 25,
+                                                                column: 27,
+                                                                position: 530,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    increment: Span {
+                                                        line: 25,
+                                                        column: 29,
+                                                        position: 532,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 25,
+                                        column: 31,
+                                        position: 534,
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 25,
+                                        column: 33,
+                                        position: 536,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 25,
+                                        column: 34,
+                                        position: 537,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 26,
+                                    column: 5,
+                                    position: 543,
+                                },
+                                iterator: Standalone {
+                                    initializations: CommaSeparated {
+                                        inner: [
+                                            Parenthesized(
+                                                ParenthesizedExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: Span {
+                                                        line: 26,
+                                                        column: 9,
+                                                        position: 547,
+                                                    },
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Variable(
+                                                                Variable {
+                                                                    span: Span {
+                                                                        line: 26,
+                                                                        column: 10,
+                                                                        position: 548,
+                                                                    },
+                                                                    name: "$a",
+                                                                },
+                                                            ),
+                                                            equals: Span {
+                                                                line: 26,
+                                                                column: 13,
+                                                                position: 551,
+                                                            },
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "0",
+                                                                        span: Span {
+                                                                            line: 26,
+                                                                            column: 15,
+                                                                            position: 553,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                    right_parenthesis: Span {
+                                                        line: 26,
+                                                        column: 16,
+                                                        position: 554,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 26,
+                                        column: 17,
+                                        position: 555,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [
+                                            ComparisonOperation(
+                                                LessThan {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 26,
+                                                                column: 19,
+                                                                position: 557,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    less_than: Span {
+                                                        line: 26,
+                                                        column: 22,
+                                                        position: 560,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                span: Span {
+                                                                    line: 26,
+                                                                    column: 24,
+                                                                    position: 562,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 26,
+                                        column: 26,
+                                        position: 564,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [
+                                            ArithmeticOperation(
+                                                PostIncrement {
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 26,
+                                                                column: 28,
+                                                                position: 566,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    increment: Span {
+                                                        line: 26,
+                                                        column: 30,
+                                                        position: 568,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 26,
+                                        column: 33,
+                                        position: 571,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 26,
+                                        column: 34,
+                                        position: 572,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 27,
+                                    column: 5,
+                                    position: 578,
+                                },
+                                iterator: Standalone {
+                                    initializations: CommaSeparated {
+                                        inner: [
+                                            Parenthesized(
+                                                ParenthesizedExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: Span {
+                                                        line: 27,
+                                                        column: 9,
+                                                        position: 582,
+                                                    },
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Variable(
+                                                                Variable {
+                                                                    span: Span {
+                                                                        line: 27,
+                                                                        column: 10,
+                                                                        position: 583,
+                                                                    },
+                                                                    name: "$a",
+                                                                },
+                                                            ),
+                                                            equals: Span {
+                                                                line: 27,
+                                                                column: 13,
+                                                                position: 586,
+                                                            },
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "0",
+                                                                        span: Span {
+                                                                            line: 27,
+                                                                            column: 15,
+                                                                            position: 588,
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                    right_parenthesis: Span {
+                                                        line: 27,
+                                                        column: 16,
+                                                        position: 589,
+                                                    },
+                                                },
+                                            ),
+                                            AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 27,
+                                                                column: 19,
+                                                                position: 592,
+                                                            },
+                                                            name: "$i",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 27,
+                                                        column: 22,
+                                                        position: 595,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                span: Span {
+                                                                    line: 27,
+                                                                    column: 24,
+                                                                    position: 597,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [
+                                            Span {
+                                                line: 27,
+                                                column: 17,
+                                                position: 590,
+                                            },
+                                        ],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 27,
+                                        column: 26,
+                                        position: 599,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [
+                                            ComparisonOperation(
+                                                LessThan {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 27,
+                                                                column: 28,
+                                                                position: 601,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    less_than: Span {
+                                                        line: 27,
+                                                        column: 31,
+                                                        position: 604,
+                                                    },
+                                                    right: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                span: Span {
+                                                                    line: 27,
+                                                                    column: 33,
+                                                                    position: 606,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 27,
+                                        column: 35,
+                                        position: 608,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [
+                                            ArithmeticOperation(
+                                                PostIncrement {
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 27,
+                                                                column: 37,
+                                                                position: 610,
+                                                            },
+                                                            name: "$a",
+                                                        },
+                                                    ),
+                                                    increment: Span {
+                                                        line: 27,
+                                                        column: 39,
+                                                        position: 612,
+                                                    },
+                                                },
+                                            ),
+                                            Parenthesized(
+                                                ParenthesizedExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: Span {
+                                                        line: 27,
+                                                        column: 43,
+                                                        position: 616,
+                                                    },
+                                                    expression: ArithmeticOperation(
+                                                        PostDecrement {
+                                                            left: Variable(
+                                                                Variable {
+                                                                    span: Span {
+                                                                        line: 27,
+                                                                        column: 44,
+                                                                        position: 617,
+                                                                    },
+                                                                    name: "$i",
+                                                                },
+                                                            ),
+                                                            decrement: Span {
+                                                                line: 27,
+                                                                column: 46,
+                                                                position: 619,
+                                                            },
+                                                        },
+                                                    ),
+                                                    right_parenthesis: Span {
+                                                        line: 27,
+                                                        column: 48,
+                                                        position: 621,
+                                                    },
+                                                },
+                                            ),
+                                        ],
+                                        commas: [
+                                            Span {
+                                                line: 27,
+                                                column: 41,
+                                                position: 614,
+                                            },
+                                        ],
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 27,
+                                        column: 50,
+                                        position: 623,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 27,
+                                        column: 51,
+                                        position: 624,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 29,
+                                    column: 5,
+                                    position: 631,
+                                },
+                                iterator: Standalone {
+                                    initializations: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 29,
+                                        column: 9,
+                                        position: 635,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 29,
+                                        column: 10,
+                                        position: 636,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 29,
+                                        column: 12,
+                                        position: 638,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 29,
+                                        column: 15,
+                                        position: 641,
+                                    },
+                                },
+                            },
+                        ),
+                        For(
+                            ForStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                for: Span {
+                                    line: 30,
+                                    column: 5,
+                                    position: 647,
+                                },
+                                iterator: Parenthesized {
+                                    left_parenthesis: Span {
+                                        line: 30,
+                                        column: 9,
+                                        position: 651,
+                                    },
+                                    initializations: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    initializations_semicolon: Span {
+                                        line: 30,
+                                        column: 10,
+                                        position: 652,
+                                    },
+                                    conditions: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    conditions_semicolon: Span {
+                                        line: 30,
+                                        column: 11,
+                                        position: 653,
+                                    },
+                                    loop: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 30,
+                                        column: 12,
+                                        position: 654,
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 30,
+                                        column: 14,
+                                        position: 656,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 30,
+                                        column: 15,
+                                        position: 657,
+                                    },
+                                },
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 32,
+                                                    column: 5,
+                                                    position: 664,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: Span {
+                                            line: 32,
+                                            column: 8,
+                                            position: 667,
+                                        },
+                                        right: Match(
+                                            MatchExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                match: Span {
+                                                    line: 32,
+                                                    column: 10,
+                                                    position: 669,
+                                                },
+                                                expression: Variable(
+                                                    Variable {
+                                                        span: Span {
+                                                            line: 32,
+                                                            column: 16,
+                                                            position: 675,
+                                                        },
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                body: MatchBodyExpression {
+                                                    left_brace: Span {
+                                                        line: 32,
+                                                        column: 19,
+                                                        position: 678,
+                                                    },
+                                                    arms: CommaSeparated {
+                                                        inner: [
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            Literal(
+                                                                                Integer(
+                                                                                    LiteralInteger {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        value: "1",
+                                                                                        span: Span {
+                                                                                            line: 33,
+                                                                                            column: 9,
+                                                                                            position: 688,
+                                                                                        },
+                                                                                    },
+                                                                                ),
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 33,
+                                                                    column: 11,
+                                                                    position: 690,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "2",
+                                                                            span: Span {
+                                                                                line: 33,
+                                                                                column: 14,
+                                                                                position: 693,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            Literal(
+                                                                                Integer(
+                                                                                    LiteralInteger {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        value: "3",
+                                                                                        span: Span {
+                                                                                            line: 34,
+                                                                                            column: 9,
+                                                                                            position: 704,
+                                                                                        },
+                                                                                    },
+                                                                                ),
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 34,
+                                                                    column: 11,
+                                                                    position: 706,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "4",
+                                                                            span: Span {
+                                                                                line: 34,
+                                                                                column: 14,
+                                                                                position: 709,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Default(
+                                                                    Span {
+                                                                        line: 35,
+                                                                        column: 9,
+                                                                        position: 720,
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 35,
+                                                                    column: 17,
+                                                                    position: 728,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "5",
+                                                                            span: Span {
+                                                                                line: 35,
+                                                                                column: 20,
+                                                                                position: 731,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            Span {
+                                                                line: 33,
+                                                                column: 15,
+                                                                position: 694,
+                                                            },
+                                                            Span {
+                                                                line: 34,
+                                                                column: 15,
+                                                                position: 710,
+                                                            },
+                                                            Span {
+                                                                line: 35,
+                                                                column: 21,
+                                                                position: 732,
+                                                            },
+                                                        ],
+                                                    },
+                                                    right_brace: Span {
+                                                        line: 36,
+                                                        column: 5,
+                                                        position: 738,
+                                                    },
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 36,
+                                    column: 6,
+                                    position: 739,
+                                },
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                span: Span {
+                                                    line: 38,
+                                                    column: 5,
+                                                    position: 746,
+                                                },
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: Span {
+                                            line: 38,
+                                            column: 8,
+                                            position: 749,
+                                        },
+                                        right: Match(
+                                            MatchExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                match: Span {
+                                                    line: 38,
+                                                    column: 10,
+                                                    position: 751,
+                                                },
+                                                expression: Parenthesized(
+                                                    ParenthesizedExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: Span {
+                                                            line: 38,
+                                                            column: 16,
+                                                            position: 757,
+                                                        },
+                                                        expression: Variable(
+                                                            Variable {
+                                                                span: Span {
+                                                                    line: 38,
+                                                                    column: 17,
+                                                                    position: 758,
+                                                                },
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        right_parenthesis: Span {
+                                                            line: 38,
+                                                            column: 19,
+                                                            position: 760,
+                                                        },
+                                                    },
+                                                ),
+                                                body: MatchBodyExpression {
+                                                    left_brace: Span {
+                                                        line: 38,
+                                                        column: 21,
+                                                        position: 762,
+                                                    },
+                                                    arms: CommaSeparated {
+                                                        inner: [
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            Literal(
+                                                                                Integer(
+                                                                                    LiteralInteger {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        value: "1",
+                                                                                        span: Span {
+                                                                                            line: 39,
+                                                                                            column: 9,
+                                                                                            position: 772,
+                                                                                        },
+                                                                                    },
+                                                                                ),
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 39,
+                                                                    column: 11,
+                                                                    position: 774,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "2",
+                                                                            span: Span {
+                                                                                line: 39,
+                                                                                column: 14,
+                                                                                position: 777,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            Literal(
+                                                                                Integer(
+                                                                                    LiteralInteger {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        value: "3",
+                                                                                        span: Span {
+                                                                                            line: 40,
+                                                                                            column: 9,
+                                                                                            position: 788,
+                                                                                        },
+                                                                                    },
+                                                                                ),
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 40,
+                                                                    column: 11,
+                                                                    position: 790,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "4",
+                                                                            span: Span {
+                                                                                line: 40,
+                                                                                column: 14,
+                                                                                position: 793,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Default(
+                                                                    Span {
+                                                                        line: 41,
+                                                                        column: 9,
+                                                                        position: 804,
+                                                                    },
+                                                                ),
+                                                                arrow: Span {
+                                                                    line: 41,
+                                                                    column: 17,
+                                                                    position: 812,
+                                                                },
+                                                                expression: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "5",
+                                                                            span: Span {
+                                                                                line: 41,
+                                                                                column: 20,
+                                                                                position: 815,
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            Span {
+                                                                line: 39,
+                                                                column: 15,
+                                                                position: 778,
+                                                            },
+                                                            Span {
+                                                                line: 40,
+                                                                column: 15,
+                                                                position: 794,
+                                                            },
+                                                            Span {
+                                                                line: 41,
+                                                                column: 21,
+                                                                position: 816,
+                                                            },
+                                                        ],
+                                                    },
+                                                    right_brace: Span {
+                                                        line: 42,
+                                                        column: 5,
+                                                        position: 822,
+                                                    },
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 42,
+                                    column: 6,
+                                    position: 823,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 43,
+                        column: 1,
+                        position: 825,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 44,
+        column: 1,
+        position: 827,
+    },
+}

@@ -1,0 +1,85 @@
+type address = (string, int);
+
+type mapper<T, U> = (fn(T): U);
+
+type reducer<T, U> = (fn(T, U): U);
+
+type filter<T> = (fn(T): bool);
+
+function vec_filter<T>(
+    vec<T> $vec,
+    filter<T> $filter
+): vec<T> {
+    $result = vec[];
+    foreach $vec as $item {
+        if $filter($item) {
+            $result[] = $item;
+        }
+    }
+
+    return $result;
+}
+
+function vec_map<T, U>(
+    vec<T> $vec,
+    mapper<T, U> $mapper
+): (vec<T>, vec<U>) {
+    $result = vec[];
+    foreach $vec as $item {
+        $result[] = $mapper($item);
+    }
+
+    ($vec, $result)
+}
+
+function dict_filter<K, V>(
+    dict<K, V> $dict,
+    filter<V> $filter
+): dict<K, V> {
+    $result = dict[];
+    foreach $dict as $key => $item {
+        if $filter($item) {
+            $result[$key] = $item;
+        }
+    }
+
+    return $result;
+}
+
+function dict_map<K, V, U>(
+    dict<K, V> $dict,
+    mapper<V, U> $mapper
+): (dict<K, V>, dict<K, U>) {
+    $result = dict[];
+    foreach $dict as $key => $item {
+        $result[$key] = $mapper($item);
+    }
+
+    ($dict, $result)
+}
+
+function iterable_map_to_dict<K, V, U>(
+    iterable<K, V> $iterable,
+    mapper<V, U> $mapper
+): (iterable<K, V>, dict<K, U>,) {
+    $result = dict[];
+    foreach $iterable as $key => $item {
+        $result[$key] = $mapper($item);
+    }
+
+    ($iterable, $result)
+}
+
+function iterable_filter_to_dict<K, V>(
+    iterable<K, V> $iterable,
+    filter<V> $filter
+): dict<K, V> {
+    $result = dict[];
+    foreach $iterable as $key => $item {
+        if $filter($item) {
+            $result[$key] = $item;
+        }
+    }
+
+    return $result;
+}

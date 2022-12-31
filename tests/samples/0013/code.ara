@@ -1,0 +1,5 @@
+function main(): void {
+    $foo->bar();
+    $foo->bar()->baz();
+    $foo->bar()();
+}

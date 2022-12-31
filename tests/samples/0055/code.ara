@@ -1,0 +1,9 @@
+class Foo {
+    const foo = 1;
+
+    public static function foo(): void {
+        $a = static::foo;
+
+        static::foo();
+    }
+}

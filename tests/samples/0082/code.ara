@@ -1,0 +1,49 @@
+type num = int|float;
+
+final readonly class Collection<T> {
+    public function __construct(
+        private vec<T> $items = vec[],
+    ) {}
+
+    public function filter((fn(T): bool) $func): Collection<T> {
+        $result = vec[];
+        foreach $this->items as $item {
+            if $func($item) {
+                $result[] = $item;
+            }
+        }
+
+        return new Collection::<T>($result);
+    }
+
+    public function map<Tout>((fn(T): Tout) $func): Collection<Tout> {
+        $result = vec[];
+        foreach $this->items as $item {
+            $result[] = $func($item);
+        }
+
+        return new Collection::<Tout>($result);
+    }
+
+    public function sum(): int where T is num {
+        $result = 0;
+        foreach $this->items as $item {
+            $result += $item;
+        }
+
+        $result
+    }
+}
+
+function example(): int {
+    $collection = new Collection::<num>(vec[
+        1, 2, 3.0, 4.0, 5, 6, 7.0, 9.0, 10
+    ]);
+
+    $collection
+      ->filter(fn(num $n): bool => $n < 8)
+      ->map::<float>(
+        fn(num $n): float => $n is float ? $n : $n + 0.0
+      )
+      ->sum()
+}

@@ -1,0 +1,406 @@
+DefinitionTree {
+    definitions: [
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    value: "A",
+                },
+                templates: None,
+                extends: None,
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 13,
+                        position: 12,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 1,
+                        column: 14,
+                        position: 13,
+                    },
+                },
+            },
+        ),
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: Span {
+                    line: 2,
+                    column: 1,
+                    position: 15,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 2,
+                        column: 11,
+                        position: 25,
+                    },
+                    value: "B",
+                },
+                templates: None,
+                extends: None,
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 2,
+                        column: 13,
+                        position: 27,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 2,
+                        column: 14,
+                        position: 28,
+                    },
+                },
+            },
+        ),
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: Span {
+                    line: 3,
+                    column: 1,
+                    position: 30,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 3,
+                        column: 11,
+                        position: 40,
+                    },
+                    value: "C",
+                },
+                templates: None,
+                extends: None,
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 3,
+                        column: 13,
+                        position: 42,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 3,
+                        column: 14,
+                        position: 43,
+                    },
+                },
+            },
+        ),
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: Span {
+                    line: 4,
+                    column: 1,
+                    position: 45,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 4,
+                        column: 11,
+                        position: 55,
+                    },
+                    value: "D",
+                },
+                templates: None,
+                extends: None,
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 4,
+                        column: 13,
+                        position: 57,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 4,
+                        column: 14,
+                        position: 58,
+                    },
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 6,
+                    column: 1,
+                    position: 61,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 6,
+                        column: 10,
+                        position: 70,
+                    },
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 6,
+                        column: 13,
+                        position: 73,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: Union(
+                                    [
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    span: Span {
+                                                        line: 6,
+                                                        column: 14,
+                                                        position: 74,
+                                                    },
+                                                    value: "A",
+                                                },
+                                                templates: None,
+                                            },
+                                        ),
+                                        Intersection(
+                                            [
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            span: Span {
+                                                                line: 6,
+                                                                column: 17,
+                                                                position: 77,
+                                                            },
+                                                            value: "B",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            span: Span {
+                                                                line: 6,
+                                                                column: 19,
+                                                                position: 79,
+                                                            },
+                                                            value: "C",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            span: Span {
+                                                                line: 6,
+                                                                column: 21,
+                                                                position: 81,
+                                                            },
+                                                            value: "D",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                            ],
+                                        ),
+                                    ],
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    span: Span {
+                                        line: 6,
+                                        column: 24,
+                                        position: 84,
+                                    },
+                                    name: "$a",
+                                },
+                                default: None,
+                            },
+                        ],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 6,
+                        column: 26,
+                        position: 86,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 6,
+                        column: 27,
+                        position: 87,
+                    },
+                    type_definition: Intersection(
+                        [
+                            Identifier(
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 6,
+                                            column: 29,
+                                            position: 89,
+                                        },
+                                        value: "A",
+                                    },
+                                    templates: None,
+                                },
+                            ),
+                            Union(
+                                [
+                                    Identifier(
+                                        TemplatedIdentifier {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 32,
+                                                    position: 92,
+                                                },
+                                                value: "B",
+                                            },
+                                            templates: None,
+                                        },
+                                    ),
+                                    Identifier(
+                                        TemplatedIdentifier {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 34,
+                                                    position: 94,
+                                                },
+                                                value: "C",
+                                            },
+                                            templates: None,
+                                        },
+                                    ),
+                                    Identifier(
+                                        TemplatedIdentifier {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 36,
+                                                    position: 96,
+                                                },
+                                                value: "D",
+                                            },
+                                            templates: None,
+                                        },
+                                    ),
+                                ],
+                            ),
+                        ],
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 6,
+                        column: 39,
+                        position: 99,
+                    },
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ExitConstruct(
+                                    ExitWith {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        exit: Span {
+                                            line: 7,
+                                            column: 5,
+                                            position: 105,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 7,
+                                            column: 9,
+                                            position: 109,
+                                        },
+                                        value: Some(
+                                            Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "0",
+                                                        span: Span {
+                                                            line: 7,
+                                                            column: 10,
+                                                            position: 110,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 7,
+                                            column: 11,
+                                            position: 111,
+                                        },
+                                    },
+                                ),
+                                semicolon: Span {
+                                    line: 7,
+                                    column: 12,
+                                    position: 112,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 8,
+                        column: 1,
+                        position: 114,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 9,
+        column: 1,
+        position: 116,
+    },
+}

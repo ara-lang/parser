@@ -1,0 +1,801 @@
+DefinitionTree {
+    definitions: [
+        Enum(
+            Backed(
+                BackedEnumDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    attributes: [],
+                    enum: Span {
+                        line: 1,
+                        column: 1,
+                        position: 0,
+                    },
+                    name: Identifier {
+                        span: Span {
+                            line: 1,
+                            column: 6,
+                            position: 5,
+                        },
+                        value: "a",
+                    },
+                    backed_type: Int(
+                        Span {
+                            line: 1,
+                            column: 7,
+                            position: 6,
+                        },
+                        Identifier {
+                            span: Span {
+                                line: 1,
+                                column: 9,
+                                position: 8,
+                            },
+                            value: "int",
+                        },
+                    ),
+                    implements: None,
+                    body: BackedEnumBodyDefinition {
+                        left_brace: Span {
+                            line: 1,
+                            column: 13,
+                            position: 12,
+                        },
+                        members: [
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 2,
+                                        column: 5,
+                                        position: 18,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 2,
+                                            column: 10,
+                                            position: 23,
+                                        },
+                                        value: "static",
+                                    },
+                                    equals: Span {
+                                        line: 2,
+                                        column: 17,
+                                        position: 30,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2413",
+                                                span: Span {
+                                                    line: 2,
+                                                    column: 19,
+                                                    position: 32,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 2,
+                                        column: 23,
+                                        position: 36,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 3,
+                                        column: 5,
+                                        position: 42,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 10,
+                                            position: 47,
+                                        },
+                                        value: "self",
+                                    },
+                                    equals: Span {
+                                        line: 3,
+                                        column: 15,
+                                        position: 52,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2432",
+                                                span: Span {
+                                                    line: 3,
+                                                    column: 17,
+                                                    position: 54,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 3,
+                                        column: 21,
+                                        position: 58,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 4,
+                                        column: 5,
+                                        position: 64,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 4,
+                                            column: 10,
+                                            position: 69,
+                                        },
+                                        value: "return",
+                                    },
+                                    equals: Span {
+                                        line: 4,
+                                        column: 17,
+                                        position: 76,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2433",
+                                                span: Span {
+                                                    line: 4,
+                                                    column: 19,
+                                                    position: 78,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 4,
+                                        column: 23,
+                                        position: 82,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 5,
+                                        column: 5,
+                                        position: 88,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 5,
+                                            column: 10,
+                                            position: 93,
+                                        },
+                                        value: "parent",
+                                    },
+                                    equals: Span {
+                                        line: 5,
+                                        column: 17,
+                                        position: 100,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2543",
+                                                span: Span {
+                                                    line: 5,
+                                                    column: 19,
+                                                    position: 102,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 5,
+                                        column: 23,
+                                        position: 106,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 6,
+                                        column: 5,
+                                        position: 112,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 6,
+                                            column: 10,
+                                            position: 117,
+                                        },
+                                        value: "enum",
+                                    },
+                                    equals: Span {
+                                        line: 6,
+                                        column: 15,
+                                        position: 122,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "24133",
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 17,
+                                                    position: 124,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 6,
+                                        column: 22,
+                                        position: 129,
+                                    },
+                                },
+                            ),
+                            Case(
+                                BackedEnumCaseDefinition {
+                                    attributes: [],
+                                    case: Span {
+                                        line: 7,
+                                        column: 5,
+                                        position: 135,
+                                    },
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 7,
+                                            column: 10,
+                                            position: 140,
+                                        },
+                                        value: "from",
+                                    },
+                                    equals: Span {
+                                        line: 7,
+                                        column: 15,
+                                        position: 145,
+                                    },
+                                    value: Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "25443",
+                                                span: Span {
+                                                    line: 7,
+                                                    column: 17,
+                                                    position: 147,
+                                                },
+                                            },
+                                        ),
+                                    ),
+                                    semicolon: Span {
+                                        line: 7,
+                                        column: 22,
+                                        position: 152,
+                                    },
+                                },
+                            ),
+                        ],
+                        right_brace: Span {
+                            line: 8,
+                            column: 1,
+                            position: 154,
+                        },
+                    },
+                },
+            ),
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 10,
+                    column: 1,
+                    position: 157,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 10,
+                        column: 7,
+                        position: 163,
+                    },
+                    value: "f",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 10,
+                        column: 9,
+                        position: 165,
+                    },
+                    members: [
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 11,
+                                    column: 5,
+                                    position: 171,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 11,
+                                                    column: 11,
+                                                    position: 177,
+                                                },
+                                                value: "static",
+                                            },
+                                            equals: Span {
+                                                line: 11,
+                                                column: 18,
+                                                position: 184,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "2413",
+                                                        span: Span {
+                                                            line: 11,
+                                                            column: 20,
+                                                            position: 186,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 11,
+                                    column: 24,
+                                    position: 190,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 12,
+                                    column: 5,
+                                    position: 196,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 11,
+                                                    position: 202,
+                                                },
+                                                value: "self",
+                                            },
+                                            equals: Span {
+                                                line: 12,
+                                                column: 16,
+                                                position: 207,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "2432",
+                                                        span: Span {
+                                                            line: 12,
+                                                            column: 18,
+                                                            position: 209,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 12,
+                                    column: 22,
+                                    position: 213,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 13,
+                                    column: 5,
+                                    position: 219,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 13,
+                                                    column: 11,
+                                                    position: 225,
+                                                },
+                                                value: "return",
+                                            },
+                                            equals: Span {
+                                                line: 13,
+                                                column: 18,
+                                                position: 232,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "2433",
+                                                        span: Span {
+                                                            line: 13,
+                                                            column: 20,
+                                                            position: 234,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 13,
+                                    column: 24,
+                                    position: 238,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 14,
+                                    column: 5,
+                                    position: 244,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 14,
+                                                    column: 11,
+                                                    position: 250,
+                                                },
+                                                value: "parent",
+                                            },
+                                            equals: Span {
+                                                line: 14,
+                                                column: 18,
+                                                position: 257,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "2543",
+                                                        span: Span {
+                                                            line: 14,
+                                                            column: 20,
+                                                            position: 259,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 14,
+                                    column: 24,
+                                    position: 263,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 15,
+                                    column: 5,
+                                    position: 269,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 15,
+                                                    column: 11,
+                                                    position: 275,
+                                                },
+                                                value: "enum",
+                                            },
+                                            equals: Span {
+                                                line: 15,
+                                                column: 16,
+                                                position: 280,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "24133",
+                                                        span: Span {
+                                                            line: 15,
+                                                            column: 18,
+                                                            position: 282,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 15,
+                                    column: 23,
+                                    position: 287,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 16,
+                                    column: 5,
+                                    position: 293,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 16,
+                                                    column: 11,
+                                                    position: 299,
+                                                },
+                                                value: "from",
+                                            },
+                                            equals: Span {
+                                                line: 16,
+                                                column: 16,
+                                                position: 304,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "25443",
+                                                        span: Span {
+                                                            line: 16,
+                                                            column: 18,
+                                                            position: 306,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 16,
+                                    column: 23,
+                                    position: 311,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 17,
+                        column: 1,
+                        position: 313,
+                    },
+                },
+            },
+        ),
+        Constant(
+            ConstantDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                const: Span {
+                    line: 19,
+                    column: 1,
+                    position: 316,
+                },
+                entries: CommaSeparated {
+                    inner: [
+                        ConstantDefinitionEntry {
+                            name: Identifier {
+                                span: Span {
+                                    line: 19,
+                                    column: 7,
+                                    position: 322,
+                                },
+                                value: "from",
+                            },
+                            equals: Span {
+                                line: 19,
+                                column: 12,
+                                position: 327,
+                            },
+                            value: Literal(
+                                Integer(
+                                    LiteralInteger {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        value: "243",
+                                        span: Span {
+                                            line: 19,
+                                            column: 14,
+                                            position: 329,
+                                        },
+                                    },
+                                ),
+                            ),
+                        },
+                    ],
+                    commas: [],
+                },
+                semicolon: Span {
+                    line: 19,
+                    column: 17,
+                    position: 332,
+                },
+            },
+        ),
+        Constant(
+            ConstantDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                const: Span {
+                    line: 20,
+                    column: 1,
+                    position: 334,
+                },
+                entries: CommaSeparated {
+                    inner: [
+                        ConstantDefinitionEntry {
+                            name: Identifier {
+                                span: Span {
+                                    line: 20,
+                                    column: 7,
+                                    position: 340,
+                                },
+                                value: "enum",
+                            },
+                            equals: Span {
+                                line: 20,
+                                column: 12,
+                                position: 345,
+                            },
+                            value: Literal(
+                                Integer(
+                                    LiteralInteger {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        value: "243",
+                                        span: Span {
+                                            line: 20,
+                                            column: 14,
+                                            position: 347,
+                                        },
+                                    },
+                                ),
+                            ),
+                        },
+                    ],
+                    commas: [],
+                },
+                semicolon: Span {
+                    line: 20,
+                    column: 17,
+                    position: 350,
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 21,
+        column: 1,
+        position: 352,
+    },
+}

@@ -1,0 +1,51 @@
+namespace where;
+
+const where = 1;
+interface where {}
+class where {
+    public const where = 1;
+
+    public function where(): void {}
+}
+
+function where(): where {
+    $where = where;
+    $where = new where();
+    $where = where::where;
+    $where = where::where();
+    $where = where::where::where;
+    $where = where::where::where();
+    $where = $where->where();
+
+    $where
+}
+
+function where(): int {
+    where
+}
+
+namespace type;
+
+const type = 1;
+interface type {}
+class type {
+    public const type = 1;
+
+    public function type(): void {}
+}
+
+function type(): type {
+    $type = type;
+    $type = new type();
+    $type = type::type;
+    $type = type::type();
+    $type = type::type::type;
+    $type = type::type::type();
+    $type = $type->type();
+
+    $type
+}
+
+function type(): int {
+    type
+}

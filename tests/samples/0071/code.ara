@@ -1,0 +1,70 @@
+interface ObjectCollection<+T as object> extends IteratorAggregate<int, T> {}
+
+function foo(): vec<int> {
+    return vec[1, 2, 3];
+}
+
+function bar(): dict<string, int> {
+    return dict['a' => 1, 'b' => 2, 'c' => 3];
+}
+
+function baz(bool $a): iterable<int, int> {
+    if $a {
+        return vec[1, 2, 3];
+    } else {
+        return dict[1 => 1, 2 => 2, 3 => 3];
+    }
+}
+
+final class Box<T> {
+    public function __construct(public T $value) {}
+}
+
+function box(): Box<vec<int>> {
+    return new Box(vec[1, 2, 3]);
+}
+
+function unbox(Box<vec<int>> $box): vec<int> {
+    return $box->value;
+}
+
+function foo(bool $a, bool $b): vec<int>|dict<string, int>|Box<vec<int>> {
+    if $a {
+        return vec[1, 2, 3];
+    } else if $b {
+        return dict['a' => 1, 'b' => 2, 'c' => 3];
+    } else {
+        return new Box(vec[1, 2, 3]);
+    }
+}
+
+function into_vec<T>(iterable<_, Tv> $iterable): vec<T> {
+    $vec = vec[];
+    foreach $iterable as $value {
+        $vec[] = $value;
+    }
+
+    return $vec;
+}
+
+function into_dict<Tk, Tv>(iterable<Tk, Tv> $iterable): dict<Tk, Tv> {
+    $dict = dict[];
+    foreach $iterable as $key => $value {
+        $dict[$key] = $value;
+    }
+
+    return $dict;
+}
+
+function baz(): void {
+    $dict = dict[1 => 1, 2 => 2, 3 => 3];
+    $vec = vec[1, 2, 3];
+
+    $dict2 = into_dict::<int, int>($vec);
+    $vec2 = into_vec::<int>($dict);
+
+    $a = vec[$dict1, $dict2];
+    $b = into_dict::<int, dict<int, int>>($a);
+
+    $c = new Box::<dict<int, dict<int, int>>>($b);
+}

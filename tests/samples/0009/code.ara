@@ -1,0 +1,3 @@
+function main(): void {
+    break 2;
+}

@@ -1,0 +1,125 @@
+function foo(): void {
+    a;
+
+    $a;
+
+    $a::b;
+
+    $a->b;
+
+    $a::b();
+    $a::b($a);
+    $a::b(...);
+    $a::b(...$a);
+
+    $a->b();
+    $a->b($a);
+    $a->b(...);
+    $a->b(...$a);
+
+    $a?->b();
+    $a?->b($a);
+    $a?->b(...$a);
+
+    $a::b::<int>();
+    $a::b::<int>($a);
+    $a::b::<int>(...);
+    $a::b::<int>(...$a);
+
+    $a->b::<int>();
+    $a->b::<int>($a);
+    $a->b::<int>(...);
+    $a->b::<int>(...$a);
+
+    $a?->b::<int>();
+    $a?->b::<int>($a);
+    $a?->b::<int>(...$a);
+
+    a();
+    a($a);
+    a(...);
+    a(...$a);
+
+    a::<int>();
+    a::<int>($a);
+    a::<int>(...);
+    a::<int>(...$a);
+
+    new Foo();
+    new Foo($a);
+
+    new Foo::<int>($a);
+    new Foo::<int>(...$a);
+
+    new Foo::<int, string>($a);
+    new Foo::<int, string>(...$a);
+
+    $c = $a | $b;
+    $c = $a & $b;
+    $c = $a ^ $b;
+    $c = $a << $b;
+    $c = $a >> $b;
+
+    $c = $a ** $b;
+    $c = $a + $b;
+    $c = $a - $b;
+    $c = $a * $b;
+    $c = $a / $b;
+    $c = $a % $b;
+    $c = $a . $b;
+
+    $c = $a ?? $b;
+
+    $c = $a && $b;
+    $c = $a || $b;
+
+    $c = $a == $b;
+    $c = $a === $b;
+    $c = $a != $b;
+    $c = $a !== $b;
+    $c = $a <= $b;
+    $c = $a >= $b;
+    $c = $a < $b;
+    $c = $a > $b;
+
+    $c = $a <=> $b;
+
+    $a ??= $b;
+    $a += $b;
+    $a -= $b;
+    $a *= $b;
+    $a /= $b;
+    $a %= $b;
+    $a .= $b;
+    $a &= $b;
+    $a |= $b;
+    $a ^= $b;
+    $a <<= $b;
+    $a >>= $b;
+    $a **= $b;
+
+    $a++;
+    $a--;
+    ++$a;
+    --$a;
+
+    $a = !$b;
+    $a = ~$b;
+    $a = +$b;
+    $a = -$b;
+
+    $a = vec[];
+    $a = vec[$a, $b];
+    $a = vec[$a, $b,];
+
+    $a = dict[];
+    $a = dict[$a => $b, $a => $b];
+    $a = dict[$a => $b, $a => $b,];
+
+    $a = $a[$b];
+
+    $a = $a[$b] ?? $c;
+
+    $a[$b] = $c;
+    $a[$b] ??= $c;
+}

@@ -1,0 +1,5 @@
+function a<T as string|int, +U>(
+
+    (fn(T): U)|dict<T, U>|vec<U>|(Foo<T, U>&Bar<vec<U>>) $x,
+
+): dict<Tk, Tv> {}

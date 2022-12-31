@@ -1,0 +1,188 @@
+DefinitionTree {
+    definitions: [
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 7,
+                        position: 6,
+                    },
+                    value: "foo",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    members: [
+                        ConcreteConstructor(
+                            ConcreteConstructorDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            Span {
+                                                line: 2,
+                                                column: 5,
+                                                position: 16,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Span {
+                                    line: 2,
+                                    column: 12,
+                                    position: 23,
+                                },
+                                name: Identifier {
+                                    span: Span {
+                                        line: 2,
+                                        column: 21,
+                                        position: 32,
+                                    },
+                                    value: "__construct",
+                                },
+                                parameters: ConstructorParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: Span {
+                                        line: 2,
+                                        column: 32,
+                                        position: 43,
+                                    },
+                                    parameters: CommaSeparated {
+                                        inner: [
+                                            ConstructorParameterDefinition {
+                                                attributes: [],
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                    modifiers: [
+                                                        Readonly(
+                                                            Span {
+                                                                line: 3,
+                                                                column: 9,
+                                                                position: 53,
+                                                            },
+                                                        ),
+                                                        Public(
+                                                            Span {
+                                                                line: 3,
+                                                                column: 18,
+                                                                position: 62,
+                                                            },
+                                                        ),
+                                                    ],
+                                                },
+                                                type_definition: String(
+                                                    Span {
+                                                        line: 3,
+                                                        column: 25,
+                                                        position: 69,
+                                                    },
+                                                ),
+                                                ellipsis: None,
+                                                variable: Variable {
+                                                    span: Span {
+                                                        line: 3,
+                                                        column: 32,
+                                                        position: 76,
+                                                    },
+                                                    name: "$s",
+                                                },
+                                                default: Some(
+                                                    FunctionLikeParameterDefaultValueDefinition {
+                                                        equals: Span {
+                                                            line: 3,
+                                                            column: 35,
+                                                            position: 79,
+                                                        },
+                                                        value: Literal(
+                                                            String(
+                                                                LiteralString {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "'h'",
+                                                                    span: Span {
+                                                                        line: 3,
+                                                                        column: 37,
+                                                                        position: 81,
+                                                                    },
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ],
+                                        commas: [
+                                            Span {
+                                                line: 3,
+                                                column: 40,
+                                                position: 84,
+                                            },
+                                        ],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 4,
+                                        column: 5,
+                                        position: 90,
+                                    },
+                                },
+                                body: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 4,
+                                        column: 7,
+                                        position: 92,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 4,
+                                        column: 8,
+                                        position: 93,
+                                    },
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 5,
+                        column: 1,
+                        position: 95,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 97,
+    },
+}

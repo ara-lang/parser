@@ -1,0 +1,286 @@
+DefinitionTree {
+    definitions: [
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    value: "enum",
+                },
+                templates: None,
+                extends: Some(
+                    InterfaceDefinitionExtends {
+                        extends: Span {
+                            line: 1,
+                            column: 16,
+                            position: 15,
+                        },
+                        parents: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 24,
+                                            position: 23,
+                                        },
+                                        value: "enum",
+                                    },
+                                    templates: None,
+                                },
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 30,
+                                            position: 29,
+                                        },
+                                        value: "from",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 1,
+                                    column: 28,
+                                    position: 27,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 35,
+                        position: 34,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 1,
+                        column: 36,
+                        position: 35,
+                    },
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 3,
+                    column: 1,
+                    position: 38,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 3,
+                        column: 7,
+                        position: 44,
+                    },
+                    value: "enum",
+                },
+                templates: None,
+                extends: Some(
+                    ClassDefinitionExtends {
+                        extends: Span {
+                            line: 3,
+                            column: 12,
+                            position: 49,
+                        },
+                        parent: TemplatedIdentifier {
+                            name: Identifier {
+                                span: Span {
+                                    line: 3,
+                                    column: 20,
+                                    position: 57,
+                                },
+                                value: "enum",
+                            },
+                            templates: None,
+                        },
+                    },
+                ),
+                implements: Some(
+                    ClassDefinitionImplements {
+                        implements: Span {
+                            line: 3,
+                            column: 25,
+                            position: 62,
+                        },
+                        interfaces: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 36,
+                                            position: 73,
+                                        },
+                                        value: "enum",
+                                    },
+                                    templates: None,
+                                },
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 42,
+                                            position: 79,
+                                        },
+                                        value: "from",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 3,
+                                    column: 40,
+                                    position: 77,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 3,
+                        column: 47,
+                        position: 84,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 3,
+                        column: 48,
+                        position: 85,
+                    },
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 4,
+                    column: 1,
+                    position: 87,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 4,
+                        column: 7,
+                        position: 93,
+                    },
+                    value: "from",
+                },
+                templates: None,
+                extends: Some(
+                    ClassDefinitionExtends {
+                        extends: Span {
+                            line: 4,
+                            column: 12,
+                            position: 98,
+                        },
+                        parent: TemplatedIdentifier {
+                            name: Identifier {
+                                span: Span {
+                                    line: 4,
+                                    column: 20,
+                                    position: 106,
+                                },
+                                value: "from",
+                            },
+                            templates: None,
+                        },
+                    },
+                ),
+                implements: Some(
+                    ClassDefinitionImplements {
+                        implements: Span {
+                            line: 4,
+                            column: 25,
+                            position: 111,
+                        },
+                        interfaces: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 4,
+                                            column: 36,
+                                            position: 122,
+                                        },
+                                        value: "Foo\enum",
+                                    },
+                                    templates: None,
+                                },
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 4,
+                                            column: 46,
+                                            position: 132,
+                                        },
+                                        value: "\Bar\Baz\from",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 4,
+                                    column: 44,
+                                    position: 130,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 4,
+                        column: 60,
+                        position: 146,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 4,
+                        column: 61,
+                        position: 147,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 5,
+        column: 1,
+        position: 149,
+    },
+}

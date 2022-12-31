@@ -1,0 +1,74 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        rust:
+          - 'stable'
+          - 'nightly'
+        os:
+          - 'ubuntu-latest'
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: install rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: rustfmt, clippy
+
+      - name: install php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          tools: composer:v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+            path: |
+              ~/.cargo/bin/
+              ~/.cargo/registry/index/
+              ~/.cargo/registry/cache/
+              ~/.cargo/git/db/
+              target/
+            key: rust-${{ inputs.rust }}-os-${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+
+      - name: fmt
+        if: matrix.rust == 'stable'
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all --check
+
+      - name: clippy
+        if: matrix.rust == 'stable'
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+
+      - name: test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: -r --all

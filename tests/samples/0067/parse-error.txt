@@ -1,0 +1,6 @@
+error[P0041]: unexpected token `[`, expected an expression
+  --> 0067/code.ara:2:10
+  |
+2 |     $a = [];
+  |          ^ unexpected token `[`, expected an expression
+

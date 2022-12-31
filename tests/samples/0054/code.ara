@@ -1,0 +1,8 @@
+
+function foo(): void {
+    if ($foo) {
+
+    } else if ($bar) {
+
+    }
+}

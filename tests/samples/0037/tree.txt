@@ -1,0 +1,186 @@
+DefinitionTree {
+    definitions: [
+        Namespace(
+            NamespaceDefinition {
+                namespace: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    value: "A\B\C\D\E",
+                },
+                semicolon: Span {
+                    line: 1,
+                    column: 20,
+                    position: 19,
+                },
+                definitions: [
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: Span {
+                                line: 3,
+                                column: 1,
+                                position: 22,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 3,
+                                    column: 10,
+                                    position: 31,
+                                },
+                                value: "foo",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: Span {
+                                    line: 3,
+                                    column: 13,
+                                    position: 34,
+                                },
+                                parameters: CommaSeparated {
+                                    inner: [
+                                        FunctionLikeParameterDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            type_definition: String(
+                                                Span {
+                                                    line: 3,
+                                                    column: 14,
+                                                    position: 35,
+                                                },
+                                            ),
+                                            ellipsis: None,
+                                            variable: Variable {
+                                                span: Span {
+                                                    line: 3,
+                                                    column: 21,
+                                                    position: 42,
+                                                },
+                                                name: "$s",
+                                            },
+                                            default: None,
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                right_parenthesis: Span {
+                                    line: 3,
+                                    column: 23,
+                                    position: 44,
+                                },
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: Span {
+                                    line: 3,
+                                    column: 24,
+                                    position: 45,
+                                },
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            span: Span {
+                                                line: 3,
+                                                column: 26,
+                                                position: 47,
+                                            },
+                                            value: "self",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 3,
+                                    column: 31,
+                                    position: 52,
+                                },
+                                statements: [
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: ExitConstruct(
+                                                ExitWith {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    exit: Span {
+                                                        line: 4,
+                                                        column: 6,
+                                                        position: 59,
+                                                    },
+                                                    left_parenthesis: Span {
+                                                        line: 4,
+                                                        column: 10,
+                                                        position: 63,
+                                                    },
+                                                    value: Some(
+                                                        Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "0",
+                                                                    span: Span {
+                                                                        line: 4,
+                                                                        column: 11,
+                                                                        position: 64,
+                                                                    },
+                                                                },
+                                                            ),
+                                                        ),
+                                                    ),
+                                                    right_parenthesis: Span {
+                                                        line: 4,
+                                                        column: 12,
+                                                        position: 65,
+                                                    },
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 4,
+                                                column: 13,
+                                                position: 66,
+                                            },
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 5,
+                                    column: 1,
+                                    position: 68,
+                                },
+                            },
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+    eof: Span {
+        line: 6,
+        column: 1,
+        position: 70,
+    },
+}

@@ -1,0 +1,878 @@
+DefinitionTree {
+    definitions: [
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [
+                    AttributeDefinitionGroup {
+                        hash_left_bracket: Span {
+                            line: 1,
+                            column: 1,
+                            position: 0,
+                        },
+                        members: CommaSeparated {
+                            inner: [
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 3,
+                                            position: 2,
+                                        },
+                                        value: "A",
+                                    },
+                                    arguments: None,
+                                },
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 6,
+                                            position: 5,
+                                        },
+                                        value: "B",
+                                    },
+                                    arguments: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 1,
+                                    column: 4,
+                                    position: 3,
+                                },
+                            ],
+                        },
+                        right_bracket: Span {
+                            line: 1,
+                            column: 7,
+                            position: 6,
+                        },
+                    },
+                    AttributeDefinitionGroup {
+                        hash_left_bracket: Span {
+                            line: 2,
+                            column: 1,
+                            position: 8,
+                        },
+                        members: CommaSeparated {
+                            inner: [
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 2,
+                                            column: 3,
+                                            position: 10,
+                                        },
+                                        value: "C",
+                                    },
+                                    arguments: None,
+                                },
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 2,
+                                            column: 6,
+                                            position: 13,
+                                        },
+                                        value: "D",
+                                    },
+                                    arguments: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 2,
+                                    column: 4,
+                                    position: 11,
+                                },
+                            ],
+                        },
+                        right_bracket: Span {
+                            line: 2,
+                            column: 7,
+                            position: 14,
+                        },
+                    },
+                ],
+                interface: Span {
+                    line: 3,
+                    column: 1,
+                    position: 16,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 3,
+                        column: 11,
+                        position: 26,
+                    },
+                    value: "A",
+                },
+                templates: None,
+                extends: Some(
+                    InterfaceDefinitionExtends {
+                        extends: Span {
+                            line: 3,
+                            column: 13,
+                            position: 28,
+                        },
+                        parents: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 21,
+                                            position: 36,
+                                        },
+                                        value: "B",
+                                    },
+                                    templates: None,
+                                },
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 3,
+                                            column: 24,
+                                            position: 39,
+                                        },
+                                        value: "C",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 3,
+                                    column: 22,
+                                    position: 37,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                body: InterfaceDefinitionBody {
+                    left_brace: Span {
+                        line: 3,
+                        column: 26,
+                        position: 41,
+                    },
+                    members: [
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 4,
+                                            column: 5,
+                                            position: 47,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 4,
+                                                            column: 7,
+                                                            position: 49,
+                                                        },
+                                                        value: "R",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 4,
+                                            column: 8,
+                                            position: 50,
+                                        },
+                                    },
+                                ],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 5,
+                                    column: 5,
+                                    position: 56,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 5,
+                                                    column: 11,
+                                                    position: 62,
+                                                },
+                                                value: "F",
+                                            },
+                                            equals: Span {
+                                                line: 5,
+                                                column: 13,
+                                                position: 64,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "344",
+                                                        span: Span {
+                                                            line: 5,
+                                                            column: 15,
+                                                            position: 66,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 5,
+                                    column: 18,
+                                    position: 69,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 7,
+                                            column: 5,
+                                            position: 76,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 7,
+                                                            column: 7,
+                                                            position: 78,
+                                                        },
+                                                        value: "R",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 7,
+                                            column: 8,
+                                            position: 79,
+                                        },
+                                    },
+                                ],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            Span {
+                                                line: 8,
+                                                column: 5,
+                                                position: 85,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                const: Span {
+                                    line: 8,
+                                    column: 12,
+                                    position: 92,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 8,
+                                                    column: 18,
+                                                    position: 98,
+                                                },
+                                                value: "O",
+                                            },
+                                            equals: Span {
+                                                line: 8,
+                                                column: 20,
+                                                position: 100,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "344",
+                                                        span: Span {
+                                                            line: 8,
+                                                            column: 22,
+                                                            position: 102,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 8,
+                                    column: 25,
+                                    position: 105,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 10,
+                                            column: 5,
+                                            position: 112,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 10,
+                                                            column: 7,
+                                                            position: 114,
+                                                        },
+                                                        value: "R",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 10,
+                                            column: 8,
+                                            position: 115,
+                                        },
+                                    },
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 11,
+                                            column: 5,
+                                            position: 121,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 11,
+                                                            column: 7,
+                                                            position: 123,
+                                                        },
+                                                        value: "P",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 11,
+                                            column: 8,
+                                            position: 124,
+                                        },
+                                    },
+                                ],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [
+                                        Final(
+                                            Span {
+                                                line: 12,
+                                                column: 5,
+                                                position: 130,
+                                            },
+                                        ),
+                                        Public(
+                                            Span {
+                                                line: 12,
+                                                column: 11,
+                                                position: 136,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                const: Span {
+                                    line: 12,
+                                    column: 18,
+                                    position: 143,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 24,
+                                                    position: 149,
+                                                },
+                                                value: "R",
+                                            },
+                                            equals: Span {
+                                                line: 12,
+                                                column: 26,
+                                                position: 151,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "344",
+                                                        span: Span {
+                                                            line: 12,
+                                                            column: 28,
+                                                            position: 153,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 33,
+                                                    position: 158,
+                                                },
+                                                value: "P",
+                                            },
+                                            equals: Span {
+                                                line: 12,
+                                                column: 35,
+                                                position: 160,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "214",
+                                                        span: Span {
+                                                            line: 12,
+                                                            column: 37,
+                                                            position: 162,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [
+                                        Span {
+                                            line: 12,
+                                            column: 31,
+                                            position: 156,
+                                        },
+                                    ],
+                                },
+                                semicolon: Span {
+                                    line: 12,
+                                    column: 40,
+                                    position: 165,
+                                },
+                            },
+                        ),
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 14,
+                                            column: 5,
+                                            position: 172,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 14,
+                                                            column: 7,
+                                                            position: 174,
+                                                        },
+                                                        value: "R",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 14,
+                                            column: 8,
+                                            position: 175,
+                                        },
+                                    },
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 15,
+                                            column: 5,
+                                            position: 181,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 15,
+                                                            column: 7,
+                                                            position: 183,
+                                                        },
+                                                        value: "P",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 15,
+                                            column: 8,
+                                            position: 184,
+                                        },
+                                    },
+                                ],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [
+                                        Final(
+                                            Span {
+                                                line: 16,
+                                                column: 5,
+                                                position: 190,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                const: Span {
+                                    line: 16,
+                                    column: 11,
+                                    position: 196,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 16,
+                                                    column: 17,
+                                                    position: 202,
+                                                },
+                                                value: "M",
+                                            },
+                                            equals: Span {
+                                                line: 16,
+                                                column: 19,
+                                                position: 204,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "34",
+                                                        span: Span {
+                                                            line: 16,
+                                                            column: 21,
+                                                            position: 206,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 16,
+                                    column: 23,
+                                    position: 208,
+                                },
+                            },
+                        ),
+                        Method(
+                            AbstractMethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 18,
+                                            column: 5,
+                                            position: 215,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 18,
+                                                            column: 7,
+                                                            position: 217,
+                                                        },
+                                                        value: "M",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 18,
+                                            column: 8,
+                                            position: 218,
+                                        },
+                                    },
+                                ],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            Span {
+                                                line: 19,
+                                                column: 5,
+                                                position: 224,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Span {
+                                    line: 19,
+                                    column: 12,
+                                    position: 231,
+                                },
+                                name: Identifier {
+                                    span: Span {
+                                        line: 19,
+                                        column: 21,
+                                        position: 240,
+                                    },
+                                    value: "bar",
+                                },
+                                templates: None,
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: Span {
+                                        line: 19,
+                                        column: 24,
+                                        position: 243,
+                                    },
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 19,
+                                        column: 25,
+                                        position: 244,
+                                    },
+                                },
+                                return_type: FunctionLikeReturnTypeDefinition {
+                                    colon: Span {
+                                        line: 19,
+                                        column: 26,
+                                        position: 245,
+                                    },
+                                    type_definition: Void(
+                                        Span {
+                                            line: 19,
+                                            column: 28,
+                                            position: 247,
+                                        },
+                                    ),
+                                },
+                                constraints: None,
+                                semicolon: Span {
+                                    line: 19,
+                                    column: 32,
+                                    position: 251,
+                                },
+                            },
+                        ),
+                        Method(
+                            AbstractMethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 21,
+                                            column: 5,
+                                            position: 258,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 21,
+                                                            column: 7,
+                                                            position: 260,
+                                                        },
+                                                        value: "Q",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 21,
+                                            column: 8,
+                                            position: 261,
+                                        },
+                                    },
+                                    AttributeDefinitionGroup {
+                                        hash_left_bracket: Span {
+                                            line: 22,
+                                            column: 5,
+                                            position: 267,
+                                        },
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        span: Span {
+                                                            line: 22,
+                                                            column: 7,
+                                                            position: 269,
+                                                        },
+                                                        value: "S",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: Span {
+                                            line: 22,
+                                            column: 8,
+                                            position: 270,
+                                        },
+                                    },
+                                ],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            Span {
+                                                line: 23,
+                                                column: 5,
+                                                position: 276,
+                                            },
+                                        ),
+                                        Static(
+                                            Span {
+                                                line: 23,
+                                                column: 12,
+                                                position: 283,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Span {
+                                    line: 23,
+                                    column: 19,
+                                    position: 290,
+                                },
+                                name: Identifier {
+                                    span: Span {
+                                        line: 23,
+                                        column: 28,
+                                        position: 299,
+                                    },
+                                    value: "baz",
+                                },
+                                templates: None,
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: Span {
+                                        line: 23,
+                                        column: 31,
+                                        position: 302,
+                                    },
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 23,
+                                        column: 32,
+                                        position: 303,
+                                    },
+                                },
+                                return_type: FunctionLikeReturnTypeDefinition {
+                                    colon: Span {
+                                        line: 23,
+                                        column: 33,
+                                        position: 304,
+                                    },
+                                    type_definition: Void(
+                                        Span {
+                                            line: 23,
+                                            column: 35,
+                                            position: 306,
+                                        },
+                                    ),
+                                },
+                                constraints: None,
+                                semicolon: Span {
+                                    line: 23,
+                                    column: 39,
+                                    position: 310,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 24,
+                        column: 1,
+                        position: 312,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 25,
+        column: 1,
+        position: 314,
+    },
+}

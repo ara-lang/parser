@@ -1,0 +1,173 @@
+namespace Psl\Async;
+
+use Closure;
+use Generator;
+use Psl\Async\Internal\AwaitableIterator;
+use Psl\Async\Internal\State;
+use Psl\Promise\PromiseInterface;
+use Revolt\EventLoop;
+use Throwable;
+
+use function is_array;
+
+final class Awaitable<T> implements PromiseInterface<T>
+{
+    /**
+     * @internal Use {@see Deferred} to create and resolve an awaitable.
+     */
+    public function __construct(
+        //      v- `static` is used on purpose here to make sure the parser fails.
+        private static readonly State<T> $state
+    ) {}
+
+    /**
+     * Iterate over the given `Awaitable`s in completion order.
+     */
+    public static function iterate<K, V>(dict<K, Awaitable<V>> $awaitables): Generator<K, Awaitable<V>, void, void>
+    {
+        $iterator = new AwaitableIterator::<K, V>();
+
+        foreach $awaitables as $key => $awaitable {
+            $iterator->enqueue($awaitable->state, $key, $awaitable);
+        }
+
+        $iterator->complete();
+
+        while ($k, $v) = $iterator->consume() {
+            yield $k => $v;
+        }
+    }
+
+    public static function complete<T>(T $result): Awaitable<T>
+    {
+        $state = new State::<T>();
+
+        $state->complete($result);
+
+        new Awaitable::<T>($state)
+    }
+
+    public static function error(Throwable $throwable): Awaitable<void>
+    {
+        $state = new State::<void>();
+
+        $state->error($throwable);
+
+        new Awaitable::<void>($state)
+    }
+
+    /**
+     * @return bool True if the operation has completed.
+     */
+    public function isComplete(): bool
+    {
+        return $this->state->isComplete();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function then<S>((fn(T): S) $success, (fn(Throwable): S) $failure): Awaitable<S>
+    {
+        $state = new State::<S>();
+
+        $this->state->subscribe(
+            static function (?Throwable $error, ?S $value) use ($state, $success, $failure): void {
+                if $error !== null {
+                    try {
+                        $state->complete($failure($error));
+                    } catch (Throwable $throwable) {
+                        $state->error($throwable);
+                    }
+
+                    return;
+                }
+
+                try {
+                    // @ara-suppress: we know that $value is not null here, but the type system doesn't, and can't know.
+                    $state->complete($success($value));
+                } catch (Throwable $throwable) {
+                    $state->error($throwable);
+                }
+            },
+        );
+
+        return new Awaitable::<S>($state);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function map<S>((fn(T): S) $success): Awaitable<S>
+    {
+        return $this->then::<S>($success, static fn (Throwable $throwable): S => throw $throwable);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function catch<S>((fn(Throwable): S) $failure): Awaitable<T|S>
+    {
+        return $this->then::<S>(
+            static fn(T $value): T|S => $value,
+            static fn(Throwable $throwable): T|S => $failure($throwable),
+        );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function always((fn(): void) $always): Awaitable<T>
+    {
+        $state = new State::<T>();
+
+        $this->state->subscribe(static function (?Throwable $error, ?T $value) use ($state, $always): void {
+            try {
+                $always();
+
+                if ($error) {
+                    $state->error($error);
+                } else {
+                    // @ara-suppress: we know that $value is not null here, but the type system doesn't, and can't know.
+                    $state->complete($value);
+                }
+            } catch (Throwable $throwable) {
+                $state->error($throwable);
+            }
+        });
+
+        return new Awaitable::<T>($state);
+    }
+
+    /**
+     * Awaits the operation to complete.
+     *
+     * Throws a `Throwable` if the operation fails.
+     */
+    public function await(): T
+    {
+        $suspension = EventLoop::getSuspension::<T>();
+
+        $this->state->subscribe(
+            static function (?Throwable $error, ?T $value) use ($suspension): void {
+                if ($error) {
+                    $suspension->throw($error);
+                } else {
+                    $suspension->resume($value);
+                }
+            },
+        );
+
+        $suspension->suspend()
+    }
+
+    /**
+     * Do not forward unhandled errors to the event loop handler.
+     */
+    public function ignore(): self
+    {
+        $this->state->ignore();
+
+        return $this;
+    }
+}

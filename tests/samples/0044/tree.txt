@@ -1,0 +1,90 @@
+DefinitionTree {
+    definitions: [
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 7,
+                        position: 6,
+                    },
+                    value: "A",
+                },
+                templates: None,
+                extends: None,
+                implements: Some(
+                    ClassDefinitionImplements {
+                        implements: Span {
+                            line: 1,
+                            column: 9,
+                            position: 8,
+                        },
+                        interfaces: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 20,
+                                            position: 19,
+                                        },
+                                        value: "B",
+                                    },
+                                    templates: None,
+                                },
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        span: Span {
+                                            line: 1,
+                                            column: 23,
+                                            position: 22,
+                                        },
+                                        value: "C",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [
+                                Span {
+                                    line: 1,
+                                    column: 21,
+                                    position: 20,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 25,
+                        position: 24,
+                    },
+                    members: [],
+                    right_brace: Span {
+                        line: 1,
+                        column: 26,
+                        position: 25,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 2,
+        column: 1,
+        position: 27,
+    },
+}

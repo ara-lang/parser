@@ -1,0 +1,3 @@
+function m(): void {
+    $e = (fn (): \Generator => yield)();
+}

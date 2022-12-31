@@ -1,0 +1,3 @@
+function main(): void {
+    if($foo) { return $foo; } else { return $foo; }
+}

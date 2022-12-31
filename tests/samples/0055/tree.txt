@@ -1,0 +1,323 @@
+DefinitionTree {
+    definitions: [
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [],
+                },
+                class: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 7,
+                        position: 6,
+                    },
+                    value: "Foo",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    members: [
+                        Constant(
+                            ClassishConstantDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ConstantModifierDefinitionGroup {
+                                    modifiers: [],
+                                },
+                                const: Span {
+                                    line: 2,
+                                    column: 5,
+                                    position: 16,
+                                },
+                                entries: CommaSeparated {
+                                    inner: [
+                                        ConstantDefinitionEntry {
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 2,
+                                                    column: 11,
+                                                    position: 22,
+                                                },
+                                                value: "foo",
+                                            },
+                                            equals: Span {
+                                                line: 2,
+                                                column: 15,
+                                                position: 26,
+                                            },
+                                            value: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "1",
+                                                        span: Span {
+                                                            line: 2,
+                                                            column: 17,
+                                                            position: 28,
+                                                        },
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                semicolon: Span {
+                                    line: 2,
+                                    column: 18,
+                                    position: 29,
+                                },
+                            },
+                        ),
+                        ConcreteMethod(
+                            ConcreteMethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            Span {
+                                                line: 4,
+                                                column: 5,
+                                                position: 36,
+                                            },
+                                        ),
+                                        Static(
+                                            Span {
+                                                line: 4,
+                                                column: 12,
+                                                position: 43,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Span {
+                                    line: 4,
+                                    column: 19,
+                                    position: 50,
+                                },
+                                name: Identifier {
+                                    span: Span {
+                                        line: 4,
+                                        column: 28,
+                                        position: 59,
+                                    },
+                                    value: "foo",
+                                },
+                                templates: None,
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: Span {
+                                        line: 4,
+                                        column: 31,
+                                        position: 62,
+                                    },
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: Span {
+                                        line: 4,
+                                        column: 32,
+                                        position: 63,
+                                    },
+                                },
+                                return_type: FunctionLikeReturnTypeDefinition {
+                                    colon: Span {
+                                        line: 4,
+                                        column: 33,
+                                        position: 64,
+                                    },
+                                    type_definition: Void(
+                                        Span {
+                                            line: 4,
+                                            column: 35,
+                                            position: 66,
+                                        },
+                                    ),
+                                },
+                                constraints: None,
+                                body: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 4,
+                                        column: 40,
+                                        position: 71,
+                                    },
+                                    statements: [
+                                        Expression(
+                                            ExpressionStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: AssignmentOperation(
+                                                    Assignment {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left: Variable(
+                                                            Variable {
+                                                                span: Span {
+                                                                    line: 5,
+                                                                    column: 9,
+                                                                    position: 81,
+                                                                },
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        equals: Span {
+                                                            line: 5,
+                                                            column: 12,
+                                                            position: 84,
+                                                        },
+                                                        right: ClassOperation(
+                                                            ConstantFetch {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        span: Span {
+                                                                            line: 5,
+                                                                            column: 14,
+                                                                            position: 86,
+                                                                        },
+                                                                        value: "static",
+                                                                    },
+                                                                ),
+                                                                double_colon: Span {
+                                                                    line: 5,
+                                                                    column: 20,
+                                                                    position: 92,
+                                                                },
+                                                                constant: Identifier {
+                                                                    span: Span {
+                                                                        line: 5,
+                                                                        column: 22,
+                                                                        position: 94,
+                                                                    },
+                                                                    value: "foo",
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                                semicolon: Span {
+                                                    line: 5,
+                                                    column: 25,
+                                                    position: 97,
+                                                },
+                                            },
+                                        ),
+                                        Expression(
+                                            ExpressionStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: ClassOperation(
+                                                    StaticMethodCall {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        class: Identifier(
+                                                            Identifier {
+                                                                span: Span {
+                                                                    line: 7,
+                                                                    column: 9,
+                                                                    position: 108,
+                                                                },
+                                                                value: "static",
+                                                            },
+                                                        ),
+                                                        double_colon: Span {
+                                                            line: 7,
+                                                            column: 15,
+                                                            position: 114,
+                                                        },
+                                                        method: Identifier {
+                                                            span: Span {
+                                                                line: 7,
+                                                                column: 17,
+                                                                position: 116,
+                                                            },
+                                                            value: "foo",
+                                                        },
+                                                        generics: None,
+                                                        arguments: ArgumentListExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left_parenthesis: Span {
+                                                                line: 7,
+                                                                column: 20,
+                                                                position: 119,
+                                                            },
+                                                            arguments: CommaSeparated {
+                                                                inner: [],
+                                                                commas: [],
+                                                            },
+                                                            right_parenthesis: Span {
+                                                                line: 7,
+                                                                column: 21,
+                                                                position: 120,
+                                                            },
+                                                        },
+                                                    },
+                                                ),
+                                                semicolon: Span {
+                                                    line: 7,
+                                                    column: 22,
+                                                    position: 121,
+                                                },
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: Span {
+                                        line: 8,
+                                        column: 5,
+                                        position: 127,
+                                    },
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 9,
+                        column: 1,
+                        position: 129,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 10,
+        column: 1,
+        position: 131,
+    },
+}

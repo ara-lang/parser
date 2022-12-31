@@ -1,0 +1,97 @@
+DefinitionTree {
+    definitions: [
+        Constant(
+            ConstantDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                const: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                entries: CommaSeparated {
+                    inner: [
+                        ConstantDefinitionEntry {
+                            name: Identifier {
+                                span: Span {
+                                    line: 1,
+                                    column: 9,
+                                    position: 8,
+                                },
+                                value: "A",
+                            },
+                            equals: Span {
+                                line: 1,
+                                column: 11,
+                                position: 10,
+                            },
+                            value: Literal(
+                                Integer(
+                                    LiteralInteger {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        value: "3",
+                                        span: Span {
+                                            line: 1,
+                                            column: 13,
+                                            position: 12,
+                                        },
+                                    },
+                                ),
+                            ),
+                        },
+                        ConstantDefinitionEntry {
+                            name: Identifier {
+                                span: Span {
+                                    line: 2,
+                                    column: 9,
+                                    position: 23,
+                                },
+                                value: "B",
+                            },
+                            equals: Span {
+                                line: 2,
+                                column: 11,
+                                position: 25,
+                            },
+                            value: Literal(
+                                Integer(
+                                    LiteralInteger {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        value: "3",
+                                        span: Span {
+                                            line: 2,
+                                            column: 13,
+                                            position: 27,
+                                        },
+                                    },
+                                ),
+                            ),
+                        },
+                    ],
+                    commas: [
+                        Span {
+                            line: 1,
+                            column: 14,
+                            position: 13,
+                        },
+                    ],
+                },
+                semicolon: Span {
+                    line: 2,
+                    column: 14,
+                    position: 28,
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 3,
+        column: 1,
+        position: 30,
+    },
+}

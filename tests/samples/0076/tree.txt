@@ -1,0 +1,2053 @@
+DefinitionTree {
+    definitions: [
+        Namespace(
+            NamespaceDefinition {
+                namespace: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 11,
+                        position: 10,
+                    },
+                    value: "where",
+                },
+                semicolon: Span {
+                    line: 1,
+                    column: 16,
+                    position: 15,
+                },
+                definitions: [
+                    Constant(
+                        ConstantDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            const: Span {
+                                line: 3,
+                                column: 1,
+                                position: 18,
+                            },
+                            entries: CommaSeparated {
+                                inner: [
+                                    ConstantDefinitionEntry {
+                                        name: Identifier {
+                                            span: Span {
+                                                line: 3,
+                                                column: 7,
+                                                position: 24,
+                                            },
+                                            value: "where",
+                                        },
+                                        equals: Span {
+                                            line: 3,
+                                            column: 13,
+                                            position: 30,
+                                        },
+                                        value: Literal(
+                                            Integer(
+                                                LiteralInteger {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "1",
+                                                    span: Span {
+                                                        line: 3,
+                                                        column: 15,
+                                                        position: 32,
+                                                    },
+                                                },
+                                            ),
+                                        ),
+                                    },
+                                ],
+                                commas: [],
+                            },
+                            semicolon: Span {
+                                line: 3,
+                                column: 16,
+                                position: 33,
+                            },
+                        },
+                    ),
+                    Interface(
+                        InterfaceDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            interface: Span {
+                                line: 4,
+                                column: 1,
+                                position: 35,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 4,
+                                    column: 11,
+                                    position: 45,
+                                },
+                                value: "where",
+                            },
+                            templates: None,
+                            extends: None,
+                            body: InterfaceDefinitionBody {
+                                left_brace: Span {
+                                    line: 4,
+                                    column: 17,
+                                    position: 51,
+                                },
+                                members: [],
+                                right_brace: Span {
+                                    line: 4,
+                                    column: 18,
+                                    position: 52,
+                                },
+                            },
+                        },
+                    ),
+                    Class(
+                        ClassDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            modifiers: ClassModifierDefinitionGroup {
+                                modifiers: [],
+                            },
+                            class: Span {
+                                line: 5,
+                                column: 1,
+                                position: 54,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 5,
+                                    column: 7,
+                                    position: 60,
+                                },
+                                value: "where",
+                            },
+                            templates: None,
+                            extends: None,
+                            implements: None,
+                            body: ClassDefinitionBody {
+                                left_brace: Span {
+                                    line: 5,
+                                    column: 13,
+                                    position: 66,
+                                },
+                                members: [
+                                    Constant(
+                                        ClassishConstantDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: ConstantModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        Span {
+                                                            line: 6,
+                                                            column: 5,
+                                                            position: 72,
+                                                        },
+                                                    ),
+                                                ],
+                                            },
+                                            const: Span {
+                                                line: 6,
+                                                column: 12,
+                                                position: 79,
+                                            },
+                                            entries: CommaSeparated {
+                                                inner: [
+                                                    ConstantDefinitionEntry {
+                                                        name: Identifier {
+                                                            span: Span {
+                                                                line: 6,
+                                                                column: 18,
+                                                                position: 85,
+                                                            },
+                                                            value: "where",
+                                                        },
+                                                        equals: Span {
+                                                            line: 6,
+                                                            column: 24,
+                                                            position: 91,
+                                                        },
+                                                        value: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    span: Span {
+                                                                        line: 6,
+                                                                        column: 26,
+                                                                        position: 93,
+                                                                    },
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            semicolon: Span {
+                                                line: 6,
+                                                column: 27,
+                                                position: 94,
+                                            },
+                                        },
+                                    ),
+                                    ConcreteMethod(
+                                        ConcreteMethodDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: MethodModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        Span {
+                                                            line: 8,
+                                                            column: 5,
+                                                            position: 101,
+                                                        },
+                                                    ),
+                                                ],
+                                            },
+                                            function: Span {
+                                                line: 8,
+                                                column: 12,
+                                                position: 108,
+                                            },
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 8,
+                                                    column: 21,
+                                                    position: 117,
+                                                },
+                                                value: "where",
+                                            },
+                                            templates: None,
+                                            parameters: FunctionLikeParameterListDefinition {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: Span {
+                                                    line: 8,
+                                                    column: 26,
+                                                    position: 122,
+                                                },
+                                                parameters: CommaSeparated {
+                                                    inner: [],
+                                                    commas: [],
+                                                },
+                                                right_parenthesis: Span {
+                                                    line: 8,
+                                                    column: 27,
+                                                    position: 123,
+                                                },
+                                            },
+                                            return_type: FunctionLikeReturnTypeDefinition {
+                                                colon: Span {
+                                                    line: 8,
+                                                    column: 28,
+                                                    position: 124,
+                                                },
+                                                type_definition: Void(
+                                                    Span {
+                                                        line: 8,
+                                                        column: 30,
+                                                        position: 126,
+                                                    },
+                                                ),
+                                            },
+                                            constraints: None,
+                                            body: BlockStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_brace: Span {
+                                                    line: 8,
+                                                    column: 35,
+                                                    position: 131,
+                                                },
+                                                statements: [],
+                                                right_brace: Span {
+                                                    line: 8,
+                                                    column: 36,
+                                                    position: 132,
+                                                },
+                                            },
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 9,
+                                    column: 1,
+                                    position: 134,
+                                },
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: Span {
+                                line: 11,
+                                column: 1,
+                                position: 137,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 11,
+                                    column: 10,
+                                    position: 146,
+                                },
+                                value: "where",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: Span {
+                                    line: 11,
+                                    column: 15,
+                                    position: 151,
+                                },
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: Span {
+                                    line: 11,
+                                    column: 16,
+                                    position: 152,
+                                },
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: Span {
+                                    line: 11,
+                                    column: 17,
+                                    position: 153,
+                                },
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            span: Span {
+                                                line: 11,
+                                                column: 19,
+                                                position: 155,
+                                            },
+                                            value: "where",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 11,
+                                    column: 25,
+                                    position: 161,
+                                },
+                                statements: [
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 12,
+                                                                column: 5,
+                                                                position: 167,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 12,
+                                                        column: 12,
+                                                        position: 174,
+                                                    },
+                                                    right: Identifier(
+                                                        Identifier {
+                                                            span: Span {
+                                                                line: 12,
+                                                                column: 14,
+                                                                position: 176,
+                                                            },
+                                                            value: "where",
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 12,
+                                                column: 19,
+                                                position: 181,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 13,
+                                                                column: 5,
+                                                                position: 187,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 13,
+                                                        column: 12,
+                                                        position: 194,
+                                                    },
+                                                    right: ClassOperation(
+                                                        Initialization {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            new: Span {
+                                                                line: 13,
+                                                                column: 14,
+                                                                position: 196,
+                                                            },
+                                                            class: Identifier {
+                                                                span: Span {
+                                                                    line: 13,
+                                                                    column: 18,
+                                                                    position: 200,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 13,
+                                                                    column: 23,
+                                                                    position: 205,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 13,
+                                                                    column: 24,
+                                                                    position: 206,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 13,
+                                                column: 25,
+                                                position: 207,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 14,
+                                                                column: 5,
+                                                                position: 213,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 14,
+                                                        column: 12,
+                                                        position: 220,
+                                                    },
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    span: Span {
+                                                                        line: 14,
+                                                                        column: 14,
+                                                                        position: 222,
+                                                                    },
+                                                                    value: "where",
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 14,
+                                                                column: 19,
+                                                                position: 227,
+                                                            },
+                                                            constant: Identifier {
+                                                                span: Span {
+                                                                    line: 14,
+                                                                    column: 21,
+                                                                    position: 229,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 14,
+                                                column: 26,
+                                                position: 234,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 15,
+                                                                column: 5,
+                                                                position: 240,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 15,
+                                                        column: 12,
+                                                        position: 247,
+                                                    },
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    span: Span {
+                                                                        line: 15,
+                                                                        column: 14,
+                                                                        position: 249,
+                                                                    },
+                                                                    value: "where",
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 15,
+                                                                column: 19,
+                                                                position: 254,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 15,
+                                                                    column: 21,
+                                                                    position: 256,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 15,
+                                                                    column: 26,
+                                                                    position: 261,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 15,
+                                                                    column: 27,
+                                                                    position: 262,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 15,
+                                                column: 28,
+                                                position: 263,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 16,
+                                                                column: 5,
+                                                                position: 269,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 16,
+                                                        column: 12,
+                                                        position: 276,
+                                                    },
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            span: Span {
+                                                                                line: 16,
+                                                                                column: 14,
+                                                                                position: 278,
+                                                                            },
+                                                                            value: "where",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: Span {
+                                                                        line: 16,
+                                                                        column: 19,
+                                                                        position: 283,
+                                                                    },
+                                                                    constant: Identifier {
+                                                                        span: Span {
+                                                                            line: 16,
+                                                                            column: 21,
+                                                                            position: 285,
+                                                                        },
+                                                                        value: "where",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 16,
+                                                                column: 26,
+                                                                position: 290,
+                                                            },
+                                                            constant: Identifier {
+                                                                span: Span {
+                                                                    line: 16,
+                                                                    column: 28,
+                                                                    position: 292,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 16,
+                                                column: 33,
+                                                position: 297,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 17,
+                                                                column: 5,
+                                                                position: 303,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 17,
+                                                        column: 12,
+                                                        position: 310,
+                                                    },
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            span: Span {
+                                                                                line: 17,
+                                                                                column: 14,
+                                                                                position: 312,
+                                                                            },
+                                                                            value: "where",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: Span {
+                                                                        line: 17,
+                                                                        column: 19,
+                                                                        position: 317,
+                                                                    },
+                                                                    constant: Identifier {
+                                                                        span: Span {
+                                                                            line: 17,
+                                                                            column: 21,
+                                                                            position: 319,
+                                                                        },
+                                                                        value: "where",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 17,
+                                                                column: 26,
+                                                                position: 324,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 17,
+                                                                    column: 28,
+                                                                    position: 326,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 17,
+                                                                    column: 33,
+                                                                    position: 331,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 17,
+                                                                    column: 34,
+                                                                    position: 332,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 17,
+                                                column: 35,
+                                                position: 333,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 18,
+                                                                column: 5,
+                                                                position: 339,
+                                                            },
+                                                            name: "$where",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 18,
+                                                        column: 12,
+                                                        position: 346,
+                                                    },
+                                                    right: ObjectOperation(
+                                                        MethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            object: Variable(
+                                                                Variable {
+                                                                    span: Span {
+                                                                        line: 18,
+                                                                        column: 14,
+                                                                        position: 348,
+                                                                    },
+                                                                    name: "$where",
+                                                                },
+                                                            ),
+                                                            arrow: Span {
+                                                                line: 18,
+                                                                column: 20,
+                                                                position: 354,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 18,
+                                                                    column: 22,
+                                                                    position: 356,
+                                                                },
+                                                                value: "where",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 18,
+                                                                    column: 27,
+                                                                    position: 361,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 18,
+                                                                    column: 28,
+                                                                    position: 362,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 18,
+                                                column: 29,
+                                                position: 363,
+                                            },
+                                        },
+                                    ),
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Variable(
+                                                Variable {
+                                                    span: Span {
+                                                        line: 20,
+                                                        column: 5,
+                                                        position: 370,
+                                                    },
+                                                    name: "$where",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 21,
+                                    column: 1,
+                                    position: 377,
+                                },
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: Span {
+                                line: 23,
+                                column: 1,
+                                position: 380,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 23,
+                                    column: 10,
+                                    position: 389,
+                                },
+                                value: "where",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: Span {
+                                    line: 23,
+                                    column: 15,
+                                    position: 394,
+                                },
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: Span {
+                                    line: 23,
+                                    column: 16,
+                                    position: 395,
+                                },
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: Span {
+                                    line: 23,
+                                    column: 17,
+                                    position: 396,
+                                },
+                                type_definition: Integer(
+                                    Span {
+                                        line: 23,
+                                        column: 19,
+                                        position: 398,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 23,
+                                    column: 23,
+                                    position: 402,
+                                },
+                                statements: [
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Identifier(
+                                                Identifier {
+                                                    span: Span {
+                                                        line: 24,
+                                                        column: 5,
+                                                        position: 408,
+                                                    },
+                                                    value: "where",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 25,
+                                    column: 1,
+                                    position: 414,
+                                },
+                            },
+                        },
+                    ),
+                ],
+            },
+        ),
+        Namespace(
+            NamespaceDefinition {
+                namespace: Span {
+                    line: 27,
+                    column: 1,
+                    position: 417,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 27,
+                        column: 11,
+                        position: 427,
+                    },
+                    value: "type",
+                },
+                semicolon: Span {
+                    line: 27,
+                    column: 15,
+                    position: 431,
+                },
+                definitions: [
+                    Constant(
+                        ConstantDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            const: Span {
+                                line: 29,
+                                column: 1,
+                                position: 434,
+                            },
+                            entries: CommaSeparated {
+                                inner: [
+                                    ConstantDefinitionEntry {
+                                        name: Identifier {
+                                            span: Span {
+                                                line: 29,
+                                                column: 7,
+                                                position: 440,
+                                            },
+                                            value: "type",
+                                        },
+                                        equals: Span {
+                                            line: 29,
+                                            column: 12,
+                                            position: 445,
+                                        },
+                                        value: Literal(
+                                            Integer(
+                                                LiteralInteger {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "1",
+                                                    span: Span {
+                                                        line: 29,
+                                                        column: 14,
+                                                        position: 447,
+                                                    },
+                                                },
+                                            ),
+                                        ),
+                                    },
+                                ],
+                                commas: [],
+                            },
+                            semicolon: Span {
+                                line: 29,
+                                column: 15,
+                                position: 448,
+                            },
+                        },
+                    ),
+                    Interface(
+                        InterfaceDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            interface: Span {
+                                line: 30,
+                                column: 1,
+                                position: 450,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 30,
+                                    column: 11,
+                                    position: 460,
+                                },
+                                value: "type",
+                            },
+                            templates: None,
+                            extends: None,
+                            body: InterfaceDefinitionBody {
+                                left_brace: Span {
+                                    line: 30,
+                                    column: 16,
+                                    position: 465,
+                                },
+                                members: [],
+                                right_brace: Span {
+                                    line: 30,
+                                    column: 17,
+                                    position: 466,
+                                },
+                            },
+                        },
+                    ),
+                    Class(
+                        ClassDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            modifiers: ClassModifierDefinitionGroup {
+                                modifiers: [],
+                            },
+                            class: Span {
+                                line: 31,
+                                column: 1,
+                                position: 468,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 31,
+                                    column: 7,
+                                    position: 474,
+                                },
+                                value: "type",
+                            },
+                            templates: None,
+                            extends: None,
+                            implements: None,
+                            body: ClassDefinitionBody {
+                                left_brace: Span {
+                                    line: 31,
+                                    column: 12,
+                                    position: 479,
+                                },
+                                members: [
+                                    Constant(
+                                        ClassishConstantDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: ConstantModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        Span {
+                                                            line: 32,
+                                                            column: 5,
+                                                            position: 485,
+                                                        },
+                                                    ),
+                                                ],
+                                            },
+                                            const: Span {
+                                                line: 32,
+                                                column: 12,
+                                                position: 492,
+                                            },
+                                            entries: CommaSeparated {
+                                                inner: [
+                                                    ConstantDefinitionEntry {
+                                                        name: Identifier {
+                                                            span: Span {
+                                                                line: 32,
+                                                                column: 18,
+                                                                position: 498,
+                                                            },
+                                                            value: "type",
+                                                        },
+                                                        equals: Span {
+                                                            line: 32,
+                                                            column: 23,
+                                                            position: 503,
+                                                        },
+                                                        value: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    span: Span {
+                                                                        line: 32,
+                                                                        column: 25,
+                                                                        position: 505,
+                                                                    },
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            semicolon: Span {
+                                                line: 32,
+                                                column: 26,
+                                                position: 506,
+                                            },
+                                        },
+                                    ),
+                                    ConcreteMethod(
+                                        ConcreteMethodDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: MethodModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        Span {
+                                                            line: 34,
+                                                            column: 5,
+                                                            position: 513,
+                                                        },
+                                                    ),
+                                                ],
+                                            },
+                                            function: Span {
+                                                line: 34,
+                                                column: 12,
+                                                position: 520,
+                                            },
+                                            name: Identifier {
+                                                span: Span {
+                                                    line: 34,
+                                                    column: 21,
+                                                    position: 529,
+                                                },
+                                                value: "type",
+                                            },
+                                            templates: None,
+                                            parameters: FunctionLikeParameterListDefinition {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: Span {
+                                                    line: 34,
+                                                    column: 25,
+                                                    position: 533,
+                                                },
+                                                parameters: CommaSeparated {
+                                                    inner: [],
+                                                    commas: [],
+                                                },
+                                                right_parenthesis: Span {
+                                                    line: 34,
+                                                    column: 26,
+                                                    position: 534,
+                                                },
+                                            },
+                                            return_type: FunctionLikeReturnTypeDefinition {
+                                                colon: Span {
+                                                    line: 34,
+                                                    column: 27,
+                                                    position: 535,
+                                                },
+                                                type_definition: Void(
+                                                    Span {
+                                                        line: 34,
+                                                        column: 29,
+                                                        position: 537,
+                                                    },
+                                                ),
+                                            },
+                                            constraints: None,
+                                            body: BlockStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_brace: Span {
+                                                    line: 34,
+                                                    column: 34,
+                                                    position: 542,
+                                                },
+                                                statements: [],
+                                                right_brace: Span {
+                                                    line: 34,
+                                                    column: 35,
+                                                    position: 543,
+                                                },
+                                            },
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 35,
+                                    column: 1,
+                                    position: 545,
+                                },
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: Span {
+                                line: 37,
+                                column: 1,
+                                position: 548,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 37,
+                                    column: 10,
+                                    position: 557,
+                                },
+                                value: "type",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: Span {
+                                    line: 37,
+                                    column: 14,
+                                    position: 561,
+                                },
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: Span {
+                                    line: 37,
+                                    column: 15,
+                                    position: 562,
+                                },
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: Span {
+                                    line: 37,
+                                    column: 16,
+                                    position: 563,
+                                },
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            span: Span {
+                                                line: 37,
+                                                column: 18,
+                                                position: 565,
+                                            },
+                                            value: "type",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 37,
+                                    column: 23,
+                                    position: 570,
+                                },
+                                statements: [
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 38,
+                                                                column: 5,
+                                                                position: 576,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 38,
+                                                        column: 11,
+                                                        position: 582,
+                                                    },
+                                                    right: Identifier(
+                                                        Identifier {
+                                                            span: Span {
+                                                                line: 38,
+                                                                column: 13,
+                                                                position: 584,
+                                                            },
+                                                            value: "type",
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 38,
+                                                column: 17,
+                                                position: 588,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 39,
+                                                                column: 5,
+                                                                position: 594,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 39,
+                                                        column: 11,
+                                                        position: 600,
+                                                    },
+                                                    right: ClassOperation(
+                                                        Initialization {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            new: Span {
+                                                                line: 39,
+                                                                column: 13,
+                                                                position: 602,
+                                                            },
+                                                            class: Identifier {
+                                                                span: Span {
+                                                                    line: 39,
+                                                                    column: 17,
+                                                                    position: 606,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 39,
+                                                                    column: 21,
+                                                                    position: 610,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 39,
+                                                                    column: 22,
+                                                                    position: 611,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 39,
+                                                column: 23,
+                                                position: 612,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 40,
+                                                                column: 5,
+                                                                position: 618,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 40,
+                                                        column: 11,
+                                                        position: 624,
+                                                    },
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    span: Span {
+                                                                        line: 40,
+                                                                        column: 13,
+                                                                        position: 626,
+                                                                    },
+                                                                    value: "type",
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 40,
+                                                                column: 17,
+                                                                position: 630,
+                                                            },
+                                                            constant: Identifier {
+                                                                span: Span {
+                                                                    line: 40,
+                                                                    column: 19,
+                                                                    position: 632,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 40,
+                                                column: 23,
+                                                position: 636,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 41,
+                                                                column: 5,
+                                                                position: 642,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 41,
+                                                        column: 11,
+                                                        position: 648,
+                                                    },
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    span: Span {
+                                                                        line: 41,
+                                                                        column: 13,
+                                                                        position: 650,
+                                                                    },
+                                                                    value: "type",
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 41,
+                                                                column: 17,
+                                                                position: 654,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 41,
+                                                                    column: 19,
+                                                                    position: 656,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 41,
+                                                                    column: 23,
+                                                                    position: 660,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 41,
+                                                                    column: 24,
+                                                                    position: 661,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 41,
+                                                column: 25,
+                                                position: 662,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 42,
+                                                                column: 5,
+                                                                position: 668,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 42,
+                                                        column: 11,
+                                                        position: 674,
+                                                    },
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            span: Span {
+                                                                                line: 42,
+                                                                                column: 13,
+                                                                                position: 676,
+                                                                            },
+                                                                            value: "type",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: Span {
+                                                                        line: 42,
+                                                                        column: 17,
+                                                                        position: 680,
+                                                                    },
+                                                                    constant: Identifier {
+                                                                        span: Span {
+                                                                            line: 42,
+                                                                            column: 19,
+                                                                            position: 682,
+                                                                        },
+                                                                        value: "type",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 42,
+                                                                column: 23,
+                                                                position: 686,
+                                                            },
+                                                            constant: Identifier {
+                                                                span: Span {
+                                                                    line: 42,
+                                                                    column: 25,
+                                                                    position: 688,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 42,
+                                                column: 29,
+                                                position: 692,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 43,
+                                                                column: 5,
+                                                                position: 698,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 43,
+                                                        column: 11,
+                                                        position: 704,
+                                                    },
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            span: Span {
+                                                                                line: 43,
+                                                                                column: 13,
+                                                                                position: 706,
+                                                                            },
+                                                                            value: "type",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: Span {
+                                                                        line: 43,
+                                                                        column: 17,
+                                                                        position: 710,
+                                                                    },
+                                                                    constant: Identifier {
+                                                                        span: Span {
+                                                                            line: 43,
+                                                                            column: 19,
+                                                                            position: 712,
+                                                                        },
+                                                                        value: "type",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: Span {
+                                                                line: 43,
+                                                                column: 23,
+                                                                position: 716,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 43,
+                                                                    column: 25,
+                                                                    position: 718,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 43,
+                                                                    column: 29,
+                                                                    position: 722,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 43,
+                                                                    column: 30,
+                                                                    position: 723,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 43,
+                                                column: 31,
+                                                position: 724,
+                                            },
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            span: Span {
+                                                                line: 44,
+                                                                column: 5,
+                                                                position: 730,
+                                                            },
+                                                            name: "$type",
+                                                        },
+                                                    ),
+                                                    equals: Span {
+                                                        line: 44,
+                                                        column: 11,
+                                                        position: 736,
+                                                    },
+                                                    right: ObjectOperation(
+                                                        MethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            object: Variable(
+                                                                Variable {
+                                                                    span: Span {
+                                                                        line: 44,
+                                                                        column: 13,
+                                                                        position: 738,
+                                                                    },
+                                                                    name: "$type",
+                                                                },
+                                                            ),
+                                                            arrow: Span {
+                                                                line: 44,
+                                                                column: 18,
+                                                                position: 743,
+                                                            },
+                                                            method: Identifier {
+                                                                span: Span {
+                                                                    line: 44,
+                                                                    column: 20,
+                                                                    position: 745,
+                                                                },
+                                                                value: "type",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: Span {
+                                                                    line: 44,
+                                                                    column: 24,
+                                                                    position: 749,
+                                                                },
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: Span {
+                                                                    line: 44,
+                                                                    column: 25,
+                                                                    position: 750,
+                                                                },
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: Span {
+                                                line: 44,
+                                                column: 26,
+                                                position: 751,
+                                            },
+                                        },
+                                    ),
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Variable(
+                                                Variable {
+                                                    span: Span {
+                                                        line: 46,
+                                                        column: 5,
+                                                        position: 758,
+                                                    },
+                                                    name: "$type",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 47,
+                                    column: 1,
+                                    position: 764,
+                                },
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: Span {
+                                line: 49,
+                                column: 1,
+                                position: 767,
+                            },
+                            name: Identifier {
+                                span: Span {
+                                    line: 49,
+                                    column: 10,
+                                    position: 776,
+                                },
+                                value: "type",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: Span {
+                                    line: 49,
+                                    column: 14,
+                                    position: 780,
+                                },
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: Span {
+                                    line: 49,
+                                    column: 15,
+                                    position: 781,
+                                },
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: Span {
+                                    line: 49,
+                                    column: 16,
+                                    position: 782,
+                                },
+                                type_definition: Integer(
+                                    Span {
+                                        line: 49,
+                                        column: 18,
+                                        position: 784,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 49,
+                                    column: 22,
+                                    position: 788,
+                                },
+                                statements: [
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Identifier(
+                                                Identifier {
+                                                    span: Span {
+                                                        line: 50,
+                                                        column: 5,
+                                                        position: 794,
+                                                    },
+                                                    value: "type",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 51,
+                                    column: 1,
+                                    position: 799,
+                                },
+                            },
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+    eof: Span {
+        line: 52,
+        column: 1,
+        position: 801,
+    },
+}

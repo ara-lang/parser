@@ -1,0 +1,4 @@
+class MyClass {
+    protected string $a;
+    // my comment
+}

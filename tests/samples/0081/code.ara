@@ -1,0 +1,13 @@
+function foo(): void {
+    $a = async bar();
+
+    $b = await $a;
+
+    $c = async baz();
+    $d = async qux();
+
+    ($e, $f) = concurrently {
+        await $c,
+        await $d,
+    };
+}

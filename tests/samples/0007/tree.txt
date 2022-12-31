@@ -1,0 +1,560 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 1,
+                    column: 1,
+                    position: 0,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 1,
+                        column: 10,
+                        position: 9,
+                    },
+                    value: "main",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 1,
+                        column: 14,
+                        position: 13,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 1,
+                        column: 15,
+                        position: 14,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 1,
+                        column: 16,
+                        position: 15,
+                    },
+                    type_definition: Void(
+                        Span {
+                            line: 1,
+                            column: 18,
+                            position: 17,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 1,
+                        column: 23,
+                        position: 22,
+                    },
+                    statements: [
+                        Try(
+                            TryStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                try: Span {
+                                    line: 2,
+                                    column: 5,
+                                    position: 28,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 2,
+                                        column: 9,
+                                        position: 32,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 4,
+                                        column: 5,
+                                        position: 39,
+                                    },
+                                },
+                                catches: [
+                                    TryStatementCatchBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        catch: Span {
+                                            line: 4,
+                                            column: 7,
+                                            position: 41,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 4,
+                                            column: 13,
+                                            position: 47,
+                                        },
+                                        types: Identifier(
+                                            Identifier {
+                                                span: Span {
+                                                    line: 4,
+                                                    column: 14,
+                                                    position: 48,
+                                                },
+                                                value: "Exception",
+                                            },
+                                        ),
+                                        variable: Some(
+                                            Variable {
+                                                span: Span {
+                                                    line: 4,
+                                                    column: 24,
+                                                    position: 58,
+                                                },
+                                                name: "$e",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 4,
+                                            column: 26,
+                                            position: 60,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 4,
+                                                column: 28,
+                                                position: 62,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 6,
+                                                column: 5,
+                                                position: 69,
+                                            },
+                                        },
+                                    },
+                                    TryStatementCatchBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        catch: Span {
+                                            line: 6,
+                                            column: 7,
+                                            position: 71,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 6,
+                                            column: 13,
+                                            position: 77,
+                                        },
+                                        types: Identifier(
+                                            Identifier {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 14,
+                                                    position: 78,
+                                                },
+                                                value: "CustomException",
+                                            },
+                                        ),
+                                        variable: Some(
+                                            Variable {
+                                                span: Span {
+                                                    line: 6,
+                                                    column: 30,
+                                                    position: 94,
+                                                },
+                                                name: "$e",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 6,
+                                            column: 32,
+                                            position: 96,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 6,
+                                                column: 34,
+                                                position: 98,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 8,
+                                                column: 5,
+                                                position: 113,
+                                            },
+                                        },
+                                    },
+                                ],
+                                finally: None,
+                            },
+                        ),
+                        Try(
+                            TryStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                try: Span {
+                                    line: 10,
+                                    column: 5,
+                                    position: 120,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 10,
+                                        column: 9,
+                                        position: 124,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 12,
+                                        column: 5,
+                                        position: 131,
+                                    },
+                                },
+                                catches: [
+                                    TryStatementCatchBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        catch: Span {
+                                            line: 12,
+                                            column: 7,
+                                            position: 133,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 12,
+                                            column: 13,
+                                            position: 139,
+                                        },
+                                        types: Identifier(
+                                            Identifier {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 14,
+                                                    position: 140,
+                                                },
+                                                value: "Exception",
+                                            },
+                                        ),
+                                        variable: Some(
+                                            Variable {
+                                                span: Span {
+                                                    line: 12,
+                                                    column: 24,
+                                                    position: 150,
+                                                },
+                                                name: "$e",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 12,
+                                            column: 26,
+                                            position: 152,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 12,
+                                                column: 28,
+                                                position: 154,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 14,
+                                                column: 5,
+                                                position: 161,
+                                            },
+                                        },
+                                    },
+                                ],
+                                finally: Some(
+                                    TryStatementFinallyBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        finally: Span {
+                                            line: 14,
+                                            column: 7,
+                                            position: 163,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 14,
+                                                column: 15,
+                                                position: 171,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 16,
+                                                column: 5,
+                                                position: 178,
+                                            },
+                                        },
+                                    },
+                                ),
+                            },
+                        ),
+                        Try(
+                            TryStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                try: Span {
+                                    line: 18,
+                                    column: 5,
+                                    position: 185,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 18,
+                                        column: 9,
+                                        position: 189,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 20,
+                                        column: 5,
+                                        position: 196,
+                                    },
+                                },
+                                catches: [],
+                                finally: Some(
+                                    TryStatementFinallyBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        finally: Span {
+                                            line: 20,
+                                            column: 7,
+                                            position: 198,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 20,
+                                                column: 15,
+                                                position: 206,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 20,
+                                                column: 16,
+                                                position: 207,
+                                            },
+                                        },
+                                    },
+                                ),
+                            },
+                        ),
+                        Try(
+                            TryStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                try: Span {
+                                    line: 22,
+                                    column: 5,
+                                    position: 214,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 22,
+                                        column: 9,
+                                        position: 218,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 24,
+                                        column: 5,
+                                        position: 225,
+                                    },
+                                },
+                                catches: [
+                                    TryStatementCatchBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        catch: Span {
+                                            line: 24,
+                                            column: 7,
+                                            position: 227,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 24,
+                                            column: 13,
+                                            position: 233,
+                                        },
+                                        types: Identifier(
+                                            Identifier {
+                                                span: Span {
+                                                    line: 24,
+                                                    column: 14,
+                                                    position: 234,
+                                                },
+                                                value: "Exception",
+                                            },
+                                        ),
+                                        variable: None,
+                                        right_parenthesis: Span {
+                                            line: 24,
+                                            column: 23,
+                                            position: 243,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 24,
+                                                column: 25,
+                                                position: 245,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 26,
+                                                column: 5,
+                                                position: 252,
+                                            },
+                                        },
+                                    },
+                                ],
+                                finally: None,
+                            },
+                        ),
+                        Try(
+                            TryStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                try: Span {
+                                    line: 28,
+                                    column: 5,
+                                    position: 259,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: Span {
+                                        line: 28,
+                                        column: 9,
+                                        position: 263,
+                                    },
+                                    statements: [],
+                                    right_brace: Span {
+                                        line: 30,
+                                        column: 5,
+                                        position: 270,
+                                    },
+                                },
+                                catches: [
+                                    TryStatementCatchBlock {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        catch: Span {
+                                            line: 30,
+                                            column: 7,
+                                            position: 272,
+                                        },
+                                        left_parenthesis: Span {
+                                            line: 30,
+                                            column: 13,
+                                            position: 278,
+                                        },
+                                        types: Identifier(
+                                            Identifier {
+                                                span: Span {
+                                                    line: 30,
+                                                    column: 14,
+                                                    position: 279,
+                                                },
+                                                value: "Exception",
+                                            },
+                                        ),
+                                        variable: Some(
+                                            Variable {
+                                                span: Span {
+                                                    line: 30,
+                                                    column: 24,
+                                                    position: 289,
+                                                },
+                                                name: "$e",
+                                            },
+                                        ),
+                                        right_parenthesis: Span {
+                                            line: 30,
+                                            column: 26,
+                                            position: 291,
+                                        },
+                                        block: BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 30,
+                                                column: 28,
+                                                position: 293,
+                                            },
+                                            statements: [],
+                                            right_brace: Span {
+                                                line: 32,
+                                                column: 5,
+                                                position: 300,
+                                            },
+                                        },
+                                    },
+                                ],
+                                finally: None,
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 33,
+                        column: 1,
+                        position: 302,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 33,
+        column: 2,
+        position: 303,
+    },
+}

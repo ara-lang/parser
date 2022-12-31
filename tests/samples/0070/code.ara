@@ -1,0 +1,43 @@
+function bar(): void {
+    if $a {  }
+    if ($a) {}
+
+    if $a {   } elseif $b {   } else if $c {  } else {}
+    if ($a) { } elseif ($b) { } else if ($c) {} else {}
+
+    if $a {  } else {}
+    if ($a) {} else {}
+
+    while $a {  }
+    while ($a) {}
+
+    do {} while $a;
+    do {} while ($a);
+
+    foreach $a as $b {  }
+    foreach ($a) as $b {}
+    foreach ($a as $b) {}
+    foreach $a as $b => $c {  }
+    foreach ($a) as $b => $c {}
+    foreach ($a as $b => $c) {}
+
+    for $a = 0; $a < 10; $a++ {  }
+    for ($a = 0; $a < 10; $a++) {}
+    for ($a = 0); $a < 10; $a++ {}
+    for ($a = 0), $i = 10; $a < 10; $a++, ($i--) {}
+
+    for ;; {  }
+    for (;;) {}
+
+    $a = match $a {
+        1 => 2,
+        3 => 4,
+        default => 5,
+    };
+
+    $a = match ($a) {
+        1 => 2,
+        3 => 4,
+        default => 5,
+    };
+}

@@ -1,0 +1,193 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Span {
+                    line: 2,
+                    column: 1,
+                    position: 1,
+                },
+                name: Identifier {
+                    span: Span {
+                        line: 2,
+                        column: 10,
+                        position: 10,
+                    },
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: Span {
+                        line: 2,
+                        column: 13,
+                        position: 13,
+                    },
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: Span {
+                        line: 2,
+                        column: 14,
+                        position: 14,
+                    },
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: Span {
+                        line: 2,
+                        column: 15,
+                        position: 15,
+                    },
+                    type_definition: Void(
+                        Span {
+                            line: 2,
+                            column: 17,
+                            position: 17,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: Span {
+                        line: 2,
+                        column: 22,
+                        position: 22,
+                    },
+                    statements: [
+                        Block(
+                            BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 3,
+                                    column: 5,
+                                    position: 28,
+                                },
+                                statements: [],
+                                right_brace: Span {
+                                    line: 5,
+                                    column: 5,
+                                    position: 35,
+                                },
+                            },
+                        ),
+                        Block(
+                            BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: Span {
+                                    line: 6,
+                                    column: 5,
+                                    position: 41,
+                                },
+                                statements: [
+                                    Block(
+                                        BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: Span {
+                                                line: 7,
+                                                column: 9,
+                                                position: 51,
+                                            },
+                                            statements: [
+                                                Block(
+                                                    BlockStatement {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_brace: Span {
+                                                            line: 8,
+                                                            column: 13,
+                                                            position: 65,
+                                                        },
+                                                        statements: [
+                                                            Block(
+                                                                BlockStatement {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_brace: Span {
+                                                                        line: 9,
+                                                                        column: 17,
+                                                                        position: 83,
+                                                                    },
+                                                                    statements: [
+                                                                        Block(
+                                                                            BlockStatement {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                left_brace: Span {
+                                                                                    line: 10,
+                                                                                    column: 21,
+                                                                                    position: 105,
+                                                                                },
+                                                                                statements: [],
+                                                                                right_brace: Span {
+                                                                                    line: 12,
+                                                                                    column: 21,
+                                                                                    position: 128,
+                                                                                },
+                                                                            },
+                                                                        ),
+                                                                    ],
+                                                                    right_brace: Span {
+                                                                        line: 13,
+                                                                        column: 17,
+                                                                        position: 146,
+                                                                    },
+                                                                },
+                                                            ),
+                                                        ],
+                                                        right_brace: Span {
+                                                            line: 14,
+                                                            column: 13,
+                                                            position: 160,
+                                                        },
+                                                    },
+                                                ),
+                                            ],
+                                            right_brace: Span {
+                                                line: 15,
+                                                column: 9,
+                                                position: 170,
+                                            },
+                                        },
+                                    ),
+                                ],
+                                right_brace: Span {
+                                    line: 16,
+                                    column: 5,
+                                    position: 176,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: Span {
+                        line: 17,
+                        column: 1,
+                        position: 178,
+                    },
+                },
+            },
+        ),
+    ],
+    eof: Span {
+        line: 18,
+        column: 1,
+        position: 180,
+    },
+}

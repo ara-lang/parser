@@ -1,0 +1,74 @@
+namespace Dict;
+
+use Psl\Dict as Dict;
+
+function bar(): void {
+    $a = dict[1 => 2, 2 => 3, 3 => 4];
+
+    Dict\map($a, fn(int $x): int => $x + 1);
+}
+
+namespace Vec;
+
+use Psl\Vec as Vec;
+
+function bar(): void {
+    $a = vec[1, 2, 3];
+
+    Vec\map($a, fn(int $x): int => $x + 1);
+}
+
+namespace True;
+namespace False;
+namespace Null;
+namespace Int;
+namespace Float;
+namespace String;
+namespace List;
+namespace Array;
+namespace Object;
+namespace Resource;
+namespace Mixed;
+namespace Num;
+namespace Scalar;
+namespace Callable;
+namespace Void;
+namespace Fn;
+namespace Iterable;
+namespace Never;
+
+namespace True\Foo\Bar;
+namespace False\Foo\Bar;
+namespace Null\Foo\Bar;
+namespace Int\Foo\Bar;
+namespace Float\Foo\Bar;
+namespace String\Foo\Bar;
+namespace List\Foo\Bar;
+namespace Array\Foo\Bar;
+namespace Object\Foo\Bar;
+namespace Resource\Foo\Bar;
+namespace Mixed\Foo\Bar;
+namespace Num\Foo\Bar;
+namespace Scalar\Foo\Bar;
+namespace Callable\Foo\Bar;
+namespace Void\Foo\Bar;
+namespace Iterable\Foo\Bar;
+namespace Never\Foo\Bar;
+
+namespace Foo\Bar\True;
+namespace Foo\Bar\False;
+namespace Foo\Bar\Null;
+namespace Foo\Bar\Int;
+namespace Foo\Bar\Float;
+namespace Foo\Bar\String;
+namespace Foo\Bar\List;
+namespace Foo\Bar\Array;
+namespace Foo\Bar\Object;
+namespace Foo\Bar\Resource;
+namespace Foo\Bar\Mixed;
+namespace Foo\Bar\Num;
+namespace Foo\Bar\Scalar;
+namespace Foo\Bar\Callable;
+namespace Foo\Bar\Void;
+namespace Foo\Bar\Iterable;
+namespace Foo\Bar\Never;
