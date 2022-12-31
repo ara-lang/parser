@@ -549,6 +549,26 @@ function example(): int {
     }
     ```
 
+- [x] **`nonnull` type** - `Ara` adds support for `nonnull` type.
+
+    Examples:
+
+    ```ara
+    function example(nonnull $value): void {
+        // ...
+    }
+    ```
+
+- [x] **`resource` type** - `Ara` adds support for `resource` type.
+
+    Examples:
+
+    ```ara
+    function example(resource $value): void {
+        // ...
+    }
+    ```
+
 
 ## License
 
