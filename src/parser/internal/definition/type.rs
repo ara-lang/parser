@@ -2,7 +2,6 @@ use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::template;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
@@ -102,7 +101,7 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
             })
         }
         _ => {
-            issue::bail!(state, unexpected_token(vec!["|", "&", ","], current));
+            crate::parser_bail!(state, unexpected_token(vec!["|", "&", ","], current));
         }
     }
 }
@@ -130,7 +129,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
                     &|state| {
                         let type_definition = type_definition(state)?;
                         if type_definition.is_bottom() {
-                            issue::report!(
+                            crate::parser_report!(
                                 state,
                                 bottom_type_cannot_be_used_in_fn_type_parameter(
                                     &type_definition,
@@ -251,7 +250,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
                 .map(TypeDefinition::Identifier)
         }
         _ => {
-            issue::bail!(state, unexpected_token(vec!["a type"], current));
+            crate::parser_bail!(state, unexpected_token(vec!["a type"], current));
         }
     }
 }
@@ -264,7 +263,7 @@ fn nullable(state: &mut State) -> ParseResult<TypeDefinition> {
     let ty = single(state)?;
 
     if ty.is_standalone() {
-        issue::report!(
+        crate::parser_report!(
             state,
             standalone_type_cannot_be_nullable(&ty, current.position)
         );
@@ -281,7 +280,7 @@ fn union(
     let mut last_pipe = utils::skip(state, TokenKind::Pipe)?;
 
     if type_definition.is_standalone() {
-        issue::report!(
+        crate::parser_report!(
             state,
             standalone_type_cannot_be_used_in_union(&type_definition, last_pipe)
         );
@@ -296,7 +295,7 @@ fn union(
         {
             if within_dnf {
                 // don't allow nesting.
-                issue::report!(
+                crate::parser_report!(
                     state,
                     disjunctive_normal_form_types_cannot_be_nested(current.position)
                 );
@@ -313,7 +312,7 @@ fn union(
         } else {
             let type_definition = single(state)?;
             if type_definition.is_standalone() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     standalone_type_cannot_be_used_in_union(&type_definition, last_pipe)
                 );
@@ -342,14 +341,14 @@ fn intersection(
     let mut last_ampersand = utils::skip(state, TokenKind::Ampersand)?;
 
     if type_definition.is_standalone() {
-        issue::report!(
+        crate::parser_report!(
             state,
             standalone_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
         );
     }
 
     if type_definition.is_scalar() {
-        issue::report!(
+        crate::parser_report!(
             state,
             scalar_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
         );
@@ -364,7 +363,7 @@ fn intersection(
         {
             if within_dnf {
                 // don't allow nesting.
-                issue::report!(
+                crate::parser_report!(
                     state,
                     disjunctive_normal_form_types_cannot_be_nested(current.position)
                 );
@@ -381,7 +380,7 @@ fn intersection(
         } else {
             let type_definition = single(state)?;
             if type_definition.is_standalone() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     standalone_type_cannot_be_used_in_intersection(
                         &type_definition,
@@ -391,7 +390,7 @@ fn intersection(
             }
 
             if type_definition.is_scalar() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     scalar_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
                 );

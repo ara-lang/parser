@@ -9,7 +9,6 @@ use crate::parser::internal::definition::property;
 use crate::parser::internal::definition::template;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::class::ClassDefinition;
@@ -123,7 +122,7 @@ fn class_definition_member(
         return match method {
             MethodDefinitionReference::Abstract(method) => {
                 if !has_abstract {
-                    issue::report!(
+                    crate::parser_report!(
                         state,
                         cannot_declare_abstract_method_on_non_abstract_class(name, &method),
                     );
@@ -136,7 +135,7 @@ fn class_definition_member(
             }
             MethodDefinitionReference::AbstractConstructor(ctor) => {
                 if !has_abstract {
-                    issue::report!(
+                    crate::parser_report!(
                         state,
                         cannot_declare_abstract_ctor_on_non_abstract_class(name, &ctor),
                     );

@@ -1,7 +1,6 @@
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::expression;
 use crate::parser::internal::utils;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::expression::control_flow::MatchArmConditionExpression;
@@ -47,7 +46,7 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
 
                     if default {
                         if let Some(default_arm) = &default_arm {
-                            issue::report!(
+                            crate::parser_report!(
                                 state,
                                 match_expression_cannot_have_multiple_default_arms(
                                     default_arm,

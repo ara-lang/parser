@@ -1,6 +1,5 @@
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::template;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::identifier::Identifier;
@@ -36,7 +35,7 @@ pub fn namespace_identifier(state: &mut State) -> ParseResult<Identifier> {
             })
         }
         _ => {
-            issue::bail!(
+            crate::parser_bail!(
                 state,
                 unexpected_token(vec!["an identifier".to_owned()], current)
             )
@@ -95,7 +94,7 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
                 value: current.to_string().into(),
             };
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 reserved_keyword_cannot_be_used_for_type_name(&identifier)
             );
@@ -103,7 +102,7 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
             Ok(identifier)
         }
         _ => {
-            issue::bail!(
+            crate::parser_bail!(
                 state,
                 unexpected_token(vec!["an identifier".to_owned()], current)
             )
@@ -145,7 +144,7 @@ pub fn constant_identifier(state: &mut State) -> ParseResult<Identifier> {
                 value: name,
             };
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 reserved_keyword_cannot_be_used_for_constant_name(&identifier)
             );
@@ -163,7 +162,7 @@ pub fn constant_identifier(state: &mut State) -> ParseResult<Identifier> {
             Ok(identifier)
         }
         _ => {
-            issue::bail!(
+            crate::parser_bail!(
                 state,
                 unexpected_token(vec!["an identifier".to_owned()], current)
             )
@@ -210,7 +209,7 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
                 value: current.to_string().into(),
             };
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 reserved_keyword_cannot_be_used_for_type_name(&identifier)
             );
@@ -218,7 +217,7 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
             identifier
         }
         _ => {
-            issue::bail!(
+            crate::parser_bail!(
                 state,
                 unexpected_token(vec!["an identifier".to_owned()], current)
             )
@@ -271,7 +270,7 @@ pub fn identifier(state: &mut State) -> ParseResult<Identifier> {
             value: current.value.clone(),
         })
     } else {
-        issue::bail!(
+        crate::parser_bail!(
             state,
             unexpected_token(vec!["an identifier".to_owned()], current)
         );
@@ -321,7 +320,7 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
                 value: current.to_string().into(),
             };
 
-            issue::report!(state, type_cannot_be_used_in_current_context(&identifier));
+            crate::parser_report!(state, type_cannot_be_used_in_current_context(&identifier));
 
             Ok(identifier)
         }
@@ -333,14 +332,14 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
                 value: current.to_string().into(),
             };
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 reserved_keyword_cannot_be_used_for_type_name(&identifier)
             );
 
             Ok(identifier)
         }
-        _ => issue::bail!(
+        _ => crate::parser_bail!(
             state,
             unexpected_token(vec!["an identifier".to_owned()], current)
         ),
@@ -395,14 +394,14 @@ pub fn fully_qualified_type_identifier_including_self(
                 value: current.to_string().into(),
             };
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 reserved_keyword_cannot_be_used_for_type_name(&identifier)
             );
 
             Ok(identifier)
         }
-        _ => issue::bail!(
+        _ => crate::parser_bail!(
             state,
             unexpected_token(vec!["an identifier".to_owned()], current)
         ),

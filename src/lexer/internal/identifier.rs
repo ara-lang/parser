@@ -1,22 +1,6 @@
-use crate::lexer::issue;
 use crate::lexer::result::SyntaxResult;
 use crate::lexer::state::State;
 use crate::lexer::token::TokenKind;
-
-// Reusable pattern for the first byte of an identifier.
-#[macro_export]
-macro_rules! ident_start {
-    () => {
-        b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'\x80'..=b'\xff'
-    };
-}
-
-// Reusable pattern for identifier after the first byte.
-macro_rules! ident {
-    () => {
-        b'0'..=b'9' | b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'\x80'..=b'\xff'
-    };
-}
 
 pub fn tokenize(state: &mut State) -> SyntaxResult<(bool, Vec<u8>)> {
     let mut qualified = false;
@@ -24,15 +8,15 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<(bool, Vec<u8>)> {
 
     let mut buffer = vec![];
 
-    if let Some(next @ ident_start!()) = state.bytes.current() {
+    if let Some(next @ crate::ident_start!()) = state.bytes.current() {
         buffer.push(*next);
         state.bytes.next();
     } else {
-        issue::bail!(state, unrecognizable_token);
+        crate::lexer_bail!(state, unrecognizable_token);
     }
 
-    while let Some(next @ ident!() | next @ b'\\') = state.bytes.current() {
-        if matches!(next, ident!()) {
+    while let Some(next @ crate::ident!() | next @ b'\\') = state.bytes.current() {
+        if matches!(next, crate::ident!()) {
             buffer.push(*next);
             state.bytes.next();
             last_was_slash = false;
@@ -56,9 +40,9 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<(bool, Vec<u8>)> {
 pub fn peek<'a>(state: &'a State) -> Option<&'a [u8]> {
     let mut size = 0;
 
-    if let [ident_start!()] = state.bytes.read(1) {
+    if let [crate::ident_start!()] = state.bytes.read(1) {
         size += 1;
-        while let [ident!()] = state.bytes.peek(size, 1) {
+        while let [crate::ident!()] = state.bytes.peek(size, 1) {
             size += 1;
         }
 

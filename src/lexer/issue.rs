@@ -104,23 +104,3 @@ impl From<LexerIssueCode> for String {
         format!("{}", code)
     }
 }
-
-#[macro_export]
-macro_rules! __internal_lexer_issue_bail {
-    ($state:expr, $issue:ident($($args:expr),+$(,)?)$(,)?) => {
-        {
-            let issue = $crate::lexer::issue::$issue($state, $($args,)+);
-
-            return Err(Box::new(issue));
-        }
-    };
-    ($state:expr, $issue:ident) => {
-        {
-            let issue = $crate::lexer::issue::$issue($state);
-
-            return Err(Box::new(issue));
-        }
-    };
-}
-
-pub(crate) use __internal_lexer_issue_bail as bail;

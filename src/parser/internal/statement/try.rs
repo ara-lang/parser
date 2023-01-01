@@ -3,7 +3,6 @@ use crate::parser::internal::identifier;
 use crate::parser::internal::statement::block;
 use crate::parser::internal::utils;
 use crate::parser::internal::variable;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::statement::r#try::TryStatement;
@@ -78,7 +77,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
     };
 
     if missing_catch_or_finally {
-        issue::report!(state, try_statement_must_have_catch_or_finally(&statement))
+        crate::parser_report!(state, try_statement_must_have_catch_or_finally(&statement))
     }
 
     Ok(statement)

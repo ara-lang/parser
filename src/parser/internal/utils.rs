@@ -1,5 +1,4 @@
 use crate::lexer::token::TokenKind;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::utils::CommaSeparated;
@@ -13,7 +12,7 @@ pub fn skip_semicolon(state: &mut State) -> ParseResult<usize> {
 
         Ok(current.position)
     } else {
-        issue::bail!(state, unexpected_token(vec![";"], current));
+        crate::parser_bail!(state, unexpected_token(vec![";"], current));
     }
 }
 
@@ -55,7 +54,7 @@ pub fn skip(state: &mut State, kind: TokenKind) -> ParseResult<usize> {
 
         Ok(end)
     } else {
-        issue::bail!(state, unexpected_token(vec![kind], current));
+        crate::parser_bail!(state, unexpected_token(vec![kind], current));
     }
 }
 

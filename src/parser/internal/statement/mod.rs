@@ -1,7 +1,6 @@
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::expression;
 use crate::parser::internal::utils;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::statement::expression::ExpressionStatement;
@@ -19,7 +18,7 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
     if matches!(current.kind, TokenKind::OpenTag(_)) {
         state.iterator.next();
 
-        issue::report!(state, php_opening_tag_not_supported(current));
+        crate::parser_report!(state, php_opening_tag_not_supported(current));
 
         return statement(state);
     }
@@ -27,7 +26,7 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
     if matches!(current.kind, TokenKind::CloseTag) {
         state.iterator.next();
 
-        issue::report!(state, php_closing_tag_not_supported(current));
+        crate::parser_report!(state, php_closing_tag_not_supported(current));
 
         return statement(state);
     }
@@ -35,7 +34,7 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
     if current.kind == TokenKind::SemiColon {
         state.iterator.next();
 
-        issue::report!(state, unexpected_empty_statement(current));
+        crate::parser_report!(state, unexpected_empty_statement(current));
 
         return statement(state);
     }

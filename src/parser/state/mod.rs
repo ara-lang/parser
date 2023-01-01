@@ -6,7 +6,6 @@ use ara_source::source::Source;
 
 use crate::lexer::iterator::TokenIterator;
 use crate::lexer::token::Token;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::identifier::Identifier;
@@ -51,7 +50,7 @@ impl<'a> State<'a> {
 
     pub fn report(&mut self, issue: Issue) -> Report {
         if let Some(token) = self.ignored_shift_at {
-            issue::report!(self, unexpected_token(vec![">".to_string()], token));
+            crate::parser_report!(self, unexpected_token(vec![">".to_string()], token));
         }
 
         let mut issues = vec![];
@@ -65,7 +64,7 @@ impl<'a> State<'a> {
 
     pub fn finish<T>(&mut self, item: T) -> ParseResult<T> {
         if let Some(token) = self.ignored_shift_at {
-            issue::report!(self, unexpected_token(vec![">".to_string()], token));
+            crate::parser_report!(self, unexpected_token(vec![">".to_string()], token));
         }
 
         if self.issues.is_empty() {

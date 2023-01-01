@@ -1,5 +1,4 @@
 use crate::lexer::token::TokenKind;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::Definition;
@@ -37,7 +36,7 @@ pub fn definition(state: &mut State) -> ParseResult<Definition> {
     if matches!(current.kind, TokenKind::OpenTag(_)) {
         state.iterator.next();
 
-        issue::report!(state, php_opening_tag_not_supported(current));
+        crate::parser_report!(state, php_opening_tag_not_supported(current));
 
         return definition(state);
     }
@@ -91,8 +90,8 @@ pub fn definition(state: &mut State) -> ParseResult<Definition> {
     }
 
     if has_attributes {
-        issue::report!(state, missing_item_definition_after_attributes);
+        crate::parser_report!(state, missing_item_definition_after_attributes);
     }
 
-    issue::bail!(state, unexpected_token(vec!["a definition"], current));
+    crate::parser_bail!(state, unexpected_token(vec!["a definition"], current));
 }

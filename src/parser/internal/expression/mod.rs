@@ -5,7 +5,6 @@ use crate::parser::internal::expression::precedence::Precedence;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
 use crate::parser::internal::variable;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::expression::array::TupleExpression;
@@ -88,7 +87,7 @@ pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<
                 && matches!(right_precedence.associativity(), Some(Associativity::Non))
             {
                 let expected: Vec<String> = vec![];
-                issue::bail!(state, unexpected_token(expected, current));
+                crate::parser_bail!(state, unexpected_token(expected, current));
             }
 
             left = infix::infix(state, left, kind, right_precedence)?;
@@ -104,7 +103,7 @@ pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<
 
 pub fn left(state: &mut State) -> ParseResult<Expression> {
     if state.iterator.is_eof() {
-        issue::bail!(
+        crate::parser_bail!(
             state,
             unexpected_token(vec!["an expression"], state.iterator.current())
         );
@@ -156,9 +155,9 @@ expressions! {
                 Ok(Expression::ArrowFunction(function::arrow_function_expression(state)?))
             }
             _ => {
-                issue::report!(state, missing_item_expression_after_attributes);
+                crate::parser_report!(state, missing_item_expression_after_attributes);
 
-                issue::bail!(
+                crate::parser_bail!(
                     state,
                     unexpected_token(vec!["static", "fn", "function"], current)
                 );
@@ -718,7 +717,7 @@ expressions! {
 }
 
 fn unexpected_token(state: &mut State) -> ParseResult<Expression> {
-    issue::bail!(
+    crate::parser_bail!(
         state,
         unexpected_token(vec!["an expression"], state.iterator.current())
     );

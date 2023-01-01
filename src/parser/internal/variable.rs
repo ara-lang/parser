@@ -1,5 +1,4 @@
 use crate::lexer::token::TokenKind;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::variable::Variable;
@@ -14,5 +13,5 @@ pub fn parse(state: &mut State) -> ParseResult<Variable> {
         return Ok(Variable { position, name });
     }
 
-    issue::bail!(state, unexpected_token(vec!["a variable"], current));
+    crate::parser_bail!(state, unexpected_token(vec!["a variable"], current));
 }

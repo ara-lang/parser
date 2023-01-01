@@ -5,7 +5,6 @@ use crate::parser::internal::definition::r#type;
 use crate::parser::internal::expression;
 use crate::parser::internal::utils;
 use crate::parser::internal::variable;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::function::ConstructorParameterDefinition;
@@ -40,7 +39,7 @@ pub fn function_like_parameter_list_definition(
             let variable = variable::parse(state)?;
 
             if type_definition.is_bottom() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     bottom_type_cannot_be_used_for_parameter(&type_definition, &variable)
                 );
@@ -109,7 +108,7 @@ pub fn constructor_parameter_list_definition(
             };
 
             if type_definition.is_bottom() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     bottom_type_cannot_be_used_for_parameter(&type_definition, &variable)
                 );
@@ -138,7 +137,7 @@ pub fn constructor_parameter_list_definition(
             };
 
             if !parameter.modifiers.is_empty() && parameter.ellipsis.is_some() {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     promoted_property_cannot_be_variadic(class, &parameter)
                 );

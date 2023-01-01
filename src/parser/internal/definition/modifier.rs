@@ -1,5 +1,4 @@
 use crate::lexer::token::TokenKind;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::modifier::ClassModifierDefinition;
@@ -44,7 +43,7 @@ pub fn class_modifier_definition_group(
                 }
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_class(token.to_string(), position)
                 );
@@ -53,7 +52,7 @@ pub fn class_modifier_definition_group(
     }
 
     if let (Some(abstract_modifier), Some(final_modifier)) = (&abstract_modifier, &final_modifier) {
-        issue::report!(
+        crate::parser_report!(
             state,
             final_class_cannot_be_abstract(final_modifier, abstract_modifier)
         );
@@ -102,7 +101,7 @@ pub fn method_modifier_definition_group(
                 }
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_class_method(token.to_string(), position)
                 );
@@ -111,7 +110,7 @@ pub fn method_modifier_definition_group(
     }
 
     if let (Some(abstract_modifier), Some(final_modifier)) = (&abstract_modifier, &final_modifier) {
-        issue::report!(
+        crate::parser_report!(
             state,
             final_class_member_cannot_be_abstract(final_modifier, abstract_modifier)
         );
@@ -135,7 +134,7 @@ pub fn interface_method_modifier_definition_group(
                 modifiers.push(MethodModifierDefinition::Static(position));
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_interface_method(token.to_string(), position)
                 );
@@ -170,7 +169,7 @@ pub fn enum_method_modifier_definition_group(
                 modifiers.push(MethodModifierDefinition::Final(position));
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_enum_method(token.to_string(), position)
                 );
@@ -205,7 +204,7 @@ pub fn property_modifier_definition_group(
                 modifiers.push(PropertyModifierDefinition::Readonly(position));
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_property(token.to_string(), position)
                 );
@@ -237,7 +236,7 @@ pub fn promoted_property_modifier_definition_group(
                 modifiers.push(PromotedPropertyModifierDefinition::Readonly(position));
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_promoted_property(token.to_string(), position)
                 );
@@ -275,7 +274,7 @@ pub fn constant_modifier_definition_group(
                 final_modifier = Some(modifier);
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_constant(token.to_string(), position)
                 );
@@ -284,7 +283,7 @@ pub fn constant_modifier_definition_group(
     }
 
     if let (Some(private_modifier), Some(final_modifier)) = (&private_modifier, &final_modifier) {
-        issue::report!(
+        crate::parser_report!(
             state,
             private_constant_cannot_be_final(final_modifier, private_modifier)
         );
@@ -308,7 +307,7 @@ pub fn interface_constant_modifier_definition_group(
                 modifiers.push(ConstantModifierDefinition::Final(position));
             }
             _ => {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     modifier_cannot_be_used_on_interface_constant(token.to_string(), position)
                 );
@@ -338,7 +337,7 @@ pub fn collect(state: &mut State) -> ParseResult<Vec<(usize, TokenKind)>> {
 
     while collectable_tokens.contains(&current_kind) {
         if let Some((position, _)) = collected.iter().find(|(_, kind)| kind == &current_kind) {
-            issue::report!(
+            crate::parser_report!(
                 state,
                 duplicate_modifier(current_kind.to_string(), *position, current_position)
             );
@@ -355,7 +354,7 @@ pub fn collect(state: &mut State) -> ParseResult<Vec<(usize, TokenKind)>> {
                     TokenKind::Public | TokenKind::Protected | TokenKind::Private
                 )
             }) {
-                issue::report!(
+                crate::parser_report!(
                     state,
                     multiple_visibility_modifiers(
                         (*position, visibility.to_string()),

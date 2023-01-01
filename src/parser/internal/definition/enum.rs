@@ -7,7 +7,6 @@ use crate::parser::internal::definition::modifier;
 use crate::parser::internal::expression;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::function::ConcreteMethodDefinition;
@@ -39,7 +38,7 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
                 b"string" => BackedEnumTypeDefinition::String(position, identifier),
                 b"int" => BackedEnumTypeDefinition::Int(position, identifier),
                 _ => {
-                    issue::report!(state, invalid_enum_backing_type(&identifier));
+                    crate::parser_report!(state, invalid_enum_backing_type(&identifier));
 
                     // don't panic, just return a dummy value
                     BackedEnumTypeDefinition::String(position, identifier)
@@ -142,7 +141,7 @@ fn unit_enum_definition_member(
             let _ = expression::create(state)?;
             let semicolon = utils::skip_semicolon(state)?;
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 unit_enum_case_cannot_have_value(enum_name, &name, semicolon)
             );
@@ -196,7 +195,7 @@ fn backed_enum_definition_member(
             // parse the semicolon, but don't do anything with it.
             let semicolon = utils::skip_semicolon(state)?;
 
-            issue::report!(
+            crate::parser_report!(
                 state,
                 backed_enum_case_must_have_value(enum_name, &name, semicolon)
             );
@@ -245,7 +244,7 @@ fn concrete_method_definition(
 
     match method {
         MethodDefinitionReference::ConcreteConstructor(constructor) => {
-            issue::report!(state, enum_cannot_have_constructor(enum_name, &constructor));
+            crate::parser_report!(state, enum_cannot_have_constructor(enum_name, &constructor));
 
             Ok(None)
         }
@@ -254,7 +253,7 @@ fn concrete_method_definition(
                 b"__get" | b"__set" | b"__serialize" | b"__unserialize" | b"__destruct"
                 | b"__wakeup" | b"__sleep" | b"__set_state" | b"__unset" | b"__isset"
                 | b"__debuginfo" | b"__clone" | b"__tostring" => {
-                    issue::report!(state, enum_cannot_have_magic_method(enum_name, &method));
+                    crate::parser_report!(state, enum_cannot_have_magic_method(enum_name, &method));
                 }
                 _ => {}
             }

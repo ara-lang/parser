@@ -6,18 +6,18 @@ use crate::lexer;
 use crate::lexer::iterator::TokenIterator;
 use crate::lexer::token::Token;
 use crate::parser::internal::definition;
-use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::Tree;
 use crate::tree::TreeMap;
 
 pub mod issue;
-pub mod result;
 
-pub(crate) mod internal;
-pub(crate) mod state;
+pub(in crate::parser) mod internal;
+pub(in crate::parser) mod macros;
+pub(in crate::parser) mod result;
+pub(in crate::parser) mod state;
 
-pub fn parse_map(map: &SourceMap) -> ParseResult<TreeMap> {
+pub fn parse_map(map: &SourceMap) -> Result<TreeMap, Box<Report>> {
     let mut trees = vec![];
     let mut reports = vec![];
 
@@ -40,7 +40,7 @@ pub fn parse_map(map: &SourceMap) -> ParseResult<TreeMap> {
     }
 }
 
-pub fn parse(source: &Source) -> ParseResult<Tree> {
+pub fn parse(source: &Source) -> Result<Tree, Box<Report>> {
     let tokens = match lexer::lex(source) {
         Ok(tokens) => tokens,
         Err(issue) => {
@@ -53,7 +53,7 @@ pub fn parse(source: &Source) -> ParseResult<Tree> {
     construct(source, &tokens)
 }
 
-pub fn construct<'a, 'b>(source: &'a Source, tokens: &'b [Token]) -> ParseResult<Tree<'a>> {
+pub fn construct<'a, 'b>(source: &'a Source, tokens: &'b [Token]) -> Result<Tree<'a>, Box<Report>> {
     let mut iterator = TokenIterator::new(tokens);
     let mut state = State::new(source, &mut iterator);
 

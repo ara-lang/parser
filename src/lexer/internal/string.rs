@@ -1,5 +1,4 @@
 use crate::lexer::byte_string::ByteString;
-use crate::lexer::issue;
 use crate::lexer::result::SyntaxResult;
 use crate::lexer::state::State;
 use crate::lexer::token::TokenKind;
@@ -32,7 +31,7 @@ pub fn tokenize_single_quote(
                 state.bytes.next();
                 buffer.push(b);
             }
-            [] => issue::bail!(state, unclosed_string_literal(opening_position)),
+            [] => crate::lexer_bail!(state, unclosed_string_literal(opening_position)),
         }
     }
 
@@ -107,7 +106,7 @@ pub fn tokenize_double_quote(
                 }
 
                 if code_point.is_empty() || state.bytes.current() != Some(&b'}') {
-                    issue::bail!(state, invalid_unicode_escape_sequence(start));
+                    crate::lexer_bail!(state, invalid_unicode_escape_sequence(start));
                 }
 
                 state.bytes.next();
@@ -115,7 +114,7 @@ pub fn tokenize_double_quote(
                 let c = if let Ok(c) = u32::from_str_radix(&code_point, 16) {
                     c
                 } else {
-                    issue::bail!(state, invalid_unicode_escape_sequence(start));
+                    crate::lexer_bail!(state, invalid_unicode_escape_sequence(start));
                 };
 
                 if let Some(c) = char::from_u32(c) {
@@ -123,7 +122,7 @@ pub fn tokenize_double_quote(
                     let bytes = c.encode_utf8(&mut tmp);
                     buffer.extend(bytes.as_bytes());
                 } else {
-                    issue::bail!(state, invalid_unicode_escape_sequence(start));
+                    crate::lexer_bail!(state, invalid_unicode_escape_sequence(start));
                 }
             }
             &[b'\\', b @ b'0'..=b'7', ..] => {
@@ -144,14 +143,14 @@ pub fn tokenize_double_quote(
                 if let Ok(b) = u8::from_str_radix(&octal, 8) {
                     buffer.push(b);
                 } else {
-                    issue::bail!(state, invalid_octal_escape_sequence(start));
+                    crate::lexer_bail!(state, invalid_octal_escape_sequence(start));
                 }
             }
             &[b, ..] => {
                 state.bytes.next();
                 buffer.push(b);
             }
-            [] => issue::bail!(state, unclosed_string_literal(opening_position)),
+            [] => crate::lexer_bail!(state, unclosed_string_literal(opening_position)),
         }
     }
 

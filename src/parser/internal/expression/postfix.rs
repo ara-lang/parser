@@ -5,7 +5,6 @@ use crate::parser::internal::expression::generic;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
 use crate::parser::internal::variable;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::expression::argument::ArgumentPlaceholderExpression;
@@ -176,7 +175,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                     })
                 }
                 _ => {
-                    issue::bail!(
+                    crate::parser_bail!(
                         state,
                         unexpected_token(vec!["$", "class", "an identifier"], current)
                     );

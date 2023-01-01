@@ -3,7 +3,6 @@ use crate::parser::internal::definition::r#type;
 use crate::parser::internal::expression;
 use crate::parser::internal::utils;
 use crate::parser::internal::variable;
-use crate::parser::issue;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
@@ -20,14 +19,14 @@ pub fn property_definition(
     let variable = variable::parse(state)?;
 
     if type_definition.is_bottom() {
-        issue::report!(
+        crate::parser_report!(
             state,
             bottom_type_cannot_be_used_for_property(class_name, &type_definition, &variable)
         );
     }
 
     if let (Some(readonly), Some(r#static)) = (modifiers.get_readonly(), modifiers.get_static()) {
-        issue::report!(
+        crate::parser_report!(
             state,
             readonly_property_cannot_be_static(class_name, &variable, readonly, r#static)
         );
@@ -44,7 +43,7 @@ pub fn property_definition(
         };
 
         if let Some(modifier) = modifiers.get_readonly() {
-            issue::report!(
+            crate::parser_report!(
                 state,
                 readonly_property_cannot_have_default_value(class_name, &entry, modifier,)
             );
