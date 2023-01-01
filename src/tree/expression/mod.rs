@@ -3,6 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
+use crate::tree::expression::argument::ArgumentExpression;
 use crate::tree::expression::array::DictExpression;
 use crate::tree::expression::array::TupleExpression;
 use crate::tree::expression::array::VecExpression;
@@ -100,6 +101,148 @@ impl Node for ParenthesizedExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![self.expression.as_ref()]
+    }
+}
+
+impl Expression {
+    /// Return true if the expression is a constant expression.
+    ///
+    /// If `initilization` is true, the expression is allowed to contain a class initialization expression.
+    pub fn is_constant(&self, initilization: bool) -> bool {
+        match self {
+            Expression::Literal(_) => true,
+            Expression::Identifier(_) => true,
+            Expression::MagicConstant(_) => true,
+            Expression::Parenthesized(expression) => {
+                expression.expression.is_constant(initilization)
+            }
+            Expression::ArithmeticOperation(expression) => match &expression {
+                ArithmeticOperationExpression::Addition { left, right, .. }
+                | ArithmeticOperationExpression::Subtraction { left, right, .. }
+                | ArithmeticOperationExpression::Multiplication { left, right, .. }
+                | ArithmeticOperationExpression::Division { left, right, .. }
+                | ArithmeticOperationExpression::Modulo { left, right, .. }
+                | ArithmeticOperationExpression::Exponentiation { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+                ArithmeticOperationExpression::Negative { right, .. }
+                | ArithmeticOperationExpression::Positive { right, .. } => {
+                    right.is_constant(initilization)
+                }
+                ArithmeticOperationExpression::PreIncrement { .. }
+                | ArithmeticOperationExpression::PreDecrement { .. }
+                | ArithmeticOperationExpression::PostIncrement { .. }
+                | ArithmeticOperationExpression::PostDecrement { .. } => false,
+            },
+            Expression::ArrayOperation(expression) => match &expression {
+                ArrayOperationExpression::Access { array, index, .. } => {
+                    array.is_constant(initilization) && index.is_constant(initilization)
+                }
+                ArrayOperationExpression::Push { .. } => false,
+            },
+            Expression::BitwiseOperation(expression) => match &expression {
+                BitwiseOperationExpression::And { left, right, .. }
+                | BitwiseOperationExpression::Or { left, right, .. }
+                | BitwiseOperationExpression::Xor { left, right, .. }
+                | BitwiseOperationExpression::LeftShift { left, right, .. }
+                | BitwiseOperationExpression::RightShift { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+                BitwiseOperationExpression::Not { right, .. } => right.is_constant(initilization),
+            },
+            Expression::ClassOperation(expression) => match &expression {
+                ClassOperationExpression::Initialization { arguments, .. } if initilization => {
+                    arguments
+                        .arguments
+                        .inner
+                        .iter()
+                        .all(|argument| match argument {
+                            ArgumentExpression::Positional { value, .. } => {
+                                value.is_constant(initilization)
+                            }
+                            ArgumentExpression::Named { value, .. } => {
+                                value.is_constant(initilization)
+                            }
+                        })
+                }
+                ClassOperationExpression::ConstantFetch { class, .. } => {
+                    class.is_constant(initilization)
+                }
+                _ => false,
+            },
+            Expression::CoalesceOperation(expression) => match &expression {
+                CoalesceOperationExpression::Coalesce { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+            },
+            Expression::ComparisonOperation(expression) => match &expression {
+                ComparisonOperationExpression::Equal { left, right, .. }
+                | ComparisonOperationExpression::NotEqual { left, right, .. }
+                | ComparisonOperationExpression::Identical { left, right, .. }
+                | ComparisonOperationExpression::NotIdentical { left, right, .. }
+                | ComparisonOperationExpression::LessThan { left, right, .. }
+                | ComparisonOperationExpression::LessThanOrEqual { left, right, .. }
+                | ComparisonOperationExpression::GreaterThan { left, right, .. }
+                | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }
+                | ComparisonOperationExpression::AngledNotEqual { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+                ComparisonOperationExpression::Spaceship { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+            },
+            Expression::LogicalOperation(expression) => match &expression {
+                LogicalOperationExpression::LogicalAnd { left, right, .. }
+                | LogicalOperationExpression::LogicalOr { left, right, .. }
+                | LogicalOperationExpression::LogicalXor { left, right, .. }
+                | LogicalOperationExpression::And { left, right, .. }
+                | LogicalOperationExpression::Or { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+                LogicalOperationExpression::Not { right, .. } => right.is_constant(initilization),
+            },
+            Expression::StringOperation(expression) => match &expression {
+                StringOperationExpression::Concat { left, right, .. } => {
+                    left.is_constant(initilization) && right.is_constant(initilization)
+                }
+            },
+            Expression::TernaryOperation(expression) => match &expression {
+                TernaryOperationExpression::Ternary {
+                    condition,
+                    if_true,
+                    if_false,
+                    ..
+                } => {
+                    condition.is_constant(initilization)
+                        && if_true.is_constant(initilization)
+                        && if_false.is_constant(initilization)
+                }
+                TernaryOperationExpression::ShortTernary {
+                    condition,
+                    if_false,
+                    ..
+                } => condition.is_constant(initilization) && if_false.is_constant(initilization),
+                TernaryOperationExpression::ImplicitShortTernary {
+                    condition,
+                    if_false,
+                    ..
+                } => condition.is_constant(initilization) && if_false.is_constant(initilization),
+            },
+            Expression::Vec(expression) => expression
+                .elements
+                .inner
+                .iter()
+                .all(|element| element.value.is_constant(initilization)),
+            Expression::Dict(expression) => expression.elements.inner.iter().all(|element| {
+                element.value.is_constant(initilization) && element.key.is_constant(initilization)
+            }),
+            Expression::Tuple(expression) => expression
+                .elements
+                .inner
+                .iter()
+                .all(|element| element.is_constant(initilization)),
+            _ => false,
+        }
     }
 }
 

@@ -3561,7 +3561,7 @@ DefinitionTree {
                                                 },
                                                 vec: 1516,
                                                 left_bracket: 1519,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [],
                                                     commas: [],
                                                 },
@@ -3597,9 +3597,9 @@ DefinitionTree {
                                                 },
                                                 vec: 1532,
                                                 left_bracket: 1535,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [
-                                                        VecExpressionItem {
+                                                        VecElementExpression {
                                                             value: Variable(
                                                                 Variable {
                                                                     position: 1536,
@@ -3607,7 +3607,7 @@ DefinitionTree {
                                                                 },
                                                             ),
                                                         },
-                                                        VecExpressionItem {
+                                                        VecElementExpression {
                                                             value: Variable(
                                                                 Variable {
                                                                     position: 1540,
@@ -3652,9 +3652,9 @@ DefinitionTree {
                                                 },
                                                 vec: 1554,
                                                 left_bracket: 1557,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [
-                                                        VecExpressionItem {
+                                                        VecElementExpression {
                                                             value: Variable(
                                                                 Variable {
                                                                     position: 1558,
@@ -3662,7 +3662,7 @@ DefinitionTree {
                                                                 },
                                                             ),
                                                         },
-                                                        VecExpressionItem {
+                                                        VecElementExpression {
                                                             value: Variable(
                                                                 Variable {
                                                                     position: 1562,
@@ -3708,7 +3708,7 @@ DefinitionTree {
                                                 },
                                                 dict: 1578,
                                                 left_bracket: 1582,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [],
                                                     commas: [],
                                                 },
@@ -3744,9 +3744,9 @@ DefinitionTree {
                                                 },
                                                 dict: 1595,
                                                 left_bracket: 1599,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [
-                                                        DictExpressionItem {
+                                                        DictElementExpression {
                                                             key: Variable(
                                                                 Variable {
                                                                     position: 1600,
@@ -3761,7 +3761,7 @@ DefinitionTree {
                                                                 },
                                                             ),
                                                         },
-                                                        DictExpressionItem {
+                                                        DictElementExpression {
                                                             key: Variable(
                                                                 Variable {
                                                                     position: 1610,
@@ -3813,9 +3813,9 @@ DefinitionTree {
                                                 },
                                                 dict: 1630,
                                                 left_bracket: 1634,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [
-                                                        DictExpressionItem {
+                                                        DictElementExpression {
                                                             key: Variable(
                                                                 Variable {
                                                                     position: 1635,
@@ -3830,7 +3830,7 @@ DefinitionTree {
                                                                 },
                                                             ),
                                                         },
-                                                        DictExpressionItem {
+                                                        DictElementExpression {
                                                             key: Variable(
                                                                 Variable {
                                                                     position: 1645,

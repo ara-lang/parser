@@ -148,7 +148,7 @@ DefinitionTree {
                                                                 },
                                                                 vec: 125,
                                                                 left_bracket: 128,
-                                                                members: CommaSeparated {
+                                                                elements: CommaSeparated {
                                                                     inner: [],
                                                                     commas: [],
                                                                 },
@@ -308,7 +308,7 @@ DefinitionTree {
                                                                 },
                                                                 vec: 225,
                                                                 left_bracket: 228,
-                                                                members: CommaSeparated {
+                                                                elements: CommaSeparated {
                                                                     inner: [],
                                                                     commas: [],
                                                                 },
@@ -688,7 +688,7 @@ DefinitionTree {
                                                                 },
                                                                 vec: 503,
                                                                 left_bracket: 506,
-                                                                members: CommaSeparated {
+                                                                elements: CommaSeparated {
                                                                     inner: [],
                                                                     commas: [],
                                                                 },
@@ -1184,9 +1184,9 @@ DefinitionTree {
                                                                         },
                                                                         vec: 895,
                                                                         left_bracket: 898,
-                                                                        members: CommaSeparated {
+                                                                        elements: CommaSeparated {
                                                                             inner: [
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Integer(
                                                                                             LiteralInteger {
@@ -1199,7 +1199,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Integer(
                                                                                             LiteralInteger {
@@ -1212,7 +1212,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Float(
                                                                                             LiteralFloat {
@@ -1225,7 +1225,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Float(
                                                                                             LiteralFloat {
@@ -1238,7 +1238,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Integer(
                                                                                             LiteralInteger {
@@ -1251,7 +1251,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Integer(
                                                                                             LiteralInteger {
@@ -1264,7 +1264,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Float(
                                                                                             LiteralFloat {
@@ -1277,7 +1277,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Float(
                                                                                             LiteralFloat {
@@ -1290,7 +1290,7 @@ DefinitionTree {
                                                                                         ),
                                                                                     ),
                                                                                 },
-                                                                                VecExpressionItem {
+                                                                                VecElementExpression {
                                                                                     value: Literal(
                                                                                         Integer(
                                                                                             LiteralInteger {

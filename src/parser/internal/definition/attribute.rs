@@ -6,6 +6,7 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::attribute::AttributeDefinition;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
+use crate::tree::expression::argument::ArgumentExpression;
 
 pub fn gather(state: &mut State) -> ParseResult<bool> {
     if state.iterator.current().kind != TokenKind::Attribute {
@@ -20,7 +21,23 @@ pub fn gather(state: &mut State) -> ParseResult<bool> {
                 Ok(AttributeDefinition {
                     name: identifier::fully_qualified_type_identifier_including_self(state)?,
                     arguments: if state.iterator.current().kind == TokenKind::LeftParen {
-                        Some(argument::argument_list_expression(state)?)
+                        let arguments = argument::argument_list_expression(state)?;
+
+                        for argument in &arguments.arguments.inner {
+                            let value = match argument {
+                                ArgumentExpression::Positional { value, .. } => value,
+                                ArgumentExpression::Named { value, .. } => value,
+                            };
+
+                            if !value.is_constant(true) {
+                                crate::parser_report!(
+                                    state,
+                                    invalid_constant_initialization_expression(value)
+                                );
+                            }
+                        }
+
+                        Some(arguments)
                     } else {
                         None
                     },

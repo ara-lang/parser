@@ -244,7 +244,7 @@ DefinitionTree {
                                                 },
                                                 vec: 117,
                                                 left_bracket: 120,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [],
                                                     commas: [],
                                                 },
@@ -802,7 +802,7 @@ DefinitionTree {
                                                 },
                                                 dict: 409,
                                                 left_bracket: 413,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [],
                                                     commas: [],
                                                 },

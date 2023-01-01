@@ -14,6 +14,7 @@ use crate::tree::definition::function::ConstructorParameterDefinition;
 use crate::tree::definition::modifier::PropertyModifierDefinition;
 use crate::tree::definition::property::PropertyEntryDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
+use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
 use crate::tree::variable::Variable;
@@ -22,7 +23,7 @@ use crate::tree::Node;
 #[derive(Debug, Copy, Clone)]
 #[repr(u8)]
 pub enum ParserIssueCode {
-    /// PHP opening tag is not supported
+    /// PHP opening tag is not supported ( code = 1 )
     ///
     /// Example:
     ///
@@ -37,7 +38,7 @@ pub enum ParserIssueCode {
     /// - Remove the opening tag ( `<?php` )
     PHPOpeningTagNotSupported = 1,
 
-    /// PHP closing tag is not supported
+    /// PHP closing tag is not supported ( code = 2 )
     ///
     /// Example:
     ///
@@ -52,7 +53,7 @@ pub enum ParserIssueCode {
     /// - Remove the closing tag ( `?>` )
     PHPClosingTagNotSupported = 2,
 
-    /// Unit enum case cannot have a value
+    /// Unit enum case cannot have a value ( code = 3 )
     ///
     /// Example:
     ///
@@ -68,7 +69,7 @@ pub enum ParserIssueCode {
     /// - Change the enum to a backed enum
     UnitEnumCaseCannotHaveValue = 3,
 
-    /// Backed enum case must have a value
+    /// Backed enum case must have a value ( code = 4 )
     ///
     /// Example:
     ///
@@ -84,7 +85,7 @@ pub enum ParserIssueCode {
     /// - Change the enum to a unit enum
     BackedEnumCaseMustHaveValue = 4,
 
-    /// Enum cannot have a constructor
+    /// Enum cannot have a constructor ( code = 5 )
     ///
     /// Example:
     ///
@@ -100,7 +101,7 @@ pub enum ParserIssueCode {
     /// - Change the enum to a class
     EnumCannotHaveConstructor = 5,
 
-    /// Enum cannot have a magic method
+    /// Enum cannot have a magic method ( code = 6 )
     ///
     /// Example:
     ///
@@ -115,7 +116,7 @@ pub enum ParserIssueCode {
     /// - Remove the magic method
     EnumCannotHaveMagicMethod = 6,
 
-    /// Missing item definition after attributes
+    /// Missing item definition after attributes ( code = 7 )
     ///
     /// Example:
     ///
@@ -129,7 +130,7 @@ pub enum ParserIssueCode {
     /// - Remove the attributes
     MissingItemDefinitionAfterAttributes = 7,
 
-    /// Multiple visibility modifiers
+    /// Multiple visibility modifiers ( code = 8 )
     ///
     /// Example:
     ///
@@ -144,7 +145,7 @@ pub enum ParserIssueCode {
     /// - Remove one of the visibility modifiers
     MultipleVisibilityModifiers = 8,
 
-    /// Duplicate modifier
+    /// Duplicate modifier ( code = 9 )
     ///
     /// Example:
     ///
@@ -157,7 +158,7 @@ pub enum ParserIssueCode {
     /// - Remove one of the modifiers
     DuplicateModifier = 9,
 
-    /// Bottom type cannot be used for parameter
+    /// Bottom type cannot be used for parameter ( code = 10 )
     ///
     /// Example:
     ///
@@ -170,7 +171,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     BottomTypeCannotBeUsedForParameter = 10,
 
-    /// Bottom type cannot be used for property
+    /// Bottom type cannot be used for property ( code = 11 )
     ///
     /// Example:
     ///
@@ -185,7 +186,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     BottomTypeCannotBeUsedForProperty = 11,
 
-    /// Standalone type cannot be used in union
+    /// Standalone type cannot be used in union ( code = 12 )
     ///
     /// Example:
     ///
@@ -198,7 +199,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     StandaloneTypeCannotBeUsedInUnion = 12,
 
-    /// Standalone type cannot be used in intersection
+    /// Standalone type cannot be used in intersection ( code = 13 )
     ///
     /// Example:
     ///
@@ -211,7 +212,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     StandaloneTypeCannotBeUsedInIntersection = 13,
 
-    /// Standalone type cannot be nullable
+    /// Standalone type cannot be nullable ( code = 14 )
     ///
     /// Example:
     ///
@@ -225,7 +226,7 @@ pub enum ParserIssueCode {
     /// - Remove the `?`
     StandaloneTypeCannotBeNullable = 14,
 
-    /// Scalar type cannot be used in intersection
+    /// Scalar type cannot be used in intersection ( code = 15 )
     ///
     /// Example:
     ///
@@ -239,7 +240,7 @@ pub enum ParserIssueCode {
     /// - Change the intersection to a union
     ScalarTypeCannotBeUsedInIntersection = 15,
 
-    /// Readonly property cannot be static
+    /// Readonly property cannot be static ( code = 17 )
     ///
     /// Example:
     ///
@@ -255,7 +256,7 @@ pub enum ParserIssueCode {
     /// - Remove the `readonly` modifier
     ReadonlyPropertyCannotBeStatic = 17,
 
-    /// Readonly property cannot have a default value
+    /// Readonly property cannot have a default value ( code = 18 )
     ///
     /// Example:
     ///
@@ -271,7 +272,7 @@ pub enum ParserIssueCode {
     /// - Remove the `readonly` modifier
     ReadonlyPropertyCannotHaveDefaultValue = 18,
 
-    /// Bottom type cannot be used in function type parameter
+    /// Bottom type cannot be used in function type parameter ( code = 19 )
     ///
     /// Example:
     ///
@@ -284,7 +285,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     BottomTypeCannotBeUsedInFnTypeParameter = 19,
 
-    /// Disjunctive normal form types cannot be nested
+    /// Disjunctive normal form types cannot be nested ( code = 20 )
     ///
     /// Example:
     ///
@@ -297,7 +298,7 @@ pub enum ParserIssueCode {
     /// - Refactor the type to not be nested, e.g. `(A&B)|(A&C)|(D&E)`
     DisjunctiveNormalFormTypesCannotBeNested = 20,
 
-    /// Reserved keyword cannot be used for type name
+    /// Reserved keyword cannot be used for type name ( code = 21 )
     ///
     /// Example:
     ///
@@ -310,7 +311,7 @@ pub enum ParserIssueCode {
     /// - Use a different name
     ReservedKeywordCannotBeUsedForTypeName = 21,
 
-    /// Reserved keyword cannot be used for constant name
+    /// Reserved keyword cannot be used for constant name ( code = 22 )
     ///
     /// Example:
     ///
@@ -323,7 +324,7 @@ pub enum ParserIssueCode {
     /// - Use a different name
     ReservedKeywordCannotBeUsedForConstantName = 22,
 
-    /// Type cannot be used in current context
+    /// Type cannot be used in current context ( code = 23 )
     ///
     /// Example:
     ///
@@ -336,7 +337,7 @@ pub enum ParserIssueCode {
     /// - Use a different type
     TypeCannotBeUsedInCurrentContext = 23,
 
-    /// Missing item expression after attribute(s)
+    /// Missing item expression after attribute(s) ( code = 24 )
     ///
     /// Example:
     ///
@@ -352,7 +353,7 @@ pub enum ParserIssueCode {
     /// - Remove the attribute(s)
     MissingItemExpressionAfterAttributes = 24,
 
-    /// Final class cannot be abstract
+    /// Final class cannot be abstract ( code = 25 )
     ///
     /// Example:
     ///
@@ -366,7 +367,7 @@ pub enum ParserIssueCode {
     /// - Remove the `final` modifier
     FinalClassCannotBeAbstract = 25,
 
-    /// Final class member cannot be abstract
+    /// Final class member cannot be abstract ( code = 26 )
     ///
     /// Example:
     ///
@@ -382,7 +383,7 @@ pub enum ParserIssueCode {
     /// - Remove the `final` modifier
     FinalClassMemberCannotBeAbstract = 26,
 
-    /// Private constant cannot be final
+    /// Private constant cannot be final ( code = 27 )
     ///
     /// Example:
     ///
@@ -398,7 +399,7 @@ pub enum ParserIssueCode {
     /// - Remove the `private` modifier
     PrivateConstantCannotBeFinal = 27,
 
-    /// Modifier cannot be used on classes
+    /// Modifier cannot be used on classes ( code = 28 )
     ///
     /// Example:
     ///
@@ -411,7 +412,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnClass = 28,
 
-    /// Modifier cannot be used on class methods
+    /// Modifier cannot be used on class methods ( code = 29 )
     ///
     /// Example:
     ///
@@ -426,7 +427,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnClassMethod = 29,
 
-    /// Modifier cannot be used on interface methods
+    /// Modifier cannot be used on interface methods ( code = 30 )
     ///
     /// Example:
     ///
@@ -441,7 +442,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnInterfaceMethod = 30,
 
-    /// Modifier cannot be used on enum methods
+    /// Modifier cannot be used on enum methods ( code = 31 )
     ///
     /// Example:
     ///
@@ -456,7 +457,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnEnumMethod = 31,
 
-    /// Modifier cannot be used on properties
+    /// Modifier cannot be used on properties ( code = 32 )
     ///
     /// Example:
     ///
@@ -472,7 +473,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnProperty = 32,
 
-    /// Modifier cannot be used on promoted properties
+    /// Modifier cannot be used on promoted properties ( code = 33 )
     ///
     /// Example:
     ///
@@ -489,7 +490,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnPromotedProperty = 33,
 
-    /// Modifier cannot be used on constants
+    /// Modifier cannot be used on constants ( code = 34 )
     ///
     /// Example:
     ///
@@ -504,7 +505,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnConstant = 34,
 
-    /// Modifier cannot be used on interface constants
+    /// Modifier cannot be used on interface constants ( code = 35 )
     ///
     /// Example:
     ///
@@ -519,7 +520,7 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnInterfaceConstant = 35,
 
-    /// Match expression cannot have multiple default arms
+    /// Match expression cannot have multiple default arms ( code = 36 )
     ///
     /// Example:
     ///
@@ -538,7 +539,7 @@ pub enum ParserIssueCode {
     /// - Remove one of the default arms
     MatchExpressionCannotHaveMultipleDefaultArms = 36,
 
-    /// Promoted property cannot be variadic
+    /// Promoted property cannot be variadic ( code = 37 )
     ///
     /// Example:
     ///
@@ -556,7 +557,7 @@ pub enum ParserIssueCode {
     /// - Demote the property
     PromotedPropertyCannotBeVariadic = 37,
 
-    /// Enum backing type must be either `int` or `string`
+    /// Enum backing type must be either `int` or `string` ( code = 38 )
     ///
     /// Example:
     ///
@@ -571,7 +572,7 @@ pub enum ParserIssueCode {
     /// - Change the backing type to `int` or `string`
     InvalidEnumBackingType = 38,
 
-    /// Catch block must have a catch or finally block
+    /// Catch block must have a catch or finally block ( code = 39 )
     ///
     /// Example:
     ///
@@ -589,7 +590,7 @@ pub enum ParserIssueCode {
     /// - Remove the try block
     TryStatementMustHaveCatchOrFinally = 39,
 
-    /// Abstract method cannot be declared on a non-abstract class
+    /// Abstract method cannot be declared on a non-abstract class ( code = 40 )
     ///
     /// Example:
     ///
@@ -605,7 +606,7 @@ pub enum ParserIssueCode {
     /// - Make the class abstract
     CannotDeclareAbstractMethodOnNonAbstractClass = 40,
 
-    /// Unexpected empty statement
+    /// Unexpected empty statement ( code = 41 )
     ///
     /// Example:
     ///
@@ -629,6 +630,49 @@ pub enum ParserIssueCode {
     /// }
     /// ```
     UnexpectedToken = 42,
+
+    /// Invalid constant expression ( code = 43 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// const FOO = function(): void { };
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Use a valid constant expression
+    InvalidConstantExpression = 43,
+
+    /// Invalid constant initialization expression ( code = 44 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// function foo(
+    ///     (fn(): void) $a = (
+    ///         function(): void { }
+    ///     )
+    /// ): void {}
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Use a valid constant initialization expression
+    InvalidConstantInitializationExpression = 44,
+
+    /// Invalid constant initialization expression ( code = 45 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// const FOO = new Bar();
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Remove the class instantiation expression(s)
+    InvalidInitializationInConstantExpression = 45,
 }
 
 pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) -> Issue {
@@ -1641,6 +1685,50 @@ pub(crate) fn unexpected_token<T: ToString>(
         found.position,
         found.position + found.value.len(),
     )
+}
+
+pub(crate) fn invalid_constant_expression(state: &ParserState, expression: &Expression) -> Issue {
+    let origin = state.source.name();
+
+    Issue::error(
+        ParserIssueCode::InvalidConstantExpression,
+        "invalid constant expression",
+        origin,
+        expression.initial_position(),
+        expression.final_position(),
+    )
+}
+
+pub(crate) fn invalid_constant_initialization_expression(
+    state: &ParserState,
+    expression: &Expression,
+) -> Issue {
+    let origin = state.source.name();
+
+    Issue::error(
+        ParserIssueCode::InvalidConstantInitializationExpression,
+        "invalid constant initialization expression",
+        origin,
+        expression.initial_position(),
+        expression.final_position(),
+    )
+}
+
+pub(crate) fn invalid_initialization_in_constant_expression(
+    state: &ParserState,
+    expression: &Expression,
+) -> Issue {
+    let origin = state.source.name();
+
+    Issue::error(
+        ParserIssueCode::InvalidInitializationInConstantExpression,
+        "invalid initialization in constant expression",
+        origin,
+        expression.initial_position(),
+        expression.final_position(),
+    )
+    .with_note("constant expressions cannot contain `new` expressions.")
+    .with_help("try removing the `new` expression.")
 }
 
 impl ::std::fmt::Display for ParserIssueCode {

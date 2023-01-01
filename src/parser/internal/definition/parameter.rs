@@ -51,7 +51,18 @@ pub fn function_like_parameter_list_definition(
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
                     equals: current.position,
-                    value: expression::create(state)?,
+                    value: {
+                        let expression = expression::create(state)?;
+
+                        if !expression.is_constant(true) {
+                            crate::parser_report!(
+                                state,
+                                invalid_constant_initialization_expression(&expression)
+                            );
+                        }
+
+                        expression
+                    },
                 })
             } else {
                 None
@@ -120,7 +131,18 @@ pub fn constructor_parameter_list_definition(
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
                     equals: current.position,
-                    value: expression::create(state)?,
+                    value: {
+                        let expression = expression::create(state)?;
+
+                        if !expression.is_constant(true) {
+                            crate::parser_report!(
+                                state,
+                                invalid_constant_initialization_expression(&expression)
+                            );
+                        }
+
+                        expression
+                    },
                 })
             } else {
                 None

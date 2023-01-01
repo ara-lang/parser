@@ -1004,12 +1004,10 @@ impl Node for TernaryOperationExpression {
 
     fn final_position(&self) -> usize {
         match &self {
-            TernaryOperationExpression::Ternary { condition, .. } => condition.final_position(),
-            TernaryOperationExpression::ShortTernary { condition, .. } => {
-                condition.final_position()
-            }
-            TernaryOperationExpression::ImplicitShortTernary { condition, .. } => {
-                condition.final_position()
+            TernaryOperationExpression::Ternary { if_false, .. } => if_false.final_position(),
+            TernaryOperationExpression::ShortTernary { if_false, .. } => if_false.final_position(),
+            TernaryOperationExpression::ImplicitShortTernary { if_false, .. } => {
+                if_false.final_position()
             }
         }
     }

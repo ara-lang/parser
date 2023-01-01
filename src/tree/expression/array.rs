@@ -13,13 +13,13 @@ pub struct VecExpression {
     pub comments: CommentGroup,
     pub vec: usize,
     pub left_bracket: usize,
-    pub members: CommaSeparated<VecExpressionItem>,
+    pub elements: CommaSeparated<VecElementExpression>,
     pub right_bracket: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct VecExpressionItem {
+pub struct VecElementExpression {
     pub value: Expression,
 }
 
@@ -29,13 +29,13 @@ pub struct DictExpression {
     pub comments: CommentGroup,
     pub dict: usize,
     pub left_bracket: usize,
-    pub members: CommaSeparated<DictExpressionItem>,
+    pub elements: CommaSeparated<DictElementExpression>,
     pub right_bracket: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct DictExpressionItem {
+pub struct DictElementExpression {
     pub key: Expression,
     pub double_arrow: usize,
     pub value: Expression,
@@ -46,11 +46,11 @@ pub struct DictExpressionItem {
 pub struct TupleExpression {
     pub comments: CommentGroup,
     pub left_parenthesis: usize,
-    pub members: CommaSeparated<Expression>,
+    pub elements: CommaSeparated<Expression>,
     pub right_parenthesis: usize,
 }
 
-impl Node for VecExpressionItem {
+impl Node for VecElementExpression {
     fn initial_position(&self) -> usize {
         self.value.initial_position()
     }
@@ -78,7 +78,7 @@ impl Node for VecExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.members
+        self.elements
             .inner
             .iter()
             .map(|item| item as &dyn Node)
@@ -86,7 +86,7 @@ impl Node for VecExpression {
     }
 }
 
-impl Node for DictExpressionItem {
+impl Node for DictElementExpression {
     fn initial_position(&self) -> usize {
         self.key.initial_position()
     }
@@ -114,10 +114,10 @@ impl Node for DictExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.members
+        self.elements
             .inner
             .iter()
-            .map(|item| item as &dyn Node)
+            .map(|element| element as &dyn Node)
             .collect()
     }
 }
@@ -136,10 +136,10 @@ impl Node for TupleExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.members
+        self.elements
             .inner
             .iter()
-            .map(|item| item as &dyn Node)
+            .map(|element| element as &dyn Node)
             .collect()
     }
 }

@@ -39,7 +39,22 @@ pub fn property_definition(
         let entry = PropertyEntryDefinition::Initialized {
             variable,
             equals: utils::skip(state, TokenKind::Equals)?,
-            value: expression::create(state)?,
+            value: {
+                let expression = expression::create(state)?;
+
+                if !expression.is_constant(false) {
+                    if expression.is_constant(true) {
+                        crate::parser_report!(
+                            state,
+                            invalid_initialization_in_constant_expression(&expression)
+                        );
+                    } else {
+                        crate::parser_report!(state, invalid_constant_expression(&expression));
+                    }
+                }
+
+                expression
+            },
         };
 
         if let Some(modifier) = modifiers.get_readonly() {

@@ -19,7 +19,25 @@ pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition>
                 Ok(ConstantDefinitionEntry {
                     name: identifier::constant_identifier(state)?,
                     equals: utils::skip(state, TokenKind::Equals)?,
-                    value: expression::create(state)?,
+                    value: {
+                        let expression = expression::create(state)?;
+
+                        if !expression.is_constant(false) {
+                            if expression.is_constant(true) {
+                                crate::parser_report!(
+                                    state,
+                                    invalid_initialization_in_constant_expression(&expression)
+                                );
+                            } else {
+                                crate::parser_report!(
+                                    state,
+                                    invalid_constant_expression(&expression)
+                                );
+                            }
+                        }
+
+                        expression
+                    },
                 })
             },
             TokenKind::SemiColon,
@@ -43,7 +61,25 @@ pub fn classish_constant_definition(
                 Ok(ConstantDefinitionEntry {
                     name: identifier::constant_identifier(state)?,
                     equals: utils::skip(state, TokenKind::Equals)?,
-                    value: expression::create(state)?,
+                    value: {
+                        let expression = expression::create(state)?;
+
+                        if !expression.is_constant(false) {
+                            if expression.is_constant(true) {
+                                crate::parser_report!(
+                                    state,
+                                    invalid_initialization_in_constant_expression(&expression)
+                                );
+                            } else {
+                                crate::parser_report!(
+                                    state,
+                                    invalid_constant_expression(&expression)
+                                );
+                            }
+                        }
+
+                        expression
+                    },
                 })
             },
             TokenKind::SemiColon,

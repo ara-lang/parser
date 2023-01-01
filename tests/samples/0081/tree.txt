@@ -252,7 +252,7 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 left_parenthesis: 115,
-                                                members: CommaSeparated {
+                                                elements: CommaSeparated {
                                                     inner: [
                                                         Variable(
                                                             Variable {

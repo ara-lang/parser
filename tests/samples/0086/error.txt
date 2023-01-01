@@ -1,0 +1,90 @@
+error[P0045]: invalid initialization in constant expression
+  --> 0086/code.ara:1:13
+  |
+1 | const FOO = new Foo();
+  |             ^^^^^^^^^ invalid initialization in constant expression
+  |
+  = note: constant expressions cannot contain `new` expressions.
+  = help: try removing the `new` expression.
+
+error[P0043]: invalid constant expression
+  --> 0086/code.ara:3:13
+  |  
+3 |   const BAR = function(): Bar {
+  | /-------------^
+4 | |     return new Bar();
+5 | | };
+  | \-^ invalid constant expression
+
+error[P0043]: invalid constant expression
+  --> 0086/code.ara:7:13
+  |
+7 | const BAZ = fn(): Baz => new Baz();
+  |             ^^^^^^^^^^^^^^^^^^^^^^ invalid constant expression
+
+error[P0044]: invalid constant initialization expression
+  --> 0086/code.ara:9:7
+  |
+9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
+  |       ^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0044]: invalid constant initialization expression
+  --> 0086/code.ara:9:22
+  |
+9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
+  |                      ^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0044]: invalid constant initialization expression
+  --> 0086/code.ara:9:37
+  |
+9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
+  |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0044]: invalid constant initialization expression
+   --> 0086/code.ara:11:14
+   |
+11 |     Bar $a = new Bar($bar),
+   |              ^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0044]: invalid constant initialization expression
+   --> 0086/code.ara:12:14
+   |
+12 |     Baz $b = new Baz($baz),
+   |              ^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0044]: invalid constant initialization expression
+   --> 0086/code.ara:13:14
+   |
+13 |     Qux $c = new Qux(function(): void {})
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid constant initialization expression
+
+error[P0045]: invalid initialization in constant expression
+   --> 0086/code.ara:17:17
+   |
+17 |     const FOO = new Foo();
+   |                 ^^^^^^^^^ invalid initialization in constant expression
+   |
+   = note: constant expressions cannot contain `new` expressions.
+   = help: try removing the `new` expression.
+
+error[P0043]: invalid constant expression
+   --> 0086/code.ara:19:17
+   |  
+19 |       const BAR = function(): Bar {
+   | /-----------------^
+20 | |         return new Bar();
+21 | |     };
+   | \-----^ invalid constant expression
+
+error[P0043]: invalid constant expression
+   --> 0086/code.ara:23:17
+   |
+23 |     const BAZ = fn(): Baz => new Baz();
+   |                 ^^^^^^^^^^^^^^^^^^^^^^ invalid constant expression
+
+error[P0042]: unexpected identifier, expected `;`
+   --> 0086/code.ara:25:22
+   |
+25 |     private mixed $a FOO = new Foo();
+   |                      ^^^ unexpected identifier, expected `;`
+

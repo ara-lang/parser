@@ -1,0 +1,44 @@
+const FOO = new Foo();
+
+const BAR = function(): Bar {
+    return new Bar();
+};
+
+const BAZ = fn(): Baz => new Baz();
+
+#[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
+function foo(
+    Bar $a = new Bar($bar),
+    Baz $b = new Baz($baz),
+    Qux $c = new Qux(function(): void {})
+): void {}
+
+class Bar {
+    const FOO = new Foo();
+
+    const BAR = function(): Bar {
+        return new Bar();
+    };
+
+    const BAZ = fn(): Baz => new Baz();
+
+    private mixed $a FOO = new Foo();
+
+    private mixed $b BAR = function(): Bar {
+        return new Bar();
+    };
+
+    private mixed $c BAZ = fn(): Baz => new Baz();
+
+    public function __construct(
+        Bar $a = new Bar($bar),
+        Baz $b = new Baz($baz),
+        Qux $c = new Qux(function(): void {})
+    ) {}
+
+    public function foo(
+        Bar $a = new Bar($bar),
+        Baz $b = new Baz($baz),
+        Qux $c = new Qux(function(): void {})
+    ): void {}
+}

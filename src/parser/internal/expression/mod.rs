@@ -520,16 +520,16 @@ expressions! {
         } else {
             let comma = utils::skip(state, TokenKind::Comma)?;
 
-            let members = {
+            let elements = {
                 let expressions = [expression];
                 let commas = [comma];
 
-                let mut items = utils::at_least_one_comma_separated(state, &create, TokenKind::RightParen)?;
+                let mut elements = utils::at_least_one_comma_separated(state, &create, TokenKind::RightParen)?;
 
-                items.inner = [expressions.as_slice(), items.inner.as_slice()].concat();
-                items.commas = [commas.as_slice(), items.commas.as_slice()].concat();
+                elements.inner = [expressions.as_slice(), elements.inner.as_slice()].concat();
+                elements.commas = [commas.as_slice(), elements.commas.as_slice()].concat();
 
-                items
+                elements
             };
 
             let right_parenthesis = utils::skip_right_parenthesis(state)?;
@@ -537,7 +537,7 @@ expressions! {
             Ok(Expression::Tuple(TupleExpression {
                 comments,
                 left_parenthesis,
-                members,
+                elements,
                 right_parenthesis,
             }))
         }
