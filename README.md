@@ -18,7 +18,7 @@ Add `ara_parser` to your `Cargo.toml`, and you're good to go!
 
 ```toml
 [dependencies]
-ara_parser = "0.2.0"
+ara_parser = "0.3.0"
 ```
 
 ## Example
