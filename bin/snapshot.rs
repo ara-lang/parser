@@ -22,7 +22,7 @@ fn main() -> io::Result<()> {
 
     entries.sort();
 
-    let loader = FileSourceLoader::new(root);
+    let loader = FileSourceLoader::new(&root);
     for entry in entries {
         let code_filename = entry.join("code.ara");
         let tree_filename = entry.join("tree.txt");
@@ -40,7 +40,7 @@ fn main() -> io::Result<()> {
             std::fs::remove_file(&error_filename)?;
         }
 
-        let source_map = loader.load(&code_filename.to_string_lossy()).unwrap();
+        let source_map = loader.load(&code_filename).unwrap();
         match parser::parse(&source_map.sources[0]) {
             Ok(tree) => {
                 std::fs::write(tree_filename, format!("{:#?}", tree.definitions))?;

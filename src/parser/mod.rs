@@ -36,7 +36,7 @@ pub fn parse_map(map: &SourceMap) -> Result<TreeMap, Box<Report>> {
 
         Err(Box::new(Report { issues }))
     } else {
-        Ok(TreeMap { map, trees })
+        Ok(TreeMap { trees })
     }
 }
 
@@ -53,14 +53,14 @@ pub fn parse(source: &Source) -> Result<Tree, Box<Report>> {
     construct(source, &tokens)
 }
 
-pub fn construct<'a, 'b>(source: &'a Source, tokens: &'b [Token]) -> Result<Tree<'a>, Box<Report>> {
+pub fn construct(source: &Source, tokens: &[Token]) -> Result<Tree, Box<Report>> {
     let mut iterator = TokenIterator::new(tokens);
     let mut state = State::new(source, &mut iterator);
 
     let definitions = definition::tree(&mut state)?;
 
     state.finish(Tree {
+        source: source.name().to_string(),
         definitions,
-        source,
     })
 }

@@ -18,8 +18,8 @@ name = "ara-internal-snapshot"
 path = "bin/snapshot.rs"
 
 [dependencies]
-ara_source = { version = "0.1.0" }
-ara_reporting = { version = "0.4.1" }
+ara_source = { version = "0.2.0" }
+ara_reporting = { version = "0.4.2" }
 schemars = { version = "0.8.11" }
 serde = { version = "1.0.149", features = ["derive"] }
 serde_json = { version = "1.0.89" }

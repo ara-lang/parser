@@ -33,9 +33,9 @@ use ara_source::loader::load_directories;
 
 fn main() -> Result<(), Error> {
 
-    let root = "/path/to/ara/project";
-
-    let source_map = load_directories(root, vec![&format!("{}/{}", root, "src/")]).unwrap();
+    let source_map = load_directories("/path/to/project", vec![
+        "src/"
+    ]).unwrap();
 
     match parser::parse_map(&source_map) {
         Ok(tree_map) => tree_map.trees.iter().for_each(|tree| {

@@ -1,13 +1,11 @@
 use std::fmt::Debug;
 
-use ara_source::source::Source;
-
 use crate::tree::Node;
 
 pub trait NodeVisitor<E: Debug> {
     fn visit_node(
         &mut self,
-        source: &Source,
+        source: &String,
         node: &dyn Node,
         parent: Option<&dyn Node>,
     ) -> Result<(), E> {
@@ -22,7 +20,7 @@ pub trait NodeVisitor<E: Debug> {
 
     fn visit(
         &mut self,
-        source: &Source,
+        source: &String,
         node: &dyn Node,
         parent: Option<&dyn Node>,
     ) -> Result<(), E>;

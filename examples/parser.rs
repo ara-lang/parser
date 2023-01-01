@@ -10,11 +10,7 @@ use ara_source::loader::load_directories;
 fn main() -> Result<(), Error> {
     let cargo_manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
 
-    let source_map = load_directories(
-        format!("{}/", cargo_manifest_dir),
-        vec![&format!("{}/{}", cargo_manifest_dir, "examples/project/")],
-    )
-    .unwrap();
+    let source_map = load_directories(cargo_manifest_dir, vec!["examples/project/"]).unwrap();
 
     match parser::parse_map(&source_map) {
         Ok(tree_map) => tree_map.trees.iter().for_each(|tree| {

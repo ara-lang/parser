@@ -1,8 +1,5 @@
 use std::any::{Any, TypeId};
 
-use ara_source::source::Source;
-use ara_source::SourceMap;
-
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::DefinitionTree;
 
@@ -15,14 +12,13 @@ pub mod utils;
 pub mod variable;
 
 #[derive(Debug)]
-pub struct TreeMap<'a> {
-    pub map: &'a SourceMap,
-    pub trees: Vec<Tree<'a>>,
+pub struct TreeMap {
+    pub trees: Vec<Tree>,
 }
 
 #[derive(Debug)]
-pub struct Tree<'a> {
-    pub source: &'a Source,
+pub struct Tree {
+    pub source: String,
     pub definitions: DefinitionTree,
 }
 
@@ -46,7 +42,7 @@ pub trait Node: Any {
     fn children(&self) -> Vec<&dyn Node>;
 }
 
-pub fn cast<T: Node + 'static>(node: &dyn Node) -> Option<&T> {
+pub fn downcast<T: Node + 'static>(node: &dyn Node) -> Option<&T> {
     // Get `TypeId` of the type this function is instantiated with.
     let t = TypeId::of::<T>();
 
