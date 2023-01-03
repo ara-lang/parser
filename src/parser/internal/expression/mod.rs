@@ -48,7 +48,7 @@ pub fn null_coalesce_precedence(state: &mut State) -> ParseResult<Expression> {
 }
 
 pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<Expression> {
-    let mut left = left(state)?;
+    let mut left = left(state, &precedence)?;
 
     loop {
         let current = state.iterator.current();
@@ -101,7 +101,7 @@ pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<
     Ok(left)
 }
 
-pub fn left(state: &mut State) -> ParseResult<Expression> {
+pub fn left(state: &mut State, precedence: &Precedence) -> ParseResult<Expression> {
     if state.iterator.is_eof() {
         crate::parser_bail!(
             state,
@@ -109,7 +109,7 @@ pub fn left(state: &mut State) -> ParseResult<Expression> {
         );
     }
 
-    attributes(state)
+    attributes(state, precedence)
 }
 
 macro_rules! expressions {
@@ -117,15 +117,21 @@ macro_rules! expressions {
         using($state:ident):
 
         $(
-            #[before($else:ident), current($(|)? $( $current:pat_param )|+) $(, peek($(|)? $( $peek:pat_param )|+))?]
+            #[before($else:ident), $(precedence($precedence:expr),)? current($(|)? $( $current:pat_param )|+) $(, peek($(|)? $( $peek:pat_param )|+))?]
             $expr:ident($out:tt)
         )+
     ) => {
         $(
-            pub(crate) fn $expr($state: &mut State) -> ParseResult<Expression> {
+            pub(crate) fn $expr($state: &mut State, precedence: &Precedence) -> ParseResult<Expression> {
+                $(
+                    if &$precedence < precedence {
+                        return $else($state, precedence);
+                    }
+                )?
+
                 match &$state.iterator.current().kind {
                     $( $current )|+ $( if matches!(&$state.iterator.lookahead(1).kind, $( $peek )|+ ))? => $out,
-                    _ => $else($state),
+                    _ => $else($state, precedence),
                 }
             }
         )+
@@ -209,7 +215,7 @@ expressions! {
         }
     })
 
-    #[before(reserved_identifier_static_call), current(
+    #[before(reserved_identifier_static_call), precedence(Precedence::CallDim), current(
         | TokenKind::True       | TokenKind::False | TokenKind::Null
         | TokenKind::Readonly   | TokenKind::Self_ | TokenKind::Parent
         | TokenKind::Enum       | TokenKind::From  | TokenKind::Where
@@ -253,7 +259,7 @@ expressions! {
             ClassOperationExpression::Initialization {
                 comments: state.iterator.comments(),
                 new,
-                class: identifier::fully_qualified_type_identifier_including_self(state)?,
+                class: Box::new(for_precedence(state, Precedence::CloneOrNew)?),
                 generics: if state.iterator.current().kind == TokenKind::Generic {
                     Some(generic::generic_group(state)?)
                 } else {
@@ -309,7 +315,7 @@ expressions! {
             comments: state.iterator.comments(),
             concurrently,
             left_brace: utils::skip_left_brace(state)?,
-            expressions: utils::comma_separated(state, &left, TokenKind::RightBrace)?,
+            expressions: utils::comma_separated(state, &create, TokenKind::RightBrace)?,
             right_brace: utils::skip_right_brace(state)?,
         }))
     })
@@ -460,7 +466,7 @@ expressions! {
         }
     })
 
-    #[before(identifier), current(TokenKind::LiteralString)]
+    #[before(dict), current(TokenKind::LiteralString)]
     literal_string({
         let current = state.iterator.current();
 
@@ -479,6 +485,16 @@ expressions! {
         }
     })
 
+    #[before(vec), current(TokenKind::Dict), peek(TokenKind::LeftBracket)]
+    dict({
+        Ok(Expression::Dict(array::dict_expression(state)?))
+    })
+
+    #[before(identifier), current(TokenKind::Vec), peek(TokenKind::LeftBracket)]
+    vec({
+        Ok(Expression::Vec(array::vec_expression(state)?))
+    })
+
     #[before(reserved_identifier), current(TokenKind::Identifier | TokenKind::QualifiedIdentifier | TokenKind::FullyQualifiedIdentifier)]
     identifier({
         Ok(Expression::Identifier(identifier::fully_qualified_type_identifier(state)?))
@@ -487,7 +503,8 @@ expressions! {
     #[before(left_parenthesis), current(
         | TokenKind::Self_ | TokenKind::Parent | TokenKind::Static
         | TokenKind::From | TokenKind::Enum | TokenKind::Where
-        | TokenKind::Type
+        | TokenKind::Type | TokenKind::Vec | TokenKind::Dict
+        | TokenKind::Async | TokenKind::Await | TokenKind::Concurrently
     )]
     reserved_identifier({
         let current = state.iterator.current();
@@ -543,19 +560,9 @@ expressions! {
         }
     })
 
-    #[before(dict), current(TokenKind::Match)]
+    #[before(directory_magic_constant), current(TokenKind::Match)]
     r#match({
         Ok(Expression::Match(control_flow::match_expression(state)?))
-    })
-
-    #[before(vec), current(TokenKind::Dict)]
-    dict({
-        Ok(Expression::Dict(array::dict_expression(state)?))
-    })
-
-    #[before(directory_magic_constant), current(TokenKind::Vec)]
-    vec({
-        Ok(Expression::Vec(array::vec_expression(state)?))
     })
 
     #[before(file_magic_constant), current(TokenKind::DirConstant)]
@@ -716,7 +723,7 @@ expressions! {
     })
 }
 
-fn unexpected_token(state: &mut State) -> ParseResult<Expression> {
+fn unexpected_token(state: &mut State, _precedence: &Precedence) -> ParseResult<Expression> {
     crate::parser_bail!(
         state,
         unexpected_token(vec!["an expression"], state.iterator.current())

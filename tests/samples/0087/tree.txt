@@ -1,0 +1,653 @@
+DefinitionTree {
+    definitions: [
+        Interface(
+            InterfaceDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                interface: 0,
+                name: Identifier {
+                    position: 10,
+                    value: "IFoo",
+                },
+                templates: None,
+                extends: None,
+                body: InterfaceDefinitionBody {
+                    left_brace: 15,
+                    members: [
+                        Constructor(
+                            AbstractConstructorDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            21,
+                                        ),
+                                    ],
+                                },
+                                function: 28,
+                                name: Identifier {
+                                    position: 37,
+                                    value: "__construct",
+                                },
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 48,
+                                    parameters: CommaSeparated {
+                                        inner: [
+                                            FunctionLikeParameterDefinition {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                attributes: [],
+                                                type_definition: String(
+                                                    49,
+                                                ),
+                                                ellipsis: None,
+                                                variable: Variable {
+                                                    position: 56,
+                                                    name: "$foo",
+                                                },
+                                                default: None,
+                                            },
+                                        ],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 60,
+                                },
+                                semicolon: 61,
+                            },
+                        ),
+                        Method(
+                            AbstractMethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            68,
+                                        ),
+                                    ],
+                                },
+                                function: 75,
+                                name: Identifier {
+                                    position: 84,
+                                    value: "doSomething",
+                                },
+                                templates: None,
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 95,
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 96,
+                                },
+                                return_type: FunctionLikeReturnTypeDefinition {
+                                    colon: 97,
+                                    type_definition: Void(
+                                        99,
+                                    ),
+                                },
+                                constraints: None,
+                                semicolon: 103,
+                            },
+                        ),
+                    ],
+                    right_brace: 105,
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ClassModifierDefinitionGroup {
+                    modifiers: [
+                        Final(
+                            108,
+                        ),
+                    ],
+                },
+                class: 114,
+                name: Identifier {
+                    position: 120,
+                    value: "FooImpl",
+                },
+                templates: None,
+                extends: None,
+                implements: Some(
+                    ClassDefinitionImplements {
+                        implements: 128,
+                        interfaces: CommaSeparated {
+                            inner: [
+                                TemplatedIdentifier {
+                                    name: Identifier {
+                                        position: 139,
+                                        value: "IFoo",
+                                    },
+                                    templates: None,
+                                },
+                            ],
+                            commas: [],
+                        },
+                    },
+                ),
+                body: ClassDefinitionBody {
+                    left_brace: 144,
+                    members: [
+                        ConcreteConstructor(
+                            ConcreteConstructorDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            150,
+                                        ),
+                                    ],
+                                },
+                                function: 157,
+                                name: Identifier {
+                                    position: 166,
+                                    value: "__construct",
+                                },
+                                parameters: ConstructorParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 177,
+                                    parameters: CommaSeparated {
+                                        inner: [
+                                            ConstructorParameterDefinition {
+                                                attributes: [],
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                    modifiers: [],
+                                                },
+                                                type_definition: String(
+                                                    178,
+                                                ),
+                                                ellipsis: None,
+                                                variable: Variable {
+                                                    position: 185,
+                                                    name: "$foo",
+                                                },
+                                                default: None,
+                                            },
+                                        ],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 189,
+                                },
+                                body: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 191,
+                                    statements: [],
+                                    right_brace: 212,
+                                },
+                            },
+                        ),
+                        ConcreteMethod(
+                            ConcreteMethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 201,
+                                            format: SingleLine,
+                                            content: "// ...",
+                                        },
+                                    ],
+                                },
+                                attributes: [],
+                                modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: [
+                                        Public(
+                                            219,
+                                        ),
+                                    ],
+                                },
+                                function: 226,
+                                name: Identifier {
+                                    position: 235,
+                                    value: "doSomething",
+                                },
+                                templates: None,
+                                parameters: FunctionLikeParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 246,
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 247,
+                                },
+                                return_type: FunctionLikeReturnTypeDefinition {
+                                    colon: 248,
+                                    type_definition: Void(
+                                        250,
+                                    ),
+                                },
+                                constraints: None,
+                                body: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 255,
+                                    statements: [],
+                                    right_brace: 276,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 278,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [
+                        Comment {
+                            position: 265,
+                            format: SingleLine,
+                            content: "// ...",
+                        },
+                    ],
+                },
+                attributes: [],
+                function: 281,
+                name: Identifier {
+                    position: 290,
+                    value: "instantiate",
+                },
+                templates: Some(
+                    TemplateGroupDefinition {
+                        comments: CommentGroup {
+                            comments: [],
+                        },
+                        less_than: 301,
+                        members: CommaSeparated {
+                            inner: [
+                                TemplateDefinition {
+                                    variance: Invaraint,
+                                    name: Identifier {
+                                        position: 302,
+                                        value: "T",
+                                    },
+                                    constraint: SubType(
+                                        304,
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 307,
+                                                    value: "IFoo",
+                                                },
+                                                templates: None,
+                                            },
+                                        ),
+                                    ),
+                                },
+                            ],
+                            commas: [],
+                        },
+                        greater_than: 311,
+                    },
+                ),
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 312,
+                    parameters: CommaSeparated {
+                        inner: [
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            position: 313,
+                                            value: "classname",
+                                        },
+                                        templates: Some(
+                                            TypeTemplateGroupDefinition {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                less_than: 322,
+                                                members: CommaSeparated {
+                                                    inner: [
+                                                        Identifier(
+                                                            TemplatedIdentifier {
+                                                                name: Identifier {
+                                                                    position: 323,
+                                                                    value: "T",
+                                                                },
+                                                                templates: None,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [],
+                                                },
+                                                greater_than: 324,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    position: 326,
+                                    name: "$class",
+                                },
+                                default: None,
+                            },
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: String(
+                                    334,
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    position: 341,
+                                    name: "$foo",
+                                },
+                                default: None,
+                            },
+                        ],
+                        commas: [
+                            332,
+                        ],
+                    },
+                    right_parenthesis: 345,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 346,
+                    type_definition: Identifier(
+                        TemplatedIdentifier {
+                            name: Identifier {
+                                position: 348,
+                                value: "T",
+                            },
+                            templates: None,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 350,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: 356,
+                                expression: Some(
+                                    ClassOperation(
+                                        Initialization {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            new: 363,
+                                            class: Variable(
+                                                Variable {
+                                                    position: 367,
+                                                    name: "$class",
+                                                },
+                                            ),
+                                            generics: None,
+                                            arguments: ArgumentListExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 373,
+                                                arguments: CommaSeparated {
+                                                    inner: [
+                                                        Positional {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            ellipsis: None,
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 374,
+                                                                    name: "$foo",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [],
+                                                },
+                                                right_parenthesis: 378,
+                                            },
+                                        },
+                                    ),
+                                ),
+                                semicolon: 379,
+                            },
+                        ),
+                    ],
+                    right_brace: 381,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 384,
+                name: Identifier {
+                    position: 393,
+                    value: "test",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 397,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 398,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 399,
+                    type_definition: Void(
+                        401,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 406,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 412,
+                                                name: "$foo",
+                                            },
+                                        ),
+                                        equals: 417,
+                                        right: FunctionOperation(
+                                            Call {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                function: Identifier(
+                                                    Identifier {
+                                                        position: 419,
+                                                        value: "instantiate",
+                                                    },
+                                                ),
+                                                generics: Some(
+                                                    GenericGroupExpression {
+                                                        double_colon_less_than: 430,
+                                                        types: CommaSeparated {
+                                                            inner: [
+                                                                Identifier(
+                                                                    TemplatedIdentifier {
+                                                                        name: Identifier {
+                                                                            position: 433,
+                                                                            value: "FooImpl",
+                                                                        },
+                                                                        templates: None,
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 440,
+                                                    },
+                                                ),
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 441,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: ClassOperation(
+                                                                    ConstantFetch {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        class: Identifier(
+                                                                            Identifier {
+                                                                                position: 442,
+                                                                                value: "FooImpl",
+                                                                            },
+                                                                        ),
+                                                                        double_colon: 449,
+                                                                        constant: Identifier {
+                                                                            position: 451,
+                                                                            value: "class",
+                                                                        },
+                                                                    },
+                                                                ),
+                                                            },
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'bar'",
+                                                                            position: 458,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            456,
+                                                        ],
+                                                    },
+                                                    right_parenthesis: 463,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 464,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ObjectOperation(
+                                    MethodCall {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        object: Variable(
+                                            Variable {
+                                                position: 471,
+                                                name: "$foo",
+                                            },
+                                        ),
+                                        arrow: 475,
+                                        method: Identifier {
+                                            position: 477,
+                                            value: "doSomething",
+                                        },
+                                        generics: None,
+                                        arguments: ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 488,
+                                            arguments: CommaSeparated {
+                                                inner: [],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 489,
+                                        },
+                                    },
+                                ),
+                                semicolon: 490,
+                            },
+                        ),
+                    ],
+                    right_brace: 492,
+                },
+            },
+        ),
+    ],
+    eof: 494,
+}

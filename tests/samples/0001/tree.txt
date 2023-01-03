@@ -1627,10 +1627,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 619,
-                                        class: Identifier {
-                                            position: 623,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 623,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: None,
                                         arguments: ArgumentListExpression {
                                             comments: CommentGroup {
@@ -1659,10 +1661,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 634,
-                                        class: Identifier {
-                                            position: 638,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 638,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: None,
                                         arguments: ArgumentListExpression {
                                             comments: CommentGroup {
@@ -1704,10 +1708,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 652,
-                                        class: Identifier {
-                                            position: 656,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 656,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: Some(
                                             GenericGroupExpression {
                                                 double_colon_less_than: 659,
@@ -1762,10 +1768,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 676,
-                                        class: Identifier {
-                                            position: 680,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 680,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: Some(
                                             GenericGroupExpression {
                                                 double_colon_less_than: 683,
@@ -1822,10 +1830,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 704,
-                                        class: Identifier {
-                                            position: 708,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 708,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: Some(
                                             GenericGroupExpression {
                                                 double_colon_less_than: 711,
@@ -1885,10 +1895,12 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         new: 736,
-                                        class: Identifier {
-                                            position: 740,
-                                            value: "Foo",
-                                        },
+                                        class: Identifier(
+                                            Identifier {
+                                                position: 740,
+                                                value: "Foo",
+                                            },
+                                        ),
                                         generics: Some(
                                             GenericGroupExpression {
                                                 double_colon_less_than: 743,

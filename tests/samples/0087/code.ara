@@ -1,0 +1,25 @@
+interface IFoo {
+    public function __construct(string $foo);
+
+    public function doSomething(): void;
+}
+
+final class FooImpl implements IFoo {
+    public function __construct(string $foo) {
+        // ...
+    }
+
+    public function doSomething(): void {
+        // ...
+    }
+}
+
+function instantiate<T as IFoo>(classname<T> $class, string $foo): T {
+    return new $class($foo);
+}
+
+function test(): void {
+    $foo = instantiate::<FooImpl>(FooImpl::class, 'bar');
+
+    $foo->doSomething();
+}

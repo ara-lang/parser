@@ -151,19 +151,22 @@ impl Expression {
                 BitwiseOperationExpression::Not { right, .. } => right.is_constant(initilization),
             },
             Expression::ClassOperation(expression) => match &expression {
-                ClassOperationExpression::Initialization { arguments, .. } if initilization => {
-                    arguments
-                        .arguments
-                        .inner
-                        .iter()
-                        .all(|argument| match argument {
-                            ArgumentExpression::Positional { value, .. } => {
-                                value.is_constant(initilization)
-                            }
-                            ArgumentExpression::Named { value, .. } => {
-                                value.is_constant(initilization)
-                            }
-                        })
+                ClassOperationExpression::Initialization {
+                    class, arguments, ..
+                } if initilization => {
+                    class.is_constant(initilization)
+                        && arguments
+                            .arguments
+                            .inner
+                            .iter()
+                            .all(|argument| match argument {
+                                ArgumentExpression::Positional { value, .. } => {
+                                    value.is_constant(initilization)
+                                }
+                                ArgumentExpression::Named { value, .. } => {
+                                    value.is_constant(initilization)
+                                }
+                            })
                 }
                 ClassOperationExpression::ConstantFetch { class, .. } => {
                     class.is_constant(initilization)
@@ -183,7 +186,7 @@ impl Expression {
                 | ComparisonOperationExpression::LessThan { left, right, .. }
                 | ComparisonOperationExpression::LessThanOrEqual { left, right, .. }
                 | ComparisonOperationExpression::GreaterThan { left, right, .. }
-                | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }=> {
+                | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. } => {
                     left.is_constant(initilization) && right.is_constant(initilization)
                 }
                 ComparisonOperationExpression::Spaceship { left, right, .. } => {

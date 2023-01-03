@@ -1111,10 +1111,12 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 new: 497,
-                                                                class: Identifier {
-                                                                    position: 501,
-                                                                    value: "Bar",
-                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 501,
+                                                                        value: "Bar",
+                                                                    },
+                                                                ),
                                                                 generics: None,
                                                                 arguments: ArgumentListExpression {
                                                                     comments: CommentGroup {
@@ -1144,10 +1146,12 @@ DefinitionTree {
                                                                                                                 comments: [],
                                                                                                             },
                                                                                                             new: 514,
-                                                                                                            class: Identifier {
-                                                                                                                position: 518,
-                                                                                                                value: "Baz",
-                                                                                                            },
+                                                                                                            class: Identifier(
+                                                                                                                Identifier {
+                                                                                                                    position: 518,
+                                                                                                                    value: "Baz",
+                                                                                                                },
+                                                                                                            ),
                                                                                                             generics: None,
                                                                                                             arguments: ArgumentListExpression {
                                                                                                                 comments: CommentGroup {
@@ -2124,10 +2128,12 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 new: 943,
-                                                class: Identifier {
-                                                    position: 947,
-                                                    value: "Foo",
-                                                },
+                                                class: Identifier(
+                                                    Identifier {
+                                                        position: 947,
+                                                        value: "Foo",
+                                                    },
+                                                ),
                                                 generics: None,
                                                 arguments: ArgumentListExpression {
                                                     comments: CommentGroup {
@@ -2147,10 +2153,12 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         new: 951,
-                                                                        class: Identifier {
-                                                                            position: 955,
-                                                                            value: "Bar",
-                                                                        },
+                                                                        class: Identifier(
+                                                                            Identifier {
+                                                                                position: 955,
+                                                                                value: "Bar",
+                                                                            },
+                                                                        ),
                                                                         generics: None,
                                                                         arguments: ArgumentListExpression {
                                                                             comments: CommentGroup {
@@ -2180,10 +2188,12 @@ DefinitionTree {
                                                                                                                         comments: [],
                                                                                                                     },
                                                                                                                     new: 972,
-                                                                                                                    class: Identifier {
-                                                                                                                        position: 976,
-                                                                                                                        value: "Baz",
-                                                                                                                    },
+                                                                                                                    class: Identifier(
+                                                                                                                        Identifier {
+                                                                                                                            position: 976,
+                                                                                                                            value: "Baz",
+                                                                                                                        },
+                                                                                                                    ),
                                                                                                                     generics: None,
                                                                                                                     arguments: ArgumentListExpression {
                                                                                                                         comments: CommentGroup {
@@ -5392,10 +5402,12 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 new: 2885,
-                                                                class: Identifier {
-                                                                    position: 2889,
-                                                                    value: "Foo",
-                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 2889,
+                                                                        value: "Foo",
+                                                                    },
+                                                                ),
                                                                 generics: None,
                                                                 arguments: ArgumentListExpression {
                                                                     comments: CommentGroup {
@@ -5415,10 +5427,12 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         new: 2893,
-                                                                                        class: Identifier {
-                                                                                            position: 2897,
-                                                                                            value: "Bar",
-                                                                                        },
+                                                                                        class: Identifier(
+                                                                                            Identifier {
+                                                                                                position: 2897,
+                                                                                                value: "Bar",
+                                                                                            },
+                                                                                        ),
                                                                                         generics: None,
                                                                                         arguments: ArgumentListExpression {
                                                                                             comments: CommentGroup {
@@ -5448,10 +5462,12 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     new: 2918,
-                                                                                                                                    class: Identifier {
-                                                                                                                                        position: 2922,
-                                                                                                                                        value: "Baz",
-                                                                                                                                    },
+                                                                                                                                    class: Identifier(
+                                                                                                                                        Identifier {
+                                                                                                                                            position: 2922,
+                                                                                                                                            value: "Baz",
+                                                                                                                                        },
+                                                                                                                                    ),
                                                                                                                                     generics: None,
                                                                                                                                     arguments: ArgumentListExpression {
                                                                                                                                         comments: CommentGroup {
@@ -6592,10 +6608,12 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 new: 3736,
-                                                                class: Identifier {
-                                                                    position: 3740,
-                                                                    value: "Foo",
-                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 3740,
+                                                                        value: "Foo",
+                                                                    },
+                                                                ),
                                                                 generics: None,
                                                                 arguments: ArgumentListExpression {
                                                                     comments: CommentGroup {
@@ -6615,10 +6633,12 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         new: 3744,
-                                                                                        class: Identifier {
-                                                                                            position: 3748,
-                                                                                            value: "Bar",
-                                                                                        },
+                                                                                        class: Identifier(
+                                                                                            Identifier {
+                                                                                                position: 3748,
+                                                                                                value: "Bar",
+                                                                                            },
+                                                                                        ),
                                                                                         generics: None,
                                                                                         arguments: ArgumentListExpression {
                                                                                             comments: CommentGroup {
@@ -6648,10 +6668,12 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     new: 3769,
-                                                                                                                                    class: Identifier {
-                                                                                                                                        position: 3773,
-                                                                                                                                        value: "Baz",
-                                                                                                                                    },
+                                                                                                                                    class: Identifier(
+                                                                                                                                        Identifier {
+                                                                                                                                            position: 3773,
+                                                                                                                                            value: "Baz",
+                                                                                                                                        },
+                                                                                                                                    ),
                                                                                                                                     generics: None,
                                                                                                                                     arguments: ArgumentListExpression {
                                                                                                                                         comments: CommentGroup {

@@ -40,6 +40,8 @@ pub enum TypeDefinition {
     NonNull(usize),
     Resource(usize),
     Iterable(usize, TypeTemplateGroupDefinition),
+    Class(usize, TypeTemplateGroupDefinition),
+    Interface(usize, TypeTemplateGroupDefinition),
     Tuple {
         left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
@@ -80,6 +82,9 @@ impl TypeDefinition {
                 | TypeDefinition::Boolean(_)
                 | TypeDefinition::Integer(_)
                 | TypeDefinition::String(_)
+                // class, and interface are represented as strings at runtime, so they are considered scalars
+                | TypeDefinition::Class(_, _)
+                | TypeDefinition::Interface(_, _)
         )
     }
 }
@@ -120,6 +125,8 @@ impl Node for TypeDefinition {
             | TypeDefinition::Mixed(position)
             | TypeDefinition::NonNull(position)
             | TypeDefinition::Resource(position)
+            | TypeDefinition::Class(position, _)
+            | TypeDefinition::Interface(position, _)
             | TypeDefinition::Iterable(position, _)
             | TypeDefinition::Tuple {
                 left_parenthesis: position,
@@ -136,6 +143,11 @@ impl Node for TypeDefinition {
         match &self {
             TypeDefinition::Identifier(inner) => inner.final_position(),
             TypeDefinition::Nullable(_, inner) => inner.final_position(),
+            TypeDefinition::Dict(_, template)
+            | TypeDefinition::Vec(_, template)
+            | TypeDefinition::Class(_, template)
+            | TypeDefinition::Interface(_, template)
+            | TypeDefinition::Iterable(_, template) => template.final_position(),
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Void(position) => position + 4,
@@ -147,17 +159,14 @@ impl Node for TypeDefinition {
             TypeDefinition::Boolean(position) => position + 7,
             TypeDefinition::Integer(position) => position + 7,
             TypeDefinition::String(position) => position + 6,
-            TypeDefinition::Dict(_, template) => template.final_position(),
-            TypeDefinition::Vec(_, template) => template.final_position(),
             TypeDefinition::Object(position) => position + 6,
             TypeDefinition::Mixed(position) => position + 5,
             TypeDefinition::NonNull(position) => position + 7,
             TypeDefinition::Resource(position) => position + 8,
-            TypeDefinition::Iterable(_, template) => template.final_position(),
-            TypeDefinition::Tuple {
-                right_parenthesis, ..
-            } => right_parenthesis + 1,
             TypeDefinition::Parenthesized {
+                right_parenthesis, ..
+            }
+            | TypeDefinition::Tuple {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
@@ -167,24 +176,27 @@ impl Node for TypeDefinition {
         match &self {
             TypeDefinition::Identifier(inner) => vec![inner],
             TypeDefinition::Nullable(_, inner) => vec![inner.as_ref()],
-            TypeDefinition::Union(inner) => inner.iter().map(|t| t as &dyn Node).collect(),
-            TypeDefinition::Intersection(inner) => inner.iter().map(|t| t as &dyn Node).collect(),
-            TypeDefinition::Void(_) => vec![],
-            TypeDefinition::Null(_) => vec![],
-            TypeDefinition::True(_) => vec![],
-            TypeDefinition::False(_) => vec![],
-            TypeDefinition::Never(_) => vec![],
-            TypeDefinition::Float(_) => vec![],
-            TypeDefinition::Boolean(_) => vec![],
-            TypeDefinition::Integer(_) => vec![],
-            TypeDefinition::String(_) => vec![],
-            TypeDefinition::Dict(_, template) => vec![template],
-            TypeDefinition::Vec(_, template) => vec![template],
-            TypeDefinition::Object(_) => vec![],
-            TypeDefinition::Mixed(_) => vec![],
-            TypeDefinition::NonNull(_) => vec![],
-            TypeDefinition::Resource(_) => vec![],
-            TypeDefinition::Iterable(_, template) => vec![template],
+            TypeDefinition::Union(inner) | TypeDefinition::Intersection(inner) => {
+                inner.iter().map(|t| t as &dyn Node).collect()
+            }
+            TypeDefinition::Void(_)
+            | TypeDefinition::Null(_)
+            | TypeDefinition::True(_)
+            | TypeDefinition::Object(_)
+            | TypeDefinition::NonNull(_)
+            | TypeDefinition::Mixed(_)
+            | TypeDefinition::Resource(_)
+            | TypeDefinition::False(_)
+            | TypeDefinition::Never(_)
+            | TypeDefinition::Float(_)
+            | TypeDefinition::Boolean(_)
+            | TypeDefinition::Integer(_)
+            | TypeDefinition::String(_) => vec![],
+            TypeDefinition::Class(_, template)
+            | TypeDefinition::Interface(_, template)
+            | TypeDefinition::Iterable(_, template)
+            | TypeDefinition::Dict(_, template)
+            | TypeDefinition::Vec(_, template) => vec![template],
             TypeDefinition::Tuple {
                 type_definitions, ..
             } => type_definitions
@@ -234,6 +246,8 @@ impl std::fmt::Display for TypeDefinition {
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),
             TypeDefinition::Vec(_, template) => write!(f, "vec{}", template),
             TypeDefinition::Iterable(_, template) => write!(f, "iterable{}", template),
+            TypeDefinition::Class(_, template) => write!(f, "class{}", template),
+            TypeDefinition::Interface(_, template) => write!(f, "interface{}", template),
             TypeDefinition::Object(_) => write!(f, "object"),
             TypeDefinition::Mixed(_) => write!(f, "mixed"),
             TypeDefinition::NonNull(_) => write!(f, "nonnull"),

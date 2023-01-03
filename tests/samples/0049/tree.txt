@@ -117,10 +117,12 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             new: 85,
-                                                            class: Identifier {
-                                                                position: 89,
-                                                                value: "s",
-                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 89,
+                                                                    value: "s",
+                                                                },
+                                                            ),
                                                             generics: None,
                                                             arguments: ArgumentListExpression {
                                                                 comments: CommentGroup {

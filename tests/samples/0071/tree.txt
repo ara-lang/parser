@@ -872,10 +872,12 @@ DefinitionTree {
                                                 comments: [],
                                             },
                                             new: 491,
-                                            class: Identifier {
-                                                position: 495,
-                                                value: "Box",
-                                            },
+                                            class: Identifier(
+                                                Identifier {
+                                                    position: 495,
+                                                    value: "Box",
+                                                },
+                                            ),
                                             generics: None,
                                             arguments: ArgumentListExpression {
                                                 comments: CommentGroup {
@@ -1498,10 +1500,12 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         new: 805,
-                                                                                        class: Identifier {
-                                                                                            position: 809,
-                                                                                            value: "Box",
-                                                                                        },
+                                                                                        class: Identifier(
+                                                                                            Identifier {
+                                                                                                position: 809,
+                                                                                                value: "Box",
+                                                                                            },
+                                                                                        ),
                                                                                         generics: None,
                                                                                         arguments: ArgumentListExpression {
                                                                                             comments: CommentGroup {
@@ -2689,10 +2693,12 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 new: 1447,
-                                                class: Identifier {
-                                                    position: 1451,
-                                                    value: "Box",
-                                                },
+                                                class: Identifier(
+                                                    Identifier {
+                                                        position: 1451,
+                                                        value: "Box",
+                                                    },
+                                                ),
                                                 generics: Some(
                                                     GenericGroupExpression {
                                                         double_colon_less_than: 1454,

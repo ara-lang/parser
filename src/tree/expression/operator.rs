@@ -489,7 +489,7 @@ pub enum ClassOperationExpression {
     Initialization {
         comments: CommentGroup,
         new: usize,
-        class: Identifier,
+        class: Box<Expression>,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
     },
@@ -1276,7 +1276,7 @@ impl Node for ClassOperationExpression {
                 arguments,
                 ..
             } => {
-                let mut children: Vec<&dyn Node> = vec![class];
+                let mut children: Vec<&dyn Node> = vec![class.as_ref()];
                 if let Some(generics) = generics {
                     children.push(generics);
                 }

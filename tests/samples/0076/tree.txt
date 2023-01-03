@@ -265,10 +265,12 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             new: 196,
-                                                            class: Identifier {
-                                                                position: 200,
-                                                                value: "where",
-                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 200,
+                                                                    value: "where",
+                                                                },
+                                                            ),
                                                             generics: None,
                                                             arguments: ArgumentListExpression {
                                                                 comments: CommentGroup {
@@ -887,10 +889,12 @@ DefinitionTree {
                                                                 comments: [],
                                                             },
                                                             new: 602,
-                                                            class: Identifier {
-                                                                position: 606,
-                                                                value: "type",
-                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 606,
+                                                                    value: "type",
+                                                                },
+                                                            ),
                                                             generics: None,
                                                             arguments: ArgumentListExpression {
                                                                 comments: CommentGroup {

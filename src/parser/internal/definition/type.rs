@@ -256,6 +256,20 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             Ok(TypeDefinition::Resource(position))
         }
+        TokenKind::Class => {
+            state.iterator.next();
+
+            let templates = template::type_template_group_definition(state)?;
+
+            Ok(TypeDefinition::Class(position, templates))
+        }
+        TokenKind::Interface => {
+            state.iterator.next();
+
+            let templates = template::type_template_group_definition(state)?;
+
+            Ok(TypeDefinition::Interface(position, templates))
+        }
         TokenKind::Identifier
         | TokenKind::QualifiedIdentifier
         | TokenKind::FullyQualifiedIdentifier
