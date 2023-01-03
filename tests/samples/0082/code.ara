@@ -5,7 +5,7 @@ final readonly class Collection<T> {
         private vec<T> $items = vec[],
     ) {}
 
-    public function filter((fn(T): bool) $func): Collection<T> {
+    public function filter(Closure<(T), bool> $func): Collection<T> {
         $result = vec[];
         foreach $this->items as $item {
             if $func($item) {
@@ -16,7 +16,7 @@ final readonly class Collection<T> {
         return new Collection::<T>($result);
     }
 
-    public function map<Tout>((fn(T): Tout) $func): Collection<Tout> {
+    public function map<Tout>(Closure<(T), Tout> $func): Collection<Tout> {
         $result = vec[];
         foreach $this->items as $item {
             $result[] = $func($item);

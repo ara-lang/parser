@@ -133,115 +133,130 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 90,
-                data_type: Function {
-                    outer_left_parenthesis: 92,
-                    fn: 93,
-                    left_parenthesis: 95,
-                    parameter_type_definitions: CommaSeparated {
-                        inner: [
-                            Union(
-                                [
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 96,
-                                                value: "a",
-                                            },
-                                            templates: None,
+                data_type: Identifier(
+                    TemplatedIdentifier {
+                        name: Identifier {
+                            position: 92,
+                            value: "Closure",
+                        },
+                        templates: Some(
+                            TypeTemplateGroupDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                less_than: 99,
+                                members: CommaSeparated {
+                                    inner: [
+                                        Parenthesized {
+                                            left_parenthesis: 100,
+                                            type_definition: Union(
+                                                [
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 101,
+                                                                value: "a",
+                                                            },
+                                                            templates: None,
+                                                        },
+                                                    ),
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 103,
+                                                                value: "b",
+                                                            },
+                                                            templates: None,
+                                                        },
+                                                    ),
+                                                ],
+                                            ),
+                                            right_parenthesis: 104,
                                         },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 98,
-                                                value: "b",
-                                            },
-                                            templates: None,
-                                        },
-                                    ),
-                                ],
-                            ),
-                        ],
-                        commas: [],
+                                        Union(
+                                            [
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 107,
+                                                            value: "c",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 109,
+                                                            value: "d",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                            ],
+                                        ),
+                                    ],
+                                    commas: [
+                                        105,
+                                    ],
+                                },
+                                greater_than: 110,
+                            },
+                        ),
                     },
-                    right_parenthesis: 99,
-                    colon: 100,
-                    return_type_definition: Union(
-                        [
-                            Identifier(
-                                TemplatedIdentifier {
-                                    name: Identifier {
-                                        position: 102,
-                                        value: "c",
-                                    },
-                                    templates: None,
-                                },
-                            ),
-                            Identifier(
-                                TemplatedIdentifier {
-                                    name: Identifier {
-                                        position: 104,
-                                        value: "d",
-                                    },
-                                    templates: None,
-                                },
-                            ),
-                        ],
-                    ),
-                    outer_right_parenthesis: 105,
-                },
-                semicolon: 106,
+                ),
+                semicolon: 111,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 108,
+                type: 113,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        position: 113,
+                        position: 118,
                         value: "g",
                     },
                     templates: None,
                 },
-                equals: 115,
+                equals: 120,
                 data_type: Vec(
-                    117,
+                    122,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
                         },
-                        less_than: 120,
+                        less_than: 125,
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    121,
+                                    126,
                                 ),
                             ],
                             commas: [],
                         },
-                        greater_than: 124,
+                        greater_than: 129,
                     },
                 ),
-                semicolon: 125,
+                semicolon: 130,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 127,
+                type: 132,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        position: 132,
+                        position: 137,
                         value: "h",
                     },
                     templates: None,
                 },
-                equals: 134,
+                equals: 139,
                 data_type: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    position: 136,
+                                    position: 141,
                                     value: "Foo",
                                 },
                                 templates: Some(
@@ -249,16 +264,16 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: 139,
+                                        less_than: 144,
                                         members: CommaSeparated {
                                             inner: [
                                                 String(
-                                                    140,
+                                                    145,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: 146,
+                                        greater_than: 151,
                                     },
                                 ),
                             },
@@ -266,7 +281,7 @@ DefinitionTree {
                         Identifier(
                             TemplatedIdentifier {
                                 name: Identifier {
-                                    position: 148,
+                                    position: 153,
                                     value: "Bar",
                                 },
                                 templates: Some(
@@ -274,198 +289,243 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: 151,
+                                        less_than: 156,
                                         members: CommaSeparated {
                                             inner: [
                                                 NonNull(
-                                                    152,
+                                                    157,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: 159,
+                                        greater_than: 164,
                                     },
                                 ),
                             },
                         ),
                     ],
                 ),
-                semicolon: 160,
+                semicolon: 165,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 162,
+                type: 167,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        position: 167,
+                        position: 172,
                         value: "i",
                     },
                     templates: None,
                 },
-                equals: 169,
+                equals: 174,
                 data_type: Union(
                     [
-                        Function {
-                            outer_left_parenthesis: 171,
-                            fn: 172,
-                            left_parenthesis: 174,
-                            parameter_type_definitions: CommaSeparated {
-                                inner: [
-                                    Union(
-                                        [
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 175,
-                                                        value: "a",
-                                                    },
-                                                    templates: None,
-                                                },
-                                            ),
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 177,
-                                                        value: "b",
-                                                    },
-                                                    templates: None,
-                                                },
-                                            ),
-                                        ],
-                                    ),
-                                ],
-                                commas: [],
-                            },
-                            right_parenthesis: 178,
-                            colon: 179,
-                            return_type_definition: Identifier(
-                                TemplatedIdentifier {
-                                    name: Identifier {
-                                        position: 181,
-                                        value: "g",
-                                    },
-                                    templates: None,
+                        Identifier(
+                            TemplatedIdentifier {
+                                name: Identifier {
+                                    position: 176,
+                                    value: "Closure",
                                 },
-                            ),
-                            outer_right_parenthesis: 182,
-                        },
-                        Function {
-                            outer_left_parenthesis: 184,
-                            fn: 185,
-                            left_parenthesis: 187,
-                            parameter_type_definitions: CommaSeparated {
-                                inner: [
-                                    Union(
-                                        [
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 188,
-                                                        value: "a",
-                                                    },
-                                                    templates: None,
+                                templates: Some(
+                                    TypeTemplateGroupDefinition {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        less_than: 183,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                Parenthesized {
+                                                    left_parenthesis: 184,
+                                                    type_definition: Union(
+                                                        [
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 185,
+                                                                        value: "a",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 187,
+                                                                        value: "b",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                        ],
+                                                    ),
+                                                    right_parenthesis: 188,
                                                 },
-                                            ),
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 190,
-                                                        value: "b",
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 191,
+                                                            value: "g",
+                                                        },
+                                                        templates: None,
                                                     },
-                                                    templates: None,
-                                                },
-                                            ),
-                                        ],
-                                    ),
-                                ],
-                                commas: [],
-                            },
-                            right_parenthesis: 191,
-                            colon: 192,
-                            return_type_definition: Identifier(
-                                TemplatedIdentifier {
-                                    name: Identifier {
-                                        position: 194,
-                                        value: "h",
+                                                ),
+                                            ],
+                                            commas: [
+                                                189,
+                                            ],
+                                        },
+                                        greater_than: 192,
                                     },
-                                    templates: None,
-                                },
-                            ),
-                            outer_right_parenthesis: 195,
-                        },
-                        Function {
-                            outer_left_parenthesis: 197,
-                            fn: 198,
-                            left_parenthesis: 200,
-                            parameter_type_definitions: CommaSeparated {
-                                inner: [
-                                    Union(
-                                        [
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 201,
-                                                        value: "a",
-                                                    },
-                                                    templates: None,
-                                                },
-                                            ),
-                                            Identifier(
-                                                TemplatedIdentifier {
-                                                    name: Identifier {
-                                                        position: 203,
-                                                        value: "b",
-                                                    },
-                                                    templates: None,
-                                                },
-                                            ),
-                                        ],
-                                    ),
-                                ],
-                                commas: [],
+                                ),
                             },
-                            right_parenthesis: 204,
-                            colon: 205,
-                            return_type_definition: Union(
-                                [
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 207,
-                                                value: "a",
-                                            },
-                                            templates: None,
+                        ),
+                        Identifier(
+                            TemplatedIdentifier {
+                                name: Identifier {
+                                    position: 194,
+                                    value: "Closure",
+                                },
+                                templates: Some(
+                                    TypeTemplateGroupDefinition {
+                                        comments: CommentGroup {
+                                            comments: [],
                                         },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 209,
-                                                value: "b",
-                                            },
-                                            templates: None,
+                                        less_than: 201,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                Parenthesized {
+                                                    left_parenthesis: 202,
+                                                    type_definition: Union(
+                                                        [
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 203,
+                                                                        value: "a",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 205,
+                                                                        value: "b",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                        ],
+                                                    ),
+                                                    right_parenthesis: 206,
+                                                },
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 209,
+                                                            value: "h",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                            ],
+                                            commas: [
+                                                207,
+                                            ],
                                         },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 211,
-                                                value: "c",
-                                            },
-                                            templates: None,
+                                        greater_than: 210,
+                                    },
+                                ),
+                            },
+                        ),
+                        Identifier(
+                            TemplatedIdentifier {
+                                name: Identifier {
+                                    position: 212,
+                                    value: "Closure",
+                                },
+                                templates: Some(
+                                    TypeTemplateGroupDefinition {
+                                        comments: CommentGroup {
+                                            comments: [],
                                         },
-                                    ),
-                                ],
-                            ),
-                            outer_right_parenthesis: 212,
-                        },
+                                        less_than: 219,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                Parenthesized {
+                                                    left_parenthesis: 220,
+                                                    type_definition: Union(
+                                                        [
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 221,
+                                                                        value: "a",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                            Identifier(
+                                                                TemplatedIdentifier {
+                                                                    name: Identifier {
+                                                                        position: 223,
+                                                                        value: "b",
+                                                                    },
+                                                                    templates: None,
+                                                                },
+                                                            ),
+                                                        ],
+                                                    ),
+                                                    right_parenthesis: 224,
+                                                },
+                                                Union(
+                                                    [
+                                                        Identifier(
+                                                            TemplatedIdentifier {
+                                                                name: Identifier {
+                                                                    position: 227,
+                                                                    value: "a",
+                                                                },
+                                                                templates: None,
+                                                            },
+                                                        ),
+                                                        Identifier(
+                                                            TemplatedIdentifier {
+                                                                name: Identifier {
+                                                                    position: 229,
+                                                                    value: "b",
+                                                                },
+                                                                templates: None,
+                                                            },
+                                                        ),
+                                                        Identifier(
+                                                            TemplatedIdentifier {
+                                                                name: Identifier {
+                                                                    position: 231,
+                                                                    value: "c",
+                                                                },
+                                                                templates: None,
+                                                            },
+                                                        ),
+                                                    ],
+                                                ),
+                                            ],
+                                            commas: [
+                                                225,
+                                            ],
+                                        },
+                                        greater_than: 232,
+                                    },
+                                ),
+                            },
+                        ),
                         Intersection(
                             [
                                 Identifier(
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            position: 215,
+                                            position: 235,
                                             value: "Foo",
                                         },
                                         templates: None,
@@ -474,7 +534,7 @@ DefinitionTree {
                                 Identifier(
                                     TemplatedIdentifier {
                                         name: Identifier {
-                                            position: 219,
+                                            position: 239,
                                             value: "Bar",
                                         },
                                         templates: None,
@@ -484,119 +544,134 @@ DefinitionTree {
                         ),
                     ],
                 ),
-                semicolon: 223,
+                semicolon: 243,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 225,
+                type: 245,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        position: 230,
+                        position: 250,
                         value: "j",
                     },
                     templates: None,
                 },
-                equals: 232,
-                data_type: Function {
-                    outer_left_parenthesis: 234,
-                    fn: 235,
-                    left_parenthesis: 237,
-                    parameter_type_definitions: CommaSeparated {
-                        inner: [
-                            Union(
-                                [
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 238,
-                                                value: "a",
-                                            },
-                                            templates: None,
-                                        },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 240,
-                                                value: "b",
-                                            },
-                                            templates: None,
-                                        },
-                                    ),
-                                ],
-                            ),
-                        ],
-                        commas: [],
-                    },
-                    right_parenthesis: 241,
-                    colon: 242,
-                    return_type_definition: Identifier(
-                        TemplatedIdentifier {
-                            name: Identifier {
-                                position: 244,
-                                value: "i",
-                            },
-                            templates: None,
+                equals: 252,
+                data_type: Identifier(
+                    TemplatedIdentifier {
+                        name: Identifier {
+                            position: 254,
+                            value: "Closure",
                         },
-                    ),
-                    outer_right_parenthesis: 245,
-                },
-                semicolon: 246,
+                        templates: Some(
+                            TypeTemplateGroupDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                less_than: 261,
+                                members: CommaSeparated {
+                                    inner: [
+                                        Parenthesized {
+                                            left_parenthesis: 262,
+                                            type_definition: Union(
+                                                [
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 263,
+                                                                value: "a",
+                                                            },
+                                                            templates: None,
+                                                        },
+                                                    ),
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 265,
+                                                                value: "b",
+                                                            },
+                                                            templates: None,
+                                                        },
+                                                    ),
+                                                ],
+                                            ),
+                                            right_parenthesis: 266,
+                                        },
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 269,
+                                                    value: "i",
+                                                },
+                                                templates: None,
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        267,
+                                    ],
+                                },
+                                greater_than: 270,
+                            },
+                        ),
+                    },
+                ),
+                semicolon: 271,
             },
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 248,
+                type: 273,
                 name: TemplatedIdentifier {
                     name: Identifier {
-                        position: 253,
+                        position: 278,
                         value: "k",
                     },
                     templates: None,
                 },
-                equals: 255,
+                equals: 280,
                 data_type: Dict(
-                    257,
+                    282,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
                         },
-                        less_than: 261,
+                        less_than: 286,
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    262,
+                                    287,
                                 ),
                                 Iterable(
-                                    267,
+                                    292,
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        less_than: 275,
+                                        less_than: 300,
                                         members: CommaSeparated {
                                             inner: [
                                                 Integer(
-                                                    276,
+                                                    301,
                                                 ),
                                             ],
                                             commas: [],
                                         },
-                                        greater_than: 279,
+                                        greater_than: 304,
                                     },
                                 ),
                             ],
                             commas: [
-                                265,
+                                290,
                             ],
                         },
-                        greater_than: 280,
+                        greater_than: 305,
                     },
                 ),
-                semicolon: 281,
+                semicolon: 306,
             },
         ),
     ],
-    eof: 283,
+    eof: 308,
 }

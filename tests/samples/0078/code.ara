@@ -1,10 +1,10 @@
 type address = (string, int);
 
-type mapper<T, U> = (fn(T): U);
+type mapper<T, U> = Closure<(T), U>;
 
-type reducer<T, U> = (fn(T, U): U);
+type reducer<T, U> = Closure<(T, U), U>;
 
-type filter<T> = (fn(T): bool);
+type filter<T> = Closure<(T), bool>;
 
 function vec_filter<T>(
     vec<T> $vec,

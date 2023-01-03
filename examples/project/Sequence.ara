@@ -20,7 +20,7 @@ final class Sequence<I, O>
     private vec<Suspension> $waits = vec[];
 
     public function __construct(
-        private readonly (fn(I): O) $operation,
+        private readonly Closure<(I), O> $operation,
     ) {
     }
 

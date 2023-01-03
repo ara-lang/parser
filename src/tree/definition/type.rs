@@ -40,16 +40,6 @@ pub enum TypeDefinition {
     NonNull(usize),
     Resource(usize),
     Iterable(usize, TypeTemplateGroupDefinition),
-    Function {
-        outer_left_parenthesis: usize,
-        r#fn: usize,
-        left_parenthesis: usize,
-        parameter_type_definitions: CommaSeparated<TypeDefinition>,
-        right_parenthesis: usize,
-        colon: usize,
-        return_type_definition: Box<TypeDefinition>,
-        outer_right_parenthesis: usize,
-    },
     Tuple {
         left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
@@ -112,35 +102,33 @@ impl Node for TypeDefinition {
     fn initial_position(&self) -> usize {
         match &self {
             TypeDefinition::Identifier(inner) => inner.initial_position(),
-            TypeDefinition::Nullable(position, _) => *position,
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
-            TypeDefinition::Void(position) => *position,
-            TypeDefinition::Null(position) => *position,
-            TypeDefinition::True(position) => *position,
-            TypeDefinition::False(position) => *position,
-            TypeDefinition::Never(position) => *position,
-            TypeDefinition::Float(position) => *position,
-            TypeDefinition::Boolean(position) => *position,
-            TypeDefinition::Integer(position) => *position,
-            TypeDefinition::String(position) => *position,
-            TypeDefinition::Dict(position, _) => *position,
-            TypeDefinition::Vec(position, _) => *position,
-            TypeDefinition::Object(position) => *position,
-            TypeDefinition::Mixed(position) => *position,
-            TypeDefinition::NonNull(position) => *position,
-            TypeDefinition::Resource(position) => *position,
-            TypeDefinition::Iterable(position, _) => *position,
-            TypeDefinition::Function {
-                outer_left_parenthesis,
+            TypeDefinition::Nullable(position, _)
+            | TypeDefinition::Void(position)
+            | TypeDefinition::Null(position)
+            | TypeDefinition::True(position)
+            | TypeDefinition::False(position)
+            | TypeDefinition::Never(position)
+            | TypeDefinition::Float(position)
+            | TypeDefinition::Boolean(position)
+            | TypeDefinition::Integer(position)
+            | TypeDefinition::String(position)
+            | TypeDefinition::Dict(position, _)
+            | TypeDefinition::Vec(position, _)
+            | TypeDefinition::Object(position)
+            | TypeDefinition::Mixed(position)
+            | TypeDefinition::NonNull(position)
+            | TypeDefinition::Resource(position)
+            | TypeDefinition::Iterable(position, _)
+            | TypeDefinition::Tuple {
+                left_parenthesis: position,
                 ..
-            } => *outer_left_parenthesis,
-            TypeDefinition::Tuple {
-                left_parenthesis, ..
-            } => *left_parenthesis,
-            TypeDefinition::Parenthesized {
-                left_parenthesis, ..
-            } => *left_parenthesis,
+            }
+            | TypeDefinition::Parenthesized {
+                left_parenthesis: position,
+                ..
+            } => *position,
         }
     }
 
@@ -166,10 +154,6 @@ impl Node for TypeDefinition {
             TypeDefinition::NonNull(position) => position + 7,
             TypeDefinition::Resource(position) => position + 8,
             TypeDefinition::Iterable(_, template) => template.final_position(),
-            TypeDefinition::Function {
-                outer_right_parenthesis,
-                ..
-            } => outer_right_parenthesis + 1,
             TypeDefinition::Tuple {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
@@ -201,20 +185,6 @@ impl Node for TypeDefinition {
             TypeDefinition::NonNull(_) => vec![],
             TypeDefinition::Resource(_) => vec![],
             TypeDefinition::Iterable(_, template) => vec![template],
-            TypeDefinition::Function {
-                parameter_type_definitions,
-                return_type_definition,
-                ..
-            } => {
-                let mut children = parameter_type_definitions
-                    .inner
-                    .iter()
-                    .map(|t| t as &dyn Node)
-                    .collect::<Vec<&dyn Node>>();
-
-                children.push(return_type_definition.as_ref());
-                children
-            }
             TypeDefinition::Tuple {
                 type_definitions, ..
             } => type_definitions
@@ -268,21 +238,6 @@ impl std::fmt::Display for TypeDefinition {
             TypeDefinition::Mixed(_) => write!(f, "mixed"),
             TypeDefinition::NonNull(_) => write!(f, "nonnull"),
             TypeDefinition::Resource(_) => write!(f, "resource"),
-            TypeDefinition::Function {
-                parameter_type_definitions: parameters,
-                return_type_definition: return_type,
-                ..
-            } => write!(
-                f,
-                "(fn({}): {})",
-                parameters
-                    .inner
-                    .iter()
-                    .map(|t| t.to_string())
-                    .collect::<Vec<String>>()
-                    .join(", "),
-                return_type
-            ),
             TypeDefinition::Tuple {
                 type_definitions, ..
             } => write!(

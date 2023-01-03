@@ -6,6 +6,7 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
+use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
     Ok(TypeAliasDefinition {
@@ -24,7 +25,7 @@ pub fn type_definition(state: &mut State) -> ParseResult<TypeDefinition> {
     }
 
     // (A|B|..)&C.. or (A&B&..)|C..
-    if current.kind == TokenKind::LeftParen && state.iterator.lookahead(1).kind != TokenKind::Fn {
+    if current.kind == TokenKind::LeftParen {
         return parenthesized(state);
     }
 
@@ -46,9 +47,20 @@ pub fn type_definition(state: &mut State) -> ParseResult<TypeDefinition> {
 
     Ok(ty)
 }
+
 fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
-    // (A|B|..)&C.. or (A&B&..)|C.. or (A,B,C..)
     let left_parenthesis = utils::skip(state, TokenKind::LeftParen)?;
+    if state.iterator.current().kind == TokenKind::RightParen {
+        return Ok(TypeDefinition::Tuple {
+            left_parenthesis,
+            type_definitions: CommaSeparated {
+                inner: Vec::new(),
+                commas: Vec::new(),
+            },
+            right_parenthesis: utils::skip_right_parenthesis(state)?,
+        });
+    }
+
     let initial_type_definition = single(state)?;
     let current = state.iterator.current();
     match current.kind {
@@ -59,7 +71,11 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
                 right_parenthesis: utils::skip_right_parenthesis(state)?,
             };
 
-            intersection(state, union, false)
+            if state.iterator.current().kind == TokenKind::Ampersand {
+                intersection(state, union, false)
+            } else {
+                Ok(union)
+            }
         }
         TokenKind::Ampersand => {
             let intersection = TypeDefinition::Parenthesized {
@@ -68,7 +84,34 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
                 right_parenthesis: utils::skip_right_parenthesis(state)?,
             };
 
-            union(state, intersection, false)
+            if state.iterator.current().kind == TokenKind::Pipe {
+                union(state, intersection, false)
+            } else {
+                Ok(intersection)
+            }
+        }
+        TokenKind::RightParen => {
+            let right_parenthesis = utils::skip_right_parenthesis(state)?;
+
+            if initial_type_definition.is_bottom() {
+                crate::parser_report!(
+                    state,
+                    bottom_type_cannot_be_used_in_tuple(
+                        &initial_type_definition,
+                        left_parenthesis,
+                        right_parenthesis
+                    )
+                );
+            }
+
+            Ok(TypeDefinition::Tuple {
+                left_parenthesis,
+                type_definitions: CommaSeparated {
+                    inner: vec![initial_type_definition],
+                    commas: Vec::new(),
+                },
+                right_parenthesis,
+            })
         }
         TokenKind::Comma => {
             let comma = utils::skip(state, TokenKind::Comma)?;
@@ -76,11 +119,8 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
             let mut previous_type_definitions = [initial_type_definition];
             let mut previous_commas = [comma];
 
-            let mut type_definitions = utils::at_least_one_comma_separated(
-                state,
-                &type_definition,
-                TokenKind::RightParen,
-            )?;
+            let mut type_definitions =
+                utils::comma_separated(state, &type_definition, TokenKind::RightParen)?;
 
             type_definitions.inner = [
                 previous_type_definitions.as_mut_slice(),
@@ -94,10 +134,25 @@ fn parenthesized(state: &mut State) -> ParseResult<TypeDefinition> {
             ]
             .concat();
 
+            let right_parenthesis = utils::skip_right_parenthesis(state)?;
+
+            for type_definition in type_definitions.inner.iter_mut() {
+                if type_definition.is_bottom() {
+                    crate::parser_report!(
+                        state,
+                        bottom_type_cannot_be_used_in_tuple(
+                            type_definition,
+                            left_parenthesis,
+                            right_parenthesis
+                        )
+                    );
+                }
+            }
+
             Ok(TypeDefinition::Tuple {
                 left_parenthesis,
                 type_definitions,
-                right_parenthesis: utils::skip_right_parenthesis(state)?,
+                right_parenthesis,
             })
         }
         _ => {
@@ -115,39 +170,6 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
     let value = lowered_name.as_slice();
 
     match &current.kind {
-        TokenKind::LeftParen => {
-            state.iterator.next();
-
-            let r#fn = utils::skip(state, TokenKind::Fn)?;
-
-            Ok(TypeDefinition::Function {
-                outer_left_parenthesis: current.position,
-                r#fn,
-                left_parenthesis: utils::skip(state, TokenKind::LeftParen)?,
-                parameter_type_definitions: utils::comma_separated(
-                    state,
-                    &|state| {
-                        let type_definition = type_definition(state)?;
-                        if type_definition.is_bottom() {
-                            crate::parser_report!(
-                                state,
-                                bottom_type_cannot_be_used_in_fn_type_parameter(
-                                    &type_definition,
-                                    r#fn
-                                )
-                            );
-                        }
-
-                        Ok(type_definition)
-                    },
-                    TokenKind::RightParen,
-                )?,
-                right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
-                colon: utils::skip(state, TokenKind::Colon)?,
-                return_type_definition: Box::new(type_definition(state)?),
-                outer_right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
-            })
-        }
         TokenKind::Null => {
             state.iterator.next();
 
@@ -290,9 +312,7 @@ fn union(
 
     loop {
         let current = state.iterator.current();
-        let type_definition = if current.kind == TokenKind::LeftParen
-            && state.iterator.lookahead(1).kind != TokenKind::Fn
-        {
+        let type_definition = if current.kind == TokenKind::LeftParen {
             if within_dnf {
                 // don't allow nesting.
                 crate::parser_report!(
@@ -358,9 +378,7 @@ fn intersection(
 
     loop {
         let current = state.iterator.current();
-        let type_definition = if current.kind == TokenKind::LeftParen
-            && state.iterator.lookahead(1).kind != TokenKind::Fn
-        {
+        let type_definition = if current.kind == TokenKind::LeftParen {
             if within_dnf {
                 // don't allow nesting.
                 crate::parser_report!(

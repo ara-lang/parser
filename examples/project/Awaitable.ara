@@ -67,7 +67,7 @@ final class Awaitable<T> implements PromiseInterface<T>
     /**
      * {@inheritDoc}
      */
-    public function then<S>((fn(T): S) $success, (fn(Throwable): S) $failure): Awaitable<S>
+    public function then<S>(Closure<(T), S> $success, Closure<(Throwable), S> $failure): Awaitable<S>
     {
         $state = new State::<S>();
 
@@ -98,7 +98,7 @@ final class Awaitable<T> implements PromiseInterface<T>
     /**
      * {@inheritDoc}
      */
-    public function map<S>((fn(T): S) $success): Awaitable<S>
+    public function map<S>(Closure<(T), S> $success): Awaitable<S>
     {
         return $this->then::<S>($success, static fn (Throwable $throwable): S => throw $throwable);
     }
@@ -106,7 +106,7 @@ final class Awaitable<T> implements PromiseInterface<T>
     /**
      * {@inheritDoc}
      */
-    public function catch<S>((fn(Throwable): S) $failure): Awaitable<T|S>
+    public function catch<S>(Closure<(Throwable), S> $failure): Awaitable<T|S>
     {
         return $this->then::<S>(
             static fn(T $value): T|S => $value,
@@ -117,7 +117,7 @@ final class Awaitable<T> implements PromiseInterface<T>
     /**
      * {@inheritDoc}
      */
-    public function always((fn(): void) $always): Awaitable<T>
+    public function always(Closure<(), void> $always): Awaitable<T>
     {
         $state = new State::<T>();
 

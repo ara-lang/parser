@@ -272,18 +272,18 @@ pub enum ParserIssueCode {
     /// - Remove the `readonly` modifier
     ReadonlyPropertyCannotHaveDefaultValue = 18,
 
-    /// Bottom type cannot be used in function type parameter ( code = 19 )
+    /// Bottom type cannot be used in tuple type parameter ( code = 19 )
     ///
     /// Example:
     ///
     /// ```ara
-    /// type Foo = (fn(never): void);
+    /// type Foo = (void, string);
     /// ```
     ///
     /// Possible solution(s):
     ///
     /// - Use a different type
-    BottomTypeCannotBeUsedInFnTypeParameter = 19,
+    BottomTypeCannotBeUsedInTuple = 19,
 
     /// Disjunctive normal form types cannot be nested ( code = 20 )
     ///
@@ -650,7 +650,7 @@ pub enum ParserIssueCode {
     ///
     /// ```ara
     /// function foo(
-    ///     (fn(): void) $a = (
+    ///     Closure<(), void> $a = (
     ///         function(): void { }
     ///     )
     /// ): void {}
@@ -1110,26 +1110,31 @@ pub(crate) fn readonly_property_cannot_have_default_value(
     issue
 }
 
-pub(crate) fn bottom_type_cannot_be_used_in_fn_type_parameter(
+pub(crate) fn bottom_type_cannot_be_used_in_tuple(
     state: &ParserState,
     type_definition: &TypeDefinition,
-    r#fn: usize,
+    left_parenthesis: usize,
+    right_parenthesis: usize,
 ) -> Issue {
     let origin = state.source.name();
 
     Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedInFnTypeParameter,
+        ParserIssueCode::BottomTypeCannotBeUsedInTuple,
         format!(
-            "bottom type `{}` cannot be used in a `fn` type parameter",
+            "bottom type `{}` cannot be used in a tuple type",
             &type_definition,
         ),
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, r#fn, r#fn + 2))
+    .with_annotation(Annotation::new(
+        origin,
+        left_parenthesis,
+        right_parenthesis + 1,
+    ))
     .with_note("bottom types are types that have no values, such as `never` and `void`.")
-    .with_help("try using a different type for the `fn` type parameter.")
+    .with_help("try using a different type for the tuple.")
 }
 
 pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
