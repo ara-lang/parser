@@ -117,7 +117,7 @@ pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {
                 // this could be either:
                 // 1. for ($i = 0; $i < 10; $i++) { ... }
                 // 2. for ($i = 0); $i < 10; $i++ { ... }
-                // this can't be `for (;;) {...}` since we already checked for that above
+                // 3. for (;;) { ... }
                 let left_parenthesis = utils::skip(state, TokenKind::LeftParen)?;
 
                 let expression_reference;

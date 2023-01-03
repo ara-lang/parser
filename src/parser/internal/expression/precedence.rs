@@ -52,8 +52,9 @@ impl Precedence {
             LeftShift | RightShift => Self::BitShift,
             Dot => Self::Concat,
             LessThan | LessThanEquals | GreaterThan | GreaterThanEquals => Self::LtGt,
-            DoubleEquals | BangEquals | TripleEquals | BangDoubleEquals | AngledLeftRight
-            | Spaceship => Self::Equality,
+            DoubleEquals | BangEquals | TripleEquals | BangDoubleEquals | Spaceship => {
+                Self::Equality
+            }
             Ampersand => Self::BitwiseAnd,
             Caret => Self::BitwiseXor,
             Pipe => Self::BitwiseOr,

@@ -233,12 +233,6 @@ pub enum ComparisonOperationExpression {
         bang_equals: usize,
         right: Box<Expression>,
     },
-    AngledNotEqual {
-        comments: CommentGroup,
-        left: Box<Expression>,
-        angled_left_right: usize,
-        right: Box<Expression>,
-    },
     NotIdentical {
         comments: CommentGroup,
         left: Box<Expression>,
@@ -778,50 +772,43 @@ impl Node for BitwiseOperationExpression {
 impl Node for ComparisonOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ComparisonOperationExpression::Equal { comments, .. } => Some(comments),
-            ComparisonOperationExpression::NotEqual { comments, .. } => Some(comments),
-            ComparisonOperationExpression::Identical { comments, .. } => Some(comments),
-            ComparisonOperationExpression::NotIdentical { comments, .. } => Some(comments),
-            ComparisonOperationExpression::LessThan { comments, .. } => Some(comments),
-            ComparisonOperationExpression::LessThanOrEqual { comments, .. } => Some(comments),
-            ComparisonOperationExpression::GreaterThan { comments, .. } => Some(comments),
-            ComparisonOperationExpression::GreaterThanOrEqual { comments, .. } => Some(comments),
-            ComparisonOperationExpression::Spaceship { comments, .. } => Some(comments),
-            ComparisonOperationExpression::AngledNotEqual { comments, .. } => Some(comments),
+            ComparisonOperationExpression::Equal { comments, .. }
+            | ComparisonOperationExpression::NotEqual { comments, .. }
+            | ComparisonOperationExpression::Identical { comments, .. }
+            | ComparisonOperationExpression::NotIdentical { comments, .. }
+            | ComparisonOperationExpression::LessThan { comments, .. }
+            | ComparisonOperationExpression::LessThanOrEqual { comments, .. }
+            | ComparisonOperationExpression::GreaterThan { comments, .. }
+            | ComparisonOperationExpression::GreaterThanOrEqual { comments, .. }
+            | ComparisonOperationExpression::Spaceship { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ComparisonOperationExpression::Equal { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::NotEqual { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::Identical { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::NotIdentical { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::LessThan { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::LessThanOrEqual { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::GreaterThan { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::GreaterThanOrEqual { left, .. } => {
-                left.initial_position()
-            }
-            ComparisonOperationExpression::Spaceship { left, .. } => left.initial_position(),
-            ComparisonOperationExpression::AngledNotEqual { left, .. } => left.initial_position(),
+            ComparisonOperationExpression::Equal { left, .. }
+            | ComparisonOperationExpression::NotEqual { left, .. }
+            | ComparisonOperationExpression::Identical { left, .. }
+            | ComparisonOperationExpression::NotIdentical { left, .. }
+            | ComparisonOperationExpression::LessThan { left, .. }
+            | ComparisonOperationExpression::LessThanOrEqual { left, .. }
+            | ComparisonOperationExpression::GreaterThan { left, .. }
+            | ComparisonOperationExpression::GreaterThanOrEqual { left, .. }
+            | ComparisonOperationExpression::Spaceship { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ComparisonOperationExpression::Equal { right, .. } => right.final_position(),
-            ComparisonOperationExpression::NotEqual { right, .. } => right.final_position(),
-            ComparisonOperationExpression::Identical { right, .. } => right.final_position(),
-            ComparisonOperationExpression::NotIdentical { right, .. } => right.final_position(),
-            ComparisonOperationExpression::LessThan { right, .. } => right.final_position(),
-            ComparisonOperationExpression::LessThanOrEqual { right, .. } => right.final_position(),
-            ComparisonOperationExpression::GreaterThan { right, .. } => right.final_position(),
-            ComparisonOperationExpression::GreaterThanOrEqual { right, .. } => {
-                right.final_position()
-            }
-            ComparisonOperationExpression::Spaceship { right, .. } => right.final_position(),
-            ComparisonOperationExpression::AngledNotEqual { right, .. } => right.final_position(),
+            ComparisonOperationExpression::Equal { right, .. }
+            | ComparisonOperationExpression::NotEqual { right, .. }
+            | ComparisonOperationExpression::Identical { right, .. }
+            | ComparisonOperationExpression::NotIdentical { right, .. }
+            | ComparisonOperationExpression::LessThan { right, .. }
+            | ComparisonOperationExpression::LessThanOrEqual { right, .. }
+            | ComparisonOperationExpression::GreaterThan { right, .. }
+            | ComparisonOperationExpression::GreaterThanOrEqual { right, .. }
+            | ComparisonOperationExpression::Spaceship { right, .. } => right.final_position(),
         }
     }
 
@@ -835,8 +822,7 @@ impl Node for ComparisonOperationExpression {
             | ComparisonOperationExpression::LessThanOrEqual { left, right, .. }
             | ComparisonOperationExpression::GreaterThan { left, right, .. }
             | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }
-            | ComparisonOperationExpression::Spaceship { left, right, .. }
-            | ComparisonOperationExpression::AngledNotEqual { left, right, .. } => {
+            | ComparisonOperationExpression::Spaceship { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
         }

@@ -355,10 +355,6 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
             state.bytes.skip(2);
             (TokenKind::LessThanEquals, b"<=".into())
         }
-        [b'<', b'>', ..] => {
-            state.bytes.skip(2);
-            (TokenKind::AngledLeftRight, b"<>".into())
-        }
         [b'<', ..] => {
             state.bytes.next();
             (TokenKind::LessThan, b"<".into())

@@ -183,8 +183,7 @@ impl Expression {
                 | ComparisonOperationExpression::LessThan { left, right, .. }
                 | ComparisonOperationExpression::LessThanOrEqual { left, right, .. }
                 | ComparisonOperationExpression::GreaterThan { left, right, .. }
-                | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }
-                | ComparisonOperationExpression::AngledNotEqual { left, right, .. } => {
+                | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }=> {
                     left.is_constant(initilization) && right.is_constant(initilization)
                 }
                 ComparisonOperationExpression::Spaceship { left, right, .. } => {

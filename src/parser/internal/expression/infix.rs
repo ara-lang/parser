@@ -303,14 +303,6 @@ pub fn infix(
                         right,
                     })
                 }
-                TokenKind::AngledLeftRight => {
-                    Expression::ComparisonOperation(ComparisonOperationExpression::AngledNotEqual {
-                        comments,
-                        left,
-                        angled_left_right: position,
-                        right,
-                    })
-                }
                 TokenKind::BangDoubleEquals => {
                     Expression::ComparisonOperation(ComparisonOperationExpression::NotIdentical {
                         comments,
@@ -452,7 +444,6 @@ pub fn is_infix(state: &mut State, t: &TokenKind) -> bool {
             | TokenKind::TripleEquals
             | TokenKind::BangEquals
             | TokenKind::BangDoubleEquals
-            | TokenKind::AngledLeftRight
             | TokenKind::Question
             | TokenKind::QuestionColon
             | TokenKind::BooleanAnd
