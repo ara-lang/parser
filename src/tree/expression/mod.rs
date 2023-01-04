@@ -153,9 +153,10 @@ impl Expression {
             Expression::ClassOperation(expression) => match &expression {
                 ClassOperationExpression::Initialization {
                     class, arguments, ..
-                } if initilization => {
-                    class.is_constant(initilization)
-                        && arguments
+                } if initilization => match class {
+                    operator::ClassOperationInitializationClassExpression::Variable(_) => false,
+                    operator::ClassOperationInitializationClassExpression::Identifier(_) => {
+                        arguments
                             .arguments
                             .inner
                             .iter()
@@ -167,7 +168,8 @@ impl Expression {
                                     value.is_constant(initilization)
                                 }
                             })
-                }
+                    }
+                },
                 ClassOperationExpression::ConstantFetch { class, .. } => {
                     class.is_constant(initilization)
                 }

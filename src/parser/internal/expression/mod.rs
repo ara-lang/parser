@@ -22,6 +22,7 @@ use crate::tree::expression::operator::ArrayOperationExpression;
 use crate::tree::expression::operator::AsyncOperationExpression;
 use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ClassOperationExpression;
+use crate::tree::expression::operator::ClassOperationInitializationClassExpression;
 use crate::tree::expression::operator::ExceptionOperationExpression;
 use crate::tree::expression::operator::GeneratorOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
@@ -286,7 +287,14 @@ expressions! {
             ClassOperationExpression::Initialization {
                 comments: state.iterator.comments(),
                 new,
-                class: Box::new(for_precedence(state, Precedence::New)?),
+                class: match state.iterator.current().kind {
+                    TokenKind::Variable => ClassOperationInitializationClassExpression::Variable(
+                        variable::parse(state)?
+                    ),
+                    _ => ClassOperationInitializationClassExpression::Identifier(
+                        identifier::fully_qualified_type_identifier_including_self(state)?
+                    )
+                },
                 generics: if state.iterator.current().kind == TokenKind::Generic {
                     Some(generic::generic_group(state)?)
                 } else {

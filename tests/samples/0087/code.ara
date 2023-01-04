@@ -14,7 +14,7 @@ final class FooImpl implements IFoo {
     }
 }
 
-function instantiate<T as IFoo>(classname<T> $class, string $foo): T {
+function instantiate<T as IFoo>(class<T> $class, string $foo): T {
     return new $class($foo);
 }
 

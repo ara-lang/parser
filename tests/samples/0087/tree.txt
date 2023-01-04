@@ -327,40 +327,33 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                type_definition: Identifier(
-                                    TemplatedIdentifier {
-                                        name: Identifier {
-                                            position: 313,
-                                            value: "classname",
+                                type_definition: Class(
+                                    313,
+                                    TypeTemplateGroupDefinition {
+                                        comments: CommentGroup {
+                                            comments: [],
                                         },
-                                        templates: Some(
-                                            TypeTemplateGroupDefinition {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                less_than: 322,
-                                                members: CommaSeparated {
-                                                    inner: [
-                                                        Identifier(
-                                                            TemplatedIdentifier {
-                                                                name: Identifier {
-                                                                    position: 323,
-                                                                    value: "T",
-                                                                },
-                                                                templates: None,
-                                                            },
-                                                        ),
-                                                    ],
-                                                    commas: [],
-                                                },
-                                                greater_than: 324,
-                                            },
-                                        ),
+                                        less_than: 318,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 319,
+                                                            value: "T",
+                                                        },
+                                                        templates: None,
+                                                    },
+                                                ),
+                                            ],
+                                            commas: [],
+                                        },
+                                        greater_than: 320,
                                     },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    position: 326,
+                                    position: 322,
                                     name: "$class",
                                 },
                                 default: None,
@@ -371,28 +364,28 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    334,
+                                    330,
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
-                                    position: 341,
+                                    position: 337,
                                     name: "$foo",
                                 },
                                 default: None,
                             },
                         ],
                         commas: [
-                            332,
+                            328,
                         ],
                     },
-                    right_parenthesis: 345,
+                    right_parenthesis: 341,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: 346,
+                    colon: 342,
                     type_definition: Identifier(
                         TemplatedIdentifier {
                             name: Identifier {
-                                position: 348,
+                                position: 344,
                                 value: "T",
                             },
                             templates: None,
@@ -403,24 +396,24 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: 350,
+                    left_brace: 346,
                     statements: [
                         Return(
                             Explicit {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 356,
+                                return: 352,
                                 expression: Some(
                                     ClassOperation(
                                         Initialization {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            new: 363,
+                                            new: 359,
                                             class: Variable(
                                                 Variable {
-                                                    position: 367,
+                                                    position: 363,
                                                     name: "$class",
                                                 },
                                             ),
@@ -429,7 +422,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left_parenthesis: 373,
+                                                left_parenthesis: 369,
                                                 arguments: CommaSeparated {
                                                     inner: [
                                                         Positional {
@@ -439,7 +432,7 @@ DefinitionTree {
                                                             ellipsis: None,
                                                             value: Variable(
                                                                 Variable {
-                                                                    position: 374,
+                                                                    position: 370,
                                                                     name: "$foo",
                                                                 },
                                                             ),
@@ -447,16 +440,16 @@ DefinitionTree {
                                                     ],
                                                     commas: [],
                                                 },
-                                                right_parenthesis: 378,
+                                                right_parenthesis: 374,
                                             },
                                         },
                                     ),
                                 ),
-                                semicolon: 379,
+                                semicolon: 375,
                             },
                         ),
                     ],
-                    right_brace: 381,
+                    right_brace: 377,
                 },
             },
         ),
@@ -466,9 +459,9 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 384,
+                function: 380,
                 name: Identifier {
-                    position: 393,
+                    position: 389,
                     value: "test",
                 },
                 templates: None,
@@ -476,24 +469,24 @@ DefinitionTree {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: 397,
+                    left_parenthesis: 393,
                     parameters: CommaSeparated {
                         inner: [],
                         commas: [],
                     },
-                    right_parenthesis: 398,
+                    right_parenthesis: 394,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: 399,
+                    colon: 395,
                     type_definition: Void(
-                        401,
+                        397,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: 406,
+                    left_brace: 402,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -507,11 +500,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                position: 412,
+                                                position: 408,
                                                 name: "$foo",
                                             },
                                         ),
-                                        equals: 417,
+                                        equals: 413,
                                         right: FunctionOperation(
                                             Call {
                                                 comments: CommentGroup {
@@ -519,19 +512,19 @@ DefinitionTree {
                                                 },
                                                 function: Identifier(
                                                     Identifier {
-                                                        position: 419,
+                                                        position: 415,
                                                         value: "instantiate",
                                                     },
                                                 ),
                                                 generics: Some(
                                                     GenericGroupExpression {
-                                                        double_colon_less_than: 430,
+                                                        double_colon_less_than: 426,
                                                         types: CommaSeparated {
                                                             inner: [
                                                                 Identifier(
                                                                     TemplatedIdentifier {
                                                                         name: Identifier {
-                                                                            position: 433,
+                                                                            position: 429,
                                                                             value: "FooImpl",
                                                                         },
                                                                         templates: None,
@@ -540,14 +533,14 @@ DefinitionTree {
                                                             ],
                                                             commas: [],
                                                         },
-                                                        greater_than: 440,
+                                                        greater_than: 436,
                                                     },
                                                 ),
                                                 arguments: ArgumentListExpression {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_parenthesis: 441,
+                                                    left_parenthesis: 437,
                                                     arguments: CommaSeparated {
                                                         inner: [
                                                             Positional {
@@ -562,13 +555,13 @@ DefinitionTree {
                                                                         },
                                                                         class: Identifier(
                                                                             Identifier {
-                                                                                position: 442,
+                                                                                position: 438,
                                                                                 value: "FooImpl",
                                                                             },
                                                                         ),
-                                                                        double_colon: 449,
+                                                                        double_colon: 445,
                                                                         constant: Identifier {
-                                                                            position: 451,
+                                                                            position: 447,
                                                                             value: "class",
                                                                         },
                                                                     },
@@ -586,23 +579,23 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "'bar'",
-                                                                            position: 458,
+                                                                            position: 454,
                                                                         },
                                                                     ),
                                                                 ),
                                                             },
                                                         ],
                                                         commas: [
-                                                            456,
+                                                            452,
                                                         ],
                                                     },
-                                                    right_parenthesis: 463,
+                                                    right_parenthesis: 459,
                                                 },
                                             },
                                         ),
                                     },
                                 ),
-                                semicolon: 464,
+                                semicolon: 460,
                             },
                         ),
                         Expression(
@@ -617,13 +610,13 @@ DefinitionTree {
                                         },
                                         object: Variable(
                                             Variable {
-                                                position: 471,
+                                                position: 467,
                                                 name: "$foo",
                                             },
                                         ),
-                                        arrow: 475,
+                                        arrow: 471,
                                         method: Identifier {
-                                            position: 477,
+                                            position: 473,
                                             value: "doSomething",
                                         },
                                         generics: None,
@@ -631,23 +624,23 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: 488,
+                                            left_parenthesis: 484,
                                             arguments: CommaSeparated {
                                                 inner: [],
                                                 commas: [],
                                             },
-                                            right_parenthesis: 489,
+                                            right_parenthesis: 485,
                                         },
                                     },
                                 ),
-                                semicolon: 490,
+                                semicolon: 486,
                             },
                         ),
                     ],
-                    right_brace: 492,
+                    right_brace: 488,
                 },
             },
         ),
     ],
-    eof: 494,
+    eof: 490,
 }

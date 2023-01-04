@@ -483,11 +483,18 @@ pub enum ObjectOperationExpression {
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum ClassOperationInitializationClassExpression {
+    Identifier(Identifier),
+    Variable(Variable),
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ClassOperationExpression {
     Initialization {
         comments: CommentGroup,
         new: usize,
-        class: Box<Expression>,
+        class: ClassOperationInitializationClassExpression,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
     },
@@ -1222,6 +1229,36 @@ impl Node for ObjectOperationExpression {
     }
 }
 
+impl Node for ClassOperationInitializationClassExpression {
+    fn comments(&self) -> Option<&CommentGroup> {
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(_) => None,
+            ClassOperationInitializationClassExpression::Variable(_) => None,
+        }
+    }
+
+    fn initial_position(&self) -> usize {
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(identifier) => identifier.initial_position(),
+            ClassOperationInitializationClassExpression::Variable(variable) => variable.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(identifier) => identifier.final_position(),
+            ClassOperationInitializationClassExpression::Variable(variable) => variable.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(identifier) => vec![identifier],
+            ClassOperationInitializationClassExpression::Variable(variable) => vec![variable],
+        }
+    }
+}
+
 impl Node for ClassOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
@@ -1278,7 +1315,7 @@ impl Node for ClassOperationExpression {
                 arguments,
                 ..
             } => {
-                let mut children: Vec<&dyn Node> = vec![class.as_ref()];
+                let mut children: Vec<&dyn Node> = vec![class];
                 if let Some(generics) = generics {
                     children.push(generics);
                 }
