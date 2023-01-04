@@ -367,30 +367,6 @@ pub fn infix(
                         right,
                     })
                 }
-                TokenKind::LogicalAnd => {
-                    Expression::LogicalOperation(LogicalOperationExpression::LogicalAnd {
-                        comments,
-                        left,
-                        and: position,
-                        right,
-                    })
-                }
-                TokenKind::LogicalOr => {
-                    Expression::LogicalOperation(LogicalOperationExpression::LogicalOr {
-                        comments,
-                        left,
-                        or: position,
-                        right,
-                    })
-                }
-                TokenKind::LogicalXor => {
-                    Expression::LogicalOperation(LogicalOperationExpression::LogicalXor {
-                        comments,
-                        left,
-                        xor: position,
-                        right,
-                    })
-                }
                 TokenKind::Dot => Expression::StringOperation(StringOperationExpression::Concat {
                     comments,
                     left,
@@ -419,9 +395,6 @@ pub fn is_infix(state: &mut State, t: &TokenKind) -> bool {
             | TokenKind::PipeEquals
             | TokenKind::PercentEquals
             | TokenKind::PowEquals
-            | TokenKind::LogicalAnd
-            | TokenKind::LogicalOr
-            | TokenKind::LogicalXor
             | TokenKind::Spaceship
             | TokenKind::LeftShift
             | TokenKind::RightShift

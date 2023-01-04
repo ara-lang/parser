@@ -291,24 +291,6 @@ pub enum LogicalOperationExpression {
         bang: usize,
         right: Box<Expression>,
     },
-    LogicalAnd {
-        comments: CommentGroup,
-        left: Box<Expression>,
-        and: usize,
-        right: Box<Expression>,
-    },
-    LogicalOr {
-        comments: CommentGroup,
-        left: Box<Expression>,
-        or: usize,
-        right: Box<Expression>,
-    },
-    LogicalXor {
-        comments: CommentGroup,
-        left: Box<Expression>,
-        xor: usize,
-        right: Box<Expression>,
-    },
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -845,9 +827,6 @@ impl Node for LogicalOperationExpression {
             LogicalOperationExpression::And { comments, .. } => Some(comments),
             LogicalOperationExpression::Or { comments, .. } => Some(comments),
             LogicalOperationExpression::Not { comments, .. } => Some(comments),
-            LogicalOperationExpression::LogicalAnd { comments, .. } => Some(comments),
-            LogicalOperationExpression::LogicalOr { comments, .. } => Some(comments),
-            LogicalOperationExpression::LogicalXor { comments, .. } => Some(comments),
         }
     }
 
@@ -856,9 +835,6 @@ impl Node for LogicalOperationExpression {
             LogicalOperationExpression::And { left, .. } => left.initial_position(),
             LogicalOperationExpression::Or { left, .. } => left.initial_position(),
             LogicalOperationExpression::Not { bang, .. } => *bang,
-            LogicalOperationExpression::LogicalAnd { left, .. } => left.initial_position(),
-            LogicalOperationExpression::LogicalOr { left, .. } => left.initial_position(),
-            LogicalOperationExpression::LogicalXor { left, .. } => left.initial_position(),
         }
     }
 
@@ -867,19 +843,13 @@ impl Node for LogicalOperationExpression {
             LogicalOperationExpression::And { right, .. } => right.final_position(),
             LogicalOperationExpression::Or { right, .. } => right.final_position(),
             LogicalOperationExpression::Not { right, .. } => right.final_position(),
-            LogicalOperationExpression::LogicalAnd { right, .. } => right.final_position(),
-            LogicalOperationExpression::LogicalOr { right, .. } => right.final_position(),
-            LogicalOperationExpression::LogicalXor { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
             LogicalOperationExpression::And { left, right, .. }
-            | LogicalOperationExpression::Or { left, right, .. }
-            | LogicalOperationExpression::LogicalAnd { left, right, .. }
-            | LogicalOperationExpression::LogicalOr { left, right, .. }
-            | LogicalOperationExpression::LogicalXor { left, right, .. } => {
+            | LogicalOperationExpression::Or { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
             LogicalOperationExpression::Not { right, .. } => vec![right.as_ref()],

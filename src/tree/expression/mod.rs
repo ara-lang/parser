@@ -194,9 +194,6 @@ impl Expression {
                 }
             },
             Expression::LogicalOperation(expression) => match &expression {
-                LogicalOperationExpression::LogicalAnd { left, right, .. }
-                | LogicalOperationExpression::LogicalOr { left, right, .. }
-                | LogicalOperationExpression::LogicalXor { left, right, .. }
                 | LogicalOperationExpression::And { left, right, .. }
                 | LogicalOperationExpression::Or { left, right, .. } => {
                     left.is_constant(initilization) && right.is_constant(initilization)

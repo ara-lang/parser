@@ -13,9 +13,6 @@ pub enum Precedence {
     Yield,
     YieldFrom,
     IncDec,
-    KeyOr,
-    KeyXor,
-    KeyAnd,
     Assignment,
     Ternary,
     NullCoalesce,
@@ -66,9 +63,6 @@ impl Precedence {
             | DotEquals | AndEquals | DoubleQuestionEquals | PercentEquals | AmpersandEquals
             | PipeEquals | CaretEquals | LeftShiftEquals | RightShiftEquals => Self::Assignment,
             Yield => Self::Yield,
-            LogicalAnd => Self::KeyAnd,
-            LogicalOr => Self::KeyOr,
-            LogicalXor => Self::KeyXor,
             _ => unimplemented!("precedence for op {:?}", kind),
         }
     }
@@ -96,10 +90,7 @@ impl Precedence {
             | Self::BitwiseOr
             | Self::BitwiseXor
             | Self::And
-            | Self::Or
-            | Self::KeyAnd
-            | Self::KeyOr
-            | Self::KeyXor => Associativity::Left,
+            | Self::Or => Associativity::Left,
             Self::Pow | Self::NullCoalesce | Self::Assignment => Associativity::Right,
             Self::Ternary | Self::Equality | Self::LtGt => Associativity::Non,
             _ => return None,
