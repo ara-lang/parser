@@ -15,13 +15,13 @@ use crate::tree::Node;
 pub struct ForeachStatement {
     pub comments: CommentGroup,
     pub foreach: usize,
-    pub iterator: ForeachStatementIterator,
+    pub iterator: ForeachIteratorStatement,
     pub block: BlockStatement,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum ForeachStatementIterator {
+pub enum ForeachIteratorStatement {
     Value {
         expression: Expression,
         r#as: usize,
@@ -57,13 +57,13 @@ pub enum ForeachStatementIterator {
 pub struct ForStatement {
     pub comments: CommentGroup,
     pub r#for: usize,
-    pub iterator: ForStatementIterator,
+    pub iterator: ForIteratorStatement,
     pub block: BlockStatement,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum ForStatementIterator {
+pub enum ForIteratorStatement {
     Standalone {
         initializations: CommaSeparated<Expression>,
         initializations_semicolon: usize,
@@ -120,31 +120,31 @@ pub struct ContinueStatement {
     pub semicolon: usize,
 }
 
-impl ForeachStatementIterator {
+impl ForeachIteratorStatement {
     pub fn expression(&self) -> &Expression {
         match self {
-            ForeachStatementIterator::Value { expression, .. } => expression,
-            ForeachStatementIterator::ParenthesizedValue { expression, .. } => expression,
-            ForeachStatementIterator::KeyAndValue { expression, .. } => expression,
-            ForeachStatementIterator::ParenthesizedKeyAndValue { expression, .. } => expression,
+            ForeachIteratorStatement::Value { expression, .. } => expression,
+            ForeachIteratorStatement::ParenthesizedValue { expression, .. } => expression,
+            ForeachIteratorStatement::KeyAndValue { expression, .. } => expression,
+            ForeachIteratorStatement::ParenthesizedKeyAndValue { expression, .. } => expression,
         }
     }
 
     pub fn key(&self) -> Option<&Variable> {
         match self {
-            ForeachStatementIterator::Value { .. } => None,
-            ForeachStatementIterator::ParenthesizedValue { .. } => None,
-            ForeachStatementIterator::KeyAndValue { key, .. } => Some(key),
-            ForeachStatementIterator::ParenthesizedKeyAndValue { key, .. } => Some(key),
+            ForeachIteratorStatement::Value { .. } => None,
+            ForeachIteratorStatement::ParenthesizedValue { .. } => None,
+            ForeachIteratorStatement::KeyAndValue { key, .. } => Some(key),
+            ForeachIteratorStatement::ParenthesizedKeyAndValue { key, .. } => Some(key),
         }
     }
 
     pub fn value(&self) -> &Variable {
         match self {
-            ForeachStatementIterator::Value { value, .. } => value,
-            ForeachStatementIterator::ParenthesizedValue { value, .. } => value,
-            ForeachStatementIterator::KeyAndValue { value, .. } => value,
-            ForeachStatementIterator::ParenthesizedKeyAndValue { value, .. } => value,
+            ForeachIteratorStatement::Value { value, .. } => value,
+            ForeachIteratorStatement::ParenthesizedValue { value, .. } => value,
+            ForeachIteratorStatement::KeyAndValue { value, .. } => value,
+            ForeachIteratorStatement::ParenthesizedKeyAndValue { value, .. } => value,
         }
     }
 }
@@ -167,21 +167,21 @@ impl Node for ForeachStatement {
     }
 }
 
-impl Node for ForeachStatementIterator {
+impl Node for ForeachIteratorStatement {
     fn comments(&self) -> Option<&CommentGroup> {
         None
     }
 
     fn initial_position(&self) -> usize {
         match self {
-            ForeachStatementIterator::Value { expression, .. }
-            | ForeachStatementIterator::KeyAndValue { expression, .. } => {
+            ForeachIteratorStatement::Value { expression, .. }
+            | ForeachIteratorStatement::KeyAndValue { expression, .. } => {
                 expression.initial_position()
             }
-            ForeachStatementIterator::ParenthesizedValue {
+            ForeachIteratorStatement::ParenthesizedValue {
                 left_parenthesis, ..
             }
-            | ForeachStatementIterator::ParenthesizedKeyAndValue {
+            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
                 left_parenthesis, ..
             } => *left_parenthesis,
         }
@@ -189,12 +189,12 @@ impl Node for ForeachStatementIterator {
 
     fn final_position(&self) -> usize {
         match self {
-            ForeachStatementIterator::Value { value, .. }
-            | ForeachStatementIterator::KeyAndValue { value, .. } => value.final_position(),
-            ForeachStatementIterator::ParenthesizedValue {
+            ForeachIteratorStatement::Value { value, .. }
+            | ForeachIteratorStatement::KeyAndValue { value, .. } => value.final_position(),
+            ForeachIteratorStatement::ParenthesizedValue {
                 right_parenthesis, ..
             }
-            | ForeachStatementIterator::ParenthesizedKeyAndValue {
+            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
@@ -202,21 +202,21 @@ impl Node for ForeachStatementIterator {
 
     fn children(&self) -> Vec<&dyn Node> {
         match self {
-            ForeachStatementIterator::Value {
+            ForeachIteratorStatement::Value {
                 expression, value, ..
             }
-            | ForeachStatementIterator::ParenthesizedValue {
+            | ForeachIteratorStatement::ParenthesizedValue {
                 expression, value, ..
             } => {
                 vec![expression, value]
             }
-            ForeachStatementIterator::KeyAndValue {
+            ForeachIteratorStatement::KeyAndValue {
                 expression,
                 key,
                 value,
                 ..
             }
-            | ForeachStatementIterator::ParenthesizedKeyAndValue {
+            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
                 expression,
                 key,
                 value,
@@ -246,14 +246,14 @@ impl Node for ForStatement {
     }
 }
 
-impl Node for ForStatementIterator {
+impl Node for ForIteratorStatement {
     fn comments(&self) -> Option<&CommentGroup> {
         None
     }
 
     fn initial_position(&self) -> usize {
         match self {
-            ForStatementIterator::Standalone {
+            ForIteratorStatement::Standalone {
                 initializations,
                 initializations_semicolon,
                 ..
@@ -264,7 +264,7 @@ impl Node for ForStatementIterator {
                     *initializations_semicolon
                 }
             }
-            ForStatementIterator::Parenthesized {
+            ForIteratorStatement::Parenthesized {
                 left_parenthesis, ..
             } => *left_parenthesis,
         }
@@ -272,7 +272,7 @@ impl Node for ForStatementIterator {
 
     fn final_position(&self) -> usize {
         match self {
-            ForStatementIterator::Standalone {
+            ForIteratorStatement::Standalone {
                 conditions_semicolon,
                 r#loop,
                 ..
@@ -283,7 +283,7 @@ impl Node for ForStatementIterator {
                     conditions_semicolon + 1
                 }
             }
-            ForStatementIterator::Parenthesized {
+            ForIteratorStatement::Parenthesized {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
@@ -291,13 +291,13 @@ impl Node for ForStatementIterator {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ForStatementIterator::Standalone {
+            ForIteratorStatement::Standalone {
                 initializations,
                 conditions,
                 r#loop,
                 ..
             }
-            | ForStatementIterator::Parenthesized {
+            | ForIteratorStatement::Parenthesized {
                 initializations,
                 conditions,
                 r#loop,

@@ -84,7 +84,7 @@ DefinitionTree {
                                 },
                                 elseifs: [],
                                 else: Some(
-                                    IfStatementElse {
+                                    IfElseStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },

@@ -14,13 +14,13 @@ pub struct IfStatement {
     pub r#if: usize,
     pub condition: Expression,
     pub block: BlockStatement,
-    pub elseifs: Vec<IfStatementElseIf>,
-    pub r#else: Option<IfStatementElse>,
+    pub elseifs: Vec<IfElseIfStatement>,
+    pub r#else: Option<IfElseStatement>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct IfStatementElseIf {
+pub struct IfElseIfStatement {
     pub comments: CommentGroup,
     pub elseif: usize,
     pub condition: Expression,
@@ -29,15 +29,15 @@ pub struct IfStatementElseIf {
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct IfStatementElse {
+pub struct IfElseStatement {
     pub comments: CommentGroup,
     pub r#else: usize,
-    pub block: IfStatementElseBlock,
+    pub block: IfElseBlockStatement,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum IfStatementElseBlock {
+pub enum IfElseBlockStatement {
     If(Box<IfStatement>),
     Block(BlockStatement),
 }
@@ -69,7 +69,7 @@ impl Node for IfStatement {
     }
 }
 
-impl Node for IfStatementElseIf {
+impl Node for IfElseIfStatement {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
@@ -87,7 +87,7 @@ impl Node for IfStatementElseIf {
     }
 }
 
-impl Node for IfStatementElse {
+impl Node for IfElseStatement {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
@@ -98,15 +98,15 @@ impl Node for IfStatementElse {
 
     fn final_position(&self) -> usize {
         match &self.block {
-            IfStatementElseBlock::If(r#if) => r#if.final_position(),
-            IfStatementElseBlock::Block(block) => block.final_position(),
+            IfElseBlockStatement::If(r#if) => r#if.final_position(),
+            IfElseBlockStatement::Block(block) => block.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self.block {
-            IfStatementElseBlock::If(r#if) => vec![r#if.as_ref()],
-            IfStatementElseBlock::Block(block) => vec![block],
+            IfElseBlockStatement::If(r#if) => vec![r#if.as_ref()],
+            IfElseBlockStatement::Block(block) => vec![block],
         }
     }
 }

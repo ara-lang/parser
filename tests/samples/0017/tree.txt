@@ -83,7 +83,7 @@ DefinitionTree {
                                     right_brace: 64,
                                 },
                                 elseifs: [
-                                    IfStatementElseIf {
+                                    IfElseIfStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -132,7 +132,7 @@ DefinitionTree {
                                     },
                                 ],
                                 else: Some(
-                                    IfStatementElse {
+                                    IfElseStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },

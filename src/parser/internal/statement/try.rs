@@ -5,10 +5,10 @@ use crate::parser::internal::utils;
 use crate::parser::internal::variable;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
+use crate::tree::statement::r#try::TryCatchBlockStatement;
+use crate::tree::statement::r#try::TryCatchTypeStatement;
+use crate::tree::statement::r#try::TryFinallyBlockStatement;
 use crate::tree::statement::r#try::TryStatement;
-use crate::tree::statement::r#try::TryStatementCatchBlock;
-use crate::tree::statement::r#try::TryStatementCatchType;
-use crate::tree::statement::r#try::TryStatementFinallyBlock;
 
 pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
     let comments = state.iterator.comments();
@@ -41,7 +41,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
 
         let body = block::block_statement(state)?;
 
-        catches.push(TryStatementCatchBlock {
+        catches.push(TryCatchBlockStatement {
             comments: state.iterator.comments(),
             catch,
             left_parenthesis,
@@ -54,7 +54,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
 
     let current = state.iterator.current();
     let finally = if current.kind == TokenKind::Finally {
-        Some(TryStatementFinallyBlock {
+        Some(TryFinallyBlockStatement {
             comments: state.iterator.comments(),
             finally: current.position,
             block: {
@@ -84,7 +84,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
 }
 
 #[inline(always)]
-fn try_statement_catch_type(state: &mut State) -> ParseResult<TryStatementCatchType> {
+fn try_statement_catch_type(state: &mut State) -> ParseResult<TryCatchTypeStatement> {
     let id = identifier::fully_qualified_type_identifier(state)?;
 
     if state.iterator.current().kind == TokenKind::Pipe {
@@ -103,8 +103,8 @@ fn try_statement_catch_type(state: &mut State) -> ParseResult<TryStatementCatchT
             state.iterator.next();
         }
 
-        return Ok(TryStatementCatchType::Union(types));
+        return Ok(TryCatchTypeStatement::Union(types));
     }
 
-    Ok(TryStatementCatchType::Identifier(id))
+    Ok(TryCatchTypeStatement::Identifier(id))
 }

@@ -12,10 +12,10 @@ use crate::tree::expression::ParenthesizedExpression;
 use crate::tree::statement::r#loop::BreakStatement;
 use crate::tree::statement::r#loop::ContinueStatement;
 use crate::tree::statement::r#loop::DoWhileStatement;
+use crate::tree::statement::r#loop::ForIteratorStatement;
 use crate::tree::statement::r#loop::ForStatement;
-use crate::tree::statement::r#loop::ForStatementIterator;
+use crate::tree::statement::r#loop::ForeachIteratorStatement;
 use crate::tree::statement::r#loop::ForeachStatement;
-use crate::tree::statement::r#loop::ForeachStatementIterator;
 use crate::tree::statement::r#loop::WhileStatement;
 use crate::tree::utils::CommaSeparated;
 
@@ -44,7 +44,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
                         let mut key = variable::parse(state)?;
                         std::mem::swap(&mut value, &mut key);
 
-                        ForeachStatementIterator::ParenthesizedKeyAndValue {
+                        ForeachIteratorStatement::ParenthesizedKeyAndValue {
                             left_parenthesis,
                             expression,
                             r#as,
@@ -54,7 +54,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
                             right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
                         }
                     } else {
-                        ForeachStatementIterator::ParenthesizedValue {
+                        ForeachIteratorStatement::ParenthesizedValue {
                             left_parenthesis,
                             expression,
                             r#as,
@@ -89,7 +89,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
                 let mut key = variable::parse(state)?;
                 std::mem::swap(&mut value, &mut key);
 
-                ForeachStatementIterator::KeyAndValue {
+                ForeachIteratorStatement::KeyAndValue {
                     expression,
                     r#as,
                     key,
@@ -97,7 +97,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
                     value,
                 }
             } else {
-                ForeachStatementIterator::Value {
+                ForeachIteratorStatement::Value {
                     expression,
                     r#as,
                     value,
@@ -166,7 +166,7 @@ pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {
                 };
 
                 if !standalone {
-                    break 'iterator ForStatementIterator::Parenthesized {
+                    break 'iterator ForIteratorStatement::Parenthesized {
                         left_parenthesis,
                         initializations,
                         initializations_semicolon: utils::skip_semicolon(state)?,
@@ -190,7 +190,7 @@ pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {
                 utils::comma_separated(state, &expression::create, TokenKind::SemiColon)?
             };
 
-            ForStatementIterator::Standalone {
+            ForIteratorStatement::Standalone {
                 initializations,
                 initializations_semicolon: utils::skip_semicolon(state)?,
                 conditions: utils::comma_separated(

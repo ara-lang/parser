@@ -4,10 +4,10 @@ use crate::parser::internal::statement::block;
 use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
+use crate::tree::statement::control_flow::IfElseBlockStatement;
+use crate::tree::statement::control_flow::IfElseIfStatement;
+use crate::tree::statement::control_flow::IfElseStatement;
 use crate::tree::statement::control_flow::IfStatement;
-use crate::tree::statement::control_flow::IfStatementElse;
-use crate::tree::statement::control_flow::IfStatementElseBlock;
-use crate::tree::statement::control_flow::IfStatementElseIf;
 
 pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     let comments = state.iterator.comments();
@@ -16,12 +16,12 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
 
     let statement = block::block_statement(state)?;
 
-    let mut elseifs: Vec<IfStatementElseIf> = vec![];
+    let mut elseifs: Vec<IfElseIfStatement> = vec![];
     let mut current = state.iterator.current();
     while current.kind == TokenKind::ElseIf {
         state.iterator.next();
 
-        elseifs.push(IfStatementElseIf {
+        elseifs.push(IfElseIfStatement {
             comments: state.iterator.comments(),
             elseif: current.position,
             condition: expression::create(state)?,
@@ -34,13 +34,13 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     let r#else = if current.kind == TokenKind::Else {
         state.iterator.next();
 
-        Some(IfStatementElse {
+        Some(IfElseStatement {
             comments: state.iterator.comments(),
             r#else: current.position,
             block: if state.iterator.current().kind == TokenKind::If {
-                IfStatementElseBlock::If(Box::new(if_statement(state)?))
+                IfElseBlockStatement::If(Box::new(if_statement(state)?))
             } else {
-                IfStatementElseBlock::Block(block::block_statement(state)?)
+                IfElseBlockStatement::Block(block::block_statement(state)?)
             },
         })
     } else {

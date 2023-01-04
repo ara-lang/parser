@@ -50,7 +50,7 @@ DefinitionTree {
                                     right_brace: 39,
                                 },
                                 catches: [
-                                    TryStatementCatchBlock {
+                                    TryCatchBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -78,7 +78,7 @@ DefinitionTree {
                                             right_brace: 69,
                                         },
                                     },
-                                    TryStatementCatchBlock {
+                                    TryCatchBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -125,7 +125,7 @@ DefinitionTree {
                                     right_brace: 131,
                                 },
                                 catches: [
-                                    TryStatementCatchBlock {
+                                    TryCatchBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -155,7 +155,7 @@ DefinitionTree {
                                     },
                                 ],
                                 finally: Some(
-                                    TryStatementFinallyBlock {
+                                    TryFinallyBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -188,7 +188,7 @@ DefinitionTree {
                                 },
                                 catches: [],
                                 finally: Some(
-                                    TryStatementFinallyBlock {
+                                    TryFinallyBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -220,7 +220,7 @@ DefinitionTree {
                                     right_brace: 225,
                                 },
                                 catches: [
-                                    TryStatementCatchBlock {
+                                    TryCatchBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -262,7 +262,7 @@ DefinitionTree {
                                     right_brace: 270,
                                 },
                                 catches: [
-                                    TryStatementCatchBlock {
+                                    TryCatchBlockStatement {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
