@@ -18,10 +18,5 @@ pub trait NodeVisitor<E: Debug> {
         Ok(())
     }
 
-    fn visit(
-        &mut self,
-        source: &str,
-        node: &dyn Node,
-        parent: Option<&dyn Node>,
-    ) -> Result<(), E>;
+    fn visit(&mut self, source: &str, node: &dyn Node, parent: Option<&dyn Node>) -> Result<(), E>;
 }
