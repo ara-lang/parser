@@ -13,7 +13,7 @@ pub struct TypeAliasDefinition {
     pub r#type: usize,
     pub name: TemplatedIdentifier,
     pub equals: usize,
-    pub data_type: TypeDefinition,
+    pub type_definition: TypeDefinition,
     pub semicolon: usize,
 }
 
@@ -99,7 +99,7 @@ impl Node for TypeAliasDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.name, &self.data_type]
+        vec![&self.name, &self.type_definition]
     }
 }
 

@@ -33,7 +33,7 @@ DefinitionTree {
                     ),
                 },
                 equals: 18,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 20,
@@ -476,7 +476,7 @@ DefinitionTree {
                     ),
                 },
                 equals: 280,
-                data_type: Union(
+                type_definition: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {

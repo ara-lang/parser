@@ -44,7 +44,7 @@ impl Precedence {
 
         match kind {
             Pow => Self::Pow,
-            Instanceof | Is | As => Self::TypeCheck,
+            Instanceof | Is | As | Into => Self::TypeCheck,
             In => Self::ArrayContains,
             Asterisk | Slash | Percent => Self::MulDivMod,
             Plus | Minus => Self::AddSub,

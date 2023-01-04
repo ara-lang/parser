@@ -11,7 +11,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 9,
-                data_type: Union(
+                type_definition: Union(
                     [
                         Integer(
                             11,

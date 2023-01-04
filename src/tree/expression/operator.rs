@@ -390,6 +390,12 @@ pub enum TypeOperationExpression {
         is: usize,
         right: TypeDefinition,
     },
+    Into {
+        comments: CommentGroup,
+        left: Box<Expression>,
+        into: usize,
+        right: TypeDefinition,
+    },
     As {
         comments: CommentGroup,
         left: Box<Expression>,
@@ -1034,6 +1040,7 @@ impl Node for TypeOperationExpression {
         match &self {
             TypeOperationExpression::Instanceof { comments, .. } => Some(comments),
             TypeOperationExpression::Is { comments, .. } => Some(comments),
+            TypeOperationExpression::Into { comments, .. } => Some(comments),
             TypeOperationExpression::As { comments, .. } => Some(comments),
         }
     }
@@ -1042,6 +1049,7 @@ impl Node for TypeOperationExpression {
         match &self {
             TypeOperationExpression::Instanceof { left, .. } => left.initial_position(),
             TypeOperationExpression::Is { left, .. } => left.initial_position(),
+            TypeOperationExpression::Into { left, .. } => left.initial_position(),
             TypeOperationExpression::As { left, .. } => left.initial_position(),
         }
     }
@@ -1050,6 +1058,7 @@ impl Node for TypeOperationExpression {
         match &self {
             TypeOperationExpression::Instanceof { right, .. } => right.final_position(),
             TypeOperationExpression::Is { right, .. } => right.final_position(),
+            TypeOperationExpression::Into { right, .. } => right.final_position(),
             TypeOperationExpression::As { right, .. } => right.final_position(),
         }
     }
@@ -1058,6 +1067,7 @@ impl Node for TypeOperationExpression {
         match &self {
             TypeOperationExpression::Instanceof { left, right, .. } => vec![left.as_ref(), right],
             TypeOperationExpression::Is { left, right, .. } => vec![left.as_ref(), right],
+            TypeOperationExpression::Into { left, right, .. } => vec![left.as_ref(), right],
             TypeOperationExpression::As { left, right, .. } => vec![left.as_ref(), right],
         }
     }
@@ -1239,15 +1249,23 @@ impl Node for ClassOperationInitializationClassExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => identifier.initial_position(),
-            ClassOperationInitializationClassExpression::Variable(variable) => variable.initial_position(),
+            ClassOperationInitializationClassExpression::Identifier(identifier) => {
+                identifier.initial_position()
+            }
+            ClassOperationInitializationClassExpression::Variable(variable) => {
+                variable.initial_position()
+            }
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => identifier.final_position(),
-            ClassOperationInitializationClassExpression::Variable(variable) => variable.final_position(),
+            ClassOperationInitializationClassExpression::Identifier(identifier) => {
+                identifier.final_position()
+            }
+            ClassOperationInitializationClassExpression::Variable(variable) => {
+                variable.final_position()
+            }
         }
     }
 

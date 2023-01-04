@@ -181,98 +181,102 @@ DefinitionTree {
                                                 greater_than: 70,
                                             },
                                         ),
-                                        Intersection(
-                                            [
-                                                Identifier(
-                                                    TemplatedIdentifier {
-                                                        name: Identifier {
-                                                            position: 73,
-                                                            value: "Foo",
-                                                        },
-                                                        templates: Some(
-                                                            TypeTemplateGroupDefinition {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                less_than: 76,
-                                                                members: CommaSeparated {
-                                                                    inner: [
-                                                                        Identifier(
-                                                                            TemplatedIdentifier {
-                                                                                name: Identifier {
-                                                                                    position: 77,
-                                                                                    value: "T",
-                                                                                },
-                                                                                templates: None,
-                                                                            },
-                                                                        ),
-                                                                        Identifier(
-                                                                            TemplatedIdentifier {
-                                                                                name: Identifier {
-                                                                                    position: 80,
-                                                                                    value: "U",
-                                                                                },
-                                                                                templates: None,
-                                                                            },
-                                                                        ),
-                                                                    ],
-                                                                    commas: [
-                                                                        78,
-                                                                    ],
-                                                                },
-                                                                greater_than: 81,
+                                        Parenthesized {
+                                            left_parenthesis: 72,
+                                            type_definition: Intersection(
+                                                [
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 73,
+                                                                value: "Foo",
                                                             },
-                                                        ),
-                                                    },
-                                                ),
-                                                Identifier(
-                                                    TemplatedIdentifier {
-                                                        name: Identifier {
-                                                            position: 83,
-                                                            value: "Bar",
-                                                        },
-                                                        templates: Some(
-                                                            TypeTemplateGroupDefinition {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                less_than: 86,
-                                                                members: CommaSeparated {
-                                                                    inner: [
-                                                                        Vec(
-                                                                            87,
-                                                                            TypeTemplateGroupDefinition {
-                                                                                comments: CommentGroup {
-                                                                                    comments: [],
+                                                            templates: Some(
+                                                                TypeTemplateGroupDefinition {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    less_than: 76,
+                                                                    members: CommaSeparated {
+                                                                        inner: [
+                                                                            Identifier(
+                                                                                TemplatedIdentifier {
+                                                                                    name: Identifier {
+                                                                                        position: 77,
+                                                                                        value: "T",
+                                                                                    },
+                                                                                    templates: None,
                                                                                 },
-                                                                                less_than: 90,
-                                                                                members: CommaSeparated {
-                                                                                    inner: [
-                                                                                        Identifier(
-                                                                                            TemplatedIdentifier {
-                                                                                                name: Identifier {
-                                                                                                    position: 91,
-                                                                                                    value: "U",
+                                                                            ),
+                                                                            Identifier(
+                                                                                TemplatedIdentifier {
+                                                                                    name: Identifier {
+                                                                                        position: 80,
+                                                                                        value: "U",
+                                                                                    },
+                                                                                    templates: None,
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        commas: [
+                                                                            78,
+                                                                        ],
+                                                                    },
+                                                                    greater_than: 81,
+                                                                },
+                                                            ),
+                                                        },
+                                                    ),
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 83,
+                                                                value: "Bar",
+                                                            },
+                                                            templates: Some(
+                                                                TypeTemplateGroupDefinition {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    less_than: 86,
+                                                                    members: CommaSeparated {
+                                                                        inner: [
+                                                                            Vec(
+                                                                                87,
+                                                                                TypeTemplateGroupDefinition {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    less_than: 90,
+                                                                                    members: CommaSeparated {
+                                                                                        inner: [
+                                                                                            Identifier(
+                                                                                                TemplatedIdentifier {
+                                                                                                    name: Identifier {
+                                                                                                        position: 91,
+                                                                                                        value: "U",
+                                                                                                    },
+                                                                                                    templates: None,
                                                                                                 },
-                                                                                                templates: None,
-                                                                                            },
-                                                                                        ),
-                                                                                    ],
-                                                                                    commas: [],
+                                                                                            ),
+                                                                                        ],
+                                                                                        commas: [],
+                                                                                    },
+                                                                                    greater_than: 92,
                                                                                 },
-                                                                                greater_than: 92,
-                                                                            },
-                                                                        ),
-                                                                    ],
-                                                                    commas: [],
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    greater_than: 93,
                                                                 },
-                                                                greater_than: 93,
-                                                            },
-                                                        ),
-                                                    },
-                                                ),
-                                            ],
-                                        ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                ],
+                                            ),
+                                            right_parenthesis: 94,
+                                        },
                                     ],
                                 ),
                                 ellipsis: None,

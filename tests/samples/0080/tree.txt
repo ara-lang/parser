@@ -11,7 +11,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 8,
-                data_type: Null(
+                type_definition: Null(
                     10,
                 ),
                 semicolon: 14,
@@ -28,7 +28,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 23,
-                data_type: False(
+                type_definition: False(
                     25,
                 ),
                 semicolon: 30,
@@ -45,7 +45,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 39,
-                data_type: True(
+                type_definition: True(
                     41,
                 ),
                 semicolon: 45,
@@ -62,7 +62,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 54,
-                data_type: NonNull(
+                type_definition: NonNull(
                     56,
                 ),
                 semicolon: 63,
@@ -79,7 +79,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 72,
-                data_type: Union(
+                type_definition: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
@@ -133,7 +133,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 90,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 92,
@@ -219,7 +219,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 120,
-                data_type: Vec(
+                type_definition: Vec(
                     122,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
@@ -251,7 +251,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 139,
-                data_type: Union(
+                type_definition: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
@@ -319,7 +319,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 174,
-                data_type: Union(
+                type_definition: Union(
                     [
                         Identifier(
                             TemplatedIdentifier {
@@ -520,28 +520,32 @@ DefinitionTree {
                                 ),
                             },
                         ),
-                        Intersection(
-                            [
-                                Identifier(
-                                    TemplatedIdentifier {
-                                        name: Identifier {
-                                            position: 235,
-                                            value: "Foo",
+                        Parenthesized {
+                            left_parenthesis: 234,
+                            type_definition: Intersection(
+                                [
+                                    Identifier(
+                                        TemplatedIdentifier {
+                                            name: Identifier {
+                                                position: 235,
+                                                value: "Foo",
+                                            },
+                                            templates: None,
                                         },
-                                        templates: None,
-                                    },
-                                ),
-                                Identifier(
-                                    TemplatedIdentifier {
-                                        name: Identifier {
-                                            position: 239,
-                                            value: "Bar",
+                                    ),
+                                    Identifier(
+                                        TemplatedIdentifier {
+                                            name: Identifier {
+                                                position: 239,
+                                                value: "Bar",
+                                            },
+                                            templates: None,
                                         },
-                                        templates: None,
-                                    },
-                                ),
-                            ],
-                        ),
+                                    ),
+                                ],
+                            ),
+                            right_parenthesis: 242,
+                        },
                     ],
                 ),
                 semicolon: 243,
@@ -558,7 +562,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 252,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 254,
@@ -631,7 +635,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 280,
-                data_type: Dict(
+                type_definition: Dict(
                     282,
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {

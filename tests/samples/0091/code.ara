@@ -1,0 +1,14 @@
+function foo(): vec<int> {
+    $a = $b as string;
+    $a = $b into string;
+    $a = $b as int;
+    $a = $b into int;
+    $a = $b as float;
+    $a = $b into float;
+    $a = $b as bool;
+    $a = $b into bool;
+    $a = $b as vec<int>;
+    $a = $b into vec<int>;
+    $a = $b as vec<int>|dict<string, int>|(string, int);
+    $a = $b into vec<int>|dict<string, int>|(string, int);
+}

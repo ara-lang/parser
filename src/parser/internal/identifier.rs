@@ -461,6 +461,7 @@ pub fn is_soft_reserved_identifier(kind: &TokenKind) -> bool {
         | TokenKind::False
         | TokenKind::Type
         | TokenKind::In
+        | TokenKind::Into
         | TokenKind::Is
         | TokenKind::List
         | TokenKind::Null

@@ -172,7 +172,7 @@ pub enum TokenKind {
     Unset,
     Isset,
     In,
-
+    Into,
     // DO NOT REMOVE: these tokens are left overs from PHP, and are not used by Ara,
     //  but must be kept to ensure the parse can detect them and error accordingly.
     Array,
@@ -381,6 +381,7 @@ impl Display for TokenKind {
             Self::Async => "async",
             Self::Await => "await",
             Self::In => "in",
+            Self::Into => "into",
             Self::Concurrently => "concurrently",
             Self::Isset => "isset",
             Self::Unset => "unset",

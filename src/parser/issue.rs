@@ -1153,7 +1153,7 @@ pub(crate) fn bottom_type_cannot_be_used_in_tuple(
 
 pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
     state: &ParserState,
-    parenthesis: usize,
+    type_definition: &TypeDefinition,
 ) -> Issue {
     let origin = state.source.name();
 
@@ -1161,8 +1161,8 @@ pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
         ParserIssueCode::DisjunctiveNormalFormTypesCannotBeNested,
         "cannot nest disjunctive normal form types",
         origin,
-        parenthesis,
-        parenthesis + 1,
+        type_definition.initial_position(),
+        type_definition.final_position(),
     )
     .with_note(
         "disjunctive normal form types are types that are separated by `|`, or `&` and are enclosed in `(` and `)`.",

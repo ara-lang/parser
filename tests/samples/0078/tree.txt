@@ -11,7 +11,7 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 13,
-                data_type: Tuple {
+                type_definition: Tuple {
                     left_parenthesis: 15,
                     type_definitions: CommaSeparated {
                         inner: [
@@ -75,7 +75,7 @@ DefinitionTree {
                     ),
                 },
                 equals: 49,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 51,
@@ -173,7 +173,7 @@ DefinitionTree {
                     ),
                 },
                 equals: 88,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 90,
@@ -271,7 +271,7 @@ DefinitionTree {
                     ),
                 },
                 equals: 126,
-                data_type: Identifier(
+                type_definition: Identifier(
                     TemplatedIdentifier {
                         name: Identifier {
                             position: 128,

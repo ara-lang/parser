@@ -1,0 +1,16 @@
+type test = (A|B|C, A|(B&C), (B&C)|A);
+type test = (A, A|(B), (B)|A);
+type test = (A, A, (B)|A);
+type test = (A, A, A);
+type test = (A&B&C, A&(B|C), (B|C)&A);
+type test = (A, A&(B), (B)&A);
+type test = (A, A, (B)&A);
+type test = (A, A, A);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>|B|C, A<B, C, (Foo, Bar|Baz)&Qux>|(B&C), (B&C)|A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>|(B), (B)|A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>, (B)|A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>&B&C, A<B, C, (Foo, Bar|Baz)&Qux>&(B|C), (B|C)&A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>&(B), (B)&A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>, (B)&A<B, C, (Foo, Bar|Baz)&Qux>);
+type test = (A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>, A<B, C, (Foo, Bar|Baz)&Qux>);

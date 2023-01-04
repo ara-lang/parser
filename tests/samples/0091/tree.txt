@@ -1,0 +1,676 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Vec(
+                        16,
+                        TypeTemplateGroupDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            less_than: 19,
+                            members: CommaSeparated {
+                                inner: [
+                                    Integer(
+                                        20,
+                                    ),
+                                ],
+                                commas: [],
+                            },
+                            greater_than: 23,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 31,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 34,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 36,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 39,
+                                                right: String(
+                                                    42,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 48,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 54,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 57,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 59,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 62,
+                                                right: String(
+                                                    67,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 73,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 79,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 82,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 84,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 87,
+                                                right: Integer(
+                                                    90,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 93,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 99,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 102,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 104,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 107,
+                                                right: Integer(
+                                                    112,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 115,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 121,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 124,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 126,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 129,
+                                                right: Float(
+                                                    132,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 137,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 143,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 146,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 148,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 151,
+                                                right: Float(
+                                                    156,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 161,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 167,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 170,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 172,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 175,
+                                                right: Boolean(
+                                                    178,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 182,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 188,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 191,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 193,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 196,
+                                                right: Boolean(
+                                                    201,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 205,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 211,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 214,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 216,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 219,
+                                                right: Vec(
+                                                    222,
+                                                    TypeTemplateGroupDefinition {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        less_than: 225,
+                                                        members: CommaSeparated {
+                                                            inner: [
+                                                                Integer(
+                                                                    226,
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 229,
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 230,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 236,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 239,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 241,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 244,
+                                                right: Vec(
+                                                    249,
+                                                    TypeTemplateGroupDefinition {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        less_than: 252,
+                                                        members: CommaSeparated {
+                                                            inner: [
+                                                                Integer(
+                                                                    253,
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 256,
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 257,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 263,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 266,
+                                        right: TypeOperation(
+                                            As {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 268,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                as: 271,
+                                                right: Union(
+                                                    [
+                                                        Vec(
+                                                            274,
+                                                            TypeTemplateGroupDefinition {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                less_than: 277,
+                                                                members: CommaSeparated {
+                                                                    inner: [
+                                                                        Integer(
+                                                                            278,
+                                                                        ),
+                                                                    ],
+                                                                    commas: [],
+                                                                },
+                                                                greater_than: 281,
+                                                            },
+                                                        ),
+                                                        Dict(
+                                                            283,
+                                                            TypeTemplateGroupDefinition {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                less_than: 287,
+                                                                members: CommaSeparated {
+                                                                    inner: [
+                                                                        String(
+                                                                            288,
+                                                                        ),
+                                                                        Integer(
+                                                                            296,
+                                                                        ),
+                                                                    ],
+                                                                    commas: [
+                                                                        294,
+                                                                    ],
+                                                                },
+                                                                greater_than: 299,
+                                                            },
+                                                        ),
+                                                        Tuple {
+                                                            left_parenthesis: 301,
+                                                            type_definitions: CommaSeparated {
+                                                                inner: [
+                                                                    String(
+                                                                        302,
+                                                                    ),
+                                                                    Integer(
+                                                                        310,
+                                                                    ),
+                                                                ],
+                                                                commas: [
+                                                                    308,
+                                                                ],
+                                                            },
+                                                            right_parenthesis: 313,
+                                                        },
+                                                    ],
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 314,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 320,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 323,
+                                        right: TypeOperation(
+                                            Into {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 325,
+                                                        name: "$b",
+                                                    },
+                                                ),
+                                                into: 328,
+                                                right: Union(
+                                                    [
+                                                        Vec(
+                                                            333,
+                                                            TypeTemplateGroupDefinition {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                less_than: 336,
+                                                                members: CommaSeparated {
+                                                                    inner: [
+                                                                        Integer(
+                                                                            337,
+                                                                        ),
+                                                                    ],
+                                                                    commas: [],
+                                                                },
+                                                                greater_than: 340,
+                                                            },
+                                                        ),
+                                                        Dict(
+                                                            342,
+                                                            TypeTemplateGroupDefinition {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                less_than: 346,
+                                                                members: CommaSeparated {
+                                                                    inner: [
+                                                                        String(
+                                                                            347,
+                                                                        ),
+                                                                        Integer(
+                                                                            355,
+                                                                        ),
+                                                                    ],
+                                                                    commas: [
+                                                                        353,
+                                                                    ],
+                                                                },
+                                                                greater_than: 358,
+                                                            },
+                                                        ),
+                                                        Tuple {
+                                                            left_parenthesis: 360,
+                                                            type_definitions: CommaSeparated {
+                                                                inner: [
+                                                                    String(
+                                                                        361,
+                                                                    ),
+                                                                    Integer(
+                                                                        369,
+                                                                    ),
+                                                                ],
+                                                                commas: [
+                                                                    367,
+                                                                ],
+                                                            },
+                                                            right_parenthesis: 372,
+                                                        },
+                                                    ],
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 373,
+                            },
+                        ),
+                    ],
+                    right_brace: 375,
+                },
+            },
+        ),
+    ],
+    eof: 377,
+}

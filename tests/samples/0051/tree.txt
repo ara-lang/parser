@@ -115,37 +115,41 @@ DefinitionTree {
                                                 templates: None,
                                             },
                                         ),
-                                        Intersection(
-                                            [
-                                                Identifier(
-                                                    TemplatedIdentifier {
-                                                        name: Identifier {
-                                                            position: 77,
-                                                            value: "B",
+                                        Parenthesized {
+                                            left_parenthesis: 76,
+                                            type_definition: Intersection(
+                                                [
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 77,
+                                                                value: "B",
+                                                            },
+                                                            templates: None,
                                                         },
-                                                        templates: None,
-                                                    },
-                                                ),
-                                                Identifier(
-                                                    TemplatedIdentifier {
-                                                        name: Identifier {
-                                                            position: 79,
-                                                            value: "C",
+                                                    ),
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 79,
+                                                                value: "C",
+                                                            },
+                                                            templates: None,
                                                         },
-                                                        templates: None,
-                                                    },
-                                                ),
-                                                Identifier(
-                                                    TemplatedIdentifier {
-                                                        name: Identifier {
-                                                            position: 81,
-                                                            value: "D",
+                                                    ),
+                                                    Identifier(
+                                                        TemplatedIdentifier {
+                                                            name: Identifier {
+                                                                position: 81,
+                                                                value: "D",
+                                                            },
+                                                            templates: None,
                                                         },
-                                                        templates: None,
-                                                    },
-                                                ),
-                                            ],
-                                        ),
+                                                    ),
+                                                ],
+                                            ),
+                                            right_parenthesis: 82,
+                                        },
                                     ],
                                 ),
                                 ellipsis: None,
@@ -173,37 +177,41 @@ DefinitionTree {
                                     templates: None,
                                 },
                             ),
-                            Union(
-                                [
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 92,
-                                                value: "B",
+                            Parenthesized {
+                                left_parenthesis: 91,
+                                type_definition: Union(
+                                    [
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 92,
+                                                    value: "B",
+                                                },
+                                                templates: None,
                                             },
-                                            templates: None,
-                                        },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 94,
-                                                value: "C",
+                                        ),
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 94,
+                                                    value: "C",
+                                                },
+                                                templates: None,
                                             },
-                                            templates: None,
-                                        },
-                                    ),
-                                    Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 96,
-                                                value: "D",
+                                        ),
+                                        Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 96,
+                                                    value: "D",
+                                                },
+                                                templates: None,
                                             },
-                                            templates: None,
-                                        },
-                                    ),
-                                ],
-                            ),
+                                        ),
+                                    ],
+                                ),
+                                right_parenthesis: 97,
+                            },
                         ],
                     ),
                 },

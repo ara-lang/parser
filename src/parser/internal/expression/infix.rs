@@ -61,6 +61,12 @@ pub fn infix(
                 if_false: Box::new(expression::create(state)?),
             })
         }
+        TokenKind::Into => Expression::TypeOperation(TypeOperationExpression::Into {
+            comments,
+            left: Box::new(left),
+            into: position,
+            right: r#type::type_definition(state)?,
+        }),
         TokenKind::Is => Expression::TypeOperation(TypeOperationExpression::Is {
             comments,
             left: Box::new(left),
@@ -411,6 +417,7 @@ pub fn is_infix(state: &mut State, t: &TokenKind) -> bool {
             | TokenKind::Percent
             | TokenKind::In
             | TokenKind::Is
+            | TokenKind::Into
             | TokenKind::Instanceof
             | TokenKind::Asterisk
             | TokenKind::Slash
