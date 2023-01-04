@@ -55,6 +55,11 @@ pub fn namespace_identifier(state: &mut State) -> ParseResult<Identifier> {
 /// - `where`
 /// - `type`
 /// - `in`
+/// - `into`
+/// - `using`
+/// - `async`
+/// - `await`
+/// - `concurrently`
 pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
     let current = state.iterator.current();
     match &current.kind {
@@ -73,6 +78,8 @@ pub fn classname_identifier(state: &mut State) -> ParseResult<Identifier> {
         | TokenKind::Where
         | TokenKind::Type
         | TokenKind::In
+        | TokenKind::Into
+        | TokenKind::Using
         | TokenKind::Dict
         | TokenKind::Vec
         | TokenKind::Async
@@ -182,6 +189,8 @@ pub fn constant_identifier(state: &mut State) -> ParseResult<Identifier> {
 /// - `where`
 /// - `type`
 /// - `in`
+/// - `into`
+/// - `using`
 ///
 /// Unlike `constant` name, `type` name can be templated ( e.g `Callback<U, V>` )
 #[inline(always)]
@@ -196,7 +205,13 @@ pub fn type_identifier(state: &mut State) -> ParseResult<TemplatedIdentifier> {
                 value: current.value.clone(),
             }
         }
-        TokenKind::Enum | TokenKind::From | TokenKind::Where | TokenKind::Type | TokenKind::In => {
+        TokenKind::Enum
+        | TokenKind::From
+        | TokenKind::Where
+        | TokenKind::Type
+        | TokenKind::In
+        | TokenKind::Into
+        | TokenKind::Using => {
             state.iterator.next();
 
             Identifier {
@@ -301,6 +316,8 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
         | TokenKind::Where
         | TokenKind::Type
         | TokenKind::In
+        | TokenKind::Into
+        | TokenKind::Using
         | TokenKind::Dict
         | TokenKind::Vec
         | TokenKind::Async
@@ -375,6 +392,8 @@ pub fn fully_qualified_type_identifier_including_self(
         | TokenKind::Parent
         | TokenKind::Type
         | TokenKind::In
+        | TokenKind::Into
+        | TokenKind::Using
         | TokenKind::Where
         | TokenKind::Dict
         | TokenKind::Vec
@@ -462,6 +481,7 @@ pub fn is_soft_reserved_identifier(kind: &TokenKind) -> bool {
         | TokenKind::Type
         | TokenKind::In
         | TokenKind::Into
+        | TokenKind::Using
         | TokenKind::Is
         | TokenKind::List
         | TokenKind::Null

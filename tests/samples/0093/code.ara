@@ -1,0 +1,25 @@
+namespace using;
+
+const using = 1;
+interface using {}
+class using {
+    public const using = 1;
+
+    public function using(): void {}
+}
+
+function using(): using {
+    $using = using;
+    $using = new using();
+    $using = using::using;
+    $using = using::using();
+    $using = using::using::using;
+    $using = using::using::using();
+    $using = $using->using();
+
+    $using
+}
+
+function using(): using {
+    using
+}

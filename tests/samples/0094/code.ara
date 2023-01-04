@@ -1,0 +1,19 @@
+function example(): void {
+    using $file = File\open_read_only("example.txt") {
+        // $file is present here
+    }
+
+    // $file is destroyed here
+
+    using $user = Users\by_id($user_id), $articles = Articles\by_user($user_id) {
+        // $user and $articles are present here
+    }
+
+    // $user and $articles are destroyed here
+
+    using $user = Users\by_id($id) if $user is nonnull {
+        // $user is present here
+    }
+
+    // $user is destroyed here
+}

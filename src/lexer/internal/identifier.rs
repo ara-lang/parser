@@ -128,6 +128,7 @@ pub fn to_keyword(ident: &[u8]) -> Option<TokenKind> {
         b"true" => TokenKind::True,
         b"try" => TokenKind::Try,
         b"use" => TokenKind::Use,
+        b"using" => TokenKind::Using,
         b"var" => TokenKind::Var,
         b"yield" => TokenKind::Yield,
         b"__dir__" => TokenKind::DirConstant,

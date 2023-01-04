@@ -1,0 +1,356 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "example",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 16,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 17,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 18,
+                    type_definition: Void(
+                        20,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: 31,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 37,
+                                                name: "$file",
+                                            },
+                                            equals: 43,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 45,
+                                                            value: "File\open_read_only",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 64,
+                                                        arguments: CommaSeparated {
+                                                            inner: [
+                                                                Positional {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    ellipsis: None,
+                                                                    value: Literal(
+                                                                        String(
+                                                                            LiteralString {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: ""example.txt"",
+                                                                                position: 65,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 78,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: None,
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 80,
+                                    statements: [],
+                                    right_brace: 119,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 90,
+                                            format: SingleLine,
+                                            content: "// $file is present here",
+                                        },
+                                        Comment {
+                                            position: 126,
+                                            format: SingleLine,
+                                            content: "// $file is destroyed here",
+                                        },
+                                    ],
+                                },
+                                using: 158,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 164,
+                                                name: "$user",
+                                            },
+                                            equals: 170,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 172,
+                                                            value: "Users\by_id",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 183,
+                                                        arguments: CommaSeparated {
+                                                            inner: [
+                                                                Positional {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    ellipsis: None,
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 184,
+                                                                            name: "$user_id",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 192,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 195,
+                                                name: "$articles",
+                                            },
+                                            equals: 205,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 207,
+                                                            value: "Articles\by_user",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 223,
+                                                        arguments: CommaSeparated {
+                                                            inner: [
+                                                                Positional {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    ellipsis: None,
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 224,
+                                                                            name: "$user_id",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 232,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [
+                                        193,
+                                    ],
+                                },
+                                if_clause: None,
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 234,
+                                    statements: [],
+                                    right_brace: 288,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 244,
+                                            format: SingleLine,
+                                            content: "// $user and $articles are present here",
+                                        },
+                                        Comment {
+                                            position: 295,
+                                            format: SingleLine,
+                                            content: "// $user and $articles are destroyed here",
+                                        },
+                                    ],
+                                },
+                                using: 342,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 348,
+                                                name: "$user",
+                                            },
+                                            equals: 354,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 356,
+                                                            value: "Users\by_id",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 367,
+                                                        arguments: CommaSeparated {
+                                                            inner: [
+                                                                Positional {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    ellipsis: None,
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 368,
+                                                                            name: "$id",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 371,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 373,
+                                        condition: TypeOperation(
+                                            Is {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 376,
+                                                        name: "$user",
+                                                    },
+                                                ),
+                                                is: 382,
+                                                right: NonNull(
+                                                    385,
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 393,
+                                    statements: [],
+                                    right_brace: 432,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 466,
+                },
+            },
+        ),
+    ],
+    eof: 468,
+}

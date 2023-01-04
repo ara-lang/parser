@@ -5,6 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::statement::block::BlockStatement;
 use crate::tree::statement::control_flow::IfStatement;
+use crate::tree::statement::control_flow::UsingStatement;
 use crate::tree::statement::expression::ExpressionStatement;
 use crate::tree::statement::r#loop::BreakStatement;
 use crate::tree::statement::r#loop::ContinueStatement;
@@ -33,6 +34,7 @@ pub enum Statement {
     Break(Box<BreakStatement>),
     Continue(Box<ContinueStatement>),
     If(Box<IfStatement>),
+    Using(Box<UsingStatement>),
     Try(Box<TryStatement>),
     Expression(Box<ExpressionStatement>),
     Return(Box<ReturnStatement>),
@@ -53,6 +55,7 @@ impl Node for Statement {
             Statement::Break(statement) => statement.initial_position(),
             Statement::Continue(statement) => statement.initial_position(),
             Statement::If(statement) => statement.initial_position(),
+            Statement::Using(statement) => statement.initial_position(),
             Statement::Try(statement) => statement.initial_position(),
             Statement::Expression(statement) => statement.initial_position(),
             Statement::Return(statement) => statement.initial_position(),
@@ -69,6 +72,7 @@ impl Node for Statement {
             Statement::Break(statement) => statement.final_position(),
             Statement::Continue(statement) => statement.final_position(),
             Statement::If(statement) => statement.final_position(),
+            Statement::Using(statement) => statement.final_position(),
             Statement::Try(statement) => statement.final_position(),
             Statement::Expression(statement) => statement.final_position(),
             Statement::Return(statement) => statement.final_position(),
@@ -85,6 +89,7 @@ impl Node for Statement {
             Statement::Break(statement) => vec![statement.as_ref()],
             Statement::Continue(statement) => vec![statement.as_ref()],
             Statement::If(statement) => vec![statement.as_ref()],
+            Statement::Using(statement) => vec![statement.as_ref()],
             Statement::Try(statement) => vec![statement.as_ref()],
             Statement::Expression(statement) => vec![statement.as_ref()],
             Statement::Return(statement) => vec![statement.as_ref()],
