@@ -1,4 +1,4 @@
-name: tests
+name: ci
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   tests:
-    name: tests
+    name: ci
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
