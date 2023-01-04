@@ -134,12 +134,9 @@ impl Expression {
                 | ArithmeticOperationExpression::PostIncrement { .. }
                 | ArithmeticOperationExpression::PostDecrement { .. } => false,
             },
-            Expression::ArrayOperation(expression) => match &expression {
-                ArrayOperationExpression::Access { array, index, .. } => {
-                    array.is_constant(initilization) && index.is_constant(initilization)
-                }
-                _ => false,
-            },
+            Expression::ArrayOperation(ArrayOperationExpression::Access {
+                array, index, ..
+            }) => array.is_constant(initilization) && index.is_constant(initilization),
             Expression::BitwiseOperation(expression) => match &expression {
                 BitwiseOperationExpression::And { left, right, .. }
                 | BitwiseOperationExpression::Or { left, right, .. }
@@ -175,11 +172,11 @@ impl Expression {
                 }
                 _ => false,
             },
-            Expression::CoalesceOperation(expression) => match &expression {
-                CoalesceOperationExpression::Coalesce { left, right, .. } => {
-                    left.is_constant(initilization) && right.is_constant(initilization)
-                }
-            },
+            Expression::CoalesceOperation(CoalesceOperationExpression::Coalesce {
+                left,
+                right,
+                ..
+            }) => left.is_constant(initilization) && right.is_constant(initilization),
             Expression::ComparisonOperation(expression) => match &expression {
                 ComparisonOperationExpression::Equal { left, right, .. }
                 | ComparisonOperationExpression::NotEqual { left, right, .. }
@@ -202,11 +199,9 @@ impl Expression {
                 }
                 LogicalOperationExpression::Not { right, .. } => right.is_constant(initilization),
             },
-            Expression::StringOperation(expression) => match &expression {
-                StringOperationExpression::Concat { left, right, .. } => {
-                    left.is_constant(initilization) && right.is_constant(initilization)
-                }
-            },
+            Expression::StringOperation(StringOperationExpression::Concat {
+                left, right, ..
+            }) => left.is_constant(initilization) && right.is_constant(initilization),
             Expression::TernaryOperation(expression) => match &expression {
                 TernaryOperationExpression::Ternary {
                     condition,
