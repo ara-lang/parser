@@ -1,0 +1,17 @@
+function foo(): void {
+    if $a in $b {
+
+    }
+
+    if $a in ($b, $c) {
+
+    }
+
+    if $a in vec[$b, $b] {
+
+    }
+
+    if $a in dict['a' => $b, 'b' => $c] {
+
+    }
+}

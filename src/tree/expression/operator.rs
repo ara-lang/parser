@@ -330,6 +330,12 @@ pub enum ArrayOperationExpression {
         isset: usize,
         item: Box<Expression>,
     },
+    In {
+        comments: CommentGroup,
+        item: Box<Expression>,
+        r#in: usize,
+        array: Box<Expression>,
+    },
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -891,7 +897,8 @@ impl Node for ArrayOperationExpression {
             ArrayOperationExpression::Access { comments, .. }
             | ArrayOperationExpression::Push { comments, .. }
             | ArrayOperationExpression::Isset { comments, .. }
-            | ArrayOperationExpression::Unset { comments, .. } => Some(comments),
+            | ArrayOperationExpression::Unset { comments, .. }
+            | ArrayOperationExpression::In { comments, .. } => Some(comments),
         }
     }
 
@@ -901,6 +908,7 @@ impl Node for ArrayOperationExpression {
             | ArrayOperationExpression::Push { array, .. } => array.initial_position(),
             ArrayOperationExpression::Isset { isset, .. } => *isset,
             ArrayOperationExpression::Unset { unset, .. } => *unset,
+            ArrayOperationExpression::In { item, .. } => item.initial_position(),
         }
     }
 
@@ -910,6 +918,7 @@ impl Node for ArrayOperationExpression {
             | ArrayOperationExpression::Push { right_bracket, .. } => right_bracket + 1,
             ArrayOperationExpression::Isset { item, .. }
             | ArrayOperationExpression::Unset { item, .. } => item.final_position(),
+            ArrayOperationExpression::In { array, .. } => array.final_position(),
         }
     }
 
@@ -924,6 +933,9 @@ impl Node for ArrayOperationExpression {
             ArrayOperationExpression::Isset { item, .. }
             | ArrayOperationExpression::Unset { item, .. } => {
                 vec![item.as_ref()]
+            }
+            ArrayOperationExpression::In { item, array, .. } => {
+                vec![item.as_ref(), array.as_ref()]
             }
         }
     }

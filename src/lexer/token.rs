@@ -171,6 +171,7 @@ pub enum TokenKind {
     Concurrently,
     Unset,
     Isset,
+    In,
 
     // DO NOT REMOVE: these tokens are left overs from PHP, and are not used by Ara,
     //  but must be kept to ensure the parse can detect them and error accordingly.
@@ -379,7 +380,10 @@ impl Display for TokenKind {
             Self::Where => "where",
             Self::Async => "async",
             Self::Await => "await",
+            Self::In => "in",
             Self::Concurrently => "concurrently",
+            Self::Isset => "isset",
+            Self::Unset => "unset",
             // Tokens that are part of PHP grammar but are not part of Ara.
             // Please do not remove these tokens for compatibility.
             Self::Var => "var",
@@ -389,8 +393,6 @@ impl Display for TokenKind {
                 OpenTagKind::Echo => "<?=",
             },
             Self::HaltCompilerOffsetConstant => "__COMPILER_HALT_OFFSET__",
-            Self::Isset => "isset",
-            Self::Unset => "unset",
             Self::HaltCompiler => "__halt_compiler",
             Self::Global => "global",
             Self::ElseIf => "elseif",

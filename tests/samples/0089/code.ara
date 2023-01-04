@@ -1,0 +1,25 @@
+namespace in;
+
+const in = 1;
+interface in {}
+class in {
+    public const in = 1;
+
+    public function in(): void {}
+}
+
+function in(): in {
+    $in = in;
+    $in = new in();
+    $in = in::in;
+    $in = in::in();
+    $in = in::in::in;
+    $in = in::in::in();
+    $in = $in->in();
+
+    $in
+}
+
+function in(): in {
+    in
+}

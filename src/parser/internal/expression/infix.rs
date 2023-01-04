@@ -7,6 +7,7 @@ use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::expression::operator::ArithmeticOperationExpression;
+use crate::tree::expression::operator::ArrayOperationExpression;
 use crate::tree::expression::operator::AssignmentOperationExpression;
 use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ComparisonOperationExpression;
@@ -77,6 +78,12 @@ pub fn infix(
             left: Box::new(left),
             r#instanceof: position,
             right: identifier::fully_qualified_type_identifier_including_self(state)?,
+        }),
+        TokenKind::In => Expression::ArrayOperation(ArrayOperationExpression::In {
+            comments,
+            item: Box::new(left),
+            r#in: position,
+            array: Box::new(expression::create(state)?),
         }),
         _ => {
             let left = Box::new(left);
@@ -402,6 +409,7 @@ pub fn is_infix(state: &mut State, t: &TokenKind) -> bool {
             | TokenKind::Pipe
             | TokenKind::Caret
             | TokenKind::Percent
+            | TokenKind::In
             | TokenKind::Is
             | TokenKind::Instanceof
             | TokenKind::Asterisk

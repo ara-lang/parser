@@ -1,0 +1,635 @@
+DefinitionTree {
+    definitions: [
+        Namespace(
+            NamespaceDefinition {
+                namespace: 0,
+                name: Identifier {
+                    position: 10,
+                    value: "in",
+                },
+                semicolon: 12,
+                definitions: [
+                    Constant(
+                        ConstantDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            const: 15,
+                            entries: CommaSeparated {
+                                inner: [
+                                    ConstantDefinitionEntry {
+                                        name: Identifier {
+                                            position: 21,
+                                            value: "in",
+                                        },
+                                        equals: 24,
+                                        value: Literal(
+                                            Integer(
+                                                LiteralInteger {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    value: "1",
+                                                    position: 26,
+                                                },
+                                            ),
+                                        ),
+                                    },
+                                ],
+                                commas: [],
+                            },
+                            semicolon: 27,
+                        },
+                    ),
+                    Interface(
+                        InterfaceDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            interface: 29,
+                            name: Identifier {
+                                position: 39,
+                                value: "in",
+                            },
+                            templates: None,
+                            extends: None,
+                            body: InterfaceDefinitionBody {
+                                left_brace: 42,
+                                members: [],
+                                right_brace: 43,
+                            },
+                        },
+                    ),
+                    Class(
+                        ClassDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            modifiers: ClassModifierDefinitionGroup {
+                                modifiers: [],
+                            },
+                            class: 45,
+                            name: Identifier {
+                                position: 51,
+                                value: "in",
+                            },
+                            templates: None,
+                            extends: None,
+                            implements: None,
+                            body: ClassDefinitionBody {
+                                left_brace: 54,
+                                members: [
+                                    Constant(
+                                        ClassishConstantDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: ConstantModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        60,
+                                                    ),
+                                                ],
+                                            },
+                                            const: 67,
+                                            entries: CommaSeparated {
+                                                inner: [
+                                                    ConstantDefinitionEntry {
+                                                        name: Identifier {
+                                                            position: 73,
+                                                            value: "in",
+                                                        },
+                                                        equals: 76,
+                                                        value: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 78,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            semicolon: 79,
+                                        },
+                                    ),
+                                    ConcreteMethod(
+                                        ConcreteMethodDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            attributes: [],
+                                            modifiers: MethodModifierDefinitionGroup {
+                                                modifiers: [
+                                                    Public(
+                                                        86,
+                                                    ),
+                                                ],
+                                            },
+                                            function: 93,
+                                            name: Identifier {
+                                                position: 102,
+                                                value: "in",
+                                            },
+                                            templates: None,
+                                            parameters: FunctionLikeParameterListDefinition {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 104,
+                                                parameters: CommaSeparated {
+                                                    inner: [],
+                                                    commas: [],
+                                                },
+                                                right_parenthesis: 105,
+                                            },
+                                            return_type: FunctionLikeReturnTypeDefinition {
+                                                colon: 106,
+                                                type_definition: Void(
+                                                    108,
+                                                ),
+                                            },
+                                            constraints: None,
+                                            body: BlockStatement {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_brace: 113,
+                                                statements: [],
+                                                right_brace: 114,
+                                            },
+                                        },
+                                    ),
+                                ],
+                                right_brace: 116,
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: 119,
+                            name: Identifier {
+                                position: 128,
+                                value: "in",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: 130,
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: 131,
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: 132,
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            position: 134,
+                                            value: "in",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: 137,
+                                statements: [
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 143,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 147,
+                                                    right: Identifier(
+                                                        Identifier {
+                                                            position: 149,
+                                                            value: "in",
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 151,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 157,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 161,
+                                                    right: ClassOperation(
+                                                        Initialization {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            new: 163,
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 167,
+                                                                    value: "in",
+                                                                },
+                                                            ),
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 169,
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: 170,
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 171,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 177,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 181,
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 183,
+                                                                    value: "in",
+                                                                },
+                                                            ),
+                                                            double_colon: 185,
+                                                            constant: Identifier {
+                                                                position: 187,
+                                                                value: "in",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 189,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 195,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 199,
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 201,
+                                                                    value: "in",
+                                                                },
+                                                            ),
+                                                            double_colon: 203,
+                                                            method: Identifier {
+                                                                position: 205,
+                                                                value: "in",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 207,
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: 208,
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 209,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 215,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 219,
+                                                    right: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            position: 221,
+                                                                            value: "in",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: 223,
+                                                                    constant: Identifier {
+                                                                        position: 225,
+                                                                        value: "in",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: 227,
+                                                            constant: Identifier {
+                                                                position: 229,
+                                                                value: "in",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 231,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 237,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 241,
+                                                    right: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            position: 243,
+                                                                            value: "in",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: 245,
+                                                                    constant: Identifier {
+                                                                        position: 247,
+                                                                        value: "in",
+                                                                    },
+                                                                },
+                                                            ),
+                                                            double_colon: 249,
+                                                            method: Identifier {
+                                                                position: 251,
+                                                                value: "in",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 253,
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: 254,
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 255,
+                                        },
+                                    ),
+                                    Expression(
+                                        ExpressionStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: AssignmentOperation(
+                                                Assignment {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left: Variable(
+                                                        Variable {
+                                                            position: 261,
+                                                            name: "$in",
+                                                        },
+                                                    ),
+                                                    equals: 265,
+                                                    right: ObjectOperation(
+                                                        MethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            object: Variable(
+                                                                Variable {
+                                                                    position: 267,
+                                                                    name: "$in",
+                                                                },
+                                                            ),
+                                                            arrow: 270,
+                                                            method: Identifier {
+                                                                position: 272,
+                                                                value: "in",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 274,
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: 275,
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                            semicolon: 276,
+                                        },
+                                    ),
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Variable(
+                                                Variable {
+                                                    position: 283,
+                                                    name: "$in",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: 287,
+                            },
+                        },
+                    ),
+                    Function(
+                        FunctionDefinition {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            attributes: [],
+                            function: 290,
+                            name: Identifier {
+                                position: 299,
+                                value: "in",
+                            },
+                            templates: None,
+                            parameters: FunctionLikeParameterListDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_parenthesis: 301,
+                                parameters: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                right_parenthesis: 302,
+                            },
+                            return_type: FunctionLikeReturnTypeDefinition {
+                                colon: 303,
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            position: 305,
+                                            value: "in",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                            },
+                            body: BlockStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                left_brace: 308,
+                                statements: [
+                                    Return(
+                                        Implicit {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            expression: Identifier(
+                                                Identifier {
+                                                    position: 314,
+                                                    value: "in",
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                ],
+                                right_brace: 317,
+                            },
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+    eof: 319,
+}

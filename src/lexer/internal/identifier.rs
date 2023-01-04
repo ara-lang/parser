@@ -81,6 +81,7 @@ pub fn to_keyword(ident: &[u8]) -> Option<TokenKind> {
         b"vec" => TokenKind::Vec,
         b"dict" => TokenKind::Dict,
         b"as" => TokenKind::As,
+        b"in" => TokenKind::In,
         b"break" => TokenKind::Break,
         b"case" => TokenKind::Case,
         b"catch" => TokenKind::Catch,

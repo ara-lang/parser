@@ -28,7 +28,8 @@ pub enum Precedence {
     AddSub,
     MulDivMod,
     Bang,
-    Instanceof,
+    TypeCheck,
+    ArrayContains,
     Prefix,
     Pow,
     Clone,
@@ -43,7 +44,8 @@ impl Precedence {
 
         match kind {
             Pow => Self::Pow,
-            Instanceof | Is | As => Self::Instanceof,
+            Instanceof | Is | As => Self::TypeCheck,
+            In => Self::ArrayContains,
             Asterisk | Slash | Percent => Self::MulDivMod,
             Plus | Minus => Self::AddSub,
             LeftShift | RightShift => Self::BitShift,
@@ -81,7 +83,8 @@ impl Precedence {
 
     pub fn associativity(&self) -> Option<Associativity> {
         Some(match self {
-            Self::Instanceof
+            Self::TypeCheck
+            | Self::ArrayContains
             | Self::MulDivMod
             | Self::AddSub
             | Self::BitShift
