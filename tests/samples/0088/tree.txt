@@ -1,0 +1,1391 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "test",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 13,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 14,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 15,
+                    type_definition: Void(
+                        17,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 22,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 28,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 31,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 33,
+                                                left_bracket: 36,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "1",
+                                                                        position: 37,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "2",
+                                                                        position: 40,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "3",
+                                                                        position: 43,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        38,
+                                                        41,
+                                                    ],
+                                                },
+                                                right_bracket: 44,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 45,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 52,
+                                        item: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        position: 58,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                left_bracket: 60,
+                                                index: Literal(
+                                                    Integer(
+                                                        LiteralInteger {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "0",
+                                                            position: 61,
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: 62,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 63,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 69,
+                                        item: Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 75,
+                                                expression: ArrayOperation(
+                                                    Access {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        array: Variable(
+                                                            Variable {
+                                                                position: 76,
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        left_bracket: 78,
+                                                        index: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "0",
+                                                                    position: 79,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        right_bracket: 80,
+                                                    },
+                                                ),
+                                                right_parenthesis: 81,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 82,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 88,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 94,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 95,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 97,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 98,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 99,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 102,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 104,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 105,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 106,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        100,
+                                                    ],
+                                                },
+                                                right_parenthesis: 107,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 108,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 114,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 120,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 121,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 123,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 124,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 125,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 128,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 130,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 131,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 132,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 135,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 137,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 138,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 139,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        126,
+                                                        133,
+                                                    ],
+                                                },
+                                                right_parenthesis: 140,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 141,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 148,
+                                        item: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        position: 154,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                left_bracket: 156,
+                                                index: Literal(
+                                                    Integer(
+                                                        LiteralInteger {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "0",
+                                                            position: 157,
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: 158,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 159,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 165,
+                                        item: Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 171,
+                                                expression: ArrayOperation(
+                                                    Access {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        array: Variable(
+                                                            Variable {
+                                                                position: 172,
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        left_bracket: 174,
+                                                        index: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "0",
+                                                                    position: 175,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        right_bracket: 176,
+                                                    },
+                                                ),
+                                                right_parenthesis: 177,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 178,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 184,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 190,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 191,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 193,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 194,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 195,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 198,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 200,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 201,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 202,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        196,
+                                                    ],
+                                                },
+                                                right_parenthesis: 203,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 204,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 210,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 216,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 217,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 219,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 220,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 221,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 224,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 226,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 227,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 228,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 231,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 233,
+                                                                index: Literal(
+                                                                    Integer(
+                                                                        LiteralInteger {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "0",
+                                                                            position: 234,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 235,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        222,
+                                                        229,
+                                                    ],
+                                                },
+                                                right_parenthesis: 236,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 237,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 244,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 247,
+                                        right: Dict(
+                                            DictExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                dict: 249,
+                                                left_bracket: 253,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        DictElementExpression {
+                                                            key: Literal(
+                                                                String(
+                                                                    LiteralString {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "'a'",
+                                                                        position: 254,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_arrow: 258,
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "1",
+                                                                        position: 261,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                        DictElementExpression {
+                                                            key: Literal(
+                                                                String(
+                                                                    LiteralString {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "'b'",
+                                                                        position: 264,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_arrow: 268,
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "2",
+                                                                        position: 271,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                        DictElementExpression {
+                                                            key: Literal(
+                                                                String(
+                                                                    LiteralString {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "'c'",
+                                                                        position: 274,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_arrow: 278,
+                                                            value: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "3",
+                                                                        position: 281,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        262,
+                                                        272,
+                                                    ],
+                                                },
+                                                right_bracket: 282,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 283,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 290,
+                                        item: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        position: 296,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                left_bracket: 298,
+                                                index: Literal(
+                                                    String(
+                                                        LiteralString {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "'a'",
+                                                            position: 299,
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: 302,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 303,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 309,
+                                        item: Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 315,
+                                                expression: ArrayOperation(
+                                                    Access {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        array: Variable(
+                                                            Variable {
+                                                                position: 316,
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        left_bracket: 318,
+                                                        index: Literal(
+                                                            String(
+                                                                LiteralString {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "'a'",
+                                                                    position: 319,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        right_bracket: 322,
+                                                    },
+                                                ),
+                                                right_parenthesis: 323,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 324,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 330,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 336,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 337,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 339,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 340,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 343,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 346,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 348,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 349,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 352,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        344,
+                                                    ],
+                                                },
+                                                right_parenthesis: 353,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 354,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Unset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        unset: 360,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 366,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 367,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 369,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 370,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 373,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 376,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 378,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 379,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 382,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 385,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 387,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 388,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 391,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        374,
+                                                        383,
+                                                    ],
+                                                },
+                                                right_parenthesis: 392,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 393,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 400,
+                                        item: ArrayOperation(
+                                            Access {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        position: 406,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                left_bracket: 408,
+                                                index: Literal(
+                                                    String(
+                                                        LiteralString {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "'a'",
+                                                            position: 409,
+                                                        },
+                                                    ),
+                                                ),
+                                                right_bracket: 412,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 413,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 419,
+                                        item: Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 425,
+                                                expression: ArrayOperation(
+                                                    Access {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        array: Variable(
+                                                            Variable {
+                                                                position: 426,
+                                                                name: "$a",
+                                                            },
+                                                        ),
+                                                        left_bracket: 428,
+                                                        index: Literal(
+                                                            String(
+                                                                LiteralString {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "'a'",
+                                                                    position: 429,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        right_bracket: 432,
+                                                    },
+                                                ),
+                                                right_parenthesis: 433,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 434,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 440,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 446,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 447,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 449,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 450,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 453,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 456,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 458,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 459,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 462,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        454,
+                                                    ],
+                                                },
+                                                right_parenthesis: 463,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 464,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: ArrayOperation(
+                                    Isset {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        isset: 470,
+                                        item: Tuple(
+                                            TupleExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 476,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 477,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 479,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 480,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 483,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 486,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 488,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 489,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 492,
+                                                            },
+                                                        ),
+                                                        ArrayOperation(
+                                                            Access {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                array: Variable(
+                                                                    Variable {
+                                                                        position: 495,
+                                                                        name: "$a",
+                                                                    },
+                                                                ),
+                                                                left_bracket: 497,
+                                                                index: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a'",
+                                                                            position: 498,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                right_bracket: 501,
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [
+                                                        484,
+                                                        493,
+                                                    ],
+                                                },
+                                                right_parenthesis: 502,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 503,
+                            },
+                        ),
+                    ],
+                    right_brace: 505,
+                },
+            },
+        ),
+    ],
+    eof: 507,
+}

@@ -338,6 +338,16 @@ pub enum ArrayOperationExpression {
         left_bracket: usize,
         right_bracket: usize,
     },
+    Unset {
+        comments: CommentGroup,
+        unset: usize,
+        item: Box<Expression>,
+    },
+    Isset {
+        comments: CommentGroup,
+        isset: usize,
+        item: Box<Expression>,
+    },
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -908,22 +918,28 @@ impl Node for StringOperationExpression {
 impl Node for ArrayOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ArrayOperationExpression::Access { comments, .. } => Some(comments),
-            ArrayOperationExpression::Push { comments, .. } => Some(comments),
+            ArrayOperationExpression::Access { comments, .. }
+            | ArrayOperationExpression::Push { comments, .. }
+            | ArrayOperationExpression::Isset { comments, .. }
+            | ArrayOperationExpression::Unset { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ArrayOperationExpression::Access { array, .. } => array.initial_position(),
-            ArrayOperationExpression::Push { array, .. } => array.initial_position(),
+            ArrayOperationExpression::Access { array, .. }
+            | ArrayOperationExpression::Push { array, .. } => array.initial_position(),
+            ArrayOperationExpression::Isset { isset, .. } => *isset,
+            ArrayOperationExpression::Unset { unset, .. } => *unset,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ArrayOperationExpression::Access { right_bracket, .. } => right_bracket + 1,
-            ArrayOperationExpression::Push { right_bracket, .. } => right_bracket + 1,
+            ArrayOperationExpression::Access { right_bracket, .. }
+            | ArrayOperationExpression::Push { right_bracket, .. } => right_bracket + 1,
+            ArrayOperationExpression::Isset { item, .. }
+            | ArrayOperationExpression::Unset { item, .. } => item.final_position(),
         }
     }
 
@@ -934,6 +950,10 @@ impl Node for ArrayOperationExpression {
             }
             ArrayOperationExpression::Push { array, .. } => {
                 vec![array.as_ref()]
+            }
+            ArrayOperationExpression::Isset { item, .. }
+            | ArrayOperationExpression::Unset { item, .. } => {
+                vec![item.as_ref()]
             }
         }
     }

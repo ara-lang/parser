@@ -172,6 +172,8 @@ pub enum TokenKind {
     Async,
     Await,
     Concurrently,
+    Unset,
+    Isset,
 
     // DO NOT REMOVE: these tokens are left overs from PHP, and are not used by Ara,
     //  but must be kept to ensure the parse can detect them and error accordingly.
@@ -184,9 +186,7 @@ pub enum TokenKind {
     EndIf,
     EndSwitch,
     EndWhile,
-    Unset,
     List,
-    Isset,
     Global,
     Empty,
     Include,

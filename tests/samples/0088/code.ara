@@ -1,0 +1,25 @@
+function test(): void {
+    $a = vec[1, 2, 3];
+
+    unset $a[0];
+    unset ($a[0]);
+    unset ($a[0], $a[0]);
+    unset ($a[0], $a[0], $a[0]);
+
+    isset $a[0];
+    isset ($a[0]);
+    isset ($a[0], $a[0]);
+    isset ($a[0], $a[0], $a[0]);
+
+    $a = dict['a' => 1, 'b' => 2, 'c' => 3];
+
+    unset $a['a'];
+    unset ($a['a']);
+    unset ($a['a'], $a['a']);
+    unset ($a['a'], $a['a'], $a['a']);
+
+    isset $a['a'];
+    isset ($a['a']);
+    isset ($a['a'], $a['a']);
+    isset ($a['a'], $a['a'], $a['a']);
+}

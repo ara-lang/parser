@@ -18,6 +18,7 @@ use crate::tree::expression::literal::LiteralString;
 use crate::tree::expression::literal::LiteralTrue;
 use crate::tree::expression::magic_constant::MagicConstant;
 use crate::tree::expression::operator::ArithmeticOperationExpression;
+use crate::tree::expression::operator::ArrayOperationExpression;
 use crate::tree::expression::operator::AsyncOperationExpression;
 use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ClassOperationExpression;
@@ -230,7 +231,7 @@ expressions! {
         postfix::postfix(state, lhs, op)
     })
 
-    #[before(anonymous_class), current(
+    #[before(isset), current(
         | TokenKind::Enum   | TokenKind::From   | TokenKind::Where
         | TokenKind::Type   | TokenKind::Vec    | TokenKind::Dict
         | TokenKind::Async  | TokenKind::Await  | TokenKind::Concurrently
@@ -240,6 +241,30 @@ expressions! {
         let lhs = Expression::Identifier(ident);
 
         postfix::postfix(state, lhs, &TokenKind::DoubleColon)
+    })
+
+    #[before(unset), current(TokenKind::Isset)]
+    isset({
+        let isset = state.iterator.current().position;
+        state.iterator.next();
+
+        Ok(Expression::ArrayOperation(ArrayOperationExpression::Isset {
+            comments: state.iterator.comments(),
+            isset,
+            item: Box::new(for_precedence(state, Precedence::Lowest)?)
+        }))
+    })
+
+    #[before(anonymous_class), current(TokenKind::Unset)]
+    unset({
+        let unset = state.iterator.current().position;
+        state.iterator.next();
+
+        Ok(Expression::ArrayOperation(ArrayOperationExpression::Unset {
+            comments: state.iterator.comments(),
+            unset,
+            item: Box::new(for_precedence(state, Precedence::Lowest)?)
+        }))
     })
 
     #[before(new), current(TokenKind::New), peek(TokenKind::Class | TokenKind::Attribute)]
@@ -259,7 +284,7 @@ expressions! {
             ClassOperationExpression::Initialization {
                 comments: state.iterator.comments(),
                 new,
-                class: Box::new(for_precedence(state, Precedence::CloneOrNew)?),
+                class: Box::new(for_precedence(state, Precedence::New)?),
                 generics: if state.iterator.current().kind == TokenKind::Generic {
                     Some(generic::generic_group(state)?)
                 } else {
@@ -382,7 +407,7 @@ expressions! {
         Ok(Expression::ObjectOperation(ObjectOperationExpression::Clone {
             comments: state.iterator.comments(),
             clone: position,
-            object: Box::new(for_precedence(state, Precedence::CloneOrNew)?),
+            object: Box::new(for_precedence(state, Precedence::Clone)?),
         }))
     })
 

@@ -138,7 +138,7 @@ impl Expression {
                 ArrayOperationExpression::Access { array, index, .. } => {
                     array.is_constant(initilization) && index.is_constant(initilization)
                 }
-                ArrayOperationExpression::Push { .. } => false,
+                _ => false,
             },
             Expression::BitwiseOperation(expression) => match &expression {
                 BitwiseOperationExpression::And { left, right, .. }
