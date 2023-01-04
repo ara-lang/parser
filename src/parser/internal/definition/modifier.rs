@@ -35,7 +35,7 @@ pub fn class_modifier_definition_group(
                 }
             }
             TokenKind::Abstract => {
-                let modifier = ClassModifierDefinition::Final(position);
+                let modifier = ClassModifierDefinition::Abstract(position);
                 modifiers.push(modifier.clone());
 
                 if abstract_modifier.is_none() {
@@ -93,7 +93,7 @@ pub fn method_modifier_definition_group(
                 }
             }
             TokenKind::Abstract => {
-                let modifier = MethodModifierDefinition::Final(position);
+                let modifier = MethodModifierDefinition::Abstract(position);
                 modifiers.push(modifier.clone());
 
                 if abstract_modifier.is_none() {
