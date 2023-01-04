@@ -177,7 +177,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                 _ => {
                     crate::parser_bail!(
                         state,
-                        unexpected_token(vec!["$", "class", "an identifier"], current)
+                        unexpected_token(vec!["a variable", "an identifier", "class"], current)
                     );
                 }
             }
