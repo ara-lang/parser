@@ -21,7 +21,7 @@ struct NoVariadicParameterRuleVisitor;
 impl NodeVisitor<Issue> for NoVariadicParameterRuleVisitor {
     fn visit(
         &mut self,
-        source: &String,
+        source: &str,
         node: &dyn Node,
         _parent: Option<&dyn Node>,
     ) -> Result<(), Issue> {

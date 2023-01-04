@@ -5,7 +5,7 @@ use crate::tree::Node;
 pub trait NodeVisitor<E: Debug> {
     fn visit_node(
         &mut self,
-        source: &String,
+        source: &str,
         node: &dyn Node,
         parent: Option<&dyn Node>,
     ) -> Result<(), E> {
@@ -20,7 +20,7 @@ pub trait NodeVisitor<E: Debug> {
 
     fn visit(
         &mut self,
-        source: &String,
+        source: &str,
         node: &dyn Node,
         parent: Option<&dyn Node>,
     ) -> Result<(), E>;
