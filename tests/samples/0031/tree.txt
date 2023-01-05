@@ -25,8 +25,16 @@ DefinitionTree {
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 12,
-                    type_definition: True(
+                    type_definition: Literal(
                         14,
+                        True(
+                            LiteralTrue {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                position: 14,
+                            },
+                        ),
                     ),
                 },
                 body: BlockStatement {

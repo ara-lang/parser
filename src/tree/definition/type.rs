@@ -26,9 +26,6 @@ pub enum TypeDefinition {
     Union(Vec<TypeDefinition>),
     Intersection(Vec<TypeDefinition>),
     Void(usize),
-    Null(usize),
-    True(usize),
-    False(usize),
     Never(usize),
     Float(usize),
     Boolean(usize),
@@ -118,9 +115,6 @@ impl Node for TypeDefinition {
             TypeDefinition::Literal(_, literal) => literal.initial_position(),
             TypeDefinition::Nullable(position, _)
             | TypeDefinition::Void(position)
-            | TypeDefinition::Null(position)
-            | TypeDefinition::True(position)
-            | TypeDefinition::False(position)
             | TypeDefinition::Never(position)
             | TypeDefinition::Float(position)
             | TypeDefinition::Boolean(position)
@@ -157,15 +151,12 @@ impl Node for TypeDefinition {
             | TypeDefinition::Iterable(_, template) => template.final_position(),
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
+            TypeDefinition::Literal(_, literal) => literal.final_position(),
             TypeDefinition::Void(position) => position + 4,
-            TypeDefinition::Null(position) => position + 4,
-            TypeDefinition::True(position) => position + 4,
-            TypeDefinition::False(position) => position + 5,
             TypeDefinition::Never(position) => position + 5,
             TypeDefinition::Float(position) => position + 5,
             TypeDefinition::Boolean(position) => position + 7,
             TypeDefinition::Integer(position) => position + 7,
-            TypeDefinition::Literal(_, literal) => literal.final_position(),
             TypeDefinition::String(position) => position + 6,
             TypeDefinition::Object(position) => position + 6,
             TypeDefinition::Mixed(position) => position + 5,
@@ -188,13 +179,10 @@ impl Node for TypeDefinition {
                 inner.iter().map(|t| t as &dyn Node).collect()
             }
             TypeDefinition::Void(_)
-            | TypeDefinition::Null(_)
-            | TypeDefinition::True(_)
             | TypeDefinition::Object(_)
             | TypeDefinition::NonNull(_)
             | TypeDefinition::Mixed(_)
             | TypeDefinition::Resource(_)
-            | TypeDefinition::False(_)
             | TypeDefinition::Never(_)
             | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
@@ -244,22 +232,25 @@ impl std::fmt::Display for TypeDefinition {
                     .join("&")
             ),
             TypeDefinition::Void(_) => write!(f, "void"),
-            TypeDefinition::Null(_) => write!(f, "null"),
-            TypeDefinition::True(_) => write!(f, "true"),
-            TypeDefinition::False(_) => write!(f, "false"),
             TypeDefinition::Never(_) => write!(f, "never"),
             TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
             TypeDefinition::Integer(_) => write!(f, "int"),
             TypeDefinition::Literal(_, literal) => {
                 let (literal_type, value) = match literal {
-                    Literal::Integer(inner) => ("integer", inner.value.clone()),
-                    Literal::Float(inner) => ("float", inner.value.clone()),
-                    Literal::String(inner) => ("string", inner.value.clone()),
-                    _ => unreachable!(),
+                    Literal::Null(_inner) => ("null", None),
+                    Literal::False(_inner) => ("false", None),
+                    Literal::True(_inner) => ("true", None),
+                    Literal::Integer(inner) => ("integer", Some(inner.value.clone())),
+                    Literal::Float(inner) => ("float", Some(inner.value.clone())),
+                    Literal::String(inner) => ("string", Some(inner.value.clone())),
                 };
 
-                write!(f, "{}({})", literal_type, value)
+                if let Some(value) = value {
+                    write!(f, "{}({})", literal_type, value)
+                } else {
+                    write!(f, "{}", literal_type)
+                }
             }
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),

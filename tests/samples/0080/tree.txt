@@ -11,8 +11,16 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 8,
-                type_definition: Null(
+                type_definition: Literal(
                     10,
+                    Null(
+                        LiteralNull {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 10,
+                        },
+                    ),
                 ),
                 semicolon: 14,
             },
@@ -28,8 +36,16 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 23,
-                type_definition: False(
+                type_definition: Literal(
                     25,
+                    False(
+                        LiteralFalse {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 25,
+                        },
+                    ),
                 ),
                 semicolon: 30,
             },
@@ -45,8 +61,16 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 39,
-                type_definition: True(
+                type_definition: Literal(
                     41,
+                    True(
+                        LiteralTrue {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 41,
+                        },
+                    ),
                 ),
                 semicolon: 45,
             },

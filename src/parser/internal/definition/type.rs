@@ -6,7 +6,9 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
-use crate::tree::expression::literal::{Literal, LiteralFloat, LiteralInteger, LiteralString};
+use crate::tree::expression::literal::{
+    Literal, LiteralFalse, LiteralFloat, LiteralInteger, LiteralNull, LiteralString, LiteralTrue,
+};
 use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
@@ -83,21 +85,6 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
     let value = lowered_name.as_slice();
 
     match &current.kind {
-        TokenKind::Null => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::Null(position))
-        }
-        TokenKind::True => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::True(position))
-        }
-        TokenKind::False => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::False(position))
-        }
         TokenKind::Vec => {
             state.iterator.next();
 
@@ -112,24 +99,36 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             Ok(TypeDefinition::Dict(position, templates))
         }
-        TokenKind::LiteralInteger | TokenKind::LiteralFloat | TokenKind::LiteralString => {
+        TokenKind::Null
+        | TokenKind::True
+        | TokenKind::False
+        | TokenKind::LiteralFloat
+        | TokenKind::LiteralString
+        | TokenKind::LiteralInteger => {
             state.iterator.next();
 
+            let value = current.value.clone();
+            let position = current.position;
+            let comments = state.iterator.comments();
+
             let literal = match &current.kind {
+                TokenKind::Null => Literal::Null(LiteralNull { position, comments }),
+                TokenKind::True => Literal::True(LiteralTrue { position, comments }),
+                TokenKind::False => Literal::False(LiteralFalse { position, comments }),
                 TokenKind::LiteralInteger => Literal::Integer(LiteralInteger {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone(),
+                    comments,
+                    position,
+                    value,
                 }),
                 TokenKind::LiteralFloat => Literal::Float(LiteralFloat {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone(),
+                    comments,
+                    position,
+                    value,
                 }),
                 TokenKind::LiteralString => Literal::String(LiteralString {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone(),
+                    comments,
+                    position,
+                    value,
                 }),
                 _ => unreachable!(),
             };
