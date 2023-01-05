@@ -137,7 +137,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
                 _ => unreachable!(),
             };
 
-            Ok(TypeDefinition::Literal(position, literal))
+            Ok(TypeDefinition::Literal(literal))
         }
         _ if value == b"iterable" => {
             state.iterator.next();

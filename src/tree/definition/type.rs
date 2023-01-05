@@ -40,7 +40,7 @@ pub enum TypeDefinition {
     Iterable(usize, TypeTemplateGroupDefinition),
     Class(usize, TypeTemplateGroupDefinition),
     Interface(usize, TypeTemplateGroupDefinition),
-    Literal(usize, Literal),
+    Literal(Literal),
     Tuple {
         left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
@@ -88,7 +88,7 @@ impl TypeDefinition {
     }
 
     pub fn is_literal(&self) -> bool {
-        matches!(self, TypeDefinition::Literal(_, _))
+        matches!(self, TypeDefinition::Literal(_))
     }
 }
 
@@ -112,7 +112,7 @@ impl Node for TypeDefinition {
             TypeDefinition::Identifier(inner) => inner.initial_position(),
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
-            TypeDefinition::Literal(_, literal) => literal.initial_position(),
+            TypeDefinition::Literal(literal) => literal.initial_position(),
             TypeDefinition::Nullable(position, _)
             | TypeDefinition::Void(position)
             | TypeDefinition::Never(position)
@@ -151,7 +151,7 @@ impl Node for TypeDefinition {
             | TypeDefinition::Iterable(_, template) => template.final_position(),
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
-            TypeDefinition::Literal(_, literal) => literal.final_position(),
+            TypeDefinition::Literal(literal) => literal.final_position(),
             TypeDefinition::Void(position) => position + 4,
             TypeDefinition::Never(position) => position + 5,
             TypeDefinition::Float(position) => position + 5,
@@ -188,7 +188,7 @@ impl Node for TypeDefinition {
             | TypeDefinition::Boolean(_)
             | TypeDefinition::Integer(_)
             | TypeDefinition::String(_) => vec![],
-            TypeDefinition::Literal(_, literal) => vec![literal],
+            TypeDefinition::Literal(literal) => vec![literal],
             TypeDefinition::Class(_, template)
             | TypeDefinition::Interface(_, template)
             | TypeDefinition::Iterable(_, template)
@@ -236,22 +236,14 @@ impl std::fmt::Display for TypeDefinition {
             TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
             TypeDefinition::Integer(_) => write!(f, "int"),
-            TypeDefinition::Literal(_, literal) => {
-                let (literal_type, value) = match literal {
-                    Literal::Null(_inner) => ("null", None),
-                    Literal::False(_inner) => ("false", None),
-                    Literal::True(_inner) => ("true", None),
-                    Literal::Integer(inner) => ("integer", Some(inner.value.clone())),
-                    Literal::Float(inner) => ("float", Some(inner.value.clone())),
-                    Literal::String(inner) => ("string", Some(inner.value.clone())),
-                };
-
-                if let Some(value) = value {
-                    write!(f, "{}({})", literal_type, value)
-                } else {
-                    write!(f, "{}", literal_type)
-                }
-            }
+            TypeDefinition::Literal(literal) => match literal {
+                Literal::Null(_) => write!(f, "null"),
+                Literal::False(_) => write!(f, "false"),
+                Literal::True(_) => write!(f, "true"),
+                Literal::Integer(inner) => write!(f, "{}", inner.value),
+                Literal::Float(inner) => write!(f, "{}", inner.value),
+                Literal::String(inner) => write!(f, "{}", inner.value),
+            },
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),
             TypeDefinition::Vec(_, template) => write!(f, "vec{}", template),

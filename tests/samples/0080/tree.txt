@@ -12,7 +12,6 @@ DefinitionTree {
                 },
                 equals: 8,
                 type_definition: Literal(
-                    10,
                     Null(
                         LiteralNull {
                             comments: CommentGroup {
@@ -37,7 +36,6 @@ DefinitionTree {
                 },
                 equals: 23,
                 type_definition: Literal(
-                    25,
                     False(
                         LiteralFalse {
                             comments: CommentGroup {
@@ -62,7 +60,6 @@ DefinitionTree {
                 },
                 equals: 39,
                 type_definition: Literal(
-                    41,
                     True(
                         LiteralTrue {
                             comments: CommentGroup {
@@ -712,7 +709,6 @@ DefinitionTree {
                 },
                 equals: 315,
                 type_definition: Literal(
-                    317,
                     String(
                         LiteralString {
                             comments: CommentGroup {
@@ -738,7 +734,6 @@ DefinitionTree {
                 },
                 equals: 331,
                 type_definition: Literal(
-                    333,
                     Integer(
                         LiteralInteger {
                             comments: CommentGroup {
@@ -764,7 +759,6 @@ DefinitionTree {
                 },
                 equals: 343,
                 type_definition: Literal(
-                    345,
                     Float(
                         LiteralFloat {
                             comments: CommentGroup {
@@ -792,7 +786,6 @@ DefinitionTree {
                 type_definition: Union(
                     [
                         Literal(
-                            359,
                             Integer(
                                 LiteralInteger {
                                     comments: CommentGroup {
@@ -804,7 +797,6 @@ DefinitionTree {
                             ),
                         ),
                         Literal(
-                            363,
                             Float(
                                 LiteralFloat {
                                     comments: CommentGroup {
@@ -816,7 +808,6 @@ DefinitionTree {
                             ),
                         ),
                         Literal(
-                            369,
                             Integer(
                                 LiteralInteger {
                                     comments: CommentGroup {
@@ -828,7 +819,6 @@ DefinitionTree {
                             ),
                         ),
                         Literal(
-                            373,
                             String(
                                 LiteralString {
                                     comments: CommentGroup {
@@ -840,7 +830,6 @@ DefinitionTree {
                             ),
                         ),
                         Literal(
-                            381,
                             Float(
                                 LiteralFloat {
                                     comments: CommentGroup {
@@ -852,7 +841,6 @@ DefinitionTree {
                             ),
                         ),
                         Literal(
-                            387,
                             String(
                                 LiteralString {
                                     comments: CommentGroup {

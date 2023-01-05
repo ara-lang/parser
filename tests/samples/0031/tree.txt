@@ -26,7 +26,6 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 12,
                     type_definition: Literal(
-                        14,
                         True(
                             LiteralTrue {
                                 comments: CommentGroup {
