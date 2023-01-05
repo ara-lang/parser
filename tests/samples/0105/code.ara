@@ -1,0 +1,4 @@
+
+function foo(null&Bar $bar): mixed {}
+
+function foo(Bar&null $bar): mixed {}

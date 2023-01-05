@@ -687,6 +687,20 @@ pub enum ParserIssueCode {
     /// - Remove the empty type template
     /// - Add a type template
     ExpectedAtLeastOneTypeInTemplateGroup = 46,
+
+    /// Literal type cannot be used in intersection ( code = 47 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// function foo(Foo&null $bar): void {}
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Use a different type (instead of `null`)
+    /// - Change the intersection to a union
+    LiteralTypeCannotBeUsedInIntersection = 47,
 }
 
 pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) -> Issue {
@@ -1033,6 +1047,28 @@ pub(crate) fn scalar_type_cannot_be_used_in_intersection(
     )
     .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
     .with_note("a scalar type is either `int`, `float`, `string`, or `bool`.")
+    .with_help("try using a different type for the intersection.")
+}
+
+pub(crate) fn literal_type_cannot_be_used_in_intersection(
+    state: &ParserState,
+    type_definition: &TypeDefinition,
+    ampersand: usize,
+) -> Issue {
+    let origin = state.source.name();
+
+    Issue::error(
+        ParserIssueCode::LiteralTypeCannotBeUsedInIntersection,
+        format!(
+            "literal type `{}` cannot be used in an intersection",
+            &type_definition,
+        ),
+        origin,
+        type_definition.initial_position(),
+        type_definition.final_position(),
+    )
+    .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
+    .with_note("a literal type is either `1`, `1.6`, `\"foo\"`, `false`, `true` or `null`.")
     .with_help("try using a different type for the intersection.")
 }
 
