@@ -75,16 +75,17 @@ impl TypeDefinition {
     }
 
     pub fn is_scalar(&self) -> bool {
-        matches!(
-            self,
-            TypeDefinition::Float(_)
-                | TypeDefinition::Boolean(_)
-                | TypeDefinition::Integer(_)
-                | TypeDefinition::String(_)
-                // class, and interface are represented as strings at runtime, so they are considered scalars
-                | TypeDefinition::Class(_, _)
-                | TypeDefinition::Interface(_, _)
-        )
+        match self {
+            TypeDefinition::Literal(literal) => !matches!(literal, Literal::Null(_)),
+            | TypeDefinition::Float(_)
+            | TypeDefinition::Boolean(_)
+            | TypeDefinition::Integer(_)
+            | TypeDefinition::String(_)
+            // class, and interface are represented as strings at runtime, so they are considered scalars
+            | TypeDefinition::Class(_, _)
+            | TypeDefinition::Interface(_, _) => true,
+            _ => false,
+        }
     }
 
     pub fn is_literal(&self) -> bool {
