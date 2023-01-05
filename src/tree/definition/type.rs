@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
-use crate::tree::expression::literal::{LiteralFloat, LiteralInteger};
+use crate::tree::expression::literal::Literal;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
@@ -43,6 +43,7 @@ pub enum TypeDefinition {
     Iterable(usize, TypeTemplateGroupDefinition),
     Class(usize, TypeTemplateGroupDefinition),
     Interface(usize, TypeTemplateGroupDefinition),
+    Literal(usize, Literal),
     Tuple {
         left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
@@ -52,14 +53,6 @@ pub enum TypeDefinition {
         left_parenthesis: usize,
         type_definition: Box<TypeDefinition>,
         right_parenthesis: usize,
-    },
-    LiteralFloat {
-        position: usize,
-        literal: LiteralFloat,
-    },
-    LiteralInteger {
-        position: usize,
-        literal: LiteralInteger,
     },
 }
 
@@ -98,10 +91,7 @@ impl TypeDefinition {
     }
 
     pub fn is_literal(&self) -> bool {
-        matches!(
-            self,
-            TypeDefinition::LiteralInteger { .. } | TypeDefinition::LiteralFloat { .. }
-        )
+        matches!(self, TypeDefinition::Literal(_, _))
     }
 }
 
@@ -125,6 +115,7 @@ impl Node for TypeDefinition {
             TypeDefinition::Identifier(inner) => inner.initial_position(),
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
+            TypeDefinition::Literal(_, literal) => literal.initial_position(),
             TypeDefinition::Nullable(position, _)
             | TypeDefinition::Void(position)
             | TypeDefinition::Null(position)
@@ -152,8 +143,6 @@ impl Node for TypeDefinition {
                 left_parenthesis: position,
                 ..
             } => *position,
-            TypeDefinition::LiteralFloat { literal, .. } => literal.initial_position(),
-            TypeDefinition::LiteralInteger { literal, .. } => literal.initial_position(),
         }
     }
 
@@ -176,8 +165,7 @@ impl Node for TypeDefinition {
             TypeDefinition::Float(position) => position + 5,
             TypeDefinition::Boolean(position) => position + 7,
             TypeDefinition::Integer(position) => position + 7,
-            TypeDefinition::LiteralFloat { literal, .. } => literal.final_position(),
-            TypeDefinition::LiteralInteger { literal, .. } => literal.final_position(),
+            TypeDefinition::Literal(_, literal) => literal.final_position(),
             TypeDefinition::String(position) => position + 6,
             TypeDefinition::Object(position) => position + 6,
             TypeDefinition::Mixed(position) => position + 5,
@@ -211,9 +199,8 @@ impl Node for TypeDefinition {
             | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
             | TypeDefinition::Integer(_)
-            | TypeDefinition::LiteralInteger { .. }
-            | TypeDefinition::LiteralFloat { .. }
             | TypeDefinition::String(_) => vec![],
+            TypeDefinition::Literal(_, literal) => vec![literal],
             TypeDefinition::Class(_, template)
             | TypeDefinition::Interface(_, template)
             | TypeDefinition::Iterable(_, template)
@@ -264,11 +251,15 @@ impl std::fmt::Display for TypeDefinition {
             TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
             TypeDefinition::Integer(_) => write!(f, "int"),
-            TypeDefinition::LiteralInteger { literal, .. } => {
-                write!(f, "integer({})", literal.value)
-            }
-            TypeDefinition::LiteralFloat { literal, .. } => {
-                write!(f, "float({})", literal.value)
+            TypeDefinition::Literal(_, literal) => {
+                let (literal_type, value) = match literal {
+                    Literal::Integer(inner) => ("integer", inner.value.clone()),
+                    Literal::Float(inner) => ("float", inner.value.clone()),
+                    Literal::String(inner) => ("string", inner.value.clone()),
+                    _ => unreachable!(),
+                };
+
+                write!(f, "{}({})", literal_type, value)
             }
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),
