@@ -76,7 +76,10 @@ impl TypeDefinition {
 
     pub fn is_scalar(&self) -> bool {
         match self {
-            TypeDefinition::Literal(literal) => !matches!(literal, Literal::Null(_)),
+            TypeDefinition::Literal(literal) => match literal {
+                Literal::Null(_) => false,
+                _ => true,
+            },
             | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
             | TypeDefinition::Integer(_)
