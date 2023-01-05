@@ -6,9 +6,13 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
-use crate::tree::expression::literal::{
-    Literal, LiteralFalse, LiteralFloat, LiteralInteger, LiteralNull, LiteralString, LiteralTrue,
-};
+use crate::tree::expression::literal::Literal;
+use crate::tree::expression::literal::LiteralFalse;
+use crate::tree::expression::literal::LiteralFloat;
+use crate::tree::expression::literal::LiteralInteger;
+use crate::tree::expression::literal::LiteralNull;
+use crate::tree::expression::literal::LiteralString;
+use crate::tree::expression::literal::LiteralTrue;
 use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
