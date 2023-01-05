@@ -152,11 +152,10 @@ DefinitionTree {
                                                         left_parenthesis: 86,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: ArithmeticOperation(
                                                                         Subtraction {
                                                                             comments: CommentGroup {
@@ -210,11 +209,10 @@ DefinitionTree {
                                                         left_parenthesis: 100,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: ArithmeticOperation(
                                                                         Subtraction {
                                                                             comments: CommentGroup {

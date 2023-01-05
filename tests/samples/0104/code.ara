@@ -1,0 +1,10 @@
+
+#[Baz(...BAZ)]
+function foo(
+    Bar $bar = new Bar(...BAZ),
+): void {}
+
+#[Bar(...BAZ)]
+function qux(
+    Bar $bar = new Bar(BAZ...),
+): void {}

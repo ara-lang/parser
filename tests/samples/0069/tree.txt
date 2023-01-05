@@ -202,11 +202,10 @@ DefinitionTree {
                                                         left_parenthesis: 115,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Variable(
                                                                         Variable {
                                                                             position: 116,
@@ -214,11 +213,10 @@ DefinitionTree {
                                                                         },
                                                                     ),
                                                                 },
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: ArrowFunction(
                                                                         ArrowFunctionExpression {
                                                                             comments: CommentGroup {
@@ -475,11 +473,10 @@ DefinitionTree {
                                                         left_parenthesis: 246,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Variable(
                                                                         Variable {
                                                                             position: 247,
@@ -487,11 +484,10 @@ DefinitionTree {
                                                                         },
                                                                     ),
                                                                 },
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: ArrowFunction(
                                                                         ArrowFunctionExpression {
                                                                             comments: CommentGroup {

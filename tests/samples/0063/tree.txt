@@ -159,11 +159,10 @@ DefinitionTree {
                                             left_parenthesis: 84,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -176,11 +175,10 @@ DefinitionTree {
                                                             ),
                                                         ),
                                                     },
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -234,11 +232,10 @@ DefinitionTree {
                                             left_parenthesis: 106,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -251,11 +248,10 @@ DefinitionTree {
                                                             ),
                                                         ),
                                                     },
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -309,11 +305,10 @@ DefinitionTree {
                                             left_parenthesis: 127,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {
@@ -326,11 +321,10 @@ DefinitionTree {
                                                             ),
                                                         ),
                                                     },
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: Literal(
                                                             Integer(
                                                                 LiteralInteger {

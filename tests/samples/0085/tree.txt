@@ -1100,11 +1100,10 @@ DefinitionTree {
                                             left_parenthesis: 496,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ClassOperation(
                                                             Initialization {
                                                                 comments: CommentGroup {
@@ -1125,11 +1124,10 @@ DefinitionTree {
                                                                     left_parenthesis: 504,
                                                                     arguments: CommaSeparated {
                                                                         inner: [
-                                                                            Positional {
+                                                                            Value {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
                                                                                 },
-                                                                                ellipsis: None,
                                                                                 value: Vec(
                                                                                     VecExpression {
                                                                                         comments: CommentGroup {
@@ -2142,11 +2140,10 @@ DefinitionTree {
                                                     left_parenthesis: 950,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: ClassOperation(
                                                                     Initialization {
                                                                         comments: CommentGroup {
@@ -2167,11 +2164,10 @@ DefinitionTree {
                                                                             left_parenthesis: 958,
                                                                             arguments: CommaSeparated {
                                                                                 inner: [
-                                                                                    Positional {
+                                                                                    Value {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        ellipsis: None,
                                                                                         value: Vec(
                                                                                             VecExpression {
                                                                                                 comments: CommentGroup {
@@ -5416,11 +5412,10 @@ DefinitionTree {
                                                                     left_parenthesis: 2892,
                                                                     arguments: CommaSeparated {
                                                                         inner: [
-                                                                            Positional {
+                                                                            Value {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
                                                                                 },
-                                                                                ellipsis: None,
                                                                                 value: ClassOperation(
                                                                                     Initialization {
                                                                                         comments: CommentGroup {
@@ -5441,11 +5436,10 @@ DefinitionTree {
                                                                                             left_parenthesis: 2900,
                                                                                             arguments: CommaSeparated {
                                                                                                 inner: [
-                                                                                                    Positional {
+                                                                                                    Value {
                                                                                                         comments: CommentGroup {
                                                                                                             comments: [],
                                                                                                         },
-                                                                                                        ellipsis: None,
                                                                                                         value: Vec(
                                                                                                             VecExpression {
                                                                                                                 comments: CommentGroup {
@@ -6622,11 +6616,10 @@ DefinitionTree {
                                                                     left_parenthesis: 3743,
                                                                     arguments: CommaSeparated {
                                                                         inner: [
-                                                                            Positional {
+                                                                            Value {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
                                                                                 },
-                                                                                ellipsis: None,
                                                                                 value: ClassOperation(
                                                                                     Initialization {
                                                                                         comments: CommentGroup {
@@ -6647,11 +6640,10 @@ DefinitionTree {
                                                                                             left_parenthesis: 3751,
                                                                                             arguments: CommaSeparated {
                                                                                                 inner: [
-                                                                                                    Positional {
+                                                                                                    Value {
                                                                                                         comments: CommentGroup {
                                                                                                             comments: [],
                                                                                                         },
-                                                                                                        ellipsis: None,
                                                                                                         value: Vec(
                                                                                                             VecExpression {
                                                                                                                 comments: CommentGroup {

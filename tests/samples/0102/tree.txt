@@ -105,11 +105,10 @@ DefinitionTree {
                                                     left_parenthesis: 65,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 66,
@@ -217,11 +216,10 @@ DefinitionTree {
                                                     left_parenthesis: 120,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 121,
@@ -330,11 +328,10 @@ DefinitionTree {
                                                     left_parenthesis: 176,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 177,
@@ -437,11 +434,10 @@ DefinitionTree {
                                                     left_parenthesis: 302,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 303,
@@ -545,11 +541,10 @@ DefinitionTree {
                                                     left_parenthesis: 429,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 430,
@@ -641,11 +636,10 @@ DefinitionTree {
                                                     left_parenthesis: 553,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 554,

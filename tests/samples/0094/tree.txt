@@ -71,11 +71,10 @@ DefinitionTree {
                                                         left_parenthesis: 64,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Literal(
                                                                         String(
                                                                             LiteralString {
@@ -157,11 +156,10 @@ DefinitionTree {
                                                         left_parenthesis: 183,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Variable(
                                                                         Variable {
                                                                             position: 184,
@@ -205,11 +203,10 @@ DefinitionTree {
                                                         left_parenthesis: 223,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Variable(
                                                                         Variable {
                                                                             position: 224,
@@ -288,11 +285,10 @@ DefinitionTree {
                                                         left_parenthesis: 367,
                                                         arguments: CommaSeparated {
                                                             inner: [
-                                                                Positional {
+                                                                Value {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    ellipsis: None,
                                                                     value: Variable(
                                                                         Variable {
                                                                             position: 368,

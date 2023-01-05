@@ -11,16 +11,24 @@ use crate::tree::Node;
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ArgumentExpression {
-    Positional {
+    Value {
         comments: CommentGroup,
-        ellipsis: Option<usize>,
         value: Expression,
+    },
+    Spread {
+        comments: CommentGroup,
+        ellipsis: usize,
+        value: Expression,
+    },
+    ReverseSpread {
+        comments: CommentGroup,
+        value: Expression,
+        ellipsis: usize,
     },
     Named {
         comments: CommentGroup,
         name: Identifier,
         colon: usize,
-        ellipsis: Option<usize>,
         value: Expression,
     },
 }
@@ -46,30 +54,37 @@ pub struct ArgumentPlaceholderExpression {
 impl Node for ArgumentExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ArgumentExpression::Positional { comments, .. }
+            ArgumentExpression::Value { comments, .. }
+            | ArgumentExpression::Spread { comments, .. }
+            | ArgumentExpression::ReverseSpread { comments, .. }
             | ArgumentExpression::Named { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match self {
-            ArgumentExpression::Positional {
-                ellipsis, value, ..
-            } => ellipsis.unwrap_or_else(|| value.initial_position()),
+            ArgumentExpression::Value { value, .. }
+            | ArgumentExpression::ReverseSpread { value, .. } => value.initial_position(),
+            ArgumentExpression::Spread { ellipsis, .. } => *ellipsis,
             ArgumentExpression::Named { name, .. } => name.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            ArgumentExpression::Positional { value, .. } => value.final_position(),
+            ArgumentExpression::Value { value, .. } | ArgumentExpression::Spread { value, .. } => {
+                value.final_position()
+            }
+            ArgumentExpression::ReverseSpread { ellipsis, .. } => *ellipsis,
             ArgumentExpression::Named { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match self {
-            ArgumentExpression::Positional { value, .. } => vec![value],
+            ArgumentExpression::Value { value, .. }
+            | ArgumentExpression::Spread { value, .. }
+            | ArgumentExpression::ReverseSpread { value, .. } => vec![value],
             ArgumentExpression::Named { name, value, .. } => vec![name, value],
         }
     }

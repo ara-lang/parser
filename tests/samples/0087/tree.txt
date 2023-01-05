@@ -425,11 +425,10 @@ DefinitionTree {
                                                 left_parenthesis: 369,
                                                 arguments: CommaSeparated {
                                                     inner: [
-                                                        Positional {
+                                                        Value {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            ellipsis: None,
                                                             value: Variable(
                                                                 Variable {
                                                                     position: 370,
@@ -543,11 +542,10 @@ DefinitionTree {
                                                     left_parenthesis: 437,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: ClassOperation(
                                                                     ConstantFetch {
                                                                         comments: CommentGroup {
@@ -567,11 +565,10 @@ DefinitionTree {
                                                                     },
                                                                 ),
                                                             },
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Literal(
                                                                     String(
                                                                         LiteralString {

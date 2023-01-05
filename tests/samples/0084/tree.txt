@@ -483,11 +483,10 @@ DefinitionTree {
                                                     left_parenthesis: 445,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -562,11 +561,10 @@ DefinitionTree {
                                                     left_parenthesis: 468,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 469,
@@ -644,11 +642,10 @@ DefinitionTree {
                                                     left_parenthesis: 501,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -668,11 +665,10 @@ DefinitionTree {
                                                                             left_parenthesis: 516,
                                                                             arguments: CommaSeparated {
                                                                                 inner: [
-                                                                                    Positional {
+                                                                                    Value {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        ellipsis: None,
                                                                                         value: FunctionOperation(
                                                                                             Call {
                                                                                                 comments: CommentGroup {
@@ -707,11 +703,10 @@ DefinitionTree {
                                                                     },
                                                                 ),
                                                             },
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -731,11 +726,10 @@ DefinitionTree {
                                                                             left_parenthesis: 538,
                                                                             arguments: CommaSeparated {
                                                                                 inner: [
-                                                                                    Positional {
+                                                                                    Value {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        ellipsis: None,
                                                                                         value: FunctionOperation(
                                                                                             Call {
                                                                                                 comments: CommentGroup {
@@ -880,11 +874,10 @@ DefinitionTree {
                                                     left_parenthesis: 689,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -972,11 +965,10 @@ DefinitionTree {
                                                     left_parenthesis: 719,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: Variable(
                                                                     Variable {
                                                                         position: 720,
@@ -1067,11 +1059,10 @@ DefinitionTree {
                                                     left_parenthesis: 759,
                                                     arguments: CommaSeparated {
                                                         inner: [
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -1104,11 +1095,10 @@ DefinitionTree {
                                                                             left_parenthesis: 781,
                                                                             arguments: CommaSeparated {
                                                                                 inner: [
-                                                                                    Positional {
+                                                                                    Value {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        ellipsis: None,
                                                                                         value: FunctionOperation(
                                                                                             Call {
                                                                                                 comments: CommentGroup {
@@ -1143,11 +1133,10 @@ DefinitionTree {
                                                                     },
                                                                 ),
                                                             },
-                                                            Positional {
+                                                            Value {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                ellipsis: None,
                                                                 value: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -1180,11 +1169,10 @@ DefinitionTree {
                                                                             left_parenthesis: 810,
                                                                             arguments: CommaSeparated {
                                                                                 inner: [
-                                                                                    Positional {
+                                                                                    Value {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        ellipsis: None,
                                                                                         value: FunctionOperation(
                                                                                             Call {
                                                                                                 comments: CommentGroup {
@@ -1347,11 +1335,10 @@ DefinitionTree {
                                             left_parenthesis: 941,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ClassOperation(
                                                             StaticMethodCall {
                                                                 comments: CommentGroup {
@@ -1422,11 +1409,10 @@ DefinitionTree {
                                             left_parenthesis: 989,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ClassOperation(
                                                             StaticMethodCall {
                                                                 comments: CommentGroup {
@@ -1458,11 +1444,10 @@ DefinitionTree {
                                                             },
                                                         ),
                                                     },
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ClassOperation(
                                                             StaticMethodCall {
                                                                 comments: CommentGroup {
@@ -1620,11 +1605,10 @@ DefinitionTree {
                                             left_parenthesis: 1156,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ObjectOperation(
                                                             MethodCall {
                                                                 comments: CommentGroup {
@@ -1695,11 +1679,10 @@ DefinitionTree {
                                             left_parenthesis: 1206,
                                             arguments: CommaSeparated {
                                                 inner: [
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ObjectOperation(
                                                             MethodCall {
                                                                 comments: CommentGroup {
@@ -1731,11 +1714,10 @@ DefinitionTree {
                                                             },
                                                         ),
                                                     },
-                                                    Positional {
+                                                    Value {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: None,
                                                         value: ObjectOperation(
                                                             MethodCall {
                                                                 comments: CommentGroup {

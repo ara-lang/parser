@@ -24,16 +24,22 @@ pub fn gather(state: &mut State) -> ParseResult<bool> {
                         let arguments = argument::argument_list_expression(state)?;
 
                         for argument in &arguments.arguments.inner {
-                            let value = match argument {
-                                ArgumentExpression::Positional { value, .. } => value,
-                                ArgumentExpression::Named { value, .. } => value,
-                            };
-
-                            if !value.is_constant(true) {
-                                crate::parser_report!(
-                                    state,
-                                    invalid_constant_initialization_expression(value)
-                                );
+                            match argument {
+                                ArgumentExpression::Value { value, .. }
+                                | ArgumentExpression::Named { value, .. } => {
+                                    if !value.is_constant(true) {
+                                        crate::parser_report!(
+                                            state,
+                                            invalid_constant_initialization_expression(value)
+                                        );
+                                    }
+                                }
+                                expression => {
+                                    crate::parser_report!(
+                                        state,
+                                        invalid_constant_initialization_expression(expression)
+                                    );
+                                }
                             }
                         }
 

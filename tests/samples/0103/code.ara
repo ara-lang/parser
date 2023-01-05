@@ -1,0 +1,8 @@
+function example(): void {
+    foo(
+        $a,
+        ...$b,
+        $c...,
+        d: $d,
+    );
+}

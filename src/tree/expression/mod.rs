@@ -160,12 +160,14 @@ impl Expression {
                             .inner
                             .iter()
                             .all(|argument| match argument {
-                                ArgumentExpression::Positional { value, .. } => {
+                                ArgumentExpression::Value { value, .. } => {
                                     value.is_constant(initilization)
                                 }
                                 ArgumentExpression::Named { value, .. } => {
                                     value.is_constant(initilization)
                                 }
+                                // spreading arguments cannot be used in constant expressions
+                                _ => false,
                             })
                     }
                 },

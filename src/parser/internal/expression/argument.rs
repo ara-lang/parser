@@ -17,38 +17,49 @@ pub fn argument_list_expression(state: &mut State) -> ParseResult<ArgumentListEx
 }
 
 fn argument_expression(state: &mut State) -> ParseResult<ArgumentExpression> {
-    if identifier::is_identifier_maybe_reserved(&state.iterator.current().kind)
+    let current = state.iterator.current();
+    let comments = state.iterator.comments();
+
+    if identifier::is_identifier_maybe_reserved(&current.kind)
         && state.iterator.lookahead(1).kind == TokenKind::Colon
     {
         let name = identifier::identifier_maybe_reserved(state)?;
         let colon = utils::skip(state, TokenKind::Colon)?;
-        let ellipsis = if state.iterator.current().kind == TokenKind::Ellipsis {
-            Some(utils::skip(state, TokenKind::Ellipsis)?)
-        } else {
-            None
-        };
         let value = expression::create(state)?;
 
         return Ok(ArgumentExpression::Named {
-            comments: state.iterator.comments(),
+            comments,
             name,
             colon,
-            ellipsis,
             value,
         });
     }
 
-    let ellipsis = if state.iterator.current().kind == TokenKind::Ellipsis {
-        Some(utils::skip(state, TokenKind::Ellipsis)?)
+    if current.kind == TokenKind::Ellipsis {
+        let ellipsis = current.position;
+        state.iterator.next();
+        let value = expression::create(state)?;
+
+        Ok(ArgumentExpression::Spread {
+            comments,
+            ellipsis,
+            value,
+        })
     } else {
-        None
-    };
+        let value = expression::create(state)?;
+        let current = state.iterator.current();
 
-    let value = expression::create(state)?;
+        if current.kind == TokenKind::Ellipsis {
+            let ellipsis = current.position;
+            state.iterator.next();
 
-    Ok(ArgumentExpression::Positional {
-        comments: state.iterator.comments(),
-        ellipsis,
-        value,
-    })
+            Ok(ArgumentExpression::ReverseSpread {
+                comments,
+                value,
+                ellipsis,
+            })
+        } else {
+            Ok(ArgumentExpression::Value { comments, value })
+        }
+    }
 }

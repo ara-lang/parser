@@ -9,98 +9,31 @@ DefinitionTree {
                 function: 0,
                 name: Identifier {
                     position: 9,
-                    value: "foo",
+                    value: "example",
                 },
                 templates: None,
                 parameters: FunctionLikeParameterListDefinition {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_parenthesis: 12,
+                    left_parenthesis: 16,
                     parameters: CommaSeparated {
-                        inner: [
-                            FunctionLikeParameterDefinition {
-                                comments: CommentGroup {
-                                    comments: [],
-                                },
-                                attributes: [],
-                                type_definition: String(
-                                    13,
-                                ),
-                                ellipsis: None,
-                                variable: Variable {
-                                    position: 20,
-                                    name: "$a",
-                                },
-                                default: None,
-                            },
-                            FunctionLikeParameterDefinition {
-                                comments: CommentGroup {
-                                    comments: [],
-                                },
-                                attributes: [],
-                                type_definition: String(
-                                    24,
-                                ),
-                                ellipsis: None,
-                                variable: Variable {
-                                    position: 31,
-                                    name: "$b",
-                                },
-                                default: None,
-                            },
-                            FunctionLikeParameterDefinition {
-                                comments: CommentGroup {
-                                    comments: [],
-                                },
-                                attributes: [],
-                                type_definition: String(
-                                    35,
-                                ),
-                                ellipsis: None,
-                                variable: Variable {
-                                    position: 42,
-                                    name: "$c",
-                                },
-                                default: None,
-                            },
-                            FunctionLikeParameterDefinition {
-                                comments: CommentGroup {
-                                    comments: [],
-                                },
-                                attributes: [],
-                                type_definition: String(
-                                    46,
-                                ),
-                                ellipsis: Some(
-                                    53,
-                                ),
-                                variable: Variable {
-                                    position: 56,
-                                    name: "$d",
-                                },
-                                default: None,
-                            },
-                        ],
-                        commas: [
-                            22,
-                            33,
-                            44,
-                        ],
+                        inner: [],
+                        commas: [],
                     },
-                    right_parenthesis: 58,
+                    right_parenthesis: 17,
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
-                    colon: 59,
+                    colon: 18,
                     type_definition: Void(
-                        61,
+                        20,
                     ),
                 },
                 body: BlockStatement {
                     comments: CommentGroup {
                         comments: [],
                     },
-                    left_brace: 66,
+                    left_brace: 25,
                     statements: [
                         Expression(
                             ExpressionStatement {
@@ -114,7 +47,7 @@ DefinitionTree {
                                         },
                                         function: Identifier(
                                             Identifier {
-                                                position: 72,
+                                                position: 31,
                                                 value: "foo",
                                             },
                                         ),
@@ -123,7 +56,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: 75,
+                                            left_parenthesis: 34,
                                             arguments: CommaSeparated {
                                                 inner: [
                                                     Value {
@@ -132,30 +65,8 @@ DefinitionTree {
                                                         },
                                                         value: Variable(
                                                             Variable {
-                                                                position: 76,
+                                                                position: 44,
                                                                 name: "$a",
-                                                            },
-                                                        ),
-                                                    },
-                                                    Value {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: Variable(
-                                                            Variable {
-                                                                position: 80,
-                                                                name: "$b",
-                                                            },
-                                                        ),
-                                                    },
-                                                    Value {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: Variable(
-                                                            Variable {
-                                                                position: 84,
-                                                                name: "$c",
                                                             },
                                                         ),
                                                     },
@@ -163,33 +74,62 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        ellipsis: 88,
+                                                        ellipsis: 56,
                                                         value: Variable(
                                                             Variable {
-                                                                position: 91,
+                                                                position: 59,
+                                                                name: "$b",
+                                                            },
+                                                        ),
+                                                    },
+                                                    ReverseSpread {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: Variable(
+                                                            Variable {
+                                                                position: 71,
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                        ellipsis: 73,
+                                                    },
+                                                    Named {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        name: Identifier {
+                                                            position: 86,
+                                                            value: "d",
+                                                        },
+                                                        colon: 87,
+                                                        value: Variable(
+                                                            Variable {
+                                                                position: 89,
                                                                 name: "$d",
                                                             },
                                                         ),
                                                     },
                                                 ],
                                                 commas: [
-                                                    78,
-                                                    82,
-                                                    86,
+                                                    46,
+                                                    61,
+                                                    76,
+                                                    91,
                                                 ],
                                             },
-                                            right_parenthesis: 93,
+                                            right_parenthesis: 97,
                                         },
                                     },
                                 ),
-                                semicolon: 94,
+                                semicolon: 98,
                             },
                         ),
                     ],
-                    right_brace: 96,
+                    right_brace: 100,
                 },
             },
         ),
     ],
-    eof: 98,
+    eof: 102,
 }

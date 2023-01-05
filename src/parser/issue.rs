@@ -1720,7 +1720,7 @@ pub(crate) fn invalid_constant_expression(state: &ParserState, expression: &Expr
 
 pub(crate) fn invalid_constant_initialization_expression(
     state: &ParserState,
-    expression: &Expression,
+    expression: &dyn Node,
 ) -> Issue {
     let origin = state.source.name();
 
