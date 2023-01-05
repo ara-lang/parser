@@ -426,42 +426,30 @@ expressions! {
 
     #[before(r#false), current(TokenKind::True)]
     r#true({
-        let position = state.iterator.current().position;
-
-        state.iterator.next();
-
         Ok(Expression::Literal(Literal::True(
             LiteralTrue {
                 comments: state.iterator.comments(),
-                position,
+                r#true: utils::skip_keyword(state, TokenKind::True)?,
             }
         )))
     })
 
     #[before(null), current(TokenKind::False)]
     r#false({
-        let position = state.iterator.current().position;
-
-        state.iterator.next();
-
         Ok(Expression::Literal(Literal::False(
             LiteralFalse {
                 comments: state.iterator.comments(),
-                position,
+                r#false: utils::skip_keyword(state, TokenKind::False)?,
             }
         )))
     })
 
     #[before(literal_integer), current(TokenKind::Null)]
     null({
-        let position = state.iterator.current().position;
-
-        state.iterator.next();
-
         Ok(Expression::Literal(Literal::Null(
             LiteralNull {
                 comments: state.iterator.comments(),
-                position,
+                null: utils::skip_keyword(state, TokenKind::Null)?,
             }
         )))
     })

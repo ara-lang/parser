@@ -3,6 +3,7 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
+use crate::tree::token::Keyword;
 
 pub fn skip_semicolon(state: &mut State) -> ParseResult<usize> {
     let current = state.iterator.current();
@@ -42,6 +43,21 @@ pub fn skip_double_colon(state: &mut State) -> ParseResult<usize> {
 
 pub fn skip_colon(state: &mut State) -> ParseResult<usize> {
     skip(state, TokenKind::Colon)
+}
+
+pub fn skip_keyword(state: &mut State, kind: TokenKind) -> ParseResult<Keyword>
+{
+    let current = state.iterator.current();
+
+    if current.kind == kind {
+        let keyword = Keyword::new(current.value.clone(), current.position);
+
+        state.iterator.next();
+
+        Ok(keyword)
+    } else {
+        crate::parser_bail!(state, unexpected_token(vec![kind], current));
+    }
 }
 
 pub fn skip(state: &mut State, kind: TokenKind) -> ParseResult<usize> {

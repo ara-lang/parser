@@ -9,7 +9,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 0,
+                class: Keyword {
+                    value: "class",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 6,
                     value: "A",
@@ -18,7 +21,10 @@ DefinitionTree {
                 extends: None,
                 implements: Some(
                     ClassDefinitionImplements {
-                        implements: 8,
+                        implements: Keyword {
+                            value: "implements",
+                            position: 8,
+                        },
                         interfaces: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {

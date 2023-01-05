@@ -54,7 +54,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 38,
+                class: Keyword {
+                    value: "class",
+                    position: 38,
+                },
                 name: Identifier {
                     position: 44,
                     value: "enum",
@@ -62,7 +65,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     ClassDefinitionExtends {
-                        extends: 49,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 49,
+                        },
                         parent: TemplatedIdentifier {
                             name: Identifier {
                                 position: 57,
@@ -74,7 +80,10 @@ DefinitionTree {
                 ),
                 implements: Some(
                     ClassDefinitionImplements {
-                        implements: 62,
+                        implements: Keyword {
+                            value: "implements",
+                            position: 62,
+                        },
                         interfaces: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {
@@ -114,7 +123,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 87,
+                class: Keyword {
+                    value: "class",
+                    position: 87,
+                },
                 name: Identifier {
                     position: 93,
                     value: "from",
@@ -122,7 +134,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     ClassDefinitionExtends {
-                        extends: 98,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 98,
+                        },
                         parent: TemplatedIdentifier {
                             name: Identifier {
                                 position: 106,
@@ -134,7 +149,10 @@ DefinitionTree {
                 ),
                 implements: Some(
                     ClassDefinitionImplements {
-                        implements: 111,
+                        implements: Keyword {
+                            value: "implements",
+                            position: 111,
+                        },
                         interfaces: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {

@@ -13,7 +13,10 @@ DefinitionTree {
                         ),
                     ],
                 },
-                class: 9,
+                class: Keyword {
+                    value: "class",
+                    position: 9,
+                },
                 name: Identifier {
                     position: 15,
                     value: "Foo",

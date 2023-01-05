@@ -3,8 +3,8 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::lexer::byte_string::ByteString;
-
 use crate::tree::comment::CommentGroup;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -46,21 +46,21 @@ pub struct LiteralFloat {
 #[serde(rename_all = "snake_case")]
 pub struct LiteralNull {
     pub comments: CommentGroup,
-    pub position: usize,
+    pub null: Keyword,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct LiteralTrue {
     pub comments: CommentGroup,
-    pub position: usize,
+    pub r#true: Keyword,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct LiteralFalse {
     pub comments: CommentGroup,
-    pub position: usize,
+    pub r#false: Keyword,
 }
 
 impl Node for Literal {
@@ -169,15 +169,15 @@ impl Node for LiteralNull {
     }
 
     fn initial_position(&self) -> usize {
-        self.position
+        self.null.initial_position()
     }
 
     fn final_position(&self) -> usize {
-        self.position + 4
+        self.null.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![]
+        vec![&self.null]
     }
 }
 
@@ -187,15 +187,15 @@ impl Node for LiteralTrue {
     }
 
     fn initial_position(&self) -> usize {
-        self.position
+        self.r#true.initial_position()
     }
 
     fn final_position(&self) -> usize {
-        self.position + 4
+        self.r#true.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![]
+        vec![&self.r#true]
     }
 }
 
@@ -205,14 +205,14 @@ impl Node for LiteralFalse {
     }
 
     fn initial_position(&self) -> usize {
-        self.position
+        self.r#false.initial_position()
     }
 
     fn final_position(&self) -> usize {
-        self.position + 5
+        self.r#false.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![]
+        vec![&self.r#false]
     }
 }

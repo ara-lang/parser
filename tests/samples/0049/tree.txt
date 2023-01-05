@@ -9,7 +9,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 0,
+                class: Keyword {
+                    value: "class",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 6,
                     value: "s",
@@ -33,7 +36,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 12,
+                class: Keyword {
+                    value: "class",
+                    position: 12,
+                },
                 name: Identifier {
                     position: 18,
                     value: "foo",
@@ -41,7 +47,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     ClassDefinitionExtends {
-                        extends: 22,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 22,
+                        },
                         parent: TemplatedIdentifier {
                             name: Identifier {
                                 position: 30,

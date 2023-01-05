@@ -14,7 +14,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            const: 18,
+                            const: Keyword {
+                                value: "const",
+                                position: 18,
+                            },
                             entries: CommaSeparated {
                                 inner: [
                                     ConstantDefinitionEntry {
@@ -70,7 +73,10 @@ DefinitionTree {
                             modifiers: ClassModifierDefinitionGroup {
                                 modifiers: [],
                             },
-                            class: 54,
+                            class: Keyword {
+                                value: "class",
+                                position: 54,
+                            },
                             name: Identifier {
                                 position: 60,
                                 value: "where",
@@ -94,7 +100,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            const: 79,
+                                            const: Keyword {
+                                                value: "const",
+                                                position: 79,
+                                            },
                                             entries: CommaSeparated {
                                                 inner: [
                                                     ConstantDefinitionEntry {
@@ -638,7 +647,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            const: 434,
+                            const: Keyword {
+                                value: "const",
+                                position: 434,
+                            },
                             entries: CommaSeparated {
                                 inner: [
                                     ConstantDefinitionEntry {
@@ -694,7 +706,10 @@ DefinitionTree {
                             modifiers: ClassModifierDefinitionGroup {
                                 modifiers: [],
                             },
-                            class: 468,
+                            class: Keyword {
+                                value: "class",
+                                position: 468,
+                            },
                             name: Identifier {
                                 position: 474,
                                 value: "type",
@@ -718,7 +733,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            const: 492,
+                                            const: Keyword {
+                                                value: "const",
+                                                position: 492,
+                                            },
                                             entries: CommaSeparated {
                                                 inner: [
                                                     ConstantDefinitionEntry {

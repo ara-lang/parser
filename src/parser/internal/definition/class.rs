@@ -24,7 +24,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
     let modifiers = modifier::collect(state)?;
     let modifiers = modifier::class_modifier_definition_group(state, modifiers)?;
     let comments = state.iterator.comments();
-    let class = utils::skip(state, TokenKind::Class)?;
+    let class = utils::skip_keyword(state, TokenKind::Class)?;
     let name = identifier::classname_identifier(state)?;
     let templates = if state.iterator.current().kind == TokenKind::LessThan {
         Some(template::template_group_definition(state)?)
@@ -34,25 +34,17 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
 
     let current = state.iterator.current();
     let extends = if current.kind == TokenKind::Extends {
-        let position = current.position;
-
-        state.iterator.next();
+        let extends = utils::skip_keyword(state, TokenKind::Extends)?;
         let parent = identifier::fully_qualified_templated_identifier(state)?;
 
-        Some(ClassDefinitionExtends {
-            extends: position,
-            parent,
-        })
+        Some(ClassDefinitionExtends { extends, parent })
     } else {
         None
     };
 
     let current = state.iterator.current();
     let implements = if current.kind == TokenKind::Implements {
-        let position = current.position;
-
-        state.iterator.next();
-
+        let implements = utils::skip_keyword(state, TokenKind::Implements)?;
         let interfaces = utils::at_least_one_comma_separated(
             state,
             &identifier::fully_qualified_templated_identifier,
@@ -60,7 +52,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
         )?;
 
         Some(ClassDefinitionImplements {
-            implements: position,
+            implements,
             interfaces,
         })
     } else {

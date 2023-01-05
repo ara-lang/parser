@@ -6,12 +6,13 @@ use crate::tree::definition::template::TypeTemplateGroupDefinition;
 use crate::tree::expression::literal::Literal;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TypeAliasDefinition {
-    pub r#type: usize,
+    pub r#type: Keyword,
     pub name: TemplatedIdentifier,
     pub equals: usize,
     pub type_definition: TypeDefinition,
@@ -95,7 +96,7 @@ impl TypeDefinition {
 
 impl Node for TypeAliasDefinition {
     fn initial_position(&self) -> usize {
-        self.r#type
+        self.r#type.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -103,7 +104,7 @@ impl Node for TypeAliasDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.name, &self.type_definition]
+        vec![&self.r#type, &self.name, &self.type_definition]
     }
 }
 

@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         TypeAlias(
             TypeAliasDefinition {
-                type: 0,
+                type: Keyword {
+                    value: "type",
+                    position: 0,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 5,
@@ -33,7 +36,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 31,
+                type: Keyword {
+                    value: "type",
+                    position: 31,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 36,
@@ -131,7 +137,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 69,
+                type: Keyword {
+                    value: "type",
+                    position: 69,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 74,
@@ -240,7 +249,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 111,
+                type: Keyword {
+                    value: "type",
+                    position: 111,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 116,

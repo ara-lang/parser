@@ -7,14 +7,20 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: 0,
+                    enum: Keyword {
+                        value: "enum",
+                        position: 0,
+                    },
                     name: Identifier {
                         position: 5,
                         value: "A",
                     },
                     implements: Some(
                         EnumImplementsDefinition {
-                            implements: 7,
+                            implements: Keyword {
+                                value: "implements",
+                                position: 7,
+                            },
                             interfaces: CommaSeparated {
                                 inner: [
                                     TemplatedIdentifier {

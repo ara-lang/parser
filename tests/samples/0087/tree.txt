@@ -122,7 +122,10 @@ DefinitionTree {
                         ),
                     ],
                 },
-                class: 114,
+                class: Keyword {
+                    value: "class",
+                    position: 114,
+                },
                 name: Identifier {
                     position: 120,
                     value: "FooImpl",
@@ -131,7 +134,10 @@ DefinitionTree {
                 extends: None,
                 implements: Some(
                     ClassDefinitionImplements {
-                        implements: 128,
+                        implements: Keyword {
+                            value: "implements",
+                            position: 128,
+                        },
                         interfaces: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {

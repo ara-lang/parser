@@ -180,7 +180,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 65,
+                class: Keyword {
+                    value: "class",
+                    position: 65,
+                },
                 name: Identifier {
                     position: 71,
                     value: "a",

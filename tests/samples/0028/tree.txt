@@ -5,7 +5,10 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: 0,
+                const: Keyword {
+                    value: "const",
+                    position: 0,
+                },
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {

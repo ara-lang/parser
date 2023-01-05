@@ -26,7 +26,7 @@ use crate::tree::identifier::Identifier;
 pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
     let comments = state.iterator.comments();
     let attributes = state.get_attributes();
-    let r#enum = utils::skip(state, TokenKind::Enum)?;
+    let r#enum = utils::skip_keyword(state, TokenKind::Enum)?;
     let name = identifier::classname_identifier(state)?;
 
     let backed_type: Option<BackedEnumTypeDefinition> =
@@ -50,10 +50,7 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
 
     let current = state.iterator.current();
     let implements = if current.kind == TokenKind::Implements {
-        let position = current.position;
-
-        state.iterator.next();
-
+        let implements = utils::skip_keyword(state, TokenKind::Implements)?;
         let interfaces = utils::at_least_one_comma_separated(
             state,
             &identifier::fully_qualified_templated_identifier,
@@ -61,7 +58,7 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
         )?;
 
         Some(EnumImplementsDefinition {
-            implements: position,
+            implements,
             interfaces,
         })
     } else {
@@ -129,8 +126,7 @@ fn unit_enum_definition_member(
     if current.kind == TokenKind::Case {
         let attributes = state.get_attributes();
 
-        let start = current.position;
-        state.iterator.next();
+        let case = utils::skip_keyword(state, TokenKind::Case)?;
 
         let name = identifier::identifier_maybe_reserved(state)?;
 
@@ -149,14 +145,12 @@ fn unit_enum_definition_member(
             return Ok(None);
         }
 
-        let end = utils::skip_semicolon(state)?;
-
         return Ok(Some(UnitEnumMemberDefinition::Case(
             UnitEnumCaseDefinition {
-                start,
-                end,
-                name,
                 attributes,
+                case,
+                name,
+                semicolon: utils::skip_semicolon(state)?,
             },
         )));
     }
@@ -185,9 +179,7 @@ fn backed_enum_definition_member(
     if current.kind == TokenKind::Case {
         let attributes = state.get_attributes();
 
-        let case = current.position;
-        state.iterator.next();
-
+        let case = utils::skip_keyword(state, TokenKind::Case)?;
         let name = identifier::identifier_maybe_reserved(state)?;
 
         let current = state.iterator.current();

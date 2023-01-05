@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         TypeAlias(
             TypeAliasDefinition {
-                type: 1,
+                type: Keyword {
+                    value: "type",
+                    position: 1,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 6,

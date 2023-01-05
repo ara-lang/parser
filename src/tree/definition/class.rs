@@ -15,6 +15,7 @@ use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -24,7 +25,7 @@ pub struct ClassDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: ClassModifierDefinitionGroup,
-    pub class: usize,
+    pub class: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub extends: Option<ClassDefinitionExtends>,
@@ -35,14 +36,14 @@ pub struct ClassDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ClassDefinitionExtends {
-    pub extends: usize,
+    pub extends: Keyword,
     pub parent: TemplatedIdentifier,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ClassDefinitionImplements {
-    pub implements: usize,
+    pub implements: Keyword,
     pub interfaces: CommaSeparated<TemplatedIdentifier>,
 }
 
@@ -79,7 +80,7 @@ impl Node for ClassDefinition {
             return modifier.initial_position();
         }
 
-        self.class
+        self.class.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -87,7 +88,9 @@ impl Node for ClassDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
+        let mut children: Vec<&dyn Node> = vec![
+            &self.class,
+        ];
 
         for attribute in &self.attributes {
             children.push(attribute);
@@ -119,7 +122,7 @@ impl Node for ClassDefinition {
 
 impl Node for ClassDefinitionExtends {
     fn initial_position(&self) -> usize {
-        self.extends
+        self.extends.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -127,13 +130,13 @@ impl Node for ClassDefinitionExtends {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.parent]
+        vec![&self.extends, &self.parent]
     }
 }
 
 impl Node for ClassDefinitionImplements {
     fn initial_position(&self) -> usize {
-        self.implements
+        self.implements.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -149,15 +152,17 @@ impl Node for ClassDefinitionImplements {
             return last_interface_position;
         }
 
-        self.implements + 10
+        self.implements.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.interfaces
-            .inner
-            .iter()
-            .map(|interface| interface as &dyn Node)
-            .collect()
+        let mut children:Vec<&dyn Node> = vec![&self.implements];
+
+        for interface in &self.interfaces.inner {
+            children.push(interface);
+        }
+
+        children
     }
 }
 

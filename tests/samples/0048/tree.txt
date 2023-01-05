@@ -9,7 +9,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 0,
+                class: Keyword {
+                    value: "class",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 6,
                     value: "foo",

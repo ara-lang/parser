@@ -17,7 +17,7 @@ use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
     Ok(TypeAliasDefinition {
-        r#type: utils::skip(state, TokenKind::Type)?,
+        r#type: utils::skip_keyword(state, TokenKind::Type)?,
         name: identifier::type_identifier(state)?,
         equals: utils::skip(state, TokenKind::Equals)?,
         type_definition: type_definition(state)?,
@@ -103,30 +103,18 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             Ok(TypeDefinition::Dict(position, templates))
         }
-        TokenKind::Null => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::Literal(Literal::Null(LiteralNull {
-                comments: state.iterator.comments(),
-                position,
-            })))
-        }
-        TokenKind::True => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::Literal(Literal::True(LiteralTrue {
-                comments: state.iterator.comments(),
-                position,
-            })))
-        }
-        TokenKind::False => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::Literal(Literal::False(LiteralFalse {
-                comments: state.iterator.comments(),
-                position,
-            })))
-        }
+        TokenKind::Null => Ok(TypeDefinition::Literal(Literal::Null(LiteralNull {
+            comments: state.iterator.comments(),
+            null: utils::skip_keyword(state, TokenKind::Null)?,
+        }))),
+        TokenKind::True => Ok(TypeDefinition::Literal(Literal::True(LiteralTrue {
+            comments: state.iterator.comments(),
+            r#true: utils::skip_keyword(state, TokenKind::True)?,
+        }))),
+        TokenKind::False => Ok(TypeDefinition::Literal(Literal::False(LiteralFalse {
+            comments: state.iterator.comments(),
+            r#false: utils::skip_keyword(state, TokenKind::False)?,
+        }))),
         TokenKind::LiteralInteger => {
             state.iterator.next();
 

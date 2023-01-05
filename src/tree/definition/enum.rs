@@ -9,6 +9,7 @@ use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
@@ -24,7 +25,7 @@ pub enum EnumDefinition {
 pub struct UnitEnumDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub r#enum: usize,
+    pub r#enum: Keyword,
     pub name: Identifier,
     pub implements: Option<EnumImplementsDefinition>,
     pub body: UnitEnumBodyDefinition,
@@ -33,7 +34,7 @@ pub struct UnitEnumDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct EnumImplementsDefinition {
-    pub implements: usize,
+    pub implements: Keyword,
     pub interfaces: CommaSeparated<TemplatedIdentifier>,
 }
 
@@ -57,9 +58,9 @@ pub enum UnitEnumMemberDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumCaseDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub start: usize,
+    pub case: Keyword,
     pub name: Identifier,
-    pub end: usize,
+    pub semicolon: usize,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -67,7 +68,7 @@ pub struct UnitEnumCaseDefinition {
 pub struct BackedEnumDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub r#enum: usize,
+    pub r#enum: Keyword,
     pub name: Identifier,
     pub backed_type: BackedEnumTypeDefinition,
     pub implements: Option<EnumImplementsDefinition>,
@@ -101,7 +102,7 @@ pub enum BackedEnumMemberDefinition {
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumCaseDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub case: usize,
+    pub case: Keyword,
     pub name: Identifier,
     pub equals: usize,
     pub value: Expression,
@@ -144,7 +145,7 @@ impl Node for UnitEnumDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.r#enum
+            self.r#enum.initial_position()
         }
     }
 
@@ -153,7 +154,7 @@ impl Node for UnitEnumDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.name];
+        let mut children: Vec<&dyn Node> = vec![&self.r#enum, &self.name];
 
         for attribute in &self.attributes {
             children.push(attribute);
@@ -171,7 +172,7 @@ impl Node for UnitEnumDefinition {
 
 impl Node for EnumImplementsDefinition {
     fn initial_position(&self) -> usize {
-        self.implements
+        self.implements.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -187,15 +188,17 @@ impl Node for EnumImplementsDefinition {
             return last_interface_position;
         }
 
-        self.implements + 10
+        self.implements.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.interfaces
-            .inner
-            .iter()
-            .map(|interface| interface as &dyn Node)
-            .collect()
+        let mut children: Vec<&dyn Node> = vec![&self.implements];
+
+        for interface in &self.interfaces.inner {
+            children.push(interface);
+        }
+
+        children
     }
 }
 
@@ -247,16 +250,16 @@ impl Node for UnitEnumCaseDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.start
+            self.case.initial_position()
         }
     }
 
     fn final_position(&self) -> usize {
-        self.end + 1
+        self.semicolon + 1
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
+        let mut children: Vec<&dyn Node> = vec![&self.case];
         for attribute in &self.attributes {
             children.push(attribute);
         }
@@ -274,7 +277,7 @@ impl Node for BackedEnumDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.r#enum
+            self.r#enum.initial_position()
         }
     }
 
@@ -283,7 +286,7 @@ impl Node for BackedEnumDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.name, &self.backed_type];
+        let mut children: Vec<&dyn Node> = vec![&self.r#enum, &self.name, &self.backed_type];
         for attribute in &self.attributes {
             children.push(attribute);
         }
@@ -301,22 +304,19 @@ impl Node for BackedEnumDefinition {
 impl Node for BackedEnumTypeDefinition {
     fn initial_position(&self) -> usize {
         match self {
-            Self::String(start, _) => *start,
-            Self::Int(start, _) => *start,
+            Self::String(colon, _) | Self::Int(colon, _) => *colon,
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
-            Self::String(_, identifier) => identifier.final_position(),
-            Self::Int(_, identifier) => identifier.final_position(),
+            Self::String(_, identifier) | Self::Int(_, identifier) => identifier.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match self {
-            Self::String(_, identifier) => vec![identifier],
-            Self::Int(_, identifier) => vec![identifier],
+            Self::String(_, identifier) | Self::Int(_, identifier) => vec![identifier],
         }
     }
 }
@@ -369,7 +369,7 @@ impl Node for BackedEnumCaseDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.case
+            self.case.initial_position()
         }
     }
 
@@ -378,6 +378,6 @@ impl Node for BackedEnumCaseDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.name, &self.value]
+        vec![&self.case, &self.name, &self.value]
     }
 }

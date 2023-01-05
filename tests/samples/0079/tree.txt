@@ -68,7 +68,10 @@ DefinitionTree {
                                                 extends: None,
                                                 implements: Some(
                                                     ClassDefinitionImplements {
-                                                        implements: 49,
+                                                        implements: Keyword {
+                                                            value: "implements",
+                                                            position: 49,
+                                                        },
                                                         interfaces: CommaSeparated {
                                                             inner: [
                                                                 TemplatedIdentifier {

@@ -7,7 +7,10 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: 0,
+                    enum: Keyword {
+                        value: "enum",
+                        position: 0,
+                    },
                     name: Identifier {
                         position: 5,
                         value: "Foo",
@@ -26,7 +29,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 23,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 23,
+                                    },
                                     name: Identifier {
                                         position: 28,
                                         value: "Bar",
@@ -49,7 +55,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 43,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 43,
+                                    },
                                     name: Identifier {
                                         position: 48,
                                         value: "Baz",

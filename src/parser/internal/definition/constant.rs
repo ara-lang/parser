@@ -12,7 +12,7 @@ use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
 pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition> {
     Ok(ConstantDefinition {
         comments: state.iterator.comments(),
-        r#const: utils::skip(state, TokenKind::Const)?,
+        r#const: utils::skip_keyword(state, TokenKind::Const)?,
         entries: utils::at_least_one_comma_separated(
             state,
             &|state| {
@@ -54,7 +54,7 @@ pub fn classish_constant_definition(
         comments: state.iterator.comments(),
         attributes: state.get_attributes(),
         modifiers,
-        r#const: utils::skip(state, TokenKind::Const)?,
+        r#const: utils::skip_keyword(state, TokenKind::Const)?,
         entries: utils::at_least_one_comma_separated(
             state,
             &|state| {

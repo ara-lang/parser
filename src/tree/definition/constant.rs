@@ -7,6 +7,7 @@ use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
@@ -22,7 +23,7 @@ pub struct ConstantDefinitionEntry {
 #[serde(rename_all = "snake_case")]
 pub struct ConstantDefinition {
     pub comments: CommentGroup,
-    pub r#const: usize,
+    pub r#const: Keyword,
     pub entries: CommaSeparated<ConstantDefinitionEntry>,
     pub semicolon: usize,
 }
@@ -34,7 +35,7 @@ pub struct ClassishConstantDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: ConstantModifierDefinitionGroup,
-    pub r#const: usize,
+    pub r#const: Keyword,
     pub entries: CommaSeparated<ConstantDefinitionEntry>,
     pub semicolon: usize,
 }
@@ -59,7 +60,7 @@ impl Node for ConstantDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#const
+        self.r#const.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -67,11 +68,13 @@ impl Node for ConstantDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.entries
-            .inner
-            .iter()
-            .map(|entry| entry as &dyn Node)
-            .collect()
+        let mut children: Vec<&dyn Node> = vec![&self.r#const];
+
+        for entry in &self.entries.inner {
+            children.push(entry);
+        }
+
+        children
     }
 }
 
@@ -86,7 +89,7 @@ impl Node for ClassishConstantDefinition {
         } else if let Some(modifier) = self.modifiers.modifiers.first() {
             modifier.initial_position()
         } else {
-            self.r#const
+            self.r#const.initial_position()
         }
     }
 
@@ -95,20 +98,20 @@ impl Node for ClassishConstantDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children = self
-            .attributes
-            .iter()
-            .map(|attribute| attribute as &dyn Node)
-            .collect::<Vec<&dyn Node>>();
+        let mut children: Vec<&dyn Node> = vec![];
+        for attribute in &self.attributes {
+            children.push(attribute);
+        }
 
-        children.extend(
-            self.modifiers
-                .modifiers
-                .iter()
-                .map(|modifier| modifier as &dyn Node),
-        );
+        for modifier in &self.modifiers.modifiers {
+            children.push(modifier);
+        }
 
-        children.extend(self.entries.inner.iter().map(|entry| entry as &dyn Node));
+        children.push(&self.r#const);
+
+        for entry in &self.entries.inner {
+            children.push(entry);
+        }
 
         children
     }

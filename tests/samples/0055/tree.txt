@@ -9,7 +9,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 0,
+                class: Keyword {
+                    value: "class",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 6,
                     value: "Foo",
@@ -29,7 +32,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 16,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 16,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {

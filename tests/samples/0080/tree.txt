@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         TypeAlias(
             TypeAliasDefinition {
-                type: 1,
+                type: Keyword {
+                    value: "type",
+                    position: 1,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 6,
@@ -17,7 +20,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            position: 10,
+                            null: Keyword {
+                                value: "null",
+                                position: 10,
+                            },
                         },
                     ),
                 ),
@@ -26,7 +32,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 16,
+                type: Keyword {
+                    value: "type",
+                    position: 16,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 21,
@@ -41,7 +50,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            position: 25,
+                            false: Keyword {
+                                value: "false",
+                                position: 25,
+                            },
                         },
                     ),
                 ),
@@ -50,7 +62,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 32,
+                type: Keyword {
+                    value: "type",
+                    position: 32,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 37,
@@ -65,7 +80,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            position: 41,
+                            true: Keyword {
+                                value: "true",
+                                position: 41,
+                            },
                         },
                     ),
                 ),
@@ -74,7 +92,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 47,
+                type: Keyword {
+                    value: "type",
+                    position: 47,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 52,
@@ -91,7 +112,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 65,
+                type: Keyword {
+                    value: "type",
+                    position: 65,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 70,
@@ -145,7 +169,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 83,
+                type: Keyword {
+                    value: "type",
+                    position: 83,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 88,
@@ -231,7 +258,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 113,
+                type: Keyword {
+                    value: "type",
+                    position: 113,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 118,
@@ -263,7 +293,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 132,
+                type: Keyword {
+                    value: "type",
+                    position: 132,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 137,
@@ -331,7 +364,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 167,
+                type: Keyword {
+                    value: "type",
+                    position: 167,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 172,
@@ -574,7 +610,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 245,
+                type: Keyword {
+                    value: "type",
+                    position: 245,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 250,
@@ -647,7 +686,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 273,
+                type: Keyword {
+                    value: "type",
+                    position: 273,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 278,
@@ -699,7 +741,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 308,
+                type: Keyword {
+                    value: "type",
+                    position: 308,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 313,
@@ -724,7 +769,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 324,
+                type: Keyword {
+                    value: "type",
+                    position: 324,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 329,
@@ -749,7 +797,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 336,
+                type: Keyword {
+                    value: "type",
+                    position: 336,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 341,
@@ -774,7 +825,10 @@ DefinitionTree {
         ),
         TypeAlias(
             TypeAliasDefinition {
-                type: 350,
+                type: Keyword {
+                    value: "type",
+                    position: 350,
+                },
                 name: TemplatedIdentifier {
                     name: Identifier {
                         position: 355,

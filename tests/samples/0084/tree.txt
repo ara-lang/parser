@@ -78,7 +78,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 109,
+                class: Keyword {
+                    value: "class",
+                    position: 109,
+                },
                 name: Identifier {
                     position: 115,
                     value: "Async",
@@ -102,7 +105,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 124,
+                class: Keyword {
+                    value: "class",
+                    position: 124,
+                },
                 name: Identifier {
                     position: 130,
                     value: "Await",
@@ -126,7 +132,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 139,
+                class: Keyword {
+                    value: "class",
+                    position: 139,
+                },
                 name: Identifier {
                     position: 145,
                     value: "Concurrently",

@@ -31,7 +31,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                position: 14,
+                                true: Keyword {
+                                    value: "true",
+                                    position: 14,
+                                },
                             },
                         ),
                     ),
@@ -55,7 +58,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                position: 32,
+                                                true: Keyword {
+                                                    value: "true",
+                                                    position: 32,
+                                                },
                                             },
                                         ),
                                     ),

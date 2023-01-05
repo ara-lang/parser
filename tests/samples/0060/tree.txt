@@ -7,7 +7,10 @@ DefinitionTree {
                         comments: [],
                     },
                     attributes: [],
-                    enum: 0,
+                    enum: Keyword {
+                        value: "enum",
+                        position: 0,
+                    },
                     name: Identifier {
                         position: 5,
                         value: "a",
@@ -26,7 +29,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 18,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 18,
+                                    },
                                     name: Identifier {
                                         position: 23,
                                         value: "static",
@@ -49,7 +55,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 42,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 42,
+                                    },
                                     name: Identifier {
                                         position: 47,
                                         value: "self",
@@ -72,7 +81,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 64,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 64,
+                                    },
                                     name: Identifier {
                                         position: 69,
                                         value: "return",
@@ -95,7 +107,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 88,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 88,
+                                    },
                                     name: Identifier {
                                         position: 93,
                                         value: "parent",
@@ -118,7 +133,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 112,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 112,
+                                    },
                                     name: Identifier {
                                         position: 117,
                                         value: "enum",
@@ -141,7 +159,10 @@ DefinitionTree {
                             Case(
                                 BackedEnumCaseDefinition {
                                     attributes: [],
-                                    case: 135,
+                                    case: Keyword {
+                                        value: "case",
+                                        position: 135,
+                                    },
                                     name: Identifier {
                                         position: 140,
                                         value: "from",
@@ -176,7 +197,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 157,
+                class: Keyword {
+                    value: "class",
+                    position: 157,
+                },
                 name: Identifier {
                     position: 163,
                     value: "f",
@@ -196,7 +220,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 171,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 171,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -232,7 +259,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 196,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 196,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -268,7 +298,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 219,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 219,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -304,7 +337,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 244,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 244,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -340,7 +376,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 269,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 269,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -376,7 +415,10 @@ DefinitionTree {
                                 modifiers: ConstantModifierDefinitionGroup {
                                     modifiers: [],
                                 },
-                                const: 293,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 293,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
@@ -413,7 +455,10 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: 316,
+                const: Keyword {
+                    value: "const",
+                    position: 316,
+                },
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {
@@ -445,7 +490,10 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: 334,
+                const: Keyword {
+                    value: "const",
+                    position: 334,
+                },
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {

@@ -5,7 +5,10 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                const: 0,
+                const: Keyword {
+                    value: "const",
+                    position: 0,
+                },
                 entries: CommaSeparated {
                     inner: [
                         ConstantDefinitionEntry {
@@ -3152,7 +3155,10 @@ DefinitionTree {
                 modifiers: ClassModifierDefinitionGroup {
                     modifiers: [],
                 },
-                class: 1509,
+                class: Keyword {
+                    value: "class",
+                    position: 1509,
+                },
                 name: Identifier {
                     position: 1515,
                     value: "Bar",
@@ -3176,7 +3182,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                const: 1533,
+                                const: Keyword {
+                                    value: "const",
+                                    position: 1533,
+                                },
                                 entries: CommaSeparated {
                                     inner: [
                                         ConstantDefinitionEntry {
