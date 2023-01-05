@@ -26,6 +26,7 @@ use crate::tree::expression::operator::FunctionOperationExpression;
 use crate::tree::expression::operator::GeneratorOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
 use crate::tree::expression::operator::ObjectOperationExpression;
+use crate::tree::expression::operator::RangeOperationExpression;
 use crate::tree::expression::operator::StringOperationExpression;
 use crate::tree::expression::operator::TernaryOperationExpression;
 use crate::tree::expression::operator::TypeOperationExpression;
@@ -63,6 +64,7 @@ pub enum Expression {
     GeneratorOperation(GeneratorOperationExpression),
     LogicalOperation(LogicalOperationExpression),
     ObjectOperation(ObjectOperationExpression),
+    RangeOperation(RangeOperationExpression),
     StringOperation(StringOperationExpression),
     TypeOperation(TypeOperationExpression),
     TernaryOperation(TernaryOperationExpression),
@@ -265,6 +267,7 @@ impl Node for Expression {
             Expression::GeneratorOperation(expression) => expression.initial_position(),
             Expression::LogicalOperation(expression) => expression.initial_position(),
             Expression::ObjectOperation(expression) => expression.initial_position(),
+            Expression::RangeOperation(expression) => expression.initial_position(),
             Expression::StringOperation(expression) => expression.initial_position(),
             Expression::TypeOperation(expression) => expression.initial_position(),
             Expression::TernaryOperation(expression) => expression.initial_position(),
@@ -298,6 +301,7 @@ impl Node for Expression {
             Expression::GeneratorOperation(expression) => expression.final_position(),
             Expression::LogicalOperation(expression) => expression.final_position(),
             Expression::ObjectOperation(expression) => expression.final_position(),
+            Expression::RangeOperation(expression) => expression.final_position(),
             Expression::StringOperation(expression) => expression.final_position(),
             Expression::TypeOperation(expression) => expression.final_position(),
             Expression::TernaryOperation(expression) => expression.final_position(),
@@ -331,6 +335,7 @@ impl Node for Expression {
             Expression::GeneratorOperation(expression) => vec![expression],
             Expression::LogicalOperation(expression) => vec![expression],
             Expression::ObjectOperation(expression) => vec![expression],
+            Expression::RangeOperation(expression) => vec![expression],
             Expression::StringOperation(expression) => vec![expression],
             Expression::TypeOperation(expression) => vec![expression],
             Expression::TernaryOperation(expression) => vec![expression],

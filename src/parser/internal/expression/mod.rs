@@ -27,6 +27,7 @@ use crate::tree::expression::operator::ExceptionOperationExpression;
 use crate::tree::expression::operator::GeneratorOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
 use crate::tree::expression::operator::ObjectOperationExpression;
+use crate::tree::expression::operator::RangeOperationExpression;
 use crate::tree::expression::Expression;
 use crate::tree::expression::ParenthesizedExpression;
 use crate::tree::identifier::Identifier;
@@ -124,7 +125,7 @@ macro_rules! expressions {
         )+
     ) => {
         $(
-            pub(crate) fn $expr($state: &mut State, precedence: &Precedence) -> ParseResult<Expression> {
+            pub fn $expr($state: &mut State, precedence: &Precedence) -> ParseResult<Expression> {
                 $(
                     if &$precedence < precedence {
                         return $else($state, precedence);
@@ -756,9 +757,43 @@ expressions! {
         }))
     })
 
-    #[before(unexpected_token), current(TokenKind::Variable)]
+    #[before(range_to), current(TokenKind::Variable)]
     variable({
         Ok(Expression::Variable(variable::parse(state)?))
+    })
+
+    #[before(unexpected_token), current(TokenKind::DoubleDot)]
+    range_to({
+        let comments = state.iterator.comments();
+        let current = state.iterator.current();
+        let position = current.position;
+        state.iterator.next();
+
+        let current = state.iterator.current();
+        if current.kind == TokenKind::Equals {
+            let equals = current.position;
+            state.iterator.next();
+            let expr = for_precedence(state, Precedence::Range)?;
+
+            Ok(Expression::RangeOperation(RangeOperationExpression::ToInclusive {
+                comments,
+                double_dot: position,
+                equals,
+                to: Box::new(expr),
+            }))
+        } else if !is_range_terminator(&current.kind) {
+            let expr = for_precedence(state, Precedence::Range)?;
+            Ok(Expression::RangeOperation(RangeOperationExpression::To {
+                comments,
+                double_dot: position,
+                to: Box::new(expr),
+            }))
+        } else {
+            Ok(Expression::RangeOperation(RangeOperationExpression::Full {
+                comments,
+                double_dot: position,
+            }))
+        }
     })
 }
 
@@ -767,4 +802,20 @@ fn unexpected_token(state: &mut State, _precedence: &Precedence) -> ParseResult<
         state,
         unexpected_token(vec!["an expression"], state.iterator.current())
     );
+}
+
+/// Return true if the current token terminates an expression.
+pub fn is_range_terminator(current: &TokenKind) -> bool {
+    matches!(
+        current,
+        TokenKind::SemiColon
+            | TokenKind::RightParen
+            | TokenKind::RightBrace
+            | TokenKind::LeftBrace
+            | TokenKind::RightBracket
+            | TokenKind::Comma
+            | TokenKind::Colon
+            | TokenKind::If
+            | TokenKind::As
+    )
 }

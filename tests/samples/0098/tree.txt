@@ -1,0 +1,364 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "example",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 16,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 17,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 18,
+                    type_definition: Void(
+                        20,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 31,
+                                condition: Variable(
+                                    Variable {
+                                        position: 34,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 37,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    From {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 39,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 40,
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 43,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 49,
+                                condition: Variable(
+                                    Variable {
+                                        position: 52,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 55,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    Between {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 57,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 58,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 60,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 63,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 69,
+                                condition: Variable(
+                                    Variable {
+                                        position: 72,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 75,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    BetweenInclusive {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 77,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 78,
+                                                        equals: 80,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 81,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 84,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 90,
+                                condition: Variable(
+                                    Variable {
+                                        position: 93,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 96,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    To {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        double_dot: 98,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 100,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 103,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 109,
+                                condition: Variable(
+                                    Variable {
+                                        position: 112,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 115,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    ToInclusive {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        double_dot: 117,
+                                                        equals: 119,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 120,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 123,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: 129,
+                                condition: Variable(
+                                    Variable {
+                                        position: 132,
+                                        name: "$x",
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 135,
+                                    statements: [
+                                        Return(
+                                            Implicit {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                expression: RangeOperation(
+                                                    Full {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        double_dot: 137,
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    ],
+                                    right_brace: 140,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                    ],
+                    right_brace: 142,
+                },
+            },
+        ),
+    ],
+    eof: 144,
+}

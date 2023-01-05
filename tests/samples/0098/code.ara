@@ -1,0 +1,8 @@
+function example(): void {
+    if $x { 1.. }
+    if $x { 1..10 }
+    if $x { 1..=10 }
+    if $x { ..10 }
+    if $x { ..=10 }
+    if $x { .. }
+}

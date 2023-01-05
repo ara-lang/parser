@@ -136,6 +136,10 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
         }
         [b'0'..=b'9', ..] => number::tokenize(state)?,
         [b'.', b'0'..=b'9', ..] => number::tokenize(state)?,
+        [b'.', b'.', ..] => {
+            state.bytes.skip(2);
+            (TokenKind::DoubleDot, b"..".into())
+        }
         [b'.', ..] => {
             state.bytes.next();
             (TokenKind::Dot, b".".into())

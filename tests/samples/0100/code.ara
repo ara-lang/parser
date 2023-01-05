@@ -1,0 +1,8 @@
+function example(): void {
+    $x = vec[1.., $y];
+    $x = vec[1..10, $y];
+    $x = vec[1..=10, $y];
+    $x = vec[..10, $y];
+    $x = vec[..=10, $y];
+    $x = vec[.., $y];
+}

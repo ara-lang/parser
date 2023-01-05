@@ -1,0 +1,328 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "example",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 16,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 17,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 18,
+                    type_definition: Void(
+                        20,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: 31,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        From {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            from: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "1",
+                                                        position: 39,
+                                                    },
+                                                ),
+                                            ),
+                                            double_dot: 40,
+                                        },
+                                    ),
+                                    as: 43,
+                                    value: Variable {
+                                        position: 46,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 49,
+                                    statements: [],
+                                    right_brace: 56,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: 63,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        Between {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            from: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "1",
+                                                        position: 71,
+                                                    },
+                                                ),
+                                            ),
+                                            double_dot: 72,
+                                            to: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "10",
+                                                        position: 74,
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ),
+                                    as: 77,
+                                    value: Variable {
+                                        position: 80,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 83,
+                                    statements: [],
+                                    right_brace: 90,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: 97,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        BetweenInclusive {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            from: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "1",
+                                                        position: 105,
+                                                    },
+                                                ),
+                                            ),
+                                            double_dot: 106,
+                                            equals: 108,
+                                            to: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "10",
+                                                        position: 109,
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ),
+                                    as: 112,
+                                    value: Variable {
+                                        position: 115,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 118,
+                                    statements: [],
+                                    right_brace: 125,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 132,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                foreach: 204,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        To {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            double_dot: 212,
+                                            to: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "10",
+                                                        position: 214,
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ),
+                                    as: 217,
+                                    value: Variable {
+                                        position: 220,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 223,
+                                    statements: [],
+                                    right_brace: 230,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 237,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                foreach: 309,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        ToInclusive {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            double_dot: 317,
+                                            equals: 319,
+                                            to: Literal(
+                                                Integer(
+                                                    LiteralInteger {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        value: "10",
+                                                        position: 320,
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                    ),
+                                    as: 323,
+                                    value: Variable {
+                                        position: 326,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 329,
+                                    statements: [],
+                                    right_brace: 336,
+                                },
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 343,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                foreach: 415,
+                                iterator: Value {
+                                    expression: RangeOperation(
+                                        Full {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            double_dot: 423,
+                                        },
+                                    ),
+                                    as: 426,
+                                    value: Variable {
+                                        position: 429,
+                                        name: "$y",
+                                    },
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 432,
+                                    statements: [],
+                                    right_brace: 439,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 441,
+                },
+            },
+        ),
+    ],
+    eof: 443,
+}

@@ -578,6 +578,57 @@ pub enum AsyncOperationExpression {
     },
 }
 
+#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum RangeOperationExpression {
+    Between {
+        comments: CommentGroup,
+        from: Box<Expression>,
+        double_dot: usize,
+        to: Box<Expression>,
+    },
+    BetweenInclusive {
+        comments: CommentGroup,
+        from: Box<Expression>,
+        double_dot: usize,
+        equals: usize,
+        to: Box<Expression>,
+    },
+    To {
+        comments: CommentGroup,
+        double_dot: usize,
+        to: Box<Expression>,
+    },
+    ToInclusive {
+        comments: CommentGroup,
+        double_dot: usize,
+        equals: usize,
+        to: Box<Expression>,
+    },
+    From {
+        comments: CommentGroup,
+        from: Box<Expression>,
+        double_dot: usize,
+    },
+    Full {
+        comments: CommentGroup,
+        double_dot: usize,
+    },
+}
+
+impl RangeOperationExpression {
+    pub fn has_start(&self) -> bool {
+        match self {
+            RangeOperationExpression::Between { .. } => true,
+            RangeOperationExpression::BetweenInclusive { .. } => true,
+            RangeOperationExpression::To { .. } => false,
+            RangeOperationExpression::ToInclusive { .. } => false,
+            RangeOperationExpression::From { .. } => true,
+            RangeOperationExpression::Full { .. } => false,
+        }
+    }
+}
+
 impl Node for ArithmeticOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
@@ -1485,6 +1536,56 @@ impl Node for AsyncOperationExpression {
             AsyncOperationExpression::Concurrently { expressions, .. } => {
                 expressions.inner.iter().map(|e| e as &dyn Node).collect()
             }
+        }
+    }
+}
+
+impl Node for RangeOperationExpression {
+    fn comments(&self) -> Option<&CommentGroup> {
+        match &self {
+            RangeOperationExpression::Between { comments, .. } => Some(comments),
+            RangeOperationExpression::BetweenInclusive { comments, .. } => Some(comments),
+            RangeOperationExpression::To { comments, .. } => Some(comments),
+            RangeOperationExpression::ToInclusive { comments, .. } => Some(comments),
+            RangeOperationExpression::From { comments, .. } => Some(comments),
+            RangeOperationExpression::Full { comments, .. } => Some(comments),
+        }
+    }
+
+    fn initial_position(&self) -> usize {
+        match &self {
+            RangeOperationExpression::Between { from, .. } => from.initial_position(),
+            RangeOperationExpression::BetweenInclusive { from, .. } => from.initial_position(),
+            RangeOperationExpression::To { double_dot, .. } => *double_dot,
+            RangeOperationExpression::ToInclusive { double_dot, .. } => *double_dot,
+            RangeOperationExpression::From { from, .. } => from.initial_position(),
+            RangeOperationExpression::Full { double_dot, .. } => *double_dot,
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match &self {
+            RangeOperationExpression::Between { to, .. } => to.final_position(),
+            RangeOperationExpression::BetweenInclusive { to, .. } => to.final_position(),
+            RangeOperationExpression::To { to, .. } => to.final_position(),
+            RangeOperationExpression::ToInclusive { to, .. } => to.final_position(),
+            RangeOperationExpression::From { double_dot, .. } => *double_dot,
+            RangeOperationExpression::Full { double_dot, .. } => *double_dot,
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match &self {
+            RangeOperationExpression::Between { from, to, .. } => {
+                vec![from.as_ref(), to.as_ref()]
+            }
+            RangeOperationExpression::BetweenInclusive { from, to, .. } => {
+                vec![from.as_ref(), to.as_ref()]
+            }
+            RangeOperationExpression::To { to, .. } => vec![to.as_ref()],
+            RangeOperationExpression::ToInclusive { to, .. } => vec![to.as_ref()],
+            RangeOperationExpression::From { from, .. } => vec![from.as_ref()],
+            RangeOperationExpression::Full { .. } => vec![],
         }
     }
 }

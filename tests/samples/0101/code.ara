@@ -1,0 +1,28 @@
+function example(): void {
+    foreach 1.. as $y {
+
+    }
+
+    foreach 1..10 as $y {
+
+    }
+
+    foreach 1..=10 as $y {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    foreach ..10 as $y {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    foreach ..=10 as $y {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    foreach .. as $y {
+
+    }
+}

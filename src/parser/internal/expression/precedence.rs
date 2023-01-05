@@ -10,6 +10,7 @@ pub enum Associativity {
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub enum Precedence {
     Lowest,
+    Range,
     Yield,
     YieldFrom,
     IncDec,
@@ -65,7 +66,8 @@ impl Precedence {
             | DotEquals | AndEquals | DoubleQuestionEquals | PercentEquals | AmpersandEquals
             | PipeEquals | CaretEquals | LeftShiftEquals | RightShiftEquals => Self::Assignment,
             Yield => Self::Yield,
-            _ => unimplemented!("precedence for op {:?}", kind),
+            DoubleDot => Self::Range,
+            _ => unreachable!("precedence for op {:?}", kind),
         }
     }
 
@@ -77,7 +79,7 @@ impl Precedence {
             Increment | Decrement => Self::IncDec,
             LeftParen | Generic | LeftBracket => Self::CallDim,
             Arrow | QuestionArrow | DoubleColon => Self::ObjectAccess,
-            _ => unimplemented!("postfix precedence for op {:?}", kind),
+            _ => unreachable!("postfix precedence for op {:?}", kind),
         }
     }
 

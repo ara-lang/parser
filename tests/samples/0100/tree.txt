@@ -1,0 +1,466 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "example",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 16,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 17,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 18,
+                    type_definition: Void(
+                        20,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 31,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 34,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 36,
+                                                left_bracket: 39,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                From {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    from: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "1",
+                                                                                position: 40,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    double_dot: 41,
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 45,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        43,
+                                                    ],
+                                                },
+                                                right_bracket: 47,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 48,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 54,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 57,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 59,
+                                                left_bracket: 62,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                Between {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    from: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "1",
+                                                                                position: 63,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    double_dot: 64,
+                                                                    to: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "10",
+                                                                                position: 66,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 70,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        68,
+                                                    ],
+                                                },
+                                                right_bracket: 72,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 73,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 79,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 82,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 84,
+                                                left_bracket: 87,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                BetweenInclusive {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    from: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "1",
+                                                                                position: 88,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    double_dot: 89,
+                                                                    equals: 91,
+                                                                    to: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "10",
+                                                                                position: 92,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 96,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        94,
+                                                    ],
+                                                },
+                                                right_bracket: 98,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 99,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 105,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 108,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 110,
+                                                left_bracket: 113,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                To {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    double_dot: 114,
+                                                                    to: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "10",
+                                                                                position: 116,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 120,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        118,
+                                                    ],
+                                                },
+                                                right_bracket: 122,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 123,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 129,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 132,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 134,
+                                                left_bracket: 137,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                ToInclusive {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    double_dot: 138,
+                                                                    equals: 140,
+                                                                    to: Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "10",
+                                                                                position: 141,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 145,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        143,
+                                                    ],
+                                                },
+                                                right_bracket: 147,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 148,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 154,
+                                                name: "$x",
+                                            },
+                                        ),
+                                        equals: 157,
+                                        right: Vec(
+                                            VecExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                vec: 159,
+                                                left_bracket: 162,
+                                                elements: CommaSeparated {
+                                                    inner: [
+                                                        VecElementExpression {
+                                                            value: RangeOperation(
+                                                                Full {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    double_dot: 163,
+                                                                },
+                                                            ),
+                                                        },
+                                                        VecElementExpression {
+                                                            value: Variable(
+                                                                Variable {
+                                                                    position: 167,
+                                                                    name: "$y",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ],
+                                                    commas: [
+                                                        165,
+                                                    ],
+                                                },
+                                                right_bracket: 169,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 170,
+                            },
+                        ),
+                    ],
+                    right_brace: 172,
+                },
+            },
+        ),
+    ],
+    eof: 174,
+}

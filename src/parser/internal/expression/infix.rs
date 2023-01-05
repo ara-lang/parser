@@ -12,6 +12,7 @@ use crate::tree::expression::operator::AssignmentOperationExpression;
 use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ComparisonOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
+use crate::tree::expression::operator::RangeOperationExpression;
 use crate::tree::expression::operator::StringOperationExpression;
 use crate::tree::expression::operator::TernaryOperationExpression;
 use crate::tree::expression::operator::TypeOperationExpression;
@@ -91,6 +92,35 @@ pub fn infix(
             r#in: position,
             array: Box::new(expression::create(state)?),
         }),
+        TokenKind::DoubleDot => {
+            if op.kind == TokenKind::Equals {
+                let equals = op.position;
+                state.iterator.next();
+                let expr = expression::for_precedence(state, Precedence::Range)?;
+
+                Expression::RangeOperation(RangeOperationExpression::BetweenInclusive {
+                    comments,
+                    from: Box::new(left),
+                    double_dot: position,
+                    equals,
+                    to: Box::new(expr),
+                })
+            } else if !expression::is_range_terminator(&op.kind) {
+                let expr = expression::for_precedence(state, Precedence::Range)?;
+                Expression::RangeOperation(RangeOperationExpression::Between {
+                    comments,
+                    from: Box::new(left),
+                    double_dot: position,
+                    to: Box::new(expr),
+                })
+            } else {
+                Expression::RangeOperation(RangeOperationExpression::From {
+                    comments,
+                    from: Box::new(left),
+                    double_dot: position,
+                })
+            }
+        }
         _ => {
             let left = Box::new(left);
             let right = Box::new(expression::for_precedence(state, right_precedence)?);
@@ -417,6 +447,7 @@ pub fn is_infix(state: &mut State, t: &TokenKind) -> bool {
             | TokenKind::Percent
             | TokenKind::In
             | TokenKind::Is
+            | TokenKind::DoubleDot
             | TokenKind::Into
             | TokenKind::Instanceof
             | TokenKind::Asterisk

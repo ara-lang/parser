@@ -1,0 +1,682 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: 0,
+                name: Identifier {
+                    position: 9,
+                    value: "example",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 16,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 17,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 18,
+                    type_definition: Void(
+                        20,
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 25,
+                    statements: [
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: 31,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 37,
+                                                name: "$foo",
+                                            },
+                                            equals: 42,
+                                            expression: RangeOperation(
+                                                From {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    from: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "1",
+                                                                position: 44,
+                                                            },
+                                                        ),
+                                                    ),
+                                                    double_dot: 45,
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 48,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 51,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 55,
+                                                method: Identifier {
+                                                    position: 57,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 65,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 66,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 68,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 70,
+                                    statements: [],
+                                    right_brace: 77,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: 84,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 90,
+                                                name: "$foo",
+                                            },
+                                            equals: 95,
+                                            expression: RangeOperation(
+                                                Between {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    from: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "1",
+                                                                position: 97,
+                                                            },
+                                                        ),
+                                                    ),
+                                                    double_dot: 98,
+                                                    to: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                position: 100,
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 103,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 106,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 110,
+                                                method: Identifier {
+                                                    position: 112,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 120,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 121,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 123,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 125,
+                                    statements: [],
+                                    right_brace: 132,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: 139,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 145,
+                                                name: "$foo",
+                                            },
+                                            equals: 150,
+                                            expression: RangeOperation(
+                                                BetweenInclusive {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    from: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "1",
+                                                                position: 152,
+                                                            },
+                                                        ),
+                                                    ),
+                                                    double_dot: 153,
+                                                    equals: 155,
+                                                    to: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                position: 156,
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 159,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 162,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 166,
+                                                method: Identifier {
+                                                    position: 168,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 176,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 177,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 179,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 181,
+                                    statements: [],
+                                    right_brace: 188,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 195,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                using: 267,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 273,
+                                                name: "$foo",
+                                            },
+                                            equals: 278,
+                                            expression: RangeOperation(
+                                                To {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    double_dot: 280,
+                                                    to: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                position: 282,
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 285,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 288,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 292,
+                                                method: Identifier {
+                                                    position: 294,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 302,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 303,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 305,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 307,
+                                    statements: [],
+                                    right_brace: 314,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 321,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                using: 393,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 399,
+                                                name: "$foo",
+                                            },
+                                            equals: 404,
+                                            expression: RangeOperation(
+                                                ToInclusive {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    double_dot: 406,
+                                                    equals: 408,
+                                                    to: Literal(
+                                                        Integer(
+                                                            LiteralInteger {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: "10",
+                                                                position: 409,
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 412,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 415,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 419,
+                                                method: Identifier {
+                                                    position: 421,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 429,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 430,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 432,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 434,
+                                    statements: [],
+                                    right_brace: 441,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [
+                                        Comment {
+                                            position: 448,
+                                            format: SingleLine,
+                                            content: "// this is a compile error, because the range does not have a start",
+                                        },
+                                    ],
+                                },
+                                using: 520,
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 526,
+                                                name: "$foo",
+                                            },
+                                            equals: 531,
+                                            expression: RangeOperation(
+                                                Full {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    double_dot: 533,
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: 536,
+                                        condition: ObjectOperation(
+                                            MethodCall {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                object: Variable(
+                                                    Variable {
+                                                        position: 539,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                arrow: 543,
+                                                method: Identifier {
+                                                    position: 545,
+                                                    value: "contains",
+                                                },
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 553,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Positional {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: None,
+                                                                value: Variable(
+                                                                    Variable {
+                                                                        position: 554,
+                                                                        name: "$y",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 556,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 558,
+                                    statements: [],
+                                    right_brace: 565,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 567,
+                },
+            },
+        ),
+    ],
+    eof: 569,
+}

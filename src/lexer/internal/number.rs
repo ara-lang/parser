@@ -26,7 +26,13 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<(TokenKind, ByteString)> {
             (16, NumberKind::Int)
         }
         [b'0', ..] => (10, NumberKind::OctalOrFloat),
-        [b'.', ..] => (10, NumberKind::Float),
+        [b'.', t, ..] => {
+            if *t == b'.' {
+                (10, NumberKind::IntOrFloat)
+            } else {
+                (10, NumberKind::Float)
+            }
+        }
         _ => (10, NumberKind::IntOrFloat),
     };
 
@@ -39,10 +45,12 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<(TokenKind, ByteString)> {
     }
 
     // Remaining cases: decimal integer, legacy octal integer, or float.
-    let is_float = matches!(
-        state.bytes.read(3),
-        [b'.', ..] | [b'e' | b'E', b'-' | b'+', b'0'..=b'9'] | [b'e' | b'E', b'0'..=b'9', ..]
-    );
+    let next_three = state.bytes.read(3);
+    let is_float = !matches!(next_three, [b'.', b'.', ..])
+        && matches!(
+            next_three,
+            [b'.', ..] | [b'e' | b'E', b'-' | b'+', b'0'..=b'9'] | [b'e' | b'E', b'0'..=b'9', ..]
+        );
 
     if !is_float {
         return parse_int(&buffer);

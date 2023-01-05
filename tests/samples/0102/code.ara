@@ -1,0 +1,28 @@
+function example(): void {
+    using $foo = 1.. if $foo->contains($y) {
+
+    }
+
+    using $foo = 1..10 if $foo->contains($y) {
+
+    }
+
+    using $foo = 1..=10 if $foo->contains($y) {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    using $foo = ..10 if $foo->contains($y) {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    using $foo = ..=10 if $foo->contains($y) {
+
+    }
+
+    // this is a compile error, because the range does not have a start
+    using $foo = .. if $foo->contains($y) {
+
+    }
+}
