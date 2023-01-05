@@ -121,14 +121,20 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: 78,
+                                                return: Keyword {
+                                                    value: "return",
+                                                    position: 78,
+                                                },
                                                 expression: Some(
                                                     ClassOperation(
                                                         Initialization {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 85,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 85,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 89,

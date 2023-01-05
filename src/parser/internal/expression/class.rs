@@ -23,7 +23,7 @@ pub fn anonymous_initialization_class_operation_expression(
 ) -> ParseResult<ClassOperationExpression> {
     Ok(ClassOperationExpression::AnonymousInitialization {
         comments: state.iterator.comments(),
-        new: utils::skip(state, TokenKind::New)?,
+        new: utils::skip_keyword(state, TokenKind::New)?,
         class: anonymous_class_expression(state)?,
     })
 }
@@ -32,7 +32,7 @@ pub fn anonymous_class_expression(state: &mut State) -> ParseResult<AnonymousCla
     attribute::gather(state)?;
 
     let attributes = state.get_attributes();
-    let class = utils::skip(state, TokenKind::Class)?;
+    let class = utils::skip_keyword(state, TokenKind::Class)?;
     let comments = state.iterator.comments();
     let arguments = argument::argument_list_expression(state)?;
     let current = state.iterator.current();

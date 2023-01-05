@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: String(
-                        16,
+                        Keyword {
+                            value: "string",
+                            position: 16,
+                        },
                     ),
                 },
                 body: BlockStatement {

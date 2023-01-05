@@ -7,7 +7,7 @@ use crate::parser::state::State;
 use crate::tree::definition::namespace::NamespaceDefinition;
 
 pub fn namespace_definition(state: &mut State) -> ParseResult<NamespaceDefinition> {
-    let namespace = utils::skip(state, TokenKind::Namespace)?;
+    let namespace = utils::skip_keyword(state, TokenKind::Namespace)?;
     let name = identifier::namespace_identifier(state)?;
     let semicolon = utils::skip_semicolon(state)?;
 

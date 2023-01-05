@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 18,
                     type_definition: Void(
-                        20,
+                        Keyword {
+                            value: "void",
+                            position: 20,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 31,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 31,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -55,7 +61,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 37,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 37,
+                                        },
                                         array: RangeOperation(
                                             From {
                                                 comments: CommentGroup {
@@ -94,7 +103,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 51,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 51,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -106,7 +118,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 57,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 57,
+                                        },
                                         array: RangeOperation(
                                             Between {
                                                 comments: CommentGroup {
@@ -156,7 +171,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 73,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 73,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -168,7 +186,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 79,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 79,
+                                        },
                                         array: RangeOperation(
                                             BetweenInclusive {
                                                 comments: CommentGroup {
@@ -219,7 +240,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 96,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 96,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -231,7 +255,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 102,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 102,
+                                        },
                                         array: RangeOperation(
                                             To {
                                                 comments: CommentGroup {
@@ -270,7 +297,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 117,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 117,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -282,7 +312,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 123,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 123,
+                                        },
                                         array: RangeOperation(
                                             ToInclusive {
                                                 comments: CommentGroup {
@@ -322,7 +355,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 139,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 139,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -334,7 +370,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 145,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 145,
+                                        },
                                         array: RangeOperation(
                                             Full {
                                                 comments: CommentGroup {

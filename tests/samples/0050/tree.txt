@@ -81,7 +81,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            exit: 55,
+                                                            exit: Keyword {
+                                                                value: "exit",
+                                                                position: 55,
+                                                            },
                                                             left_parenthesis: 59,
                                                             value: Some(
                                                                 Literal(

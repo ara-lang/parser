@@ -105,7 +105,10 @@ DefinitionTree {
                 },
                 equals: 54,
                 type_definition: NonNull(
-                    56,
+                    Keyword {
+                        value: "nonnull",
+                        position: 56,
+                    },
                 ),
                 semicolon: 63,
             },
@@ -271,7 +274,10 @@ DefinitionTree {
                 },
                 equals: 120,
                 type_definition: Vec(
-                    122,
+                    Keyword {
+                        value: "vec",
+                        position: 122,
+                    },
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
@@ -280,7 +286,10 @@ DefinitionTree {
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    126,
+                                    Keyword {
+                                        value: "int",
+                                        position: 126,
+                                    },
                                 ),
                             ],
                             commas: [],
@@ -322,7 +331,10 @@ DefinitionTree {
                                         members: CommaSeparated {
                                             inner: [
                                                 String(
-                                                    145,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 145,
+                                                    },
                                                 ),
                                             ],
                                             commas: [],
@@ -347,7 +359,10 @@ DefinitionTree {
                                         members: CommaSeparated {
                                             inner: [
                                                 NonNull(
-                                                    157,
+                                                    Keyword {
+                                                        value: "nonnull",
+                                                        position: 157,
+                                                    },
                                                 ),
                                             ],
                                             commas: [],
@@ -699,7 +714,10 @@ DefinitionTree {
                 },
                 equals: 280,
                 type_definition: Dict(
-                    282,
+                    Keyword {
+                        value: "dict",
+                        position: 282,
+                    },
                     TypeTemplateGroupDefinition {
                         comments: CommentGroup {
                             comments: [],
@@ -708,10 +726,16 @@ DefinitionTree {
                         members: CommaSeparated {
                             inner: [
                                 Integer(
-                                    287,
+                                    Keyword {
+                                        value: "int",
+                                        position: 287,
+                                    },
                                 ),
                                 Iterable(
-                                    292,
+                                    Keyword {
+                                        value: "iterable",
+                                        position: 292,
+                                    },
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
@@ -720,7 +744,10 @@ DefinitionTree {
                                         members: CommaSeparated {
                                             inner: [
                                                 Integer(
-                                                    301,
+                                                    Keyword {
+                                                        value: "int",
+                                                        position: 301,
+                                                    },
                                                 ),
                                             ],
                                             commas: [],

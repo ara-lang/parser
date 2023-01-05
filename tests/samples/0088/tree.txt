@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Void(
-                        17,
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -60,7 +63,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 33,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 33,
+                                                },
                                                 left_bracket: 36,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -127,7 +133,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 52,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 52,
+                                        },
                                         item: ArrayOperation(
                                             Access {
                                                 comments: CommentGroup {
@@ -169,7 +178,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 69,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 69,
+                                        },
                                         item: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -220,7 +232,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 88,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 88,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -304,7 +319,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 114,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 114,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -415,7 +433,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 148,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 148,
+                                        },
                                         item: ArrayOperation(
                                             Access {
                                                 comments: CommentGroup {
@@ -457,7 +478,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 165,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 165,
+                                        },
                                         item: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -508,7 +532,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 184,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 184,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -592,7 +619,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 210,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 210,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -715,7 +745,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 249,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 249,
+                                                },
                                                 left_bracket: 253,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -818,7 +851,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 290,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 290,
+                                        },
                                         item: ArrayOperation(
                                             Access {
                                                 comments: CommentGroup {
@@ -860,7 +896,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 309,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 309,
+                                        },
                                         item: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -911,7 +950,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 330,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 330,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -995,7 +1037,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        unset: 360,
+                                        unset: Keyword {
+                                            value: "unset",
+                                            position: 360,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -1106,7 +1151,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 400,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 400,
+                                        },
                                         item: ArrayOperation(
                                             Access {
                                                 comments: CommentGroup {
@@ -1148,7 +1196,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 419,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 419,
+                                        },
                                         item: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -1199,7 +1250,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 440,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 440,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -1283,7 +1337,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        isset: 470,
+                                        isset: Keyword {
+                                            value: "isset",
+                                            position: 470,
+                                        },
                                         item: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {

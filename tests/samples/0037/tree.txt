@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: 0,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "A\B\C\D\E",
@@ -37,7 +40,10 @@ DefinitionTree {
                                             },
                                             attributes: [],
                                             type_definition: String(
-                                                35,
+                                                Keyword {
+                                                    value: "string",
+                                                    position: 35,
+                                                },
                                             ),
                                             ellipsis: None,
                                             variable: Variable {
@@ -79,7 +85,10 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    exit: 59,
+                                                    exit: Keyword {
+                                                        value: "exit",
+                                                        position: 59,
+                                                    },
                                                     left_parenthesis: 63,
                                                     value: Some(
                                                         Literal(

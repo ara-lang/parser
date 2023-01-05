@@ -69,7 +69,10 @@ DefinitionTree {
                                             right_parenthesis: 30,
                                         },
                                         Boolean(
-                                            33,
+                                            Keyword {
+                                                value: "bool",
+                                                position: 33,
+                                            },
                                         ),
                                     ],
                                     commas: [
@@ -133,7 +136,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Vec(
-                                    60,
+                                    Keyword {
+                                        value: "vec",
+                                        position: 60,
+                                    },
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
@@ -216,7 +222,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 97,
                     type_definition: Vec(
-                        99,
+                        Keyword {
+                            value: "vec",
+                            position: 99,
+                        },
                         TypeTemplateGroupDefinition {
                             comments: CommentGroup {
                                 comments: [],
@@ -268,7 +277,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 122,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 122,
+                                                },
                                                 left_bracket: 125,
                                                 elements: CommaSeparated {
                                                     inner: [],
@@ -312,7 +324,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                if: 165,
+                                                if: Keyword {
+                                                    value: "if",
+                                                    position: 165,
+                                                },
                                                 condition: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -410,7 +425,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 240,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 240,
+                                },
                                 expression: Some(
                                     Variable(
                                         Variable {
@@ -673,7 +691,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Dict(
-                                    348,
+                                    Keyword {
+                                        value: "dict",
+                                        position: 348,
+                                    },
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
@@ -788,7 +809,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 390,
                     type_definition: Dict(
-                        392,
+                        Keyword {
+                            value: "dict",
+                            position: 392,
+                        },
                         TypeTemplateGroupDefinition {
                             comments: CommentGroup {
                                 comments: [],
@@ -851,7 +875,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 419,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 419,
+                                                },
                                                 left_bracket: 423,
                                                 elements: CommaSeparated {
                                                     inner: [],
@@ -870,7 +897,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 431,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 431,
+                                },
                                 condition: TypeOperation(
                                     Is {
                                         comments: CommentGroup {
@@ -882,7 +912,10 @@ DefinitionTree {
                                                 name: "$mapper",
                                             },
                                         ),
-                                        is: 442,
+                                        is: Keyword {
+                                            value: "is",
+                                            position: 442,
+                                        },
                                         right: Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {
@@ -1079,7 +1112,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 586,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 586,
+                                        },
                                         block: Block(
                                             BlockStatement {
                                                 comments: CommentGroup {
@@ -1222,7 +1258,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 707,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 707,
+                                },
                                 expression: Some(
                                     Variable(
                                         Variable {

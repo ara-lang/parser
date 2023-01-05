@@ -7,18 +7,18 @@ use crate::tree::definition::r#use::UseDefinition;
 use crate::tree::definition::r#use::UseDefinitionSymbolAlias;
 
 pub fn use_definition(state: &mut State) -> ParseResult<UseDefinition> {
-    let r#use = utils::skip(state, TokenKind::Use)?;
+    let r#use = utils::skip_keyword(state, TokenKind::Use)?;
 
     let current = state.iterator.current();
 
     match current.kind {
         TokenKind::Function => Ok(UseDefinition::Function {
             r#use,
-            function: utils::skip(state, TokenKind::Function)?,
+            function: utils::skip_keyword(state, TokenKind::Function)?,
             name: identifier::fully_qualified_type_identifier(state)?,
             alias: if state.iterator.current().kind == TokenKind::As {
                 Some(UseDefinitionSymbolAlias {
-                    r#as: utils::skip(state, TokenKind::As)?,
+                    r#as: utils::skip_keyword(state, TokenKind::As)?,
                     alias: identifier::classname_identifier(state)?,
                 })
             } else {
@@ -28,11 +28,11 @@ pub fn use_definition(state: &mut State) -> ParseResult<UseDefinition> {
         }),
         TokenKind::Const => Ok(UseDefinition::Constant {
             r#use,
-            r#const: utils::skip(state, TokenKind::Const)?,
+            r#const: utils::skip_keyword(state, TokenKind::Const)?,
             name: identifier::fully_qualified_type_identifier(state)?,
             alias: if state.iterator.current().kind == TokenKind::As {
                 Some(UseDefinitionSymbolAlias {
-                    r#as: utils::skip(state, TokenKind::As)?,
+                    r#as: utils::skip_keyword(state, TokenKind::As)?,
                     alias: identifier::classname_identifier(state)?,
                 })
             } else {
@@ -45,7 +45,7 @@ pub fn use_definition(state: &mut State) -> ParseResult<UseDefinition> {
             name: identifier::fully_qualified_type_identifier(state)?,
             alias: if state.iterator.current().kind == TokenKind::As {
                 Some(UseDefinitionSymbolAlias {
-                    r#as: utils::skip(state, TokenKind::As)?,
+                    r#as: utils::skip_keyword(state, TokenKind::As)?,
                     alias: identifier::classname_identifier(state)?,
                 })
             } else {

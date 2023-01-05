@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 18,
                     type_definition: Void(
-                        20,
+                        Keyword {
+                            value: "void",
+                            position: 20,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 31,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 31,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 34,
@@ -94,7 +100,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 49,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 49,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 52,
@@ -156,7 +165,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 69,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 69,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 72,
@@ -219,7 +231,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 90,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 90,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 93,
@@ -270,7 +285,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 109,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 109,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 112,
@@ -322,7 +340,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 129,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 129,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 132,

@@ -4,6 +4,7 @@ use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -11,7 +12,7 @@ use crate::tree::Node;
 pub enum ReturnStatement {
     Explicit {
         comments: CommentGroup,
-        r#return: usize,
+        r#return: Keyword,
         expression: Option<Expression>,
         semicolon: usize,
     },
@@ -31,7 +32,7 @@ impl Node for ReturnStatement {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ReturnStatement::Explicit { r#return, .. } => *r#return,
+            ReturnStatement::Explicit { r#return, .. } => r#return.initial_position(),
             ReturnStatement::Implicit { expression, .. } => expression.initial_position(),
         }
     }
@@ -45,11 +46,15 @@ impl Node for ReturnStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ReturnStatement::Explicit { expression, .. } => {
+            ReturnStatement::Explicit {
+                r#return,
+                expression,
+                ..
+            } => {
                 if let Some(expression) = expression {
-                    vec![expression]
+                    vec![r#return, expression]
                 } else {
-                    vec![]
+                    vec![r#return]
                 }
             }
             ReturnStatement::Implicit { expression, .. } => vec![expression],

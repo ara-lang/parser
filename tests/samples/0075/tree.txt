@@ -17,10 +17,16 @@ DefinitionTree {
                 type_definition: Union(
                     [
                         Integer(
-                            11,
+                            Keyword {
+                                value: "int",
+                                position: 11,
+                            },
                         ),
                         Float(
-                            15,
+                            Keyword {
+                                value: "float",
+                                position: 15,
+                            },
                         ),
                     ],
                 ),
@@ -119,7 +125,10 @@ DefinitionTree {
                                                     ],
                                                 },
                                                 type_definition: Vec(
-                                                    109,
+                                                    Keyword {
+                                                        value: "vec",
+                                                        position: 109,
+                                                    },
                                                     TypeTemplateGroupDefinition {
                                                         comments: CommentGroup {
                                                             comments: [],
@@ -155,7 +164,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                vec: 125,
+                                                                vec: Keyword {
+                                                                    value: "vec",
+                                                                    position: 125,
+                                                                },
                                                                 left_bracket: 128,
                                                                 elements: CommaSeparated {
                                                                     inner: [],
@@ -251,7 +263,10 @@ DefinitionTree {
                                                                             right_parenthesis: 179,
                                                                         },
                                                                         Boolean(
-                                                                            182,
+                                                                            Keyword {
+                                                                                value: "bool",
+                                                                                position: 182,
+                                                                            },
                                                                         ),
                                                                     ],
                                                                     commas: [
@@ -338,7 +353,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                vec: 230,
+                                                                vec: Keyword {
+                                                                    value: "vec",
+                                                                    position: 230,
+                                                                },
                                                                 left_bracket: 233,
                                                                 elements: CommaSeparated {
                                                                     inner: [],
@@ -394,7 +412,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                if: 289,
+                                                                if: Keyword {
+                                                                    value: "if",
+                                                                    position: 289,
+                                                                },
                                                                 condition: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -492,14 +513,20 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: 375,
+                                                return: Keyword {
+                                                    value: "return",
+                                                    position: 375,
+                                                },
                                                 expression: Some(
                                                     ClassOperation(
                                                         Initialization {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 382,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 382,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 386,
@@ -741,7 +768,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                vec: 513,
+                                                                vec: Keyword {
+                                                                    value: "vec",
+                                                                    position: 513,
+                                                                },
                                                                 left_bracket: 516,
                                                                 elements: CommaSeparated {
                                                                     inner: [],
@@ -870,14 +900,20 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: 617,
+                                                return: Keyword {
+                                                    value: "return",
+                                                    position: 617,
+                                                },
                                                 expression: Some(
                                                     ClassOperation(
                                                         Initialization {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 624,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 624,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 628,
@@ -974,7 +1010,10 @@ DefinitionTree {
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 689,
                                     type_definition: Integer(
-                                        691,
+                                        Keyword {
+                                            value: "int",
+                                            position: 691,
+                                        },
                                     ),
                                 },
                                 constraints: Some(
@@ -1176,7 +1215,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 857,
                     type_definition: Integer(
-                        859,
+                        Keyword {
+                            value: "int",
+                            position: 859,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -1207,7 +1249,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                new: 883,
+                                                new: Keyword {
+                                                    value: "new",
+                                                    position: 883,
+                                                },
                                                 class: Identifier(
                                                     Identifier {
                                                         position: 887,
@@ -1250,7 +1295,10 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        vec: 905,
+                                                                        vec: Keyword {
+                                                                            value: "vec",
+                                                                            position: 905,
+                                                                        },
                                                                         left_bracket: 908,
                                                                         elements: CommaSeparated {
                                                                             inner: [
@@ -1447,9 +1495,12 @@ DefinitionTree {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
                                                                                 },
-                                                                                static: None,
-                                                                                fn: 993,
                                                                                 attributes: [],
+                                                                                static: None,
+                                                                                fn: Keyword {
+                                                                                    value: "fn",
+                                                                                    position: 993,
+                                                                                },
                                                                                 parameters: FunctionLikeParameterListDefinition {
                                                                                     comments: CommentGroup {
                                                                                         comments: [],
@@ -1486,7 +1537,10 @@ DefinitionTree {
                                                                                 return_type: FunctionLikeReturnTypeDefinition {
                                                                                     colon: 1003,
                                                                                     type_definition: Boolean(
-                                                                                        1005,
+                                                                                        Keyword {
+                                                                                            value: "bool",
+                                                                                            position: 1005,
+                                                                                        },
                                                                                     ),
                                                                                 },
                                                                                 double_arrow: 1010,
@@ -1536,7 +1590,10 @@ DefinitionTree {
                                                         types: CommaSeparated {
                                                             inner: [
                                                                 Float(
-                                                                    1035,
+                                                                    Keyword {
+                                                                        value: "float",
+                                                                        position: 1035,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1560,9 +1617,12 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        static: None,
-                                                                        fn: 1051,
                                                                         attributes: [],
+                                                                        static: None,
+                                                                        fn: Keyword {
+                                                                            value: "fn",
+                                                                            position: 1051,
+                                                                        },
                                                                         parameters: FunctionLikeParameterListDefinition {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
@@ -1599,7 +1659,10 @@ DefinitionTree {
                                                                         return_type: FunctionLikeReturnTypeDefinition {
                                                                             colon: 1061,
                                                                             type_definition: Float(
-                                                                                1063,
+                                                                                Keyword {
+                                                                                    value: "float",
+                                                                                    position: 1063,
+                                                                                },
                                                                             ),
                                                                         },
                                                                         double_arrow: 1069,
@@ -1619,9 +1682,15 @@ DefinitionTree {
                                                                                                 name: "$n",
                                                                                             },
                                                                                         ),
-                                                                                        is: 1075,
+                                                                                        is: Keyword {
+                                                                                            value: "is",
+                                                                                            position: 1075,
+                                                                                        },
                                                                                         right: Float(
-                                                                                            1078,
+                                                                                            Keyword {
+                                                                                                value: "float",
+                                                                                                position: 1078,
+                                                                                            },
                                                                                         ),
                                                                                     },
                                                                                 ),

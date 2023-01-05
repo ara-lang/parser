@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Void(
-                        17,
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 28,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 28,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -73,13 +79,19 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 47,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 47,
+                                        },
                                         block: If(
                                             IfStatement {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                if: 52,
+                                                if: Keyword {
+                                                    value: "if",
+                                                    position: 52,
+                                                },
                                                 condition: Parenthesized(
                                                     ParenthesizedExpression {
                                                         comments: CommentGroup {

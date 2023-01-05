@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 18,
                     type_definition: Void(
-                        20,
+                        Keyword {
+                            value: "void",
+                            position: 20,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                using: 31,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 31,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -128,7 +134,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                using: 158,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 158,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -257,7 +266,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                using: 342,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 342,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -315,7 +327,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 373,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 373,
+                                        },
                                         condition: TypeOperation(
                                             Is {
                                                 comments: CommentGroup {
@@ -327,9 +342,15 @@ DefinitionTree {
                                                         name: "$user",
                                                     },
                                                 ),
-                                                is: 382,
+                                                is: Keyword {
+                                                    value: "is",
+                                                    position: 382,
+                                                },
                                                 right: NonNull(
-                                                    385,
+                                                    Keyword {
+                                                        value: "nonnull",
+                                                        position: 385,
+                                                    },
                                                 ),
                                             },
                                         ),

@@ -75,7 +75,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: 24,
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 24,
+                                                                },
                                                                 class: Identifier(
                                                                     Identifier {
                                                                         position: 28,
@@ -106,7 +109,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: 36,
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 36,
+                                                                },
                                                                 class: Identifier(
                                                                     Identifier {
                                                                         position: 40,
@@ -137,7 +143,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                new: 50,
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 50,
+                                                                },
                                                                 class: Identifier(
                                                                     Identifier {
                                                                         position: 54,

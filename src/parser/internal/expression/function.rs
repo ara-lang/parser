@@ -20,23 +20,19 @@ pub fn anonymous_function_expression(
     let attributes = state.get_attributes();
     let current = state.iterator.current();
     let r#static = if current.kind == TokenKind::Static {
-        state.iterator.next();
-
-        Some(current.position)
+        Some(utils::skip_keyword(state, TokenKind::Static)?)
     } else {
         None
     };
 
-    let function = utils::skip(state, TokenKind::Function)?;
+    let function = utils::skip_keyword(state, TokenKind::Function)?;
     let parameters = parameter::function_like_parameter_list_definition(state)?;
 
     let current = state.iterator.current();
     let uses = if current.kind == TokenKind::Use {
-        state.iterator.next();
-
         Some(AnonymousFunctionUseClauseExpression {
             comments: state.iterator.comments(),
-            r#use: current.position,
+            r#use: utils::skip_keyword(state, TokenKind::Use)?,
             left_parenthesis: utils::skip_left_parenthesis(state)?,
             variables: utils::comma_separated::<AnonymousFunctionUseClauseVariableExpression>(
                 state,
@@ -82,13 +78,11 @@ pub fn arrow_function_expression(state: &mut State) -> ParseResult<ArrowFunction
         comments,
         attributes,
         r#static: if current.kind == TokenKind::Static {
-            state.iterator.next();
-
-            Some(current.position)
+            Some(utils::skip_keyword(state, TokenKind::Static)?)
         } else {
             None
         },
-        r#fn: utils::skip(state, TokenKind::Fn)?,
+        r#fn: utils::skip_keyword(state, TokenKind::Fn)?,
         parameters: parameter::function_like_parameter_list_definition(state)?,
         return_type: FunctionLikeReturnTypeDefinition {
             colon: utils::skip_colon(state)?,

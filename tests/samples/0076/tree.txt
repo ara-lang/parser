@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: 0,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "where",
@@ -169,7 +172,10 @@ DefinitionTree {
                                             return_type: FunctionLikeReturnTypeDefinition {
                                                 colon: 124,
                                                 type_definition: Void(
-                                                    126,
+                                                    Keyword {
+                                                        value: "void",
+                                                        position: 126,
+                                                    },
                                                 ),
                                             },
                                             constraints: None,
@@ -282,7 +288,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 196,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 196,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 200,
@@ -615,7 +624,10 @@ DefinitionTree {
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 396,
                                 type_definition: Integer(
-                                    398,
+                                    Keyword {
+                                        value: "int",
+                                        position: 398,
+                                    },
                                 ),
                             },
                             body: BlockStatement {
@@ -647,7 +659,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 417,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 417,
+                },
                 name: Identifier {
                     position: 427,
                     value: "type",
@@ -814,7 +829,10 @@ DefinitionTree {
                                             return_type: FunctionLikeReturnTypeDefinition {
                                                 colon: 535,
                                                 type_definition: Void(
-                                                    537,
+                                                    Keyword {
+                                                        value: "void",
+                                                        position: 537,
+                                                    },
                                                 ),
                                             },
                                             constraints: None,
@@ -927,7 +945,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 602,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 602,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 606,
@@ -1260,7 +1281,10 @@ DefinitionTree {
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 782,
                                 type_definition: Integer(
-                                    784,
+                                    Keyword {
+                                        value: "int",
+                                        position: 784,
+                                    },
                                 ),
                             },
                             body: BlockStatement {

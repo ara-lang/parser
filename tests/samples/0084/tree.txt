@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Use(
             Default {
-                use: 0,
+                use: Keyword {
+                    value: "use",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 4,
                     value: "Async",
@@ -13,7 +16,10 @@ DefinitionTree {
         ),
         Use(
             Default {
-                use: 11,
+                use: Keyword {
+                    value: "use",
+                    position: 11,
+                },
                 name: Identifier {
                     position: 15,
                     value: "Await",
@@ -24,7 +30,10 @@ DefinitionTree {
         ),
         Use(
             Default {
-                use: 22,
+                use: Keyword {
+                    value: "use",
+                    position: 22,
+                },
                 name: Identifier {
                     position: 26,
                     value: "Concurrently",
@@ -35,8 +44,14 @@ DefinitionTree {
         ),
         Use(
             Function {
-                use: 41,
-                function: 45,
+                use: Keyword {
+                    value: "use",
+                    position: 41,
+                },
+                function: Keyword {
+                    value: "function",
+                    position: 45,
+                },
                 name: Identifier {
                     position: 54,
                     value: "async",
@@ -47,8 +62,14 @@ DefinitionTree {
         ),
         Use(
             Function {
-                use: 61,
-                function: 65,
+                use: Keyword {
+                    value: "use",
+                    position: 61,
+                },
+                function: Keyword {
+                    value: "function",
+                    position: 65,
+                },
                 name: Identifier {
                     position: 74,
                     value: "await",
@@ -59,8 +80,14 @@ DefinitionTree {
         ),
         Use(
             Function {
-                use: 81,
-                function: 85,
+                use: Keyword {
+                    value: "use",
+                    position: 81,
+                },
+                function: Keyword {
+                    value: "function",
+                    position: 85,
+                },
                 name: Identifier {
                     position: 94,
                     value: "concurrently",
@@ -185,7 +212,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 224,
                     type_definition: Void(
-                        226,
+                        Keyword {
+                            value: "void",
+                            position: 226,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -216,7 +246,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: 242,
+                                                async: Keyword {
+                                                    value: "async",
+                                                    position: 242,
+                                                },
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -271,7 +304,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                await: 264,
+                                                await: Keyword {
+                                                    value: "await",
+                                                    position: 264,
+                                                },
                                                 expression: Variable(
                                                     Variable {
                                                         position: 270,
@@ -329,7 +365,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                concurrently: 289,
+                                                concurrently: Keyword {
+                                                    value: "concurrently",
+                                                    position: 289,
+                                                },
                                                 left_brace: 302,
                                                 expressions: CommaSeparated {
                                                     inner: [
@@ -338,7 +377,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: 312,
+                                                                await: Keyword {
+                                                                    value: "await",
+                                                                    position: 312,
+                                                                },
                                                                 expression: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -371,7 +413,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: 333,
+                                                                await: Keyword {
+                                                                    value: "await",
+                                                                    position: 333,
+                                                                },
                                                                 expression: FunctionOperation(
                                                                     Call {
                                                                         comments: CommentGroup {
@@ -453,7 +498,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 422,
                     type_definition: Void(
-                        424,
+                        Keyword {
+                            value: "void",
+                            position: 424,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -834,7 +882,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 659,
                     type_definition: Void(
-                        661,
+                        Keyword {
+                            value: "void",
+                            position: 661,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -877,7 +928,10 @@ DefinitionTree {
                                                         types: CommaSeparated {
                                                             inner: [
                                                                 Integer(
-                                                                    685,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 685,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -968,7 +1022,10 @@ DefinitionTree {
                                                         types: CommaSeparated {
                                                             inner: [
                                                                 Integer(
-                                                                    715,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 715,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1062,7 +1119,10 @@ DefinitionTree {
                                                         types: CommaSeparated {
                                                             inner: [
                                                                 Integer(
-                                                                    755,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 755,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1098,7 +1158,10 @@ DefinitionTree {
                                                                                 types: CommaSeparated {
                                                                                     inner: [
                                                                                         Integer(
-                                                                                            777,
+                                                                                            Keyword {
+                                                                                                value: "int",
+                                                                                                position: 777,
+                                                                                            },
                                                                                         ),
                                                                                     ],
                                                                                     commas: [],
@@ -1172,7 +1235,10 @@ DefinitionTree {
                                                                                 types: CommaSeparated {
                                                                                     inner: [
                                                                                         Integer(
-                                                                                            806,
+                                                                                            Keyword {
+                                                                                                value: "int",
+                                                                                                position: 806,
+                                                                                            },
                                                                                         ),
                                                                                     ],
                                                                                     commas: [],
@@ -1280,7 +1346,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 896,
                     type_definition: Void(
-                        898,
+                        Keyword {
+                            value: "void",
+                            position: 898,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -1553,7 +1622,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 1109,
                     type_definition: Void(
-                        1111,
+                        Keyword {
+                            value: "void",
+                            position: 1111,
+                        },
                     ),
                 },
                 body: BlockStatement {

@@ -5,6 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::identifier::Identifier;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
@@ -18,7 +19,7 @@ pub enum TemplateDefinitionVariance {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateDefinitionTypeConstraint {
-    SubType(usize, TypeDefinition),
+    SubType(Keyword, TypeDefinition),
     None,
 }
 
@@ -64,15 +65,11 @@ impl Node for TemplateDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.name];
-
         match &self.constraint {
-            TemplateDefinitionTypeConstraint::SubType(_, t) => {
-                children.push(t);
-
-                children
+            TemplateDefinitionTypeConstraint::SubType(k, t) => {
+                vec![&self.name, k, t]
             }
-            TemplateDefinitionTypeConstraint::None => children,
+            TemplateDefinitionTypeConstraint::None => vec![&self.name],
         }
     }
 }

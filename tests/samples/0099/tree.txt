@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 18,
                     type_definition: Void(
-                        20,
+                        Keyword {
+                            value: "void",
+                            position: 20,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -60,7 +63,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 36,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 36,
+                                                },
                                                 left_bracket: 39,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -118,7 +124,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 55,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 55,
+                                                },
                                                 left_bracket: 58,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -187,7 +196,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 76,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 76,
+                                                },
                                                 left_bracket: 79,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -257,7 +269,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 98,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 98,
+                                                },
                                                 left_bracket: 101,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -315,7 +330,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 118,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 118,
+                                                },
                                                 left_bracket: 121,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -374,7 +392,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 139,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 139,
+                                                },
                                                 left_bracket: 142,
                                                 elements: CommaSeparated {
                                                     inner: [

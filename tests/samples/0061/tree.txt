@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 12,
                     type_definition: Void(
-                        14,
+                        Keyword {
+                            value: "void",
+                            position: 14,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -71,9 +74,12 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                static: None,
-                                                                fn: 31,
                                                                 attributes: [],
+                                                                static: None,
+                                                                fn: Keyword {
+                                                                    value: "fn",
+                                                                    position: 31,
+                                                                },
                                                                 parameters: FunctionLikeParameterListDefinition {
                                                                     comments: CommentGroup {
                                                                         comments: [],
@@ -103,7 +109,10 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        yield: 52,
+                                                                        yield: Keyword {
+                                                                            value: "yield",
+                                                                            position: 52,
+                                                                        },
                                                                     },
                                                                 ),
                                                             },

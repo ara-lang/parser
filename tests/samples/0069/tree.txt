@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: 0,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "Dict",
@@ -11,14 +14,20 @@ DefinitionTree {
                 definitions: [
                     Use(
                         Default {
-                            use: 17,
+                            use: Keyword {
+                                value: "use",
+                                position: 17,
+                            },
                             name: Identifier {
                                 position: 21,
                                 value: "Psl\Dict",
                             },
                             alias: Some(
                                 UseDefinitionSymbolAlias {
-                                    as: 30,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 30,
+                                    },
                                     alias: Identifier {
                                         position: 33,
                                         value: "Dict",
@@ -57,7 +66,10 @@ DefinitionTree {
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 54,
                                 type_definition: Void(
-                                    56,
+                                    Keyword {
+                                        value: "void",
+                                        position: 56,
+                                    },
                                 ),
                             },
                             body: BlockStatement {
@@ -88,7 +100,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            dict: 72,
+                                                            dict: Keyword {
+                                                                value: "dict",
+                                                                position: 72,
+                                                            },
                                                             left_bracket: 76,
                                                             elements: CommaSeparated {
                                                                 inner: [
@@ -225,9 +240,12 @@ DefinitionTree {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
                                                                             },
-                                                                            static: None,
-                                                                            fn: 120,
                                                                             attributes: [],
+                                                                            static: None,
+                                                                            fn: Keyword {
+                                                                                value: "fn",
+                                                                                position: 120,
+                                                                            },
                                                                             parameters: FunctionLikeParameterListDefinition {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
@@ -241,7 +259,10 @@ DefinitionTree {
                                                                                             },
                                                                                             attributes: [],
                                                                                             type_definition: Integer(
-                                                                                                123,
+                                                                                                Keyword {
+                                                                                                    value: "int",
+                                                                                                    position: 123,
+                                                                                                },
                                                                                             ),
                                                                                             ellipsis: None,
                                                                                             variable: Variable {
@@ -258,7 +279,10 @@ DefinitionTree {
                                                                             return_type: FunctionLikeReturnTypeDefinition {
                                                                                 colon: 130,
                                                                                 type_definition: Integer(
-                                                                                    132,
+                                                                                    Keyword {
+                                                                                        value: "int",
+                                                                                        position: 132,
+                                                                                    },
                                                                                 ),
                                                                             },
                                                                             double_arrow: 136,
@@ -312,7 +336,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 151,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 151,
+                },
                 name: Identifier {
                     position: 161,
                     value: "Vec",
@@ -321,14 +348,20 @@ DefinitionTree {
                 definitions: [
                     Use(
                         Default {
-                            use: 167,
+                            use: Keyword {
+                                value: "use",
+                                position: 167,
+                            },
                             name: Identifier {
                                 position: 171,
                                 value: "Psl\Vec",
                             },
                             alias: Some(
                                 UseDefinitionSymbolAlias {
-                                    as: 179,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 179,
+                                    },
                                     alias: Identifier {
                                         position: 182,
                                         value: "Vec",
@@ -367,7 +400,10 @@ DefinitionTree {
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 202,
                                 type_definition: Void(
-                                    204,
+                                    Keyword {
+                                        value: "void",
+                                        position: 204,
+                                    },
                                 ),
                             },
                             body: BlockStatement {
@@ -398,7 +434,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            vec: 220,
+                                                            vec: Keyword {
+                                                                value: "vec",
+                                                                position: 220,
+                                                            },
                                                             left_bracket: 223,
                                                             elements: CommaSeparated {
                                                                 inner: [
@@ -499,9 +538,12 @@ DefinitionTree {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
                                                                             },
-                                                                            static: None,
-                                                                            fn: 251,
                                                                             attributes: [],
+                                                                            static: None,
+                                                                            fn: Keyword {
+                                                                                value: "fn",
+                                                                                position: 251,
+                                                                            },
                                                                             parameters: FunctionLikeParameterListDefinition {
                                                                                 comments: CommentGroup {
                                                                                     comments: [],
@@ -515,7 +557,10 @@ DefinitionTree {
                                                                                             },
                                                                                             attributes: [],
                                                                                             type_definition: Integer(
-                                                                                                254,
+                                                                                                Keyword {
+                                                                                                    value: "int",
+                                                                                                    position: 254,
+                                                                                                },
                                                                                             ),
                                                                                             ellipsis: None,
                                                                                             variable: Variable {
@@ -532,7 +577,10 @@ DefinitionTree {
                                                                             return_type: FunctionLikeReturnTypeDefinition {
                                                                                 colon: 261,
                                                                                 type_definition: Integer(
-                                                                                    263,
+                                                                                    Keyword {
+                                                                                        value: "int",
+                                                                                        position: 263,
+                                                                                    },
                                                                                 ),
                                                                             },
                                                                             double_arrow: 267,
@@ -586,7 +634,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 282,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 282,
+                },
                 name: Identifier {
                     position: 292,
                     value: "True",
@@ -597,7 +648,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 298,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 298,
+                },
                 name: Identifier {
                     position: 308,
                     value: "False",
@@ -608,7 +662,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 315,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 315,
+                },
                 name: Identifier {
                     position: 325,
                     value: "Null",
@@ -619,7 +676,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 331,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 331,
+                },
                 name: Identifier {
                     position: 341,
                     value: "Int",
@@ -630,7 +690,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 346,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 346,
+                },
                 name: Identifier {
                     position: 356,
                     value: "Float",
@@ -641,7 +704,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 363,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 363,
+                },
                 name: Identifier {
                     position: 373,
                     value: "String",
@@ -652,7 +718,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 381,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 381,
+                },
                 name: Identifier {
                     position: 391,
                     value: "List",
@@ -663,7 +732,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 397,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 397,
+                },
                 name: Identifier {
                     position: 407,
                     value: "Array",
@@ -674,7 +746,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 414,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 414,
+                },
                 name: Identifier {
                     position: 424,
                     value: "Object",
@@ -685,7 +760,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 432,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 432,
+                },
                 name: Identifier {
                     position: 442,
                     value: "Resource",
@@ -696,7 +774,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 452,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 452,
+                },
                 name: Identifier {
                     position: 462,
                     value: "Mixed",
@@ -707,7 +788,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 469,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 469,
+                },
                 name: Identifier {
                     position: 479,
                     value: "Num",
@@ -718,7 +802,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 484,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 484,
+                },
                 name: Identifier {
                     position: 494,
                     value: "Scalar",
@@ -729,7 +816,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 502,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 502,
+                },
                 name: Identifier {
                     position: 512,
                     value: "Callable",
@@ -740,7 +830,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 522,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 522,
+                },
                 name: Identifier {
                     position: 532,
                     value: "Void",
@@ -751,7 +844,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 538,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 538,
+                },
                 name: Identifier {
                     position: 548,
                     value: "Fn",
@@ -762,7 +858,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 552,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 552,
+                },
                 name: Identifier {
                     position: 562,
                     value: "Iterable",
@@ -773,7 +872,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 572,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 572,
+                },
                 name: Identifier {
                     position: 582,
                     value: "Never",
@@ -784,7 +886,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 590,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 590,
+                },
                 name: Identifier {
                     position: 600,
                     value: "True\Foo\Bar",
@@ -795,7 +900,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 614,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 614,
+                },
                 name: Identifier {
                     position: 624,
                     value: "False\Foo\Bar",
@@ -806,7 +914,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 639,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 639,
+                },
                 name: Identifier {
                     position: 649,
                     value: "Null\Foo\Bar",
@@ -817,7 +928,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 663,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 663,
+                },
                 name: Identifier {
                     position: 673,
                     value: "Int\Foo\Bar",
@@ -828,7 +942,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 686,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 686,
+                },
                 name: Identifier {
                     position: 696,
                     value: "Float\Foo\Bar",
@@ -839,7 +956,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 711,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 711,
+                },
                 name: Identifier {
                     position: 721,
                     value: "String\Foo\Bar",
@@ -850,7 +970,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 737,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 737,
+                },
                 name: Identifier {
                     position: 747,
                     value: "List\Foo\Bar",
@@ -861,7 +984,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 761,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 761,
+                },
                 name: Identifier {
                     position: 771,
                     value: "Array\Foo\Bar",
@@ -872,7 +998,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 786,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 786,
+                },
                 name: Identifier {
                     position: 796,
                     value: "Object\Foo\Bar",
@@ -883,7 +1012,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 812,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 812,
+                },
                 name: Identifier {
                     position: 822,
                     value: "Resource\Foo\Bar",
@@ -894,7 +1026,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 840,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 840,
+                },
                 name: Identifier {
                     position: 850,
                     value: "Mixed\Foo\Bar",
@@ -905,7 +1040,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 865,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 865,
+                },
                 name: Identifier {
                     position: 875,
                     value: "Num\Foo\Bar",
@@ -916,7 +1054,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 888,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 888,
+                },
                 name: Identifier {
                     position: 898,
                     value: "Scalar\Foo\Bar",
@@ -927,7 +1068,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 914,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 914,
+                },
                 name: Identifier {
                     position: 924,
                     value: "Callable\Foo\Bar",
@@ -938,7 +1082,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 942,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 942,
+                },
                 name: Identifier {
                     position: 952,
                     value: "Void\Foo\Bar",
@@ -949,7 +1096,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 966,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 966,
+                },
                 name: Identifier {
                     position: 976,
                     value: "Iterable\Foo\Bar",
@@ -960,7 +1110,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 994,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 994,
+                },
                 name: Identifier {
                     position: 1004,
                     value: "Never\Foo\Bar",
@@ -971,7 +1124,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1020,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1020,
+                },
                 name: Identifier {
                     position: 1030,
                     value: "Foo\Bar\True",
@@ -982,7 +1138,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1044,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1044,
+                },
                 name: Identifier {
                     position: 1054,
                     value: "Foo\Bar\False",
@@ -993,7 +1152,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1069,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1069,
+                },
                 name: Identifier {
                     position: 1079,
                     value: "Foo\Bar\Null",
@@ -1004,7 +1166,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1093,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1093,
+                },
                 name: Identifier {
                     position: 1103,
                     value: "Foo\Bar\Int",
@@ -1015,7 +1180,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1116,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1116,
+                },
                 name: Identifier {
                     position: 1126,
                     value: "Foo\Bar\Float",
@@ -1026,7 +1194,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1141,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1141,
+                },
                 name: Identifier {
                     position: 1151,
                     value: "Foo\Bar\String",
@@ -1037,7 +1208,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1167,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1167,
+                },
                 name: Identifier {
                     position: 1177,
                     value: "Foo\Bar\List",
@@ -1048,7 +1222,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1191,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1191,
+                },
                 name: Identifier {
                     position: 1201,
                     value: "Foo\Bar\Array",
@@ -1059,7 +1236,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1216,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1216,
+                },
                 name: Identifier {
                     position: 1226,
                     value: "Foo\Bar\Object",
@@ -1070,7 +1250,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1242,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1242,
+                },
                 name: Identifier {
                     position: 1252,
                     value: "Foo\Bar\Resource",
@@ -1081,7 +1264,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1270,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1270,
+                },
                 name: Identifier {
                     position: 1280,
                     value: "Foo\Bar\Mixed",
@@ -1092,7 +1278,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1295,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1295,
+                },
                 name: Identifier {
                     position: 1305,
                     value: "Foo\Bar\Num",
@@ -1103,7 +1292,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1318,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1318,
+                },
                 name: Identifier {
                     position: 1328,
                     value: "Foo\Bar\Scalar",
@@ -1114,7 +1306,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1344,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1344,
+                },
                 name: Identifier {
                     position: 1354,
                     value: "Foo\Bar\Callable",
@@ -1125,7 +1320,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1372,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1372,
+                },
                 name: Identifier {
                     position: 1382,
                     value: "Foo\Bar\Void",
@@ -1136,7 +1334,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1396,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1396,
+                },
                 name: Identifier {
                     position: 1406,
                     value: "Foo\Bar\Iterable",
@@ -1147,7 +1348,10 @@ DefinitionTree {
         ),
         Namespace(
             NamespaceDefinition {
-                namespace: 1424,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 1424,
+                },
                 name: Identifier {
                     position: 1434,
                     value: "Foo\Bar\Never",

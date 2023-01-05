@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Void(
-                        17,
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -71,7 +74,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 41,
                     type_definition: Void(
-                        43,
+                        Keyword {
+                            value: "void",
+                            position: 43,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -113,7 +119,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 66,
                     type_definition: Void(
-                        68,
+                        Keyword {
+                            value: "void",
+                            position: 68,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -155,7 +164,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 95,
                     type_definition: Void(
-                        97,
+                        Keyword {
+                            value: "void",
+                            position: 97,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -197,7 +209,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 120,
                     type_definition: Void(
-                        122,
+                        Keyword {
+                            value: "void",
+                            position: 122,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -239,7 +254,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 147,
                     type_definition: Void(
-                        149,
+                        Keyword {
+                            value: "void",
+                            position: 149,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -281,7 +299,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 172,
                     type_definition: Void(
-                        174,
+                        Keyword {
+                            value: "void",
+                            position: 174,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -323,7 +344,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 197,
                     type_definition: Void(
-                        199,
+                        Keyword {
+                            value: "void",
+                            position: 199,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -365,7 +389,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 223,
                     type_definition: Void(
-                        225,
+                        Keyword {
+                            value: "void",
+                            position: 225,
+                        },
                     ),
                 },
                 body: BlockStatement {

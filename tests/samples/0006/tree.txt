@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 12,
                     type_definition: Void(
-                        14,
+                        Keyword {
+                            value: "void",
+                            position: 14,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -60,7 +63,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                new: 30,
+                                                new: Keyword {
+                                                    value: "new",
+                                                    position: 30,
+                                                },
                                                 class: Identifier(
                                                     Identifier {
                                                         position: 34,

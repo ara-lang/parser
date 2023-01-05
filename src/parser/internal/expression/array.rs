@@ -11,7 +11,7 @@ use crate::tree::expression::array::VecExpression;
 pub fn vec_expression(state: &mut State) -> ParseResult<VecExpression> {
     Ok(VecExpression {
         comments: state.iterator.comments(),
-        vec: utils::skip(state, TokenKind::Vec)?,
+        vec: utils::skip_keyword(state, TokenKind::Vec)?,
         left_bracket: utils::skip(state, TokenKind::LeftBracket)?,
         elements: utils::comma_separated(
             state,
@@ -29,7 +29,7 @@ pub fn vec_expression(state: &mut State) -> ParseResult<VecExpression> {
 pub fn dict_expression(state: &mut State) -> ParseResult<DictExpression> {
     Ok(DictExpression {
         comments: state.iterator.comments(),
-        dict: utils::skip(state, TokenKind::Dict)?,
+        dict: utils::skip_keyword(state, TokenKind::Dict)?,
         left_bracket: utils::skip(state, TokenKind::LeftBracket)?,
         elements: utils::comma_separated(
             state,

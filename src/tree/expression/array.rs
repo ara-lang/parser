@@ -4,6 +4,7 @@ use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
@@ -11,7 +12,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct VecExpression {
     pub comments: CommentGroup,
-    pub vec: usize,
+    pub vec: Keyword,
     pub left_bracket: usize,
     pub elements: CommaSeparated<VecElementExpression>,
     pub right_bracket: usize,
@@ -27,7 +28,7 @@ pub struct VecElementExpression {
 #[serde(rename_all = "snake_case")]
 pub struct DictExpression {
     pub comments: CommentGroup,
-    pub dict: usize,
+    pub dict: Keyword,
     pub left_bracket: usize,
     pub elements: CommaSeparated<DictElementExpression>,
     pub right_bracket: usize,
@@ -70,7 +71,7 @@ impl Node for VecExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.vec
+        self.vec.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -78,11 +79,12 @@ impl Node for VecExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.elements
-            .inner
-            .iter()
-            .map(|item| item as &dyn Node)
-            .collect()
+        let mut children: Vec<&dyn Node> = vec![&self.vec];
+        for element in &self.elements.inner {
+            children.push(element);
+        }
+
+        children
     }
 }
 
@@ -106,7 +108,7 @@ impl Node for DictExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.dict
+        self.dict.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -114,11 +116,12 @@ impl Node for DictExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.elements
-            .inner
-            .iter()
-            .map(|element| element as &dyn Node)
-            .collect()
+        let mut children: Vec<&dyn Node> = vec![&self.dict];
+        for element in &self.elements.inner {
+            children.push(element);
+        }
+
+        children
     }
 }
 

@@ -67,7 +67,10 @@ DefinitionTree {
                                                     ],
                                                 },
                                                 type_definition: String(
-                                                    69,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 69,
+                                                    },
                                                 ),
                                                 ellipsis: None,
                                                 variable: Variable {

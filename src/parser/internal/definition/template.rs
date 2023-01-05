@@ -36,14 +36,10 @@ pub fn template_group_definition(state: &mut State) -> ParseResult<TemplateGroup
 
                     let current = state.iterator.current();
                     let constraint = match &current.kind {
-                        TokenKind::As => {
-                            state.iterator.next();
-
-                            TemplateDefinitionTypeConstraint::SubType(
-                                current.position,
-                                r#type::type_definition(state)?,
-                            )
-                        }
+                        TokenKind::As => TemplateDefinitionTypeConstraint::SubType(
+                            utils::skip_keyword(state, TokenKind::As)?,
+                            r#type::type_definition(state)?,
+                        ),
                         _ => TemplateDefinitionTypeConstraint::None,
                     };
 

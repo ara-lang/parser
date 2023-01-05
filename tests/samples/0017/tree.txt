@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Void(
-                        17,
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 28,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 28,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -70,7 +76,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: 47,
+                                                return: Keyword {
+                                                    value: "return",
+                                                    position: 47,
+                                                },
                                                 expression: Some(
                                                     Variable(
                                                         Variable {
@@ -90,7 +99,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        elseif: 66,
+                                        elseif: Keyword {
+                                            value: "elseif",
+                                            position: 66,
+                                        },
                                         condition: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -117,7 +129,10 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        return: 89,
+                                                        return: Keyword {
+                                                            value: "return",
+                                                            position: 89,
+                                                        },
                                                         expression: Some(
                                                             Variable(
                                                                 Variable {
@@ -139,7 +154,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 108,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 108,
+                                        },
                                         block: Block(
                                             BlockStatement {
                                                 comments: CommentGroup {
@@ -152,7 +170,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            return: 123,
+                                                            return: Keyword {
+                                                                value: "return",
+                                                                position: 123,
+                                                            },
                                                             expression: Some(
                                                                 Variable(
                                                                     Variable {

@@ -28,7 +28,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    13,
+                                    Keyword {
+                                        value: "string",
+                                        position: 13,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    24,
+                                    Keyword {
+                                        value: "string",
+                                        position: 24,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -58,7 +64,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    35,
+                                    Keyword {
+                                        value: "string",
+                                        position: 35,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -73,7 +82,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    46,
+                                    Keyword {
+                                        value: "string",
+                                        position: 46,
+                                    },
                                 ),
                                 ellipsis: Some(
                                     53,
@@ -96,7 +108,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 59,
                     type_definition: Void(
-                        61,
+                        Keyword {
+                            value: "void",
+                            position: 61,
+                        },
                     ),
                 },
                 body: BlockStatement {

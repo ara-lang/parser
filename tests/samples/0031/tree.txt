@@ -53,7 +53,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 25,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 25,
+                                },
                                 expression: Some(
                                     Literal(
                                         True(

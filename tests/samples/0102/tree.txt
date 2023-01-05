@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 18,
                     type_definition: Void(
-                        20,
+                        Keyword {
+                            value: "void",
+                            position: 20,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                using: 31,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 31,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -83,7 +89,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 48,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 48,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {
@@ -143,7 +152,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                using: 84,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 84,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -194,7 +206,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 103,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 103,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {
@@ -254,7 +269,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                using: 139,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 139,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -306,7 +324,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 159,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 159,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {
@@ -372,7 +393,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                using: 267,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 267,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -412,7 +436,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 285,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 285,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {
@@ -478,7 +505,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                using: 393,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 393,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -519,7 +549,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 412,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 412,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {
@@ -585,7 +618,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                using: 520,
+                                using: Keyword {
+                                    value: "using",
+                                    position: 520,
+                                },
                                 assignments: CommaSeparated {
                                     inner: [
                                         UsingAssignmentStatement {
@@ -614,7 +650,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        if: 536,
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 536,
+                                        },
                                         condition: ObjectOperation(
                                             MethodCall {
                                                 comments: CommentGroup {

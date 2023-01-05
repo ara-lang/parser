@@ -5,6 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
 use crate::tree::statement::block::BlockStatement;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
@@ -13,7 +14,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct IfStatement {
     pub comments: CommentGroup,
-    pub r#if: usize,
+    pub r#if: Keyword,
     pub condition: Expression,
     pub block: BlockStatement,
     pub elseifs: Vec<IfElseIfStatement>,
@@ -24,7 +25,7 @@ pub struct IfStatement {
 #[serde(rename_all = "snake_case")]
 pub struct IfElseIfStatement {
     pub comments: CommentGroup,
-    pub elseif: usize,
+    pub elseif: Keyword,
     pub condition: Expression,
     pub block: BlockStatement,
 }
@@ -33,7 +34,7 @@ pub struct IfElseIfStatement {
 #[serde(rename_all = "snake_case")]
 pub struct IfElseStatement {
     pub comments: CommentGroup,
-    pub r#else: usize,
+    pub r#else: Keyword,
     pub block: IfElseBlockStatement,
 }
 
@@ -48,7 +49,7 @@ pub enum IfElseBlockStatement {
 #[serde(rename_all = "snake_case")]
 pub struct UsingStatement {
     pub comments: CommentGroup,
-    pub r#using: usize,
+    pub r#using: Keyword,
     pub assignments: CommaSeparated<UsingAssignmentStatement>,
     pub if_clause: Option<UsingIfClauseStatement>,
     pub block: BlockStatement,
@@ -67,7 +68,7 @@ pub struct UsingAssignmentStatement {
 #[serde(rename_all = "snake_case")]
 pub struct UsingIfClauseStatement {
     pub comments: CommentGroup,
-    pub r#if: usize,
+    pub r#if: Keyword,
     pub condition: Expression,
 }
 
@@ -77,7 +78,7 @@ impl Node for IfStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#if
+        self.r#if.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -85,7 +86,7 @@ impl Node for IfStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.condition, &self.block];
+        let mut children: Vec<&dyn Node> = vec![&self.r#if, &self.condition, &self.block];
         for elseif in &self.elseifs {
             children.push(elseif);
         }
@@ -104,7 +105,7 @@ impl Node for IfElseIfStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.elseif
+        self.elseif.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -112,7 +113,7 @@ impl Node for IfElseIfStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.condition, &self.block]
+        vec![&self.elseif, &self.condition, &self.block]
     }
 }
 
@@ -122,7 +123,7 @@ impl Node for IfElseStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#else
+        self.r#else.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -134,8 +135,8 @@ impl Node for IfElseStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self.block {
-            IfElseBlockStatement::If(r#if) => vec![r#if.as_ref()],
-            IfElseBlockStatement::Block(block) => vec![block],
+            IfElseBlockStatement::If(r#if) => vec![&self.r#else, r#if.as_ref()],
+            IfElseBlockStatement::Block(block) => vec![&self.r#else, block],
         }
     }
 }
@@ -146,7 +147,7 @@ impl Node for UsingStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#using
+        self.r#using.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -154,7 +155,7 @@ impl Node for UsingStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
+        let mut children: Vec<&dyn Node> = vec![&self.r#using];
         for assignment in &self.assignments.inner {
             children.push(assignment);
         }
@@ -193,7 +194,7 @@ impl Node for UsingIfClauseStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#if
+        self.r#if.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -201,6 +202,6 @@ impl Node for UsingIfClauseStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.condition]
+        vec![&self.r#if, &self.condition]
     }
 }

@@ -34,7 +34,10 @@ DefinitionTree {
                                     ],
                                 },
                                 type_definition: String(
-                                    30,
+                                    Keyword {
+                                        value: "string",
+                                        position: 30,
+                                    },
                                 ),
                                 entry: Uninitialized {
                                     variable: Variable {

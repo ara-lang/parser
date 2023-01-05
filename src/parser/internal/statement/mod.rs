@@ -52,20 +52,16 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
         TokenKind::Using if matches!(state.iterator.lookahead(1).kind, TokenKind::Variable) => {
             Statement::Using(Box::new(control_flow::using_statement(state)?))
         }
-        TokenKind::Return => {
-            state.iterator.next();
-
-            Statement::Return(Box::new(ReturnStatement::Explicit {
-                comments: state.iterator.comments(),
-                r#return: current.position,
-                expression: if matches!(state.iterator.current().kind, TokenKind::SemiColon) {
-                    None
-                } else {
-                    expression::create(state).map(Some)?
-                },
-                semicolon: utils::skip_semicolon(state)?,
-            }))
-        }
+        TokenKind::Return => Statement::Return(Box::new(ReturnStatement::Explicit {
+            comments: state.iterator.comments(),
+            r#return: utils::skip_keyword(state, TokenKind::Return)?,
+            expression: if matches!(state.iterator.current().kind, TokenKind::SemiColon) {
+                None
+            } else {
+                expression::create(state).map(Some)?
+            },
+            semicolon: utils::skip_semicolon(state)?,
+        })),
         _ => {
             let comments = state.iterator.comments();
             let expression = expression::create(state)?;

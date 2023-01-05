@@ -16,7 +16,7 @@ use crate::tree::utils::CommaSeparated;
 
 pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     let comments = state.iterator.comments();
-    let r#if = utils::skip(state, TokenKind::If)?;
+    let r#if = utils::skip_keyword(state, TokenKind::If)?;
     let condition = expression::create(state)?;
 
     let statement = block::block_statement(state)?;
@@ -24,11 +24,9 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     let mut elseifs: Vec<IfElseIfStatement> = vec![];
     let mut current = state.iterator.current();
     while current.kind == TokenKind::ElseIf {
-        state.iterator.next();
-
         elseifs.push(IfElseIfStatement {
             comments: state.iterator.comments(),
-            elseif: current.position,
+            elseif: utils::skip_keyword(state, TokenKind::ElseIf)?,
             condition: expression::create(state)?,
             block: block::block_statement(state)?,
         });
@@ -37,11 +35,9 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     }
 
     let r#else = if current.kind == TokenKind::Else {
-        state.iterator.next();
-
         Some(IfElseStatement {
             comments: state.iterator.comments(),
-            r#else: current.position,
+            r#else: utils::skip_keyword(state, TokenKind::Else)?,
             block: if state.iterator.current().kind == TokenKind::If {
                 IfElseBlockStatement::If(Box::new(if_statement(state)?))
             } else {
@@ -64,7 +60,7 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
 
 pub fn using_statement(state: &mut State) -> ParseResult<UsingStatement> {
     let comments = state.iterator.comments();
-    let r#using = utils::skip(state, TokenKind::Using)?;
+    let r#using = utils::skip_keyword(state, TokenKind::Using)?;
     let mut inner = vec![];
     let mut commas = vec![];
 
@@ -103,7 +99,7 @@ pub fn using_statement(state: &mut State) -> ParseResult<UsingStatement> {
     let if_clause = if state.iterator.current().kind == TokenKind::If {
         Some(UsingIfClauseStatement {
             comments: state.iterator.comments(),
-            r#if: utils::skip(state, TokenKind::If)?,
+            r#if: utils::skip_keyword(state, TokenKind::If)?,
             condition: expression::create(state)?,
         })
     } else {

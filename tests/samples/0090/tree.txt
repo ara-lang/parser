@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: Void(
-                        16,
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 27,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 27,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -55,7 +61,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 33,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 33,
+                                        },
                                         array: Variable(
                                             Variable {
                                                 position: 36,
@@ -81,7 +90,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 53,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 53,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -93,7 +105,10 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 59,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 59,
+                                        },
                                         array: Tuple(
                                             TupleExpression {
                                                 comments: CommentGroup {
@@ -141,7 +156,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 85,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 85,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -153,13 +171,19 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 91,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 91,
+                                        },
                                         array: Vec(
                                             VecExpression {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 94,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 94,
+                                                },
                                                 left_bracket: 97,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -206,7 +230,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 120,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 120,
+                                },
                                 condition: ArrayOperation(
                                     In {
                                         comments: CommentGroup {
@@ -218,13 +245,19 @@ DefinitionTree {
                                                 name: "$a",
                                             },
                                         ),
-                                        in: 126,
+                                        in: Keyword {
+                                            value: "in",
+                                            position: 126,
+                                        },
                                         array: Dict(
                                             DictExpression {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 129,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 129,
+                                                },
                                                 left_bracket: 133,
                                                 elements: CommaSeparated {
                                                     inner: [

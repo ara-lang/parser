@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: Void(
-                        16,
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -60,7 +63,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: 32,
+                                                async: Keyword {
+                                                    value: "async",
+                                                    position: 32,
+                                                },
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -115,7 +121,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                await: 55,
+                                                await: Keyword {
+                                                    value: "await",
+                                                    position: 55,
+                                                },
                                                 expression: Variable(
                                                     Variable {
                                                         position: 61,
@@ -151,7 +160,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: 75,
+                                                async: Keyword {
+                                                    value: "async",
+                                                    position: 75,
+                                                },
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -206,7 +218,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                async: 97,
+                                                async: Keyword {
+                                                    value: "async",
+                                                    position: 97,
+                                                },
                                                 expression: FunctionOperation(
                                                     Call {
                                                         comments: CommentGroup {
@@ -283,7 +298,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                concurrently: 126,
+                                                concurrently: Keyword {
+                                                    value: "concurrently",
+                                                    position: 126,
+                                                },
                                                 left_brace: 139,
                                                 expressions: CommaSeparated {
                                                     inner: [
@@ -292,7 +310,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: 149,
+                                                                await: Keyword {
+                                                                    value: "await",
+                                                                    position: 149,
+                                                                },
                                                                 expression: Variable(
                                                                     Variable {
                                                                         position: 155,
@@ -306,7 +327,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                await: 167,
+                                                                await: Keyword {
+                                                                    value: "await",
+                                                                    position: 167,
+                                                                },
                                                                 expression: Variable(
                                                                     Variable {
                                                                         position: 173,

@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: Vec(
-                        16,
+                        Keyword {
+                            value: "vec",
+                            position: 16,
+                        },
                         TypeTemplateGroupDefinition {
                             comments: CommentGroup {
                                 comments: [],
@@ -38,7 +41,10 @@ DefinitionTree {
                             members: CommaSeparated {
                                 inner: [
                                     Integer(
-                                        20,
+                                        Keyword {
+                                            value: "int",
+                                            position: 20,
+                                        },
                                     ),
                                 ],
                                 commas: [],
@@ -81,9 +87,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 39,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 39,
+                                                },
                                                 right: String(
-                                                    42,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 42,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -120,9 +132,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 62,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 62,
+                                                },
                                                 right: String(
-                                                    67,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 67,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -159,9 +177,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 87,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 87,
+                                                },
                                                 right: Integer(
-                                                    90,
+                                                    Keyword {
+                                                        value: "int",
+                                                        position: 90,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -198,9 +222,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 107,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 107,
+                                                },
                                                 right: Integer(
-                                                    112,
+                                                    Keyword {
+                                                        value: "int",
+                                                        position: 112,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -237,9 +267,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 129,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 129,
+                                                },
                                                 right: Float(
-                                                    132,
+                                                    Keyword {
+                                                        value: "float",
+                                                        position: 132,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -276,9 +312,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 151,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 151,
+                                                },
                                                 right: Float(
-                                                    156,
+                                                    Keyword {
+                                                        value: "float",
+                                                        position: 156,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -315,9 +357,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 175,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 175,
+                                                },
                                                 right: Boolean(
-                                                    178,
+                                                    Keyword {
+                                                        value: "bool",
+                                                        position: 178,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -354,9 +402,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 196,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 196,
+                                                },
                                                 right: Boolean(
-                                                    201,
+                                                    Keyword {
+                                                        value: "bool",
+                                                        position: 201,
+                                                    },
                                                 ),
                                             },
                                         ),
@@ -393,9 +447,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 219,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 219,
+                                                },
                                                 right: Vec(
-                                                    222,
+                                                    Keyword {
+                                                        value: "vec",
+                                                        position: 222,
+                                                    },
                                                     TypeTemplateGroupDefinition {
                                                         comments: CommentGroup {
                                                             comments: [],
@@ -404,7 +464,10 @@ DefinitionTree {
                                                         members: CommaSeparated {
                                                             inner: [
                                                                 Integer(
-                                                                    226,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 226,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -447,9 +510,15 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 244,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 244,
+                                                },
                                                 right: Vec(
-                                                    249,
+                                                    Keyword {
+                                                        value: "vec",
+                                                        position: 249,
+                                                    },
                                                     TypeTemplateGroupDefinition {
                                                         comments: CommentGroup {
                                                             comments: [],
@@ -458,7 +527,10 @@ DefinitionTree {
                                                         members: CommaSeparated {
                                                             inner: [
                                                                 Integer(
-                                                                    253,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 253,
+                                                                    },
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -501,11 +573,17 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                as: 271,
+                                                as: Keyword {
+                                                    value: "as",
+                                                    position: 271,
+                                                },
                                                 right: Union(
                                                     [
                                                         Vec(
-                                                            274,
+                                                            Keyword {
+                                                                value: "vec",
+                                                                position: 274,
+                                                            },
                                                             TypeTemplateGroupDefinition {
                                                                 comments: CommentGroup {
                                                                     comments: [],
@@ -514,7 +592,10 @@ DefinitionTree {
                                                                 members: CommaSeparated {
                                                                     inner: [
                                                                         Integer(
-                                                                            278,
+                                                                            Keyword {
+                                                                                value: "int",
+                                                                                position: 278,
+                                                                            },
                                                                         ),
                                                                     ],
                                                                     commas: [],
@@ -523,7 +604,10 @@ DefinitionTree {
                                                             },
                                                         ),
                                                         Dict(
-                                                            283,
+                                                            Keyword {
+                                                                value: "dict",
+                                                                position: 283,
+                                                            },
                                                             TypeTemplateGroupDefinition {
                                                                 comments: CommentGroup {
                                                                     comments: [],
@@ -532,10 +616,16 @@ DefinitionTree {
                                                                 members: CommaSeparated {
                                                                     inner: [
                                                                         String(
-                                                                            288,
+                                                                            Keyword {
+                                                                                value: "string",
+                                                                                position: 288,
+                                                                            },
                                                                         ),
                                                                         Integer(
-                                                                            296,
+                                                                            Keyword {
+                                                                                value: "int",
+                                                                                position: 296,
+                                                                            },
                                                                         ),
                                                                     ],
                                                                     commas: [
@@ -550,10 +640,16 @@ DefinitionTree {
                                                             type_definitions: CommaSeparated {
                                                                 inner: [
                                                                     String(
-                                                                        302,
+                                                                        Keyword {
+                                                                            value: "string",
+                                                                            position: 302,
+                                                                        },
                                                                     ),
                                                                     Integer(
-                                                                        310,
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 310,
+                                                                        },
                                                                     ),
                                                                 ],
                                                                 commas: [
@@ -599,11 +695,17 @@ DefinitionTree {
                                                         name: "$b",
                                                     },
                                                 ),
-                                                into: 328,
+                                                into: Keyword {
+                                                    value: "into",
+                                                    position: 328,
+                                                },
                                                 right: Union(
                                                     [
                                                         Vec(
-                                                            333,
+                                                            Keyword {
+                                                                value: "vec",
+                                                                position: 333,
+                                                            },
                                                             TypeTemplateGroupDefinition {
                                                                 comments: CommentGroup {
                                                                     comments: [],
@@ -612,7 +714,10 @@ DefinitionTree {
                                                                 members: CommaSeparated {
                                                                     inner: [
                                                                         Integer(
-                                                                            337,
+                                                                            Keyword {
+                                                                                value: "int",
+                                                                                position: 337,
+                                                                            },
                                                                         ),
                                                                     ],
                                                                     commas: [],
@@ -621,7 +726,10 @@ DefinitionTree {
                                                             },
                                                         ),
                                                         Dict(
-                                                            342,
+                                                            Keyword {
+                                                                value: "dict",
+                                                                position: 342,
+                                                            },
                                                             TypeTemplateGroupDefinition {
                                                                 comments: CommentGroup {
                                                                     comments: [],
@@ -630,10 +738,16 @@ DefinitionTree {
                                                                 members: CommaSeparated {
                                                                     inner: [
                                                                         String(
-                                                                            347,
+                                                                            Keyword {
+                                                                                value: "string",
+                                                                                position: 347,
+                                                                            },
                                                                         ),
                                                                         Integer(
-                                                                            355,
+                                                                            Keyword {
+                                                                                value: "int",
+                                                                                position: 355,
+                                                                            },
                                                                         ),
                                                                     ],
                                                                     commas: [
@@ -648,10 +762,16 @@ DefinitionTree {
                                                             type_definitions: CommaSeparated {
                                                                 inner: [
                                                                     String(
-                                                                        361,
+                                                                        Keyword {
+                                                                            value: "string",
+                                                                            position: 361,
+                                                                        },
                                                                     ),
                                                                     Integer(
-                                                                        369,
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 369,
+                                                                        },
                                                                     ),
                                                                 ],
                                                                 commas: [

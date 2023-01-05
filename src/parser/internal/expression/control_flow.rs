@@ -12,7 +12,7 @@ use crate::tree::utils::CommaSeparated;
 pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
     Ok(MatchExpression {
         comments: state.iterator.comments(),
-        r#match: utils::skip(state, TokenKind::Match)?,
+        r#match: utils::skip_keyword(state, TokenKind::Match)?,
         expression: Box::new(expression::create(state)?),
         body: MatchBodyExpression {
             left_brace: utils::skip_left_brace(state)?,
@@ -24,9 +24,13 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
                 while state.iterator.current().kind != TokenKind::RightBrace {
                     let current = state.iterator.current();
                     let (condition, default) = if current.kind == TokenKind::Default {
-                        state.iterator.next();
-
-                        (MatchArmConditionExpression::Default(current.position), true)
+                        (
+                            MatchArmConditionExpression::Default(utils::skip_keyword(
+                                state,
+                                TokenKind::Default,
+                            )?),
+                            true,
+                        )
                     } else {
                         (
                             MatchArmConditionExpression::Expressions(utils::comma_separated(

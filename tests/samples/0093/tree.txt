@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: 0,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "using",
@@ -169,7 +172,10 @@ DefinitionTree {
                                             return_type: FunctionLikeReturnTypeDefinition {
                                                 colon: 124,
                                                 type_definition: Void(
-                                                    126,
+                                                    Keyword {
+                                                        value: "void",
+                                                        position: 126,
+                                                    },
                                                 ),
                                             },
                                             constraints: None,
@@ -282,7 +288,10 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: 196,
+                                                            new: Keyword {
+                                                                value: "new",
+                                                                position: 196,
+                                                            },
                                                             class: Identifier(
                                                                 Identifier {
                                                                     position: 200,

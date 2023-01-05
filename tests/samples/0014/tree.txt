@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Void(
-                        17,
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {

@@ -13,6 +13,7 @@ use crate::tree::expression::literal::LiteralInteger;
 use crate::tree::expression::literal::LiteralNull;
 use crate::tree::expression::literal::LiteralString;
 use crate::tree::expression::literal::LiteralTrue;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
@@ -90,18 +91,16 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
     match &current.kind {
         TokenKind::Vec => {
-            state.iterator.next();
-
+            let vec = utils::skip_keyword(state, TokenKind::Vec)?;
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Vec(position, templates))
+            Ok(TypeDefinition::Vec(vec, templates))
         }
         TokenKind::Dict => {
-            state.iterator.next();
-
+            let dict = utils::skip_keyword(state, TokenKind::Dict)?;
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Dict(position, templates))
+            Ok(TypeDefinition::Dict(dict, templates))
         }
         TokenKind::Null => Ok(TypeDefinition::Literal(Literal::Null(LiteralNull {
             comments: state.iterator.comments(),
@@ -145,82 +144,92 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"iterable" => {
             state.iterator.next();
 
+            let keyword = Keyword::new(value.into(), current.position);
             let templates = template::type_template_group_definition(state)?;
 
-            Ok(TypeDefinition::Iterable(position, templates))
+            Ok(TypeDefinition::Iterable(keyword, templates))
         }
         _ if value == b"void" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Void(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Void(keyword))
         }
         _ if value == b"never" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Never(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Never(keyword))
         }
         _ if value == b"float" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Float(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Float(keyword))
         }
         _ if value == b"bool" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Boolean(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Boolean(keyword))
         }
         _ if value == b"int" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Integer(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Integer(keyword))
         }
         _ if value == b"string" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::String(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::String(keyword))
         }
         _ if value == b"object" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Object(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Object(keyword))
         }
         _ if value == b"mixed" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Mixed(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Mixed(keyword))
         }
         _ if value == b"nonnull" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::NonNull(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::NonNull(keyword))
         }
         _ if value == b"resource" => {
             state.iterator.next();
 
-            Ok(TypeDefinition::Resource(position))
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::Resource(keyword))
         }
-        TokenKind::Class => {
-            state.iterator.next();
-
-            let templates = template::type_template_group_definition(state)?;
-
-            Ok(TypeDefinition::Class(position, templates))
-        }
-        TokenKind::Interface => {
-            state.iterator.next();
-
-            let templates = template::type_template_group_definition(state)?;
-
-            Ok(TypeDefinition::Interface(position, templates))
-        }
+        TokenKind::Class => Ok(TypeDefinition::Class(
+            utils::skip_keyword(state, TokenKind::Class)?,
+            template::type_template_group_definition(state)?,
+        )),
+        TokenKind::Interface => Ok(TypeDefinition::Interface(
+            utils::skip_keyword(state, TokenKind::Interface)?,
+            template::type_template_group_definition(state)?,
+        )),
         TokenKind::Identifier
         | TokenKind::QualifiedIdentifier
-        | TokenKind::FullyQualifiedIdentifier
-        | TokenKind::Enum
-        | TokenKind::From
-        | TokenKind::Self_
-        | TokenKind::Static
-        | TokenKind::Parent => {
+        | TokenKind::FullyQualifiedIdentifier => {
             identifier::fully_qualified_templated_identifier_including_self(state)
                 .map(TypeDefinition::Identifier)
         }

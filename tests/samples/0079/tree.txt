@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 15,
                     type_definition: Object(
-                        17,
+                        Keyword {
+                            value: "object",
+                            position: 17,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,20 +46,29 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 30,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 30,
+                                },
                                 expression: Some(
                                     ClassOperation(
                                         AnonymousInitialization {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            new: 37,
+                                            new: Keyword {
+                                                value: "new",
+                                                position: 37,
+                                            },
                                             class: AnonymousClassExpression {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
                                                 attributes: [],
-                                                class: 41,
+                                                class: Keyword {
+                                                    value: "class",
+                                                    position: 41,
+                                                },
                                                 arguments: ArgumentListExpression {
                                                     comments: CommentGroup {
                                                         comments: [],

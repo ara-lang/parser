@@ -196,8 +196,7 @@ expressions! {
 
     #[before(reserved_identifier_function_call), current(TokenKind::Exit)]
     exit({
-        let exit = state.iterator.current().position;
-        state.iterator.next();
+        let exit = utils::skip_keyword(state, TokenKind::Exit)?;
         if state.iterator.current().kind == TokenKind::LeftParen {
             Ok(Expression::ExitConstruct(ExitConstructExpression::ExitWith {
                 comments: state.iterator.comments(),
@@ -251,24 +250,18 @@ expressions! {
 
     #[before(unset), current(TokenKind::Isset)]
     isset({
-        let isset = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::ArrayOperation(ArrayOperationExpression::Isset {
             comments: state.iterator.comments(),
-            isset,
+            isset: utils::skip_keyword(state, TokenKind::Isset)?,
             item: Box::new(for_precedence(state, Precedence::Lowest)?)
         }))
     })
 
     #[before(anonymous_class), current(TokenKind::Unset)]
     unset({
-        let unset = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::ArrayOperation(ArrayOperationExpression::Unset {
             comments: state.iterator.comments(),
-            unset,
+            unset: utils::skip_keyword(state, TokenKind::Unset)?,
             item: Box::new(for_precedence(state, Precedence::Lowest)?)
         }))
     })
@@ -282,14 +275,10 @@ expressions! {
 
     #[before(throw), current(TokenKind::New)]
     new({
-        let new = state.iterator.current().position;
-
-        state.iterator.next();
-
         Ok(Expression::ClassOperation(
             ClassOperationExpression::Initialization {
                 comments: state.iterator.comments(),
-                new,
+                new: utils::skip_keyword(state, TokenKind::New)?,
                 class: match state.iterator.current().kind {
                     TokenKind::Variable => ClassOperationInitializationClassExpression::Variable(
                         variable::parse(state)?
@@ -310,48 +299,36 @@ expressions! {
 
     #[before(r#async), current(TokenKind::Throw)]
     throw({
-        let throw = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::ExceptionOperation(ExceptionOperationExpression::Throw {
             comments: state.iterator.comments(),
-            throw,
+            throw: utils::skip_keyword(state, TokenKind::Throw)?,
             value: Box::new(for_precedence(state, Precedence::Lowest)?)
         }))
     })
 
     #[before(r#await), current(TokenKind::Async)]
     r#async({
-        let r#async = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Async {
             comments: state.iterator.comments(),
-            r#async,
+            r#async: utils::skip_keyword(state, TokenKind::Async)?,
             expression: Box::new(for_precedence(state, Precedence::Lowest)?)
         }))
     })
 
     #[before(concurrently), current(TokenKind::Await)]
     r#await({
-        let r#await = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Await {
             comments: state.iterator.comments(),
-            r#await,
+            r#await: utils::skip_keyword(state, TokenKind::Await)?,
             expression: Box::new(for_precedence(state, Precedence::Lowest)?)
         }))
     })
 
     #[before(r#yield), current(TokenKind::Concurrently)]
     concurrently({
-        let concurrently = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::AsyncOperation(AsyncOperationExpression::Concurrently {
             comments: state.iterator.comments(),
-            concurrently,
+            concurrently: utils::skip_keyword(state, TokenKind::Concurrently)?,
             left_brace: utils::skip_left_brace(state)?,
             expressions: utils::comma_separated(state, &create, TokenKind::RightBrace)?,
             right_brace: utils::skip_right_brace(state)?,
@@ -360,8 +337,7 @@ expressions! {
 
     #[before(clone), current(TokenKind::Yield)]
     r#yield({
-        let r#yield = state.iterator.current().position;
-        state.iterator.next();
+        let r#yield = utils::skip_keyword(state, TokenKind::Yield)?;
         let comments = state.iterator.comments();
         let current = state.iterator.current();
         if current.kind == TokenKind::SemiColon || current.kind == TokenKind::RightParen {
@@ -370,12 +346,10 @@ expressions! {
                 r#yield,
             }))
         } else if current.kind == TokenKind::From  {
-            state.iterator.next();
-
             Ok(Expression::GeneratorOperation(GeneratorOperationExpression::YieldFrom {
                 comments,
                 r#yield,
-                from: current.position,
+                from: utils::skip_keyword(state, TokenKind::From)?,
                 value: Box::new(for_precedence(
                     state,
                     Precedence::YieldFrom,
@@ -414,12 +388,9 @@ expressions! {
 
     #[before(r#true), current(TokenKind::Clone)]
     clone({
-        let position = state.iterator.current().position;
-        state.iterator.next();
-
         Ok(Expression::ObjectOperation(ObjectOperationExpression::Clone {
             comments: state.iterator.comments(),
-            clone: position,
+            clone: utils::skip_keyword(state, TokenKind::Clone)?,
             object: Box::new(for_precedence(state, Precedence::Clone)?),
         }))
     })
@@ -457,58 +428,43 @@ expressions! {
     #[before(literal_float), current(TokenKind::LiteralInteger)]
     literal_integer({
         let current = state.iterator.current();
+        state.iterator.next();
 
-        if let TokenKind::LiteralInteger = &current.kind {
-            state.iterator.next();
-
-            Ok(Expression::Literal(Literal::Integer(
-                LiteralInteger {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone()
-                }
-            )))
-        } else {
-            unreachable!("{}:{}", file!(), line!());
-        }
+        Ok(Expression::Literal(Literal::Integer(
+            LiteralInteger {
+                comments: state.iterator.comments(),
+                position: current.position,
+                value: current.value.clone()
+            }
+        )))
     })
 
     #[before(literal_string), current(TokenKind::LiteralFloat)]
     literal_float({
         let current = state.iterator.current();
+        state.iterator.next();
 
-        if let TokenKind::LiteralFloat = &current.kind {
-            state.iterator.next();
-
-            Ok(Expression::Literal(
-                Literal::Float(LiteralFloat {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone()
-                })
-            ))
-        } else {
-            unreachable!("{}:{}", file!(), line!());
-        }
+        Ok(Expression::Literal(
+            Literal::Float(LiteralFloat {
+                comments: state.iterator.comments(),
+                position: current.position,
+                value: current.value.clone()
+            })
+        ))
     })
 
     #[before(dict), current(TokenKind::LiteralString)]
     literal_string({
         let current = state.iterator.current();
+        state.iterator.next();
 
-        if let TokenKind::LiteralString = &current.kind {
-            state.iterator.next();
-
-            Ok(Expression::Literal(
-                Literal::String(LiteralString {
-                    comments: state.iterator.comments(),
-                    position: current.position,
-                    value: current.value.clone()
-                })
-            ))
-        } else {
-            unreachable!("{}:{}", file!(), line!());
-        }
+        Ok(Expression::Literal(
+            Literal::String(LiteralString {
+                comments: state.iterator.comments(),
+                position: current.position,
+                value: current.value.clone()
+            })
+        ))
     })
 
     #[before(vec), current(TokenKind::Dict), peek(TokenKind::LeftBracket)]

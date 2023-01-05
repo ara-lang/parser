@@ -11,6 +11,7 @@ use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::expression::argument::ArgumentListExpression;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -18,7 +19,7 @@ use crate::tree::Node;
 pub struct AnonymousClassExpression {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub class: usize,
+    pub class: Keyword,
     pub arguments: ArgumentListExpression,
     pub extends: Option<ClassDefinitionExtends>,
     pub implements: Option<ClassDefinitionImplements>,
@@ -48,7 +49,7 @@ impl Node for AnonymousClassExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.class
+        self.class.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -56,34 +57,31 @@ impl Node for AnonymousClassExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children = vec![];
-        children.extend(
-            self.attributes
-                .iter()
-                .map(|attribute| attribute as &dyn Node),
-        );
+        let mut children: Vec<&dyn Node> = vec![&self.class];
+
+        for attribute in &self.attributes {
+            children.push(attribute);
+        }
+
         children.push(&self.arguments);
+
         if let Some(extends) = &self.extends {
             children.push(extends);
         }
+
         if let Some(implements) = &self.implements {
             children.push(implements);
         }
+
         children.push(&self.body);
+
         children
     }
 }
 
 impl Node for AnonymousClassExpressionMember {
     fn comments(&self) -> Option<&CommentGroup> {
-        match &self {
-            AnonymousClassExpressionMember::Constant(constant) => constant.comments(),
-            AnonymousClassExpressionMember::Property(property) => property.comments(),
-            AnonymousClassExpressionMember::ConcreteMethod(method) => method.comments(),
-            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => {
-                constructor.comments()
-            }
-        }
+        None
     }
 
     fn initial_position(&self) -> usize {

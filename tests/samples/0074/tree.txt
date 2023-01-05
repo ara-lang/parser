@@ -17,16 +17,28 @@ DefinitionTree {
                 type_definition: Union(
                     [
                         String(
-                            15,
+                            Keyword {
+                                value: "string",
+                                position: 15,
+                            },
                         ),
                         Integer(
-                            24,
+                            Keyword {
+                                value: "int",
+                                position: 24,
+                            },
                         ),
                         Float(
-                            30,
+                            Keyword {
+                                value: "float",
+                                position: 30,
+                            },
                         ),
                         Boolean(
-                            38,
+                            Keyword {
+                                value: "bool",
+                                position: 38,
+                            },
                         ),
                     ],
                 ),
@@ -84,7 +96,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 85,
                     type_definition: String(
-                        87,
+                        Keyword {
+                            value: "string",
+                            position: 87,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -98,7 +113,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 100,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 100,
+                                },
                                 condition: TypeOperation(
                                     Is {
                                         comments: CommentGroup {
@@ -110,9 +128,15 @@ DefinitionTree {
                                                 name: "$value",
                                             },
                                         ),
-                                        is: 110,
+                                        is: Keyword {
+                                            value: "is",
+                                            position: 110,
+                                        },
                                         right: String(
-                                            113,
+                                            Keyword {
+                                                value: "string",
+                                                position: 113,
+                                            },
                                         ),
                                     },
                                 ),
@@ -144,13 +168,19 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 143,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 143,
+                                        },
                                         block: If(
                                             IfStatement {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                if: 148,
+                                                if: Keyword {
+                                                    value: "if",
+                                                    position: 148,
+                                                },
                                                 condition: LogicalOperation(
                                                     Or {
                                                         comments: CommentGroup {
@@ -167,9 +197,15 @@ DefinitionTree {
                                                                         name: "$value",
                                                                     },
                                                                 ),
-                                                                is: 158,
+                                                                is: Keyword {
+                                                                    value: "is",
+                                                                    position: 158,
+                                                                },
                                                                 right: Integer(
-                                                                    161,
+                                                                    Keyword {
+                                                                        value: "int",
+                                                                        position: 161,
+                                                                    },
                                                                 ),
                                                             },
                                                         ),
@@ -185,9 +221,15 @@ DefinitionTree {
                                                                         name: "$value",
                                                                     },
                                                                 ),
-                                                                is: 175,
+                                                                is: Keyword {
+                                                                    value: "is",
+                                                                    position: 175,
+                                                                },
                                                                 right: Float(
-                                                                    178,
+                                                                    Keyword {
+                                                                        value: "float",
+                                                                        position: 178,
+                                                                    },
                                                                 ),
                                                             },
                                                         ),
@@ -204,7 +246,10 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                if: 194,
+                                                                if: Keyword {
+                                                                    value: "if",
+                                                                    position: 194,
+                                                                },
                                                                 condition: TypeOperation(
                                                                     Is {
                                                                         comments: CommentGroup {
@@ -216,9 +261,15 @@ DefinitionTree {
                                                                                 name: "$value",
                                                                             },
                                                                         ),
-                                                                        is: 204,
+                                                                        is: Keyword {
+                                                                            value: "is",
+                                                                            position: 204,
+                                                                        },
                                                                         right: Integer(
-                                                                            207,
+                                                                            Keyword {
+                                                                                value: "int",
+                                                                                position: 207,
+                                                                            },
                                                                         ),
                                                                     },
                                                                 ),
@@ -299,7 +350,10 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        else: 260,
+                                                                        else: Keyword {
+                                                                            value: "else",
+                                                                            position: 260,
+                                                                        },
                                                                         block: Block(
                                                                             BlockStatement {
                                                                                 comments: CommentGroup {
@@ -465,7 +519,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Mixed(
-                                    375,
+                                    Keyword {
+                                        value: "mixed",
+                                        position: 375,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -482,7 +539,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 388,
                     type_definition: Boolean(
-                        390,
+                        Keyword {
+                            value: "bool",
+                            position: 390,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -507,7 +567,10 @@ DefinitionTree {
                                                 name: "$value",
                                             },
                                         ),
-                                        is: 408,
+                                        is: Keyword {
+                                            value: "is",
+                                            position: 408,
+                                        },
                                         right: Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {
@@ -554,7 +617,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Mixed(
-                                    440,
+                                    Keyword {
+                                        value: "mixed",
+                                        position: 440,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -602,7 +668,10 @@ DefinitionTree {
                                                 name: "$value",
                                             },
                                         ),
-                                        as: 475,
+                                        as: Keyword {
+                                            value: "as",
+                                            position: 475,
+                                        },
                                         right: Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {

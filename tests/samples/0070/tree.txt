@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: Void(
-                        16,
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -43,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 27,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 27,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 30,
@@ -67,7 +73,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 42,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 42,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -100,7 +109,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 58,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 58,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 61,
@@ -120,7 +132,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        elseif: 70,
+                                        elseif: Keyword {
+                                            value: "elseif",
+                                            position: 70,
+                                        },
                                         condition: Variable(
                                             Variable {
                                                 position: 77,
@@ -142,13 +157,19 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 86,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 86,
+                                        },
                                         block: If(
                                             IfStatement {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                if: 91,
+                                                if: Keyword {
+                                                    value: "if",
+                                                    position: 91,
+                                                },
                                                 condition: Variable(
                                                     Variable {
                                                         position: 94,
@@ -169,7 +190,10 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        else: 102,
+                                                        else: Keyword {
+                                                            value: "else",
+                                                            position: 102,
+                                                        },
                                                         block: Block(
                                                             BlockStatement {
                                                                 comments: CommentGroup {
@@ -193,7 +217,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 114,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 114,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -222,7 +249,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        elseif: 126,
+                                        elseif: Keyword {
+                                            value: "elseif",
+                                            position: 126,
+                                        },
                                         condition: Parenthesized(
                                             ParenthesizedExpression {
                                                 comments: CommentGroup {
@@ -253,13 +283,19 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 142,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 142,
+                                        },
                                         block: If(
                                             IfStatement {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                if: 147,
+                                                if: Keyword {
+                                                    value: "if",
+                                                    position: 147,
+                                                },
                                                 condition: Parenthesized(
                                                     ParenthesizedExpression {
                                                         comments: CommentGroup {
@@ -289,7 +325,10 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        else: 158,
+                                                        else: Keyword {
+                                                            value: "else",
+                                                            position: 158,
+                                                        },
                                                         block: Block(
                                                             BlockStatement {
                                                                 comments: CommentGroup {
@@ -313,7 +352,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 171,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 171,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 174,
@@ -334,7 +376,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 182,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 182,
+                                        },
                                         block: Block(
                                             BlockStatement {
                                                 comments: CommentGroup {
@@ -354,7 +399,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 194,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 194,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -384,7 +432,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        else: 205,
+                                        else: Keyword {
+                                            value: "else",
+                                            position: 205,
+                                        },
                                         block: Block(
                                             BlockStatement {
                                                 comments: CommentGroup {
@@ -1261,7 +1312,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                match: 669,
+                                                match: Keyword {
+                                                    value: "match",
+                                                    position: 669,
+                                                },
                                                 expression: Variable(
                                                     Variable {
                                                         position: 675,
@@ -1338,7 +1392,10 @@ DefinitionTree {
                                                             },
                                                             MatchArmExpression {
                                                                 condition: Default(
-                                                                    720,
+                                                                    Keyword {
+                                                                        value: "default",
+                                                                        position: 720,
+                                                                    },
                                                                 ),
                                                                 arrow: 728,
                                                                 expression: Literal(
@@ -1391,7 +1448,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                match: 751,
+                                                match: Keyword {
+                                                    value: "match",
+                                                    position: 751,
+                                                },
                                                 expression: Parenthesized(
                                                     ParenthesizedExpression {
                                                         comments: CommentGroup {
@@ -1477,7 +1537,10 @@ DefinitionTree {
                                                             },
                                                             MatchArmExpression {
                                                                 condition: Default(
-                                                                    804,
+                                                                    Keyword {
+                                                                        value: "default",
+                                                                        position: 804,
+                                                                    },
                                                                 ),
                                                                 arrow: 812,
                                                                 expression: Literal(

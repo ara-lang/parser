@@ -10,6 +10,7 @@ use crate::tree::expression::class::AnonymousClassExpression;
 use crate::tree::expression::generic::GenericGroupExpression;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
@@ -322,18 +323,18 @@ pub enum ArrayOperationExpression {
     },
     Unset {
         comments: CommentGroup,
-        unset: usize,
+        unset: Keyword,
         item: Box<Expression>,
     },
     Isset {
         comments: CommentGroup,
-        isset: usize,
+        isset: Keyword,
         item: Box<Expression>,
     },
     In {
         comments: CommentGroup,
         item: Box<Expression>,
-        r#in: usize,
+        r#in: Keyword,
         array: Box<Expression>,
     },
 }
@@ -381,25 +382,25 @@ pub enum TypeOperationExpression {
     Instanceof {
         comments: CommentGroup,
         left: Box<Expression>,
-        instanceof: usize,
+        instanceof: Keyword,
         right: Identifier,
     },
     Is {
         comments: CommentGroup,
         left: Box<Expression>,
-        is: usize,
+        is: Keyword,
         right: TypeDefinition,
     },
     Into {
         comments: CommentGroup,
         left: Box<Expression>,
-        into: usize,
+        into: Keyword,
         right: TypeDefinition,
     },
     As {
         comments: CommentGroup,
         left: Box<Expression>,
-        r#as: usize,
+        r#as: Keyword,
         right: TypeDefinition,
     },
 }
@@ -409,24 +410,24 @@ pub enum TypeOperationExpression {
 pub enum GeneratorOperationExpression {
     Yield {
         comments: CommentGroup,
-        r#yield: usize,
+        r#yield: Keyword,
     },
     YieldValue {
         comments: CommentGroup,
-        r#yield: usize,
+        r#yield: Keyword,
         value: Box<Expression>,
     },
     YieldKeyValue {
         comments: CommentGroup,
-        r#yield: usize,
+        r#yield: Keyword,
         key: Box<Expression>,
         double_arrow: usize,
         value: Box<Expression>,
     },
     YieldFrom {
         comments: CommentGroup,
-        r#yield: usize,
-        from: usize,
+        r#yield: Keyword,
+        from: Keyword,
         value: Box<Expression>,
     },
 }
@@ -436,7 +437,7 @@ pub enum GeneratorOperationExpression {
 pub enum ExceptionOperationExpression {
     Throw {
         comments: CommentGroup,
-        r#throw: usize,
+        r#throw: Keyword,
         value: Box<Expression>,
     },
 }
@@ -446,7 +447,7 @@ pub enum ExceptionOperationExpression {
 pub enum ObjectOperationExpression {
     Clone {
         comments: CommentGroup,
-        clone: usize,
+        clone: Keyword,
         object: Box<Expression>,
     },
     MethodCall {
@@ -499,14 +500,14 @@ pub enum ClassOperationInitializationClassExpression {
 pub enum ClassOperationExpression {
     Initialization {
         comments: CommentGroup,
-        new: usize,
+        new: Keyword,
         class: ClassOperationInitializationClassExpression,
         generics: Option<GenericGroupExpression>,
         arguments: ArgumentListExpression,
     },
     AnonymousInitialization {
         comments: CommentGroup,
-        new: usize,
+        new: Keyword,
         class: AnonymousClassExpression,
     },
     StaticMethodCall {
@@ -561,17 +562,17 @@ pub enum FunctionOperationExpression {
 pub enum AsyncOperationExpression {
     Async {
         comments: CommentGroup,
-        r#async: usize,
+        r#async: Keyword,
         expression: Box<Expression>,
     },
     Await {
         comments: CommentGroup,
-        r#await: usize,
+        r#await: Keyword,
         expression: Box<Expression>,
     },
     Concurrently {
         comments: CommentGroup,
-        concurrently: usize,
+        concurrently: Keyword,
         left_brace: usize,
         expressions: CommaSeparated<Expression>,
         right_brace: usize,
@@ -970,8 +971,8 @@ impl Node for ArrayOperationExpression {
         match &self {
             ArrayOperationExpression::Access { array, .. }
             | ArrayOperationExpression::Push { array, .. } => array.initial_position(),
-            ArrayOperationExpression::Isset { isset, .. } => *isset,
-            ArrayOperationExpression::Unset { unset, .. } => *unset,
+            ArrayOperationExpression::Isset { isset, .. } => isset.initial_position(),
+            ArrayOperationExpression::Unset { unset, .. } => unset.initial_position(),
             ArrayOperationExpression::In { item, .. } => item.initial_position(),
         }
     }
@@ -994,12 +995,22 @@ impl Node for ArrayOperationExpression {
             ArrayOperationExpression::Push { array, .. } => {
                 vec![array.as_ref()]
             }
-            ArrayOperationExpression::Isset { item, .. }
-            | ArrayOperationExpression::Unset { item, .. } => {
-                vec![item.as_ref()]
+            ArrayOperationExpression::Isset {
+                isset: keyword,
+                item,
+                ..
             }
-            ArrayOperationExpression::In { item, array, .. } => {
-                vec![item.as_ref(), array.as_ref()]
+            | ArrayOperationExpression::Unset {
+                unset: keyword,
+                item,
+                ..
+            } => {
+                vec![keyword, item.as_ref()]
+            }
+            ArrayOperationExpression::In {
+                item, r#in, array, ..
+            } => {
+                vec![item.as_ref(), r#in, array.as_ref()]
             }
         }
     }
@@ -1116,10 +1127,21 @@ impl Node for TypeOperationExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            TypeOperationExpression::Instanceof { left, right, .. } => vec![left.as_ref(), right],
-            TypeOperationExpression::Is { left, right, .. } => vec![left.as_ref(), right],
-            TypeOperationExpression::Into { left, right, .. } => vec![left.as_ref(), right],
-            TypeOperationExpression::As { left, right, .. } => vec![left.as_ref(), right],
+            TypeOperationExpression::Instanceof {
+                left,
+                instanceof,
+                right,
+                ..
+            } => vec![left.as_ref(), instanceof, right],
+            TypeOperationExpression::Is {
+                left, is, right, ..
+            } => vec![left.as_ref(), is, right],
+            TypeOperationExpression::Into {
+                left, into, right, ..
+            } => vec![left.as_ref(), into, right],
+            TypeOperationExpression::As {
+                left, r#as, right, ..
+            } => vec![left.as_ref(), r#as, right],
         }
     }
 }
@@ -1139,13 +1161,13 @@ impl Node for GeneratorOperationExpression {
             GeneratorOperationExpression::Yield { r#yield, .. }
             | GeneratorOperationExpression::YieldValue { r#yield, .. }
             | GeneratorOperationExpression::YieldKeyValue { r#yield, .. }
-            | GeneratorOperationExpression::YieldFrom { r#yield, .. } => *r#yield,
+            | GeneratorOperationExpression::YieldFrom { r#yield, .. } => r#yield.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield + 5,
+            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield.final_position(),
             GeneratorOperationExpression::YieldValue { value, .. } => value.final_position(),
             GeneratorOperationExpression::YieldKeyValue { value, .. } => value.final_position(),
             GeneratorOperationExpression::YieldFrom { value, .. } => value.final_position(),
@@ -1154,12 +1176,24 @@ impl Node for GeneratorOperationExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            GeneratorOperationExpression::Yield { .. } => vec![],
-            GeneratorOperationExpression::YieldValue { value, .. } => vec![value.as_ref()],
-            GeneratorOperationExpression::YieldKeyValue { key, value, .. } => {
-                vec![key.as_ref(), value.as_ref()]
+            GeneratorOperationExpression::Yield { r#yield, .. } => vec![r#yield],
+            GeneratorOperationExpression::YieldValue { r#yield, value, .. } => {
+                vec![r#yield, value.as_ref()]
             }
-            GeneratorOperationExpression::YieldFrom { value, .. } => vec![value.as_ref()],
+            GeneratorOperationExpression::YieldKeyValue {
+                r#yield,
+                key,
+                value,
+                ..
+            } => {
+                vec![r#yield, key.as_ref(), value.as_ref()]
+            }
+            GeneratorOperationExpression::YieldFrom {
+                r#yield,
+                from,
+                value,
+                ..
+            } => vec![r#yield, from, value.as_ref()],
         }
     }
 }
@@ -1173,7 +1207,7 @@ impl Node for ExceptionOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ExceptionOperationExpression::Throw { r#throw, .. } => *r#throw,
+            ExceptionOperationExpression::Throw { throw, .. } => throw.initial_position(),
         }
     }
 
@@ -1185,7 +1219,7 @@ impl Node for ExceptionOperationExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ExceptionOperationExpression::Throw { value, .. } => vec![value.as_ref()],
+            ExceptionOperationExpression::Throw { throw, value, .. } => vec![throw, value.as_ref()],
         }
     }
 }
@@ -1204,7 +1238,7 @@ impl Node for ObjectOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ObjectOperationExpression::Clone { clone, .. } => *clone,
+            ObjectOperationExpression::Clone { clone, .. } => clone.initial_position(),
             ObjectOperationExpression::MethodCall { object, .. } => object.initial_position(),
             ObjectOperationExpression::NullsafeMethodCall { object, .. } => {
                 object.initial_position()
@@ -1238,7 +1272,7 @@ impl Node for ObjectOperationExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ObjectOperationExpression::Clone { object, .. } => vec![object.as_ref()],
+            ObjectOperationExpression::Clone { clone, object, .. } => vec![clone, object.as_ref()],
             ObjectOperationExpression::MethodCall {
                 object,
                 method,
@@ -1344,8 +1378,10 @@ impl Node for ClassOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            ClassOperationExpression::Initialization { new, .. } => *new,
-            ClassOperationExpression::AnonymousInitialization { new, .. } => *new,
+            ClassOperationExpression::Initialization { new, .. }
+            | ClassOperationExpression::AnonymousInitialization { new, .. } => {
+                new.initial_position()
+            }
             ClassOperationExpression::StaticMethodCall { class, .. } => class.initial_position(),
             ClassOperationExpression::StaticMethodClosureCreation { class, .. } => {
                 class.initial_position()
@@ -1379,12 +1415,13 @@ impl Node for ClassOperationExpression {
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
             ClassOperationExpression::Initialization {
+                new,
                 class,
                 generics,
                 arguments,
                 ..
             } => {
-                let mut children: Vec<&dyn Node> = vec![class];
+                let mut children: Vec<&dyn Node> = vec![new, class];
                 if let Some(generics) = generics {
                     children.push(generics);
                 }
@@ -1393,8 +1430,8 @@ impl Node for ClassOperationExpression {
 
                 children
             }
-            ClassOperationExpression::AnonymousInitialization { class, .. } => {
-                vec![class]
+            ClassOperationExpression::AnonymousInitialization { new, class, .. } => {
+                vec![new, class]
             }
             ClassOperationExpression::StaticMethodCall {
                 class,
@@ -1515,9 +1552,11 @@ impl Node for AsyncOperationExpression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            AsyncOperationExpression::Await { r#await, .. } => *r#await,
-            AsyncOperationExpression::Async { r#async, .. } => *r#async,
-            AsyncOperationExpression::Concurrently { concurrently, .. } => *concurrently,
+            AsyncOperationExpression::Await { r#await, .. } => r#await.initial_position(),
+            AsyncOperationExpression::Async { r#async, .. } => r#async.initial_position(),
+            AsyncOperationExpression::Concurrently { concurrently, .. } => {
+                concurrently.initial_position()
+            }
         }
     }
 
@@ -1531,10 +1570,27 @@ impl Node for AsyncOperationExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            AsyncOperationExpression::Await { expression, .. } => vec![expression.as_ref()],
-            AsyncOperationExpression::Async { expression, .. } => vec![expression.as_ref()],
-            AsyncOperationExpression::Concurrently { expressions, .. } => {
-                expressions.inner.iter().map(|e| e as &dyn Node).collect()
+            AsyncOperationExpression::Await {
+                r#await,
+                expression,
+                ..
+            } => vec![r#await, expression.as_ref()],
+            AsyncOperationExpression::Async {
+                r#async,
+                expression,
+                ..
+            } => vec![r#async, expression.as_ref()],
+            AsyncOperationExpression::Concurrently {
+                concurrently,
+                expressions,
+                ..
+            } => {
+                let mut children: Vec<&dyn Node> = vec![concurrently];
+                for expression in &expressions.inner {
+                    children.push(expression);
+                }
+
+                children
             }
         }
     }

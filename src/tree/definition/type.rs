@@ -26,21 +26,21 @@ pub enum TypeDefinition {
     Nullable(usize, Box<TypeDefinition>),
     Union(Vec<TypeDefinition>),
     Intersection(Vec<TypeDefinition>),
-    Void(usize),
-    Never(usize),
-    Float(usize),
-    Boolean(usize),
-    Integer(usize),
-    String(usize),
-    Dict(usize, TypeTemplateGroupDefinition),
-    Vec(usize, TypeTemplateGroupDefinition),
-    Object(usize),
-    Mixed(usize),
-    NonNull(usize),
-    Resource(usize),
-    Iterable(usize, TypeTemplateGroupDefinition),
-    Class(usize, TypeTemplateGroupDefinition),
-    Interface(usize, TypeTemplateGroupDefinition),
+    Void(Keyword),
+    Never(Keyword),
+    Float(Keyword),
+    Boolean(Keyword),
+    Integer(Keyword),
+    String(Keyword),
+    Dict(Keyword, TypeTemplateGroupDefinition),
+    Vec(Keyword, TypeTemplateGroupDefinition),
+    Object(Keyword),
+    Mixed(Keyword),
+    NonNull(Keyword),
+    Resource(Keyword),
+    Iterable(Keyword, TypeTemplateGroupDefinition),
+    Class(Keyword, TypeTemplateGroupDefinition),
+    Interface(Keyword, TypeTemplateGroupDefinition),
     Literal(Literal),
     Tuple {
         left_parenthesis: usize,
@@ -115,23 +115,23 @@ impl Node for TypeDefinition {
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
             TypeDefinition::Literal(literal) => literal.initial_position(),
-            TypeDefinition::Nullable(position, _)
-            | TypeDefinition::Void(position)
-            | TypeDefinition::Never(position)
-            | TypeDefinition::Float(position)
-            | TypeDefinition::Boolean(position)
-            | TypeDefinition::Integer(position)
-            | TypeDefinition::String(position)
-            | TypeDefinition::Dict(position, _)
-            | TypeDefinition::Vec(position, _)
-            | TypeDefinition::Object(position)
-            | TypeDefinition::Mixed(position)
-            | TypeDefinition::NonNull(position)
-            | TypeDefinition::Resource(position)
-            | TypeDefinition::Class(position, _)
-            | TypeDefinition::Interface(position, _)
-            | TypeDefinition::Iterable(position, _)
-            | TypeDefinition::Tuple {
+            TypeDefinition::Nullable(position, _) => *position,
+            TypeDefinition::Void(keyword)
+            | TypeDefinition::Never(keyword)
+            | TypeDefinition::Float(keyword)
+            | TypeDefinition::Boolean(keyword)
+            | TypeDefinition::Integer(keyword)
+            | TypeDefinition::String(keyword)
+            | TypeDefinition::Dict(keyword, _)
+            | TypeDefinition::Vec(keyword, _)
+            | TypeDefinition::Object(keyword)
+            | TypeDefinition::Mixed(keyword)
+            | TypeDefinition::NonNull(keyword)
+            | TypeDefinition::Resource(keyword)
+            | TypeDefinition::Class(keyword, _)
+            | TypeDefinition::Interface(keyword, _)
+            | TypeDefinition::Iterable(keyword, _) => keyword.initial_position(),
+            TypeDefinition::Tuple {
                 left_parenthesis: position,
                 ..
             }
@@ -154,16 +154,16 @@ impl Node for TypeDefinition {
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Literal(literal) => literal.final_position(),
-            TypeDefinition::Void(position) => position + 4,
-            TypeDefinition::Never(position) => position + 5,
-            TypeDefinition::Float(position) => position + 5,
-            TypeDefinition::Boolean(position) => position + 7,
-            TypeDefinition::Integer(position) => position + 7,
-            TypeDefinition::String(position) => position + 6,
-            TypeDefinition::Object(position) => position + 6,
-            TypeDefinition::Mixed(position) => position + 5,
-            TypeDefinition::NonNull(position) => position + 7,
-            TypeDefinition::Resource(position) => position + 8,
+            TypeDefinition::Void(keyword)
+            | TypeDefinition::Never(keyword)
+            | TypeDefinition::Float(keyword)
+            | TypeDefinition::Boolean(keyword)
+            | TypeDefinition::Integer(keyword)
+            | TypeDefinition::String(keyword)
+            | TypeDefinition::Object(keyword)
+            | TypeDefinition::Mixed(keyword)
+            | TypeDefinition::NonNull(keyword)
+            | TypeDefinition::Resource(keyword) => keyword.final_position(),
             TypeDefinition::Parenthesized {
                 right_parenthesis, ..
             }
@@ -180,22 +180,22 @@ impl Node for TypeDefinition {
             TypeDefinition::Union(inner) | TypeDefinition::Intersection(inner) => {
                 inner.iter().map(|t| t as &dyn Node).collect()
             }
-            TypeDefinition::Void(_)
-            | TypeDefinition::Object(_)
-            | TypeDefinition::NonNull(_)
-            | TypeDefinition::Mixed(_)
-            | TypeDefinition::Resource(_)
-            | TypeDefinition::Never(_)
-            | TypeDefinition::Float(_)
-            | TypeDefinition::Boolean(_)
-            | TypeDefinition::Integer(_)
-            | TypeDefinition::String(_) => vec![],
+            TypeDefinition::Void(keyword)
+            | TypeDefinition::Object(keyword)
+            | TypeDefinition::NonNull(keyword)
+            | TypeDefinition::Mixed(keyword)
+            | TypeDefinition::Resource(keyword)
+            | TypeDefinition::Never(keyword)
+            | TypeDefinition::Float(keyword)
+            | TypeDefinition::Boolean(keyword)
+            | TypeDefinition::Integer(keyword)
+            | TypeDefinition::String(keyword) => vec![keyword],
             TypeDefinition::Literal(literal) => vec![literal],
-            TypeDefinition::Class(_, template)
-            | TypeDefinition::Interface(_, template)
-            | TypeDefinition::Iterable(_, template)
-            | TypeDefinition::Dict(_, template)
-            | TypeDefinition::Vec(_, template) => vec![template],
+            TypeDefinition::Class(keyword, template)
+            | TypeDefinition::Interface(keyword, template)
+            | TypeDefinition::Iterable(keyword, template)
+            | TypeDefinition::Dict(keyword, template)
+            | TypeDefinition::Vec(keyword, template) => vec![keyword, template],
             TypeDefinition::Tuple {
                 type_definitions, ..
             } => type_definitions

@@ -29,14 +29,23 @@ DefinitionTree {
                                         value: "T",
                                     },
                                     constraint: SubType(
-                                        13,
+                                        Keyword {
+                                            value: "as",
+                                            position: 13,
+                                        },
                                         Union(
                                             [
                                                 String(
-                                                    16,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 16,
+                                                    },
                                                 ),
                                                 Integer(
-                                                    23,
+                                                    Keyword {
+                                                        value: "int",
+                                                        position: 23,
+                                                    },
                                                 ),
                                             ],
                                         ),
@@ -126,7 +135,10 @@ DefinitionTree {
                                             },
                                         ),
                                         Dict(
-                                            54,
+                                            Keyword {
+                                                value: "dict",
+                                                position: 54,
+                                            },
                                             TypeTemplateGroupDefinition {
                                                 comments: CommentGroup {
                                                     comments: [],
@@ -161,7 +173,10 @@ DefinitionTree {
                                             },
                                         ),
                                         Vec(
-                                            65,
+                                            Keyword {
+                                                value: "vec",
+                                                position: 65,
+                                            },
                                             TypeTemplateGroupDefinition {
                                                 comments: CommentGroup {
                                                     comments: [],
@@ -245,7 +260,10 @@ DefinitionTree {
                                                                     members: CommaSeparated {
                                                                         inner: [
                                                                             Vec(
-                                                                                87,
+                                                                                Keyword {
+                                                                                    value: "vec",
+                                                                                    position: 87,
+                                                                                },
                                                                                 TypeTemplateGroupDefinition {
                                                                                     comments: CommentGroup {
                                                                                         comments: [],
@@ -299,7 +317,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 102,
                     type_definition: Dict(
-                        104,
+                        Keyword {
+                            value: "dict",
+                            position: 104,
+                        },
                         TypeTemplateGroupDefinition {
                             comments: CommentGroup {
                                 comments: [],

@@ -17,6 +17,7 @@ use crate::tree::expression::operator::StringOperationExpression;
 use crate::tree::expression::operator::TernaryOperationExpression;
 use crate::tree::expression::operator::TypeOperationExpression;
 use crate::tree::expression::Expression;
+use crate::tree::token::Keyword;
 
 pub fn infix(
     state: &mut State,
@@ -26,7 +27,8 @@ pub fn infix(
 ) -> ParseResult<Expression> {
     let comments = state.iterator.comments();
 
-    let position = state.iterator.current().position;
+    let current = state.iterator.current();
+    let position = current.position;
     state.iterator.next();
     let op = state.iterator.current();
 
@@ -65,31 +67,31 @@ pub fn infix(
         TokenKind::Into => Expression::TypeOperation(TypeOperationExpression::Into {
             comments,
             left: Box::new(left),
-            into: position,
+            into: Keyword::new(current.value.clone(), position),
             right: r#type::type_definition(state)?,
         }),
         TokenKind::Is => Expression::TypeOperation(TypeOperationExpression::Is {
             comments,
             left: Box::new(left),
-            is: position,
+            is: Keyword::new(current.value.clone(), position),
             right: r#type::type_definition(state)?,
         }),
         TokenKind::As => Expression::TypeOperation(TypeOperationExpression::As {
             comments,
             left: Box::new(left),
-            r#as: position,
+            r#as: Keyword::new(current.value.clone(), position),
             right: r#type::type_definition(state)?,
         }),
         TokenKind::Instanceof => Expression::TypeOperation(TypeOperationExpression::Instanceof {
             comments,
             left: Box::new(left),
-            r#instanceof: position,
+            r#instanceof: Keyword::new(current.value.clone(), position),
             right: identifier::fully_qualified_type_identifier_including_self(state)?,
         }),
         TokenKind::In => Expression::ArrayOperation(ArrayOperationExpression::In {
             comments,
             item: Box::new(left),
-            r#in: position,
+            r#in: Keyword::new(current.value.clone(), position),
             array: Box::new(expression::create(state)?),
         }),
         TokenKind::DoubleDot => {

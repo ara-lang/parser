@@ -53,7 +53,10 @@ DefinitionTree {
                                                 },
                                                 attributes: [],
                                                 type_definition: String(
-                                                    49,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 49,
+                                                    },
                                                 ),
                                                 ellipsis: None,
                                                 variable: Variable {
@@ -106,7 +109,10 @@ DefinitionTree {
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 97,
                                     type_definition: Void(
-                                        99,
+                                        Keyword {
+                                            value: "void",
+                                            position: 99,
+                                        },
                                     ),
                                 },
                                 constraints: None,
@@ -201,7 +207,10 @@ DefinitionTree {
                                                     modifiers: [],
                                                 },
                                                 type_definition: String(
-                                                    178,
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 178,
+                                                    },
                                                 ),
                                                 ellipsis: None,
                                                 variable: Variable {
@@ -267,7 +276,10 @@ DefinitionTree {
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 248,
                                     type_definition: Void(
-                                        250,
+                                        Keyword {
+                                            value: "void",
+                                            position: 250,
+                                        },
                                     ),
                                 },
                                 constraints: None,
@@ -321,7 +333,10 @@ DefinitionTree {
                                         value: "T",
                                     },
                                     constraint: SubType(
-                                        304,
+                                        Keyword {
+                                            value: "as",
+                                            position: 304,
+                                        },
                                         Identifier(
                                             TemplatedIdentifier {
                                                 name: Identifier {
@@ -352,7 +367,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Class(
-                                    313,
+                                    Keyword {
+                                        value: "class",
+                                        position: 313,
+                                    },
                                     TypeTemplateGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
@@ -388,7 +406,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: String(
-                                    330,
+                                    Keyword {
+                                        value: "string",
+                                        position: 330,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -427,14 +448,20 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 352,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 352,
+                                },
                                 expression: Some(
                                     ClassOperation(
                                         Initialization {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            new: 359,
+                                            new: Keyword {
+                                                value: "new",
+                                                position: 359,
+                                            },
                                             class: Variable(
                                                 Variable {
                                                     position: 363,
@@ -505,7 +532,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 395,
                     type_definition: Void(
-                        397,
+                        Keyword {
+                            value: "void",
+                            position: 397,
+                        },
                     ),
                 },
                 body: BlockStatement {

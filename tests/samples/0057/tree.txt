@@ -442,7 +442,10 @@ DefinitionTree {
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 245,
                                     type_definition: Void(
-                                        247,
+                                        Keyword {
+                                            value: "void",
+                                            position: 247,
+                                        },
                                     ),
                                 },
                                 constraints: None,
@@ -521,7 +524,10 @@ DefinitionTree {
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 304,
                                     type_definition: Void(
-                                        306,
+                                        Keyword {
+                                            value: "void",
+                                            position: 306,
+                                        },
                                     ),
                                 },
                                 constraints: None,

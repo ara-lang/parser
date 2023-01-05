@@ -3,28 +3,29 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::identifier::Identifier;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum UseDefinition {
     Default {
-        r#use: usize,
+        r#use: Keyword,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
         semicolon: usize,
     },
     // use function a as b;
     Function {
-        r#use: usize,
-        function: usize,
+        r#use: Keyword,
+        function: Keyword,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
         semicolon: usize,
     },
     Constant {
-        r#use: usize,
-        r#const: usize,
+        r#use: Keyword,
+        r#const: Keyword,
         name: Identifier,
         alias: Option<UseDefinitionSymbolAlias>,
         semicolon: usize,
@@ -34,7 +35,7 @@ pub enum UseDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UseDefinitionSymbolAlias {
-    pub r#as: usize,
+    pub r#as: Keyword,
     pub alias: Identifier,
 }
 
@@ -43,7 +44,7 @@ impl Node for UseDefinition {
         match self {
             UseDefinition::Default { r#use, .. }
             | UseDefinition::Function { r#use, .. }
-            | UseDefinition::Constant { r#use, .. } => *r#use,
+            | UseDefinition::Constant { r#use, .. } => r#use.initial_position(),
         }
     }
 
@@ -57,10 +58,32 @@ impl Node for UseDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         match self {
-            UseDefinition::Default { name, alias, .. }
-            | UseDefinition::Function { name, alias, .. }
-            | UseDefinition::Constant { name, alias, .. } => {
-                let mut children: Vec<&dyn Node> = vec![name];
+            UseDefinition::Default {
+                r#use, name, alias, ..
+            } => {
+                let mut children: Vec<&dyn Node> = vec![r#use, name];
+
+                if let Some(alias) = alias {
+                    children.push(alias);
+                }
+
+                children
+            }
+            UseDefinition::Function {
+                r#use,
+                function: r#type,
+                name,
+                alias,
+                ..
+            }
+            | UseDefinition::Constant {
+                r#use,
+                r#const: r#type,
+                name,
+                alias,
+                ..
+            } => {
+                let mut children: Vec<&dyn Node> = vec![r#use, r#type, name];
 
                 if let Some(alias) = alias {
                     children.push(alias);
@@ -74,7 +97,7 @@ impl Node for UseDefinition {
 
 impl Node for UseDefinitionSymbolAlias {
     fn initial_position(&self) -> usize {
-        self.r#as
+        self.r#as.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -82,6 +105,6 @@ impl Node for UseDefinitionSymbolAlias {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.alias]
+        vec![&self.r#as, &self.alias]
     }
 }

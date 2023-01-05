@@ -2,7 +2,10 @@ DefinitionTree {
     definitions: [
         Namespace(
             NamespaceDefinition {
-                namespace: 0,
+                namespace: Keyword {
+                    value: "namespace",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "Foo\Bar",
@@ -50,7 +53,10 @@ DefinitionTree {
                                                 ],
                                             },
                                             type_definition: String(
-                                                59,
+                                                Keyword {
+                                                    value: "string",
+                                                    position: 59,
+                                                },
                                             ),
                                             entry: Uninitialized {
                                                 variable: Variable {

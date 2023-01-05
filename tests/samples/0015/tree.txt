@@ -28,7 +28,10 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 type_definition: Integer(
-                                    13,
+                                    Keyword {
+                                        value: "int",
+                                        position: 13,
+                                    },
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -45,7 +48,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 20,
                     type_definition: Integer(
-                        22,
+                        Keyword {
+                            value: "int",
+                            position: 22,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -59,7 +65,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                if: 32,
+                                if: Keyword {
+                                    value: "if",
+                                    position: 32,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -105,7 +114,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                return: 54,
+                                                return: Keyword {
+                                                    value: "return",
+                                                    position: 54,
+                                                },
                                                 expression: Some(
                                                     Variable(
                                                         Variable {
@@ -129,7 +141,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                return: 76,
+                                return: Keyword {
+                                    value: "return",
+                                    position: 76,
+                                },
                                 expression: Some(
                                     ArithmeticOperation(
                                         Addition {

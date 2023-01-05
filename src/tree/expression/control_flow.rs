@@ -4,6 +4,7 @@ use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::expression::Expression;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
@@ -11,7 +12,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct MatchExpression {
     pub comments: CommentGroup,
-    pub r#match: usize,
+    pub r#match: Keyword,
     pub expression: Box<Expression>,
     pub body: MatchBodyExpression,
 }
@@ -36,7 +37,7 @@ pub struct MatchArmExpression {
 #[serde(rename_all = "snake_case")]
 pub enum MatchArmConditionExpression {
     Expressions(CommaSeparated<Expression>),
-    Default(usize),
+    Default(Keyword),
 }
 
 impl Node for MatchExpression {
@@ -45,7 +46,7 @@ impl Node for MatchExpression {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#match
+        self.r#match.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -53,7 +54,7 @@ impl Node for MatchExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![self.expression.as_ref(), &self.body]
+        vec![&self.r#match, self.expression.as_ref(), &self.body]
     }
 }
 
@@ -89,14 +90,14 @@ impl Node for MatchArmConditionExpression {
     fn initial_position(&self) -> usize {
         match self {
             Self::Expressions(expressions) => expressions.inner.first().unwrap().initial_position(),
-            Self::Default(default) => *default,
+            Self::Default(default) => default.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match self {
             Self::Expressions(expressions) => expressions.inner.last().unwrap().final_position(),
-            Self::Default(default) => default + 7,
+            Self::Default(default) => default.final_position(),
         }
     }
 
@@ -107,7 +108,7 @@ impl Node for MatchArmConditionExpression {
                 .iter()
                 .map(|expression| expression as &dyn Node)
                 .collect(),
-            Self::Default(_) => vec![],
+            Self::Default(default) => vec![default],
         }
     }
 }

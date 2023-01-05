@@ -29,7 +29,10 @@ DefinitionTree {
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 14,
                     type_definition: Void(
-                        16,
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
                     ),
                 },
                 body: BlockStatement {
@@ -632,7 +635,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            252,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 252,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -683,7 +689,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            272,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 272,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -746,7 +755,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            294,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 294,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -794,7 +806,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            317,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 317,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -858,7 +873,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            343,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 343,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -909,7 +927,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            363,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 363,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -972,7 +993,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            385,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 385,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1020,7 +1044,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            408,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 408,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1084,7 +1111,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            435,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 435,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1135,7 +1165,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            456,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 456,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1198,7 +1231,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            479,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 479,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1411,7 +1447,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            548,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 548,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1457,7 +1496,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            564,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 564,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1515,7 +1557,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            582,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 582,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1558,7 +1603,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            601,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 601,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1605,7 +1653,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 619,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 619,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 623,
@@ -1639,7 +1690,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 634,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 634,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 638,
@@ -1685,7 +1739,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 652,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 652,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 656,
@@ -1698,7 +1755,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            662,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 662,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1744,7 +1804,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 676,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 676,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 680,
@@ -1757,7 +1820,10 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            686,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 686,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [],
@@ -1804,7 +1870,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 704,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 704,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 708,
@@ -1817,10 +1886,16 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            714,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 714,
+                                                            },
                                                         ),
                                                         String(
-                                                            719,
+                                                            Keyword {
+                                                                value: "string",
+                                                                position: 719,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [
@@ -1868,7 +1943,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        new: 736,
+                                        new: Keyword {
+                                            value: "new",
+                                            position: 736,
+                                        },
                                         class: Identifier(
                                             Identifier {
                                                 position: 740,
@@ -1881,10 +1959,16 @@ DefinitionTree {
                                                 types: CommaSeparated {
                                                     inner: [
                                                         Integer(
-                                                            746,
+                                                            Keyword {
+                                                                value: "int",
+                                                                position: 746,
+                                                            },
                                                         ),
                                                         String(
-                                                            751,
+                                                            Keyword {
+                                                                value: "string",
+                                                                position: 751,
+                                                            },
                                                         ),
                                                     ],
                                                     commas: [
@@ -3543,7 +3627,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 1516,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 1516,
+                                                },
                                                 left_bracket: 1519,
                                                 elements: CommaSeparated {
                                                     inner: [],
@@ -3579,7 +3666,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 1532,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 1532,
+                                                },
                                                 left_bracket: 1535,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -3634,7 +3724,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: 1554,
+                                                vec: Keyword {
+                                                    value: "vec",
+                                                    position: 1554,
+                                                },
                                                 left_bracket: 1557,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -3690,7 +3783,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 1578,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 1578,
+                                                },
                                                 left_bracket: 1582,
                                                 elements: CommaSeparated {
                                                     inner: [],
@@ -3726,7 +3822,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 1595,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 1595,
+                                                },
                                                 left_bracket: 1599,
                                                 elements: CommaSeparated {
                                                     inner: [
@@ -3795,7 +3894,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: 1630,
+                                                dict: Keyword {
+                                                    value: "dict",
+                                                    position: 1630,
+                                                },
                                                 left_bracket: 1634,
                                                 elements: CommaSeparated {
                                                     inner: [
