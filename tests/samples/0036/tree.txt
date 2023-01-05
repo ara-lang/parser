@@ -36,7 +36,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 23,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 23,
+                                },
                                 name: Identifier {
                                     position: 32,
                                     value: "__construct",

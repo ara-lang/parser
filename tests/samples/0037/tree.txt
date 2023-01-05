@@ -15,7 +15,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 22,
+                            function: Keyword {
+                                value: "function",
+                                position: 22,
+                            },
                             name: Identifier {
                                 position: 31,
                                 value: "foo",

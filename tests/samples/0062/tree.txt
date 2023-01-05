@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 0,
+                interface: Keyword {
+                    value: "interface",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "enum",
@@ -14,7 +17,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     InterfaceDefinitionExtends {
-                        extends: 15,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 15,
+                        },
                         parents: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {

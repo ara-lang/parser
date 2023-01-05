@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 0,
+                interface: Keyword {
+                    value: "interface",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "foo",
@@ -29,7 +32,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 27,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 27,
+                                },
                                 name: Identifier {
                                     position: 36,
                                     value: "bar",

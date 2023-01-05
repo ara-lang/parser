@@ -57,7 +57,10 @@ DefinitionTree {
                         right_bracket: 14,
                     },
                 ],
-                interface: 16,
+                interface: Keyword {
+                    value: "interface",
+                    position: 16,
+                },
                 name: Identifier {
                     position: 26,
                     value: "A",
@@ -65,7 +68,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     InterfaceDefinitionExtends {
-                        extends: 28,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 28,
+                        },
                         parents: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {
@@ -413,7 +419,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 231,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 231,
+                                },
                                 name: Identifier {
                                     position: 240,
                                     value: "bar",
@@ -489,7 +498,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 290,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 290,
+                                },
                                 name: Identifier {
                                     position: 299,
                                     value: "baz",

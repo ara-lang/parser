@@ -77,7 +77,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 45,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 45,
+                                },
                                 name: Identifier {
                                     position: 54,
                                     value: "bar",

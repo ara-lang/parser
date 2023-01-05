@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 0,
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 9,
                     value: "h",

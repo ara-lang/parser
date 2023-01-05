@@ -162,7 +162,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 208,
+                function: Keyword {
+                    value: "function",
+                    position: 208,
+                },
                 name: Identifier {
                     position: 217,
                     value: "async",
@@ -427,7 +430,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 406,
+                function: Keyword {
+                    value: "function",
+                    position: 406,
+                },
                 name: Identifier {
                     position: 415,
                     value: "await",
@@ -805,7 +811,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 636,
+                function: Keyword {
+                    value: "function",
+                    position: 636,
+                },
                 name: Identifier {
                     position: 645,
                     value: "concurrently",
@@ -1248,7 +1257,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 884,
+                function: Keyword {
+                    value: "function",
+                    position: 884,
+                },
                 name: Identifier {
                     position: 893,
                     value: "_",
@@ -1518,7 +1530,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 1097,
+                function: Keyword {
+                    value: "function",
+                    position: 1097,
+                },
                 name: Identifier {
                     position: 1106,
                     value: "_",

@@ -2088,7 +2088,10 @@ DefinitionTree {
                         right_bracket: 912,
                     },
                 ],
-                function: 914,
+                function: Keyword {
+                    value: "function",
+                    position: 914,
+                },
                 name: Identifier {
                     position: 923,
                     value: "foo",
@@ -5364,7 +5367,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 2844,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 2844,
+                                },
                                 name: Identifier {
                                     position: 2853,
                                     value: "__construct",
@@ -6570,7 +6576,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 3703,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 3703,
+                                },
                                 name: Identifier {
                                     position: 3712,
                                     value: "foo",

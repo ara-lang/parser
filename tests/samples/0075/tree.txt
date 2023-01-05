@@ -91,7 +91,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 71,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 71,
+                                },
                                 name: Identifier {
                                     position: 80,
                                     value: "__construct",
@@ -194,7 +197,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 153,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 153,
+                                },
                                 name: Identifier {
                                     position: 162,
                                     value: "filter",
@@ -567,7 +573,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 430,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 430,
+                                },
                                 name: Identifier {
                                     position: 439,
                                     value: "map",
@@ -942,7 +951,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 675,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 675,
+                                },
                                 name: Identifier {
                                     position: 684,
                                     value: "sum",
@@ -966,14 +978,17 @@ DefinitionTree {
                                     ),
                                 },
                                 constraints: Some(
-                                    MethodDefinitionTypeConstraintGroup {
+                                    MethodTypeConstraintGroupDefinition {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        where: 695,
+                                        where: Keyword {
+                                            value: "where",
+                                            position: 695,
+                                        },
                                         constraints: CommaSeparated {
                                             inner: [
-                                                MethodDefinitionTypeConstraint {
+                                                MethodTypeConstraintDefinition {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
@@ -981,7 +996,10 @@ DefinitionTree {
                                                         position: 701,
                                                         value: "T",
                                                     },
-                                                    is: 703,
+                                                    is: Keyword {
+                                                        value: "is",
+                                                        position: 703,
+                                                    },
                                                     type_definition: Identifier(
                                                         TemplatedIdentifier {
                                                             name: Identifier {
@@ -1135,7 +1153,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 839,
+                function: Keyword {
+                    value: "function",
+                    position: 839,
+                },
                 name: Identifier {
                     position: 848,
                     value: "example",

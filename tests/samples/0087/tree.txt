@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 0,
+                interface: Keyword {
+                    value: "interface",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "IFoo",
@@ -29,7 +32,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 28,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 28,
+                                },
                                 name: Identifier {
                                     position: 37,
                                     value: "__construct",
@@ -77,7 +83,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 75,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 75,
+                                },
                                 name: Identifier {
                                     position: 84,
                                     value: "doSomething",
@@ -168,7 +177,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 157,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 157,
+                                },
                                 name: Identifier {
                                     position: 166,
                                     value: "__construct",
@@ -232,7 +244,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 226,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 226,
+                                },
                                 name: Identifier {
                                     position: 235,
                                     value: "doSomething",
@@ -283,7 +298,10 @@ DefinitionTree {
                     ],
                 },
                 attributes: [],
-                function: 281,
+                function: Keyword {
+                    value: "function",
+                    position: 281,
+                },
                 name: Identifier {
                     position: 290,
                     value: "instantiate",
@@ -464,7 +482,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 380,
+                function: Keyword {
+                    value: "function",
+                    position: 380,
+                },
                 name: Identifier {
                     position: 389,
                     value: "test",

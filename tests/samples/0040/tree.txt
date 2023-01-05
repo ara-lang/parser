@@ -49,7 +49,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            function: 50,
+                                            function: Keyword {
+                                                value: "function",
+                                                position: 50,
+                                            },
                                             name: Identifier {
                                                 position: 59,
                                                 value: "__construct",

@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 0,
+                interface: Keyword {
+                    value: "interface",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "s",
@@ -26,7 +29,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 16,
+                interface: Keyword {
+                    value: "interface",
+                    position: 16,
+                },
                 name: Identifier {
                     position: 26,
                     value: "foo",
@@ -34,7 +40,10 @@ DefinitionTree {
                 templates: None,
                 extends: Some(
                     InterfaceDefinitionExtends {
-                        extends: 30,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 30,
+                        },
                         parents: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {
@@ -65,7 +74,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 53,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 53,
+                                },
                                 name: Identifier {
                                     position: 62,
                                     value: "bar",

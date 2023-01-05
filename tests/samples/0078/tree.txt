@@ -337,7 +337,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 149,
+                function: Keyword {
+                    value: "function",
+                    position: 149,
+                },
                 name: Identifier {
                     position: 158,
                     value: "vec_filter",
@@ -677,7 +680,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 372,
+                function: Keyword {
+                    value: "function",
+                    position: 372,
+                },
                 name: Identifier {
                     position: 381,
                     value: "vec_map",
@@ -1066,7 +1072,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 575,
+                function: Keyword {
+                    value: "function",
+                    position: 575,
+                },
                 name: Identifier {
                     position: 584,
                     value: "dict_filter",
@@ -1449,7 +1458,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 825,
+                function: Keyword {
+                    value: "function",
+                    position: 825,
+                },
                 name: Identifier {
                     position: 834,
                     value: "dict_map",
@@ -1891,7 +1903,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 1060,
+                function: Keyword {
+                    value: "function",
+                    position: 1060,
+                },
                 name: Identifier {
                     position: 1069,
                     value: "iterable_map_to_dict",
@@ -2334,7 +2349,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 1328,
+                function: Keyword {
+                    value: "function",
+                    position: 1328,
+                },
                 name: Identifier {
                     position: 1337,
                     value: "iterable_filter_to_dict",

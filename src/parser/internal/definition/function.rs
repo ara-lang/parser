@@ -13,8 +13,8 @@ use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::FunctionDefinition;
 use crate::tree::definition::function::FunctionLikeReturnTypeDefinition;
-use crate::tree::definition::function::MethodDefinitionTypeConstraint;
-use crate::tree::definition::function::MethodDefinitionTypeConstraintGroup;
+use crate::tree::definition::function::MethodTypeConstraintDefinition;
+use crate::tree::definition::function::MethodTypeConstraintGroupDefinition;
 use crate::tree::definition::modifier::MethodModifierDefinitionGroup;
 use crate::tree::identifier::Identifier;
 
@@ -38,7 +38,7 @@ pub fn function_definition(state: &mut State) -> ParseResult<FunctionDefinition>
     Ok(FunctionDefinition {
         comments,
         attributes,
-        function: utils::skip(state, TokenKind::Function)?,
+        function: utils::skip_keyword(state, TokenKind::Function)?,
         name: identifier::identifier_maybe_soft_reserved(state)?,
         templates: if state.iterator.current().kind == TokenKind::LessThan {
             Some(template::template_group_definition(state)?)
@@ -62,7 +62,7 @@ pub fn method_definition(
 ) -> ParseResult<MethodDefinitionReference> {
     let comments = state.iterator.comments();
     let attributes = state.get_attributes();
-    let function = utils::skip(state, TokenKind::Function)?;
+    let function = utils::skip_keyword(state, TokenKind::Function)?;
 
     let name = identifier::identifier_maybe_reserved(state)?;
     let has_body = match r#type {
@@ -117,16 +117,16 @@ pub fn method_definition(
     };
     let current = state.iterator.current();
     let constraints = if current.kind == TokenKind::Where {
-        Some(MethodDefinitionTypeConstraintGroup {
+        Some(MethodTypeConstraintGroupDefinition {
             comments: state.iterator.comments(),
-            r#where: utils::skip(state, TokenKind::Where)?,
+            r#where: utils::skip_keyword(state, TokenKind::Where)?,
             constraints: utils::comma_separated(
                 state,
                 &|state| {
-                    Ok(MethodDefinitionTypeConstraint {
+                    Ok(MethodTypeConstraintDefinition {
                         comments: state.iterator.comments(),
                         identifier: identifier::identifier_maybe_reserved(state)?,
-                        r#is: utils::skip(state, TokenKind::Is)?,
+                        r#is: utils::skip_keyword(state, TokenKind::Is)?,
                         type_definition: r#type::type_definition(state)?,
                     })
                 },

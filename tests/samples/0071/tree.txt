@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                interface: 0,
+                interface: Keyword {
+                    value: "interface",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 10,
                     value: "ObjectCollection",
@@ -42,7 +45,10 @@ DefinitionTree {
                 ),
                 extends: Some(
                     InterfaceDefinitionExtends {
-                        extends: 41,
+                        extends: Keyword {
+                            value: "extends",
+                            position: 41,
+                        },
                         parents: CommaSeparated {
                             inner: [
                                 TemplatedIdentifier {
@@ -97,7 +103,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 79,
+                function: Keyword {
+                    value: "function",
+                    position: 79,
+                },
                 name: Identifier {
                     position: 88,
                     value: "foo",
@@ -220,7 +229,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 134,
+                function: Keyword {
+                    value: "function",
+                    position: 134,
+                },
                 name: Identifier {
                     position: 143,
                     value: "bar",
@@ -384,7 +396,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 220,
+                function: Keyword {
+                    value: "function",
+                    position: 220,
+                },
                 name: Identifier {
                     position: 229,
                     value: "baz",
@@ -730,7 +745,10 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                function: 404,
+                                function: Keyword {
+                                    value: "function",
+                                    position: 404,
+                                },
                                 name: Identifier {
                                     position: 413,
                                     value: "__construct",
@@ -796,7 +814,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 448,
+                function: Keyword {
+                    value: "function",
+                    position: 448,
+                },
                 name: Identifier {
                     position: 457,
                     value: "box",
@@ -973,7 +994,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 517,
+                function: Keyword {
+                    value: "function",
+                    position: 517,
+                },
                 name: Identifier {
                     position: 526,
                     value: "unbox",
@@ -1110,7 +1134,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 591,
+                function: Keyword {
+                    value: "function",
+                    position: 591,
+                },
                 name: Identifier {
                     position: 600,
                     value: "foo",
@@ -1612,7 +1639,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 837,
+                function: Keyword {
+                    value: "function",
+                    position: 837,
+                },
                 name: Identifier {
                     position: 846,
                     value: "into_vec",
@@ -1862,7 +1892,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 999,
+                function: Keyword {
+                    value: "function",
+                    position: 999,
+                },
                 name: Identifier {
                     position: 1008,
                     value: "into_dict",
@@ -2144,7 +2177,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 1190,
+                function: Keyword {
+                    value: "function",
+                    position: 1190,
+                },
                 name: Identifier {
                     position: 1199,
                     value: "baz",

@@ -50,7 +50,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            interface: 35,
+                            interface: Keyword {
+                                value: "interface",
+                                position: 35,
+                            },
                             name: Identifier {
                                 position: 45,
                                 value: "where",
@@ -143,7 +146,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            function: 108,
+                                            function: Keyword {
+                                                value: "function",
+                                                position: 108,
+                                            },
                                             name: Identifier {
                                                 position: 117,
                                                 value: "where",
@@ -188,7 +194,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 137,
+                            function: Keyword {
+                                value: "function",
+                                position: 137,
+                            },
                             name: Identifier {
                                 position: 146,
                                 value: "where",
@@ -583,7 +592,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 380,
+                            function: Keyword {
+                                value: "function",
+                                position: 380,
+                            },
                             name: Identifier {
                                 position: 389,
                                 value: "where",
@@ -683,7 +695,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            interface: 450,
+                            interface: Keyword {
+                                value: "interface",
+                                position: 450,
+                            },
                             name: Identifier {
                                 position: 460,
                                 value: "type",
@@ -776,7 +791,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            function: 520,
+                                            function: Keyword {
+                                                value: "function",
+                                                position: 520,
+                                            },
                                             name: Identifier {
                                                 position: 529,
                                                 value: "type",
@@ -821,7 +839,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 548,
+                            function: Keyword {
+                                value: "function",
+                                position: 548,
+                            },
                             name: Identifier {
                                 position: 557,
                                 value: "type",
@@ -1216,7 +1237,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 767,
+                            function: Keyword {
+                                value: "function",
+                                position: 767,
+                            },
                             name: Identifier {
                                 position: 776,
                                 value: "type",

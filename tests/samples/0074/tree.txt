@@ -39,7 +39,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 45,
+                function: Keyword {
+                    value: "function",
+                    position: 45,
+                },
                 name: Identifier {
                     position: 54,
                     value: "scalar_to_string",
@@ -440,7 +443,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 356,
+                function: Keyword {
+                    value: "function",
+                    position: 356,
+                },
                 name: Identifier {
                     position: 365,
                     value: "is_scalar",
@@ -526,7 +532,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 421,
+                function: Keyword {
+                    value: "function",
+                    position: 421,
+                },
                 name: Identifier {
                     position: 430,
                     value: "as_scalar",

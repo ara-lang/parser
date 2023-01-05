@@ -50,7 +50,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            interface: 35,
+                            interface: Keyword {
+                                value: "interface",
+                                position: 35,
+                            },
                             name: Identifier {
                                 position: 45,
                                 value: "using",
@@ -143,7 +146,10 @@ DefinitionTree {
                                                     ),
                                                 ],
                                             },
-                                            function: 108,
+                                            function: Keyword {
+                                                value: "function",
+                                                position: 108,
+                                            },
                                             name: Identifier {
                                                 position: 117,
                                                 value: "using",
@@ -188,7 +194,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 137,
+                            function: Keyword {
+                                value: "function",
+                                position: 137,
+                            },
                             name: Identifier {
                                 position: 146,
                                 value: "using",
@@ -583,7 +592,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 380,
+                            function: Keyword {
+                                value: "function",
+                                position: 380,
+                            },
                             name: Identifier {
                                 position: 389,
                                 value: "using",

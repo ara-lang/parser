@@ -6,7 +6,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 0,
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
                 name: Identifier {
                     position: 9,
                     value: "true",
@@ -45,7 +48,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 25,
+                function: Keyword {
+                    value: "function",
+                    position: 25,
+                },
                 name: Identifier {
                     position: 34,
                     value: "false",
@@ -84,7 +90,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 51,
+                function: Keyword {
+                    value: "function",
+                    position: 51,
+                },
                 name: Identifier {
                     position: 60,
                     value: "null",
@@ -123,7 +132,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 76,
+                function: Keyword {
+                    value: "function",
+                    position: 76,
+                },
                 name: Identifier {
                     position: 85,
                     value: "readonly",
@@ -162,7 +174,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 105,
+                function: Keyword {
+                    value: "function",
+                    position: 105,
+                },
                 name: Identifier {
                     position: 114,
                     value: "self",
@@ -201,7 +216,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 130,
+                function: Keyword {
+                    value: "function",
+                    position: 130,
+                },
                 name: Identifier {
                     position: 139,
                     value: "parent",
@@ -240,7 +258,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 157,
+                function: Keyword {
+                    value: "function",
+                    position: 157,
+                },
                 name: Identifier {
                     position: 166,
                     value: "enum",
@@ -279,7 +300,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 182,
+                function: Keyword {
+                    value: "function",
+                    position: 182,
+                },
                 name: Identifier {
                     position: 191,
                     value: "from",
@@ -318,7 +342,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 208,
+                function: Keyword {
+                    value: "function",
+                    position: 208,
+                },
                 name: Identifier {
                     position: 217,
                     value: "main",

@@ -34,7 +34,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 40,
+                            function: Keyword {
+                                value: "function",
+                                position: 40,
+                            },
                             name: Identifier {
                                 position: 49,
                                 value: "bar",
@@ -341,7 +344,10 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            function: 188,
+                            function: Keyword {
+                                value: "function",
+                                position: 188,
+                            },
                             name: Identifier {
                                 position: 197,
                                 value: "bar",

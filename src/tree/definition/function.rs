@@ -11,6 +11,7 @@ use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::block::BlockStatement;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
@@ -54,7 +55,7 @@ pub struct FunctionLikeParameterListDefinition {
 pub struct FunctionDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub function: usize,
+    pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
@@ -91,7 +92,7 @@ pub struct AbstractConstructorDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: usize,
+    pub function: Keyword,
     pub name: Identifier,
     pub parameters: FunctionLikeParameterListDefinition,
     pub semicolon: usize,
@@ -104,7 +105,7 @@ pub struct ConcreteConstructorDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: usize,
+    pub function: Keyword,
     pub name: Identifier,
     pub parameters: ConstructorParameterListDefinition,
     pub body: BlockStatement,
@@ -112,19 +113,19 @@ pub struct ConcreteConstructorDefinition {
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct MethodDefinitionTypeConstraint {
+pub struct MethodTypeConstraintDefinition {
     pub comments: CommentGroup,
     pub identifier: Identifier,
-    pub r#is: usize,
+    pub r#is: Keyword,
     pub type_definition: TypeDefinition,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct MethodDefinitionTypeConstraintGroup {
+pub struct MethodTypeConstraintGroupDefinition {
     pub comments: CommentGroup,
-    pub r#where: usize,
-    pub constraints: CommaSeparated<MethodDefinitionTypeConstraint>,
+    pub r#where: Keyword,
+    pub constraints: CommaSeparated<MethodTypeConstraintDefinition>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -134,12 +135,12 @@ pub struct AbstractMethodDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: usize,
+    pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
-    pub constraints: Option<MethodDefinitionTypeConstraintGroup>,
+    pub constraints: Option<MethodTypeConstraintGroupDefinition>,
     pub semicolon: usize,
 }
 
@@ -150,12 +151,12 @@ pub struct ConcreteMethodDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     #[serde(flatten)]
     pub modifiers: MethodModifierDefinitionGroup,
-    pub function: usize,
+    pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
-    pub constraints: Option<MethodDefinitionTypeConstraintGroup>,
+    pub constraints: Option<MethodTypeConstraintGroupDefinition>,
     pub body: BlockStatement,
 }
 
@@ -253,7 +254,7 @@ impl Node for FunctionDefinition {
             return attributes.initial_position();
         }
 
-        self.function
+        self.function.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -267,6 +268,7 @@ impl Node for FunctionDefinition {
             children.push(attribute);
         }
 
+        children.push(&self.function);
         children.push(&self.name);
 
         if let Some(templates) = &self.templates {
@@ -355,7 +357,7 @@ impl Node for AbstractConstructorDefinition {
             return modifier.initial_position();
         }
 
-        self.function
+        self.function.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -373,6 +375,7 @@ impl Node for AbstractConstructorDefinition {
             children.push(modifier);
         }
 
+        children.push(&self.function);
         children.push(&self.name);
         children.push(&self.parameters);
 
@@ -394,7 +397,7 @@ impl Node for ConcreteConstructorDefinition {
             return modifier.initial_position();
         }
 
-        self.function
+        self.function.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -412,6 +415,7 @@ impl Node for ConcreteConstructorDefinition {
             children.push(modifier);
         }
 
+        children.push(&self.function);
         children.push(&self.name);
         children.push(&self.parameters);
         children.push(&self.body);
@@ -434,7 +438,7 @@ impl Node for AbstractMethodDefinition {
             return modifier.initial_position();
         }
 
-        self.function
+        self.function.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -452,6 +456,7 @@ impl Node for AbstractMethodDefinition {
             children.push(modifier);
         }
 
+        children.push(&self.function);
         children.push(&self.name);
 
         if let Some(templates) = &self.templates {
@@ -469,7 +474,7 @@ impl Node for AbstractMethodDefinition {
     }
 }
 
-impl Node for MethodDefinitionTypeConstraint {
+impl Node for MethodTypeConstraintDefinition {
     fn initial_position(&self) -> usize {
         self.identifier.initial_position()
     }
@@ -479,17 +484,17 @@ impl Node for MethodDefinitionTypeConstraint {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.identifier, &self.type_definition]
+        vec![&self.identifier, &self.r#is, &self.type_definition]
     }
 }
 
-impl Node for MethodDefinitionTypeConstraintGroup {
+impl Node for MethodTypeConstraintGroupDefinition {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
 
     fn initial_position(&self) -> usize {
-        self.r#where
+        self.r#where.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -504,12 +509,14 @@ impl Node for MethodDefinitionTypeConstraintGroup {
 
             last_constraint_position
         } else {
-            self.r#where + 5
+            self.r#where.final_position()
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
+        let mut children: Vec<&dyn Node> = vec![
+            &self.r#where,
+        ];
 
         for constraint in &self.constraints.inner {
             children.push(constraint);
@@ -533,7 +540,7 @@ impl Node for ConcreteMethodDefinition {
             return modifier.initial_position();
         }
 
-        self.function
+        self.function.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -551,6 +558,7 @@ impl Node for ConcreteMethodDefinition {
             children.push(modifier);
         }
 
+        children.push(&self.function);
         children.push(&self.name);
 
         if let Some(templates) = &self.templates {

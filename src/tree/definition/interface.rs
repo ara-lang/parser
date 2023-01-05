@@ -11,6 +11,7 @@ use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
+use crate::tree::token::Keyword;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -18,7 +19,7 @@ use crate::tree::Node;
 pub struct InterfaceDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub interface: usize,
+    pub interface: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
     pub extends: Option<InterfaceDefinitionExtends>,
@@ -28,7 +29,7 @@ pub struct InterfaceDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinitionExtends {
-    pub extends: usize,
+    pub extends: Keyword,
     pub parents: CommaSeparated<TemplatedIdentifier>,
 }
 
@@ -57,7 +58,7 @@ impl Node for InterfaceDefinition {
         if let Some(attributes) = self.attributes.first() {
             attributes.initial_position()
         } else {
-            self.interface
+            self.interface.initial_position()
         }
     }
 
@@ -66,11 +67,14 @@ impl Node for InterfaceDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.name];
+        let mut children: Vec<&dyn Node> = vec![];
 
         for attribute in &self.attributes {
             children.push(attribute);
         }
+
+        children.push(&self.interface);
+        children.push(&self.name);
 
         if let Some(templates) = &self.templates {
             children.push(templates);
@@ -88,7 +92,7 @@ impl Node for InterfaceDefinition {
 
 impl Node for InterfaceDefinitionExtends {
     fn initial_position(&self) -> usize {
-        self.extends
+        self.extends.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -104,15 +108,16 @@ impl Node for InterfaceDefinitionExtends {
             return last_interface_position;
         }
 
-        self.extends + 7
+        self.extends.final_position()
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        self.parents
-            .inner
-            .iter()
-            .map(|item| item as &dyn Node)
-            .collect()
+        let mut children: Vec<&dyn Node> = vec![&self.extends];
+        for parent in &self.parents.inner {
+            children.push(parent);
+        }
+
+        children
     }
 }
 

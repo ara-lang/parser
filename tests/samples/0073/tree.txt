@@ -90,7 +90,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 41,
+                function: Keyword {
+                    value: "function",
+                    position: 41,
+                },
                 name: Identifier {
                     position: 50,
                     value: "filter",
@@ -608,7 +611,10 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                function: 326,
+                function: Keyword {
+                    value: "function",
+                    position: 326,
+                },
                 name: Identifier {
                     position: 335,
                     value: "map",
