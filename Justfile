@@ -20,10 +20,6 @@ fix:
     cargo clippy --fix --allow-dirty --allow-staged
     cargo fix --allow-dirty --allow-staged
 
-# dump AST for the given file.
-dump file *args:
-    cargo run -r --bin ara-internal-snapshot -- {{file}} {{args}}
-
 # run all integration tests, except third-party.
 test filter='--all':
     cargo test -r {{filter}}
