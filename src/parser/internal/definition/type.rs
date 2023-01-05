@@ -103,41 +103,56 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             Ok(TypeDefinition::Dict(position, templates))
         }
-        TokenKind::Null
-        | TokenKind::True
-        | TokenKind::False
-        | TokenKind::LiteralFloat
-        | TokenKind::LiteralString
-        | TokenKind::LiteralInteger => {
+        TokenKind::Null => {
             state.iterator.next();
 
-            let value = current.value.clone();
-            let position = current.position;
-            let comments = state.iterator.comments();
+            Ok(TypeDefinition::Literal(Literal::Null(LiteralNull {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::True => {
+            state.iterator.next();
 
-            let literal = match &current.kind {
-                TokenKind::Null => Literal::Null(LiteralNull { position, comments }),
-                TokenKind::True => Literal::True(LiteralTrue { position, comments }),
-                TokenKind::False => Literal::False(LiteralFalse { position, comments }),
-                TokenKind::LiteralInteger => Literal::Integer(LiteralInteger {
-                    comments,
-                    position,
-                    value,
-                }),
-                TokenKind::LiteralFloat => Literal::Float(LiteralFloat {
-                    comments,
-                    position,
-                    value,
-                }),
-                TokenKind::LiteralString => Literal::String(LiteralString {
-                    comments,
-                    position,
-                    value,
-                }),
-                _ => unreachable!(),
-            };
+            Ok(TypeDefinition::Literal(Literal::True(LiteralTrue {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::False => {
+            state.iterator.next();
 
-            Ok(TypeDefinition::Literal(literal))
+            Ok(TypeDefinition::Literal(Literal::False(LiteralFalse {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::LiteralInteger => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::Integer(LiteralInteger {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
+        }
+        TokenKind::LiteralFloat => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::Float(LiteralFloat {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
+        }
+        TokenKind::LiteralString => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::String(LiteralString {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
         }
         _ if value == b"iterable" => {
             state.iterator.next();
