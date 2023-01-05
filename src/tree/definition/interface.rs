@@ -10,8 +10,8 @@ use crate::tree::definition::function::AbstractMethodDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
-use crate::tree::utils::CommaSeparated;
 use crate::tree::token::Keyword;
+use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]

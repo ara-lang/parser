@@ -14,8 +14,8 @@ use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
-use crate::tree::utils::CommaSeparated;
 use crate::tree::token::Keyword;
+use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -88,9 +88,7 @@ impl Node for ClassDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![
-            &self.class,
-        ];
+        let mut children: Vec<&dyn Node> = vec![&self.class];
 
         for attribute in &self.attributes {
             children.push(attribute);
@@ -156,7 +154,7 @@ impl Node for ClassDefinitionImplements {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children:Vec<&dyn Node> = vec![&self.implements];
+        let mut children: Vec<&dyn Node> = vec![&self.implements];
 
         for interface in &self.interfaces.inner {
             children.push(interface);

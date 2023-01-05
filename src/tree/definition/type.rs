@@ -5,8 +5,8 @@ use serde::Serialize;
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
 use crate::tree::expression::literal::Literal;
 use crate::tree::identifier::TemplatedIdentifier;
-use crate::tree::utils::CommaSeparated;
 use crate::tree::token::Keyword;
+use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]

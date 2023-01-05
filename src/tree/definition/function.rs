@@ -514,9 +514,7 @@ impl Node for MethodTypeConstraintGroupDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![
-            &self.r#where,
-        ];
+        let mut children: Vec<&dyn Node> = vec![&self.r#where];
 
         for constraint in &self.constraints.inner {
             children.push(constraint);

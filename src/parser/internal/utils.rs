@@ -1,9 +1,9 @@
 use crate::lexer::token::TokenKind;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
-use crate::tree::token::Keyword;
 
 pub fn skip_semicolon(state: &mut State) -> ParseResult<usize> {
     let current = state.iterator.current();
@@ -45,8 +45,7 @@ pub fn skip_colon(state: &mut State) -> ParseResult<usize> {
     skip(state, TokenKind::Colon)
 }
 
-pub fn skip_keyword(state: &mut State, kind: TokenKind) -> ParseResult<Keyword>
-{
+pub fn skip_keyword(state: &mut State, kind: TokenKind) -> ParseResult<Keyword> {
     let current = state.iterator.current();
 
     if current.kind == kind {
