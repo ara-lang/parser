@@ -676,6 +676,64 @@ DefinitionTree {
                 semicolon: 306,
             },
         ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: 308,
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 313,
+                        value: "l",
+                    },
+                    templates: None,
+                },
+                equals: 315,
+                type_definition: Union(
+                    [
+                        LiteralInteger {
+                            position: 317,
+                            literal: LiteralInteger {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                value: "1",
+                                position: 317,
+                            },
+                        },
+                        LiteralInteger {
+                            position: 319,
+                            literal: LiteralInteger {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                value: "2",
+                                position: 319,
+                            },
+                        },
+                        LiteralFloat {
+                            position: 321,
+                            literal: LiteralFloat {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                value: "1.5",
+                                position: 321,
+                            },
+                        },
+                        LiteralFloat {
+                            position: 325,
+                            literal: LiteralFloat {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                value: "2.5",
+                                position: 325,
+                            },
+                        },
+                    ],
+                ),
+                semicolon: 328,
+            },
+        ),
     ],
-    eof: 308,
+    eof: 330,
 }

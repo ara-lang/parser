@@ -10,3 +10,4 @@ type h = Foo<string>|Bar<nonnull>;
 type i = Closure<(a|b), g>|Closure<(a|b), h>|Closure<(a|b), a|b|c>|(Foo&Bar);
 type j = Closure<(a|b), i>;
 type k = dict<int, iterable<int>>;
+type l = 1|2|1.5|2.5;

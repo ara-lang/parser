@@ -6,6 +6,7 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
+use crate::tree::expression::literal::{LiteralFloat, LiteralInteger};
 use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
@@ -110,6 +111,28 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
             let templates = template::type_template_group_definition(state)?;
 
             Ok(TypeDefinition::Dict(position, templates))
+        }
+        TokenKind::LiteralInteger => {
+            state.iterator.next();
+
+            let literal = LiteralInteger {
+                comments: state.iterator.comments(),
+                position: current.position,
+                value: current.value.clone(),
+            };
+
+            Ok(TypeDefinition::LiteralInteger { position, literal })
+        }
+        TokenKind::LiteralFloat => {
+            state.iterator.next();
+
+            let literal = LiteralFloat {
+                comments: state.iterator.comments(),
+                position: current.position,
+                value: current.value.clone(),
+            };
+
+            Ok(TypeDefinition::LiteralFloat { position, literal })
         }
         _ if value == b"iterable" => {
             state.iterator.next();

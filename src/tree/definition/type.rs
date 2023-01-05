@@ -3,6 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
+use crate::tree::expression::literal::{LiteralFloat, LiteralInteger};
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
@@ -52,6 +53,14 @@ pub enum TypeDefinition {
         type_definition: Box<TypeDefinition>,
         right_parenthesis: usize,
     },
+    LiteralFloat {
+        position: usize,
+        literal: LiteralFloat,
+    },
+    LiteralInteger {
+        position: usize,
+        literal: LiteralInteger,
+    },
 }
 
 impl TypeDefinition {
@@ -85,6 +94,13 @@ impl TypeDefinition {
                 // class, and interface are represented as strings at runtime, so they are considered scalars
                 | TypeDefinition::Class(_, _)
                 | TypeDefinition::Interface(_, _)
+        )
+    }
+
+    pub fn is_literal(&self) -> bool {
+        matches!(
+            self,
+            TypeDefinition::LiteralInteger { .. } | TypeDefinition::LiteralFloat { .. }
         )
     }
 }
@@ -136,6 +152,8 @@ impl Node for TypeDefinition {
                 left_parenthesis: position,
                 ..
             } => *position,
+            TypeDefinition::LiteralFloat { literal, .. } => literal.initial_position(),
+            TypeDefinition::LiteralInteger { literal, .. } => literal.initial_position(),
         }
     }
 
@@ -158,6 +176,8 @@ impl Node for TypeDefinition {
             TypeDefinition::Float(position) => position + 5,
             TypeDefinition::Boolean(position) => position + 7,
             TypeDefinition::Integer(position) => position + 7,
+            TypeDefinition::LiteralFloat { literal, .. } => literal.final_position(),
+            TypeDefinition::LiteralInteger { literal, .. } => literal.final_position(),
             TypeDefinition::String(position) => position + 6,
             TypeDefinition::Object(position) => position + 6,
             TypeDefinition::Mixed(position) => position + 5,
@@ -191,6 +211,8 @@ impl Node for TypeDefinition {
             | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
             | TypeDefinition::Integer(_)
+            | TypeDefinition::LiteralInteger { .. }
+            | TypeDefinition::LiteralFloat { .. }
             | TypeDefinition::String(_) => vec![],
             TypeDefinition::Class(_, template)
             | TypeDefinition::Interface(_, template)
@@ -242,6 +264,12 @@ impl std::fmt::Display for TypeDefinition {
             TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
             TypeDefinition::Integer(_) => write!(f, "int"),
+            TypeDefinition::LiteralInteger { literal, .. } => {
+                write!(f, "integer({})", literal.value)
+            }
+            TypeDefinition::LiteralFloat { literal, .. } => {
+                write!(f, "float({})", literal.value)
+            }
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),
             TypeDefinition::Vec(_, template) => write!(f, "vec{}", template),
