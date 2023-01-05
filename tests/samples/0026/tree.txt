@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                do: 29,
+                                do: Keyword {
+                                    value: "do",
+                                    position: 29,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -55,7 +58,10 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 34,
                                 },
-                                while: 36,
+                                while: Keyword {
+                                    value: "while",
+                                    position: 36,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {

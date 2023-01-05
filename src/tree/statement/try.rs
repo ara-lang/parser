@@ -5,6 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::block::BlockStatement;
+use crate::tree::token::Keyword;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
 
@@ -12,7 +13,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct TryStatement {
     pub comments: CommentGroup,
-    pub r#try: usize,
+    pub r#try: Keyword,
     pub block: BlockStatement,
     pub catches: Vec<TryCatchBlockStatement>,
     pub finally: Option<TryFinallyBlockStatement>,
@@ -22,7 +23,7 @@ pub struct TryStatement {
 #[serde(rename_all = "snake_case")]
 pub struct TryCatchBlockStatement {
     pub comments: CommentGroup,
-    pub catch: usize,
+    pub catch: Keyword,
     pub left_parenthesis: usize,
     pub types: TryCatchTypeStatement,
     pub variable: Option<Variable>,
@@ -41,7 +42,7 @@ pub enum TryCatchTypeStatement {
 #[serde(rename_all = "snake_case")]
 pub struct TryFinallyBlockStatement {
     pub comments: CommentGroup,
-    pub finally: usize,
+    pub finally: Keyword,
     pub block: BlockStatement,
 }
 
@@ -51,7 +52,7 @@ impl Node for TryStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#try
+        self.r#try.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -59,7 +60,7 @@ impl Node for TryStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.block];
+        let mut children: Vec<&dyn Node> = vec![&self.r#try, &self.block];
 
         for catch in &self.catches {
             children.push(catch);
@@ -79,7 +80,7 @@ impl Node for TryCatchBlockStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.catch
+        self.catch.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -87,7 +88,7 @@ impl Node for TryCatchBlockStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.types];
+        let mut children: Vec<&dyn Node> = vec![&self.catch, &self.types];
 
         if let Some(variable) = &self.variable {
             children.push(variable);
@@ -105,7 +106,7 @@ impl Node for TryFinallyBlockStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.finally
+        self.finally.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -113,7 +114,7 @@ impl Node for TryFinallyBlockStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.block]
+        vec![&self.finally, &self.block]
     }
 }
 

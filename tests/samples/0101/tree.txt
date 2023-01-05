@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 31,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 31,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         From {
@@ -67,7 +70,10 @@ DefinitionTree {
                                             double_dot: 40,
                                         },
                                     ),
-                                    as: 43,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 43,
+                                    },
                                     value: Variable {
                                         position: 46,
                                         name: "$y",
@@ -88,7 +94,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 63,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 63,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         Between {
@@ -120,7 +129,10 @@ DefinitionTree {
                                             ),
                                         },
                                     ),
-                                    as: 77,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 77,
+                                    },
                                     value: Variable {
                                         position: 80,
                                         name: "$y",
@@ -141,7 +153,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 97,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 97,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         BetweenInclusive {
@@ -174,7 +189,10 @@ DefinitionTree {
                                             ),
                                         },
                                     ),
-                                    as: 112,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 112,
+                                    },
                                     value: Variable {
                                         position: 115,
                                         name: "$y",
@@ -201,7 +219,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                foreach: 204,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 204,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         To {
@@ -222,7 +243,10 @@ DefinitionTree {
                                             ),
                                         },
                                     ),
-                                    as: 217,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 217,
+                                    },
                                     value: Variable {
                                         position: 220,
                                         name: "$y",
@@ -249,7 +273,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                foreach: 309,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 309,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         ToInclusive {
@@ -271,7 +298,10 @@ DefinitionTree {
                                             ),
                                         },
                                     ),
-                                    as: 323,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 323,
+                                    },
                                     value: Variable {
                                         position: 326,
                                         name: "$y",
@@ -298,7 +328,10 @@ DefinitionTree {
                                         },
                                     ],
                                 },
-                                foreach: 415,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 415,
+                                },
                                 iterator: Value {
                                     expression: RangeOperation(
                                         Full {
@@ -308,7 +341,10 @@ DefinitionTree {
                                             double_dot: 423,
                                         },
                                     ),
-                                    as: 426,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 426,
+                                    },
                                     value: Variable {
                                         position: 429,
                                         name: "$y",

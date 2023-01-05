@@ -6,6 +6,7 @@ use crate::tree::comment::CommentGroup;
 use crate::tree::expression::literal::LiteralInteger;
 use crate::tree::expression::Expression;
 use crate::tree::statement::block::BlockStatement;
+use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
@@ -14,7 +15,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct ForeachStatement {
     pub comments: CommentGroup,
-    pub foreach: usize,
+    pub foreach: Keyword,
     pub iterator: ForeachIteratorStatement,
     pub block: BlockStatement,
 }
@@ -24,19 +25,19 @@ pub struct ForeachStatement {
 pub enum ForeachIteratorStatement {
     Value {
         expression: Expression,
-        r#as: usize,
+        r#as: Keyword,
         value: Variable,
     },
     ParenthesizedValue {
         left_parenthesis: usize,
         expression: Expression,
-        r#as: usize,
+        r#as: Keyword,
         value: Variable,
         right_parenthesis: usize,
     },
     KeyAndValue {
         expression: Expression,
-        r#as: usize,
+        r#as: Keyword,
         key: Variable,
         double_arrow: usize,
         value: Variable,
@@ -44,7 +45,7 @@ pub enum ForeachIteratorStatement {
     ParenthesizedKeyAndValue {
         left_parenthesis: usize,
         expression: Expression,
-        r#as: usize,
+        r#as: Keyword,
         key: Variable,
         double_arrow: usize,
         value: Variable,
@@ -56,7 +57,7 @@ pub enum ForeachIteratorStatement {
 #[serde(rename_all = "snake_case")]
 pub struct ForStatement {
     pub comments: CommentGroup,
-    pub r#for: usize,
+    pub r#for: Keyword,
     pub iterator: ForIteratorStatement,
     pub block: BlockStatement,
 }
@@ -86,9 +87,9 @@ pub enum ForIteratorStatement {
 #[serde(rename_all = "snake_case")]
 pub struct DoWhileStatement {
     pub comments: CommentGroup,
-    pub r#do: usize,
+    pub r#do: Keyword,
     pub block: BlockStatement,
-    pub r#while: usize,
+    pub r#while: Keyword,
     pub condition: Expression,
     pub semicolon: usize,
 }
@@ -97,7 +98,7 @@ pub struct DoWhileStatement {
 #[serde(rename_all = "snake_case")]
 pub struct WhileStatement {
     pub comments: CommentGroup,
-    pub r#while: usize,
+    pub r#while: Keyword,
     pub condition: Expression,
     pub block: BlockStatement,
 }
@@ -106,7 +107,7 @@ pub struct WhileStatement {
 #[serde(rename_all = "snake_case")]
 pub struct BreakStatement {
     pub comments: CommentGroup,
-    pub r#break: usize,
+    pub r#break: Keyword,
     pub level: Option<LiteralInteger>,
     pub semicolon: usize,
 }
@@ -115,7 +116,7 @@ pub struct BreakStatement {
 #[serde(rename_all = "snake_case")]
 pub struct ContinueStatement {
     pub comments: CommentGroup,
-    pub r#continue: usize,
+    pub r#continue: Keyword,
     pub level: Option<LiteralInteger>,
     pub semicolon: usize,
 }
@@ -155,7 +156,7 @@ impl Node for ForeachStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.foreach
+        self.foreach.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -163,7 +164,7 @@ impl Node for ForeachStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.iterator, &self.block]
+        vec![&self.foreach, &self.iterator, &self.block]
     }
 }
 
@@ -203,26 +204,34 @@ impl Node for ForeachIteratorStatement {
     fn children(&self) -> Vec<&dyn Node> {
         match self {
             ForeachIteratorStatement::Value {
-                expression, value, ..
+                expression,
+                r#as,
+                value,
+                ..
             }
             | ForeachIteratorStatement::ParenthesizedValue {
-                expression, value, ..
+                expression,
+                r#as,
+                value,
+                ..
             } => {
-                vec![expression, value]
+                vec![expression, r#as, value]
             }
             ForeachIteratorStatement::KeyAndValue {
                 expression,
+                r#as,
                 key,
                 value,
                 ..
             }
             | ForeachIteratorStatement::ParenthesizedKeyAndValue {
                 expression,
+                r#as,
                 key,
                 value,
                 ..
             } => {
-                vec![expression, key, value]
+                vec![expression, r#as, key, value]
             }
         }
     }
@@ -234,7 +243,7 @@ impl Node for ForStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#for
+        self.r#for.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -242,7 +251,7 @@ impl Node for ForStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.iterator, &self.block]
+        vec![&self.r#for, &self.iterator, &self.block]
     }
 }
 
@@ -329,7 +338,7 @@ impl Node for DoWhileStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#do
+        self.r#do.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -337,7 +346,7 @@ impl Node for DoWhileStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.block, &self.condition]
+        vec![&self.r#do, &self.block, &self.r#while, &self.condition]
     }
 }
 
@@ -347,7 +356,7 @@ impl Node for WhileStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#while
+        self.r#while.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -355,7 +364,7 @@ impl Node for WhileStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.condition, &self.block]
+        vec![&self.r#while, &self.condition, &self.block]
     }
 }
 
@@ -365,7 +374,7 @@ impl Node for BreakStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#break
+        self.r#break.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -374,9 +383,9 @@ impl Node for BreakStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         if let Some(level) = &self.level {
-            vec![level]
+            vec![&self.r#break, level]
         } else {
-            vec![]
+            vec![&self.r#break]
         }
     }
 }
@@ -387,7 +396,7 @@ impl Node for ContinueStatement {
     }
 
     fn initial_position(&self) -> usize {
-        self.r#continue
+        self.r#continue.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -396,9 +405,9 @@ impl Node for ContinueStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         if let Some(level) = &self.level {
-            vec![level]
+            vec![&self.r#continue, level]
         } else {
-            vec![]
+            vec![&self.r#continue]
         }
     }
 }

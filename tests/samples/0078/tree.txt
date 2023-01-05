@@ -552,7 +552,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 249,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 249,
+                                },
                                 iterator: Value {
                                     expression: Variable(
                                         Variable {
@@ -560,7 +563,10 @@ DefinitionTree {
                                             name: "$vec",
                                         },
                                     ),
-                                    as: 262,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 262,
+                                    },
                                     value: Variable {
                                         position: 265,
                                         name: "$item",
@@ -969,7 +975,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 485,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 485,
+                                },
                                 iterator: Value {
                                     expression: Variable(
                                         Variable {
@@ -977,7 +986,10 @@ DefinitionTree {
                                             name: "$vec",
                                         },
                                     ),
-                                    as: 498,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 498,
+                                    },
                                     value: Variable {
                                         position: 501,
                                         name: "$item",
@@ -1346,7 +1358,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 689,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 689,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -1354,7 +1369,10 @@ DefinitionTree {
                                             name: "$dict",
                                         },
                                     ),
-                                    as: 703,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 703,
+                                    },
                                     key: Variable {
                                         position: 706,
                                         name: "$key",
@@ -1816,7 +1834,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 956,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 956,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -1824,7 +1845,10 @@ DefinitionTree {
                                             name: "$dict",
                                         },
                                     ),
-                                    as: 970,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 970,
+                                    },
                                     key: Variable {
                                         position: 973,
                                         name: "$key",
@@ -2274,7 +2298,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 1216,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 1216,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -2282,7 +2309,10 @@ DefinitionTree {
                                             name: "$iterable",
                                         },
                                     ),
-                                    as: 1234,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 1234,
+                                    },
                                     key: Variable {
                                         position: 1237,
                                         name: "$key",
@@ -2662,7 +2692,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 1462,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 1462,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -2670,7 +2703,10 @@ DefinitionTree {
                                             name: "$iterable",
                                         },
                                     ),
-                                    as: 1480,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 1480,
+                                    },
                                     key: Variable {
                                         position: 1483,
                                         name: "$key",

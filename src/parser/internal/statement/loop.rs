@@ -22,7 +22,7 @@ use crate::tree::utils::CommaSeparated;
 pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
     Ok(ForeachStatement {
         comments: state.iterator.comments(),
-        foreach: utils::skip(state, TokenKind::Foreach)?,
+        foreach: utils::skip_keyword(state, TokenKind::Foreach)?,
         iterator: 'iterator: {
             let expression = if state.iterator.current().kind == TokenKind::LeftParen {
                 // this could be either:
@@ -34,7 +34,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
                 let expression = expression::create(state)?;
                 if state.iterator.current().kind == TokenKind::As {
                     // this is either 1 or 2
-                    let r#as = utils::skip(state, TokenKind::As)?;
+                    let r#as = utils::skip_keyword(state, TokenKind::As)?;
                     let mut value = variable::parse(state)?;
                     let current = state.iterator.current();
 
@@ -78,7 +78,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
             // this could be either:
             // 1. foreach $array as $value { ... }
             // 2. foreach $array as $key => $value { ... }
-            let r#as = utils::skip(state, TokenKind::As)?;
+            let r#as = utils::skip_keyword(state, TokenKind::As)?;
 
             let mut value = variable::parse(state)?;
 
@@ -111,7 +111,7 @@ pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
 pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {
     Ok(ForStatement {
         comments: state.iterator.comments(),
-        r#for: utils::skip(state, TokenKind::For)?,
+        r#for: utils::skip_keyword(state, TokenKind::For)?,
         iterator: 'iterator: {
             let initializations = if state.iterator.current().kind == TokenKind::LeftParen {
                 // this could be either:
@@ -209,9 +209,9 @@ pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {
 pub fn do_while_statement(state: &mut State) -> ParseResult<DoWhileStatement> {
     Ok(DoWhileStatement {
         comments: state.iterator.comments(),
-        r#do: utils::skip(state, TokenKind::Do)?,
+        r#do: utils::skip_keyword(state, TokenKind::Do)?,
         block: block::block_statement(state)?,
-        r#while: utils::skip(state, TokenKind::While)?,
+        r#while: utils::skip_keyword(state, TokenKind::While)?,
         condition: expression::create(state)?,
         semicolon: utils::skip_semicolon(state)?,
     })
@@ -220,7 +220,7 @@ pub fn do_while_statement(state: &mut State) -> ParseResult<DoWhileStatement> {
 pub fn while_statement(state: &mut State) -> ParseResult<WhileStatement> {
     Ok(WhileStatement {
         comments: state.iterator.comments(),
-        r#while: utils::skip(state, TokenKind::While)?,
+        r#while: utils::skip_keyword(state, TokenKind::While)?,
         condition: expression::create(state)?,
         block: block::block_statement(state)?,
     })
@@ -229,7 +229,7 @@ pub fn while_statement(state: &mut State) -> ParseResult<WhileStatement> {
 pub fn continue_statement(state: &mut State) -> ParseResult<ContinueStatement> {
     Ok(ContinueStatement {
         comments: state.iterator.comments(),
-        r#continue: utils::skip(state, TokenKind::Continue)?,
+        r#continue: utils::skip_keyword(state, TokenKind::Continue)?,
         level: maybe_loop_level(state),
         semicolon: utils::skip_semicolon(state)?,
     })
@@ -238,7 +238,7 @@ pub fn continue_statement(state: &mut State) -> ParseResult<ContinueStatement> {
 pub fn break_statement(state: &mut State) -> ParseResult<BreakStatement> {
     Ok(BreakStatement {
         comments: state.iterator.comments(),
-        r#break: utils::skip(state, TokenKind::Break)?,
+        r#break: utils::skip_keyword(state, TokenKind::Break)?,
         level: maybe_loop_level(state),
         semicolon: utils::skip_semicolon(state)?,
     })

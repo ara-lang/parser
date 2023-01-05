@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                try: 28,
+                                try: Keyword {
+                                    value: "try",
+                                    position: 28,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -60,7 +63,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        catch: 41,
+                                        catch: Keyword {
+                                            value: "catch",
+                                            position: 41,
+                                        },
                                         left_parenthesis: 47,
                                         types: Identifier(
                                             Identifier {
@@ -88,7 +94,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        catch: 71,
+                                        catch: Keyword {
+                                            value: "catch",
+                                            position: 71,
+                                        },
                                         left_parenthesis: 77,
                                         types: Identifier(
                                             Identifier {
@@ -121,7 +130,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                try: 120,
+                                try: Keyword {
+                                    value: "try",
+                                    position: 120,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -135,7 +147,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        catch: 133,
+                                        catch: Keyword {
+                                            value: "catch",
+                                            position: 133,
+                                        },
                                         left_parenthesis: 139,
                                         types: Identifier(
                                             Identifier {
@@ -165,7 +180,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        finally: 163,
+                                        finally: Keyword {
+                                            value: "finally",
+                                            position: 163,
+                                        },
                                         block: BlockStatement {
                                             comments: CommentGroup {
                                                 comments: [],
@@ -183,7 +201,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                try: 185,
+                                try: Keyword {
+                                    value: "try",
+                                    position: 185,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -198,7 +219,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        finally: 198,
+                                        finally: Keyword {
+                                            value: "finally",
+                                            position: 198,
+                                        },
                                         block: BlockStatement {
                                             comments: CommentGroup {
                                                 comments: [],
@@ -216,7 +240,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                try: 214,
+                                try: Keyword {
+                                    value: "try",
+                                    position: 214,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -230,7 +257,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        catch: 227,
+                                        catch: Keyword {
+                                            value: "catch",
+                                            position: 227,
+                                        },
                                         left_parenthesis: 233,
                                         types: Identifier(
                                             Identifier {
@@ -258,7 +288,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                try: 259,
+                                try: Keyword {
+                                    value: "try",
+                                    position: 259,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -272,7 +305,10 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        catch: 272,
+                                        catch: Keyword {
+                                            value: "catch",
+                                            position: 272,
+                                        },
                                         left_parenthesis: 278,
                                         types: Identifier(
                                             Identifier {

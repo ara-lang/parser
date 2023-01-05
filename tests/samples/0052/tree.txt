@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 27,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 27,
+                                },
                                 iterator: Parenthesized {
                                     left_parenthesis: 31,
                                     initializations: CommaSeparated {

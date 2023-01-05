@@ -455,7 +455,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                while: 218,
+                                while: Keyword {
+                                    value: "while",
+                                    position: 218,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 224,
@@ -477,7 +480,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                while: 236,
+                                while: Keyword {
+                                    value: "while",
+                                    position: 236,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -508,7 +514,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                do: 255,
+                                do: Keyword {
+                                    value: "do",
+                                    position: 255,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -517,7 +526,10 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 259,
                                 },
-                                while: 261,
+                                while: Keyword {
+                                    value: "while",
+                                    position: 261,
+                                },
                                 condition: Variable(
                                     Variable {
                                         position: 267,
@@ -532,7 +544,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                do: 275,
+                                do: Keyword {
+                                    value: "do",
+                                    position: 275,
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -541,7 +556,10 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 279,
                                 },
-                                while: 281,
+                                while: Keyword {
+                                    value: "while",
+                                    position: 281,
+                                },
                                 condition: Parenthesized(
                                     ParenthesizedExpression {
                                         comments: CommentGroup {
@@ -565,7 +583,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 298,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 298,
+                                },
                                 iterator: Value {
                                     expression: Variable(
                                         Variable {
@@ -573,7 +594,10 @@ DefinitionTree {
                                             name: "$a",
                                         },
                                     ),
-                                    as: 309,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 309,
+                                    },
                                     value: Variable {
                                         position: 312,
                                         name: "$b",
@@ -594,7 +618,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 324,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 324,
+                                },
                                 iterator: Value {
                                     expression: Parenthesized(
                                         ParenthesizedExpression {
@@ -611,7 +638,10 @@ DefinitionTree {
                                             right_parenthesis: 335,
                                         },
                                     ),
-                                    as: 337,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 337,
+                                    },
                                     value: Variable {
                                         position: 340,
                                         name: "$b",
@@ -632,7 +662,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 350,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 350,
+                                },
                                 iterator: ParenthesizedValue {
                                     left_parenthesis: 358,
                                     expression: Variable(
@@ -641,7 +674,10 @@ DefinitionTree {
                                             name: "$a",
                                         },
                                     ),
-                                    as: 362,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 362,
+                                    },
                                     value: Variable {
                                         position: 365,
                                         name: "$b",
@@ -663,7 +699,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 376,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 376,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -671,7 +710,10 @@ DefinitionTree {
                                             name: "$a",
                                         },
                                     ),
-                                    as: 387,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 387,
+                                    },
                                     key: Variable {
                                         position: 390,
                                         name: "$b",
@@ -697,7 +739,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 408,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 408,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Parenthesized(
                                         ParenthesizedExpression {
@@ -714,7 +759,10 @@ DefinitionTree {
                                             right_parenthesis: 419,
                                         },
                                     ),
-                                    as: 421,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 421,
+                                    },
                                     key: Variable {
                                         position: 424,
                                         name: "$b",
@@ -740,7 +788,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 440,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 440,
+                                },
                                 iterator: ParenthesizedKeyAndValue {
                                     left_parenthesis: 448,
                                     expression: Variable(
@@ -749,7 +800,10 @@ DefinitionTree {
                                             name: "$a",
                                         },
                                     ),
-                                    as: 452,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 452,
+                                    },
                                     key: Variable {
                                         position: 455,
                                         name: "$b",
@@ -776,7 +830,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 473,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 473,
+                                },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
                                         inner: [
@@ -872,7 +929,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 508,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 508,
+                                },
                                 iterator: Parenthesized {
                                     left_parenthesis: 512,
                                     initializations: CommaSeparated {
@@ -970,7 +1030,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 543,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 543,
+                                },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
                                         inner: [
@@ -1075,7 +1138,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 578,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 578,
+                                },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
                                         inner: [
@@ -1229,7 +1295,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 631,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 631,
+                                },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
                                         inner: [],
@@ -1261,7 +1330,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                for: 647,
+                                for: Keyword {
+                                    value: "for",
+                                    position: 647,
+                                },
                                 iterator: Parenthesized {
                                     left_parenthesis: 651,
                                     initializations: CommaSeparated {

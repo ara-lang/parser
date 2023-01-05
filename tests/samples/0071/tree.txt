@@ -1967,7 +1967,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 917,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 917,
+                                },
                                 iterator: Value {
                                     expression: Variable(
                                         Variable {
@@ -1975,7 +1978,10 @@ DefinitionTree {
                                             name: "$iterable",
                                         },
                                     ),
-                                    as: 935,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 935,
+                                    },
                                     value: Variable {
                                         position: 938,
                                         name: "$value",
@@ -2253,7 +2259,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                foreach: 1094,
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 1094,
+                                },
                                 iterator: KeyAndValue {
                                     expression: Variable(
                                         Variable {
@@ -2261,7 +2270,10 @@ DefinitionTree {
                                             name: "$iterable",
                                         },
                                     ),
-                                    as: 1112,
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 1112,
+                                    },
                                     key: Variable {
                                         position: 1115,
                                         name: "$key",

@@ -11,72 +11,47 @@ use crate::tree::statement::r#try::TryFinallyBlockStatement;
 use crate::tree::statement::r#try::TryStatement;
 
 pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
-    let comments = state.iterator.comments();
-    let r#try = state.iterator.current().position;
-
-    state.iterator.next();
-
-    let body = block::block_statement(state)?;
-
-    let mut catches = Vec::new();
-    loop {
-        let current = state.iterator.current();
-        if current.kind != TokenKind::Catch {
-            break;
-        }
-
-        let catch = current.position;
-
-        state.iterator.next();
-        let left_parenthesis = utils::skip_left_parenthesis(state)?;
-
-        let types = try_statement_catch_type(state)?;
-        let var = if state.iterator.current().kind == TokenKind::RightParen {
-            None
-        } else {
-            Some(variable::parse(state)?)
-        };
-
-        let right_parenthesis = utils::skip_right_parenthesis(state)?;
-
-        let body = block::block_statement(state)?;
-
-        catches.push(TryCatchBlockStatement {
-            comments: state.iterator.comments(),
-            catch,
-            left_parenthesis,
-            types,
-            variable: var,
-            right_parenthesis,
-            block: body,
-        })
-    }
-
-    let current = state.iterator.current();
-    let finally = if current.kind == TokenKind::Finally {
-        Some(TryFinallyBlockStatement {
-            comments: state.iterator.comments(),
-            finally: current.position,
-            block: {
-                state.iterator.next();
-                block::block_statement(state)?
-            },
-        })
-    } else {
-        None
-    };
-
-    let missing_catch_or_finally = catches.is_empty() && finally.is_none();
-
     let statement = TryStatement {
-        comments,
-        r#try,
-        block: body,
-        catches,
-        finally,
+        comments: state.iterator.comments(),
+        r#try: utils::skip_keyword(state, TokenKind::Try)?,
+        block: block::block_statement(state)?,
+        catches: {
+            let mut catches = Vec::new();
+            loop {
+                let current = state.iterator.current();
+                if current.kind != TokenKind::Catch {
+                    break;
+                }
+
+                catches.push(TryCatchBlockStatement {
+                    comments: state.iterator.comments(),
+                    catch: utils::skip_keyword(state, TokenKind::Catch)?,
+                    left_parenthesis: utils::skip_left_parenthesis(state)?,
+                    types: try_statement_catch_type(state)?,
+                    variable: if state.iterator.current().kind == TokenKind::RightParen {
+                        None
+                    } else {
+                        Some(variable::parse(state)?)
+                    },
+                    right_parenthesis: utils::skip_right_parenthesis(state)?,
+                    block: block::block_statement(state)?,
+                })
+            }
+
+            catches
+        },
+        finally: if state.iterator.current().kind == TokenKind::Finally {
+            Some(TryFinallyBlockStatement {
+                comments: state.iterator.comments(),
+                finally: utils::skip_keyword(state, TokenKind::Finally)?,
+                block: block::block_statement(state)?,
+            })
+        } else {
+            None
+        },
     };
 
-    if missing_catch_or_finally {
+    if statement.catches.is_empty() && statement.finally.is_none() {
         crate::parser_report!(state, try_statement_must_have_catch_or_finally(&statement))
     }
 
@@ -91,10 +66,8 @@ fn try_statement_catch_type(state: &mut State) -> ParseResult<TryCatchTypeStatem
         state.iterator.next();
 
         let mut types = vec![id];
-
-        while !state.iterator.is_eof() {
-            let id = identifier::fully_qualified_type_identifier(state)?;
-            types.push(id);
+        loop {
+            types.push(identifier::fully_qualified_type_identifier(state)?);
 
             if state.iterator.current().kind != TokenKind::Pipe {
                 break;

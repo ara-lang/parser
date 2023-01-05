@@ -375,7 +375,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                foreach: 245,
+                                                foreach: Keyword {
+                                                    value: "foreach",
+                                                    position: 245,
+                                                },
                                                 iterator: Value {
                                                     expression: ObjectOperation(
                                                         PropertyFetch {
@@ -395,7 +398,10 @@ DefinitionTree {
                                                             },
                                                         },
                                                     ),
-                                                    as: 266,
+                                                    as: Keyword {
+                                                        value: "as",
+                                                        position: 266,
+                                                    },
                                                     value: Variable {
                                                         position: 269,
                                                         name: "$item",
@@ -790,7 +796,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                foreach: 528,
+                                                foreach: Keyword {
+                                                    value: "foreach",
+                                                    position: 528,
+                                                },
                                                 iterator: Value {
                                                     expression: ObjectOperation(
                                                         PropertyFetch {
@@ -810,7 +819,10 @@ DefinitionTree {
                                                             },
                                                         },
                                                     ),
-                                                    as: 549,
+                                                    as: Keyword {
+                                                        value: "as",
+                                                        position: 549,
+                                                    },
                                                     value: Variable {
                                                         position: 552,
                                                         name: "$item",
@@ -1098,7 +1110,10 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                foreach: 741,
+                                                foreach: Keyword {
+                                                    value: "foreach",
+                                                    position: 741,
+                                                },
                                                 iterator: Value {
                                                     expression: ObjectOperation(
                                                         PropertyFetch {
@@ -1118,7 +1133,10 @@ DefinitionTree {
                                                             },
                                                         },
                                                     ),
-                                                    as: 762,
+                                                    as: Keyword {
+                                                        value: "as",
+                                                        position: 762,
+                                                    },
                                                     value: Variable {
                                                         position: 765,
                                                         name: "$item",

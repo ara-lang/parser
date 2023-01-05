@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                break: 28,
+                                break: Keyword {
+                                    value: "break",
+                                    position: 28,
+                                },
                                 level: Some(
                                     LiteralInteger {
                                         comments: CommentGroup {

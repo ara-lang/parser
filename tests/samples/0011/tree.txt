@@ -46,7 +46,10 @@ DefinitionTree {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
-                                continue: 28,
+                                continue: Keyword {
+                                    value: "continue",
+                                    position: 28,
+                                },
                                 level: Some(
                                     LiteralInteger {
                                         comments: CommentGroup {
