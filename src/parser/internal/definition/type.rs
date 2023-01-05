@@ -6,6 +6,13 @@ use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
+use crate::tree::expression::literal::Literal;
+use crate::tree::expression::literal::LiteralFalse;
+use crate::tree::expression::literal::LiteralFloat;
+use crate::tree::expression::literal::LiteralInteger;
+use crate::tree::expression::literal::LiteralNull;
+use crate::tree::expression::literal::LiteralString;
+use crate::tree::expression::literal::LiteralTrue;
 use crate::tree::utils::CommaSeparated;
 
 pub fn type_alias_definition(state: &mut State) -> ParseResult<TypeAliasDefinition> {
@@ -82,21 +89,6 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
     let value = lowered_name.as_slice();
 
     match &current.kind {
-        TokenKind::Null => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::Null(position))
-        }
-        TokenKind::True => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::True(position))
-        }
-        TokenKind::False => {
-            state.iterator.next();
-
-            Ok(TypeDefinition::False(position))
-        }
         TokenKind::Vec => {
             state.iterator.next();
 
@@ -110,6 +102,57 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
             let templates = template::type_template_group_definition(state)?;
 
             Ok(TypeDefinition::Dict(position, templates))
+        }
+        TokenKind::Null => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::Null(LiteralNull {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::True => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::True(LiteralTrue {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::False => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::False(LiteralFalse {
+                comments: state.iterator.comments(),
+                position,
+            })))
+        }
+        TokenKind::LiteralInteger => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::Integer(LiteralInteger {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
+        }
+        TokenKind::LiteralFloat => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::Float(LiteralFloat {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
+        }
+        TokenKind::LiteralString => {
+            state.iterator.next();
+
+            Ok(TypeDefinition::Literal(Literal::String(LiteralString {
+                comments: state.iterator.comments(),
+                value: current.value.clone(),
+                position,
+            })))
         }
         _ if value == b"iterable" => {
             state.iterator.next();

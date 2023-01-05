@@ -11,8 +11,15 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 8,
-                type_definition: Null(
-                    10,
+                type_definition: Literal(
+                    Null(
+                        LiteralNull {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 10,
+                        },
+                    ),
                 ),
                 semicolon: 14,
             },
@@ -28,8 +35,15 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 23,
-                type_definition: False(
-                    25,
+                type_definition: Literal(
+                    False(
+                        LiteralFalse {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 25,
+                        },
+                    ),
                 ),
                 semicolon: 30,
             },
@@ -45,8 +59,15 @@ DefinitionTree {
                     templates: None,
                 },
                 equals: 39,
-                type_definition: True(
-                    41,
+                type_definition: Literal(
+                    True(
+                        LiteralTrue {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            position: 41,
+                        },
+                    ),
                 ),
                 semicolon: 45,
             },
@@ -676,6 +697,165 @@ DefinitionTree {
                 semicolon: 306,
             },
         ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: 308,
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 313,
+                        value: "l",
+                    },
+                    templates: None,
+                },
+                equals: 315,
+                type_definition: Literal(
+                    String(
+                        LiteralString {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            value: ""bar"",
+                            position: 317,
+                        },
+                    ),
+                ),
+                semicolon: 322,
+            },
+        ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: 324,
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 329,
+                        value: "m",
+                    },
+                    templates: None,
+                },
+                equals: 331,
+                type_definition: Literal(
+                    Integer(
+                        LiteralInteger {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            value: "1",
+                            position: 333,
+                        },
+                    ),
+                ),
+                semicolon: 334,
+            },
+        ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: 336,
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 341,
+                        value: "n",
+                    },
+                    templates: None,
+                },
+                equals: 343,
+                type_definition: Literal(
+                    Float(
+                        LiteralFloat {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            value: "1.5",
+                            position: 345,
+                        },
+                    ),
+                ),
+                semicolon: 348,
+            },
+        ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: 350,
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 355,
+                        value: "o",
+                    },
+                    templates: None,
+                },
+                equals: 357,
+                type_definition: Union(
+                    [
+                        Literal(
+                            Integer(
+                                LiteralInteger {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: "1",
+                                    position: 359,
+                                },
+                            ),
+                        ),
+                        Literal(
+                            Float(
+                                LiteralFloat {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: "1.5",
+                                    position: 363,
+                                },
+                            ),
+                        ),
+                        Literal(
+                            Integer(
+                                LiteralInteger {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: "2",
+                                    position: 369,
+                                },
+                            ),
+                        ),
+                        Literal(
+                            String(
+                                LiteralString {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: ""foo"",
+                                    position: 373,
+                                },
+                            ),
+                        ),
+                        Literal(
+                            Float(
+                                LiteralFloat {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: "2.5",
+                                    position: 381,
+                                },
+                            ),
+                        ),
+                        Literal(
+                            String(
+                                LiteralString {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    value: ""bar"",
+                                    position: 387,
+                                },
+                            ),
+                        ),
+                    ],
+                ),
+                semicolon: 392,
+            },
+        ),
     ],
-    eof: 308,
+    eof: 394,
 }

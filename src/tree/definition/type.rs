@@ -3,6 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
+use crate::tree::expression::literal::Literal;
 use crate::tree::identifier::TemplatedIdentifier;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
@@ -25,9 +26,6 @@ pub enum TypeDefinition {
     Union(Vec<TypeDefinition>),
     Intersection(Vec<TypeDefinition>),
     Void(usize),
-    Null(usize),
-    True(usize),
-    False(usize),
     Never(usize),
     Float(usize),
     Boolean(usize),
@@ -42,6 +40,7 @@ pub enum TypeDefinition {
     Iterable(usize, TypeTemplateGroupDefinition),
     Class(usize, TypeTemplateGroupDefinition),
     Interface(usize, TypeTemplateGroupDefinition),
+    Literal(Literal),
     Tuple {
         left_parenthesis: usize,
         type_definitions: CommaSeparated<TypeDefinition>,
@@ -76,16 +75,21 @@ impl TypeDefinition {
     }
 
     pub fn is_scalar(&self) -> bool {
-        matches!(
-            self,
-            TypeDefinition::Float(_)
-                | TypeDefinition::Boolean(_)
-                | TypeDefinition::Integer(_)
-                | TypeDefinition::String(_)
-                // class, and interface are represented as strings at runtime, so they are considered scalars
-                | TypeDefinition::Class(_, _)
-                | TypeDefinition::Interface(_, _)
-        )
+        match self {
+            TypeDefinition::Literal(literal) => !matches!(literal, Literal::Null(_)),
+            | TypeDefinition::Float(_)
+            | TypeDefinition::Boolean(_)
+            | TypeDefinition::Integer(_)
+            | TypeDefinition::String(_)
+            // class, and interface are represented as strings at runtime, so they are considered scalars
+            | TypeDefinition::Class(_, _)
+            | TypeDefinition::Interface(_, _) => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_literal(&self) -> bool {
+        matches!(self, TypeDefinition::Literal(_))
     }
 }
 
@@ -109,11 +113,9 @@ impl Node for TypeDefinition {
             TypeDefinition::Identifier(inner) => inner.initial_position(),
             TypeDefinition::Union(inner) => inner[0].initial_position(),
             TypeDefinition::Intersection(inner) => inner[0].initial_position(),
+            TypeDefinition::Literal(literal) => literal.initial_position(),
             TypeDefinition::Nullable(position, _)
             | TypeDefinition::Void(position)
-            | TypeDefinition::Null(position)
-            | TypeDefinition::True(position)
-            | TypeDefinition::False(position)
             | TypeDefinition::Never(position)
             | TypeDefinition::Float(position)
             | TypeDefinition::Boolean(position)
@@ -150,10 +152,8 @@ impl Node for TypeDefinition {
             | TypeDefinition::Iterable(_, template) => template.final_position(),
             TypeDefinition::Union(inner) => inner[inner.len() - 1].final_position(),
             TypeDefinition::Intersection(inner) => inner[inner.len() - 1].final_position(),
+            TypeDefinition::Literal(literal) => literal.final_position(),
             TypeDefinition::Void(position) => position + 4,
-            TypeDefinition::Null(position) => position + 4,
-            TypeDefinition::True(position) => position + 4,
-            TypeDefinition::False(position) => position + 5,
             TypeDefinition::Never(position) => position + 5,
             TypeDefinition::Float(position) => position + 5,
             TypeDefinition::Boolean(position) => position + 7,
@@ -180,18 +180,16 @@ impl Node for TypeDefinition {
                 inner.iter().map(|t| t as &dyn Node).collect()
             }
             TypeDefinition::Void(_)
-            | TypeDefinition::Null(_)
-            | TypeDefinition::True(_)
             | TypeDefinition::Object(_)
             | TypeDefinition::NonNull(_)
             | TypeDefinition::Mixed(_)
             | TypeDefinition::Resource(_)
-            | TypeDefinition::False(_)
             | TypeDefinition::Never(_)
             | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
             | TypeDefinition::Integer(_)
             | TypeDefinition::String(_) => vec![],
+            TypeDefinition::Literal(literal) => vec![literal],
             TypeDefinition::Class(_, template)
             | TypeDefinition::Interface(_, template)
             | TypeDefinition::Iterable(_, template)
@@ -235,13 +233,18 @@ impl std::fmt::Display for TypeDefinition {
                     .join("&")
             ),
             TypeDefinition::Void(_) => write!(f, "void"),
-            TypeDefinition::Null(_) => write!(f, "null"),
-            TypeDefinition::True(_) => write!(f, "true"),
-            TypeDefinition::False(_) => write!(f, "false"),
             TypeDefinition::Never(_) => write!(f, "never"),
             TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
             TypeDefinition::Integer(_) => write!(f, "int"),
+            TypeDefinition::Literal(literal) => match literal {
+                Literal::Null(_) => write!(f, "null"),
+                Literal::False(_) => write!(f, "false"),
+                Literal::True(_) => write!(f, "true"),
+                Literal::Integer(inner) => write!(f, "{}", inner.value),
+                Literal::Float(inner) => write!(f, "{}", inner.value),
+                Literal::String(inner) => write!(f, "{}", inner.value),
+            },
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),
             TypeDefinition::Vec(_, template) => write!(f, "vec{}", template),
