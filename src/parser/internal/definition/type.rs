@@ -434,6 +434,13 @@ fn intersection(
         );
     }
 
+    if type_definition.is_literal() {
+        crate::parser_report!(
+            state,
+            literal_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
+        );
+    }
+
     let mut type_definitions = vec![type_definition];
 
     loop {
@@ -478,6 +485,13 @@ fn intersection(
                 crate::parser_report!(
                     state,
                     scalar_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
+                );
+            }
+
+            if type_definition.is_literal() {
+                crate::parser_report!(
+                    state,
+                    literal_type_cannot_be_used_in_intersection(&type_definition, last_ampersand)
                 );
             }
 
