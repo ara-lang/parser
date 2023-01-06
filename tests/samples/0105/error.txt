@@ -6,7 +6,7 @@ error[P0047]: literal type `null` cannot be used in an intersection
   |              |    
   |              literal type `null` cannot be used in an intersection
   |
-  = note: a literal type is either `1`, `1.6`, `"foo"`, `false`, `true` or `null`.
+  = note: a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.
   = help: try using a different type for the intersection.
 
 error[P0047]: literal type `null` cannot be used in an intersection
@@ -15,6 +15,6 @@ error[P0047]: literal type `null` cannot be used in an intersection
 4 | function foo(Bar&null $bar): mixed {}
   |                 -^^^^ literal type `null` cannot be used in an intersection
   |
-  = note: a literal type is either `1`, `1.6`, `"foo"`, `false`, `true` or `null`.
+  = note: a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.
   = help: try using a different type for the intersection.
 

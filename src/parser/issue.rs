@@ -1068,7 +1068,7 @@ pub(crate) fn literal_type_cannot_be_used_in_intersection(
         type_definition.final_position(),
     )
     .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
-    .with_note("a literal type is either `1`, `1.6`, `\"foo\"`, `false`, `true` or `null`.")
+    .with_note("a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.")
     .with_help("try using a different type for the intersection.")
 }
 
