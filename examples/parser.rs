@@ -1,7 +1,7 @@
 use std::env;
 
 use ara_parser::parser;
-use ara_reporting::builder::Charset;
+use ara_reporting::builder::CharSet;
 use ara_reporting::builder::ColorChoice;
 use ara_reporting::builder::ReportBuilder;
 use ara_reporting::error::Error;
@@ -18,7 +18,7 @@ fn main() -> Result<(), Error> {
         }),
         Err(report) => {
             ReportBuilder::new(&source_map, *report)
-                .with_charset(Charset::Unicode)
+                .with_charset(CharSet::Unicode)
                 .with_colors(ColorChoice::Always)
                 .print()?;
         }

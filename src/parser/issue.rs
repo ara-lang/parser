@@ -713,7 +713,6 @@ pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) 
         token.position,
         token.position + token.value.len(),
     )
-    .with_help("try removing the opening tag")
 }
 
 pub(crate) fn php_closing_tag_not_supported(state: &ParserState, token: &Token) -> Issue {
@@ -726,7 +725,6 @@ pub(crate) fn php_closing_tag_not_supported(state: &ParserState, token: &Token) 
         token.position,
         token.position + token.value.len(),
     )
-    .with_help("try removing the closing tag")
 }
 
 pub(crate) fn unit_enum_case_cannot_have_value(
@@ -749,12 +747,12 @@ pub(crate) fn unit_enum_case_cannot_have_value(
         case.initial_position(),
         semicolon + 1,
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
         r#enum.final_position(),
     ))
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         case.initial_position(),
         case.final_position(),
@@ -781,7 +779,7 @@ pub(crate) fn backed_enum_case_must_have_value(
         case.initial_position(),
         semicolon + 1,
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
         r#enum.final_position(),
@@ -802,7 +800,7 @@ pub(crate) fn enum_cannot_have_constructor(
         constructor.initial_position(),
         constructor.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
         r#enum.final_position(),
@@ -823,7 +821,7 @@ pub(crate) fn enum_cannot_have_magic_method(
         method.initial_position(),
         method.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
         r#enum.final_position(),
@@ -841,11 +839,11 @@ pub(crate) fn missing_item_definition_after_attributes(state: &ParserState) -> I
         current.position,
         current.position + current.value.len(),
     )
-    .with_help("try adding an item definition after the attribute(s).")
-    .with_note("an item definition can be a class, an interface, an enum, or a function.");
+    .with_note("an item definition can be a class, an interface, an enum, or a function.")
+    .with_note("try adding an item definition after the attribute(s).");
 
     for attribute in &state.attributes {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::primary(
             origin,
             attribute.initial_position(),
             attribute.final_position(),
@@ -869,7 +867,11 @@ pub(crate) fn multiple_visibility_modifiers(
         second.0,
         second.0 + second.1.len(),
     )
-    .with_annotation(Annotation::new(origin, first.0, first.0 + first.1.len()))
+    .with_annotation(Annotation::primary(
+        origin,
+        first.0,
+        first.0 + first.1.len(),
+    ))
 }
 
 pub(crate) fn duplicate_modifier(
@@ -887,7 +889,7 @@ pub(crate) fn duplicate_modifier(
         second,
         second + modifier.len(),
     )
-    .with_annotation(Annotation::new(origin, first, first + modifier.len()))
+    .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
 }
 
 pub(crate) fn bottom_type_cannot_be_used_for_parameter(
@@ -907,13 +909,12 @@ pub(crate) fn bottom_type_cannot_be_used_for_parameter(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         parameter.initial_position(),
         parameter.final_position(),
     ))
     .with_note("bottom types are types that have no values, such as `never` and `void`.")
-    .with_help("try using a different type for the parameter.")
 }
 
 pub(crate) fn bottom_type_cannot_be_used_for_property(
@@ -938,16 +939,15 @@ pub(crate) fn bottom_type_cannot_be_used_for_property(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         property.initial_position(),
         property.final_position(),
     ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.")
-    .with_help("try using a different type for the property.");
+    .with_note("bottom types are types that have no values, such as `never` and `void`.");
 
     if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::secondary(
             origin,
             class_name.initial_position(),
             class_name.final_position(),
@@ -974,9 +974,8 @@ pub(crate) fn standalone_type_cannot_be_used_in_union(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, pipe, pipe + 1))
+    .with_annotation(Annotation::secondary(origin, pipe, pipe + 1))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-    .with_help("try using a different type for the union.")
 }
 
 pub(crate) fn standalone_type_cannot_be_used_in_intersection(
@@ -996,13 +995,12 @@ pub(crate) fn standalone_type_cannot_be_used_in_intersection(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         ampersand,
         ampersand + 1,
     ))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-    .with_help("try using a different type for the intersection.")
 }
 
 pub(crate) fn standalone_type_cannot_be_nullable(
@@ -1019,13 +1017,12 @@ pub(crate) fn standalone_type_cannot_be_nullable(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         question_mark,
         question_mark + 1,
     ))
     .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-    .with_help("try removing `?`.")
 }
 
 pub(crate) fn scalar_type_cannot_be_used_in_intersection(
@@ -1045,9 +1042,8 @@ pub(crate) fn scalar_type_cannot_be_used_in_intersection(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
+    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
     .with_note("a scalar type is either `int`, `float`, `string`, or `bool`.")
-    .with_help("try using a different type for the intersection.")
 }
 
 pub(crate) fn literal_type_cannot_be_used_in_intersection(
@@ -1067,9 +1063,8 @@ pub(crate) fn literal_type_cannot_be_used_in_intersection(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(origin, ampersand, ampersand + 1))
+    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
     .with_note("a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.")
-    .with_help("try using a different type for the intersection.")
 }
 
 pub(crate) fn readonly_property_cannot_be_static(
@@ -1094,21 +1089,20 @@ pub(crate) fn readonly_property_cannot_be_static(
         r#static.initial_position(),
         r#static.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         readonly.initial_position(),
         readonly.final_position(),
     ))
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         property.initial_position(),
         property.final_position(),
     ))
-    .with_note("a property cannot be both readonly and static.")
-    .with_help("try removing `static`.");
+    .with_note("a property cannot be both readonly and static.");
 
     if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::secondary(
             origin,
             class_name.initial_position(),
             class_name.final_position(),
@@ -1139,18 +1133,17 @@ pub(crate) fn readonly_property_cannot_have_default_value(
         entry.initial_position(),
         entry.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         readonly.initial_position(),
         readonly.final_position(),
     ))
     .with_note(
         "a readonly property cannot have a default value because it cannot be changed after initialization.",
-    )
-    .with_help("try removing the default value.");
+    );
 
     if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::secondary(
             origin,
             class_name.initial_position(),
             class_name.final_position(),
@@ -1178,13 +1171,12 @@ pub(crate) fn bottom_type_cannot_be_used_in_tuple(
         type_definition.initial_position(),
         type_definition.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         left_parenthesis,
         right_parenthesis + 1,
     ))
     .with_note("bottom types are types that have no values, such as `never` and `void`.")
-    .with_help("try using a different type for the tuple.")
 }
 
 pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
@@ -1203,7 +1195,6 @@ pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
     .with_note(
         "disjunctive normal form types are types that are separated by `|`, or `&` and are enclosed in `(` and `)`.",
     )
-    .with_help("try removing the parenthesis.")
 }
 
 pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
@@ -1222,7 +1213,6 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
         identifier.initial_position(),
         identifier.final_position(),
     )
-    .with_help("try using a different name for the type.")
 }
 
 pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
@@ -1241,7 +1231,6 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
         identifier.initial_position(),
         identifier.final_position(),
     )
-    .with_help("try using a different name for the constant.")
 }
 
 pub(crate) fn type_cannot_be_used_in_current_context(
@@ -1260,7 +1249,6 @@ pub(crate) fn type_cannot_be_used_in_current_context(
         identifier.initial_position(),
         identifier.final_position(),
     )
-    .with_help("try using a different type.")
 }
 
 pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> Issue {
@@ -1274,11 +1262,11 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
         current.position,
         current.position + current.value.len(),
     )
-    .with_help("try adding an item expression after the attribute(s)")
-    .with_note("an item expression can be an anonymous function, or an arrow function.");
+    .with_note("an item expression can be an anonymous function, or an arrow function.")
+    .with_note("try adding an item expression after the attribute(s)");
 
     for attribute in &state.attributes {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::primary(
             origin,
             attribute.initial_position(),
             attribute.final_position(),
@@ -1302,13 +1290,12 @@ pub(crate) fn final_class_cannot_be_abstract(
         r#abstract.initial_position(),
         r#abstract.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         r#final.initial_position(),
         r#final.final_position(),
     ))
     .with_note("a final class cannot be abstract because it cannot be extended by other classes.")
-    .with_help("try removing the `abstract` modifier.")
 }
 
 pub(crate) fn final_class_member_cannot_be_abstract(
@@ -1325,7 +1312,7 @@ pub(crate) fn final_class_member_cannot_be_abstract(
         r#abstract.initial_position(),
         r#abstract.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         r#final.initial_position(),
         r#final.final_position(),
@@ -1333,7 +1320,6 @@ pub(crate) fn final_class_member_cannot_be_abstract(
     .with_note(
         "a final class member cannot be abstract because it cannot be overridden by other classes.",
     )
-    .with_help("try removing the `abstract` modifier.")
 }
 
 pub(crate) fn private_constant_cannot_be_final(
@@ -1350,7 +1336,7 @@ pub(crate) fn private_constant_cannot_be_final(
         r#final.initial_position(),
         r#final.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         r#private.initial_position(),
         r#private.final_position(),
@@ -1358,7 +1344,6 @@ pub(crate) fn private_constant_cannot_be_final(
     .with_note(
         "a private constant cannot be final because it cannot be overridden by other classes.",
     )
-    .with_help("try removing the `final` modifier.")
 }
 
 pub(crate) fn modifier_cannot_be_used_on_class(
@@ -1375,7 +1360,6 @@ pub(crate) fn modifier_cannot_be_used_on_class(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note("only the `final`, `abstract`, and `readonly` modifiers can be used on a class.")
 }
 
@@ -1393,7 +1377,6 @@ pub(crate) fn modifier_cannot_be_used_on_class_method(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note(
         "only the `final`, `abstract`, `static`, `private`, `protected`, and `public` modifiers can be used on a class method.",
     )
@@ -1416,7 +1399,6 @@ pub(crate) fn modifier_cannot_be_used_on_interface_method(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note("only the `static`, and `public` modifiers can be used on an interface method.")
 }
 
@@ -1434,7 +1416,6 @@ pub(crate) fn modifier_cannot_be_used_on_enum_method(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note("only the `final`, `static`, and `public`, `protected`, `private` modifiers can be used on an enum method.")
 }
 
@@ -1452,7 +1433,6 @@ pub(crate) fn modifier_cannot_be_used_on_property(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note(
         "only the `static`, `readonly`, `private`, `protected`, and `public` modifiers can be used on a property.",
     )
@@ -1472,7 +1452,6 @@ pub(crate) fn modifier_cannot_be_used_on_promoted_property(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note(
         "only the `readonly`, `private`, `protected`, and `public` modifiers can be used on a promoted property.",
     )
@@ -1492,7 +1471,6 @@ pub(crate) fn modifier_cannot_be_used_on_constant(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note(
         "only the `final`, `private`, `protected`, and `public` modifiers can be used on a constant.",
     )
@@ -1515,7 +1493,6 @@ pub(crate) fn modifier_cannot_be_used_on_interface_constant(
         position,
         position + modifier.len(),
     )
-    .with_help("try removing the modifier.")
     .with_note("only the `final`, and `public` modifiers can be used on an interface constant.")
 }
 
@@ -1533,12 +1510,11 @@ pub(crate) fn match_expression_cannot_have_multiple_default_arms(
         second.initial_position(),
         second.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::primary(
         origin,
         first.initial_position(),
         first.final_position(),
     ))
-    .with_help("try removing one of the default arms.")
     .with_note("a match expression can only have one default arm")
 }
 
@@ -1564,15 +1540,14 @@ pub(crate) fn promoted_property_cannot_be_variadic(
         position,
         position + 3,
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         promoted_property.initial_position(),
         promoted_property.final_position(),
-    ))
-    .with_help("try removing the variadic declaration.");
+    ));
 
     if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::new(
+        issue = issue.with_annotation(Annotation::secondary(
             origin,
             class_name.initial_position(),
             class_name.final_position(),
@@ -1595,7 +1570,6 @@ pub(crate) fn invalid_enum_backing_type(
         backing_identifier.initial_position(),
         backing_identifier.final_position(),
     )
-    .with_help("try using a valid enum backing type.")
     .with_note("the only valid enum backing types are `int`, and `string`.")
 }
 
@@ -1612,7 +1586,6 @@ pub(crate) fn try_statement_must_have_catch_or_finally(
         try_statement.initial_position(),
         try_statement.final_position(),
     )
-    .with_help("try adding a catch or finally block.")
 }
 
 pub(crate) fn cannot_declare_abstract_method_on_non_abstract_class(
@@ -1633,12 +1606,11 @@ pub(crate) fn cannot_declare_abstract_method_on_non_abstract_class(
         method.initial_position(),
         method.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         class_name.initial_position(),
         class_name.final_position(),
     ))
-    .with_help("try removing the abstract modifier.")
     .with_note("abstract methods can only be declared on abstract classes.")
 }
 
@@ -1659,12 +1631,11 @@ pub(crate) fn cannot_declare_abstract_ctor_on_non_abstract_class(
         method.initial_position(),
         method.final_position(),
     )
-    .with_annotation(Annotation::new(
+    .with_annotation(Annotation::secondary(
         origin,
         class_name.initial_position(),
         class_name.final_position(),
     ))
-    .with_help("try removing the abstract modifier.")
     .with_note("abstract methods can only be declared on abstract classes.")
 }
 
@@ -1678,7 +1649,6 @@ pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -
         current.position,
         current.position + current.value.len(),
     )
-    .with_help("try removing the `;`")
 }
 
 pub(crate) fn unexpected_token<T: ToString>(
@@ -1783,7 +1753,6 @@ pub(crate) fn invalid_initialization_in_constant_expression(
         expression.final_position(),
     )
     .with_note("constant expressions cannot contain `new` expressions.")
-    .with_help("try removing the `new` expression.")
 }
 
 pub(crate) fn expected_at_least_one_type_in_template_group(

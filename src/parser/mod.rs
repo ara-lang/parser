@@ -1,4 +1,5 @@
 use ara_reporting::Report;
+use ara_reporting::ReportFooter;
 use ara_source::source::Source;
 use ara_source::SourceMap;
 
@@ -34,7 +35,13 @@ pub fn parse_map(map: &SourceMap) -> Result<TreeMap, Box<Report>> {
             issues.append(&mut report.issues);
         }
 
-        Err(Box::new(Report { issues }))
+        Err(Box::new(Report {
+            issues,
+            footer: Some(ReportFooter {
+                message: "failed to parse source map due to the above issue(s)".to_owned(),
+                notes: vec![],
+            }),
+        }))
     } else {
         Ok(TreeMap { trees })
     }
@@ -46,6 +53,13 @@ pub fn parse(source: &Source) -> Result<Tree, Box<Report>> {
         Err(issue) => {
             return Err(Box::new(Report {
                 issues: vec![*issue],
+                footer: Some(ReportFooter {
+                    message: format!(
+                        "failed to parse \"{}\" due to the above issue(s)",
+                        source.name(),
+                    ),
+                    notes: vec![],
+                }),
             }))
         }
     };

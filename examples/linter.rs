@@ -7,7 +7,7 @@ use ara_parser::tree::definition::function::FunctionLikeParameterDefinition;
 use ara_parser::tree::downcast;
 use ara_parser::tree::Node;
 use ara_reporting::annotation::Annotation;
-use ara_reporting::builder::Charset;
+use ara_reporting::builder::CharSet;
 use ara_reporting::builder::ColorChoice;
 use ara_reporting::builder::ReportBuilder;
 use ara_reporting::error::Error;
@@ -34,7 +34,7 @@ impl NodeVisitor<Issue> for NoVariadicParameterRuleVisitor {
                     position,
                     position + 3,
                 )
-                .with_annotation(Annotation::new(
+                .with_annotation(Annotation::secondary(
                     source,
                     parameter.initial_position(),
                     parameter.final_position(),
@@ -63,17 +63,23 @@ fn main() -> Result<(), Error> {
             match traverser.traverse(&tree_map) {
                 Ok(_) => {}
                 Err(report) => {
-                    ReportBuilder::new(&source_map, Report { issues: report })
-                        .with_charset(Charset::Unicode)
-                        .with_colors(ColorChoice::Always)
-                        .print()
-                        .unwrap();
+                    ReportBuilder::new(
+                        &source_map,
+                        Report {
+                            issues: report,
+                            footer: None,
+                        },
+                    )
+                    .with_charset(CharSet::Unicode)
+                    .with_colors(ColorChoice::Always)
+                    .print()
+                    .unwrap();
                 }
             }
         }
         Err(report) => {
             ReportBuilder::new(&source_map, *report)
-                .with_charset(Charset::Unicode)
+                .with_charset(CharSet::Unicode)
                 .with_colors(ColorChoice::Always)
                 .print()?;
         }

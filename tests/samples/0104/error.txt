@@ -2,23 +2,25 @@ error[P0044]: invalid constant initialization expression
   --> 0104/code.ara:2:7
   |
 2 | #[Baz(...BAZ)]
-  |       ^^^^^^ invalid constant initialization expression
+  |       ^^^^^^
 
 error[P0044]: invalid constant initialization expression
   --> 0104/code.ara:4:16
   |
 4 |     Bar $bar = new Bar(...BAZ),
-  |                ^^^^^^^^^^^^^^^ invalid constant initialization expression
+  |                ^^^^^^^^^^^^^^^
 
 error[P0044]: invalid constant initialization expression
   --> 0104/code.ara:7:7
   |
 7 | #[Bar(...BAZ)]
-  |       ^^^^^^ invalid constant initialization expression
+  |       ^^^^^^
 
 error[P0044]: invalid constant initialization expression
   --> 0104/code.ara:9:16
   |
 9 |     Bar $bar = new Bar(BAZ...),
-  |                ^^^^^^^^^^^^^^^ invalid constant initialization expression
+  |                ^^^^^^^^^^^^^^^
+
+error: failed to parse "0104/code.ara" due to the above issue(s)
 

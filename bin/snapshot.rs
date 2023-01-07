@@ -4,7 +4,7 @@ use std::io;
 use std::path::PathBuf;
 
 use ara_parser::parser;
-use ara_reporting::builder::Charset;
+use ara_reporting::builder::CharSet;
 use ara_reporting::builder::ColorChoice;
 use ara_reporting::builder::ReportBuilder;
 use ara_source::loader::FileSourceLoader;
@@ -51,7 +51,7 @@ fn main() -> io::Result<()> {
             }
             Err(report) => {
                 let builder = ReportBuilder::new(&source_map, *report)
-                    .with_charset(Charset::Ascii)
+                    .with_charset(CharSet::Ascii)
                     .with_colors(ColorChoice::Never);
 
                 let error = builder.as_string().unwrap();

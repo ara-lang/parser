@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
 use ara_reporting::issue::Issue;
-use ara_reporting::Report;
+use ara_reporting::{Report, ReportFooter};
 use ara_source::source::Source;
 
 use crate::lexer::iterator::TokenIterator;
@@ -59,6 +59,13 @@ impl<'a> State<'a> {
 
         Report {
             issues: issues.into_iter().chain(std::iter::once(issue)).collect(),
+            footer: Some(ReportFooter {
+                message: format!(
+                    "failed to parse \"{}\" due to the above issue(s)",
+                    self.source.name(),
+                ),
+                notes: vec![],
+            }),
         }
     }
 
@@ -72,6 +79,13 @@ impl<'a> State<'a> {
         } else {
             Err(Box::new(Report {
                 issues: self.issues.drain(..).collect(),
+                footer: Some(ReportFooter {
+                    message: format!(
+                        "failed to parse \"{}\" due to the above issue(s)",
+                        self.source.name(),
+                    ),
+                    notes: vec![],
+                }),
             }))
         }
     }
