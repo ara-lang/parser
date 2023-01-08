@@ -24,7 +24,7 @@ pub mod r#loop;
 pub mod r#return;
 pub mod r#try;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum Statement {
     DoWhile(Box<DoWhileStatement>),

@@ -7,7 +7,7 @@ use crate::tree::identifier::Identifier;
 use crate::tree::token::Keyword;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct NamespaceDefinition {
     pub namespace: Keyword,

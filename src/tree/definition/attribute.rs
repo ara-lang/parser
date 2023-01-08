@@ -7,7 +7,7 @@ use crate::tree::identifier::Identifier;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AttributeGroupDefinition {
     pub hash_left_bracket: usize,
@@ -15,7 +15,7 @@ pub struct AttributeGroupDefinition {
     pub right_bracket: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AttributeDefinition {
     pub name: Identifier,

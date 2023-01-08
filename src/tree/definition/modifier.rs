@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use crate::tree::Node;
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type")]
 pub enum Visibility {
     Public,
@@ -12,7 +12,7 @@ pub enum Visibility {
     Private,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum VisibilityModifierDefinition {
     Public(usize),
@@ -20,7 +20,7 @@ pub enum VisibilityModifierDefinition {
     Private(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum PromotedPropertyModifierDefinition {
     Public(usize),
@@ -29,14 +29,14 @@ pub enum PromotedPropertyModifierDefinition {
     Readonly(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 #[repr(transparent)]
 pub struct PromotedPropertyModifierDefinitionGroup {
     pub modifiers: Vec<PromotedPropertyModifierDefinition>,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum PropertyModifierDefinition {
     Public(usize),
@@ -46,14 +46,14 @@ pub enum PropertyModifierDefinition {
     Readonly(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 #[repr(transparent)]
 pub struct PropertyModifierDefinitionGroup {
     pub modifiers: Vec<PropertyModifierDefinition>,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum MethodModifierDefinition {
     Final(usize),
@@ -64,14 +64,14 @@ pub enum MethodModifierDefinition {
     Private(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 #[repr(transparent)]
 pub struct MethodModifierDefinitionGroup {
     pub modifiers: Vec<MethodModifierDefinition>,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ClassModifierDefinition {
     Final(usize),
@@ -79,14 +79,14 @@ pub enum ClassModifierDefinition {
     Readonly(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 #[repr(transparent)]
 pub struct ClassModifierDefinitionGroup {
     pub modifiers: Vec<ClassModifierDefinition>,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ConstantModifierDefinition {
     Final(usize),
@@ -95,7 +95,7 @@ pub enum ConstantModifierDefinition {
     Private(usize),
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 #[repr(transparent)]
 pub struct ConstantModifierDefinitionGroup {

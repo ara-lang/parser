@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use crate::lexer::byte_string::ByteString;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type")]
 pub enum CommentFormat {
     SingleLine,
@@ -13,7 +13,7 @@ pub enum CommentFormat {
     Document,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct Comment {
     pub position: usize,
@@ -21,7 +21,7 @@ pub struct Comment {
     pub content: ByteString,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct CommentGroup {
     pub comments: Vec<Comment>,

@@ -16,14 +16,14 @@ use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeReturnTypeDefinition {
     pub colon: usize,
     pub type_definition: TypeDefinition,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterDefinition {
     pub comments: CommentGroup,
@@ -34,14 +34,14 @@ pub struct FunctionLikeParameterDefinition {
     pub default: Option<FunctionLikeParameterDefaultValueDefinition>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterDefaultValueDefinition {
     pub equals: usize,
     pub value: Expression,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionLikeParameterListDefinition {
     pub comments: CommentGroup,
@@ -50,7 +50,7 @@ pub struct FunctionLikeParameterListDefinition {
     pub right_parenthesis: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionDefinition {
     pub comments: CommentGroup,
@@ -63,7 +63,7 @@ pub struct FunctionDefinition {
     pub body: BlockStatement,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ConstructorParameterDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
@@ -76,7 +76,7 @@ pub struct ConstructorParameterDefinition {
     pub default: Option<FunctionLikeParameterDefaultValueDefinition>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ConstructorParameterListDefinition {
     pub comments: CommentGroup,
@@ -85,7 +85,7 @@ pub struct ConstructorParameterListDefinition {
     pub right_parenthesis: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AbstractConstructorDefinition {
     pub comments: CommentGroup,
@@ -98,7 +98,7 @@ pub struct AbstractConstructorDefinition {
     pub semicolon: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ConcreteConstructorDefinition {
     pub comments: CommentGroup,
@@ -111,7 +111,7 @@ pub struct ConcreteConstructorDefinition {
     pub body: BlockStatement,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct MethodTypeConstraintDefinition {
     pub comments: CommentGroup,
@@ -120,7 +120,7 @@ pub struct MethodTypeConstraintDefinition {
     pub type_definition: TypeDefinition,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct MethodTypeConstraintGroupDefinition {
     pub comments: CommentGroup,
@@ -128,7 +128,7 @@ pub struct MethodTypeConstraintGroupDefinition {
     pub constraints: CommaSeparated<MethodTypeConstraintDefinition>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AbstractMethodDefinition {
     pub comments: CommentGroup,
@@ -144,7 +144,7 @@ pub struct AbstractMethodDefinition {
     pub semicolon: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ConcreteMethodDefinition {
     pub comments: CommentGroup,

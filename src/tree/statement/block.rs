@@ -6,7 +6,7 @@ use crate::tree::comment::CommentGroup;
 use crate::tree::statement::Statement;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct BlockStatement {
     pub comments: CommentGroup,

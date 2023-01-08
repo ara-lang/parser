@@ -14,7 +14,7 @@ use crate::tree::expression::argument::ArgumentListExpression;
 use crate::tree::token::Keyword;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousClassExpression {
     pub comments: CommentGroup,
@@ -26,7 +26,7 @@ pub struct AnonymousClassExpression {
     pub body: AnonymousClassExpressionBody,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousClassExpressionBody {
     pub left_brace: usize,
@@ -34,7 +34,7 @@ pub struct AnonymousClassExpressionBody {
     pub right_brace: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum AnonymousClassExpressionMember {
     Constant(ClassishConstantDefinition),
