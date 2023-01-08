@@ -8,7 +8,7 @@ use crate::lexer::byte_string::ByteString;
 use crate::tree::comment::CommentGroup;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct Keyword {
     pub value: ByteString,

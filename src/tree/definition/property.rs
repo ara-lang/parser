@@ -9,7 +9,7 @@ use crate::tree::expression::Expression;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct PropertyDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
@@ -20,7 +20,7 @@ pub struct PropertyDefinition {
     pub semicolon: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum PropertyEntryDefinition {
     Uninitialized {

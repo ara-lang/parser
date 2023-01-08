@@ -13,14 +13,14 @@ use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "data")]
 pub enum EnumDefinition {
     Backed(BackedEnumDefinition),
     Unit(UnitEnumDefinition),
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumDefinition {
     pub comments: CommentGroup,
@@ -31,14 +31,14 @@ pub struct UnitEnumDefinition {
     pub body: UnitEnumBodyDefinition,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct EnumImplementsDefinition {
     pub implements: Keyword,
     pub interfaces: CommaSeparated<TemplatedIdentifier>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumBodyDefinition {
     pub left_brace: usize,
@@ -46,7 +46,7 @@ pub struct UnitEnumBodyDefinition {
     pub right_brace: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum UnitEnumMemberDefinition {
     Case(UnitEnumCaseDefinition),
@@ -54,7 +54,7 @@ pub enum UnitEnumMemberDefinition {
     Constant(ClassishConstantDefinition),
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct UnitEnumCaseDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
@@ -63,7 +63,7 @@ pub struct UnitEnumCaseDefinition {
     pub semicolon: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumDefinition {
     pub comments: CommentGroup,
@@ -75,14 +75,14 @@ pub struct BackedEnumDefinition {
     pub body: BackedEnumBodyDefinition,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(tag = "type", content = "value")]
 pub enum BackedEnumTypeDefinition {
     String(usize, Identifier),
     Int(usize, Identifier),
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumBodyDefinition {
     pub left_brace: usize,
@@ -90,7 +90,7 @@ pub struct BackedEnumBodyDefinition {
     pub right_brace: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum BackedEnumMemberDefinition {
     Case(BackedEnumCaseDefinition),
@@ -98,7 +98,7 @@ pub enum BackedEnumMemberDefinition {
     Constant(ClassishConstantDefinition),
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct BackedEnumCaseDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,

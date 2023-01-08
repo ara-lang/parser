@@ -8,7 +8,7 @@ use crate::tree::identifier::Identifier;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ArgumentExpression {
     Value {
@@ -33,7 +33,7 @@ pub enum ArgumentExpression {
     },
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ArgumentListExpression {
     pub comments: CommentGroup,
@@ -42,7 +42,7 @@ pub struct ArgumentListExpression {
     pub right_parenthesis: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ArgumentPlaceholderExpression {
     pub comments: CommentGroup,

@@ -13,7 +13,7 @@ use crate::tree::utils::CommaSeparated;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct ArrowFunctionExpression {
     pub comments: CommentGroup,
@@ -26,7 +26,7 @@ pub struct ArrowFunctionExpression {
     pub body: Box<Expression>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousFunctionExpression {
     pub comments: CommentGroup,
@@ -39,7 +39,7 @@ pub struct AnonymousFunctionExpression {
     pub body: BlockStatement,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousFunctionUseClauseExpression {
     pub comments: CommentGroup,
@@ -49,7 +49,7 @@ pub struct AnonymousFunctionUseClauseExpression {
     pub right_parenthesis: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AnonymousFunctionUseClauseVariableExpression {
     pub comments: CommentGroup,

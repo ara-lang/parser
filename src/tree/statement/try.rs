@@ -9,7 +9,7 @@ use crate::tree::token::Keyword;
 use crate::tree::variable::Variable;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TryStatement {
     pub comments: CommentGroup,
@@ -19,7 +19,7 @@ pub struct TryStatement {
     pub finally: Option<TryFinallyBlockStatement>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TryCatchBlockStatement {
     pub comments: CommentGroup,
@@ -31,14 +31,14 @@ pub struct TryCatchBlockStatement {
     pub block: BlockStatement,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum TryCatchTypeStatement {
     Identifier(Identifier),
     Union(Vec<Identifier>),
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TryFinallyBlockStatement {
     pub comments: CommentGroup,
