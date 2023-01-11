@@ -17,7 +17,7 @@ DefinitionTree {
                                 value: "a",
                             },
                             equals: 8,
-                            value: Constant(
+                            value: Identifier(
                                 Identifier {
                                     position: 10,
                                     value: "\null",

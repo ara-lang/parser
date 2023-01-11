@@ -72,7 +72,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        function: Constant(
+                                                        function: Identifier(
                                                             Identifier {
                                                                 position: 38,
                                                                 value: "bar",
@@ -169,7 +169,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        function: Constant(
+                                                        function: Identifier(
                                                             Identifier {
                                                                 position: 81,
                                                                 value: "baz",
@@ -227,7 +227,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        function: Constant(
+                                                        function: Identifier(
                                                             Identifier {
                                                                 position: 103,
                                                                 value: "qux",

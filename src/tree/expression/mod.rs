@@ -68,7 +68,7 @@ pub enum Expression {
     StringOperation(StringOperationExpression),
     TypeOperation(TypeOperationExpression),
     TernaryOperation(TernaryOperationExpression),
-    Constant(Identifier),
+    Identifier(Identifier),
     Variable(Variable),
     Match(MatchExpression),
     AnonymousFunction(AnonymousFunctionExpression),
@@ -113,7 +113,7 @@ impl Expression {
     pub fn is_constant(&self, initilization: bool) -> bool {
         match self {
             Expression::Literal(_) => true,
-            Expression::Constant(_) => true,
+            Expression::Identifier(_) => true,
             Expression::MagicConstant(_) => true,
             Expression::Parenthesized(expression) => {
                 expression.expression.is_constant(initilization)
@@ -308,7 +308,7 @@ impl Node for Expression {
             Expression::StringOperation(expression) => expression.initial_position(),
             Expression::TypeOperation(expression) => expression.initial_position(),
             Expression::TernaryOperation(expression) => expression.initial_position(),
-            Expression::Constant(expression) => expression.initial_position(),
+            Expression::Identifier(expression) => expression.initial_position(),
             Expression::Variable(expression) => expression.initial_position(),
             Expression::Match(expression) => expression.initial_position(),
             Expression::AnonymousFunction(expression) => expression.initial_position(),
@@ -342,7 +342,7 @@ impl Node for Expression {
             Expression::StringOperation(expression) => expression.final_position(),
             Expression::TypeOperation(expression) => expression.final_position(),
             Expression::TernaryOperation(expression) => expression.final_position(),
-            Expression::Constant(expression) => expression.final_position(),
+            Expression::Identifier(expression) => expression.final_position(),
             Expression::Variable(expression) => expression.final_position(),
             Expression::Match(expression) => expression.final_position(),
             Expression::AnonymousFunction(expression) => expression.final_position(),
@@ -376,7 +376,7 @@ impl Node for Expression {
             Expression::StringOperation(expression) => vec![expression],
             Expression::TypeOperation(expression) => vec![expression],
             Expression::TernaryOperation(expression) => vec![expression],
-            Expression::Constant(expression) => vec![expression],
+            Expression::Identifier(expression) => vec![expression],
             Expression::Variable(expression) => vec![expression],
             Expression::Match(expression) => vec![expression],
             Expression::AnonymousFunction(expression) => vec![expression],

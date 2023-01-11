@@ -30,7 +30,7 @@ DefinitionTree {
                                     elements: CommaSeparated {
                                         inner: [
                                             VecElementExpression {
-                                                value: Constant(
+                                                value: Identifier(
                                                     Identifier {
                                                         position: 21,
                                                         value: "Qux",
@@ -43,7 +43,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        class: Constant(
+                                                        class: Identifier(
                                                             Identifier {
                                                                 position: 30,
                                                                 value: "Foo",
@@ -832,7 +832,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         bang: 365,
-                                                        right: Constant(
+                                                        right: Identifier(
                                                             Identifier {
                                                                 position: 366,
                                                                 value: "Biz",
@@ -848,7 +848,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         not: 375,
-                                                        right: Constant(
+                                                        right: Identifier(
                                                             Identifier {
                                                                 position: 376,
                                                                 value: "Baz",
@@ -864,7 +864,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         plus: 385,
-                                                        right: Constant(
+                                                        right: Identifier(
                                                             Identifier {
                                                                 position: 386,
                                                                 value: "Qux",
@@ -880,7 +880,7 @@ DefinitionTree {
                                                             comments: [],
                                                         },
                                                         minus: 395,
-                                                        right: Constant(
+                                                        right: Identifier(
                                                             Identifier {
                                                                 position: 396,
                                                                 value: "Foo",
@@ -1184,7 +1184,7 @@ DefinitionTree {
                                                                                                     ),
                                                                                                 },
                                                                                                 VecElementExpression {
-                                                                                                    value: Constant(
+                                                                                                    value: Identifier(
                                                                                                         Identifier {
                                                                                                             position: 529,
                                                                                                             value: "Qux",
@@ -1197,7 +1197,7 @@ DefinitionTree {
                                                                                                             comments: CommentGroup {
                                                                                                                 comments: [],
                                                                                                             },
-                                                                                                            class: Constant(
+                                                                                                            class: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 538,
                                                                                                                     value: "Foo",
@@ -1986,7 +1986,7 @@ DefinitionTree {
                                                                                                                 comments: [],
                                                                                                             },
                                                                                                             bang: 873,
-                                                                                                            right: Constant(
+                                                                                                            right: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 874,
                                                                                                                     value: "Biz",
@@ -2002,7 +2002,7 @@ DefinitionTree {
                                                                                                                 comments: [],
                                                                                                             },
                                                                                                             not: 883,
-                                                                                                            right: Constant(
+                                                                                                            right: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 884,
                                                                                                                     value: "Baz",
@@ -2018,7 +2018,7 @@ DefinitionTree {
                                                                                                                 comments: [],
                                                                                                             },
                                                                                                             plus: 893,
-                                                                                                            right: Constant(
+                                                                                                            right: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 894,
                                                                                                                     value: "Qux",
@@ -2034,7 +2034,7 @@ DefinitionTree {
                                                                                                                 comments: [],
                                                                                                             },
                                                                                                             minus: 903,
-                                                                                                            right: Constant(
+                                                                                                            right: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 904,
                                                                                                                     value: "Foo",
@@ -2239,7 +2239,7 @@ DefinitionTree {
                                                                                                             ),
                                                                                                         },
                                                                                                         VecElementExpression {
-                                                                                                            value: Constant(
+                                                                                                            value: Identifier(
                                                                                                                 Identifier {
                                                                                                                     position: 991,
                                                                                                                     value: "Qux",
@@ -2252,7 +2252,7 @@ DefinitionTree {
                                                                                                                     comments: CommentGroup {
                                                                                                                         comments: [],
                                                                                                                     },
-                                                                                                                    class: Constant(
+                                                                                                                    class: Identifier(
                                                                                                                         Identifier {
                                                                                                                             position: 1004,
                                                                                                                             value: "Foo",
@@ -3041,7 +3041,7 @@ DefinitionTree {
                                                                                                                         comments: [],
                                                                                                                     },
                                                                                                                     bang: 1439,
-                                                                                                                    right: Constant(
+                                                                                                                    right: Identifier(
                                                                                                                         Identifier {
                                                                                                                             position: 1440,
                                                                                                                             value: "Biz",
@@ -3057,7 +3057,7 @@ DefinitionTree {
                                                                                                                         comments: [],
                                                                                                                     },
                                                                                                                     not: 1453,
-                                                                                                                    right: Constant(
+                                                                                                                    right: Identifier(
                                                                                                                         Identifier {
                                                                                                                             position: 1454,
                                                                                                                             value: "Baz",
@@ -3073,7 +3073,7 @@ DefinitionTree {
                                                                                                                         comments: [],
                                                                                                                     },
                                                                                                                     plus: 1467,
-                                                                                                                    right: Constant(
+                                                                                                                    right: Identifier(
                                                                                                                         Identifier {
                                                                                                                             position: 1468,
                                                                                                                             value: "Qux",
@@ -3089,7 +3089,7 @@ DefinitionTree {
                                                                                                                         comments: [],
                                                                                                                     },
                                                                                                                     minus: 1481,
-                                                                                                                    right: Constant(
+                                                                                                                    right: Identifier(
                                                                                                                         Identifier {
                                                                                                                             position: 1482,
                                                                                                                             value: "Foo",
@@ -3240,7 +3240,7 @@ DefinitionTree {
                                                     elements: CommaSeparated {
                                                         inner: [
                                                             VecElementExpression {
-                                                                value: Constant(
+                                                                value: Identifier(
                                                                     Identifier {
                                                                         position: 1558,
                                                                         value: "Qux",
@@ -3253,7 +3253,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        class: Constant(
+                                                                        class: Identifier(
                                                                             Identifier {
                                                                                 position: 1571,
                                                                                 value: "Foo",
@@ -4042,7 +4042,7 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         bang: 2006,
-                                                                        right: Constant(
+                                                                        right: Identifier(
                                                                             Identifier {
                                                                                 position: 2007,
                                                                                 value: "Biz",
@@ -4058,7 +4058,7 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         not: 2020,
-                                                                        right: Constant(
+                                                                        right: Identifier(
                                                                             Identifier {
                                                                                 position: 2021,
                                                                                 value: "Baz",
@@ -4074,7 +4074,7 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         plus: 2034,
-                                                                        right: Constant(
+                                                                        right: Identifier(
                                                                             Identifier {
                                                                                 position: 2035,
                                                                                 value: "Qux",
@@ -4090,7 +4090,7 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         minus: 2048,
-                                                                        right: Constant(
+                                                                        right: Identifier(
                                                                             Identifier {
                                                                                 position: 2049,
                                                                                 value: "Foo",
@@ -4349,7 +4349,7 @@ DefinitionTree {
                                             elements: CommaSeparated {
                                                 inner: [
                                                     VecElementExpression {
-                                                        value: Constant(
+                                                        value: Identifier(
                                                             Identifier {
                                                                 position: 2219,
                                                                 value: "Qux",
@@ -4362,7 +4362,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Constant(
+                                                                class: Identifier(
                                                                     Identifier {
                                                                         position: 2232,
                                                                         value: "Foo",
@@ -5151,7 +5151,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 bang: 2667,
-                                                                right: Constant(
+                                                                right: Identifier(
                                                                     Identifier {
                                                                         position: 2668,
                                                                         value: "Biz",
@@ -5167,7 +5167,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 not: 2681,
-                                                                right: Constant(
+                                                                right: Identifier(
                                                                     Identifier {
                                                                         position: 2682,
                                                                         value: "Baz",
@@ -5183,7 +5183,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 plus: 2695,
-                                                                right: Constant(
+                                                                right: Identifier(
                                                                     Identifier {
                                                                         position: 2696,
                                                                         value: "Qux",
@@ -5199,7 +5199,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 minus: 2709,
-                                                                right: Constant(
+                                                                right: Identifier(
                                                                     Identifier {
                                                                         position: 2710,
                                                                         value: "Foo",
@@ -5553,7 +5553,7 @@ DefinitionTree {
                                                                                                                             ),
                                                                                                                         },
                                                                                                                         VecElementExpression {
-                                                                                                                            value: Constant(
+                                                                                                                            value: Identifier(
                                                                                                                                 Identifier {
                                                                                                                                     position: 2941,
                                                                                                                                     value: "Qux",
@@ -5566,7 +5566,7 @@ DefinitionTree {
                                                                                                                                     comments: CommentGroup {
                                                                                                                                         comments: [],
                                                                                                                                     },
-                                                                                                                                    class: Constant(
+                                                                                                                                    class: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 2958,
                                                                                                                                             value: "Foo",
@@ -6355,7 +6355,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     bang: 3493,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 3494,
                                                                                                                                             value: "Biz",
@@ -6371,7 +6371,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     not: 3511,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 3512,
                                                                                                                                             value: "Baz",
@@ -6387,7 +6387,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     plus: 3529,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 3530,
                                                                                                                                             value: "Qux",
@@ -6403,7 +6403,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     minus: 3547,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 3548,
                                                                                                                                             value: "Foo",
@@ -6784,7 +6784,7 @@ DefinitionTree {
                                                                                                                             ),
                                                                                                                         },
                                                                                                                         VecElementExpression {
-                                                                                                                            value: Constant(
+                                                                                                                            value: Identifier(
                                                                                                                                 Identifier {
                                                                                                                                     position: 3792,
                                                                                                                                     value: "Qux",
@@ -6797,7 +6797,7 @@ DefinitionTree {
                                                                                                                                     comments: CommentGroup {
                                                                                                                                         comments: [],
                                                                                                                                     },
-                                                                                                                                    class: Constant(
+                                                                                                                                    class: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 3809,
                                                                                                                                             value: "Foo",
@@ -7586,7 +7586,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     bang: 4344,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 4345,
                                                                                                                                             value: "Biz",
@@ -7602,7 +7602,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     not: 4362,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 4363,
                                                                                                                                             value: "Baz",
@@ -7618,7 +7618,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     plus: 4380,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 4381,
                                                                                                                                             value: "Qux",
@@ -7634,7 +7634,7 @@ DefinitionTree {
                                                                                                                                         comments: [],
                                                                                                                                     },
                                                                                                                                     minus: 4398,
-                                                                                                                                    right: Constant(
+                                                                                                                                    right: Identifier(
                                                                                                                                         Identifier {
                                                                                                                                             position: 4399,
                                                                                                                                             value: "Foo",

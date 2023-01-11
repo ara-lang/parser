@@ -156,7 +156,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Constant(
+                                                    function: Identifier(
                                                         Identifier {
                                                             position: 83,
                                                             value: "fib",
@@ -213,7 +213,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Constant(
+                                                    function: Identifier(
                                                         Identifier {
                                                             position: 97,
                                                             value: "fib",

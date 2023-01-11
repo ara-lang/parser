@@ -2626,7 +2626,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Constant(
+                                                function: Identifier(
                                                     Identifier {
                                                         position: 1294,
                                                         value: "into_dict",
@@ -2709,7 +2709,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Constant(
+                                                function: Identifier(
                                                     Identifier {
                                                         position: 1335,
                                                         value: "into_vec",
@@ -2842,7 +2842,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Constant(
+                                                function: Identifier(
                                                     Identifier {
                                                         position: 1399,
                                                         value: "into_dict",

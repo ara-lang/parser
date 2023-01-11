@@ -566,7 +566,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Constant(
+                                                function: Identifier(
                                                     Identifier {
                                                         position: 415,
                                                         value: "instantiate",
@@ -608,7 +608,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        class: Constant(
+                                                                        class: Identifier(
                                                                             Identifier {
                                                                                 position: 438,
                                                                                 value: "FooImpl",
