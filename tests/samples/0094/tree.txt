@@ -66,7 +66,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Identifier(
+                                                    function: Constant(
                                                         Identifier {
                                                             position: 45,
                                                             value: "File\open_read_only",
@@ -154,7 +154,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Identifier(
+                                                    function: Constant(
                                                         Identifier {
                                                             position: 172,
                                                             value: "Users\by_id",
@@ -201,7 +201,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Identifier(
+                                                    function: Constant(
                                                         Identifier {
                                                             position: 207,
                                                             value: "Articles\by_user",
@@ -286,7 +286,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    function: Identifier(
+                                                    function: Constant(
                                                         Identifier {
                                                             position: 356,
                                                             value: "Users\by_id",

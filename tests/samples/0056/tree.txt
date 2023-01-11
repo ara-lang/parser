@@ -411,7 +411,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 236,
                                                 value: "true",
@@ -444,7 +444,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 248,
                                                 value: "false",
@@ -477,7 +477,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 261,
                                                 value: "null",
@@ -510,7 +510,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 273,
                                                 value: "readonly",
@@ -543,7 +543,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 289,
                                                 value: "self",
@@ -576,7 +576,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 301,
                                                 value: "parent",
@@ -609,7 +609,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 315,
                                                 value: "enum",
@@ -642,7 +642,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 327,
                                                 value: "from",

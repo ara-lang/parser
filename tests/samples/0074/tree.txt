@@ -289,7 +289,7 @@ DefinitionTree {
                                                                                         comments: CommentGroup {
                                                                                             comments: [],
                                                                                         },
-                                                                                        function: Identifier(
+                                                                                        function: Constant(
                                                                                             Identifier {
                                                                                                 position: 225,
                                                                                                 value: "Str\format",
@@ -371,7 +371,7 @@ DefinitionTree {
                                                                                                     comments: CommentGroup {
                                                                                                         comments: [],
                                                                                                     },
-                                                                                                    function: Identifier(
+                                                                                                    function: Constant(
                                                                                                         Identifier {
                                                                                                             position: 279,
                                                                                                             value: "Str\format",

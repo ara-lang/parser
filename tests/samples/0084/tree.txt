@@ -255,7 +255,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        function: Identifier(
+                                                        function: Constant(
                                                             Identifier {
                                                                 position: 248,
                                                                 value: "bar",
@@ -386,7 +386,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 318,
                                                                                 value: "baz",
@@ -422,7 +422,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 339,
                                                                                 value: "qux",
@@ -532,7 +532,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 440,
                                                         value: "async",
@@ -555,7 +555,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 446,
                                                                                 value: "bar",
@@ -610,7 +610,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 463,
                                                         value: "await",
@@ -691,7 +691,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 489,
                                                         value: "concurrently",
@@ -714,7 +714,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 511,
                                                                                 value: "await",
@@ -737,7 +737,7 @@ DefinitionTree {
                                                                                                 comments: CommentGroup {
                                                                                                     comments: [],
                                                                                                 },
-                                                                                                function: Identifier(
+                                                                                                function: Constant(
                                                                                                     Identifier {
                                                                                                         position: 517,
                                                                                                         value: "baz",
@@ -775,7 +775,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 533,
                                                                                 value: "await",
@@ -798,7 +798,7 @@ DefinitionTree {
                                                                                                 comments: CommentGroup {
                                                                                                     comments: [],
                                                                                                 },
-                                                                                                function: Identifier(
+                                                                                                function: Constant(
                                                                                                     Identifier {
                                                                                                         position: 539,
                                                                                                         value: "qux",
@@ -916,7 +916,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 677,
                                                         value: "async",
@@ -955,7 +955,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 690,
                                                                                 value: "bar",
@@ -1010,7 +1010,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 707,
                                                         value: "await",
@@ -1107,7 +1107,7 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                function: Identifier(
+                                                function: Constant(
                                                     Identifier {
                                                         position: 740,
                                                         value: "concurrently",
@@ -1146,7 +1146,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 769,
                                                                                 value: "await",
@@ -1185,7 +1185,7 @@ DefinitionTree {
                                                                                                 comments: CommentGroup {
                                                                                                     comments: [],
                                                                                                 },
-                                                                                                function: Identifier(
+                                                                                                function: Constant(
                                                                                                     Identifier {
                                                                                                         position: 782,
                                                                                                         value: "baz",
@@ -1223,7 +1223,7 @@ DefinitionTree {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        function: Identifier(
+                                                                        function: Constant(
                                                                             Identifier {
                                                                                 position: 798,
                                                                                 value: "await",
@@ -1262,7 +1262,7 @@ DefinitionTree {
                                                                                                 comments: CommentGroup {
                                                                                                     comments: [],
                                                                                                 },
-                                                                                                function: Identifier(
+                                                                                                function: Constant(
                                                                                                     Identifier {
                                                                                                         position: 811,
                                                                                                         value: "qux",
@@ -1368,7 +1368,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        class: Identifier(
+                                        class: Constant(
                                             Identifier {
                                                 position: 909,
                                                 value: "Async",
@@ -1406,7 +1406,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        class: Identifier(
+                                        class: Constant(
                                             Identifier {
                                                 position: 929,
                                                 value: "Await",
@@ -1434,7 +1434,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Identifier(
+                                                                class: Constant(
                                                                     Identifier {
                                                                         position: 942,
                                                                         value: "Async",
@@ -1480,7 +1480,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        class: Identifier(
+                                        class: Constant(
                                             Identifier {
                                                 position: 963,
                                                 value: "Concurrently",
@@ -1508,7 +1508,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Identifier(
+                                                                class: Constant(
                                                                     Identifier {
                                                                         position: 999,
                                                                         value: "Await",
@@ -1543,7 +1543,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Identifier(
+                                                                class: Constant(
                                                                     Identifier {
                                                                         position: 1023,
                                                                         value: "Await",

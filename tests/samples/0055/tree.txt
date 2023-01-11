@@ -136,7 +136,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Identifier(
+                                                                class: Constant(
                                                                     Identifier {
                                                                         position: 86,
                                                                         value: "static",
@@ -164,7 +164,7 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        class: Identifier(
+                                                        class: Constant(
                                                             Identifier {
                                                                 position: 108,
                                                                 value: "static",

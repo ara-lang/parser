@@ -32,7 +32,7 @@ DefinitionTree {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                class: Identifier(
+                                                                class: Constant(
                                                                     Identifier {
                                                                         position: 6,
                                                                         value: "self",

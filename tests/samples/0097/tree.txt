@@ -51,7 +51,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 31,
                                                 value: "foo",
@@ -109,7 +109,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 45,
                                                 value: "foo",
@@ -178,7 +178,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 61,
                                                 value: "foo",
@@ -248,7 +248,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 78,
                                                 value: "foo",
@@ -306,7 +306,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 93,
                                                 value: "foo",
@@ -365,7 +365,7 @@ DefinitionTree {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
-                                        function: Identifier(
+                                        function: Constant(
                                             Identifier {
                                                 position: 109,
                                                 value: "foo",

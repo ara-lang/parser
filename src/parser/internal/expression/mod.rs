@@ -228,7 +228,7 @@ expressions! {
     ), peek(TokenKind::LeftParen | TokenKind::Generic)]
     reserved_identifier_function_call({
         let ident = identifier::identifier_maybe_soft_reserved(state)?;
-        let lhs = Expression::Identifier(ident);
+        let lhs = Expression::Constant(ident);
         let op = &state.iterator.current().kind;
 
         postfix::postfix(state, lhs, op)
@@ -243,7 +243,7 @@ expressions! {
     ), peek(TokenKind::DoubleColon)]
     reserved_identifier_static_call({
         let ident = identifier::classname_identifier(state)?;
-        let lhs = Expression::Identifier(ident);
+        let lhs = Expression::Constant(ident);
 
         postfix::postfix(state, lhs, &TokenKind::DoubleColon)
     })
@@ -479,7 +479,7 @@ expressions! {
 
     #[before(reserved_identifier), current(TokenKind::Identifier | TokenKind::QualifiedIdentifier | TokenKind::FullyQualifiedIdentifier)]
     identifier({
-        Ok(Expression::Identifier(identifier::fully_qualified_type_identifier(state)?))
+        Ok(Expression::Constant(identifier::fully_qualified_type_identifier(state)?))
     })
 
     #[before(left_parenthesis), current(
@@ -495,7 +495,7 @@ expressions! {
 
         state.iterator.next();
 
-        Ok(Expression::Identifier(Identifier {
+        Ok(Expression::Constant(Identifier {
             position: current.position,
             value: current.value.clone(),
         }))

@@ -255,7 +255,7 @@ DefinitionTree {
                                                         },
                                                     ),
                                                     equals: 174,
-                                                    right: Identifier(
+                                                    right: Constant(
                                                         Identifier {
                                                             position: 176,
                                                             value: "where",
@@ -339,7 +339,7 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            class: Identifier(
+                                                            class: Constant(
                                                                 Identifier {
                                                                     position: 222,
                                                                     value: "where",
@@ -379,7 +379,7 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            class: Identifier(
+                                                            class: Constant(
                                                                 Identifier {
                                                                     position: 249,
                                                                     value: "where",
@@ -436,7 +436,7 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    class: Identifier(
+                                                                    class: Constant(
                                                                         Identifier {
                                                                             position: 278,
                                                                             value: "where",
@@ -488,7 +488,7 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    class: Identifier(
+                                                                    class: Constant(
                                                                         Identifier {
                                                                             position: 312,
                                                                             value: "where",
@@ -641,7 +641,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            expression: Identifier(
+                                            expression: Constant(
                                                 Identifier {
                                                     position: 408,
                                                     value: "where",
@@ -912,7 +912,7 @@ DefinitionTree {
                                                         },
                                                     ),
                                                     equals: 582,
-                                                    right: Identifier(
+                                                    right: Constant(
                                                         Identifier {
                                                             position: 584,
                                                             value: "type",
@@ -996,7 +996,7 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            class: Identifier(
+                                                            class: Constant(
                                                                 Identifier {
                                                                     position: 626,
                                                                     value: "type",
@@ -1036,7 +1036,7 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            class: Identifier(
+                                                            class: Constant(
                                                                 Identifier {
                                                                     position: 650,
                                                                     value: "type",
@@ -1093,7 +1093,7 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    class: Identifier(
+                                                                    class: Constant(
                                                                         Identifier {
                                                                             position: 676,
                                                                             value: "type",
@@ -1145,7 +1145,7 @@ DefinitionTree {
                                                                     comments: CommentGroup {
                                                                         comments: [],
                                                                     },
-                                                                    class: Identifier(
+                                                                    class: Constant(
                                                                         Identifier {
                                                                             position: 706,
                                                                             value: "type",
@@ -1298,7 +1298,7 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            expression: Identifier(
+                                            expression: Constant(
                                                 Identifier {
                                                     position: 794,
                                                     value: "type",
