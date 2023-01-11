@@ -244,6 +244,41 @@ impl Expression {
             _ => false,
         }
     }
+
+    /// Return true if the expression is writable
+    pub fn is_writable(&self) -> bool {
+        match self {
+            Expression::Variable(_)
+            | Expression::ArrayOperation(ArrayOperationExpression::Push { .. })
+            | Expression::ArrayOperation(ArrayOperationExpression::Access { .. })
+            | Expression::ObjectOperation(ObjectOperationExpression::PropertyFetch { .. })
+            | Expression::ClassOperation(ClassOperationExpression::StaticPropertyFetch {
+                ..
+            }) => true,
+            Expression::Tuple(TupleExpression { elements, .. }) => {
+                elements.inner.iter().all(|element| element.is_writable())
+            }
+            _ => false,
+        }
+    }
+
+    /// Return true if the expression is readable
+    pub fn is_readable(&self) -> bool {
+        match self {
+            Expression::AssignmentOperation(..)
+            | Expression::ExitConstruct(..)
+            | Expression::ExceptionOperation(ExceptionOperationExpression::Throw { .. })
+            | Expression::ArrayOperation(ArrayOperationExpression::Push { .. }) => false,
+            Expression::AsyncOperation(AsyncOperationExpression::Concurrently {
+                expressions,
+                ..
+            }) => expressions
+                .inner
+                .iter()
+                .all(|expression| expression.is_readable()),
+            _ => true,
+        }
+    }
 }
 
 impl Node for Expression {
