@@ -106,6 +106,10 @@ impl Node for TypeAliasDefinition {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#type, &self.name, &self.type_definition]
     }
+
+    fn get_description(&self) -> String {
+        "type alias definition".to_string()
+    }
 }
 
 impl Node for TypeDefinition {
@@ -207,6 +211,10 @@ impl Node for TypeDefinition {
                 type_definition, ..
             } => vec![type_definition.as_ref()],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "type definition".to_string()
     }
 }
 

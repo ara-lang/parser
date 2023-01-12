@@ -93,6 +93,10 @@ impl Node for UseDefinition {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "use definition".to_string()
+    }
 }
 
 impl Node for UseDefinitionSymbolAlias {
@@ -106,5 +110,9 @@ impl Node for UseDefinitionSymbolAlias {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#as, &self.alias]
+    }
+
+    fn get_description(&self) -> String {
+        "use symbol alias definition".to_string()
     }
 }

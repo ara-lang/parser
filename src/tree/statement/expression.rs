@@ -30,4 +30,8 @@ impl Node for ExpressionStatement {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.expression]
     }
+
+    fn get_description(&self) -> String {
+        "expression statement".to_string()
+    }
 }

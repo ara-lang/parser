@@ -104,6 +104,10 @@ impl Node for ParenthesizedExpression {
     fn children(&self) -> Vec<&dyn Node> {
         vec![self.expression.as_ref()]
     }
+
+    fn get_description(&self) -> String {
+        "parenthesized expression".to_string()
+    }
 }
 
 impl Expression {
@@ -386,5 +390,9 @@ impl Node for Expression {
             Expression::Tuple(expression) => vec![expression],
             Expression::MagicConstant(expression) => vec![expression],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "expression".to_string()
     }
 }

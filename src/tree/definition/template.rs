@@ -72,6 +72,10 @@ impl Node for TemplateDefinition {
             TemplateDefinitionTypeConstraint::None => vec![&self.name],
         }
     }
+
+    fn get_description(&self) -> String {
+        "template definition".to_string()
+    }
 }
 
 impl Node for TemplateGroupDefinition {
@@ -90,6 +94,10 @@ impl Node for TemplateGroupDefinition {
     fn children(&self) -> Vec<&dyn Node> {
         self.members.inner.iter().map(|s| s as &dyn Node).collect()
     }
+
+    fn get_description(&self) -> String {
+        "template group definition".to_string()
+    }
 }
 
 impl Node for TypeTemplateGroupDefinition {
@@ -107,6 +115,10 @@ impl Node for TypeTemplateGroupDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         self.members.inner.iter().map(|s| s as &dyn Node).collect()
+    }
+
+    fn get_description(&self) -> String {
+        "type template group definition".to_string()
     }
 }
 

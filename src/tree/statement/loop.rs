@@ -166,6 +166,10 @@ impl Node for ForeachStatement {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.foreach, &self.iterator, &self.block]
     }
+
+    fn get_description(&self) -> String {
+        "foreach statement".to_string()
+    }
 }
 
 impl Node for ForeachIteratorStatement {
@@ -235,6 +239,10 @@ impl Node for ForeachIteratorStatement {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "foreach iterator".to_string()
+    }
 }
 
 impl Node for ForStatement {
@@ -252,6 +260,10 @@ impl Node for ForStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#for, &self.iterator, &self.block]
+    }
+
+    fn get_description(&self) -> String {
+        "for statement".to_string()
     }
 }
 
@@ -330,6 +342,10 @@ impl Node for ForIteratorStatement {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "for iterator statement".to_string()
+    }
 }
 
 impl Node for DoWhileStatement {
@@ -348,6 +364,10 @@ impl Node for DoWhileStatement {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#do, &self.block, &self.r#while, &self.condition]
     }
+
+    fn get_description(&self) -> String {
+        "do-while statement".to_string()
+    }
 }
 
 impl Node for WhileStatement {
@@ -365,6 +385,10 @@ impl Node for WhileStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#while, &self.condition, &self.block]
+    }
+
+    fn get_description(&self) -> String {
+        "while statement".to_string()
     }
 }
 
@@ -388,6 +412,10 @@ impl Node for BreakStatement {
             vec![&self.r#break]
         }
     }
+
+    fn get_description(&self) -> String {
+        "break statement".to_string()
+    }
 }
 
 impl Node for ContinueStatement {
@@ -409,5 +437,9 @@ impl Node for ContinueStatement {
         } else {
             vec![&self.r#continue]
         }
+    }
+
+    fn get_description(&self) -> String {
+        "continue statement".to_string()
     }
 }

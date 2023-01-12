@@ -38,6 +38,10 @@ impl Node for AttributeGroupDefinition {
             .map(|member| member as &dyn Node)
             .collect()
     }
+
+    fn get_description(&self) -> String {
+        "attribute group definition".to_string()
+    }
 }
 
 impl Node for AttributeDefinition {
@@ -59,5 +63,9 @@ impl Node for AttributeDefinition {
         } else {
             vec![&self.name]
         }
+    }
+
+    fn get_description(&self) -> String {
+        "attribute definition".to_string()
     }
 }

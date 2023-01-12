@@ -172,6 +172,10 @@ impl Node for FunctionLikeReturnTypeDefinition {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.type_definition]
     }
+
+    fn get_description(&self) -> String {
+        "function like return type definition".to_string()
+    }
 }
 
 impl Node for FunctionLikeParameterDefinition {
@@ -204,6 +208,10 @@ impl Node for FunctionLikeParameterDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "function like parameter definition".to_string()
+    }
 }
 
 impl Node for FunctionLikeParameterDefaultValueDefinition {
@@ -217,6 +225,10 @@ impl Node for FunctionLikeParameterDefaultValueDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.value]
+    }
+
+    fn get_description(&self) -> String {
+        "function like parameter default value definition".to_string()
     }
 }
 
@@ -241,6 +253,10 @@ impl Node for FunctionLikeParameterListDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "function like parameter list definition".to_string()
     }
 }
 
@@ -281,6 +297,10 @@ impl Node for FunctionDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "function definition".to_string()
+    }
 }
 
 impl Node for ConstructorParameterDefinition {
@@ -317,6 +337,10 @@ impl Node for ConstructorParameterDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "constructor parameter definition".to_string()
+    }
 }
 
 impl Node for ConstructorParameterListDefinition {
@@ -340,6 +364,10 @@ impl Node for ConstructorParameterListDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "constructor parameter list definition".to_string()
     }
 }
 
@@ -381,6 +409,10 @@ impl Node for AbstractConstructorDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "abstract constructor definition".to_string()
+    }
 }
 
 impl Node for ConcreteConstructorDefinition {
@@ -421,6 +453,10 @@ impl Node for ConcreteConstructorDefinition {
         children.push(&self.body);
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "concrete constructor definition".to_string()
     }
 }
 
@@ -472,6 +508,10 @@ impl Node for AbstractMethodDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "abstract method definition".to_string()
+    }
 }
 
 impl Node for MethodTypeConstraintDefinition {
@@ -485,6 +525,10 @@ impl Node for MethodTypeConstraintDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.identifier, &self.r#is, &self.type_definition]
+    }
+
+    fn get_description(&self) -> String {
+        "method type constraint definition".to_string()
     }
 }
 
@@ -521,6 +565,10 @@ impl Node for MethodTypeConstraintGroupDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "method type constraint group definition".to_string()
     }
 }
 
@@ -573,5 +621,9 @@ impl Node for ConcreteMethodDefinition {
         children.push(&self.body);
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "concrete method definition".to_string()
     }
 }

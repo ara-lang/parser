@@ -32,4 +32,8 @@ impl Node for Variable {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "variable".to_string()
+    }
 }

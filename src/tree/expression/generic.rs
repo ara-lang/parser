@@ -26,4 +26,8 @@ impl Node for GenericGroupExpression {
     fn children(&self) -> Vec<&dyn Node> {
         self.types.inner.iter().map(|t| t as &dyn Node).collect()
     }
+
+    fn get_description(&self) -> String {
+        "generic group expression".to_string()
+    }
 }

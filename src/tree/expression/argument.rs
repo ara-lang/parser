@@ -88,6 +88,10 @@ impl Node for ArgumentExpression {
             ArgumentExpression::Named { name, value, .. } => vec![name, value],
         }
     }
+
+    fn get_description(&self) -> String {
+        "argument expression".to_string()
+    }
 }
 
 impl Node for ArgumentListExpression {
@@ -110,6 +114,10 @@ impl Node for ArgumentListExpression {
             .map(|a| a as &dyn Node)
             .collect()
     }
+
+    fn get_description(&self) -> String {
+        "argument list expression".to_string()
+    }
 }
 
 impl Node for ArgumentPlaceholderExpression {
@@ -127,5 +135,9 @@ impl Node for ArgumentPlaceholderExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "argument placeholder expression".to_string()
     }
 }

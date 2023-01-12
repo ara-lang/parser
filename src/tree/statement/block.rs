@@ -34,4 +34,8 @@ impl Node for BlockStatement {
             .map(|statement| statement as &dyn Node)
             .collect()
     }
+
+    fn get_description(&self) -> String {
+        "block statement".to_string()
+    }
 }

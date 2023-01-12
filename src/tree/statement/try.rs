@@ -72,6 +72,10 @@ impl Node for TryStatement {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "try statement".to_string()
+    }
 }
 
 impl Node for TryCatchBlockStatement {
@@ -98,6 +102,10 @@ impl Node for TryCatchBlockStatement {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "try catch block statement".to_string()
+    }
 }
 
 impl Node for TryFinallyBlockStatement {
@@ -115,6 +123,10 @@ impl Node for TryFinallyBlockStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.finally, &self.block]
+    }
+
+    fn get_description(&self) -> String {
+        "try finally block statement".to_string()
     }
 }
 
@@ -147,5 +159,9 @@ impl Node for TryCatchTypeStatement {
                 .map(|identifier| identifier as &dyn Node)
                 .collect(),
         }
+    }
+
+    fn get_description(&self) -> String {
+        "try catch type statement".to_string()
     }
 }

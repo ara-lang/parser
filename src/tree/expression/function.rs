@@ -96,6 +96,10 @@ impl Node for ArrowFunctionExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "arrow function expression".to_string()
+    }
 }
 
 impl Node for AnonymousFunctionExpression {
@@ -137,6 +141,10 @@ impl Node for AnonymousFunctionExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "anonymous function expression".to_string()
+    }
 }
 
 impl Node for AnonymousFunctionUseClauseExpression {
@@ -161,6 +169,10 @@ impl Node for AnonymousFunctionUseClauseExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "anonymous function use clause expression".to_string()
+    }
 }
 
 impl Node for AnonymousFunctionUseClauseVariableExpression {
@@ -178,5 +190,9 @@ impl Node for AnonymousFunctionUseClauseVariableExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.variable]
+    }
+
+    fn get_description(&self) -> String {
+        "anonymous function use clause variable expression".to_string()
     }
 }

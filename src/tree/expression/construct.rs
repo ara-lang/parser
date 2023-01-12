@@ -60,4 +60,8 @@ impl Node for ExitConstructExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "exit construct expression".to_string()
+    }
 }

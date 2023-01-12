@@ -53,8 +53,13 @@ impl Node for DefinitionTree {
     fn final_position(&self) -> usize {
         self.eof
     }
+
     fn children(&self) -> Vec<&dyn Node> {
         self.definitions.iter().map(|d| d as &dyn Node).collect()
+    }
+
+    fn get_description(&self) -> String {
+        "tree definition".to_string()
     }
 }
 
@@ -96,5 +101,9 @@ impl Node for Definition {
             Definition::Enum(definition) => vec![definition.as_ref()],
             Definition::Class(definition) => vec![definition.as_ref()],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "definition".to_string()
     }
 }

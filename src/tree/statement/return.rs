@@ -60,4 +60,8 @@ impl Node for ReturnStatement {
             ReturnStatement::Implicit { expression, .. } => vec![expression],
         }
     }
+
+    fn get_description(&self) -> String {
+        "return statement".to_string()
+    }
 }
