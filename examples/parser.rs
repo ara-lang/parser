@@ -1,4 +1,5 @@
 use std::env;
+use std::ops::Deref;
 
 use ara_parser::parser;
 use ara_reporting::builder::CharSet;
@@ -17,10 +18,10 @@ fn main() -> Result<(), Error> {
             println!("{:#?}", tree.definitions);
         }),
         Err(report) => {
-            ReportBuilder::new(&source_map, *report)
+            ReportBuilder::new(&source_map)
                 .with_charset(CharSet::Unicode)
                 .with_colors(ColorChoice::Always)
-                .print()?;
+                .print(report.deref())?;
         }
     }
 

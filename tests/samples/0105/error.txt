@@ -15,4 +15,5 @@ error[P0047]: literal type `null` cannot be used in an intersection
   = a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.
 
 error: failed to parse "0105/code.ara" due to the above issue(s)
+ = summary: 2 error(s)
 

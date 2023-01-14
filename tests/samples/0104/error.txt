@@ -23,4 +23,5 @@ error[P0044]: invalid constant initialization expression
   |                ^^^^^^^^^^^^^^^
 
 error: failed to parse "0104/code.ara" due to the above issue(s)
+ = summary: 4 error(s)
 

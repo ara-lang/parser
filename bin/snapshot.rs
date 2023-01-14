@@ -1,6 +1,7 @@
 use std::env;
 use std::fs::read_dir;
 use std::io;
+use std::ops::Deref;
 use std::path::PathBuf;
 
 use ara_parser::parser;
@@ -50,11 +51,13 @@ fn main() -> io::Result<()> {
                 );
             }
             Err(report) => {
-                let builder = ReportBuilder::new(&source_map, *report)
+                let builder = ReportBuilder::new(&source_map)
                     .with_charset(CharSet::Ascii)
                     .with_colors(ColorChoice::Never);
 
-                let error = builder.as_string().unwrap();
+                let error = builder
+                    .as_string(report.deref())
+                    .expect("failed to build the report");
 
                 std::fs::write(error_filename, error)?;
 

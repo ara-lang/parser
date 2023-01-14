@@ -5,4 +5,5 @@ error[P0001]: PHP opening tag `<?php` is not supported
   | ^^^^^
 
 error: failed to parse "0077/code.ara" due to the above issue(s)
+ = summary: 1 error(s)
 

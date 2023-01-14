@@ -59,13 +59,10 @@ impl<'a> State<'a> {
 
         Report {
             issues: issues.into_iter().chain(std::iter::once(issue)).collect(),
-            footer: Some(ReportFooter {
-                message: format!(
-                    "failed to parse \"{}\" due to the above issue(s)",
-                    self.source.name(),
-                ),
-                notes: vec![],
-            }),
+            footer: Some(ReportFooter::new(format!(
+                "failed to parse \"{}\" due to the above issue(s)",
+                self.source.name(),
+            ))),
         }
     }
 
@@ -79,13 +76,10 @@ impl<'a> State<'a> {
         } else {
             Err(Box::new(Report {
                 issues: self.issues.drain(..).collect(),
-                footer: Some(ReportFooter {
-                    message: format!(
-                        "failed to parse \"{}\" due to the above issue(s)",
-                        self.source.name(),
-                    ),
-                    notes: vec![],
-                }),
+                footer: Some(ReportFooter::new(format!(
+                    "failed to parse \"{}\" due to the above issue(s)",
+                    self.source.name(),
+                ))),
             }))
         }
     }

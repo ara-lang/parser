@@ -45,49 +45,34 @@ pub enum LexerIssueCode {
 }
 
 pub(crate) fn unclosed_string_literal(state: &State, from: usize) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         LexerIssueCode::UnclosedStringLiteral,
         "Unclosed string literal",
-        origin,
-        from,
-        state.bytes.position(),
     )
+    .with_source(state.source.name(), from, state.bytes.position())
 }
 
 pub(crate) fn invalid_unicode_escape_sequence(state: &State, from: usize) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         LexerIssueCode::InvalidUnicodeEscapeSequence,
         "Invalid unicode escape sequence",
-        origin,
-        from,
-        state.bytes.position(),
     )
+    .with_source(state.source.name(), from, state.bytes.position())
 }
 
 pub(crate) fn invalid_octal_escape_sequence(state: &State, from: usize) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         LexerIssueCode::InvalidOctalEscapeSequence,
         "Invalid octal escape sequence",
-        origin,
-        from,
-        state.bytes.position(),
     )
+    .with_source(state.source.name(), from, state.bytes.position())
 }
 
 pub(crate) fn unrecognizable_token(state: &State) -> Issue {
-    let origin = state.source.name();
     let position = state.bytes.position();
 
-    Issue::error(
-        LexerIssueCode::UnrecognizableToken,
-        "Unrecognizable token",
-        origin,
+    Issue::error(LexerIssueCode::UnrecognizableToken, "Unrecognizable token").with_source(
+        state.source.name(),
         position,
         position + 1,
     )
