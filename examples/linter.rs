@@ -1,4 +1,5 @@
 use std::env;
+use std::ops::Deref;
 
 use ara_parser::parser;
 use ara_parser::traverser::visitor::NodeVisitor;
@@ -27,18 +28,13 @@ impl NodeVisitor<Issue> for NoVariadicParameterRuleVisitor {
     ) -> Result<(), Issue> {
         if let Some(parameter) = downcast::<FunctionLikeParameterDefinition>(node) {
             if let Some(position) = parameter.ellipsis {
-                let issue = Issue::warning(
-                    "some-code",
-                    "variadic parameters are forbidden",
-                    source,
-                    position,
-                    position + 3,
-                )
-                .with_annotation(Annotation::secondary(
-                    source,
-                    parameter.initial_position(),
-                    parameter.final_position(),
-                ));
+                let issue = Issue::warning("some-code", "variadic parameters are forbidden")
+                    .with_source(source, position, position + 3)
+                    .with_annotation(Annotation::secondary(
+                        source,
+                        parameter.initial_position(),
+                        parameter.final_position(),
+                    ));
 
                 return Err(issue);
             }
@@ -62,26 +58,24 @@ fn main() -> Result<(), Error> {
 
             match traverser.traverse(&tree_map) {
                 Ok(_) => {}
-                Err(report) => {
-                    ReportBuilder::new(
-                        &source_map,
-                        Report {
-                            issues: report,
-                            footer: None,
-                        },
-                    )
-                    .with_charset(CharSet::Unicode)
-                    .with_colors(ColorChoice::Always)
-                    .print()
-                    .unwrap();
+                Err(issues) => {
+                    let report = Report {
+                        issues,
+                        footer: None,
+                    };
+                    ReportBuilder::new(&source_map)
+                        .with_charset(CharSet::Unicode)
+                        .with_colors(ColorChoice::Always)
+                        .print(&report)
+                        .unwrap();
                 }
             }
         }
         Err(report) => {
-            ReportBuilder::new(&source_map, *report)
+            ReportBuilder::new(&source_map)
                 .with_charset(CharSet::Unicode)
                 .with_colors(ColorChoice::Always)
-                .print()?;
+                .print(report.deref())?;
         }
     }
 

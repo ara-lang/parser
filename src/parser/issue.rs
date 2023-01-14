@@ -704,24 +704,24 @@ pub enum ParserIssueCode {
 }
 
 pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::PHPOpeningTagNotSupported,
         format!("PHP opening tag `{}` is not supported", token.value),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         token.position,
         token.position + token.value.len(),
     )
 }
 
 pub(crate) fn php_closing_tag_not_supported(state: &ParserState, token: &Token) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::PHPClosingTagNotSupported,
         format!("PHP closing tag `{}` is not supported", token.value),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         token.position,
         token.position + token.value.len(),
     )
@@ -743,10 +743,8 @@ pub(crate) fn unit_enum_case_cannot_have_value(
             case,
             state.named(&r#enum),
         ),
-        origin,
-        case.initial_position(),
-        semicolon + 1,
     )
+    .with_source(origin, case.initial_position(), semicolon + 1)
     .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
@@ -775,10 +773,8 @@ pub(crate) fn backed_enum_case_must_have_value(
             case,
             state.named(&r#enum),
         ),
-        origin,
-        case.initial_position(),
-        semicolon + 1,
     )
+    .with_source(origin, case.initial_position(), semicolon + 1)
     .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
@@ -796,6 +792,8 @@ pub(crate) fn enum_cannot_have_constructor(
     Issue::error(
         ParserIssueCode::EnumCannotHaveConstructor,
         format!("enum `{}` cannot have constructor", state.named(&r#enum),),
+    )
+    .with_source(
         origin,
         constructor.initial_position(),
         constructor.final_position(),
@@ -817,10 +815,8 @@ pub(crate) fn enum_cannot_have_magic_method(
     Issue::error(
         ParserIssueCode::EnumCannotHaveMagicMethod,
         format!("enum `{}` cannot have magic method", state.named(&r#enum),),
-        origin,
-        method.initial_position(),
-        method.final_position(),
     )
+    .with_source(origin, method.initial_position(), method.final_position())
     .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
@@ -835,6 +831,8 @@ pub(crate) fn missing_item_definition_after_attributes(state: &ParserState) -> I
     let mut issue = Issue::error(
         ParserIssueCode::MissingItemDefinitionAfterAttributes,
         "missing item definition after attribute(s)",
+    )
+    .with_source(
         origin,
         current.position,
         current.position + current.value.len(),
@@ -863,10 +861,8 @@ pub(crate) fn multiple_visibility_modifiers(
     Issue::error(
         ParserIssueCode::MultipleVisibilityModifiers,
         "multiple visibility modifiers are not allowed",
-        origin,
-        second.0,
-        second.0 + second.1.len(),
     )
+    .with_source(origin, second.0, second.0 + second.1.len())
     .with_annotation(Annotation::primary(
         origin,
         first.0,
@@ -885,10 +881,8 @@ pub(crate) fn duplicate_modifier(
     Issue::error(
         ParserIssueCode::DuplicateModifier,
         format!("multiple `{}` modifiers are not allowed", modifier),
-        origin,
-        second,
-        second + modifier.len(),
     )
+    .with_source(origin, second, second + modifier.len())
     .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
 }
 
@@ -905,6 +899,8 @@ pub(crate) fn bottom_type_cannot_be_used_for_parameter(
             "bottom type `{}` cannot be used for parameter `{}`",
             &type_definition, &parameter,
         ),
+    )
+    .with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -935,6 +931,8 @@ pub(crate) fn bottom_type_cannot_be_used_for_property(
                 .unwrap_or_else(|| "anonymous@class".to_string()),
             &property,
         ),
+    )
+    .with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -970,6 +968,7 @@ pub(crate) fn standalone_type_cannot_be_used_in_union(
             "standalone type `{}` cannot be used in a union",
             &type_definition,
         ),
+    ).with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -991,6 +990,7 @@ pub(crate) fn standalone_type_cannot_be_used_in_intersection(
             "standalone type `{}` cannot be used in an intersection",
             &type_definition,
         ),
+    ).with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1013,6 +1013,7 @@ pub(crate) fn standalone_type_cannot_be_nullable(
     Issue::error(
         ParserIssueCode::StandaloneTypeCannotBeNullable,
         format!("standalone type `{}` cannot be nullable", &type_definition,),
+    ).with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1038,6 +1039,8 @@ pub(crate) fn scalar_type_cannot_be_used_in_intersection(
             "scalar type `{}` cannot be used in an intersection",
             &type_definition,
         ),
+    )
+    .with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1059,6 +1062,7 @@ pub(crate) fn literal_type_cannot_be_used_in_intersection(
             "literal type `{}` cannot be used in an intersection",
             &type_definition,
         ),
+    ).with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1085,6 +1089,8 @@ pub(crate) fn readonly_property_cannot_be_static(
                 .unwrap_or_else(|| "anonymous@class".to_string()),
             &property,
         ),
+    )
+    .with_source(
         origin,
         r#static.initial_position(),
         r#static.final_position(),
@@ -1129,6 +1135,8 @@ pub(crate) fn readonly_property_cannot_have_default_value(
                 .unwrap_or_else(|| "anonymous@class".to_string()),
             &entry.variable(),
         ),
+    )
+    .with_source(
         origin,
         entry.initial_position(),
         entry.final_position(),
@@ -1167,6 +1175,8 @@ pub(crate) fn bottom_type_cannot_be_used_in_tuple(
             "bottom type `{}` cannot be used in a tuple type",
             &type_definition,
         ),
+    )
+    .with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1188,6 +1198,8 @@ pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
     Issue::error(
         ParserIssueCode::DisjunctiveNormalFormTypesCannotBeNested,
         "cannot nest disjunctive normal form types",
+    )
+    .with_source(
         origin,
         type_definition.initial_position(),
         type_definition.final_position(),
@@ -1201,15 +1213,15 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
     state: &ParserState,
     identifier: &Identifier,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForTypeName,
         format!(
             "reserved keyword `{}` cannot be used as a type name",
             identifier,
         ),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         identifier.initial_position(),
         identifier.final_position(),
     )
@@ -1219,15 +1231,15 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
     state: &ParserState,
     identifier: &Identifier,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForConstantName,
         format!(
             "reserved keyword `{}` cannot be used as a constant name",
             identifier,
         ),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         identifier.initial_position(),
         identifier.final_position(),
     )
@@ -1237,15 +1249,15 @@ pub(crate) fn type_cannot_be_used_in_current_context(
     state: &ParserState,
     identifier: &Identifier,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::TypeCannotBeUsedInCurrentContext,
         format!(
             "type `{}` cannot be used in the current context",
             identifier,
         ),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         identifier.initial_position(),
         identifier.final_position(),
     )
@@ -1258,6 +1270,8 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
     let mut issue = Issue::error(
         ParserIssueCode::MissingItemExpressionAfterAttributes,
         "missing item expression after attribute(s)",
+    )
+    .with_source(
         origin,
         current.position,
         current.position + current.value.len(),
@@ -1286,6 +1300,8 @@ pub(crate) fn final_class_cannot_be_abstract(
     Issue::error(
         ParserIssueCode::FinalClassCannotBeAbstract,
         "final class cannot be abstract",
+    )
+    .with_source(
         origin,
         r#abstract.initial_position(),
         r#abstract.final_position(),
@@ -1308,6 +1324,8 @@ pub(crate) fn final_class_member_cannot_be_abstract(
     Issue::error(
         ParserIssueCode::FinalClassMemberCannotBeAbstract,
         "final class member cannot be abstract",
+    )
+    .with_source(
         origin,
         r#abstract.initial_position(),
         r#abstract.final_position(),
@@ -1332,10 +1350,8 @@ pub(crate) fn private_constant_cannot_be_final(
     Issue::error(
         ParserIssueCode::PrivateConstantCannotBeFinal,
         "private constant cannot be final",
-        origin,
-        r#final.initial_position(),
-        r#final.final_position(),
     )
+    .with_source(origin, r#final.initial_position(), r#final.final_position())
     .with_annotation(Annotation::primary(
         origin,
         r#private.initial_position(),
@@ -1351,15 +1367,11 @@ pub(crate) fn modifier_cannot_be_used_on_class(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnClass,
         format!("modifier `{}` cannot be used on a class", modifier),
-        origin,
-        position,
-        position + modifier.len(),
     )
+    .with_source(state.source.name(), position, position + modifier.len())
     .with_note("only the `final`, `abstract`, and `readonly` modifiers can be used on a class.")
 }
 
@@ -1368,12 +1380,12 @@ pub(crate) fn modifier_cannot_be_used_on_class_method(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnClassMethod,
         format!("modifier `{}` cannot be used on a class method", modifier),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         position,
         position + modifier.len(),
     )
@@ -1387,18 +1399,14 @@ pub(crate) fn modifier_cannot_be_used_on_interface_method(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnInterfaceMethod,
         format!(
             "modifier `{}` cannot be used on an interface method",
             modifier
         ),
-        origin,
-        position,
-        position + modifier.len(),
     )
+    .with_source(state.source.name(), position, position + modifier.len())
     .with_note("only the `static`, and `public` modifiers can be used on an interface method.")
 }
 
@@ -1407,12 +1415,12 @@ pub(crate) fn modifier_cannot_be_used_on_enum_method(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnEnumMethod,
         format!("modifier `{}` cannot be used on an enum method", modifier),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         position,
         position + modifier.len(),
     )
@@ -1424,12 +1432,12 @@ pub(crate) fn modifier_cannot_be_used_on_property(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnProperty,
-        format!("modifier `{}` cannot be used on a property", modifier),
-        origin,
+        format!("modifier `{}` cannot be used on a property", modifier)
+    )
+    .with_source(
+        state.source.name(),
         position,
         position + modifier.len(),
     )
@@ -1443,12 +1451,12 @@ pub(crate) fn modifier_cannot_be_used_on_promoted_property(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnPromotedProperty,
-        format!("modifier `{}` cannot be used on a promoted property", modifier),
-        origin,
+        format!("modifier `{}` cannot be used on a promoted property", modifier)
+    )
+    .with_source(
+        state.source.name(),
         position,
         position + modifier.len(),
     )
@@ -1462,12 +1470,12 @@ pub(crate) fn modifier_cannot_be_used_on_constant(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnConstant,
-        format!("modifier `{}` cannot be used on a constant", modifier),
-        origin,
+        format!("modifier `{}` cannot be used on a constant", modifier)
+    )
+    .with_source(
+        state.source.name(),
         position,
         position + modifier.len(),
     )
@@ -1481,18 +1489,14 @@ pub(crate) fn modifier_cannot_be_used_on_interface_constant(
     modifier: String,
     position: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ModifierCannotBeUsedOnInterfaceConstant,
         format!(
             "modifier `{}` cannot be used on an interface constant",
             modifier
         ),
-        origin,
-        position,
-        position + modifier.len(),
     )
+    .with_source(state.source.name(), position, position + modifier.len())
     .with_note("only the `final`, and `public` modifiers can be used on an interface constant.")
 }
 
@@ -1506,10 +1510,8 @@ pub(crate) fn match_expression_cannot_have_multiple_default_arms(
     Issue::error(
         ParserIssueCode::MatchExpressionCannotHaveMultipleDefaultArms,
         "match expression cannot have multiple default arms",
-        origin,
-        second.initial_position(),
-        second.final_position(),
     )
+    .with_source(origin, second.initial_position(), second.final_position())
     .with_annotation(Annotation::primary(
         origin,
         first.initial_position(),
@@ -1536,10 +1538,8 @@ pub(crate) fn promoted_property_cannot_be_variadic(
                 .unwrap_or_else(|| "anonymous@class".to_string()),
             promoted_property.variable,
         ),
-        origin,
-        position,
-        position + 3,
     )
+    .with_source(origin, position, position + 3)
     .with_annotation(Annotation::secondary(
         origin,
         promoted_property.initial_position(),
@@ -1561,12 +1561,12 @@ pub(crate) fn invalid_enum_backing_type(
     state: &ParserState,
     backing_identifier: &Identifier,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::InvalidEnumBackingType,
         format!("invalid enum backing type `{}`", backing_identifier),
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         backing_identifier.initial_position(),
         backing_identifier.final_position(),
     )
@@ -1577,12 +1577,12 @@ pub(crate) fn try_statement_must_have_catch_or_finally(
     state: &ParserState,
     try_statement: &TryStatement,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::TryStatementMustHaveCatchOrFinally,
         "try statement must have a catch or finally block",
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         try_statement.initial_position(),
         try_statement.final_position(),
     )
@@ -1602,10 +1602,8 @@ pub(crate) fn cannot_declare_abstract_method_on_non_abstract_class(
             state.named(class_name),
             method.name
         ),
-        origin,
-        method.initial_position(),
-        method.final_position(),
     )
+    .with_source(origin, method.initial_position(), method.final_position())
     .with_annotation(Annotation::secondary(
         origin,
         class_name.initial_position(),
@@ -1627,10 +1625,8 @@ pub(crate) fn cannot_declare_abstract_ctor_on_non_abstract_class(
             "cannot declare abstract constructor on non-abstract class `{}`",
             state.named(class_name),
         ),
-        origin,
-        method.initial_position(),
-        method.final_position(),
     )
+    .with_source(origin, method.initial_position(), method.final_position())
     .with_annotation(Annotation::secondary(
         origin,
         class_name.initial_position(),
@@ -1640,12 +1636,12 @@ pub(crate) fn cannot_declare_abstract_ctor_on_non_abstract_class(
 }
 
 pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::UnexpectedEmptyStatement,
         "unexpected empty statement",
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         current.position,
         current.position + current.value.len(),
     )
@@ -1656,8 +1652,6 @@ pub(crate) fn unexpected_token<T: ToString>(
     expected: Vec<T>,
     found: &Token,
 ) -> Issue {
-    let origin = state.source.name();
-
     let found_name = match &found.kind {
         TokenKind::Eof => "end of file".to_string(),
         kind => match kind {
@@ -1703,22 +1697,20 @@ pub(crate) fn unexpected_token<T: ToString>(
         format!("unexpected {}, expected {}", found_name, expected)
     };
 
-    Issue::error(
-        ParserIssueCode::UnexpectedToken,
-        message,
-        origin,
+    Issue::error(ParserIssueCode::UnexpectedToken, message).with_source(
+        state.source.name(),
         found.position,
         found.position + found.value.len(),
     )
 }
 
 pub(crate) fn invalid_constant_expression(state: &ParserState, expression: &Expression) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::InvalidConstantExpression,
         "invalid constant expression",
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         expression.initial_position(),
         expression.final_position(),
     )
@@ -1728,12 +1720,12 @@ pub(crate) fn invalid_constant_initialization_expression(
     state: &ParserState,
     expression: &dyn Node,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::InvalidConstantInitializationExpression,
         "invalid constant initialization expression",
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         expression.initial_position(),
         expression.final_position(),
     )
@@ -1743,12 +1735,12 @@ pub(crate) fn invalid_initialization_in_constant_expression(
     state: &ParserState,
     expression: &Expression,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::InvalidInitializationInConstantExpression,
         "invalid initialization in constant expression",
-        origin,
+    )
+    .with_source(
+        state.source.name(),
         expression.initial_position(),
         expression.final_position(),
     )
@@ -1760,15 +1752,11 @@ pub(crate) fn expected_at_least_one_type_in_template_group(
     less_than: usize,
     greater_than: usize,
 ) -> Issue {
-    let origin = state.source.name();
-
     Issue::error(
         ParserIssueCode::ExpectedAtLeastOneTypeInTemplateGroup,
         "expected at least one type in template group",
-        origin,
-        less_than,
-        greater_than,
     )
+    .with_source(state.source.name(), less_than, greater_than)
 }
 
 impl ::std::fmt::Display for ParserIssueCode {

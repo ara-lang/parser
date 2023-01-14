@@ -37,10 +37,9 @@ pub fn parse_map(map: &SourceMap) -> Result<TreeMap, Box<Report>> {
 
         Err(Box::new(Report {
             issues,
-            footer: Some(ReportFooter {
-                message: "failed to parse source map due to the above issue(s)".to_owned(),
-                notes: vec![],
-            }),
+            footer: Some(ReportFooter::new(
+                "failed to parse source map due to the above issue(s)",
+            )),
         }))
     } else {
         Ok(TreeMap { trees })
@@ -53,13 +52,10 @@ pub fn parse(source: &Source) -> Result<Tree, Box<Report>> {
         Err(issue) => {
             return Err(Box::new(Report {
                 issues: vec![*issue],
-                footer: Some(ReportFooter {
-                    message: format!(
-                        "failed to parse \"{}\" due to the above issue(s)",
-                        source.name(),
-                    ),
-                    notes: vec![],
-                }),
+                footer: Some(ReportFooter::new(format!(
+                    "failed to parse \"{}\" due to the above issue(s)",
+                    source.name(),
+                ))),
             }))
         }
     };
