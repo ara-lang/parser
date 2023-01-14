@@ -5,4 +5,5 @@ error[P0042]: unexpected token `[`, expected an expression
   |          ^
 
 error: failed to parse "0003/code.ara" due to the above issue(s)
+ = summary: 1 error(s)
 
