@@ -332,8 +332,6 @@ fn union(state: &mut State, type_definition: TypeDefinition) -> ParseResult<Type
             let other = atomic(state)?;
 
             if let TypeDefinition::Intersection(_) = other {
-                
-
                 TypeDefinition::Parenthesized {
                     left_parenthesis,
                     type_definition: Box::new(other),
@@ -371,8 +369,6 @@ fn intersection(state: &mut State, type_definition: TypeDefinition) -> ParseResu
             let other = atomic(state)?;
 
             if let TypeDefinition::Union(_) = other {
-                
-
                 TypeDefinition::Parenthesized {
                     left_parenthesis,
                     type_definition: Box::new(other),
