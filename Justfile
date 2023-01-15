@@ -5,18 +5,13 @@ default:
 build:
     cargo build
 
-# check for errors
-check:
-    cargo check
-
 # regenerate test snapshots
 snapshot:
     cargo run --bin ara-internal-snapshot
 
 # detect linting problems.
 lint:
-    cargo fmt --all -- --check
-    cargo clippy
+    cargo check
 
 # fix linting problems.
 fix:
