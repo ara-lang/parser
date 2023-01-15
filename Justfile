@@ -5,6 +5,10 @@ default:
 build:
     cargo build
 
+# check for errors
+check:
+    cargo check
+
 # regenerate test snapshots
 snapshot:
     cargo run --bin ara-internal-snapshot
