@@ -6,8 +6,6 @@ use ara_reporting::issue::Issue;
 use crate::lexer::token::Token;
 use crate::lexer::token::TokenKind;
 use crate::parser::state::State as ParserState;
-use crate::tree::definition::function::AbstractConstructorDefinition;
-use crate::tree::definition::function::AbstractMethodDefinition;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::ConstructorParameterDefinition;
@@ -390,22 +388,6 @@ pub enum ParserIssueCode {
     /// - Add a catch or finally block
     /// - Remove the try block
     TryStatementMustHaveCatchOrFinally = 28,
-
-    /// Abstract method cannot be declared on a non-abstract class ( code = 29 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///    abstract function bar(): void;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Make the class abstract
-    CannotDeclareAbstractMethodOnNonAbstractClass = 29,
 
     /// Unexpected empty statement ( code = 30 )
     ///
@@ -962,53 +944,6 @@ pub(crate) fn try_statement_must_have_catch_or_finally(
         try_statement.initial_position(),
         try_statement.final_position(),
     )
-}
-
-pub(crate) fn cannot_declare_abstract_method_on_non_abstract_class(
-    state: &ParserState,
-    class_name: &Identifier,
-    method: &AbstractMethodDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::CannotDeclareAbstractMethodOnNonAbstractClass,
-        format!(
-            "cannot declare abstract method `{}::{}` on a non-abstract class",
-            state.named(class_name),
-            method.name
-        ),
-    )
-    .with_source(origin, method.initial_position(), method.final_position())
-    .with_annotation(Annotation::secondary(
-        origin,
-        class_name.initial_position(),
-        class_name.final_position(),
-    ))
-    .with_note("abstract methods can only be declared on abstract classes.")
-}
-
-pub(crate) fn cannot_declare_abstract_ctor_on_non_abstract_class(
-    state: &ParserState,
-    class_name: &Identifier,
-    method: &AbstractConstructorDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::CannotDeclareAbstractMethodOnNonAbstractClass,
-        format!(
-            "cannot declare abstract constructor on non-abstract class `{}`",
-            state.named(class_name),
-        ),
-    )
-    .with_source(origin, method.initial_position(), method.final_position())
-    .with_annotation(Annotation::secondary(
-        origin,
-        class_name.initial_position(),
-        class_name.final_position(),
-    ))
-    .with_note("abstract methods can only be declared on abstract classes.")
 }
 
 pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -> Issue {

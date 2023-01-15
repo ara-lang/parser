@@ -59,14 +59,12 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
         None
     };
 
-    let has_abstract = modifiers.has_abstract();
-
     let body = ClassDefinitionBody {
         left_brace: utils::skip_left_brace(state)?,
         members: {
             let mut members = Vec::new();
             while state.iterator.current().kind != TokenKind::RightBrace {
-                members.push(class_definition_member(state, has_abstract, &name)?);
+                members.push(class_definition_member(state, &name)?);
             }
 
             members
@@ -89,7 +87,6 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
 
 fn class_definition_member(
     state: &mut State,
-    has_abstract: bool,
     name: &Identifier,
 ) -> ParseResult<ClassDefinitionMember> {
     attribute::gather(state)?;
@@ -113,26 +110,12 @@ fn class_definition_member(
 
         return match method {
             MethodDefinitionReference::Abstract(method) => {
-                if !has_abstract {
-                    crate::parser_report!(
-                        state,
-                        cannot_declare_abstract_method_on_non_abstract_class(name, &method),
-                    );
-                }
-
                 Ok(ClassDefinitionMember::AbstractMethod(method))
             }
             MethodDefinitionReference::Concrete(method) => {
                 Ok(ClassDefinitionMember::ConcreteMethod(method))
             }
             MethodDefinitionReference::AbstractConstructor(ctor) => {
-                if !has_abstract {
-                    crate::parser_report!(
-                        state,
-                        cannot_declare_abstract_ctor_on_non_abstract_class(name, &ctor),
-                    );
-                }
-
                 Ok(ClassDefinitionMember::AbstractConstructor(ctor))
             }
             MethodDefinitionReference::ConcreteConstructor(ctor) => {
