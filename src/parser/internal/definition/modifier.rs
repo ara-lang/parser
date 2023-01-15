@@ -102,13 +102,6 @@ pub fn method_modifier_definition_group(
         }
     }
 
-    if let (Some(abstract_modifier), Some(final_modifier)) = (&abstract_modifier, &final_modifier) {
-        crate::parser_report!(
-            state,
-            final_class_member_cannot_be_abstract(final_modifier, abstract_modifier)
-        );
-    }
-
     Ok(MethodModifierDefinitionGroup { modifiers })
 }
 

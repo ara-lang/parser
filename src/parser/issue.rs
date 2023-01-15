@@ -199,22 +199,6 @@ pub enum ParserIssueCode {
     /// - Remove the attribute(s)
     MissingItemExpressionAfterAttributes = 14,
 
-    /// Final class member cannot be abstract ( code = 16 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     final abstract public function bar(): void {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Remove the `final` modifier
-    FinalClassMemberCannotBeAbstract = 16,
-
     /// Private constant cannot be final ( code = 17 )
     ///
     /// Example:
@@ -746,32 +730,6 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
     }
 
     issue
-}
-
-pub(crate) fn final_class_member_cannot_be_abstract(
-    state: &ParserState,
-    r#final: &dyn Node,
-    r#abstract: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::FinalClassMemberCannotBeAbstract,
-        "final class member cannot be abstract",
-    )
-    .with_source(
-        origin,
-        r#abstract.initial_position(),
-        r#abstract.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        r#final.initial_position(),
-        r#final.final_position(),
-    ))
-    .with_note(
-        "a final class member cannot be abstract because it cannot be overridden by other classes.",
-    )
 }
 
 pub(crate) fn private_constant_cannot_be_final(
