@@ -37,6 +37,10 @@ impl Node for Keyword {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "keyword".to_string()
+    }
 }
 
 impl Display for Keyword {

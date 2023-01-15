@@ -75,6 +75,10 @@ impl Node for PropertyDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "property definition".to_string()
+    }
 }
 
 impl Node for PropertyEntryDefinition {
@@ -99,5 +103,9 @@ impl Node for PropertyEntryDefinition {
                 variable, value, ..
             } => vec![variable, value],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "property entry definition".to_string()
     }
 }

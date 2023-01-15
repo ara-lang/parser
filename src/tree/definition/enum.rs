@@ -134,6 +134,10 @@ impl Node for EnumDefinition {
             EnumDefinition::Unit(definition) => vec![definition],
         }
     }
+
+    fn get_description(&self) -> String {
+        "enum definition".to_string()
+    }
 }
 
 impl Node for UnitEnumDefinition {
@@ -168,6 +172,10 @@ impl Node for UnitEnumDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "unit enum definition".to_string()
+    }
 }
 
 impl Node for EnumImplementsDefinition {
@@ -200,6 +208,10 @@ impl Node for EnumImplementsDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "enum implements definition".to_string()
+    }
 }
 
 impl Node for UnitEnumBodyDefinition {
@@ -216,6 +228,10 @@ impl Node for UnitEnumBodyDefinition {
             .iter()
             .map(|member| member as &dyn Node)
             .collect()
+    }
+
+    fn get_description(&self) -> String {
+        "unit enum body definition".to_string()
     }
 }
 
@@ -243,6 +259,10 @@ impl Node for UnitEnumMemberDefinition {
             Self::Constant(constant) => vec![constant],
         }
     }
+
+    fn get_description(&self) -> String {
+        "unit enum member definition".to_string()
+    }
 }
 
 impl Node for UnitEnumCaseDefinition {
@@ -265,6 +285,10 @@ impl Node for UnitEnumCaseDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "unit enum case definition".to_string()
     }
 }
 
@@ -299,6 +323,10 @@ impl Node for BackedEnumDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "backed enum definition".to_string()
+    }
 }
 
 impl Node for BackedEnumTypeDefinition {
@@ -319,6 +347,10 @@ impl Node for BackedEnumTypeDefinition {
             Self::String(_, identifier) | Self::Int(_, identifier) => vec![identifier],
         }
     }
+
+    fn get_description(&self) -> String {
+        "backed enum type definition".to_string()
+    }
 }
 
 impl Node for BackedEnumBodyDefinition {
@@ -335,6 +367,10 @@ impl Node for BackedEnumBodyDefinition {
             .iter()
             .map(|member| member as &dyn Node)
             .collect()
+    }
+
+    fn get_description(&self) -> String {
+        "backed enum body definition".to_string()
     }
 }
 
@@ -362,6 +398,10 @@ impl Node for BackedEnumMemberDefinition {
             Self::Constant(constant) => vec![constant],
         }
     }
+
+    fn get_description(&self) -> String {
+        "backed enum member definition".to_string()
+    }
 }
 
 impl Node for BackedEnumCaseDefinition {
@@ -379,5 +419,9 @@ impl Node for BackedEnumCaseDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.case, &self.name, &self.value]
+    }
+
+    fn get_description(&self) -> String {
+        "backed enum case definition".to_string()
     }
 }

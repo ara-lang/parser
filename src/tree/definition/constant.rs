@@ -52,6 +52,10 @@ impl Node for ConstantDefinitionEntry {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.name, &self.value]
     }
+
+    fn get_description(&self) -> String {
+        "constant entry definition".to_string()
+    }
 }
 
 impl Node for ConstantDefinition {
@@ -75,6 +79,10 @@ impl Node for ConstantDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "constant definition".to_string()
     }
 }
 
@@ -114,5 +122,9 @@ impl Node for ClassishConstantDefinition {
         }
 
         children
+    }
+
+    fn get_description(&self) -> String {
+        "classish constant definition".to_string()
     }
 }

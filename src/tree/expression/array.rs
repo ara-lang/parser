@@ -63,6 +63,10 @@ impl Node for VecElementExpression {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.value]
     }
+
+    fn get_description(&self) -> String {
+        "vec element expression".to_string()
+    }
 }
 
 impl Node for VecExpression {
@@ -86,6 +90,10 @@ impl Node for VecExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "vec expression".to_string()
+    }
 }
 
 impl Node for DictElementExpression {
@@ -99,6 +107,10 @@ impl Node for DictElementExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.key, &self.value]
+    }
+
+    fn get_description(&self) -> String {
+        "dict element expression".to_string()
     }
 }
 
@@ -123,6 +135,10 @@ impl Node for DictExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "dict expression".to_string()
+    }
 }
 
 impl Node for TupleExpression {
@@ -144,5 +160,9 @@ impl Node for TupleExpression {
             .iter()
             .map(|element| element as &dyn Node)
             .collect()
+    }
+
+    fn get_description(&self) -> String {
+        "tuple expression".to_string()
     }
 }

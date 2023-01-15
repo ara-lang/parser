@@ -77,6 +77,10 @@ impl Node for AnonymousClassExpression {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "anonymous class expression".to_string()
+    }
 }
 
 impl Node for AnonymousClassExpressionMember {
@@ -114,6 +118,10 @@ impl Node for AnonymousClassExpressionMember {
             AnonymousClassExpressionMember::ConcreteConstructor(constructor) => vec![constructor],
         }
     }
+
+    fn get_description(&self) -> String {
+        "anonymous class expression member".to_string()
+    }
 }
 
 impl Node for AnonymousClassExpressionBody {
@@ -134,5 +142,9 @@ impl Node for AnonymousClassExpressionBody {
             .iter()
             .map(|member| member as &dyn Node)
             .collect()
+    }
+
+    fn get_description(&self) -> String {
+        "anonymous class expression body".to_string()
     }
 }

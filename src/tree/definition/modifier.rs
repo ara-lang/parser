@@ -290,6 +290,10 @@ impl Node for VisibilityModifierDefinition {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "visibility modifier definition".to_string()
+    }
 }
 
 impl Node for PromotedPropertyModifierDefinition {
@@ -313,6 +317,10 @@ impl Node for PromotedPropertyModifierDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "promoted property modifier definition".to_string()
     }
 }
 
@@ -339,6 +347,10 @@ impl Node for PropertyModifierDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "property modifier definition".to_string()
     }
 }
 
@@ -368,6 +380,10 @@ impl Node for MethodModifierDefinition {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "method modifier definition".to_string()
+    }
 }
 
 impl Node for ClassModifierDefinition {
@@ -389,6 +405,10 @@ impl Node for ClassModifierDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "class modifier definition".to_string()
     }
 }
 
@@ -413,6 +433,10 @@ impl Node for ConstantModifierDefinition {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "constant modifier definition".to_string()
     }
 }
 

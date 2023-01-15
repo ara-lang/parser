@@ -88,6 +88,10 @@ impl Node for InterfaceDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "interface definition".to_string()
+    }
 }
 
 impl Node for InterfaceDefinitionExtends {
@@ -119,6 +123,10 @@ impl Node for InterfaceDefinitionExtends {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "interface extends definition".to_string()
+    }
 }
 
 impl Node for InterfaceDefinitionBody {
@@ -132,6 +140,10 @@ impl Node for InterfaceDefinitionBody {
 
     fn children(&self) -> Vec<&dyn Node> {
         self.members.iter().map(|item| item as &dyn Node).collect()
+    }
+
+    fn get_description(&self) -> String {
+        "interface body definition".to_string()
     }
 }
 
@@ -158,5 +170,9 @@ impl Node for InterfaceDefinitionMember {
             Self::Constructor(constructor) => vec![constructor],
             Self::Method(method) => vec![method],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "interface member definition".to_string()
     }
 }

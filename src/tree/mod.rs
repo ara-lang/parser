@@ -41,6 +41,9 @@ pub trait Node: Any {
     ///
     /// This is used for traversing the tree.
     fn children(&self) -> Vec<&dyn Node>;
+
+    /// The description of the node.
+    fn get_description(&self) -> String;
 }
 
 pub fn downcast<T: Node + 'static>(node: &dyn Node) -> Option<&T> {

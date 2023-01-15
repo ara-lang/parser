@@ -702,6 +702,10 @@ impl Node for ArithmeticOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "arithmetic operation expression".to_string()
+    }
 }
 
 impl Node for AssignmentOperationExpression {
@@ -782,6 +786,10 @@ impl Node for AssignmentOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "assignment operation expression".to_string()
+    }
 }
 
 impl Node for BitwiseOperationExpression {
@@ -829,6 +837,10 @@ impl Node for BitwiseOperationExpression {
             }
             BitwiseOperationExpression::Not { right, .. } => vec![right.as_ref()],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "bitwise operation expression".to_string()
     }
 }
 
@@ -890,6 +902,10 @@ impl Node for ComparisonOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "comparison operation expression".to_string()
+    }
 }
 
 impl Node for LogicalOperationExpression {
@@ -926,6 +942,10 @@ impl Node for LogicalOperationExpression {
             LogicalOperationExpression::Not { right, .. } => vec![right.as_ref()],
         }
     }
+
+    fn get_description(&self) -> String {
+        "logical operation expression".to_string()
+    }
 }
 
 impl Node for StringOperationExpression {
@@ -953,6 +973,10 @@ impl Node for StringOperationExpression {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
+    }
+
+    fn get_description(&self) -> String {
+        "string operation expression".to_string()
     }
 }
 
@@ -1014,6 +1038,10 @@ impl Node for ArrayOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "array operation expression".to_string()
+    }
 }
 
 impl Node for CoalesceOperationExpression {
@@ -1041,6 +1069,10 @@ impl Node for CoalesceOperationExpression {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
+    }
+
+    fn get_description(&self) -> String {
+        "coalesce operation expression".to_string()
     }
 }
 
@@ -1095,6 +1127,10 @@ impl Node for TernaryOperationExpression {
             } => vec![condition.as_ref(), if_false.as_ref()],
         }
     }
+
+    fn get_description(&self) -> String {
+        "ternary operation expression".to_string()
+    }
 }
 
 impl Node for TypeOperationExpression {
@@ -1143,6 +1179,10 @@ impl Node for TypeOperationExpression {
                 left, r#as, right, ..
             } => vec![left.as_ref(), r#as, right],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "type operation expression".to_string()
     }
 }
 
@@ -1196,6 +1236,10 @@ impl Node for GeneratorOperationExpression {
             } => vec![r#yield, from, value.as_ref()],
         }
     }
+
+    fn get_description(&self) -> String {
+        "generator operation expression".to_string()
+    }
 }
 
 impl Node for ExceptionOperationExpression {
@@ -1221,6 +1265,10 @@ impl Node for ExceptionOperationExpression {
         match &self {
             ExceptionOperationExpression::Throw { throw, value, .. } => vec![throw, value.as_ref()],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "exception operation expression".to_string()
     }
 }
 
@@ -1322,6 +1370,10 @@ impl Node for ObjectOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "object operation expression".to_string()
+    }
 }
 
 impl Node for ClassOperationInitializationClassExpression {
@@ -1359,6 +1411,10 @@ impl Node for ClassOperationInitializationClassExpression {
             ClassOperationInitializationClassExpression::Identifier(identifier) => vec![identifier],
             ClassOperationInitializationClassExpression::Variable(variable) => vec![variable],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "class operation initialization class expression".to_string()
     }
 }
 
@@ -1477,6 +1533,10 @@ impl Node for ClassOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "class operation expression".to_string()
+    }
 }
 
 impl Node for FunctionOperationExpression {
@@ -1539,6 +1599,10 @@ impl Node for FunctionOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "function operation expression".to_string()
+    }
 }
 
 impl Node for AsyncOperationExpression {
@@ -1594,6 +1658,10 @@ impl Node for AsyncOperationExpression {
             }
         }
     }
+
+    fn get_description(&self) -> String {
+        "async operation expression".to_string()
+    }
 }
 
 impl Node for RangeOperationExpression {
@@ -1643,5 +1711,9 @@ impl Node for RangeOperationExpression {
             RangeOperationExpression::From { from, .. } => vec![from.as_ref()],
             RangeOperationExpression::Full { .. } => vec![],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "range operation expression".to_string()
     }
 }

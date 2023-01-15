@@ -34,4 +34,8 @@ impl Node for NamespaceDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "namespace definition".to_string()
+    }
 }

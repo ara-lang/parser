@@ -97,6 +97,10 @@ impl Node for IfStatement {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "if statement".to_string()
+    }
 }
 
 impl Node for IfElseIfStatement {
@@ -114,6 +118,10 @@ impl Node for IfElseIfStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.elseif, &self.condition, &self.block]
+    }
+
+    fn get_description(&self) -> String {
+        "elseif statement".to_string()
     }
 }
 
@@ -138,6 +146,10 @@ impl Node for IfElseStatement {
             IfElseBlockStatement::If(r#if) => vec![&self.r#else, r#if.as_ref()],
             IfElseBlockStatement::Block(block) => vec![&self.r#else, block],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "else statement".to_string()
     }
 }
 
@@ -168,6 +180,10 @@ impl Node for UsingStatement {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "using statement".to_string()
+    }
 }
 
 impl Node for UsingAssignmentStatement {
@@ -186,6 +202,10 @@ impl Node for UsingAssignmentStatement {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.variable, &self.expression]
     }
+
+    fn get_description(&self) -> String {
+        "using assignment statement".to_string()
+    }
 }
 
 impl Node for UsingIfClauseStatement {
@@ -203,5 +223,9 @@ impl Node for UsingIfClauseStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#if, &self.condition]
+    }
+
+    fn get_description(&self) -> String {
+        "using if clause statement".to_string()
     }
 }

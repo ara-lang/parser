@@ -45,4 +45,8 @@ impl Node for MagicConstant {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "magic constant expression".to_string()
+    }
 }

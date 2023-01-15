@@ -96,4 +96,8 @@ impl Node for Statement {
             Statement::Block(statement) => vec![statement.as_ref()],
         }
     }
+
+    fn get_description(&self) -> String {
+        "statement".to_string()
+    }
 }

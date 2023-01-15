@@ -56,6 +56,10 @@ impl Node for MatchExpression {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#match, self.expression.as_ref(), &self.body]
     }
+
+    fn get_description(&self) -> String {
+        "match expression".to_string()
+    }
 }
 
 impl Node for MatchBodyExpression {
@@ -70,6 +74,10 @@ impl Node for MatchBodyExpression {
     fn children(&self) -> Vec<&dyn Node> {
         self.arms.inner.iter().map(|arm| arm as &dyn Node).collect()
     }
+
+    fn get_description(&self) -> String {
+        "match body expression".to_string()
+    }
 }
 
 impl Node for MatchArmExpression {
@@ -83,6 +91,10 @@ impl Node for MatchArmExpression {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.condition, &self.expression]
+    }
+
+    fn get_description(&self) -> String {
+        "match arm expression".to_string()
     }
 }
 
@@ -110,5 +122,9 @@ impl Node for MatchArmConditionExpression {
                 .collect(),
             Self::Default(default) => vec![default],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "match arm condition expression".to_string()
     }
 }

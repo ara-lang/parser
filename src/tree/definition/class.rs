@@ -116,6 +116,10 @@ impl Node for ClassDefinition {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "class definition".to_string()
+    }
 }
 
 impl Node for ClassDefinitionExtends {
@@ -129,6 +133,10 @@ impl Node for ClassDefinitionExtends {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.extends, &self.parent]
+    }
+
+    fn get_description(&self) -> String {
+        "class extends definition".to_string()
     }
 }
 
@@ -162,6 +170,10 @@ impl Node for ClassDefinitionImplements {
 
         children
     }
+
+    fn get_description(&self) -> String {
+        "class implements definition".to_string()
+    }
 }
 
 impl Node for ClassDefinitionBody {
@@ -178,6 +190,10 @@ impl Node for ClassDefinitionBody {
             .iter()
             .map(|member| member as &dyn Node)
             .collect()
+    }
+
+    fn get_description(&self) -> String {
+        "class body definition".to_string()
     }
 }
 
@@ -224,5 +240,9 @@ impl Node for ClassDefinitionMember {
             Self::ConcreteMethod(method) => vec![method],
             Self::ConcreteConstructor(constructor) => vec![constructor],
         }
+    }
+
+    fn get_description(&self) -> String {
+        "class member definition".to_string()
     }
 }

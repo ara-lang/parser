@@ -107,6 +107,10 @@ impl Node for Literal {
             Literal::False(literal) => vec![literal],
         }
     }
+
+    fn get_description(&self) -> String {
+        "literal expression".to_string()
+    }
 }
 
 impl Node for LiteralString {
@@ -124,6 +128,10 @@ impl Node for LiteralString {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "literal string expression".to_string()
     }
 }
 
@@ -143,6 +151,10 @@ impl Node for LiteralInteger {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "literal integer expression".to_string()
+    }
 }
 
 impl Node for LiteralFloat {
@@ -160,6 +172,10 @@ impl Node for LiteralFloat {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
+    }
+
+    fn get_description(&self) -> String {
+        "literal float expression".to_string()
     }
 }
 
@@ -179,6 +195,10 @@ impl Node for LiteralNull {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.null]
     }
+
+    fn get_description(&self) -> String {
+        "literal null expression".to_string()
+    }
 }
 
 impl Node for LiteralTrue {
@@ -197,6 +217,10 @@ impl Node for LiteralTrue {
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#true]
     }
+
+    fn get_description(&self) -> String {
+        "literal true expression".to_string()
+    }
 }
 
 impl Node for LiteralFalse {
@@ -214,5 +238,9 @@ impl Node for LiteralFalse {
 
     fn children(&self) -> Vec<&dyn Node> {
         vec![&self.r#false]
+    }
+
+    fn get_description(&self) -> String {
+        "literal false expression".to_string()
     }
 }

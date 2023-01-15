@@ -33,6 +33,10 @@ impl Node for Identifier {
     fn children(&self) -> Vec<&dyn Node> {
         vec![]
     }
+
+    fn get_description(&self) -> String {
+        "identifier".to_string()
+    }
 }
 
 impl Node for TemplatedIdentifier {
@@ -58,6 +62,10 @@ impl Node for TemplatedIdentifier {
             }
             None => children,
         }
+    }
+
+    fn get_description(&self) -> String {
+        "templated identifier".to_string()
     }
 }
 
