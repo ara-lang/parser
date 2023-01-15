@@ -707,12 +707,12 @@ pub enum ParserIssueCode {
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
-    let position = state.iterator.current().position;
+    let token = state.iterator.current();
 
     Issue::bug(ParserIssueCode::UnreachableCode, message).with_source(
         state.source.name(),
-        position,
-        position + 1,
+        token.position,
+        token.position + token.value.len(),
     )
 }
 
