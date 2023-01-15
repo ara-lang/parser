@@ -23,6 +23,9 @@ use crate::tree::Node;
 #[derive(Debug, Copy, Clone)]
 #[repr(u8)]
 pub enum ParserIssueCode {
+    /// An unreachable code was encountered.
+    UnreachableCode = 0,
+
     /// PHP opening tag is not supported ( code = 1 )
     ///
     /// Example:
@@ -701,6 +704,16 @@ pub enum ParserIssueCode {
     /// - Use a different type (instead of `null`)
     /// - Change the intersection to a union
     LiteralTypeCannotBeUsedInIntersection = 47,
+}
+
+pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
+    let token = state.iterator.current();
+
+    Issue::bug(ParserIssueCode::UnreachableCode, message).with_source(
+        state.source.name(),
+        token.position,
+        token.position + token.value.len(),
+    )
 }
 
 pub(crate) fn php_opening_tag_not_supported(state: &ParserState, token: &Token) -> Issue {

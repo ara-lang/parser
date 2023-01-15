@@ -1,4 +1,6 @@
 use crate::lexer::token::TokenKind;
+use crate::parser::result::ParseResult;
+use crate::parser::state::State;
 
 pub enum Associativity {
     Non,
@@ -40,46 +42,52 @@ pub enum Precedence {
 }
 
 impl Precedence {
-    pub fn infix(kind: &TokenKind) -> Self {
+    pub fn infix(state: &mut State, kind: &TokenKind) -> ParseResult<Self> {
         use TokenKind::*;
 
         match kind {
-            Pow => Self::Pow,
-            Instanceof | Is | As | Into => Self::TypeCheck,
-            In => Self::ArrayContains,
-            Asterisk | Slash | Percent => Self::MulDivMod,
-            Plus | Minus => Self::AddSub,
-            LeftShift | RightShift => Self::BitShift,
-            Dot => Self::Concat,
-            LessThan | LessThanEquals | GreaterThan | GreaterThanEquals => Self::LtGt,
+            Pow => Ok(Self::Pow),
+            Instanceof | Is | As | Into => Ok(Self::TypeCheck),
+            In => Ok(Self::ArrayContains),
+            Asterisk | Slash | Percent => Ok(Self::MulDivMod),
+            Plus | Minus => Ok(Self::AddSub),
+            LeftShift | RightShift => Ok(Self::BitShift),
+            Dot => Ok(Self::Concat),
+            LessThan | LessThanEquals | GreaterThan | GreaterThanEquals => Ok(Self::LtGt),
             DoubleEquals | BangEquals | TripleEquals | BangDoubleEquals | Spaceship => {
-                Self::Equality
+                Ok(Self::Equality)
             }
-            Ampersand => Self::BitwiseAnd,
-            Caret => Self::BitwiseXor,
-            Pipe => Self::BitwiseOr,
-            BooleanAnd => Self::And,
-            BooleanOr => Self::Or,
-            DoubleQuestion => Self::NullCoalesce,
-            Question | QuestionColon => Self::Ternary,
+            Ampersand => Ok(Self::BitwiseAnd),
+            Caret => Ok(Self::BitwiseXor),
+            Pipe => Ok(Self::BitwiseOr),
+            BooleanAnd => Ok(Self::And),
+            BooleanOr => Ok(Self::Or),
+            DoubleQuestion => Ok(Self::NullCoalesce),
+            Question | QuestionColon => Ok(Self::Ternary),
             Equals | PlusEquals | MinusEquals | AsteriskEquals | PowEquals | SlashEquals
             | DotEquals | AndEquals | DoubleQuestionEquals | PercentEquals | AmpersandEquals
-            | PipeEquals | CaretEquals | LeftShiftEquals | RightShiftEquals => Self::Assignment,
-            Yield => Self::Yield,
-            DoubleDot => Self::Range,
-            _ => unreachable!("precedence for op {:?}", kind),
+            | PipeEquals | CaretEquals | LeftShiftEquals | RightShiftEquals => Ok(Self::Assignment),
+            Yield => Ok(Self::Yield),
+            DoubleDot => Ok(Self::Range),
+            _ => crate::parser_bail!(
+                state,
+                unreachable_code(format!("unexpected precedence for operator {:?}", kind))
+            ),
         }
     }
 
-    pub fn postfix(kind: &TokenKind) -> Self {
+    pub fn postfix(state: &mut State, kind: &TokenKind) -> ParseResult<Self> {
         use TokenKind::*;
 
         match kind {
-            DoubleQuestion => Self::NullCoalesce,
-            Increment | Decrement => Self::IncDec,
-            LeftParen | Generic | LeftBracket => Self::CallDim,
-            Arrow | QuestionArrow | DoubleColon => Self::ObjectAccess,
-            _ => unreachable!("postfix precedence for op {:?}", kind),
+            DoubleQuestion => Ok(Self::NullCoalesce),
+            Increment | Decrement => Ok(Self::IncDec),
+            LeftParen | Generic | LeftBracket => Ok(Self::CallDim),
+            Arrow | QuestionArrow | DoubleColon => Ok(Self::ObjectAccess),
+            _ => crate::parser_bail!(
+                state,
+                unreachable_code(format!("unexpected precedence for operator {:?}", kind))
+            ),
         }
     }
 

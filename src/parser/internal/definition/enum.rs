@@ -253,6 +253,11 @@ fn concrete_method_definition(
             Ok(Some(method))
         }
         MethodDefinitionReference::Abstract(_)
-        | MethodDefinitionReference::AbstractConstructor(_) => unreachable!(),
+        | MethodDefinitionReference::AbstractConstructor(_) => {
+            crate::parser_bail!(
+                state,
+                unreachable_code("unexpected abstract method in enum definition")
+            )
+        }
     }
 }

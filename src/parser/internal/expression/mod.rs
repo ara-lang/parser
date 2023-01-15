@@ -62,7 +62,7 @@ pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<
         }
 
         if postfix::is_postfix(kind) {
-            let left_precedence = Precedence::postfix(kind);
+            let left_precedence = Precedence::postfix(state, kind)?;
 
             if left_precedence < precedence {
                 break;
@@ -74,7 +74,7 @@ pub fn for_precedence(state: &mut State, precedence: Precedence) -> ParseResult<
         }
 
         if infix::is_infix(state, kind) {
-            let right_precedence = Precedence::infix(kind);
+            let right_precedence = Precedence::infix(state, kind)?;
 
             if right_precedence < precedence {
                 break;
@@ -677,7 +677,7 @@ expressions! {
                 increment: position,
                 right: Box::new(for_precedence(state, Precedence::Prefix)?)
             }),
-            _ => unreachable!(),
+            _ => crate::parser_bail!(state, unreachable_code("unexpected operator"))
         };
 
         Ok(expr)

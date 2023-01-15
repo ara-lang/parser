@@ -418,7 +418,7 @@ pub fn infix(
                     dot: position,
                     right,
                 }),
-                _ => unreachable!(),
+                _ => crate::parser_bail!(state, unreachable_code("unexpected operator")),
             }
         }
     })
