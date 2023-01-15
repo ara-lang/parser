@@ -11,8 +11,6 @@ use crate::tree::definition::function::AbstractMethodDefinition;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::ConstructorParameterDefinition;
-use crate::tree::definition::modifier::PropertyModifierDefinition;
-use crate::tree::definition::property::PropertyEntryDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
@@ -158,22 +156,6 @@ pub enum ParserIssueCode {
     ///
     /// - Remove one of the modifiers
     DuplicateModifier = 9,
-
-    /// Readonly property cannot have a default value ( code = 11 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public readonly int $bar = 1;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the default value
-    /// - Remove the `readonly` modifier
-    ReadonlyPropertyCannotHaveDefaultValue = 11,
 
     /// Reserved keyword cannot be used for type name ( code = 12 )
     ///
@@ -715,49 +697,6 @@ pub(crate) fn duplicate_modifier(
     )
     .with_source(origin, second, second + modifier.len())
     .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
-}
-
-pub(crate) fn readonly_property_cannot_have_default_value(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    entry: &PropertyEntryDefinition,
-    readonly: &PropertyModifierDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::ReadonlyPropertyCannotHaveDefaultValue,
-        format!(
-            "readonly property `{}::{}` cannot have a default value",
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &entry.variable(),
-        ),
-    )
-    .with_source(
-        origin,
-        entry.initial_position(),
-        entry.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        readonly.initial_position(),
-        readonly.final_position(),
-    ))
-    .with_note(
-        "a readonly property cannot have a default value because it cannot be changed after initialization.",
-    );
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
 }
 
 pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(

@@ -8,11 +8,9 @@ use crate::parser::state::State;
 use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
 use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::definition::property::PropertyEntryDefinition;
-use crate::tree::identifier::Identifier;
 
 pub fn property_definition(
     state: &mut State,
-    class_name: Option<&Identifier>,
     modifiers: PropertyModifierDefinitionGroup,
 ) -> ParseResult<PropertyDefinition> {
     let type_definition = r#type::type_definition(state)?;
@@ -22,7 +20,9 @@ pub fn property_definition(
     let current = state.iterator.current();
 
     let entry = if current.kind == TokenKind::Equals {
-        let entry = PropertyEntryDefinition::Initialized {
+        
+
+        PropertyEntryDefinition::Initialized {
             variable,
             equals: utils::skip(state, TokenKind::Equals)?,
             value: {
@@ -41,16 +41,7 @@ pub fn property_definition(
 
                 expression
             },
-        };
-
-        if let Some(modifier) = modifiers.get_readonly() {
-            crate::parser_report!(
-                state,
-                readonly_property_cannot_have_default_value(class_name, &entry, modifier,)
-            );
         }
-
-        entry
     } else {
         PropertyEntryDefinition::Uninitialized { variable }
     };

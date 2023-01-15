@@ -144,5 +144,5 @@ fn class_definition_member(
     // e.g: public static
     let modifiers = modifier::property_modifier_definition_group(state, modifiers)?;
 
-    property::property_definition(state, Some(name), modifiers).map(ClassDefinitionMember::Property)
+    property::property_definition(state, modifiers).map(ClassDefinitionMember::Property)
 }
