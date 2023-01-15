@@ -275,7 +275,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
                 decrement: position,
             })
         }
-        _ => unreachable!(),
+        _ => crate::parser_bail!(state, unreachable_code("unexpected operation")),
     })
 }
 

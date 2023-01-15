@@ -110,7 +110,10 @@ fn anonymous_class_expression_member(
                 return Ok(AnonymousClassExpressionMember::ConcreteConstructor(ctor));
             }
             MethodDefinitionReference::Abstract(_)
-            | MethodDefinitionReference::AbstractConstructor(_) => unreachable!(),
+            | MethodDefinitionReference::AbstractConstructor(_) => crate::parser_bail!(
+                state,
+                unreachable_code("unexpected abstract method in anonymous class")
+            ),
         }
     }
 

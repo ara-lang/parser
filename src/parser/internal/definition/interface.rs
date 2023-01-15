@@ -96,7 +96,12 @@ fn interface_definition_member(
                 Ok(InterfaceDefinitionMember::Constructor(ctor))
             }
             MethodDefinitionReference::ConcreteConstructor(_)
-            | MethodDefinitionReference::Concrete(_) => unreachable!(),
+            | MethodDefinitionReference::Concrete(_) => {
+                crate::parser_bail!(
+                    state,
+                    unreachable_code("unexpected concrete method in interface definition")
+                )
+            }
         }
     }
 }

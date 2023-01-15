@@ -7,6 +7,9 @@ use crate::lexer::state::State;
 #[derive(Debug, Copy, Clone)]
 #[repr(u8)]
 pub enum LexerIssueCode {
+    /// An unreachable code was encountered.
+    UnreachableCode = 0,
+
     /// An unclosed string literal was encountered.
     ///
     /// Example:
@@ -42,6 +45,16 @@ pub enum LexerIssueCode {
 
     /// An unrecognizable token was encountered.
     UnrecognizableToken = 4,
+}
+
+pub(crate) fn unreachable_code<M: Into<String>>(state: &State, message: M) -> Issue {
+    let position = state.bytes.position();
+
+    Issue::bug(LexerIssueCode::UnreachableCode, message).with_source(
+        state.source.name(),
+        position,
+        position + 1,
+    )
 }
 
 pub(crate) fn unclosed_string_literal(state: &State, from: usize) -> Issue {

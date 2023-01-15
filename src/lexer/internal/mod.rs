@@ -171,7 +171,9 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
                     kind: TokenKind::Null,
                     ..
                 } => (TokenKind::FullyQualifiedIdentifier, b"\\null".into()),
-                s => unreachable!("{:?}", s),
+                _ => {
+                    crate::lexer_bail!(state, unreachable_code("unexpected token after backslash"))
+                }
             }
         }
         [b'\\', ..] => {
@@ -414,7 +416,10 @@ pub fn tokenize(state: &mut State) -> SyntaxResult<Token> {
                 (kind, buffer.into())
             }
         }
-        [] => unreachable!(),
+        [] => crate::lexer_bail!(
+            state,
+            unreachable_code("reached end of input without tokenizing anything")
+        ),
     };
 
     Ok(Token {
