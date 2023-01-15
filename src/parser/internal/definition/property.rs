@@ -20,8 +20,6 @@ pub fn property_definition(
     let current = state.iterator.current();
 
     let entry = if current.kind == TokenKind::Equals {
-        
-
         PropertyEntryDefinition::Initialized {
             variable,
             equals: utils::skip(state, TokenKind::Equals)?,

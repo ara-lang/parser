@@ -199,20 +199,6 @@ pub enum ParserIssueCode {
     /// - Remove the attribute(s)
     MissingItemExpressionAfterAttributes = 14,
 
-    /// Final class cannot be abstract ( code = 15 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// final abstract class Foo {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Remove the `final` modifier
-    FinalClassCannotBeAbstract = 15,
-
     /// Final class member cannot be abstract ( code = 16 )
     ///
     /// Example:
@@ -760,30 +746,6 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
     }
 
     issue
-}
-
-pub(crate) fn final_class_cannot_be_abstract(
-    state: &ParserState,
-    r#final: &dyn Node,
-    r#abstract: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::FinalClassCannotBeAbstract,
-        "final class cannot be abstract",
-    )
-    .with_source(
-        origin,
-        r#abstract.initial_position(),
-        r#abstract.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        r#final.initial_position(),
-        r#final.final_position(),
-    ))
-    .with_note("a final class cannot be abstract because it cannot be extended by other classes.")
 }
 
 pub(crate) fn final_class_member_cannot_be_abstract(
