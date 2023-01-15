@@ -13,7 +13,6 @@ use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::ConstructorParameterDefinition;
 use crate::tree::definition::modifier::PropertyModifierDefinition;
 use crate::tree::definition::property::PropertyEntryDefinition;
-use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
@@ -161,88 +160,6 @@ pub enum ParserIssueCode {
     /// - Remove one of the modifiers
     DuplicateModifier = 9,
 
-    /// Bottom type cannot be used for parameter ( code = 10 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(never $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedForParameter = 10,
-
-    /// Bottom type cannot be used for property ( code = 11 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///   public never $bar;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedForProperty = 11,
-
-    /// Standalone type cannot be used in union ( code = 12 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int|void $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    StandaloneTypeCannotBeUsedInUnion = 12,
-
-    /// Standalone type cannot be used in intersection ( code = 13 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int&void $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    StandaloneTypeCannotBeUsedInIntersection = 13,
-
-    /// Standalone type cannot be nullable ( code = 14 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(?mixed $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    /// - Remove the `?`
-    StandaloneTypeCannotBeNullable = 14,
-
-    /// Scalar type cannot be used in intersection ( code = 15 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int&string $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    /// - Change the intersection to a union
-    ScalarTypeCannotBeUsedInIntersection = 15,
-
     /// Readonly property cannot be static ( code = 17 )
     ///
     /// Example:
@@ -275,32 +192,6 @@ pub enum ParserIssueCode {
     /// - Remove the `readonly` modifier
     ReadonlyPropertyCannotHaveDefaultValue = 18,
 
-    /// Bottom type cannot be used in tuple type parameter ( code = 19 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// type Foo = (void, string);
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedInTuple = 19,
-
-    /// Disjunctive normal form types cannot be nested ( code = 20 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// type Foo = (A&(B|C))|(D&E);
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Refactor the type to not be nested, e.g. `(A&B)|(A&C)|(D&E)`
-    DisjunctiveNormalFormTypesCannotBeNested = 20,
-
     /// Reserved keyword cannot be used for type name ( code = 21 )
     ///
     /// Example:
@@ -326,19 +217,6 @@ pub enum ParserIssueCode {
     ///
     /// - Use a different name
     ReservedKeywordCannotBeUsedForConstantName = 22,
-
-    /// Type cannot be used in current context ( code = 23 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// use self;
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    TypeCannotBeUsedInCurrentContext = 23,
 
     /// Missing item expression after attribute(s) ( code = 24 )
     ///
@@ -690,20 +568,6 @@ pub enum ParserIssueCode {
     /// - Remove the empty type template
     /// - Add a type template
     ExpectedAtLeastOneTypeInTemplateGroup = 46,
-
-    /// Literal type cannot be used in intersection ( code = 47 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(Foo&null $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type (instead of `null`)
-    /// - Change the intersection to a union
-    LiteralTypeCannotBeUsedInIntersection = 47,
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
@@ -899,191 +763,6 @@ pub(crate) fn duplicate_modifier(
     .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
 }
 
-pub(crate) fn bottom_type_cannot_be_used_for_parameter(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    parameter: &Variable,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedForParameter,
-        format!(
-            "bottom type `{}` cannot be used for parameter `{}`",
-            &type_definition, &parameter,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        parameter.initial_position(),
-        parameter.final_position(),
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.")
-}
-
-pub(crate) fn bottom_type_cannot_be_used_for_property(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    type_definition: &TypeDefinition,
-    property: &Variable,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedForProperty,
-        format!(
-            "bottom type `{}` cannot be used for property `{}::{}`",
-            &type_definition,
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &property,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        property.initial_position(),
-        property.final_position(),
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.");
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
-}
-
-pub(crate) fn standalone_type_cannot_be_used_in_union(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    pipe: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeUsedInUnion,
-        format!(
-            "standalone type `{}` cannot be used in a union",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, pipe, pipe + 1))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn standalone_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeUsedInIntersection,
-        format!(
-            "standalone type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        ampersand,
-        ampersand + 1,
-    ))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn standalone_type_cannot_be_nullable(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    question_mark: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeNullable,
-        format!("standalone type `{}` cannot be nullable", &type_definition,),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        question_mark,
-        question_mark + 1,
-    ))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn scalar_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::ScalarTypeCannotBeUsedInIntersection,
-        format!(
-            "scalar type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
-    .with_note("a scalar type is either `int`, `float`, `string`, or `bool`.")
-}
-
-pub(crate) fn literal_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::LiteralTypeCannotBeUsedInIntersection,
-        format!(
-            "literal type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
-    .with_note("a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.")
-}
-
 pub(crate) fn readonly_property_cannot_be_static(
     state: &ParserState,
     class_name: Option<&Identifier>,
@@ -1174,54 +853,6 @@ pub(crate) fn readonly_property_cannot_have_default_value(
     issue
 }
 
-pub(crate) fn bottom_type_cannot_be_used_in_tuple(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    left_parenthesis: usize,
-    right_parenthesis: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedInTuple,
-        format!(
-            "bottom type `{}` cannot be used in a tuple type",
-            &type_definition,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        left_parenthesis,
-        right_parenthesis + 1,
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.")
-}
-
-pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::DisjunctiveNormalFormTypesCannotBeNested,
-        "cannot nest disjunctive normal form types",
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_note(
-        "disjunctive normal form types are types that are separated by `|`, or `&` and are enclosed in `(` and `)`.",
-    )
-}
-
 pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
     state: &ParserState,
     identifier: &Identifier,
@@ -1248,24 +879,6 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
         ParserIssueCode::ReservedKeywordCannotBeUsedForConstantName,
         format!(
             "reserved keyword `{}` cannot be used as a constant name",
-            identifier,
-        ),
-    )
-    .with_source(
-        state.source.name(),
-        identifier.initial_position(),
-        identifier.final_position(),
-    )
-}
-
-pub(crate) fn type_cannot_be_used_in_current_context(
-    state: &ParserState,
-    identifier: &Identifier,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::TypeCannotBeUsedInCurrentContext,
-        format!(
-            "type `{}` cannot be used in the current context",
             identifier,
         ),
     )

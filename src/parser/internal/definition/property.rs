@@ -18,13 +18,6 @@ pub fn property_definition(
     let type_definition = r#type::type_definition(state)?;
     let variable = variable::parse(state)?;
 
-    if type_definition.is_bottom() {
-        crate::parser_report!(
-            state,
-            bottom_type_cannot_be_used_for_property(class_name, &type_definition, &variable)
-        );
-    }
-
     if let (Some(readonly), Some(r#static)) = (modifiers.get_readonly(), modifiers.get_static()) {
         crate::parser_report!(
             state,
