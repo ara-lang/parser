@@ -18,13 +18,6 @@ pub fn property_definition(
     let type_definition = r#type::type_definition(state)?;
     let variable = variable::parse(state)?;
 
-    if let (Some(readonly), Some(r#static)) = (modifiers.get_readonly(), modifiers.get_static()) {
-        crate::parser_report!(
-            state,
-            readonly_property_cannot_be_static(class_name, &variable, readonly, r#static)
-        );
-    }
-
     let attributes = state.get_attributes();
     let current = state.iterator.current();
 

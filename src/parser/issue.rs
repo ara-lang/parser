@@ -16,7 +16,6 @@ use crate::tree::definition::property::PropertyEntryDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
-use crate::tree::variable::Variable;
 use crate::tree::Node;
 
 #[derive(Debug, Copy, Clone)]
@@ -159,22 +158,6 @@ pub enum ParserIssueCode {
     ///
     /// - Remove one of the modifiers
     DuplicateModifier = 9,
-
-    /// Readonly property cannot be static ( code = 10 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///  public readonly static int $bar;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `static` modifier
-    /// - Remove the `readonly` modifier
-    ReadonlyPropertyCannotBeStatic = 10,
 
     /// Readonly property cannot have a default value ( code = 11 )
     ///
@@ -732,53 +715,6 @@ pub(crate) fn duplicate_modifier(
     )
     .with_source(origin, second, second + modifier.len())
     .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
-}
-
-pub(crate) fn readonly_property_cannot_be_static(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    property: &Variable,
-    readonly: &PropertyModifierDefinition,
-    r#static: &PropertyModifierDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::ReadonlyPropertyCannotBeStatic,
-        format!(
-            "readonly property `{}::{}` cannot be static",
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &property,
-        ),
-    )
-    .with_source(
-        origin,
-        r#static.initial_position(),
-        r#static.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        readonly.initial_position(),
-        readonly.final_position(),
-    ))
-    .with_annotation(Annotation::secondary(
-        origin,
-        property.initial_position(),
-        property.final_position(),
-    ))
-    .with_note("a property cannot be both readonly and static.");
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
 }
 
 pub(crate) fn readonly_property_cannot_have_default_value(
