@@ -181,6 +181,19 @@ pub enum ParserIssueCode {
     /// - Use a different name
     ReservedKeywordCannotBeUsedForConstantName = 13,
 
+    /// Type cannot be used in current context ( code = 35 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// use self;
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Use a different type
+    TypeCannotBeUsedInCurrentContext = 35,
+
     /// Missing item expression after attribute(s) ( code = 14 )
     ///
     /// Example:
@@ -706,6 +719,24 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
         ParserIssueCode::ReservedKeywordCannotBeUsedForConstantName,
         format!(
             "reserved keyword `{}` cannot be used as a constant name",
+            identifier,
+        ),
+    )
+    .with_source(
+        state.source.name(),
+        identifier.initial_position(),
+        identifier.final_position(),
+    )
+}
+
+pub(crate) fn type_cannot_be_used_in_current_context(
+    state: &ParserState,
+    identifier: &Identifier,
+) -> Issue {
+    Issue::error(
+        ParserIssueCode::TypeCannotBeUsedInCurrentContext,
+        format!(
+            "type `{}` cannot be used in the current context",
             identifier,
         ),
     )

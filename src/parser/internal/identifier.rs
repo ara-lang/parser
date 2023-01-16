@@ -341,6 +341,8 @@ pub fn fully_qualified_type_identifier(state: &mut State) -> ParseResult<Identif
                 value: current.to_string().into(),
             };
 
+            crate::parser_report!(state, type_cannot_be_used_in_current_context(&identifier));
+
             Ok(identifier)
         }
         t if is_reserved_identifier(t) => {
