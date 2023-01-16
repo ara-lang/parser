@@ -39,6 +39,7 @@ pub enum Statement {
     Expression(Box<ExpressionStatement>),
     Return(Box<ReturnStatement>),
     Block(Box<BlockStatement>),
+    Empty(usize),
 }
 
 impl Node for Statement {
@@ -60,6 +61,7 @@ impl Node for Statement {
             Statement::Expression(statement) => statement.initial_position(),
             Statement::Return(statement) => statement.initial_position(),
             Statement::Block(statement) => statement.initial_position(),
+            Statement::Empty(position) => *position,
         }
     }
 
@@ -77,6 +79,7 @@ impl Node for Statement {
             Statement::Expression(statement) => statement.final_position(),
             Statement::Return(statement) => statement.final_position(),
             Statement::Block(statement) => statement.final_position(),
+            Statement::Empty(position) => *position + 1,
         }
     }
 
@@ -94,6 +97,7 @@ impl Node for Statement {
             Statement::Expression(statement) => vec![statement.as_ref()],
             Statement::Return(statement) => vec![statement.as_ref()],
             Statement::Block(statement) => vec![statement.as_ref()],
+            Statement::Empty(_) => vec![],
         }
     }
 

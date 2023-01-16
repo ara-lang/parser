@@ -417,21 +417,6 @@ pub enum ParserIssueCode {
     /// - Remove the try block
     TryStatementMustHaveCatchOrFinally = 26,
 
-    /// Unexpected empty statement ( code = 27 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(): void {
-    ///    ;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the empty statement ( `;` )
-    UnexpectedEmptyStatement = 27,
-
     /// Unexpected token
     ///
     /// Example:
@@ -1019,18 +1004,6 @@ pub(crate) fn try_statement_must_have_catch_or_finally(
         state.source.name(),
         try_statement.initial_position(),
         try_statement.final_position(),
-    )
-}
-
-pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -> Issue {
-    Issue::error(
-        ParserIssueCode::UnexpectedEmptyStatement,
-        "unexpected empty statement",
-    )
-    .with_source(
-        state.source.name(),
-        current.position,
-        current.position + current.value.len(),
     )
 }
 

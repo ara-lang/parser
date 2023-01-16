@@ -1,0 +1,76 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: String(
+                                    Keyword {
+                                        value: "string",
+                                        position: 13,
+                                    },
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    position: 20,
+                                    name: "$foo",
+                                },
+                                default: None,
+                            },
+                        ],
+                        commas: [],
+                    },
+                    right_parenthesis: 24,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 25,
+                    type_definition: Identifier(
+                        TemplatedIdentifier {
+                            name: Identifier {
+                                position: 27,
+                                value: "Bar",
+                            },
+                            templates: None,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 31,
+                    statements: [
+                        Empty(
+                            35,
+                        ),
+                    ],
+                    right_brace: 37,
+                },
+            },
+        ),
+    ],
+    eof: 39,
+}

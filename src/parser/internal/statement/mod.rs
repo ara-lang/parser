@@ -31,14 +31,6 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
         return statement(state);
     }
 
-    if current.kind == TokenKind::SemiColon {
-        state.iterator.next();
-
-        crate::parser_report!(state, unexpected_empty_statement(current));
-
-        return statement(state);
-    }
-
     let statement = match &current.kind {
         TokenKind::Do => Statement::DoWhile(Box::new(r#loop::do_while_statement(state)?)),
         TokenKind::While => Statement::While(Box::new(r#loop::while_statement(state)?)),
@@ -62,6 +54,7 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
             },
             semicolon: utils::skip_semicolon(state)?,
         })),
+        TokenKind::SemiColon => Statement::Empty(utils::skip_semicolon(state)?),
         _ => {
             let comments = state.iterator.comments();
             let expression = expression::create(state)?;
