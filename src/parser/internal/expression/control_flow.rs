@@ -30,23 +30,17 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
 
                 while state.iterator.current().kind != TokenKind::RightBrace {
                     let current = state.iterator.current();
-                    let (condition, _default) = if current.kind == TokenKind::Default {
-                        (
-                            MatchArmConditionExpression::Default(utils::skip_keyword(
-                                state,
-                                TokenKind::Default,
-                            )?),
-                            true,
-                        )
+                    let condition = if current.kind == TokenKind::Default {
+                        MatchArmConditionExpression::Default(utils::skip_keyword(
+                            state,
+                            TokenKind::Default,
+                        )?)
                     } else {
-                        (
-                            MatchArmConditionExpression::Expressions(utils::comma_separated(
-                                state,
-                                &expression::create,
-                                TokenKind::DoubleArrow,
-                            )?),
-                            false,
-                        )
+                        MatchArmConditionExpression::Expressions(utils::comma_separated(
+                            state,
+                            &expression::create,
+                            TokenKind::DoubleArrow,
+                        )?)
                     };
 
                     let arm = MatchArmExpression {
