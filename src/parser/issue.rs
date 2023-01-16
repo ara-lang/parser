@@ -371,6 +371,21 @@ pub enum ParserIssueCode {
     /// - Demote the property
     PromotedPropertyCannotBeVariadic = 27,
 
+    /// Enum backing type must be either `int` or `string` ( code = 38 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// enum: float {
+    ///
+    /// }
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Change the backing type to `int` or `string`
+    InvalidEnumBackingType = 38,
+
     /// Catch block must have a catch or finally block ( code = 28 )
     ///
     /// Example:
@@ -929,6 +944,22 @@ pub(crate) fn promoted_property_cannot_be_variadic(
     }
 
     issue
+}
+
+pub(crate) fn invalid_enum_backing_type(
+    state: &ParserState,
+    backing_identifier: &Identifier,
+) -> Issue {
+    Issue::error(
+        ParserIssueCode::InvalidEnumBackingType,
+        format!("invalid enum backing type `{}`", backing_identifier),
+    )
+    .with_source(
+        state.source.name(),
+        backing_identifier.initial_position(),
+        backing_identifier.final_position(),
+    )
+    .with_note("the only valid enum backing types are `int`, and `string`.")
 }
 
 pub(crate) fn try_statement_must_have_catch_or_finally(

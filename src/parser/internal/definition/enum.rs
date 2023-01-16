@@ -38,6 +38,8 @@ pub fn enum_definition(state: &mut State) -> ParseResult<EnumDefinition> {
                 b"string" => BackedEnumTypeDefinition::String(position, identifier),
                 b"int" => BackedEnumTypeDefinition::Int(position, identifier),
                 _ => {
+                    crate::parser_report!(state, invalid_enum_backing_type(&identifier));
+
                     // don't panic, just return a dummy value
                     BackedEnumTypeDefinition::String(position, identifier)
                 }
