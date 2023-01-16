@@ -120,6 +120,5 @@ fn anonymous_class_expression_member(
     // e.g: public static
     let modifiers = modifier::property_modifier_definition_group(state, modifiers)?;
 
-    property::property_definition(state, None, modifiers)
-        .map(AnonymousClassExpressionMember::Property)
+    property::property_definition(state, modifiers).map(AnonymousClassExpressionMember::Property)
 }

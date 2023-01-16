@@ -40,7 +40,7 @@ error[P0006]: enum `Bar` cannot have magic method
 14 | |     }
    | \-----^
 
-error[P0042]: unexpected token `?>`, expected a definition
+error[P0028]: unexpected token `?>`, expected a definition
    --> 0083/code.ara:17:1
    |
 17 | ?>

@@ -38,13 +38,6 @@ pub fn function_like_parameter_list_definition(
             // 2. Then expect a variable.
             let variable = variable::parse(state)?;
 
-            if type_definition.is_bottom() {
-                crate::parser_report!(
-                    state,
-                    bottom_type_cannot_be_used_for_parameter(&type_definition, &variable)
-                );
-            }
-
             let current = state.iterator.current();
             let default = if current.kind == TokenKind::Equals {
                 state.iterator.next();
@@ -117,13 +110,6 @@ pub fn constructor_parameter_list_definition(
             } else {
                 (None, variable::parse(state)?)
             };
-
-            if type_definition.is_bottom() {
-                crate::parser_report!(
-                    state,
-                    bottom_type_cannot_be_used_for_parameter(&type_definition, &variable)
-                );
-            }
 
             let current = state.iterator.current();
             let default = if current.kind == TokenKind::Equals {

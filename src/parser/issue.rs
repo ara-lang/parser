@@ -6,18 +6,12 @@ use ara_reporting::issue::Issue;
 use crate::lexer::token::Token;
 use crate::lexer::token::TokenKind;
 use crate::parser::state::State as ParserState;
-use crate::tree::definition::function::AbstractConstructorDefinition;
-use crate::tree::definition::function::AbstractMethodDefinition;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::ConstructorParameterDefinition;
-use crate::tree::definition::modifier::PropertyModifierDefinition;
-use crate::tree::definition::property::PropertyEntryDefinition;
-use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
-use crate::tree::variable::Variable;
 use crate::tree::Node;
 
 #[derive(Debug, Copy, Clone)]
@@ -161,147 +155,7 @@ pub enum ParserIssueCode {
     /// - Remove one of the modifiers
     DuplicateModifier = 9,
 
-    /// Bottom type cannot be used for parameter ( code = 10 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(never $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedForParameter = 10,
-
-    /// Bottom type cannot be used for property ( code = 11 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///   public never $bar;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedForProperty = 11,
-
-    /// Standalone type cannot be used in union ( code = 12 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int|void $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    StandaloneTypeCannotBeUsedInUnion = 12,
-
-    /// Standalone type cannot be used in intersection ( code = 13 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int&void $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    StandaloneTypeCannotBeUsedInIntersection = 13,
-
-    /// Standalone type cannot be nullable ( code = 14 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(?mixed $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    /// - Remove the `?`
-    StandaloneTypeCannotBeNullable = 14,
-
-    /// Scalar type cannot be used in intersection ( code = 15 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(int&string $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    /// - Change the intersection to a union
-    ScalarTypeCannotBeUsedInIntersection = 15,
-
-    /// Readonly property cannot be static ( code = 17 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///  public readonly static int $bar;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `static` modifier
-    /// - Remove the `readonly` modifier
-    ReadonlyPropertyCannotBeStatic = 17,
-
-    /// Readonly property cannot have a default value ( code = 18 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public readonly int $bar = 1;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the default value
-    /// - Remove the `readonly` modifier
-    ReadonlyPropertyCannotHaveDefaultValue = 18,
-
-    /// Bottom type cannot be used in tuple type parameter ( code = 19 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// type Foo = (void, string);
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type
-    BottomTypeCannotBeUsedInTuple = 19,
-
-    /// Disjunctive normal form types cannot be nested ( code = 20 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// type Foo = (A&(B|C))|(D&E);
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Refactor the type to not be nested, e.g. `(A&B)|(A&C)|(D&E)`
-    DisjunctiveNormalFormTypesCannotBeNested = 20,
-
-    /// Reserved keyword cannot be used for type name ( code = 21 )
+    /// Reserved keyword cannot be used for type name ( code = 10 )
     ///
     /// Example:
     ///
@@ -312,9 +166,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForTypeName = 21,
+    ReservedKeywordCannotBeUsedForTypeName = 10,
 
-    /// Reserved keyword cannot be used for constant name ( code = 22 )
+    /// Reserved keyword cannot be used for constant name ( code = 11 )
     ///
     /// Example:
     ///
@@ -325,9 +179,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForConstantName = 22,
+    ReservedKeywordCannotBeUsedForConstantName = 11,
 
-    /// Type cannot be used in current context ( code = 23 )
+    /// Type cannot be used in current context ( code = 12 )
     ///
     /// Example:
     ///
@@ -338,9 +192,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different type
-    TypeCannotBeUsedInCurrentContext = 23,
+    TypeCannotBeUsedInCurrentContext = 12,
 
-    /// Missing item expression after attribute(s) ( code = 24 )
+    /// Missing item expression after attribute(s) ( code = 13 )
     ///
     /// Example:
     ///
@@ -354,39 +208,9 @@ pub enum ParserIssueCode {
     ///
     /// - Add an item expression after the attribute(s)
     /// - Remove the attribute(s)
-    MissingItemExpressionAfterAttributes = 24,
+    MissingItemExpressionAfterAttributes = 13,
 
-    /// Final class cannot be abstract ( code = 25 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// final abstract class Foo {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Remove the `final` modifier
-    FinalClassCannotBeAbstract = 25,
-
-    /// Final class member cannot be abstract ( code = 26 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     final abstract public function bar(): void {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Remove the `final` modifier
-    FinalClassMemberCannotBeAbstract = 26,
-
-    /// Private constant cannot be final ( code = 27 )
+    /// Private constant cannot be final ( code = 14 )
     ///
     /// Example:
     ///
@@ -400,9 +224,9 @@ pub enum ParserIssueCode {
     ///
     /// - Remove the `final` modifier
     /// - Remove the `private` modifier
-    PrivateConstantCannotBeFinal = 27,
+    PrivateConstantCannotBeFinal = 14,
 
-    /// Modifier cannot be used on classes ( code = 28 )
+    /// Modifier cannot be used on classes ( code = 15 )
     ///
     /// Example:
     ///
@@ -413,9 +237,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnClass = 28,
+    ModifierCannotBeUsedOnClass = 15,
 
-    /// Modifier cannot be used on class methods ( code = 29 )
+    /// Modifier cannot be used on class methods ( code = 16 )
     ///
     /// Example:
     ///
@@ -428,9 +252,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnClassMethod = 29,
+    ModifierCannotBeUsedOnClassMethod = 16,
 
-    /// Modifier cannot be used on interface methods ( code = 30 )
+    /// Modifier cannot be used on interface methods ( code = 17 )
     ///
     /// Example:
     ///
@@ -443,9 +267,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnInterfaceMethod = 30,
+    ModifierCannotBeUsedOnInterfaceMethod = 17,
 
-    /// Modifier cannot be used on enum methods ( code = 31 )
+    /// Modifier cannot be used on enum methods ( code = 18 )
     ///
     /// Example:
     ///
@@ -458,9 +282,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnEnumMethod = 31,
+    ModifierCannotBeUsedOnEnumMethod = 18,
 
-    /// Modifier cannot be used on properties ( code = 32 )
+    /// Modifier cannot be used on properties ( code = 19 )
     ///
     /// Example:
     ///
@@ -474,9 +298,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnProperty = 32,
+    ModifierCannotBeUsedOnProperty = 19,
 
-    /// Modifier cannot be used on promoted properties ( code = 33 )
+    /// Modifier cannot be used on promoted properties ( code = 20 )
     ///
     /// Example:
     ///
@@ -491,9 +315,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnPromotedProperty = 33,
+    ModifierCannotBeUsedOnPromotedProperty = 20,
 
-    /// Modifier cannot be used on constants ( code = 34 )
+    /// Modifier cannot be used on constants ( code = 21 )
     ///
     /// Example:
     ///
@@ -506,9 +330,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnConstant = 34,
+    ModifierCannotBeUsedOnConstant = 21,
 
-    /// Modifier cannot be used on interface constants ( code = 35 )
+    /// Modifier cannot be used on interface constants ( code = 22 )
     ///
     /// Example:
     ///
@@ -521,9 +345,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the modifier
-    ModifierCannotBeUsedOnInterfaceConstant = 35,
+    ModifierCannotBeUsedOnInterfaceConstant = 22,
 
-    /// Match expression cannot have multiple default arms ( code = 36 )
+    /// Match expression cannot have multiple default arms ( code = 23 )
     ///
     /// Example:
     ///
@@ -540,9 +364,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove one of the default arms
-    MatchExpressionCannotHaveMultipleDefaultArms = 36,
+    MatchExpressionCannotHaveMultipleDefaultArms = 23,
 
-    /// Promoted property cannot be variadic ( code = 37 )
+    /// Promoted property cannot be variadic ( code = 24 )
     ///
     /// Example:
     ///
@@ -558,9 +382,9 @@ pub enum ParserIssueCode {
     ///
     /// - Remove the variadic declaration ( `...` )
     /// - Demote the property
-    PromotedPropertyCannotBeVariadic = 37,
+    PromotedPropertyCannotBeVariadic = 24,
 
-    /// Enum backing type must be either `int` or `string` ( code = 38 )
+    /// Enum backing type must be either `int` or `string` ( code = 25 )
     ///
     /// Example:
     ///
@@ -573,9 +397,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Change the backing type to `int` or `string`
-    InvalidEnumBackingType = 38,
+    InvalidEnumBackingType = 25,
 
-    /// Catch block must have a catch or finally block ( code = 39 )
+    /// Catch block must have a catch or finally block ( code = 26 )
     ///
     /// Example:
     ///
@@ -591,25 +415,9 @@ pub enum ParserIssueCode {
     ///
     /// - Add a catch or finally block
     /// - Remove the try block
-    TryStatementMustHaveCatchOrFinally = 39,
+    TryStatementMustHaveCatchOrFinally = 26,
 
-    /// Abstract method cannot be declared on a non-abstract class ( code = 40 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///    abstract function bar(): void;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `abstract` modifier
-    /// - Make the class abstract
-    CannotDeclareAbstractMethodOnNonAbstractClass = 40,
-
-    /// Unexpected empty statement ( code = 41 )
+    /// Unexpected empty statement ( code = 27 )
     ///
     /// Example:
     ///
@@ -622,7 +430,7 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the empty statement ( `;` )
-    UnexpectedEmptyStatement = 41,
+    UnexpectedEmptyStatement = 27,
 
     /// Unexpected token
     ///
@@ -632,9 +440,9 @@ pub enum ParserIssueCode {
     /// function foo() -> void {
     /// }
     /// ```
-    UnexpectedToken = 42,
+    UnexpectedToken = 28,
 
-    /// Invalid constant expression ( code = 43 )
+    /// Invalid constant expression ( code = 29 )
     ///
     /// Example:
     ///
@@ -645,9 +453,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a valid constant expression
-    InvalidConstantExpression = 43,
+    InvalidConstantExpression = 29,
 
-    /// Invalid constant initialization expression ( code = 44 )
+    /// Invalid constant initialization expression ( code = 30 )
     ///
     /// Example:
     ///
@@ -662,9 +470,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a valid constant initialization expression
-    InvalidConstantInitializationExpression = 44,
+    InvalidConstantInitializationExpression = 30,
 
-    /// Invalid constant initialization expression ( code = 45 )
+    /// Invalid constant initialization expression ( code = 31 )
     ///
     /// Example:
     ///
@@ -675,9 +483,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Remove the class instantiation expression(s)
-    InvalidInitializationInConstantExpression = 45,
+    InvalidInitializationInConstantExpression = 31,
 
-    /// Invalid empty type template ( code = 46 )
+    /// Invalid empty type template ( code = 32 )
     ///
     /// Example:
     ///
@@ -689,21 +497,7 @@ pub enum ParserIssueCode {
     ///
     /// - Remove the empty type template
     /// - Add a type template
-    ExpectedAtLeastOneTypeInTemplateGroup = 46,
-
-    /// Literal type cannot be used in intersection ( code = 47 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(Foo&null $bar): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a different type (instead of `null`)
-    /// - Change the intersection to a union
-    LiteralTypeCannotBeUsedInIntersection = 47,
+    ExpectedAtLeastOneTypeInTemplateGroup = 32,
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
@@ -899,329 +693,6 @@ pub(crate) fn duplicate_modifier(
     .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
 }
 
-pub(crate) fn bottom_type_cannot_be_used_for_parameter(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    parameter: &Variable,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedForParameter,
-        format!(
-            "bottom type `{}` cannot be used for parameter `{}`",
-            &type_definition, &parameter,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        parameter.initial_position(),
-        parameter.final_position(),
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.")
-}
-
-pub(crate) fn bottom_type_cannot_be_used_for_property(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    type_definition: &TypeDefinition,
-    property: &Variable,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedForProperty,
-        format!(
-            "bottom type `{}` cannot be used for property `{}::{}`",
-            &type_definition,
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &property,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        property.initial_position(),
-        property.final_position(),
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.");
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
-}
-
-pub(crate) fn standalone_type_cannot_be_used_in_union(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    pipe: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeUsedInUnion,
-        format!(
-            "standalone type `{}` cannot be used in a union",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, pipe, pipe + 1))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn standalone_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeUsedInIntersection,
-        format!(
-            "standalone type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        ampersand,
-        ampersand + 1,
-    ))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn standalone_type_cannot_be_nullable(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    question_mark: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::StandaloneTypeCannotBeNullable,
-        format!("standalone type `{}` cannot be nullable", &type_definition,),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        question_mark,
-        question_mark + 1,
-    ))
-    .with_note("a standalone type is either `mixed`, `void`, `never`, `resource`, `nonnull` or a nullable type.")
-}
-
-pub(crate) fn scalar_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::ScalarTypeCannotBeUsedInIntersection,
-        format!(
-            "scalar type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
-    .with_note("a scalar type is either `int`, `float`, `string`, or `bool`.")
-}
-
-pub(crate) fn literal_type_cannot_be_used_in_intersection(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    ampersand: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::LiteralTypeCannotBeUsedInIntersection,
-        format!(
-            "literal type `{}` cannot be used in an intersection",
-            &type_definition,
-        ),
-    ).with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(origin, ampersand, ampersand + 1))
-    .with_note("a literal type is either a literal integer, a literal float, a literal string, `false`, `true`, or `null`.")
-}
-
-pub(crate) fn readonly_property_cannot_be_static(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    property: &Variable,
-    readonly: &PropertyModifierDefinition,
-    r#static: &PropertyModifierDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::ReadonlyPropertyCannotBeStatic,
-        format!(
-            "readonly property `{}::{}` cannot be static",
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &property,
-        ),
-    )
-    .with_source(
-        origin,
-        r#static.initial_position(),
-        r#static.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        readonly.initial_position(),
-        readonly.final_position(),
-    ))
-    .with_annotation(Annotation::secondary(
-        origin,
-        property.initial_position(),
-        property.final_position(),
-    ))
-    .with_note("a property cannot be both readonly and static.");
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
-}
-
-pub(crate) fn readonly_property_cannot_have_default_value(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    entry: &PropertyEntryDefinition,
-    readonly: &PropertyModifierDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::ReadonlyPropertyCannotHaveDefaultValue,
-        format!(
-            "readonly property `{}::{}` cannot have a default value",
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            &entry.variable(),
-        ),
-    )
-    .with_source(
-        origin,
-        entry.initial_position(),
-        entry.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        readonly.initial_position(),
-        readonly.final_position(),
-    ))
-    .with_note(
-        "a readonly property cannot have a default value because it cannot be changed after initialization.",
-    );
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
-}
-
-pub(crate) fn bottom_type_cannot_be_used_in_tuple(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-    left_parenthesis: usize,
-    right_parenthesis: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::BottomTypeCannotBeUsedInTuple,
-        format!(
-            "bottom type `{}` cannot be used in a tuple type",
-            &type_definition,
-        ),
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        left_parenthesis,
-        right_parenthesis + 1,
-    ))
-    .with_note("bottom types are types that have no values, such as `never` and `void`.")
-}
-
-pub(crate) fn disjunctive_normal_form_types_cannot_be_nested(
-    state: &ParserState,
-    type_definition: &TypeDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::DisjunctiveNormalFormTypesCannotBeNested,
-        "cannot nest disjunctive normal form types",
-    )
-    .with_source(
-        origin,
-        type_definition.initial_position(),
-        type_definition.final_position(),
-    )
-    .with_note(
-        "disjunctive normal form types are types that are separated by `|`, or `&` and are enclosed in `(` and `)`.",
-    )
-}
-
 pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
     state: &ParserState,
     identifier: &Identifier,
@@ -1301,56 +772,6 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
     }
 
     issue
-}
-
-pub(crate) fn final_class_cannot_be_abstract(
-    state: &ParserState,
-    r#final: &dyn Node,
-    r#abstract: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::FinalClassCannotBeAbstract,
-        "final class cannot be abstract",
-    )
-    .with_source(
-        origin,
-        r#abstract.initial_position(),
-        r#abstract.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        r#final.initial_position(),
-        r#final.final_position(),
-    ))
-    .with_note("a final class cannot be abstract because it cannot be extended by other classes.")
-}
-
-pub(crate) fn final_class_member_cannot_be_abstract(
-    state: &ParserState,
-    r#final: &dyn Node,
-    r#abstract: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::FinalClassMemberCannotBeAbstract,
-        "final class member cannot be abstract",
-    )
-    .with_source(
-        origin,
-        r#abstract.initial_position(),
-        r#abstract.final_position(),
-    )
-    .with_annotation(Annotation::primary(
-        origin,
-        r#final.initial_position(),
-        r#final.final_position(),
-    ))
-    .with_note(
-        "a final class member cannot be abstract because it cannot be overridden by other classes.",
-    )
 }
 
 pub(crate) fn private_constant_cannot_be_final(
@@ -1599,53 +1020,6 @@ pub(crate) fn try_statement_must_have_catch_or_finally(
         try_statement.initial_position(),
         try_statement.final_position(),
     )
-}
-
-pub(crate) fn cannot_declare_abstract_method_on_non_abstract_class(
-    state: &ParserState,
-    class_name: &Identifier,
-    method: &AbstractMethodDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::CannotDeclareAbstractMethodOnNonAbstractClass,
-        format!(
-            "cannot declare abstract method `{}::{}` on a non-abstract class",
-            state.named(class_name),
-            method.name
-        ),
-    )
-    .with_source(origin, method.initial_position(), method.final_position())
-    .with_annotation(Annotation::secondary(
-        origin,
-        class_name.initial_position(),
-        class_name.final_position(),
-    ))
-    .with_note("abstract methods can only be declared on abstract classes.")
-}
-
-pub(crate) fn cannot_declare_abstract_ctor_on_non_abstract_class(
-    state: &ParserState,
-    class_name: &Identifier,
-    method: &AbstractConstructorDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::CannotDeclareAbstractMethodOnNonAbstractClass,
-        format!(
-            "cannot declare abstract constructor on non-abstract class `{}`",
-            state.named(class_name),
-        ),
-    )
-    .with_source(origin, method.initial_position(), method.final_position())
-    .with_annotation(Annotation::secondary(
-        origin,
-        class_name.initial_position(),
-        class_name.final_position(),
-    ))
-    .with_note("abstract methods can only be declared on abstract classes.")
 }
 
 pub(crate) fn unexpected_empty_statement(state: &ParserState, current: &Token) -> Issue {
