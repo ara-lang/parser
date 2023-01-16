@@ -1,22 +1,22 @@
-error[P0033]: invalid constant initialization expression
+error[P0030]: invalid constant initialization expression
   --> 0104/code.ara:2:7
   |
 2 | #[Baz(...BAZ)]
   |       ^^^^^^
 
-error[P0033]: invalid constant initialization expression
+error[P0030]: invalid constant initialization expression
   --> 0104/code.ara:4:16
   |
 4 |     Bar $bar = new Bar(...BAZ),
   |                ^^^^^^^^^^^^^^^
 
-error[P0033]: invalid constant initialization expression
+error[P0030]: invalid constant initialization expression
   --> 0104/code.ara:7:7
   |
 7 | #[Bar(...BAZ)]
   |       ^^^^^^
 
-error[P0033]: invalid constant initialization expression
+error[P0030]: invalid constant initialization expression
   --> 0104/code.ara:9:16
   |
 9 |     Bar $bar = new Bar(BAZ...),
