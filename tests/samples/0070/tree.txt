@@ -1388,11 +1388,13 @@ DefinitionTree {
                                                     value: "match",
                                                     position: 669,
                                                 },
-                                                expression: Variable(
-                                                    Variable {
-                                                        position: 675,
-                                                        name: "$a",
-                                                    },
+                                                expression: Some(
+                                                    Variable(
+                                                        Variable {
+                                                            position: 675,
+                                                            name: "$a",
+                                                        },
+                                                    ),
                                                 ),
                                                 body: MatchBodyExpression {
                                                     left_brace: 678,
@@ -1524,20 +1526,22 @@ DefinitionTree {
                                                     value: "match",
                                                     position: 751,
                                                 },
-                                                expression: Parenthesized(
-                                                    ParenthesizedExpression {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left_parenthesis: 757,
-                                                        expression: Variable(
-                                                            Variable {
-                                                                position: 758,
-                                                                name: "$a",
+                                                expression: Some(
+                                                    Parenthesized(
+                                                        ParenthesizedExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
                                                             },
-                                                        ),
-                                                        right_parenthesis: 760,
-                                                    },
+                                                            left_parenthesis: 757,
+                                                            expression: Variable(
+                                                                Variable {
+                                                                    position: 758,
+                                                                    name: "$a",
+                                                                },
+                                                            ),
+                                                            right_parenthesis: 760,
+                                                        },
+                                                    ),
                                                 ),
                                                 body: MatchBodyExpression {
                                                     left_brace: 762,

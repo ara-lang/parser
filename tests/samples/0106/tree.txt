@@ -1,0 +1,263 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 27,
+                                                name: "$c",
+                                            },
+                                        ),
+                                        equals: 30,
+                                        right: Match(
+                                            MatchExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                match: Keyword {
+                                                    value: "match",
+                                                    position: 32,
+                                                },
+                                                expression: None,
+                                                body: MatchBodyExpression {
+                                                    left_brace: 38,
+                                                    arms: CommaSeparated {
+                                                        inner: [
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            ComparisonOperation(
+                                                                                Equal {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    left: Variable(
+                                                                                        Variable {
+                                                                                            position: 48,
+                                                                                            name: "$a",
+                                                                                        },
+                                                                                    ),
+                                                                                    double_equals: 51,
+                                                                                    right: Variable(
+                                                                                        Variable {
+                                                                                            position: 54,
+                                                                                            name: "$b",
+                                                                                        },
+                                                                                    ),
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: 57,
+                                                                expression: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a is equal to b'",
+                                                                            position: 60,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            ComparisonOperation(
+                                                                                GreaterThan {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    left: Variable(
+                                                                                        Variable {
+                                                                                            position: 87,
+                                                                                            name: "$a",
+                                                                                        },
+                                                                                    ),
+                                                                                    greater_than: 90,
+                                                                                    right: Variable(
+                                                                                        Variable {
+                                                                                            position: 92,
+                                                                                            name: "$b",
+                                                                                        },
+                                                                                    ),
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: 95,
+                                                                expression: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a is greater than b'",
+                                                                            position: 98,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Expressions(
+                                                                    CommaSeparated {
+                                                                        inner: [
+                                                                            ComparisonOperation(
+                                                                                LessThan {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    left: Variable(
+                                                                                        Variable {
+                                                                                            position: 129,
+                                                                                            name: "$a",
+                                                                                        },
+                                                                                    ),
+                                                                                    less_than: 132,
+                                                                                    right: Variable(
+                                                                                        Variable {
+                                                                                            position: 134,
+                                                                                            name: "$b",
+                                                                                        },
+                                                                                    ),
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                ),
+                                                                arrow: 137,
+                                                                expression: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a is less than b'",
+                                                                            position: 140,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Default(
+                                                                    Keyword {
+                                                                        value: "default",
+                                                                        position: 168,
+                                                                    },
+                                                                ),
+                                                                arrow: 176,
+                                                                expression: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a and b are not comparable'",
+                                                                            position: 179,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                            MatchArmExpression {
+                                                                condition: Default(
+                                                                    Keyword {
+                                                                        value: "default",
+                                                                        position: 217,
+                                                                    },
+                                                                ),
+                                                                arrow: 225,
+                                                                expression: Literal(
+                                                                    String(
+                                                                        LiteralString {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            value: "'a and b are not comparable'",
+                                                                            position: 228,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [
+                                                            77,
+                                                            119,
+                                                            158,
+                                                            207,
+                                                            256,
+                                                        ],
+                                                    },
+                                                    right_brace: 301,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 302,
+                            },
+                        ),
+                    ],
+                    right_brace: 304,
+                },
+            },
+        ),
+    ],
+    eof: 306,
+}

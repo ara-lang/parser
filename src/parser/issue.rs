@@ -347,25 +347,6 @@ pub enum ParserIssueCode {
     /// - Remove the modifier
     ModifierCannotBeUsedOnInterfaceConstant = 22,
 
-    /// Match expression cannot have multiple default arms ( code = 23 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(string $input): string {
-    ///     match $input {
-    ///         "foo" => "bar",
-    ///         default => "baz",
-    ///         default => "qux",
-    ///     }
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove one of the default arms
-    MatchExpressionCannotHaveMultipleDefaultArms = 23,
-
     /// Promoted property cannot be variadic ( code = 24 )
     ///
     /// Example:
@@ -917,26 +898,6 @@ pub(crate) fn modifier_cannot_be_used_on_interface_constant(
     )
     .with_source(state.source.name(), position, position + modifier.len())
     .with_note("only the `final`, and `public` modifiers can be used on an interface constant.")
-}
-
-pub(crate) fn match_expression_cannot_have_multiple_default_arms(
-    state: &ParserState,
-    first: &dyn Node,
-    second: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::MatchExpressionCannotHaveMultipleDefaultArms,
-        "match expression cannot have multiple default arms",
-    )
-    .with_source(origin, second.initial_position(), second.final_position())
-    .with_annotation(Annotation::primary(
-        origin,
-        first.initial_position(),
-        first.final_position(),
-    ))
-    .with_note("a match expression can only have one default arm")
 }
 
 pub(crate) fn promoted_property_cannot_be_variadic(

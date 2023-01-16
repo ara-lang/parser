@@ -13,7 +13,7 @@ use crate::tree::Node;
 pub struct MatchExpression {
     pub comments: CommentGroup,
     pub r#match: Keyword,
-    pub expression: Box<Expression>,
+    pub expression: Option<Box<Expression>>,
     pub body: MatchBodyExpression,
 }
 
@@ -54,7 +54,11 @@ impl Node for MatchExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.r#match, self.expression.as_ref(), &self.body]
+        let mut children: Vec<&dyn Node> = vec![&self.r#match, &self.body];
+        if let Some(expression) = &self.expression {
+            children.push(expression.as_ref());
+        }
+        children
     }
 
     fn get_description(&self) -> String {

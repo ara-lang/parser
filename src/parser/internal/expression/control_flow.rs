@@ -10,36 +10,37 @@ use crate::tree::expression::control_flow::MatchExpression;
 use crate::tree::utils::CommaSeparated;
 
 pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
+    let r#match = utils::skip_keyword(state, TokenKind::Match)?;
+
+    let expression = if state.iterator.current().kind == TokenKind::LeftBrace {
+        None
+    } else {
+        Some(Box::new(expression::create(state)?))
+    };
+
     Ok(MatchExpression {
         comments: state.iterator.comments(),
-        r#match: utils::skip_keyword(state, TokenKind::Match)?,
-        expression: Box::new(expression::create(state)?),
+        r#match,
+        expression,
         body: MatchBodyExpression {
             left_brace: utils::skip_left_brace(state)?,
             arms: {
                 let mut items = Vec::new();
                 let mut commas = Vec::new();
-                let mut default_arm = None;
 
                 while state.iterator.current().kind != TokenKind::RightBrace {
                     let current = state.iterator.current();
-                    let (condition, default) = if current.kind == TokenKind::Default {
-                        (
-                            MatchArmConditionExpression::Default(utils::skip_keyword(
-                                state,
-                                TokenKind::Default,
-                            )?),
-                            true,
-                        )
+                    let condition = if current.kind == TokenKind::Default {
+                        MatchArmConditionExpression::Default(utils::skip_keyword(
+                            state,
+                            TokenKind::Default,
+                        )?)
                     } else {
-                        (
-                            MatchArmConditionExpression::Expressions(utils::comma_separated(
-                                state,
-                                &expression::create,
-                                TokenKind::DoubleArrow,
-                            )?),
-                            false,
-                        )
+                        MatchArmConditionExpression::Expressions(utils::comma_separated(
+                            state,
+                            &expression::create,
+                            TokenKind::DoubleArrow,
+                        )?)
                     };
 
                     let arm = MatchArmExpression {
@@ -47,20 +48,6 @@ pub fn match_expression(state: &mut State) -> ParseResult<MatchExpression> {
                         arrow: utils::skip_double_arrow(state)?,
                         expression: expression::create(state)?,
                     };
-
-                    if default {
-                        if let Some(default_arm) = &default_arm {
-                            crate::parser_report!(
-                                state,
-                                match_expression_cannot_have_multiple_default_arms(
-                                    default_arm,
-                                    &arm,
-                                )
-                            );
-                        } else {
-                            default_arm = Some(arm.clone());
-                        }
-                    }
 
                     items.push(arm);
 

@@ -1,0 +1,9 @@
+function bar(): void {
+    $c = match {
+        $a == $b => 'a is equal to b',
+        $a > $b => 'a is greater than b',
+        $a < $b => 'a is less than b',
+        default => 'a and b are not comparable',
+        default => 'a and b are not comparable', // The analyzer should warn about this
+    };
+}
