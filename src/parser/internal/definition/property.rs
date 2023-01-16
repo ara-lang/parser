@@ -23,22 +23,7 @@ pub fn property_definition(
         PropertyEntryDefinition::Initialized {
             variable,
             equals: utils::skip(state, TokenKind::Equals)?,
-            value: {
-                let expression = expression::create(state)?;
-
-                if !expression.is_constant(false) {
-                    if expression.is_constant(true) {
-                        crate::parser_report!(
-                            state,
-                            invalid_initialization_in_constant_expression(&expression)
-                        );
-                    } else {
-                        crate::parser_report!(state, invalid_constant_expression(&expression));
-                    }
-                }
-
-                expression
-            },
+            value: expression::create(state)?,
         }
     } else {
         PropertyEntryDefinition::Uninitialized { variable }

@@ -9,7 +9,6 @@ use crate::parser::state::State as ParserState;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::definition::function::ConstructorParameterDefinition;
-use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::statement::r#try::TryStatement;
 use crate::tree::Node;
@@ -427,19 +426,6 @@ pub enum ParserIssueCode {
     /// ```
     UnexpectedToken = 28,
 
-    /// Invalid constant expression ( code = 29 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// const FOO = function(): void { };
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a valid constant expression
-    InvalidConstantExpression = 29,
-
     /// Invalid constant initialization expression ( code = 30 )
     ///
     /// Example:
@@ -456,19 +442,6 @@ pub enum ParserIssueCode {
     ///
     /// - Use a valid constant initialization expression
     InvalidConstantInitializationExpression = 30,
-
-    /// Invalid constant initialization expression ( code = 31 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// const FOO = new Bar();
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the class instantiation expression(s)
-    InvalidInitializationInConstantExpression = 31,
 
     /// Invalid empty type template ( code = 32 )
     ///
@@ -1064,18 +1037,6 @@ pub(crate) fn unexpected_token<T: ToString>(
     )
 }
 
-pub(crate) fn invalid_constant_expression(state: &ParserState, expression: &Expression) -> Issue {
-    Issue::error(
-        ParserIssueCode::InvalidConstantExpression,
-        "invalid constant expression",
-    )
-    .with_source(
-        state.source.name(),
-        expression.initial_position(),
-        expression.final_position(),
-    )
-}
-
 pub(crate) fn invalid_constant_initialization_expression(
     state: &ParserState,
     expression: &dyn Node,
@@ -1089,22 +1050,6 @@ pub(crate) fn invalid_constant_initialization_expression(
         expression.initial_position(),
         expression.final_position(),
     )
-}
-
-pub(crate) fn invalid_initialization_in_constant_expression(
-    state: &ParserState,
-    expression: &Expression,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::InvalidInitializationInConstantExpression,
-        "invalid initialization in constant expression",
-    )
-    .with_source(
-        state.source.name(),
-        expression.initial_position(),
-        expression.final_position(),
-    )
-    .with_note("constant expressions cannot contain `new` expressions.")
 }
 
 pub(crate) fn expected_at_least_one_type_in_template_group(
