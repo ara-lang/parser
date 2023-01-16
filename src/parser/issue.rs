@@ -471,6 +471,20 @@ pub enum ParserIssueCode {
     ///
     /// - Remove the class instantiation expression(s)
     InvalidInitializationInConstantExpression = 34,
+
+    /// Invalid empty type template ( code = 46 )
+    ///
+    /// Example:
+    ///
+    /// ```ara
+    /// type Foo = Bar<>;
+    /// ```
+    ///
+    /// Possible solution(s):
+    ///
+    /// - Remove the empty type template
+    /// - Add a type template
+    ExpectedAtLeastOneTypeInTemplateGroup = 46,
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
@@ -1087,6 +1101,18 @@ pub(crate) fn invalid_initialization_in_constant_expression(
         expression.final_position(),
     )
     .with_note("constant expressions cannot contain `new` expressions.")
+}
+
+pub(crate) fn expected_at_least_one_type_in_template_group(
+    state: &ParserState,
+    less_than: usize,
+    greater_than: usize,
+) -> Issue {
+    Issue::error(
+        ParserIssueCode::ExpectedAtLeastOneTypeInTemplateGroup,
+        "expected at least one type in template group",
+    )
+    .with_source(state.source.name(), less_than, greater_than)
 }
 
 impl ::std::fmt::Display for ParserIssueCode {

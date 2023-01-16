@@ -125,6 +125,13 @@ pub fn type_template_group_definition(
         }
     };
 
+    if members.inner.is_empty() {
+        crate::parser_report!(
+            state,
+            expected_at_least_one_type_in_template_group(less_than, greater_than)
+        );
+    }
+
     Ok(TypeTemplateGroupDefinition {
         comments,
         less_than,
