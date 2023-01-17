@@ -1,26 +1,3 @@
-error[P0031]: invalid initialization in constant expression
-  --> 0086/code.ara:1:13
-  |
-1 | const FOO = new Foo();
-  |             ^^^^^^^^^
-  |
-  = constant expressions cannot contain `new` expressions.
-
-error[P0029]: invalid constant expression
-  --> 0086/code.ara:3:13
-  |  
-3 |   const BAR = function(): Bar {
-  | /-------------^
-4 | |     return new Bar();
-5 | | };
-  | \-^
-
-error[P0029]: invalid constant expression
-  --> 0086/code.ara:7:13
-  |
-7 | const BAZ = fn(): Baz => new Baz();
-  |             ^^^^^^^^^^^^^^^^^^^^^^
-
 error[P0030]: invalid constant initialization expression
   --> 0086/code.ara:9:7
   |
@@ -57,29 +34,6 @@ error[P0030]: invalid constant initialization expression
 13 |     Qux $c = new Qux(function(): void {})
    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-error[P0031]: invalid initialization in constant expression
-   --> 0086/code.ara:17:17
-   |
-17 |     const FOO = new Foo();
-   |                 ^^^^^^^^^
-   |
-   = constant expressions cannot contain `new` expressions.
-
-error[P0029]: invalid constant expression
-   --> 0086/code.ara:19:17
-   |  
-19 |       const BAR = function(): Bar {
-   | /-----------------^
-20 | |         return new Bar();
-21 | |     };
-   | \-----^
-
-error[P0029]: invalid constant expression
-   --> 0086/code.ara:23:17
-   |
-23 |     const BAZ = fn(): Baz => new Baz();
-   |                 ^^^^^^^^^^^^^^^^^^^^^^
-
 error[P0028]: unexpected identifier, expected `;`
    --> 0086/code.ara:25:22
    |
@@ -87,5 +41,5 @@ error[P0028]: unexpected identifier, expected `;`
    |                      ^^^
 
 error: failed to parse "0086/code.ara" due to the above issue(s)
- = summary: 13 error(s)
+ = summary: 7 error(s)
 
