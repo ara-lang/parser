@@ -1,40 +1,40 @@
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
   --> 0086/code.ara:9:7
   |
 9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
   |       ^^^^^^^^^^^^^
 
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
   --> 0086/code.ara:9:22
   |
 9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
   |                      ^^^^^^^^^^^^^
 
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
   --> 0086/code.ara:9:37
   |
 9 | #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
    --> 0086/code.ara:11:14
    |
 11 |     Bar $a = new Bar($bar),
    |              ^^^^^^^^^^^^^
 
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
    --> 0086/code.ara:12:14
    |
 12 |     Baz $b = new Baz($baz),
    |              ^^^^^^^^^^^^^
 
-error[P0030]: invalid constant initialization expression
+error[P0014]: invalid constant initialization expression
    --> 0086/code.ara:13:14
    |
 13 |     Qux $c = new Qux(function(): void {})
    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-error[P0028]: unexpected identifier, expected `;`
+error[P0013]: unexpected identifier, expected `;`
    --> 0086/code.ara:25:22
    |
 25 |     private mixed $a FOO = new Foo();

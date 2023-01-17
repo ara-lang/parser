@@ -57,7 +57,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 38,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -126,7 +127,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 87,
                     modifiers: [],
                 },
                 class: Keyword {

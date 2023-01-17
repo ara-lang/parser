@@ -14,7 +14,6 @@ use crate::tree::definition::interface::InterfaceDefinition;
 use crate::tree::definition::interface::InterfaceDefinitionBody;
 use crate::tree::definition::interface::InterfaceDefinitionExtends;
 use crate::tree::definition::interface::InterfaceDefinitionMember;
-use crate::tree::identifier::Identifier;
 
 pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinition> {
     let comments = state.iterator.comments();
@@ -47,7 +46,7 @@ pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinitio
         members: {
             let mut members = Vec::new();
             while state.iterator.current().kind != TokenKind::RightBrace {
-                members.push(interface_definition_member(state, &name)?);
+                members.push(interface_definition_member(state)?);
             }
 
             members
@@ -66,27 +65,16 @@ pub fn interface_definition(state: &mut State) -> ParseResult<InterfaceDefinitio
     })
 }
 
-fn interface_definition_member(
-    state: &mut State,
-    interface_name: &Identifier,
-) -> ParseResult<InterfaceDefinitionMember> {
+fn interface_definition_member(state: &mut State) -> ParseResult<InterfaceDefinitionMember> {
     attribute::gather(state)?;
 
     let modifiers = modifier::collect(state)?;
 
     if state.iterator.current().kind == TokenKind::Const {
-        let modifiers = modifier::interface_constant_modifier_definition_group(state, modifiers)?;
         constant::classish_constant_definition(state, modifiers)
             .map(InterfaceDefinitionMember::Constant)
     } else {
-        let modifiers = modifier::interface_method_modifier_definition_group(state, modifiers)?;
-
-        let method = method_definition(
-            state,
-            MethodDefinitionType::Abstract,
-            modifiers,
-            Some(interface_name),
-        )?;
+        let method = method_definition(state, MethodDefinitionType::Abstract, modifiers)?;
 
         match method {
             MethodDefinitionReference::Abstract(method) => {

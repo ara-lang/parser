@@ -96,7 +96,8 @@ DefinitionTree {
                         right_bracket: 35,
                     },
                 ],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 37,
                     modifiers: [],
                 },
                 class: Keyword {

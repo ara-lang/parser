@@ -6,7 +6,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 0,
                     modifiers: [],
                 },
                 class: Keyword {

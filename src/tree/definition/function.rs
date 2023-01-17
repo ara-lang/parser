@@ -4,8 +4,7 @@ use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
-use crate::tree::definition::modifier::MethodModifierDefinitionGroup;
-use crate::tree::definition::modifier::PromotedPropertyModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::expression::Expression;
@@ -68,8 +67,7 @@ pub struct FunctionDefinition {
 pub struct ConstructorParameterDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     pub comments: CommentGroup,
-    #[serde(flatten)]
-    pub modifiers: PromotedPropertyModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub type_definition: TypeDefinition,
     pub ellipsis: Option<usize>,
     pub variable: Variable,
@@ -90,8 +88,7 @@ pub struct ConstructorParameterListDefinition {
 pub struct AbstractConstructorDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: MethodModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub parameters: FunctionLikeParameterListDefinition,
@@ -103,8 +100,7 @@ pub struct AbstractConstructorDefinition {
 pub struct ConcreteConstructorDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: MethodModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub parameters: ConstructorParameterListDefinition,
@@ -133,8 +129,7 @@ pub struct MethodTypeConstraintGroupDefinition {
 pub struct AbstractMethodDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: MethodModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
@@ -149,8 +144,7 @@ pub struct AbstractMethodDefinition {
 pub struct ConcreteMethodDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: MethodModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
@@ -313,11 +307,7 @@ impl Node for ConstructorParameterDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.type_definition.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -381,11 +371,7 @@ impl Node for AbstractConstructorDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.function.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -399,9 +385,7 @@ impl Node for AbstractConstructorDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
+        children.push(&self.modifiers);
 
         children.push(&self.function);
         children.push(&self.name);
@@ -425,11 +409,7 @@ impl Node for ConcreteConstructorDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.function.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -443,10 +423,7 @@ impl Node for ConcreteConstructorDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.function);
         children.push(&self.name);
         children.push(&self.parameters);
@@ -470,11 +447,7 @@ impl Node for AbstractMethodDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.function.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -488,10 +461,7 @@ impl Node for AbstractMethodDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.function);
         children.push(&self.name);
 
@@ -582,11 +552,7 @@ impl Node for ConcreteMethodDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.function.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -600,10 +566,7 @@ impl Node for ConcreteMethodDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.function);
         children.push(&self.name);
 

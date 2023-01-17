@@ -5,13 +5,13 @@ use crate::parser::internal::utils;
 use crate::parser::internal::variable;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
-use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::definition::property::PropertyEntryDefinition;
 
 pub fn property_definition(
     state: &mut State,
-    modifiers: PropertyModifierDefinitionGroup,
+    modifiers: ModifierGroupDefinition,
 ) -> ParseResult<PropertyDefinition> {
     let type_definition = r#type::type_definition(state)?;
     let variable = variable::parse(state)?;

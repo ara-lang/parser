@@ -15,13 +15,13 @@ use crate::tree::definition::function::FunctionDefinition;
 use crate::tree::definition::function::FunctionLikeReturnTypeDefinition;
 use crate::tree::definition::function::MethodTypeConstraintDefinition;
 use crate::tree::definition::function::MethodTypeConstraintGroupDefinition;
-use crate::tree::definition::modifier::MethodModifierDefinitionGroup;
-use crate::tree::identifier::Identifier;
+use crate::tree::definition::modifier::ModifierDefinition;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 
 pub enum MethodDefinitionType {
     Abstract,
     Concrete,
-    DependingOnModifiers,
+    Either,
 }
 
 pub enum MethodDefinitionReference {
@@ -57,8 +57,7 @@ pub fn function_definition(state: &mut State) -> ParseResult<FunctionDefinition>
 pub fn method_definition(
     state: &mut State,
     r#type: MethodDefinitionType,
-    modifiers: MethodModifierDefinitionGroup,
-    class: Option<&Identifier>,
+    modifiers: ModifierGroupDefinition,
 ) -> ParseResult<MethodDefinitionReference> {
     let comments = state.iterator.comments();
     let attributes = state.get_attributes();
@@ -68,12 +67,15 @@ pub fn method_definition(
     let has_body = match r#type {
         MethodDefinitionType::Abstract => false,
         MethodDefinitionType::Concrete => true,
-        MethodDefinitionType::DependingOnModifiers => !modifiers.has_abstract(),
+        MethodDefinitionType::Either => !modifiers
+            .modifiers
+            .iter()
+            .any(|modifier| matches!(modifier, ModifierDefinition::Abstract(_))),
     };
 
     if name.to_string().to_lowercase() == "__construct" {
         return if has_body {
-            let parameters = parameter::constructor_parameter_list_definition(state, class)?;
+            let parameters = parameter::constructor_parameter_list_definition(state)?;
 
             Ok(MethodDefinitionReference::ConcreteConstructor(
                 ConcreteConstructorDefinition {

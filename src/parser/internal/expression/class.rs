@@ -92,15 +92,12 @@ fn anonymous_class_expression_member(
     let modifiers = modifier::collect(state)?;
 
     if state.iterator.current().kind == TokenKind::Const {
-        let modifiers = modifier::constant_modifier_definition_group(state, modifiers)?;
-
         return classish_constant_definition(state, modifiers)
             .map(AnonymousClassExpressionMember::Constant);
     }
 
     if state.iterator.current().kind == TokenKind::Function {
-        let modifiers = modifier::method_modifier_definition_group(state, modifiers)?;
-        let method = method_definition(state, MethodDefinitionType::Concrete, modifiers, None)?;
+        let method = method_definition(state, MethodDefinitionType::Concrete, modifiers)?;
 
         match method {
             MethodDefinitionReference::Concrete(method) => {
@@ -116,9 +113,6 @@ fn anonymous_class_expression_member(
             ),
         }
     }
-
-    // e.g: public static
-    let modifiers = modifier::property_modifier_definition_group(state, modifiers)?;
 
     property::property_definition(state, modifiers).map(AnonymousClassExpressionMember::Property)
 }

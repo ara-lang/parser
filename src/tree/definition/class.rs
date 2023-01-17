@@ -9,7 +9,7 @@ use crate::tree::definition::function::AbstractConstructorDefinition;
 use crate::tree::definition::function::AbstractMethodDefinition;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
-use crate::tree::definition::modifier::ClassModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
@@ -23,8 +23,7 @@ use crate::tree::Node;
 pub struct ClassDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: ClassModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub class: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
@@ -76,11 +75,7 @@ impl Node for ClassDefinition {
             return attributes.initial_position();
         }
 
-        if let Some(modifier) = self.modifiers.modifiers.first() {
-            return modifier.initial_position();
-        }
-
-        self.class.initial_position()
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -94,10 +89,7 @@ impl Node for ClassDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.name);
 
         if let Some(templates) = &self.templates {

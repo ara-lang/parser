@@ -6,7 +6,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 0,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -29,7 +30,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 16,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -68,13 +70,20 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 50,
                                     modifiers: [
                                         Public(
-                                            36,
+                                            Keyword {
+                                                value: "public",
+                                                position: 36,
+                                            },
                                         ),
                                         Static(
-                                            43,
+                                            Keyword {
+                                                value: "static",
+                                                position: 43,
+                                            },
                                         ),
                                     ],
                                 },

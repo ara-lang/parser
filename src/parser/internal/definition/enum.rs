@@ -10,6 +10,7 @@ use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
 use crate::tree::definition::function::ConcreteMethodDefinition;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::r#enum::BackedEnumBodyDefinition;
 use crate::tree::definition::r#enum::BackedEnumCaseDefinition;
 use crate::tree::definition::r#enum::BackedEnumDefinition;
@@ -158,8 +159,6 @@ fn unit_enum_definition_member(
     let modifiers = modifier::collect(state)?;
 
     if state.iterator.current().kind == TokenKind::Const {
-        let modifiers = modifier::constant_modifier_definition_group(state, modifiers)?;
-
         return constant::classish_constant_definition(state, modifiers)
             .map(UnitEnumMemberDefinition::Constant)
             .map(Some);
@@ -210,8 +209,6 @@ fn backed_enum_definition_member(
     let modifiers = modifier::collect(state)?;
 
     if state.iterator.current().kind == TokenKind::Const {
-        let modifiers = modifier::constant_modifier_definition_group(state, modifiers)?;
-
         return constant::classish_constant_definition(state, modifiers)
             .map(BackedEnumMemberDefinition::Constant)
             .map(Some);
@@ -223,16 +220,11 @@ fn backed_enum_definition_member(
 
 fn concrete_method_definition(
     state: &mut State,
-    modifiers: Vec<(usize, TokenKind)>,
+    modifiers: ModifierGroupDefinition,
     enum_name: &Identifier,
 ) -> ParseResult<Option<ConcreteMethodDefinition>> {
-    let modifiers = modifier::enum_method_modifier_definition_group(state, modifiers)?;
-    let method = function::method_definition(
-        state,
-        function::MethodDefinitionType::Concrete,
-        modifiers,
-        Some(enum_name),
-    )?;
+    let method =
+        function::method_definition(state, function::MethodDefinitionType::Concrete, modifiers)?;
 
     match method {
         MethodDefinitionReference::ConcreteConstructor(constructor) => {

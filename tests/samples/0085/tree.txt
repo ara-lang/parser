@@ -3185,7 +3185,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 1509,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -3208,10 +3209,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 1533,
                                     modifiers: [
                                         Private(
-                                            1525,
+                                            Keyword {
+                                                value: "private",
+                                                position: 1525,
+                                            },
                                         ),
                                     ],
                                 },
@@ -4299,10 +4304,14 @@ DefinitionTree {
                         Property(
                             PropertyDefinition {
                                 attributes: [],
-                                modifiers: PropertyModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 2188,
                                     modifiers: [
                                         Private(
-                                            2180,
+                                            Keyword {
+                                                value: "private",
+                                                position: 2180,
+                                            },
                                         ),
                                     ],
                                 },
@@ -5408,10 +5417,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 2844,
                                     modifiers: [
                                         Public(
-                                            2837,
+                                            Keyword {
+                                                value: "public",
+                                                position: 2837,
+                                            },
                                         ),
                                     ],
                                 },
@@ -5435,7 +5448,8 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 2874,
                                                     modifiers: [],
                                                 },
                                                 type_definition: Identifier(
@@ -6474,7 +6488,8 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 3574,
                                                     modifiers: [],
                                                 },
                                                 type_definition: Dict(
@@ -6641,10 +6656,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 3703,
                                     modifiers: [
                                         Public(
-                                            3696,
+                                            Keyword {
+                                                value: "public",
+                                                position: 3696,
+                                            },
                                         ),
                                     ],
                                 },

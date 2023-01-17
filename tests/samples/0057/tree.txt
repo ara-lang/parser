@@ -121,7 +121,8 @@ DefinitionTree {
                                         right_bracket: 50,
                                     },
                                 ],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 56,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -177,10 +178,14 @@ DefinitionTree {
                                         right_bracket: 79,
                                     },
                                 ],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 92,
                                     modifiers: [
                                         Public(
-                                            85,
+                                            Keyword {
+                                                value: "public",
+                                                position: 85,
+                                            },
                                         ),
                                     ],
                                 },
@@ -253,13 +258,20 @@ DefinitionTree {
                                         right_bracket: 124,
                                     },
                                 ],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 143,
                                     modifiers: [
                                         Final(
-                                            130,
+                                            Keyword {
+                                                value: "final",
+                                                position: 130,
+                                            },
                                         ),
                                         Public(
-                                            136,
+                                            Keyword {
+                                                value: "public",
+                                                position: 136,
+                                            },
                                         ),
                                     ],
                                 },
@@ -352,10 +364,14 @@ DefinitionTree {
                                         right_bracket: 184,
                                     },
                                 ],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 196,
                                     modifiers: [
                                         Final(
-                                            190,
+                                            Keyword {
+                                                value: "final",
+                                                position: 190,
+                                            },
                                         ),
                                     ],
                                 },
@@ -412,10 +428,14 @@ DefinitionTree {
                                         right_bracket: 218,
                                     },
                                 ],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 231,
                                     modifiers: [
                                         Public(
-                                            224,
+                                            Keyword {
+                                                value: "public",
+                                                position: 224,
+                                            },
                                         ),
                                     ],
                                 },
@@ -491,13 +511,20 @@ DefinitionTree {
                                         right_bracket: 270,
                                     },
                                 ],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 290,
                                     modifiers: [
                                         Public(
-                                            276,
+                                            Keyword {
+                                                value: "public",
+                                                position: 276,
+                                            },
                                         ),
                                         Static(
-                                            283,
+                                            Keyword {
+                                                value: "static",
+                                                position: 283,
+                                            },
                                         ),
                                     ],
                                 },

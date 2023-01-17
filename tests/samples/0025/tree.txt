@@ -6,7 +6,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 0,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -26,10 +27,14 @@ DefinitionTree {
                         Property(
                             PropertyDefinition {
                                 attributes: [],
-                                modifiers: PropertyModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 30,
                                     modifiers: [
                                         Protected(
-                                            20,
+                                            Keyword {
+                                                value: "protected",
+                                                position: 20,
+                                            },
                                         ),
                                     ],
                                 },

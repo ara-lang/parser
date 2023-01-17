@@ -39,13 +39,20 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 38,
                     modifiers: [
                         Final(
-                            23,
+                            Keyword {
+                                value: "final",
+                                position: 23,
+                            },
                         ),
                         Readonly(
-                            29,
+                            Keyword {
+                                value: "readonly",
+                                position: 29,
+                            },
                         ),
                     ],
                 },
@@ -90,10 +97,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 71,
                                     modifiers: [
                                         Public(
-                                            64,
+                                            Keyword {
+                                                value: "public",
+                                                position: 64,
+                                            },
                                         ),
                                     ],
                                 },
@@ -117,10 +128,14 @@ DefinitionTree {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 109,
                                                     modifiers: [
                                                         Private(
-                                                            101,
+                                                            Keyword {
+                                                                value: "private",
+                                                                position: 101,
+                                                            },
                                                         ),
                                                     ],
                                                 },
@@ -202,10 +217,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 153,
                                     modifiers: [
                                         Public(
-                                            146,
+                                            Keyword {
+                                                value: "public",
+                                                position: 146,
+                                            },
                                         ),
                                     ],
                                 },
@@ -599,10 +618,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 430,
                                     modifiers: [
                                         Public(
-                                            423,
+                                            Keyword {
+                                                value: "public",
+                                                position: 423,
+                                            },
                                         ),
                                     ],
                                 },
@@ -992,10 +1015,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 675,
                                     modifiers: [
                                         Public(
-                                            668,
+                                            Keyword {
+                                                value: "public",
+                                                position: 668,
+                                            },
                                         ),
                                     ],
                                 },

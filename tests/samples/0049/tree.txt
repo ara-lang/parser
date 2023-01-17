@@ -6,7 +6,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 0,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -33,7 +34,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 12,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -70,10 +72,14 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: MethodModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 45,
                                     modifiers: [
                                         Public(
-                                            38,
+                                            Keyword {
+                                                value: "public",
+                                                position: 38,
+                                            },
                                         ),
                                     ],
                                 },

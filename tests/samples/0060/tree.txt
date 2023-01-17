@@ -194,7 +194,8 @@ DefinitionTree {
                     comments: [],
                 },
                 attributes: [],
-                modifiers: ClassModifierDefinitionGroup {
+                modifiers: ModifierGroupDefinition {
+                    position: 157,
                     modifiers: [],
                 },
                 class: Keyword {
@@ -217,7 +218,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 171,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -256,7 +258,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 196,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -295,7 +298,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 219,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -334,7 +338,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 244,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -373,7 +378,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 269,
                                     modifiers: [],
                                 },
                                 const: Keyword {
@@ -412,7 +418,8 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                modifiers: ConstantModifierDefinitionGroup {
+                                modifiers: ModifierGroupDefinition {
+                                    position: 293,
                                     modifiers: [],
                                 },
                                 const: Keyword {

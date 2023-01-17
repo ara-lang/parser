@@ -3,7 +3,7 @@ const ONE = new Foo();
 class Foo {
     CONST FOO = fn(): int => 1;
 
-    public readonly string $baz = 'baz';
+    public static abstract Abstract readonly private static protected string $baz = 'baz';
 
     public int $bar = fn(): Foo => new Foo();
 

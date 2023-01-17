@@ -76,7 +76,8 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            modifiers: ClassModifierDefinitionGroup {
+                            modifiers: ModifierGroupDefinition {
+                                position: 45,
                                 modifiers: [],
                             },
                             class: Keyword {
@@ -99,10 +100,14 @@ DefinitionTree {
                                                 comments: [],
                                             },
                                             attributes: [],
-                                            modifiers: ConstantModifierDefinitionGroup {
+                                            modifiers: ModifierGroupDefinition {
+                                                position: 67,
                                                 modifiers: [
                                                     Public(
-                                                        60,
+                                                        Keyword {
+                                                            value: "public",
+                                                            position: 60,
+                                                        },
                                                     ),
                                                 ],
                                             },
@@ -142,10 +147,14 @@ DefinitionTree {
                                                 comments: [],
                                             },
                                             attributes: [],
-                                            modifiers: MethodModifierDefinitionGroup {
+                                            modifiers: ModifierGroupDefinition {
+                                                position: 93,
                                                 modifiers: [
                                                     Public(
-                                                        86,
+                                                        Keyword {
+                                                            value: "public",
+                                                            position: 86,
+                                                        },
                                                     ),
                                                 ],
                                             },

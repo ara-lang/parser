@@ -16,13 +16,11 @@ use crate::tree::definition::class::ClassDefinitionBody;
 use crate::tree::definition::class::ClassDefinitionExtends;
 use crate::tree::definition::class::ClassDefinitionImplements;
 use crate::tree::definition::class::ClassDefinitionMember;
-use crate::tree::identifier::Identifier;
 
 pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
     let attributes = state.get_attributes();
 
     let modifiers = modifier::collect(state)?;
-    let modifiers = modifier::class_modifier_definition_group(state, modifiers)?;
     let comments = state.iterator.comments();
     let class = utils::skip_keyword(state, TokenKind::Class)?;
     let name = identifier::classname_identifier(state)?;
@@ -64,7 +62,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
         members: {
             let mut members = Vec::new();
             while state.iterator.current().kind != TokenKind::RightBrace {
-                members.push(class_definition_member(state, &name)?);
+                members.push(class_definition_member(state)?);
             }
 
             members
@@ -85,28 +83,17 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
     })
 }
 
-fn class_definition_member(
-    state: &mut State,
-    name: &Identifier,
-) -> ParseResult<ClassDefinitionMember> {
+fn class_definition_member(state: &mut State) -> ParseResult<ClassDefinitionMember> {
     attribute::gather(state)?;
 
     let modifiers = modifier::collect(state)?;
 
     if state.iterator.current().kind == TokenKind::Const {
-        let modifiers = modifier::constant_modifier_definition_group(state, modifiers)?;
         return classish_constant_definition(state, modifiers).map(ClassDefinitionMember::Constant);
     }
 
     if state.iterator.current().kind == TokenKind::Function {
-        let modifiers = modifier::method_modifier_definition_group(state, modifiers)?;
-
-        let method = method_definition(
-            state,
-            MethodDefinitionType::DependingOnModifiers,
-            modifiers,
-            Some(name),
-        )?;
+        let method = method_definition(state, MethodDefinitionType::Either, modifiers)?;
 
         return match method {
             MethodDefinitionReference::Abstract(method) => {
@@ -123,9 +110,6 @@ fn class_definition_member(
             }
         };
     }
-
-    // e.g: public static
-    let modifiers = modifier::property_modifier_definition_group(state, modifiers)?;
 
     property::property_definition(state, modifiers).map(ClassDefinitionMember::Property)
 }

@@ -8,9 +8,7 @@ use crate::lexer::token::TokenKind;
 use crate::parser::state::State as ParserState;
 use crate::tree::definition::function::ConcreteConstructorDefinition;
 use crate::tree::definition::function::ConcreteMethodDefinition;
-use crate::tree::definition::function::ConstructorParameterDefinition;
 use crate::tree::identifier::Identifier;
-use crate::tree::statement::r#try::TryStatement;
 use crate::tree::Node;
 
 #[derive(Debug, Copy, Clone)]
@@ -126,35 +124,7 @@ pub enum ParserIssueCode {
     /// - Remove the attributes
     MissingItemDefinitionAfterAttributes = 7,
 
-    /// Multiple visibility modifiers ( code = 8 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// final class Foo {
-    ///    public private function bar() {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove one of the visibility modifiers
-    MultipleVisibilityModifiers = 8,
-
-    /// Duplicate modifier ( code = 9 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// final final class Foo {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove one of the modifiers
-    DuplicateModifier = 9,
-
-    /// Reserved keyword cannot be used for type name ( code = 10 )
+    /// Reserved keyword cannot be used for type name ( code = 8 )
     ///
     /// Example:
     ///
@@ -165,9 +135,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForTypeName = 10,
+    ReservedKeywordCannotBeUsedForTypeName = 8,
 
-    /// Reserved keyword cannot be used for constant name ( code = 11 )
+    /// Reserved keyword cannot be used for constant name ( code = 9 )
     ///
     /// Example:
     ///
@@ -178,9 +148,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForConstantName = 11,
+    ReservedKeywordCannotBeUsedForConstantName = 9,
 
-    /// Type cannot be used in current context ( code = 12 )
+    /// Type cannot be used in current context ( code = 10 )
     ///
     /// Example:
     ///
@@ -191,9 +161,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different type
-    TypeCannotBeUsedInCurrentContext = 12,
+    TypeCannotBeUsedInCurrentContext = 10,
 
-    /// Missing item expression after attribute(s) ( code = 13 )
+    /// Missing item expression after attribute(s) ( code = 11 )
     ///
     /// Example:
     ///
@@ -207,164 +177,9 @@ pub enum ParserIssueCode {
     ///
     /// - Add an item expression after the attribute(s)
     /// - Remove the attribute(s)
-    MissingItemExpressionAfterAttributes = 13,
+    MissingItemExpressionAfterAttributes = 11,
 
-    /// Private constant cannot be final ( code = 14 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     private final const BAR = 1;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the `final` modifier
-    /// - Remove the `private` modifier
-    PrivateConstantCannotBeFinal = 14,
-
-    /// Modifier cannot be used on classes ( code = 15 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// final class Foo {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnClass = 15,
-
-    /// Modifier cannot be used on class methods ( code = 16 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public readonly function bar(): void {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnClassMethod = 16,
-
-    /// Modifier cannot be used on interface methods ( code = 17 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// interface Foo {
-    ///     private function bar(): void;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnInterfaceMethod = 17,
-
-    /// Modifier cannot be used on enum methods ( code = 18 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// enum Foo {
-    ///     public abstract function bar(): void {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnEnumMethod = 18,
-
-    /// Modifier cannot be used on properties ( code = 19 )
-    ///
-    /// Example:
-    ///
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public abstract string $bar = "";
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnProperty = 19,
-
-    /// Modifier cannot be used on promoted properties ( code = 20 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public function __construct(
-    ///         private static string $bar = "",
-    ///     ) {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnPromotedProperty = 20,
-
-    /// Modifier cannot be used on constants ( code = 21 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public abstract const BAR = 1;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnConstant = 21,
-
-    /// Modifier cannot be used on interface constants ( code = 22 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// interface Foo {
-    ///     private const BAR = 1;
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the modifier
-    ModifierCannotBeUsedOnInterfaceConstant = 22,
-
-    /// Promoted property cannot be variadic ( code = 24 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// class Foo {
-    ///     public function __construct(
-    ///         private string ...$bar,
-    ///     ) {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the variadic declaration ( `...` )
-    /// - Demote the property
-    PromotedPropertyCannotBeVariadic = 24,
-
-    /// Enum backing type must be either `int` or `string` ( code = 25 )
+    /// Enum backing type must be either `int` or `string` ( code = 12 )
     ///
     /// Example:
     ///
@@ -377,27 +192,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Change the backing type to `int` or `string`
-    InvalidEnumBackingType = 25,
+    InvalidEnumBackingType = 12,
 
-    /// Catch block must have a catch or finally block ( code = 26 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(): void {
-    ///   try {
-    ///     // ...
-    ///   }
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Add a catch or finally block
-    /// - Remove the try block
-    TryStatementMustHaveCatchOrFinally = 26,
-
-    /// Unexpected token
+    /// Unexpected token ( code = 13 )
     ///
     /// Example:
     ///
@@ -405,9 +202,9 @@ pub enum ParserIssueCode {
     /// function foo() -> void {
     /// }
     /// ```
-    UnexpectedToken = 28,
+    UnexpectedToken = 13,
 
-    /// Invalid constant initialization expression ( code = 30 )
+    /// Invalid constant initialization expression ( code = 14 )
     ///
     /// Example:
     ///
@@ -422,9 +219,9 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a valid constant initialization expression
-    InvalidConstantInitializationExpression = 30,
+    InvalidConstantInitializationExpression = 14,
 
-    /// Invalid empty type template ( code = 32 )
+    /// Invalid empty type template ( code = 15 )
     ///
     /// Example:
     ///
@@ -436,7 +233,7 @@ pub enum ParserIssueCode {
     ///
     /// - Remove the empty type template
     /// - Add a type template
-    ExpectedAtLeastOneTypeInTemplateGroup = 32,
+    ExpectedAtLeastOneTypeInTemplateGroup = 15,
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
@@ -597,41 +394,6 @@ pub(crate) fn missing_item_definition_after_attributes(state: &ParserState) -> I
     issue
 }
 
-pub(crate) fn multiple_visibility_modifiers(
-    state: &ParserState,
-    first: (usize, String),
-    second: (usize, String),
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::MultipleVisibilityModifiers,
-        "multiple visibility modifiers are not allowed",
-    )
-    .with_source(origin, second.0, second.0 + second.1.len())
-    .with_annotation(Annotation::primary(
-        origin,
-        first.0,
-        first.0 + first.1.len(),
-    ))
-}
-
-pub(crate) fn duplicate_modifier(
-    state: &ParserState,
-    modifier: String,
-    first: usize,
-    second: usize,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::DuplicateModifier,
-        format!("multiple `{}` modifiers are not allowed", modifier),
-    )
-    .with_source(origin, second, second + modifier.len())
-    .with_annotation(Annotation::primary(origin, first, first + modifier.len()))
-}
-
 pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
     state: &ParserState,
     identifier: &Identifier,
@@ -713,203 +475,6 @@ pub(crate) fn missing_item_expression_after_attributes(state: &ParserState) -> I
     issue
 }
 
-pub(crate) fn private_constant_cannot_be_final(
-    state: &ParserState,
-    r#private: &dyn Node,
-    r#final: &dyn Node,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::PrivateConstantCannotBeFinal,
-        "private constant cannot be final",
-    )
-    .with_source(origin, r#final.initial_position(), r#final.final_position())
-    .with_annotation(Annotation::primary(
-        origin,
-        r#private.initial_position(),
-        r#private.final_position(),
-    ))
-    .with_note(
-        "a private constant cannot be final because it cannot be overridden by other classes.",
-    )
-}
-
-pub(crate) fn modifier_cannot_be_used_on_class(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnClass,
-        format!("modifier `{}` cannot be used on a class", modifier),
-    )
-    .with_source(state.source.name(), position, position + modifier.len())
-    .with_note("only the `final`, `abstract`, and `readonly` modifiers can be used on a class.")
-}
-
-pub(crate) fn modifier_cannot_be_used_on_class_method(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnClassMethod,
-        format!("modifier `{}` cannot be used on a class method", modifier),
-    )
-    .with_source(
-        state.source.name(),
-        position,
-        position + modifier.len(),
-    )
-    .with_note(
-        "only the `final`, `abstract`, `static`, `private`, `protected`, and `public` modifiers can be used on a class method.",
-    )
-}
-
-pub(crate) fn modifier_cannot_be_used_on_interface_method(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnInterfaceMethod,
-        format!(
-            "modifier `{}` cannot be used on an interface method",
-            modifier
-        ),
-    )
-    .with_source(state.source.name(), position, position + modifier.len())
-    .with_note("only the `static`, and `public` modifiers can be used on an interface method.")
-}
-
-pub(crate) fn modifier_cannot_be_used_on_enum_method(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnEnumMethod,
-        format!("modifier `{}` cannot be used on an enum method", modifier),
-    )
-    .with_source(
-        state.source.name(),
-        position,
-        position + modifier.len(),
-    )
-    .with_note("only the `final`, `static`, and `public`, `protected`, `private` modifiers can be used on an enum method.")
-}
-
-pub(crate) fn modifier_cannot_be_used_on_property(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnProperty,
-        format!("modifier `{}` cannot be used on a property", modifier)
-    )
-    .with_source(
-        state.source.name(),
-        position,
-        position + modifier.len(),
-    )
-    .with_note(
-        "only the `static`, `readonly`, `private`, `protected`, and `public` modifiers can be used on a property.",
-    )
-}
-
-pub(crate) fn modifier_cannot_be_used_on_promoted_property(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnPromotedProperty,
-        format!("modifier `{}` cannot be used on a promoted property", modifier)
-    )
-    .with_source(
-        state.source.name(),
-        position,
-        position + modifier.len(),
-    )
-    .with_note(
-        "only the `readonly`, `private`, `protected`, and `public` modifiers can be used on a promoted property.",
-    )
-}
-
-pub(crate) fn modifier_cannot_be_used_on_constant(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnConstant,
-        format!("modifier `{}` cannot be used on a constant", modifier)
-    )
-    .with_source(
-        state.source.name(),
-        position,
-        position + modifier.len(),
-    )
-    .with_note(
-        "only the `final`, `private`, `protected`, and `public` modifiers can be used on a constant.",
-    )
-}
-
-pub(crate) fn modifier_cannot_be_used_on_interface_constant(
-    state: &ParserState,
-    modifier: String,
-    position: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ModifierCannotBeUsedOnInterfaceConstant,
-        format!(
-            "modifier `{}` cannot be used on an interface constant",
-            modifier
-        ),
-    )
-    .with_source(state.source.name(), position, position + modifier.len())
-    .with_note("only the `final`, and `public` modifiers can be used on an interface constant.")
-}
-
-pub(crate) fn promoted_property_cannot_be_variadic(
-    state: &ParserState,
-    class_name: Option<&Identifier>,
-    promoted_property: &ConstructorParameterDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    let position = promoted_property.ellipsis.unwrap();
-
-    let mut issue = Issue::error(
-        ParserIssueCode::PromotedPropertyCannotBeVariadic,
-        format!(
-            "promoted property `{}::{}` cannot be declared variadic",
-            class_name
-                .map(|c| state.named(c))
-                .unwrap_or_else(|| "anonymous@class".to_string()),
-            promoted_property.variable,
-        ),
-    )
-    .with_source(origin, position, position + 3)
-    .with_annotation(Annotation::secondary(
-        origin,
-        promoted_property.initial_position(),
-        promoted_property.final_position(),
-    ));
-
-    if let Some(class_name) = class_name {
-        issue = issue.with_annotation(Annotation::secondary(
-            origin,
-            class_name.initial_position(),
-            class_name.final_position(),
-        ));
-    }
-
-    issue
-}
-
 pub(crate) fn invalid_enum_backing_type(
     state: &ParserState,
     backing_identifier: &Identifier,
@@ -924,21 +489,6 @@ pub(crate) fn invalid_enum_backing_type(
         backing_identifier.final_position(),
     )
     .with_note("the only valid enum backing types are `int`, and `string`.")
-}
-
-pub(crate) fn try_statement_must_have_catch_or_finally(
-    state: &ParserState,
-    try_statement: &TryStatement,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::TryStatementMustHaveCatchOrFinally,
-        "try statement must have a catch or finally block",
-    )
-    .with_source(
-        state.source.name(),
-        try_statement.initial_position(),
-        try_statement.final_position(),
-    )
 }
 
 pub(crate) fn unexpected_token<T: ToString>(

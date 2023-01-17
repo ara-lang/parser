@@ -7,7 +7,7 @@ use crate::parser::state::State;
 use crate::tree::definition::constant::ClassishConstantDefinition;
 use crate::tree::definition::constant::ConstantDefinition;
 use crate::tree::definition::constant::ConstantDefinitionEntry;
-use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 
 pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition> {
     Ok(ConstantDefinition {
@@ -30,7 +30,7 @@ pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition>
 
 pub fn classish_constant_definition(
     state: &mut State,
-    modifiers: ConstantModifierDefinitionGroup,
+    modifiers: ModifierGroupDefinition,
 ) -> ParseResult<ClassishConstantDefinition> {
     Ok(ClassishConstantDefinition {
         comments: state.iterator.comments(),

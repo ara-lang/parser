@@ -12,7 +12,6 @@ use crate::tree::definition::function::ConstructorParameterListDefinition;
 use crate::tree::definition::function::FunctionLikeParameterDefaultValueDefinition;
 use crate::tree::definition::function::FunctionLikeParameterDefinition;
 use crate::tree::definition::function::FunctionLikeParameterListDefinition;
-use crate::tree::identifier::Identifier;
 
 pub fn function_like_parameter_list_definition(
     state: &mut State,
@@ -85,7 +84,6 @@ pub fn function_like_parameter_list_definition(
 
 pub fn constructor_parameter_list_definition(
     state: &mut State,
-    class: Option<&Identifier>,
 ) -> ParseResult<ConstructorParameterListDefinition> {
     let comments = state.iterator.comments();
 
@@ -96,11 +94,7 @@ pub fn constructor_parameter_list_definition(
             attribute::gather(state)?;
 
             let modifiers = modifier::collect(state)?;
-            let modifiers =
-                modifier::promoted_property_modifier_definition_group(state, modifiers)?;
-
             let type_definition = r#type::type_definition(state)?;
-
             let current = state.iterator.current();
             let (ellipsis, variable) = if matches!(current.kind, TokenKind::Ellipsis) {
                 state.iterator.next();
@@ -143,13 +137,6 @@ pub fn constructor_parameter_list_definition(
                 default,
                 modifiers,
             };
-
-            if !parameter.modifiers.is_empty() && parameter.ellipsis.is_some() {
-                crate::parser_report!(
-                    state,
-                    promoted_property_cannot_be_variadic(class, &parameter)
-                );
-            }
 
             Ok(parameter)
         },

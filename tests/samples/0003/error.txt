@@ -1,4 +1,4 @@
-error[P0028]: unexpected token `[`, expected an expression
+error[P0013]: unexpected token `[`, expected an expression
   --> 0003/code.ara:5:10
   |
 5 |     $a = [

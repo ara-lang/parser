@@ -3,7 +3,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 use crate::tree::definition::attribute::AttributeGroupDefinition;
-use crate::tree::definition::modifier::PropertyModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::variable::Variable;
@@ -13,8 +13,7 @@ use crate::tree::Node;
 #[serde(rename_all = "snake_case")]
 pub struct PropertyDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: PropertyModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub type_definition: TypeDefinition,
     pub entry: PropertyEntryDefinition,
     pub semicolon: usize,
@@ -66,10 +65,7 @@ impl Node for PropertyDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.type_definition);
         children.push(&self.entry);
 

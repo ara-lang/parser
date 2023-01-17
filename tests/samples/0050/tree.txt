@@ -25,10 +25,14 @@ DefinitionTree {
                                         comments: [],
                                     },
                                     attributes: [],
-                                    modifiers: MethodModifierDefinitionGroup {
+                                    modifiers: ModifierGroupDefinition {
+                                        position: 22,
                                         modifiers: [
                                             Public(
-                                                15,
+                                                Keyword {
+                                                    value: "public",
+                                                    position: 15,
+                                                },
                                             ),
                                         ],
                                     },

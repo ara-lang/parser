@@ -4,7 +4,7 @@ use serde::Serialize;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
-use crate::tree::definition::modifier::ConstantModifierDefinitionGroup;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::token::Keyword;
@@ -33,8 +33,7 @@ pub struct ConstantDefinition {
 pub struct ClassishConstantDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    #[serde(flatten)]
-    pub modifiers: ConstantModifierDefinitionGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub r#const: Keyword,
     pub entries: CommaSeparated<ConstantDefinitionEntry>,
     pub semicolon: usize,
@@ -93,12 +92,10 @@ impl Node for ClassishConstantDefinition {
 
     fn initial_position(&self) -> usize {
         if let Some(attribute) = self.attributes.first() {
-            attribute.initial_position()
-        } else if let Some(modifier) = self.modifiers.modifiers.first() {
-            modifier.initial_position()
-        } else {
-            self.r#const.initial_position()
+            return attribute.initial_position();
         }
+
+        self.modifiers.initial_position()
     }
 
     fn final_position(&self) -> usize {
@@ -111,10 +108,7 @@ impl Node for ClassishConstantDefinition {
             children.push(attribute);
         }
 
-        for modifier in &self.modifiers.modifiers {
-            children.push(modifier);
-        }
-
+        children.push(&self.modifiers);
         children.push(&self.r#const);
 
         for entry in &self.entries.inner {

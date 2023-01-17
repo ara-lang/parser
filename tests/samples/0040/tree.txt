@@ -18,10 +18,14 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            modifiers: ClassModifierDefinitionGroup {
+                            modifiers: ModifierGroupDefinition {
+                                position: 26,
                                 modifiers: [
                                     Final(
-                                        20,
+                                        Keyword {
+                                            value: "final",
+                                            position: 20,
+                                        },
                                     ),
                                 ],
                             },
@@ -45,10 +49,14 @@ DefinitionTree {
                                                 comments: [],
                                             },
                                             attributes: [],
-                                            modifiers: MethodModifierDefinitionGroup {
+                                            modifiers: ModifierGroupDefinition {
+                                                position: 50,
                                                 modifiers: [
                                                     Public(
-                                                        43,
+                                                        Keyword {
+                                                            value: "public",
+                                                            position: 43,
+                                                        },
                                                     ),
                                                 ],
                                             },
@@ -72,13 +80,20 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            modifiers: PromotedPropertyModifierDefinitionGroup {
+                                                            modifiers: ModifierGroupDefinition {
+                                                                position: 98,
                                                                 modifiers: [
                                                                     Public(
-                                                                        82,
+                                                                        Keyword {
+                                                                            value: "public",
+                                                                            position: 82,
+                                                                        },
                                                                     ),
                                                                     Readonly(
-                                                                        89,
+                                                                        Keyword {
+                                                                            value: "readonly",
+                                                                            position: 89,
+                                                                        },
                                                                     ),
                                                                 ],
                                                             },

@@ -18,10 +18,14 @@ DefinitionTree {
                                 comments: [],
                             },
                             attributes: [],
-                            modifiers: ClassModifierDefinitionGroup {
+                            modifiers: ModifierGroupDefinition {
+                                position: 26,
                                 modifiers: [
                                     Final(
-                                        20,
+                                        Keyword {
+                                            value: "final",
+                                            position: 20,
+                                        },
                                     ),
                                 ],
                             },
@@ -42,13 +46,20 @@ DefinitionTree {
                                     Property(
                                         PropertyDefinition {
                                             attributes: [],
-                                            modifiers: PropertyModifierDefinitionGroup {
+                                            modifiers: ModifierGroupDefinition {
+                                                position: 59,
                                                 modifiers: [
                                                     Public(
-                                                        43,
+                                                        Keyword {
+                                                            value: "public",
+                                                            position: 43,
+                                                        },
                                                     ),
                                                     Readonly(
-                                                        50,
+                                                        Keyword {
+                                                            value: "readonly",
+                                                            position: 50,
+                                                        },
                                                     ),
                                                 ],
                                             },

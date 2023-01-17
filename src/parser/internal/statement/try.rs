@@ -11,7 +11,7 @@ use crate::tree::statement::r#try::TryFinallyBlockStatement;
 use crate::tree::statement::r#try::TryStatement;
 
 pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
-    let statement = TryStatement {
+    Ok(TryStatement {
         comments: state.iterator.comments(),
         r#try: utils::skip_keyword(state, TokenKind::Try)?,
         block: block::block_statement(state)?,
@@ -49,13 +49,7 @@ pub fn try_statement(state: &mut State) -> ParseResult<TryStatement> {
         } else {
             None
         },
-    };
-
-    if statement.catches.is_empty() && statement.finally.is_none() {
-        crate::parser_report!(state, try_statement_must_have_catch_or_finally(&statement))
-    }
-
-    Ok(statement)
+    })
 }
 
 #[inline(always)]
