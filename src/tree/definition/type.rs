@@ -266,23 +266,23 @@ impl Node for TypeDefinition {
             | TypeDefinition::Interface(keyword, _)
             | TypeDefinition::Iterable(keyword, _) => keyword.initial_position(),
             TypeDefinition::SignedInteger(signed) => match signed {
-                SignedIntegerType::Default(keyword) => keyword.initial_position(),
-                SignedIntegerType::I128(keyword) => keyword.initial_position(),
-                SignedIntegerType::I64(keyword) => keyword.initial_position(),
-                SignedIntegerType::I32(keyword) => keyword.initial_position(),
-                SignedIntegerType::I16(keyword) => keyword.initial_position(),
-                SignedIntegerType::I8(keyword) => keyword.initial_position(),
+                SignedIntegerType::Default(keyword)
+                | SignedIntegerType::I128(keyword)
+                | SignedIntegerType::I64(keyword)
+                | SignedIntegerType::I32(keyword)
+                | SignedIntegerType::I16(keyword)
+                | SignedIntegerType::I8(keyword) => keyword.initial_position(),
             },
             TypeDefinition::UnsignedInteger(unsigned) => match unsigned {
-                UnsignedIntegerType::Default(keyword) => keyword.initial_position(),
-                UnsignedIntegerType::U32(keyword) => keyword.initial_position(),
-                UnsignedIntegerType::U16(keyword) => keyword.initial_position(),
-                UnsignedIntegerType::U8(keyword) => keyword.initial_position(),
+                UnsignedIntegerType::Default(keyword)
+                | UnsignedIntegerType::U32(keyword)
+                | UnsignedIntegerType::U16(keyword)
+                | UnsignedIntegerType::U8(keyword) => keyword.initial_position(),
             },
             TypeDefinition::FloatingPoint(floating) => match floating {
-                FloatingPointType::Default(keyword) => keyword.initial_position(),
-                FloatingPointType::F64(keyword) => keyword.initial_position(),
-                FloatingPointType::F32(keyword) => keyword.initial_position(),
+                FloatingPointType::Default(keyword)
+                | FloatingPointType::F64(keyword)
+                | FloatingPointType::F32(keyword) => keyword.initial_position(),
             },
             TypeDefinition::Tuple {
                 left_parenthesis: position,
@@ -316,23 +316,23 @@ impl Node for TypeDefinition {
             | TypeDefinition::NonNull(keyword)
             | TypeDefinition::Resource(keyword) => keyword.final_position(),
             TypeDefinition::SignedInteger(signed) => match signed {
-                SignedIntegerType::Default(keyword) => keyword.final_position(),
-                SignedIntegerType::I128(keyword) => keyword.final_position(),
-                SignedIntegerType::I64(keyword) => keyword.final_position(),
-                SignedIntegerType::I32(keyword) => keyword.final_position(),
-                SignedIntegerType::I16(keyword) => keyword.final_position(),
-                SignedIntegerType::I8(keyword) => keyword.final_position(),
+                SignedIntegerType::Default(keyword)
+                | SignedIntegerType::I128(keyword)
+                | SignedIntegerType::I64(keyword)
+                | SignedIntegerType::I32(keyword)
+                | SignedIntegerType::I16(keyword)
+                | SignedIntegerType::I8(keyword) => keyword.final_position(),
             },
             TypeDefinition::UnsignedInteger(unsigned) => match unsigned {
-                UnsignedIntegerType::Default(keyword) => keyword.final_position(),
-                UnsignedIntegerType::U32(keyword) => keyword.final_position(),
-                UnsignedIntegerType::U16(keyword) => keyword.final_position(),
-                UnsignedIntegerType::U8(keyword) => keyword.final_position(),
+                UnsignedIntegerType::Default(keyword)
+                | UnsignedIntegerType::U32(keyword)
+                | UnsignedIntegerType::U16(keyword)
+                | UnsignedIntegerType::U8(keyword) => keyword.final_position(),
             },
             TypeDefinition::FloatingPoint(floating) => match floating {
-                FloatingPointType::Default(keyword) => keyword.final_position(),
-                FloatingPointType::F64(keyword) => keyword.final_position(),
-                FloatingPointType::F32(keyword) => keyword.final_position(),
+                FloatingPointType::Default(keyword)
+                | FloatingPointType::F64(keyword)
+                | FloatingPointType::F32(keyword) => keyword.final_position(),
             },
             TypeDefinition::Parenthesized {
                 right_parenthesis, ..
@@ -360,23 +360,23 @@ impl Node for TypeDefinition {
             | TypeDefinition::String(keyword) => vec![keyword],
             TypeDefinition::Literal(literal) => vec![literal],
             TypeDefinition::SignedInteger(signed) => match signed {
-                SignedIntegerType::Default(keyword) => vec![keyword],
-                SignedIntegerType::I128(keyword) => vec![keyword],
-                SignedIntegerType::I64(keyword) => vec![keyword],
-                SignedIntegerType::I32(keyword) => vec![keyword],
-                SignedIntegerType::I16(keyword) => vec![keyword],
-                SignedIntegerType::I8(keyword) => vec![keyword],
+                SignedIntegerType::Default(keyword)
+                | SignedIntegerType::I128(keyword)
+                | SignedIntegerType::I64(keyword)
+                | SignedIntegerType::I32(keyword)
+                | SignedIntegerType::I16(keyword)
+                | SignedIntegerType::I8(keyword) => vec![keyword],
             },
             TypeDefinition::UnsignedInteger(unsigned) => match unsigned {
-                UnsignedIntegerType::Default(keyword) => vec![keyword],
-                UnsignedIntegerType::U32(keyword) => vec![keyword],
-                UnsignedIntegerType::U16(keyword) => vec![keyword],
-                UnsignedIntegerType::U8(keyword) => vec![keyword],
+                UnsignedIntegerType::Default(keyword)
+                | UnsignedIntegerType::U32(keyword)
+                | UnsignedIntegerType::U16(keyword)
+                | UnsignedIntegerType::U8(keyword) => vec![keyword],
             },
             TypeDefinition::FloatingPoint(floating) => match floating {
-                FloatingPointType::Default(keyword) => vec![keyword],
-                FloatingPointType::F64(keyword) => vec![keyword],
-                FloatingPointType::F32(keyword) => vec![keyword],
+                FloatingPointType::Default(keyword)
+                | FloatingPointType::F64(keyword)
+                | FloatingPointType::F32(keyword) => vec![keyword],
             },
             TypeDefinition::Class(keyword, template)
             | TypeDefinition::Interface(keyword, template)
