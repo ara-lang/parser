@@ -264,7 +264,11 @@ impl Node for UnitEnumMemberDefinition {
     }
 
     fn get_description(&self) -> String {
-        "unit enum member definition".to_string()
+        match self {
+            Self::Case(case) => case.get_description(),
+            Self::Method(method) => method.get_description(),
+            Self::Constant(constant) => constant.get_description(),
+        }
     }
 }
 
