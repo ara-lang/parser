@@ -47,6 +47,14 @@ impl Node for MagicConstant {
     }
 
     fn get_description(&self) -> String {
-        "magic constant expression".to_string()
+        match self {
+            MagicConstant::Directory { .. } => "directory magic constant expression".to_string(),
+            MagicConstant::File { .. } => "file magic constant expression".to_string(),
+            MagicConstant::Line { .. } => "line magic constant expression".to_string(),
+            MagicConstant::Class { .. } => "class magic constant expression".to_string(),
+            MagicConstant::Function { .. } => "function magic constant expression".to_string(),
+            MagicConstant::Method { .. } => "method magic constant expression".to_string(),
+            MagicConstant::Namespace { .. } => "namespace magic constant expression".to_string(),
+        }
     }
 }
