@@ -90,7 +90,14 @@ impl Node for ArgumentExpression {
     }
 
     fn get_description(&self) -> String {
-        "argument expression".to_string()
+        match self {
+            ArgumentExpression::Value { .. } => "value argument expression".to_string(),
+            ArgumentExpression::Spread { .. } => "spread argument expression".to_string(),
+            ArgumentExpression::ReverseSpread { .. } => {
+                "reverse spread argument expression".to_string()
+            }
+            ArgumentExpression::Named { .. } => "named argument expression".to_string(),
+        }
     }
 }
 
