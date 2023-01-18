@@ -41,7 +41,7 @@ pub struct UseDefinitionSymbolAlias {
 
 impl Node for UseDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             UseDefinition::Default { r#use, .. }
             | UseDefinition::Function { r#use, .. }
             | UseDefinition::Constant { r#use, .. } => r#use.initial_position(),
@@ -49,7 +49,7 @@ impl Node for UseDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             UseDefinition::Default { semicolon, .. }
             | UseDefinition::Function { semicolon, .. }
             | UseDefinition::Constant { semicolon, .. } => semicolon + 1,
@@ -57,7 +57,7 @@ impl Node for UseDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             UseDefinition::Default {
                 r#use, name, alias, ..
             } => {

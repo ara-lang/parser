@@ -65,7 +65,7 @@ pub struct LiteralFalse {
 
 impl Node for Literal {
     fn comments(&self) -> Option<&CommentGroup> {
-        match self {
+        match &self {
             Literal::String(literal) => literal.comments(),
             Literal::Integer(literal) => literal.comments(),
             Literal::Float(literal) => literal.comments(),
@@ -76,7 +76,7 @@ impl Node for Literal {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Literal::String(literal) => literal.initial_position(),
             Literal::Integer(literal) => literal.initial_position(),
             Literal::Float(literal) => literal.initial_position(),
@@ -87,7 +87,7 @@ impl Node for Literal {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Literal::String(literal) => literal.final_position(),
             Literal::Integer(literal) => literal.final_position(),
             Literal::Float(literal) => literal.final_position(),

@@ -123,7 +123,7 @@ pub struct ContinueStatement {
 
 impl ForeachIteratorStatement {
     pub fn expression(&self) -> &Expression {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value { expression, .. } => expression,
             ForeachIteratorStatement::ParenthesizedValue { expression, .. } => expression,
             ForeachIteratorStatement::KeyAndValue { expression, .. } => expression,
@@ -132,7 +132,7 @@ impl ForeachIteratorStatement {
     }
 
     pub fn key(&self) -> Option<&Variable> {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value { .. } => None,
             ForeachIteratorStatement::ParenthesizedValue { .. } => None,
             ForeachIteratorStatement::KeyAndValue { key, .. } => Some(key),
@@ -141,7 +141,7 @@ impl ForeachIteratorStatement {
     }
 
     pub fn value(&self) -> &Variable {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value { value, .. } => value,
             ForeachIteratorStatement::ParenthesizedValue { value, .. } => value,
             ForeachIteratorStatement::KeyAndValue { value, .. } => value,
@@ -178,7 +178,7 @@ impl Node for ForeachIteratorStatement {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value { expression, .. }
             | ForeachIteratorStatement::KeyAndValue { expression, .. } => {
                 expression.initial_position()
@@ -193,7 +193,7 @@ impl Node for ForeachIteratorStatement {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value { value, .. }
             | ForeachIteratorStatement::KeyAndValue { value, .. } => value.final_position(),
             ForeachIteratorStatement::ParenthesizedValue {
@@ -206,7 +206,7 @@ impl Node for ForeachIteratorStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             ForeachIteratorStatement::Value {
                 expression,
                 r#as,
@@ -273,7 +273,7 @@ impl Node for ForIteratorStatement {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             ForIteratorStatement::Standalone {
                 initializations,
                 initializations_semicolon,
@@ -292,7 +292,7 @@ impl Node for ForIteratorStatement {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             ForIteratorStatement::Standalone {
                 conditions_semicolon,
                 r#loop,

@@ -619,7 +619,7 @@ pub enum RangeOperationExpression {
 
 impl RangeOperationExpression {
     pub fn has_start(&self) -> bool {
-        match self {
+        match &self {
             RangeOperationExpression::Between { .. } => true,
             RangeOperationExpression::BetweenInclusive { .. } => true,
             RangeOperationExpression::To { .. } => false,

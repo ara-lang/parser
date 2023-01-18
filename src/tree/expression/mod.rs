@@ -115,7 +115,7 @@ impl Expression {
     ///
     /// If `initilization` is true, the expression is allowed to contain a class initialization expression.
     pub fn is_constant(&self, initilization: bool) -> bool {
-        match self {
+        match &self {
             Expression::Literal(_) => true,
             Expression::Identifier(_) => true,
             Expression::MagicConstant(_) => true,
@@ -251,7 +251,7 @@ impl Expression {
 
     /// Return true if the expression is writable
     pub fn is_writable(&self) -> bool {
-        match self {
+        match &self {
             Expression::Variable(_)
             | Expression::ArrayOperation(ArrayOperationExpression::Push { .. })
             | Expression::ArrayOperation(ArrayOperationExpression::Access { .. })
@@ -268,7 +268,7 @@ impl Expression {
 
     /// Return true if the expression is readable
     pub fn is_readable(&self) -> bool {
-        match self {
+        match &self {
             Expression::AssignmentOperation(..)
             | Expression::ExitConstruct(..)
             | Expression::ExceptionOperation(ExceptionOperationExpression::Throw { .. })
@@ -291,7 +291,7 @@ impl Node for Expression {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Expression::Parenthesized(expression) => expression.initial_position(),
             Expression::ExitConstruct(expression) => expression.initial_position(),
             Expression::Literal(expression) => expression.initial_position(),
@@ -325,7 +325,7 @@ impl Node for Expression {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Expression::Parenthesized(expression) => expression.final_position(),
             Expression::ExitConstruct(expression) => expression.final_position(),
             Expression::Literal(expression) => expression.final_position(),
@@ -359,7 +359,7 @@ impl Node for Expression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Expression::Parenthesized(expression) => vec![expression],
             Expression::ExitConstruct(expression) => vec![expression],
             Expression::Literal(expression) => vec![expression],

@@ -19,7 +19,7 @@ pub enum MagicConstant {
 
 impl Node for MagicConstant {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             MagicConstant::Directory { position, .. } => *position,
             MagicConstant::File { position, .. } => *position,
             MagicConstant::Line { position, .. } => *position,
@@ -31,7 +31,7 @@ impl Node for MagicConstant {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             MagicConstant::Directory { position, value } => position + value.len(),
             MagicConstant::File { position, value } => position + value.len(),
             MagicConstant::Line { position, value } => position + value.len(),
@@ -47,7 +47,7 @@ impl Node for MagicConstant {
     }
 
     fn get_description(&self) -> String {
-        match self {
+        match &self {
             MagicConstant::Directory { .. } => "directory magic constant expression".to_string(),
             MagicConstant::File { .. } => "file magic constant expression".to_string(),
             MagicConstant::Line { .. } => "line magic constant expression".to_string(),

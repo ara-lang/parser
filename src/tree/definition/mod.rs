@@ -65,7 +65,7 @@ impl Node for DefinitionTree {
 
 impl Node for Definition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Definition::Namespace(definition) => definition.initial_position(),
             Definition::Use(definition) => definition.initial_position(),
             Definition::TypeAlias(definition) => definition.initial_position(),
@@ -78,7 +78,7 @@ impl Node for Definition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Definition::Namespace(definition) => definition.final_position(),
             Definition::Use(definition) => definition.final_position(),
             Definition::TypeAlias(definition) => definition.final_position(),

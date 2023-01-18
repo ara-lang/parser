@@ -229,7 +229,7 @@ impl Display for Token {
 
 impl Display for TokenKind {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let s = match self {
+        let s = match &self {
             Self::Self_ => "self",
             Self::Parent => "parent",
             Self::BangEquals => "!=",

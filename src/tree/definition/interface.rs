@@ -149,7 +149,7 @@ impl Node for InterfaceDefinitionBody {
 
 impl Node for InterfaceDefinitionMember {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Constant(constant) => constant.initial_position(),
             Self::Constructor(constructor) => constructor.initial_position(),
             Self::Method(method) => method.initial_position(),
@@ -157,7 +157,7 @@ impl Node for InterfaceDefinitionMember {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Constant(constant) => constant.final_position(),
             Self::Constructor(constructor) => constructor.final_position(),
             Self::Method(method) => method.final_position(),

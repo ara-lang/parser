@@ -62,7 +62,7 @@ impl Node for ArgumentExpression {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             ArgumentExpression::Value { value, .. }
             | ArgumentExpression::ReverseSpread { value, .. } => value.initial_position(),
             ArgumentExpression::Spread { ellipsis, .. } => *ellipsis,
@@ -71,7 +71,7 @@ impl Node for ArgumentExpression {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             ArgumentExpression::Value { value, .. } | ArgumentExpression::Spread { value, .. } => {
                 value.final_position()
             }
@@ -81,7 +81,7 @@ impl Node for ArgumentExpression {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             ArgumentExpression::Value { value, .. }
             | ArgumentExpression::Spread { value, .. }
             | ArgumentExpression::ReverseSpread { value, .. } => vec![value],
@@ -90,7 +90,7 @@ impl Node for ArgumentExpression {
     }
 
     fn get_description(&self) -> String {
-        match self {
+        match &self {
             ArgumentExpression::Value { .. } => "value argument expression".to_string(),
             ArgumentExpression::Spread { .. } => "spread argument expression".to_string(),
             ArgumentExpression::ReverseSpread { .. } => {

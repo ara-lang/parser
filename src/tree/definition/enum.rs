@@ -115,14 +115,14 @@ impl Node for EnumDefinition {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             EnumDefinition::Backed(definition) => definition.initial_position(),
             EnumDefinition::Unit(definition) => definition.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             EnumDefinition::Backed(definition) => definition.final_position(),
             EnumDefinition::Unit(definition) => definition.final_position(),
         }
@@ -240,7 +240,7 @@ impl Node for UnitEnumBodyDefinition {
 
 impl Node for UnitEnumMemberDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Case(case) => case.initial_position(),
             Self::Method(method) => method.initial_position(),
             Self::Constant(constant) => constant.initial_position(),
@@ -248,7 +248,7 @@ impl Node for UnitEnumMemberDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Case(case) => case.final_position(),
             Self::Method(method) => method.final_position(),
             Self::Constant(constant) => constant.final_position(),
@@ -256,7 +256,7 @@ impl Node for UnitEnumMemberDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Self::Case(case) => vec![case],
             Self::Method(method) => vec![method],
             Self::Constant(constant) => vec![constant],
@@ -264,7 +264,7 @@ impl Node for UnitEnumMemberDefinition {
     }
 
     fn get_description(&self) -> String {
-        match self {
+        match &self {
             Self::Case(case) => case.get_description(),
             Self::Method(method) => method.get_description(),
             Self::Constant(constant) => constant.get_description(),
@@ -338,19 +338,19 @@ impl Node for BackedEnumDefinition {
 
 impl Node for BackedEnumTypeDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::String(colon, _) | Self::Int(colon, _) => *colon,
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::String(_, identifier) | Self::Int(_, identifier) => identifier.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Self::String(_, identifier) | Self::Int(_, identifier) => vec![identifier],
         }
     }
@@ -383,7 +383,7 @@ impl Node for BackedEnumBodyDefinition {
 
 impl Node for BackedEnumMemberDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Case(case) => case.initial_position(),
             Self::Method(method) => method.initial_position(),
             Self::Constant(constant) => constant.initial_position(),
@@ -391,7 +391,7 @@ impl Node for BackedEnumMemberDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Case(case) => case.final_position(),
             Self::Method(method) => method.final_position(),
             Self::Constant(constant) => constant.final_position(),

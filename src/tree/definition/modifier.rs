@@ -53,7 +53,7 @@ impl Node for ModifierGroupDefinition {
 
 impl Node for ModifierDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             ModifierDefinition::Public(keyword)
             | ModifierDefinition::Protected(keyword)
             | ModifierDefinition::Private(keyword)
@@ -65,7 +65,7 @@ impl Node for ModifierDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             ModifierDefinition::Public(keyword)
             | ModifierDefinition::Protected(keyword)
             | ModifierDefinition::Private(keyword)
@@ -77,7 +77,7 @@ impl Node for ModifierDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             ModifierDefinition::Public(keyword)
             | ModifierDefinition::Protected(keyword)
             | ModifierDefinition::Private(keyword)
@@ -103,7 +103,7 @@ impl Node for ModifierDefinition {
 
 impl std::fmt::Display for ModifierDefinition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
+        match &self {
             ModifierDefinition::Public(keyword)
             | ModifierDefinition::Protected(keyword)
             | ModifierDefinition::Private(keyword)

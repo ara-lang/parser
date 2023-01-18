@@ -105,7 +105,7 @@ impl TypeDefinition {
     }
 
     pub fn is_scalar(&self) -> bool {
-        match self {
+        match &self {
             TypeDefinition::Literal(literal) => !matches!(literal, Literal::Null(_)),
             | TypeDefinition::Boolean(_)
             | TypeDefinition::SignedInteger(_)
@@ -144,7 +144,7 @@ impl Node for TypeAliasDefinition {
 
 impl Node for SignedIntegerTypeDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             SignedIntegerTypeDefinition::Default(keyword)
             | SignedIntegerTypeDefinition::I128(keyword)
             | SignedIntegerTypeDefinition::I64(keyword)
@@ -155,7 +155,7 @@ impl Node for SignedIntegerTypeDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             SignedIntegerTypeDefinition::Default(keyword)
             | SignedIntegerTypeDefinition::I128(keyword)
             | SignedIntegerTypeDefinition::I64(keyword)
@@ -166,7 +166,7 @@ impl Node for SignedIntegerTypeDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             SignedIntegerTypeDefinition::Default(keyword)
             | SignedIntegerTypeDefinition::I128(keyword)
             | SignedIntegerTypeDefinition::I64(keyword)
@@ -183,7 +183,7 @@ impl Node for SignedIntegerTypeDefinition {
 
 impl Node for UnsignedIntegerTypeDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             UnsignedIntegerTypeDefinition::Default(keyword)
             | UnsignedIntegerTypeDefinition::U32(keyword)
             | UnsignedIntegerTypeDefinition::U16(keyword)
@@ -192,7 +192,7 @@ impl Node for UnsignedIntegerTypeDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             UnsignedIntegerTypeDefinition::Default(keyword)
             | UnsignedIntegerTypeDefinition::U32(keyword)
             | UnsignedIntegerTypeDefinition::U16(keyword)
@@ -201,7 +201,7 @@ impl Node for UnsignedIntegerTypeDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             UnsignedIntegerTypeDefinition::Default(keyword)
             | UnsignedIntegerTypeDefinition::U32(keyword)
             | UnsignedIntegerTypeDefinition::U16(keyword)
@@ -216,7 +216,7 @@ impl Node for UnsignedIntegerTypeDefinition {
 
 impl Node for FloatingPointTypeDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             FloatingPointTypeDefinition::Default(keyword)
             | FloatingPointTypeDefinition::F64(keyword)
             | FloatingPointTypeDefinition::F32(keyword) => keyword.initial_position(),
@@ -224,7 +224,7 @@ impl Node for FloatingPointTypeDefinition {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             FloatingPointTypeDefinition::Default(keyword)
             | FloatingPointTypeDefinition::F64(keyword)
             | FloatingPointTypeDefinition::F32(keyword) => keyword.final_position(),
@@ -232,7 +232,7 @@ impl Node for FloatingPointTypeDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             FloatingPointTypeDefinition::Default(keyword)
             | FloatingPointTypeDefinition::F64(keyword)
             | FloatingPointTypeDefinition::F32(keyword) => vec![keyword],

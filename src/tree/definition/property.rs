@@ -34,7 +34,7 @@ pub enum PropertyEntryDefinition {
 
 impl PropertyEntryDefinition {
     pub fn variable(&self) -> &Variable {
-        match self {
+        match &self {
             PropertyEntryDefinition::Uninitialized { variable } => variable,
             PropertyEntryDefinition::Initialized { variable, .. } => variable,
         }
@@ -79,21 +79,21 @@ impl Node for PropertyDefinition {
 
 impl Node for PropertyEntryDefinition {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             PropertyEntryDefinition::Uninitialized { variable } => variable.initial_position(),
             PropertyEntryDefinition::Initialized { variable, .. } => variable.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             PropertyEntryDefinition::Uninitialized { variable } => variable.final_position(),
             PropertyEntryDefinition::Initialized { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             PropertyEntryDefinition::Uninitialized { variable } => vec![variable],
             PropertyEntryDefinition::Initialized {
                 variable, value, ..
