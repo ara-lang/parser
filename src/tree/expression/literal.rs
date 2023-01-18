@@ -109,7 +109,14 @@ impl Node for Literal {
     }
 
     fn get_description(&self) -> String {
-        "literal expression".to_string()
+        match &self {
+            Literal::String(literal) => literal.get_description(),
+            Literal::Integer(literal) => literal.get_description(),
+            Literal::Float(literal) => literal.get_description(),
+            Literal::Null(literal) => literal.get_description(),
+            Literal::True(literal) => literal.get_description(),
+            Literal::False(literal) => literal.get_description(),
+        }
     }
 }
 

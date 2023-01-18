@@ -129,14 +129,17 @@ impl Node for EnumDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             EnumDefinition::Backed(definition) => vec![definition],
             EnumDefinition::Unit(definition) => vec![definition],
         }
     }
 
     fn get_description(&self) -> String {
-        "enum definition".to_string()
+        match &self {
+            EnumDefinition::Backed(definition) => definition.get_description(),
+            EnumDefinition::Unit(definition) => definition.get_description(),
+        }
     }
 }
 
@@ -400,7 +403,11 @@ impl Node for BackedEnumMemberDefinition {
     }
 
     fn get_description(&self) -> String {
-        "backed enum member definition".to_string()
+        match &self {
+            Self::Case(case) => case.get_description(),
+            Self::Method(method) => method.get_description(),
+            Self::Constant(constant) => constant.get_description(),
+        }
     }
 }
 

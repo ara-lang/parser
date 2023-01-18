@@ -120,7 +120,14 @@ impl Node for AnonymousClassExpressionMember {
     }
 
     fn get_description(&self) -> String {
-        "anonymous class expression member".to_string()
+        match &self {
+            AnonymousClassExpressionMember::Constant(constant) => constant.get_description(),
+            AnonymousClassExpressionMember::Property(property) => property.get_description(),
+            AnonymousClassExpressionMember::ConcreteMethod(method) => method.get_description(),
+            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => {
+                constructor.get_description()
+            }
+        }
     }
 }
 

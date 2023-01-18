@@ -1414,7 +1414,14 @@ impl Node for ClassOperationInitializationClassExpression {
     }
 
     fn get_description(&self) -> String {
-        "class operation initialization class expression".to_string()
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(identifier) => {
+                identifier.get_description()
+            }
+            ClassOperationInitializationClassExpression::Variable(variable) => {
+                variable.get_description()
+            }
+        }
     }
 }
 

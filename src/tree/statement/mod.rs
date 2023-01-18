@@ -102,6 +102,20 @@ impl Node for Statement {
     }
 
     fn get_description(&self) -> String {
-        "statement".to_string()
+        match &self {
+            Statement::DoWhile(statement) => statement.get_description(),
+            Statement::While(statement) => statement.get_description(),
+            Statement::For(statement) => statement.get_description(),
+            Statement::Foreach(statement) => statement.get_description(),
+            Statement::Break(statement) => statement.get_description(),
+            Statement::Continue(statement) => statement.get_description(),
+            Statement::If(statement) => statement.get_description(),
+            Statement::Using(statement) => statement.get_description(),
+            Statement::Try(statement) => statement.get_description(),
+            Statement::Expression(statement) => statement.get_description(),
+            Statement::Return(statement) => statement.get_description(),
+            Statement::Block(statement) => statement.get_description(),
+            Statement::Empty(_) => "empty statement".to_string(),
+        }
     }
 }

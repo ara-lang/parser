@@ -393,6 +393,36 @@ impl Node for Expression {
     }
 
     fn get_description(&self) -> String {
-        "expression".to_string()
+        match &self {
+            Expression::Parenthesized(expression) => expression.get_description(),
+            Expression::ExitConstruct(expression) => expression.get_description(),
+            Expression::Literal(expression) => expression.get_description(),
+            Expression::ArithmeticOperation(expression) => expression.get_description(),
+            Expression::AsyncOperation(expression) => expression.get_description(),
+            Expression::ArrayOperation(expression) => expression.get_description(),
+            Expression::AssignmentOperation(expression) => expression.get_description(),
+            Expression::BitwiseOperation(expression) => expression.get_description(),
+            Expression::ClassOperation(expression) => expression.get_description(),
+            Expression::CoalesceOperation(expression) => expression.get_description(),
+            Expression::ComparisonOperation(expression) => expression.get_description(),
+            Expression::ExceptionOperation(expression) => expression.get_description(),
+            Expression::FunctionOperation(expression) => expression.get_description(),
+            Expression::GeneratorOperation(expression) => expression.get_description(),
+            Expression::LogicalOperation(expression) => expression.get_description(),
+            Expression::ObjectOperation(expression) => expression.get_description(),
+            Expression::RangeOperation(expression) => expression.get_description(),
+            Expression::StringOperation(expression) => expression.get_description(),
+            Expression::TypeOperation(expression) => expression.get_description(),
+            Expression::TernaryOperation(expression) => expression.get_description(),
+            Expression::Identifier(expression) => expression.get_description(),
+            Expression::Variable(expression) => expression.get_description(),
+            Expression::Match(expression) => expression.get_description(),
+            Expression::AnonymousFunction(expression) => expression.get_description(),
+            Expression::ArrowFunction(expression) => expression.get_description(),
+            Expression::Vec(expression) => expression.get_description(),
+            Expression::Dict(expression) => expression.get_description(),
+            Expression::Tuple(expression) => expression.get_description(),
+            Expression::MagicConstant(expression) => expression.get_description(),
+        }
     }
 }
