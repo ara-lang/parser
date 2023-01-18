@@ -349,7 +349,32 @@ impl Node for TypeDefinition {
     }
 
     fn get_description(&self) -> String {
-        "type definition".to_string()
+        match &self {
+            // match &self and print all the variants:
+            TypeDefinition::Identifier(_) => "identifier type definition".to_string(),
+            TypeDefinition::Union(_) => "union type definition".to_string(),
+            TypeDefinition::Intersection(_) => "intersection type definition".to_string(),
+            TypeDefinition::Literal(literal) => literal.get_description(),
+            TypeDefinition::Nullable(_, _) => "nullable type definition".to_string(),
+            TypeDefinition::Void(_) => "void type definition".to_string(),
+            TypeDefinition::Never(_) => "never type definition".to_string(),
+            TypeDefinition::Boolean(_) => "boolean type definition".to_string(),
+            TypeDefinition::String(_) => "string type definition".to_string(),
+            TypeDefinition::Dict(_, _) => "dict type definition".to_string(),
+            TypeDefinition::Vec(_, _) => "vec type definition".to_string(),
+            TypeDefinition::Object(_) => "object type definition".to_string(),
+            TypeDefinition::Mixed(_) => "mixed type definition".to_string(),
+            TypeDefinition::NonNull(_) => "non-null type definition".to_string(),
+            TypeDefinition::Resource(_) => "resource type definition".to_string(),
+            TypeDefinition::Class(_, _) => "class type definition".to_string(),
+            TypeDefinition::Interface(_, _) => "interface type definition".to_string(),
+            TypeDefinition::Iterable(_, _) => "iterable type definition".to_string(),
+            TypeDefinition::SignedInteger(signed) => signed.get_description(),
+            TypeDefinition::UnsignedInteger(unsigned) => unsigned.get_description(),
+            TypeDefinition::FloatingPoint(floating) => floating.get_description(),
+            TypeDefinition::Tuple { .. } => "tuple type definition".to_string(),
+            TypeDefinition::Parenthesized { .. } => "parenthesized type definition".to_string(),
+        }
     }
 }
 

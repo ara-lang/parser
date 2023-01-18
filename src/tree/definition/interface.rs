@@ -165,7 +165,7 @@ impl Node for InterfaceDefinitionMember {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Self::Constant(constant) => vec![constant],
             Self::Constructor(constructor) => vec![constructor],
             Self::Method(method) => vec![method],
@@ -173,6 +173,10 @@ impl Node for InterfaceDefinitionMember {
     }
 
     fn get_description(&self) -> String {
-        "interface member definition".to_string()
+        match &self {
+            Self::Constant(constant) => constant.get_description(),
+            Self::Constructor(constructor) => constructor.get_description(),
+            Self::Method(method) => method.get_description(),
+        }
     }
 }

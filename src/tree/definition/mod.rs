@@ -91,7 +91,7 @@ impl Node for Definition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Definition::Namespace(definition) => vec![definition.as_ref()],
             Definition::Use(definition) => vec![definition.as_ref()],
             Definition::TypeAlias(definition) => vec![definition.as_ref()],
@@ -104,6 +104,15 @@ impl Node for Definition {
     }
 
     fn get_description(&self) -> String {
-        "definition".to_string()
+        match &self {
+            Definition::Namespace(definition) => definition.get_description(),
+            Definition::Use(definition) => definition.get_description(),
+            Definition::TypeAlias(definition) => definition.get_description(),
+            Definition::Constant(definition) => definition.get_description(),
+            Definition::Function(definition) => definition.get_description(),
+            Definition::Interface(definition) => definition.get_description(),
+            Definition::Enum(definition) => definition.get_description(),
+            Definition::Class(definition) => definition.get_description(),
+        }
     }
 }

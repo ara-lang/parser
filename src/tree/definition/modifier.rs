@@ -89,7 +89,15 @@ impl Node for ModifierDefinition {
     }
 
     fn get_description(&self) -> String {
-        "modifier definition".to_string()
+        match &self {
+            ModifierDefinition::Public(_keyword) => "public modifier definition".to_string(),
+            ModifierDefinition::Protected(_keyword) => "protected modifier definition".to_string(),
+            ModifierDefinition::Private(_keyword) => "private modifier definition".to_string(),
+            ModifierDefinition::Readonly(_keyword) => "readonly modifier definition".to_string(),
+            ModifierDefinition::Static(_keyword) => "static modifier definition".to_string(),
+            ModifierDefinition::Abstract(_keyword) => "abstract modifier definition".to_string(),
+            ModifierDefinition::Final(_keyword) => "final modifier definition".to_string(),
+        }
     }
 }
 

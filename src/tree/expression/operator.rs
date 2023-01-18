@@ -704,7 +704,44 @@ impl Node for ArithmeticOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "arithmetic operation expression".to_string()
+        match &self {
+            ArithmeticOperationExpression::Addition { .. } => {
+                "addition arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Subtraction { .. } => {
+                "subtraction arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Multiplication { .. } => {
+                "multiplication arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Division { .. } => {
+                "division arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Modulo { .. } => {
+                "modulo arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Exponentiation { .. } => {
+                "exponentiation arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Negative { .. } => {
+                "negative arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::Positive { .. } => {
+                "positive arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::PreIncrement { .. } => {
+                "pre-increment arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::PreDecrement { .. } => {
+                "pre-decrement arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::PostIncrement { .. } => {
+                "post-increment arithmetic operation expression".to_string()
+            }
+            ArithmeticOperationExpression::PostDecrement { .. } => {
+                "post-decrement arithmetic operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -788,7 +825,50 @@ impl Node for AssignmentOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "assignment operation expression".to_string()
+        match &self {
+            AssignmentOperationExpression::Assignment { .. } => {
+                "assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Addition { .. } => {
+                "addition assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Subtraction { .. } => {
+                "subtraction assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Multiplication { .. } => {
+                "multiplication assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Division { .. } => {
+                "division assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Modulo { .. } => {
+                "modulo assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Exponentiation { .. } => {
+                "exponentiation assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::BitwiseAnd { .. } => {
+                "bitwise AND assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::BitwiseOr { .. } => {
+                "bitwise OR assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::BitwiseXor { .. } => {
+                "bitwise XOR assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::LeftShift { .. } => {
+                "left shift assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::RightShift { .. } => {
+                "right shift assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Coalesce { .. } => {
+                "coalesce assignment operation expression".to_string()
+            }
+            AssignmentOperationExpression::Concat { .. } => {
+                "concat assignment operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -840,7 +920,24 @@ impl Node for BitwiseOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "bitwise operation expression".to_string()
+        match &self {
+            BitwiseOperationExpression::And { .. } => {
+                "bitwise AND operation expression".to_string()
+            }
+            BitwiseOperationExpression::Or { .. } => "bitwise OR operation expression".to_string(),
+            BitwiseOperationExpression::Xor { .. } => {
+                "bitwise XOR operation expression".to_string()
+            }
+            BitwiseOperationExpression::LeftShift { .. } => {
+                "left shift operation expression".to_string()
+            }
+            BitwiseOperationExpression::RightShift { .. } => {
+                "right shift operation expression".to_string()
+            }
+            BitwiseOperationExpression::Not { .. } => {
+                "bitwise NOT operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -904,7 +1001,35 @@ impl Node for ComparisonOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "comparison operation expression".to_string()
+        match &self {
+            ComparisonOperationExpression::Equal { .. } => {
+                "equal comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::NotEqual { .. } => {
+                "not equal comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::Identical { .. } => {
+                "identical comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::NotIdentical { .. } => {
+                "not identical comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::LessThan { .. } => {
+                "less than comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::LessThanOrEqual { .. } => {
+                "less than or equal comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::GreaterThan { .. } => {
+                "greater than comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::GreaterThanOrEqual { .. } => {
+                "greater than or equal comparison operation expression".to_string()
+            }
+            ComparisonOperationExpression::Spaceship { .. } => {
+                "spaceship comparison operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -944,7 +1069,15 @@ impl Node for LogicalOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "logical operation expression".to_string()
+        match &self {
+            LogicalOperationExpression::And { .. } => {
+                "logical AND operation expression".to_string()
+            }
+            LogicalOperationExpression::Or { .. } => "logical OR operation expression".to_string(),
+            LogicalOperationExpression::Not { .. } => {
+                "logical NOT operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -976,7 +1109,11 @@ impl Node for StringOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "string operation expression".to_string()
+        match &self {
+            StringOperationExpression::Concat { .. } => {
+                "string concatenation operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1040,7 +1177,19 @@ impl Node for ArrayOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "array operation expression".to_string()
+        match &self {
+            ArrayOperationExpression::Access { .. } => {
+                "array access operation expression".to_string()
+            }
+            ArrayOperationExpression::Push { .. } => "array push operation expression".to_string(),
+            ArrayOperationExpression::Isset { .. } => {
+                "array isset operation expression".to_string()
+            }
+            ArrayOperationExpression::Unset { .. } => {
+                "array unset operation expression".to_string()
+            }
+            ArrayOperationExpression::In { .. } => "array in operation expression".to_string(),
+        }
     }
 }
 
@@ -1072,7 +1221,11 @@ impl Node for CoalesceOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "coalesce operation expression".to_string()
+        match &self {
+            CoalesceOperationExpression::Coalesce { .. } => {
+                "coalesce operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1129,7 +1282,17 @@ impl Node for TernaryOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "ternary operation expression".to_string()
+        match &self {
+            TernaryOperationExpression::Ternary { .. } => {
+                "ternary operation expression".to_string()
+            }
+            TernaryOperationExpression::ShortTernary { .. } => {
+                "short ternary operation expression".to_string()
+            }
+            TernaryOperationExpression::ImplicitShortTernary { .. } => {
+                "implicit short ternary operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1182,7 +1345,14 @@ impl Node for TypeOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "type operation expression".to_string()
+        match &self {
+            TypeOperationExpression::Instanceof { .. } => {
+                "instanceof type operation expression".to_string()
+            }
+            TypeOperationExpression::Is { .. } => "is type operation expression".to_string(),
+            TypeOperationExpression::Into { .. } => "into type operation expression".to_string(),
+            TypeOperationExpression::As { .. } => "as type operation expression".to_string(),
+        }
     }
 }
 
@@ -1238,7 +1408,20 @@ impl Node for GeneratorOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "generator operation expression".to_string()
+        match &self {
+            GeneratorOperationExpression::Yield { .. } => {
+                "yield generator operation expression".to_string()
+            }
+            GeneratorOperationExpression::YieldValue { .. } => {
+                "yield value generator operation expression".to_string()
+            }
+            GeneratorOperationExpression::YieldKeyValue { .. } => {
+                "yield key value generator operation expression".to_string()
+            }
+            GeneratorOperationExpression::YieldFrom { .. } => {
+                "yield from generator operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1268,7 +1451,11 @@ impl Node for ExceptionOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "exception operation expression".to_string()
+        match &self {
+            ExceptionOperationExpression::Throw { .. } => {
+                "throw exception operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1372,7 +1559,26 @@ impl Node for ObjectOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "object operation expression".to_string()
+        match &self {
+            ObjectOperationExpression::Clone { .. } => {
+                "object clone operation expression".to_string()
+            }
+            ObjectOperationExpression::MethodCall { .. } => {
+                "object method call operation expression".to_string()
+            }
+            ObjectOperationExpression::NullsafeMethodCall { .. } => {
+                "object nullsafe method call operation expression".to_string()
+            }
+            ObjectOperationExpression::MethodClosureCreation { .. } => {
+                "object method closure creation operation expression".to_string()
+            }
+            ObjectOperationExpression::PropertyFetch { .. } => {
+                "object property fetch operation expression".to_string()
+            }
+            ObjectOperationExpression::NullsafePropertyFetch { .. } => {
+                "object nullsafe property fetch operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1414,7 +1620,14 @@ impl Node for ClassOperationInitializationClassExpression {
     }
 
     fn get_description(&self) -> String {
-        "class operation initialization class expression".to_string()
+        match &self {
+            ClassOperationInitializationClassExpression::Identifier(identifier) => {
+                identifier.get_description()
+            }
+            ClassOperationInitializationClassExpression::Variable(variable) => {
+                variable.get_description()
+            }
+        }
     }
 }
 
@@ -1535,7 +1748,26 @@ impl Node for ClassOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "class operation expression".to_string()
+        match &self {
+            ClassOperationExpression::Initialization { .. } => {
+                "class initialization operation expression".to_string()
+            }
+            ClassOperationExpression::AnonymousInitialization { .. } => {
+                "class anonymous initialization operation expression".to_string()
+            }
+            ClassOperationExpression::StaticMethodCall { .. } => {
+                "class static method call operation expression".to_string()
+            }
+            ClassOperationExpression::StaticMethodClosureCreation { .. } => {
+                "class static method closure creation operation expression".to_string()
+            }
+            ClassOperationExpression::StaticPropertyFetch { .. } => {
+                "class static property fetch operation expression".to_string()
+            }
+            ClassOperationExpression::ConstantFetch { .. } => {
+                "class constant fetch operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1601,7 +1833,14 @@ impl Node for FunctionOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "function operation expression".to_string()
+        match &self {
+            FunctionOperationExpression::Call { .. } => {
+                "function call operation expression".to_string()
+            }
+            FunctionOperationExpression::ClosureCreation { .. } => {
+                "function closure creation operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1660,7 +1899,15 @@ impl Node for AsyncOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "async operation expression".to_string()
+        match &self {
+            AsyncOperationExpression::Await { .. } => {
+                "async await operation expression".to_string()
+            }
+            AsyncOperationExpression::Async { .. } => "async operation expression".to_string(),
+            AsyncOperationExpression::Concurrently { .. } => {
+                "async concurrently operation expression".to_string()
+            }
+        }
     }
 }
 
@@ -1714,6 +1961,19 @@ impl Node for RangeOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "range operation expression".to_string()
+        match &self {
+            RangeOperationExpression::Between { .. } => {
+                "range between operation expression".to_string()
+            }
+            RangeOperationExpression::BetweenInclusive { .. } => {
+                "range between inclusive operation expression".to_string()
+            }
+            RangeOperationExpression::To { .. } => "range to operation expression".to_string(),
+            RangeOperationExpression::ToInclusive { .. } => {
+                "range to inclusive operation expression".to_string()
+            }
+            RangeOperationExpression::From { .. } => "range from operation expression".to_string(),
+            RangeOperationExpression::Full { .. } => "range full operation expression".to_string(),
+        }
     }
 }

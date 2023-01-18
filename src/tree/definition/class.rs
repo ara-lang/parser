@@ -224,7 +224,7 @@ impl Node for ClassDefinitionMember {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Self::Constant(constant) => vec![constant],
             Self::Property(property) => vec![property],
             Self::AbstractMethod(method) => vec![method],
@@ -235,6 +235,13 @@ impl Node for ClassDefinitionMember {
     }
 
     fn get_description(&self) -> String {
-        "class member definition".to_string()
+        match &self {
+            Self::Constant(constant) => constant.get_description(),
+            Self::Property(property) => property.get_description(),
+            Self::AbstractMethod(method) => method.get_description(),
+            Self::AbstractConstructor(constructor) => constructor.get_description(),
+            Self::ConcreteMethod(method) => method.get_description(),
+            Self::ConcreteConstructor(constructor) => constructor.get_description(),
+        }
     }
 }

@@ -102,6 +102,11 @@ impl Node for PropertyEntryDefinition {
     }
 
     fn get_description(&self) -> String {
-        "property entry definition".to_string()
+        match &self {
+            PropertyEntryDefinition::Uninitialized { .. } => {
+                "uninitialized property entry".to_string()
+            }
+            PropertyEntryDefinition::Initialized { .. } => "initialized property entry".to_string(),
+        }
     }
 }
