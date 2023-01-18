@@ -142,6 +142,108 @@ impl Node for TypeAliasDefinition {
     }
 }
 
+impl Node for SignedIntegerType {
+    fn initial_position(&self) -> usize {
+        match self {
+            SignedIntegerType::Default(keyword)
+            | SignedIntegerType::I128(keyword)
+            | SignedIntegerType::I64(keyword)
+            | SignedIntegerType::I32(keyword)
+            | SignedIntegerType::I16(keyword)
+            | SignedIntegerType::I8(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            SignedIntegerType::Default(keyword)
+            | SignedIntegerType::I128(keyword)
+            | SignedIntegerType::I64(keyword)
+            | SignedIntegerType::I32(keyword)
+            | SignedIntegerType::I16(keyword)
+            | SignedIntegerType::I8(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            SignedIntegerType::Default(keyword)
+            | SignedIntegerType::I128(keyword)
+            | SignedIntegerType::I64(keyword)
+            | SignedIntegerType::I32(keyword)
+            | SignedIntegerType::I16(keyword)
+            | SignedIntegerType::I8(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "signed integer type".to_string()
+    }
+}
+
+impl Node for UnsignedIntegerType {
+    fn initial_position(&self) -> usize {
+        match self {
+            UnsignedIntegerType::Default(keyword)
+            | UnsignedIntegerType::U32(keyword)
+            | UnsignedIntegerType::U16(keyword)
+            | UnsignedIntegerType::U8(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            UnsignedIntegerType::Default(keyword)
+            | UnsignedIntegerType::U32(keyword)
+            | UnsignedIntegerType::U16(keyword)
+            | UnsignedIntegerType::U8(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            UnsignedIntegerType::Default(keyword)
+            | UnsignedIntegerType::U32(keyword)
+            | UnsignedIntegerType::U16(keyword)
+            | UnsignedIntegerType::U8(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "unsigned integer type".to_string()
+    }
+}
+
+impl Node for FloatingPointType {
+    fn initial_position(&self) -> usize {
+        match self {
+            FloatingPointType::Default(keyword)
+            | FloatingPointType::F64(keyword)
+            | FloatingPointType::F32(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            FloatingPointType::Default(keyword)
+            | FloatingPointType::F64(keyword)
+            | FloatingPointType::F32(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            FloatingPointType::Default(keyword)
+            | FloatingPointType::F64(keyword)
+            | FloatingPointType::F32(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "floating point type".to_string()
+    }
+}
+
 impl Node for TypeDefinition {
     fn initial_position(&self) -> usize {
         match &self {
