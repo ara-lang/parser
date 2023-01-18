@@ -147,7 +147,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"iterable" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
             let templates = template::type_template_group_definition(state)?;
 
             Ok(TypeDefinition::Iterable(keyword, templates))
@@ -155,28 +155,28 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"void" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Void(keyword))
         }
         _ if value == b"never" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Never(keyword))
         }
         _ if value == b"bool" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Boolean(keyword))
         }
         _ if value == b"int" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::Default(keyword),
@@ -185,7 +185,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"i128" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::I128(keyword),
@@ -194,7 +194,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"i64" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::I64(keyword),
@@ -203,7 +203,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"i32" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::I32(keyword),
@@ -212,7 +212,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"i16" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::I16(keyword),
@@ -221,7 +221,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"i8" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::SignedInteger(
                 SignedIntegerTypeDefinition::I8(keyword),
@@ -230,7 +230,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"uint" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::UnsignedInteger(
                 UnsignedIntegerTypeDefinition::Default(keyword),
@@ -239,7 +239,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"u32" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::UnsignedInteger(
                 UnsignedIntegerTypeDefinition::U32(keyword),
@@ -248,7 +248,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"u16" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::UnsignedInteger(
                 UnsignedIntegerTypeDefinition::U16(keyword),
@@ -257,7 +257,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"u8" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::UnsignedInteger(
                 UnsignedIntegerTypeDefinition::U8(keyword),
@@ -266,7 +266,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"float" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::FloatingPoint(
                 FloatingPointTypeDefinition::Default(keyword),
@@ -275,7 +275,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"f64" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::FloatingPoint(
                 FloatingPointTypeDefinition::F64(keyword),
@@ -284,7 +284,7 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"f32" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::FloatingPoint(
                 FloatingPointTypeDefinition::F32(keyword),
@@ -293,35 +293,35 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
         _ if value == b"string" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::String(keyword))
         }
         _ if value == b"object" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Object(keyword))
         }
         _ if value == b"mixed" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Mixed(keyword))
         }
         _ if value == b"nonnull" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::NonNull(keyword))
         }
         _ if value == b"resource" => {
             state.iterator.next();
 
-            let keyword = Keyword::new(value.into(), current.position);
+            let keyword = Keyword::new(name.into(), current.position);
 
             Ok(TypeDefinition::Resource(keyword))
         }
