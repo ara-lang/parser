@@ -41,11 +41,13 @@ DefinitionTree {
                                                         position: 16,
                                                     },
                                                 ),
-                                                Integer(
-                                                    Keyword {
-                                                        value: "int",
-                                                        position: 23,
-                                                    },
+                                                SignedInteger(
+                                                    Default(
+                                                        Keyword {
+                                                            value: "int",
+                                                            position: 23,
+                                                        },
+                                                    ),
                                                 ),
                                             ],
                                         ),

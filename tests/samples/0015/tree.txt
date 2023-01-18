@@ -27,11 +27,13 @@ DefinitionTree {
                                     comments: [],
                                 },
                                 attributes: [],
-                                type_definition: Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 13,
-                                    },
+                                type_definition: SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 13,
+                                        },
+                                    ),
                                 ),
                                 ellipsis: None,
                                 variable: Variable {
@@ -47,11 +49,13 @@ DefinitionTree {
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 20,
-                    type_definition: Integer(
-                        Keyword {
-                            value: "int",
-                            position: 22,
-                        },
+                    type_definition: SignedInteger(
+                        Default(
+                            Keyword {
+                                value: "int",
+                                position: 22,
+                            },
+                        ),
                     ),
                 },
                 body: BlockStatement {

@@ -6504,11 +6504,13 @@ DefinitionTree {
                                                         less_than: 3578,
                                                         members: CommaSeparated {
                                                             inner: [
-                                                                Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 3579,
-                                                                    },
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 3579,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                                 String(
                                                                     Keyword {
@@ -7736,11 +7738,13 @@ DefinitionTree {
                                                         less_than: 4429,
                                                         members: CommaSeparated {
                                                             inner: [
-                                                                Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 4430,
-                                                                    },
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 4430,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                                 String(
                                                                     Keyword {

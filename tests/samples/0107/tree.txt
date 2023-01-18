@@ -123,11 +123,13 @@ DefinitionTree {
                                                     },
                                                     return_type: FunctionLikeReturnTypeDefinition {
                                                         colon: 56,
-                                                        type_definition: Integer(
-                                                            Keyword {
-                                                                value: "int",
-                                                                position: 58,
-                                                            },
+                                                        type_definition: SignedInteger(
+                                                            Default(
+                                                                Keyword {
+                                                                    value: "int",
+                                                                    position: 58,
+                                                                },
+                                                            ),
                                                         ),
                                                     },
                                                     double_arrow: 62,
@@ -248,11 +250,13 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                type_definition: Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 172,
-                                    },
+                                type_definition: SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 172,
+                                        },
+                                    ),
                                 ),
                                 entry: Initialized {
                                     variable: Variable {
@@ -344,11 +348,13 @@ DefinitionTree {
                                         ),
                                     ],
                                 },
-                                type_definition: Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 219,
-                                    },
+                                type_definition: SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 219,
+                                        },
+                                    ),
                                 ),
                                 entry: Initialized {
                                     variable: Variable {

@@ -632,11 +632,13 @@ DefinitionTree {
                             },
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 396,
-                                type_definition: Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 398,
-                                    },
+                                type_definition: SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 398,
+                                        },
+                                    ),
                                 ),
                             },
                             body: BlockStatement {
@@ -1298,11 +1300,13 @@ DefinitionTree {
                             },
                             return_type: FunctionLikeReturnTypeDefinition {
                                 colon: 782,
-                                type_definition: Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 784,
-                                    },
+                                type_definition: SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 784,
+                                        },
+                                    ),
                                 ),
                             },
                             body: BlockStatement {

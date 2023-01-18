@@ -1,0 +1,1121 @@
+DefinitionTree {
+    definitions: [
+        TypeAlias(
+            TypeAliasDefinition {
+                type: Keyword {
+                    value: "type",
+                    position: 0,
+                },
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 5,
+                        value: "SignedInt",
+                    },
+                    templates: None,
+                },
+                equals: 15,
+                type_definition: Union(
+                    [
+                        SignedInteger(
+                            Default(
+                                Keyword {
+                                    value: "int",
+                                    position: 17,
+                                },
+                            ),
+                        ),
+                        SignedInteger(
+                            I128(
+                                Keyword {
+                                    value: "i128",
+                                    position: 23,
+                                },
+                            ),
+                        ),
+                        SignedInteger(
+                            I64(
+                                Keyword {
+                                    value: "i64",
+                                    position: 30,
+                                },
+                            ),
+                        ),
+                        SignedInteger(
+                            I32(
+                                Keyword {
+                                    value: "i32",
+                                    position: 36,
+                                },
+                            ),
+                        ),
+                        SignedInteger(
+                            I16(
+                                Keyword {
+                                    value: "i16",
+                                    position: 42,
+                                },
+                            ),
+                        ),
+                        SignedInteger(
+                            I8(
+                                Keyword {
+                                    value: "i8",
+                                    position: 48,
+                                },
+                            ),
+                        ),
+                    ],
+                ),
+                semicolon: 50,
+            },
+        ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: Keyword {
+                    value: "type",
+                    position: 52,
+                },
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 57,
+                        value: "UnsignedInt",
+                    },
+                    templates: None,
+                },
+                equals: 69,
+                type_definition: Union(
+                    [
+                        UnsignedInteger(
+                            Default(
+                                Keyword {
+                                    value: "uint",
+                                    position: 71,
+                                },
+                            ),
+                        ),
+                        UnsignedInteger(
+                            U32(
+                                Keyword {
+                                    value: "u32",
+                                    position: 78,
+                                },
+                            ),
+                        ),
+                        UnsignedInteger(
+                            U16(
+                                Keyword {
+                                    value: "u16",
+                                    position: 84,
+                                },
+                            ),
+                        ),
+                        UnsignedInteger(
+                            U8(
+                                Keyword {
+                                    value: "u8",
+                                    position: 90,
+                                },
+                            ),
+                        ),
+                    ],
+                ),
+                semicolon: 92,
+            },
+        ),
+        TypeAlias(
+            TypeAliasDefinition {
+                type: Keyword {
+                    value: "type",
+                    position: 94,
+                },
+                name: TemplatedIdentifier {
+                    name: Identifier {
+                        position: 99,
+                        value: "FloatingPoint",
+                    },
+                    templates: None,
+                },
+                equals: 113,
+                type_definition: Union(
+                    [
+                        FloatingPoint(
+                            Default(
+                                Keyword {
+                                    value: "float",
+                                    position: 115,
+                                },
+                            ),
+                        ),
+                        FloatingPoint(
+                            F64(
+                                Keyword {
+                                    value: "f64",
+                                    position: 123,
+                                },
+                            ),
+                        ),
+                        FloatingPoint(
+                            F32(
+                                Keyword {
+                                    value: "f32",
+                                    position: 129,
+                                },
+                            ),
+                        ),
+                    ],
+                ),
+                semicolon: 132,
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 135,
+                },
+                name: Identifier {
+                    position: 144,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 147,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 148,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 149,
+                    type_definition: SignedInteger(
+                        Default(
+                            Keyword {
+                                value: "int",
+                                position: 151,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 155,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 157,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "9223372036854775807",
+                                                position: 164,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 183,
+                            },
+                        ),
+                    ],
+                    right_brace: 185,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 187,
+                },
+                name: Identifier {
+                    position: 196,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 199,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 200,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 201,
+                    type_definition: SignedInteger(
+                        I128(
+                            Keyword {
+                                value: "i128",
+                                position: 203,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 208,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 210,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "170141183460469231731687303715884105727",
+                                                position: 217,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 256,
+                            },
+                        ),
+                    ],
+                    right_brace: 258,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 260,
+                },
+                name: Identifier {
+                    position: 269,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 272,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 273,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 274,
+                    type_definition: SignedInteger(
+                        I64(
+                            Keyword {
+                                value: "i64",
+                                position: 276,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 280,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 282,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "9223372036854775807",
+                                                position: 289,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 308,
+                            },
+                        ),
+                    ],
+                    right_brace: 310,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 312,
+                },
+                name: Identifier {
+                    position: 321,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 324,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 325,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 326,
+                    type_definition: SignedInteger(
+                        I32(
+                            Keyword {
+                                value: "i32",
+                                position: 328,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 332,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 334,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "2147483647",
+                                                position: 341,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 351,
+                            },
+                        ),
+                    ],
+                    right_brace: 353,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 355,
+                },
+                name: Identifier {
+                    position: 364,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 367,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 368,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 369,
+                    type_definition: SignedInteger(
+                        I16(
+                            Keyword {
+                                value: "i16",
+                                position: 371,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 375,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 377,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "32767",
+                                                position: 384,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 389,
+                            },
+                        ),
+                    ],
+                    right_brace: 391,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 393,
+                },
+                name: Identifier {
+                    position: 402,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 405,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 406,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 407,
+                    type_definition: SignedInteger(
+                        I8(
+                            Keyword {
+                                value: "i8",
+                                position: 409,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 412,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 414,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "127",
+                                                position: 421,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 424,
+                            },
+                        ),
+                    ],
+                    right_brace: 426,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 429,
+                },
+                name: Identifier {
+                    position: 438,
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 441,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 442,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 443,
+                    type_definition: UnsignedInteger(
+                        Default(
+                            Keyword {
+                                value: "uint",
+                                position: 445,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 450,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 452,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "18446744073709551615",
+                                                position: 459,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 479,
+                            },
+                        ),
+                    ],
+                    right_brace: 481,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 483,
+                },
+                name: Identifier {
+                    position: 492,
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 495,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 496,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 497,
+                    type_definition: UnsignedInteger(
+                        U32(
+                            Keyword {
+                                value: "u32",
+                                position: 499,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 503,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 505,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "4294967295",
+                                                position: 512,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 522,
+                            },
+                        ),
+                    ],
+                    right_brace: 524,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 526,
+                },
+                name: Identifier {
+                    position: 535,
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 538,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 539,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 540,
+                    type_definition: UnsignedInteger(
+                        U16(
+                            Keyword {
+                                value: "u16",
+                                position: 542,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 546,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 548,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "65535",
+                                                position: 555,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 560,
+                            },
+                        ),
+                    ],
+                    right_brace: 562,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 564,
+                },
+                name: Identifier {
+                    position: 573,
+                    value: "bar",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 576,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 577,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 578,
+                    type_definition: UnsignedInteger(
+                        U8(
+                            Keyword {
+                                value: "u8",
+                                position: 580,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 583,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 585,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Integer(
+                                            LiteralInteger {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "255",
+                                                position: 592,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 595,
+                            },
+                        ),
+                    ],
+                    right_brace: 597,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 600,
+                },
+                name: Identifier {
+                    position: 609,
+                    value: "baz",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 612,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 613,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 614,
+                    type_definition: FloatingPoint(
+                        Default(
+                            Keyword {
+                                value: "float",
+                                position: 616,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 622,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 624,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Float(
+                                            LiteralFloat {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "3.4028235e+38",
+                                                position: 631,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 644,
+                            },
+                        ),
+                    ],
+                    right_brace: 646,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 648,
+                },
+                name: Identifier {
+                    position: 657,
+                    value: "baz",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 660,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 661,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 662,
+                    type_definition: FloatingPoint(
+                        F64(
+                            Keyword {
+                                value: "f64",
+                                position: 664,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 668,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 670,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Float(
+                                            LiteralFloat {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "1.7976931348623157e+308",
+                                                position: 677,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 700,
+                            },
+                        ),
+                    ],
+                    right_brace: 702,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 704,
+                },
+                name: Identifier {
+                    position: 713,
+                    value: "baz",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 716,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 717,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 718,
+                    type_definition: FloatingPoint(
+                        F32(
+                            Keyword {
+                                value: "f32",
+                                position: 720,
+                            },
+                        ),
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 724,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 726,
+                                },
+                                expression: Some(
+                                    Literal(
+                                        Float(
+                                            LiteralFloat {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                value: "3.4028235e+38",
+                                                position: 733,
+                                            },
+                                        ),
+                                    ),
+                                ),
+                                semicolon: 746,
+                            },
+                        ),
+                    ],
+                    right_brace: 748,
+                },
+            },
+        ),
+    ],
+    eof: 750,
+}

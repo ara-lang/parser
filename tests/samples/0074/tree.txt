@@ -22,17 +22,21 @@ DefinitionTree {
                                 position: 15,
                             },
                         ),
-                        Integer(
-                            Keyword {
-                                value: "int",
-                                position: 24,
-                            },
+                        SignedInteger(
+                            Default(
+                                Keyword {
+                                    value: "int",
+                                    position: 24,
+                                },
+                            ),
                         ),
-                        Float(
-                            Keyword {
-                                value: "float",
-                                position: 30,
-                            },
+                        FloatingPoint(
+                            Default(
+                                Keyword {
+                                    value: "float",
+                                    position: 30,
+                                },
+                            ),
                         ),
                         Boolean(
                             Keyword {
@@ -201,11 +205,13 @@ DefinitionTree {
                                                                     value: "is",
                                                                     position: 158,
                                                                 },
-                                                                right: Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 161,
-                                                                    },
+                                                                right: SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 161,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             },
                                                         ),
@@ -225,11 +231,13 @@ DefinitionTree {
                                                                     value: "is",
                                                                     position: 175,
                                                                 },
-                                                                right: Float(
-                                                                    Keyword {
-                                                                        value: "float",
-                                                                        position: 178,
-                                                                    },
+                                                                right: FloatingPoint(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "float",
+                                                                            position: 178,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             },
                                                         ),
@@ -265,11 +273,13 @@ DefinitionTree {
                                                                             value: "is",
                                                                             position: 204,
                                                                         },
-                                                                        right: Integer(
-                                                                            Keyword {
-                                                                                value: "int",
-                                                                                position: 207,
-                                                                            },
+                                                                        right: SignedInteger(
+                                                                            Default(
+                                                                                Keyword {
+                                                                                    value: "int",
+                                                                                    position: 207,
+                                                                                },
+                                                                            ),
                                                                         ),
                                                                     },
                                                                 ),

@@ -930,11 +930,13 @@ DefinitionTree {
                                                         double_colon_less_than: 682,
                                                         types: CommaSeparated {
                                                             inner: [
-                                                                Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 685,
-                                                                    },
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 685,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1024,11 +1026,13 @@ DefinitionTree {
                                                         double_colon_less_than: 712,
                                                         types: CommaSeparated {
                                                             inner: [
-                                                                Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 715,
-                                                                    },
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 715,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1121,11 +1125,13 @@ DefinitionTree {
                                                         double_colon_less_than: 752,
                                                         types: CommaSeparated {
                                                             inner: [
-                                                                Integer(
-                                                                    Keyword {
-                                                                        value: "int",
-                                                                        position: 755,
-                                                                    },
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 755,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1160,11 +1166,13 @@ DefinitionTree {
                                                                                 double_colon_less_than: 774,
                                                                                 types: CommaSeparated {
                                                                                     inner: [
-                                                                                        Integer(
-                                                                                            Keyword {
-                                                                                                value: "int",
-                                                                                                position: 777,
-                                                                                            },
+                                                                                        SignedInteger(
+                                                                                            Default(
+                                                                                                Keyword {
+                                                                                                    value: "int",
+                                                                                                    position: 777,
+                                                                                                },
+                                                                                            ),
                                                                                         ),
                                                                                     ],
                                                                                     commas: [],
@@ -1237,11 +1245,13 @@ DefinitionTree {
                                                                                 double_colon_less_than: 803,
                                                                                 types: CommaSeparated {
                                                                                     inner: [
-                                                                                        Integer(
-                                                                                            Keyword {
-                                                                                                value: "int",
-                                                                                                position: 806,
-                                                                                            },
+                                                                                        SignedInteger(
+                                                                                            Default(
+                                                                                                Keyword {
+                                                                                                    value: "int",
+                                                                                                    position: 806,
+                                                                                                },
+                                                                                            ),
                                                                                         ),
                                                                                     ],
                                                                                     commas: [],

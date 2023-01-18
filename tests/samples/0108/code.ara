@@ -1,0 +1,19 @@
+type SignedInt = int | i128 | i64 | i32 | i16 | i8;
+type UnsignedInt = uint | u32 | u16 | u8;
+type FloatingPoint = float | f64 | f32;
+
+function foo(): int { return 9223372036854775807; }
+function foo(): i128 { return 170141183460469231731687303715884105727; }
+function foo(): i64 { return 9223372036854775807; }
+function foo(): i32 { return 2147483647; }
+function foo(): i16 { return 32767; }
+function foo(): i8 { return 127; }
+
+function bar(): uint { return 18446744073709551615; }
+function bar(): u32 { return 4294967295; }
+function bar(): u16 { return 65535; }
+function bar(): u8 { return 255; }
+
+function baz(): float { return 3.4028235e+38; }
+function baz(): f64 { return 1.7976931348623157e+308; }
+function baz(): f32 { return 3.4028235e+38; }
