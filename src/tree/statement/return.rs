@@ -62,6 +62,6 @@ impl Node for ReturnStatement {
     }
 
     fn get_description(&self) -> String {
-        "return statement".to_string()
+        "explicit return statement".to_string()
     }
 }
