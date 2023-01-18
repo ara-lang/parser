@@ -62,6 +62,9 @@ impl Node for ReturnStatement {
     }
 
     fn get_description(&self) -> String {
-        "explicit return statement".to_string()
+        match &self {
+            ReturnStatement::Explicit { .. } => "explicit return statement".to_string(),
+            ReturnStatement::Implicit { .. } => "implicit return statement".to_string(),
+        }
     }
 }
