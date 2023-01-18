@@ -4,8 +4,11 @@ use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
+use crate::tree::definition::r#type::FloatingPointTypeDefinition;
+use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
 use crate::tree::definition::r#type::TypeAliasDefinition;
 use crate::tree::definition::r#type::TypeDefinition;
+use crate::tree::definition::r#type::UnsignedIntegerTypeDefinition;
 use crate::tree::expression::literal::Literal;
 use crate::tree::expression::literal::LiteralFalse;
 use crate::tree::expression::literal::LiteralFloat;
@@ -163,13 +166,6 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             Ok(TypeDefinition::Never(keyword))
         }
-        _ if value == b"float" => {
-            state.iterator.next();
-
-            let keyword = Keyword::new(value.into(), current.position);
-
-            Ok(TypeDefinition::Float(keyword))
-        }
         _ if value == b"bool" => {
             state.iterator.next();
 
@@ -182,7 +178,117 @@ fn single(state: &mut State) -> ParseResult<TypeDefinition> {
 
             let keyword = Keyword::new(value.into(), current.position);
 
-            Ok(TypeDefinition::Integer(keyword))
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::Default(keyword),
+            ))
+        }
+        _ if value == b"i128" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::I128(keyword),
+            ))
+        }
+        _ if value == b"i64" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::I64(keyword),
+            ))
+        }
+        _ if value == b"i32" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::I32(keyword),
+            ))
+        }
+        _ if value == b"i16" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::I16(keyword),
+            ))
+        }
+        _ if value == b"i8" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::SignedInteger(
+                SignedIntegerTypeDefinition::I8(keyword),
+            ))
+        }
+        _ if value == b"uint" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::UnsignedInteger(
+                UnsignedIntegerTypeDefinition::Default(keyword),
+            ))
+        }
+        _ if value == b"u32" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::UnsignedInteger(
+                UnsignedIntegerTypeDefinition::U32(keyword),
+            ))
+        }
+        _ if value == b"u16" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::UnsignedInteger(
+                UnsignedIntegerTypeDefinition::U16(keyword),
+            ))
+        }
+        _ if value == b"u8" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::UnsignedInteger(
+                UnsignedIntegerTypeDefinition::U8(keyword),
+            ))
+        }
+        _ if value == b"float" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::FloatingPoint(
+                FloatingPointTypeDefinition::Default(keyword),
+            ))
+        }
+        _ if value == b"f64" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::FloatingPoint(
+                FloatingPointTypeDefinition::F64(keyword),
+            ))
+        }
+        _ if value == b"f32" => {
+            state.iterator.next();
+
+            let keyword = Keyword::new(value.into(), current.position);
+
+            Ok(TypeDefinition::FloatingPoint(
+                FloatingPointTypeDefinition::F32(keyword),
+            ))
         }
         _ if value == b"string" => {
             state.iterator.next();

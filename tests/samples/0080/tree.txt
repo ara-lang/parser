@@ -285,11 +285,13 @@ DefinitionTree {
                         less_than: 125,
                         members: CommaSeparated {
                             inner: [
-                                Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 126,
-                                    },
+                                SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 126,
+                                        },
+                                    ),
                                 ),
                             ],
                             commas: [],
@@ -725,11 +727,13 @@ DefinitionTree {
                         less_than: 286,
                         members: CommaSeparated {
                             inner: [
-                                Integer(
-                                    Keyword {
-                                        value: "int",
-                                        position: 287,
-                                    },
+                                SignedInteger(
+                                    Default(
+                                        Keyword {
+                                            value: "int",
+                                            position: 287,
+                                        },
+                                    ),
                                 ),
                                 Iterable(
                                     Keyword {
@@ -743,11 +747,13 @@ DefinitionTree {
                                         less_than: 300,
                                         members: CommaSeparated {
                                             inner: [
-                                                Integer(
-                                                    Keyword {
-                                                        value: "int",
-                                                        position: 301,
-                                                    },
+                                                SignedInteger(
+                                                    Default(
+                                                        Keyword {
+                                                            value: "int",
+                                                            position: 301,
+                                                        },
+                                                    ),
                                                 ),
                                             ],
                                             commas: [],

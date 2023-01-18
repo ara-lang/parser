@@ -21,6 +21,34 @@ pub struct TypeAliasDefinition {
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum SignedIntegerTypeDefinition {
+    Default(Keyword), // 'int'
+    I128(Keyword),    // 'i128'
+    I64(Keyword),     // 'i64'
+    I32(Keyword),     // 'i32'
+    I16(Keyword),     // 'i16'
+    I8(Keyword),      // 'i8'
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum UnsignedIntegerTypeDefinition {
+    Default(Keyword), // 'uint'
+    U32(Keyword),     // 'u32'
+    U16(Keyword),     // 'u16'
+    U8(Keyword),      // 'u8'
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum FloatingPointTypeDefinition {
+    Default(Keyword), // 'float'
+    F64(Keyword),     // 'f64'
+    F32(Keyword),     // 'f32'
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum TypeDefinition {
     Identifier(TemplatedIdentifier),
     Nullable(usize, Box<TypeDefinition>),
@@ -28,10 +56,11 @@ pub enum TypeDefinition {
     Intersection(Vec<TypeDefinition>),
     Void(Keyword),
     Never(Keyword),
-    Float(Keyword),
     Boolean(Keyword),
-    Integer(Keyword),
     String(Keyword),
+    SignedInteger(SignedIntegerTypeDefinition),
+    UnsignedInteger(UnsignedIntegerTypeDefinition),
+    FloatingPoint(FloatingPointTypeDefinition),
     Dict(Keyword, TypeTemplateGroupDefinition),
     Vec(Keyword, TypeTemplateGroupDefinition),
     Object(Keyword),
@@ -78,9 +107,10 @@ impl TypeDefinition {
     pub fn is_scalar(&self) -> bool {
         match self {
             TypeDefinition::Literal(literal) => !matches!(literal, Literal::Null(_)),
-            | TypeDefinition::Float(_)
             | TypeDefinition::Boolean(_)
-            | TypeDefinition::Integer(_)
+            | TypeDefinition::SignedInteger(_)
+            | TypeDefinition::UnsignedInteger(_)
+            | TypeDefinition::FloatingPoint(_)
             | TypeDefinition::String(_)
             // class, and interface are represented as strings at runtime, so they are considered scalars
             | TypeDefinition::Class(_, _)
@@ -112,6 +142,108 @@ impl Node for TypeAliasDefinition {
     }
 }
 
+impl Node for SignedIntegerTypeDefinition {
+    fn initial_position(&self) -> usize {
+        match self {
+            SignedIntegerTypeDefinition::Default(keyword)
+            | SignedIntegerTypeDefinition::I128(keyword)
+            | SignedIntegerTypeDefinition::I64(keyword)
+            | SignedIntegerTypeDefinition::I32(keyword)
+            | SignedIntegerTypeDefinition::I16(keyword)
+            | SignedIntegerTypeDefinition::I8(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            SignedIntegerTypeDefinition::Default(keyword)
+            | SignedIntegerTypeDefinition::I128(keyword)
+            | SignedIntegerTypeDefinition::I64(keyword)
+            | SignedIntegerTypeDefinition::I32(keyword)
+            | SignedIntegerTypeDefinition::I16(keyword)
+            | SignedIntegerTypeDefinition::I8(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            SignedIntegerTypeDefinition::Default(keyword)
+            | SignedIntegerTypeDefinition::I128(keyword)
+            | SignedIntegerTypeDefinition::I64(keyword)
+            | SignedIntegerTypeDefinition::I32(keyword)
+            | SignedIntegerTypeDefinition::I16(keyword)
+            | SignedIntegerTypeDefinition::I8(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "signed integer type definition".to_string()
+    }
+}
+
+impl Node for UnsignedIntegerTypeDefinition {
+    fn initial_position(&self) -> usize {
+        match self {
+            UnsignedIntegerTypeDefinition::Default(keyword)
+            | UnsignedIntegerTypeDefinition::U32(keyword)
+            | UnsignedIntegerTypeDefinition::U16(keyword)
+            | UnsignedIntegerTypeDefinition::U8(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            UnsignedIntegerTypeDefinition::Default(keyword)
+            | UnsignedIntegerTypeDefinition::U32(keyword)
+            | UnsignedIntegerTypeDefinition::U16(keyword)
+            | UnsignedIntegerTypeDefinition::U8(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            UnsignedIntegerTypeDefinition::Default(keyword)
+            | UnsignedIntegerTypeDefinition::U32(keyword)
+            | UnsignedIntegerTypeDefinition::U16(keyword)
+            | UnsignedIntegerTypeDefinition::U8(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "unsigned integer type definition".to_string()
+    }
+}
+
+impl Node for FloatingPointTypeDefinition {
+    fn initial_position(&self) -> usize {
+        match self {
+            FloatingPointTypeDefinition::Default(keyword)
+            | FloatingPointTypeDefinition::F64(keyword)
+            | FloatingPointTypeDefinition::F32(keyword) => keyword.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match self {
+            FloatingPointTypeDefinition::Default(keyword)
+            | FloatingPointTypeDefinition::F64(keyword)
+            | FloatingPointTypeDefinition::F32(keyword) => keyword.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match self {
+            FloatingPointTypeDefinition::Default(keyword)
+            | FloatingPointTypeDefinition::F64(keyword)
+            | FloatingPointTypeDefinition::F32(keyword) => vec![keyword],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "floating point type definition".to_string()
+    }
+}
+
 impl Node for TypeDefinition {
     fn initial_position(&self) -> usize {
         match &self {
@@ -122,9 +254,7 @@ impl Node for TypeDefinition {
             TypeDefinition::Nullable(position, _) => *position,
             TypeDefinition::Void(keyword)
             | TypeDefinition::Never(keyword)
-            | TypeDefinition::Float(keyword)
             | TypeDefinition::Boolean(keyword)
-            | TypeDefinition::Integer(keyword)
             | TypeDefinition::String(keyword)
             | TypeDefinition::Dict(keyword, _)
             | TypeDefinition::Vec(keyword, _)
@@ -135,6 +265,9 @@ impl Node for TypeDefinition {
             | TypeDefinition::Class(keyword, _)
             | TypeDefinition::Interface(keyword, _)
             | TypeDefinition::Iterable(keyword, _) => keyword.initial_position(),
+            TypeDefinition::SignedInteger(signed) => signed.initial_position(),
+            TypeDefinition::UnsignedInteger(unsigned) => unsigned.initial_position(),
+            TypeDefinition::FloatingPoint(floating) => floating.initial_position(),
             TypeDefinition::Tuple {
                 left_parenthesis: position,
                 ..
@@ -160,14 +293,15 @@ impl Node for TypeDefinition {
             TypeDefinition::Literal(literal) => literal.final_position(),
             TypeDefinition::Void(keyword)
             | TypeDefinition::Never(keyword)
-            | TypeDefinition::Float(keyword)
             | TypeDefinition::Boolean(keyword)
-            | TypeDefinition::Integer(keyword)
             | TypeDefinition::String(keyword)
             | TypeDefinition::Object(keyword)
             | TypeDefinition::Mixed(keyword)
             | TypeDefinition::NonNull(keyword)
             | TypeDefinition::Resource(keyword) => keyword.final_position(),
+            TypeDefinition::SignedInteger(signed) => signed.final_position(),
+            TypeDefinition::UnsignedInteger(unsigned) => unsigned.final_position(),
+            TypeDefinition::FloatingPoint(floating) => floating.final_position(),
             TypeDefinition::Parenthesized {
                 right_parenthesis, ..
             }
@@ -190,11 +324,12 @@ impl Node for TypeDefinition {
             | TypeDefinition::Mixed(keyword)
             | TypeDefinition::Resource(keyword)
             | TypeDefinition::Never(keyword)
-            | TypeDefinition::Float(keyword)
             | TypeDefinition::Boolean(keyword)
-            | TypeDefinition::Integer(keyword)
             | TypeDefinition::String(keyword) => vec![keyword],
             TypeDefinition::Literal(literal) => vec![literal],
+            TypeDefinition::SignedInteger(signed) => vec![signed],
+            TypeDefinition::UnsignedInteger(unsigned) => vec![unsigned],
+            TypeDefinition::FloatingPoint(floating) => vec![floating],
             TypeDefinition::Class(keyword, template)
             | TypeDefinition::Interface(keyword, template)
             | TypeDefinition::Iterable(keyword, template)
@@ -243,9 +378,7 @@ impl std::fmt::Display for TypeDefinition {
             ),
             TypeDefinition::Void(_) => write!(f, "void"),
             TypeDefinition::Never(_) => write!(f, "never"),
-            TypeDefinition::Float(_) => write!(f, "float"),
             TypeDefinition::Boolean(_) => write!(f, "bool"),
-            TypeDefinition::Integer(_) => write!(f, "int"),
             TypeDefinition::Literal(literal) => match literal {
                 Literal::Null(_) => write!(f, "null"),
                 Literal::False(_) => write!(f, "false"),
@@ -253,6 +386,25 @@ impl std::fmt::Display for TypeDefinition {
                 Literal::Integer(inner) => write!(f, "{}", inner.value),
                 Literal::Float(inner) => write!(f, "{}", inner.value),
                 Literal::String(inner) => write!(f, "{}", inner.value),
+            },
+            TypeDefinition::SignedInteger(signed) => match signed {
+                SignedIntegerTypeDefinition::Default(_) => write!(f, "int"),
+                SignedIntegerTypeDefinition::I128(_) => write!(f, "i128"),
+                SignedIntegerTypeDefinition::I64(_) => write!(f, "i64"),
+                SignedIntegerTypeDefinition::I32(_) => write!(f, "i32"),
+                SignedIntegerTypeDefinition::I16(_) => write!(f, "i16"),
+                SignedIntegerTypeDefinition::I8(_) => write!(f, "i8"),
+            },
+            TypeDefinition::UnsignedInteger(unsigned) => match unsigned {
+                UnsignedIntegerTypeDefinition::Default(_) => write!(f, "uint"),
+                UnsignedIntegerTypeDefinition::U32(_) => write!(f, "u32"),
+                UnsignedIntegerTypeDefinition::U16(_) => write!(f, "u16"),
+                UnsignedIntegerTypeDefinition::U8(_) => write!(f, "u8"),
+            },
+            TypeDefinition::FloatingPoint(floating) => match floating {
+                FloatingPointTypeDefinition::Default(_) => write!(f, "float"),
+                FloatingPointTypeDefinition::F64(_) => write!(f, "f64"),
+                FloatingPointTypeDefinition::F32(_) => write!(f, "f32"),
             },
             TypeDefinition::String(_) => write!(f, "string"),
             TypeDefinition::Dict(_, template) => write!(f, "dict{}", template),

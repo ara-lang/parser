@@ -16,17 +16,21 @@ DefinitionTree {
                 equals: 9,
                 type_definition: Union(
                     [
-                        Integer(
-                            Keyword {
-                                value: "int",
-                                position: 11,
-                            },
+                        SignedInteger(
+                            Default(
+                                Keyword {
+                                    value: "int",
+                                    position: 11,
+                                },
+                            ),
                         ),
-                        Float(
-                            Keyword {
-                                value: "float",
-                                position: 15,
-                            },
+                        FloatingPoint(
+                            Default(
+                                Keyword {
+                                    value: "float",
+                                    position: 15,
+                                },
+                            ),
                         ),
                     ],
                 ),
@@ -1048,11 +1052,13 @@ DefinitionTree {
                                 },
                                 return_type: FunctionLikeReturnTypeDefinition {
                                     colon: 689,
-                                    type_definition: Integer(
-                                        Keyword {
-                                            value: "int",
-                                            position: 691,
-                                        },
+                                    type_definition: SignedInteger(
+                                        Default(
+                                            Keyword {
+                                                value: "int",
+                                                position: 691,
+                                            },
+                                        ),
                                     ),
                                 },
                                 constraints: Some(
@@ -1259,11 +1265,13 @@ DefinitionTree {
                 },
                 return_type: FunctionLikeReturnTypeDefinition {
                     colon: 857,
-                    type_definition: Integer(
-                        Keyword {
-                            value: "int",
-                            position: 859,
-                        },
+                    type_definition: SignedInteger(
+                        Default(
+                            Keyword {
+                                value: "int",
+                                position: 859,
+                            },
+                        ),
                     ),
                 },
                 body: BlockStatement {
@@ -1634,11 +1642,13 @@ DefinitionTree {
                                                         double_colon_less_than: 1032,
                                                         types: CommaSeparated {
                                                             inner: [
-                                                                Float(
-                                                                    Keyword {
-                                                                        value: "float",
-                                                                        position: 1035,
-                                                                    },
+                                                                FloatingPoint(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "float",
+                                                                            position: 1035,
+                                                                        },
+                                                                    ),
                                                                 ),
                                                             ],
                                                             commas: [],
@@ -1703,11 +1713,13 @@ DefinitionTree {
                                                                         },
                                                                         return_type: FunctionLikeReturnTypeDefinition {
                                                                             colon: 1061,
-                                                                            type_definition: Float(
-                                                                                Keyword {
-                                                                                    value: "float",
-                                                                                    position: 1063,
-                                                                                },
+                                                                            type_definition: FloatingPoint(
+                                                                                Default(
+                                                                                    Keyword {
+                                                                                        value: "float",
+                                                                                        position: 1063,
+                                                                                    },
+                                                                                ),
                                                                             ),
                                                                         },
                                                                         double_arrow: 1069,
@@ -1731,11 +1743,13 @@ DefinitionTree {
                                                                                             value: "is",
                                                                                             position: 1075,
                                                                                         },
-                                                                                        right: Float(
-                                                                                            Keyword {
-                                                                                                value: "float",
-                                                                                                position: 1078,
-                                                                                            },
+                                                                                        right: FloatingPoint(
+                                                                                            Default(
+                                                                                                Keyword {
+                                                                                                    value: "float",
+                                                                                                    position: 1078,
+                                                                                                },
+                                                                                            ),
                                                                                         ),
                                                                                     },
                                                                                 ),

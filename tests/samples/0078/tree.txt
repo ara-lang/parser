@@ -24,11 +24,13 @@ DefinitionTree {
                                     position: 16,
                                 },
                             ),
-                            Integer(
-                                Keyword {
-                                    value: "int",
-                                    position: 24,
-                                },
+                            SignedInteger(
+                                Default(
+                                    Keyword {
+                                        value: "int",
+                                        position: 24,
+                                    },
+                                ),
                             ),
                         ],
                         commas: [
