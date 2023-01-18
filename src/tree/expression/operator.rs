@@ -1268,7 +1268,7 @@ impl Node for ExceptionOperationExpression {
     }
 
     fn get_description(&self) -> String {
-        "exception operation expression".to_string()
+        "exception throw operation expression".to_string()
     }
 }
 
