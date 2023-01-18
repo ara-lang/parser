@@ -95,7 +95,11 @@ impl Node for UseDefinition {
     }
 
     fn get_description(&self) -> String {
-        "use definition".to_string()
+        match &self {
+            UseDefinition::Default { .. } => "use definition".to_string(),
+            UseDefinition::Function { .. } => "use function definition".to_string(),
+            UseDefinition::Constant { .. } => "use constant definition".to_string(),
+        }
     }
 }
 
