@@ -54,49 +54,49 @@ impl Node for ModifierGroupDefinition {
 impl Node for ModifierDefinition {
     fn initial_position(&self) -> usize {
         match &self {
-            ModifierDefinition::Public(keyword)
-            | ModifierDefinition::Protected(keyword)
-            | ModifierDefinition::Private(keyword)
-            | ModifierDefinition::Readonly(keyword)
-            | ModifierDefinition::Static(keyword)
-            | ModifierDefinition::Abstract(keyword)
-            | ModifierDefinition::Final(keyword) => keyword.initial_position(),
+            Self::Public(keyword)
+            | Self::Protected(keyword)
+            | Self::Private(keyword)
+            | Self::Readonly(keyword)
+            | Self::Static(keyword)
+            | Self::Abstract(keyword)
+            | Self::Final(keyword) => keyword.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ModifierDefinition::Public(keyword)
-            | ModifierDefinition::Protected(keyword)
-            | ModifierDefinition::Private(keyword)
-            | ModifierDefinition::Readonly(keyword)
-            | ModifierDefinition::Static(keyword)
-            | ModifierDefinition::Abstract(keyword)
-            | ModifierDefinition::Final(keyword) => keyword.final_position(),
+            Self::Public(keyword)
+            | Self::Protected(keyword)
+            | Self::Private(keyword)
+            | Self::Readonly(keyword)
+            | Self::Static(keyword)
+            | Self::Abstract(keyword)
+            | Self::Final(keyword) => keyword.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ModifierDefinition::Public(keyword)
-            | ModifierDefinition::Protected(keyword)
-            | ModifierDefinition::Private(keyword)
-            | ModifierDefinition::Readonly(keyword)
-            | ModifierDefinition::Static(keyword)
-            | ModifierDefinition::Abstract(keyword)
-            | ModifierDefinition::Final(keyword) => vec![keyword as &dyn Node],
+            Self::Public(keyword)
+            | Self::Protected(keyword)
+            | Self::Private(keyword)
+            | Self::Readonly(keyword)
+            | Self::Static(keyword)
+            | Self::Abstract(keyword)
+            | Self::Final(keyword) => vec![keyword as &dyn Node],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            ModifierDefinition::Public(_keyword) => "public modifier definition".to_string(),
-            ModifierDefinition::Protected(_keyword) => "protected modifier definition".to_string(),
-            ModifierDefinition::Private(_keyword) => "private modifier definition".to_string(),
-            ModifierDefinition::Readonly(_keyword) => "readonly modifier definition".to_string(),
-            ModifierDefinition::Static(_keyword) => "static modifier definition".to_string(),
-            ModifierDefinition::Abstract(_keyword) => "abstract modifier definition".to_string(),
-            ModifierDefinition::Final(_keyword) => "final modifier definition".to_string(),
+            Self::Public(_keyword) => "public modifier definition".to_string(),
+            Self::Protected(_keyword) => "protected modifier definition".to_string(),
+            Self::Private(_keyword) => "private modifier definition".to_string(),
+            Self::Readonly(_keyword) => "readonly modifier definition".to_string(),
+            Self::Static(_keyword) => "static modifier definition".to_string(),
+            Self::Abstract(_keyword) => "abstract modifier definition".to_string(),
+            Self::Final(_keyword) => "final modifier definition".to_string(),
         }
     }
 }
@@ -104,13 +104,13 @@ impl Node for ModifierDefinition {
 impl std::fmt::Display for ModifierDefinition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match &self {
-            ModifierDefinition::Public(keyword)
-            | ModifierDefinition::Protected(keyword)
-            | ModifierDefinition::Private(keyword)
-            | ModifierDefinition::Readonly(keyword)
-            | ModifierDefinition::Static(keyword)
-            | ModifierDefinition::Abstract(keyword)
-            | ModifierDefinition::Final(keyword) => write!(f, "{}", keyword.value),
+            Self::Public(keyword)
+            | Self::Protected(keyword)
+            | Self::Private(keyword)
+            | Self::Readonly(keyword)
+            | Self::Static(keyword)
+            | Self::Abstract(keyword)
+            | Self::Final(keyword) => write!(f, "{}", keyword.value),
         }
     }
 }

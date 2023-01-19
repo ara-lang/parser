@@ -42,23 +42,23 @@ pub struct UseDefinitionSymbolAlias {
 impl Node for UseDefinition {
     fn initial_position(&self) -> usize {
         match &self {
-            UseDefinition::Default { r#use, .. }
-            | UseDefinition::Function { r#use, .. }
-            | UseDefinition::Constant { r#use, .. } => r#use.initial_position(),
+            Self::Default { r#use, .. }
+            | Self::Function { r#use, .. }
+            | Self::Constant { r#use, .. } => r#use.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            UseDefinition::Default { semicolon, .. }
-            | UseDefinition::Function { semicolon, .. }
-            | UseDefinition::Constant { semicolon, .. } => semicolon + 1,
+            Self::Default { semicolon, .. }
+            | Self::Function { semicolon, .. }
+            | Self::Constant { semicolon, .. } => semicolon + 1,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            UseDefinition::Default {
+            Self::Default {
                 r#use, name, alias, ..
             } => {
                 let mut children: Vec<&dyn Node> = vec![r#use, name];
@@ -69,14 +69,14 @@ impl Node for UseDefinition {
 
                 children
             }
-            UseDefinition::Function {
+            Self::Function {
                 r#use,
                 function: r#type,
                 name,
                 alias,
                 ..
             }
-            | UseDefinition::Constant {
+            | Self::Constant {
                 r#use,
                 r#const: r#type,
                 name,
@@ -96,9 +96,9 @@ impl Node for UseDefinition {
 
     fn get_description(&self) -> String {
         match &self {
-            UseDefinition::Default { .. } => "use definition".to_string(),
-            UseDefinition::Function { .. } => "use function definition".to_string(),
-            UseDefinition::Constant { .. } => "use constant definition".to_string(),
+            Self::Default { .. } => "use definition".to_string(),
+            Self::Function { .. } => "use function definition".to_string(),
+            Self::Constant { .. } => "use constant definition".to_string(),
         }
     }
 }

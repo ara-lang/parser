@@ -90,43 +90,37 @@ impl Node for AnonymousClassExpressionMember {
 
     fn initial_position(&self) -> usize {
         match &self {
-            AnonymousClassExpressionMember::Constant(constant) => constant.initial_position(),
-            AnonymousClassExpressionMember::Property(property) => property.initial_position(),
-            AnonymousClassExpressionMember::ConcreteMethod(method) => method.initial_position(),
-            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => {
-                constructor.initial_position()
-            }
+            Self::Constant(constant) => constant.initial_position(),
+            Self::Property(property) => property.initial_position(),
+            Self::ConcreteMethod(method) => method.initial_position(),
+            Self::ConcreteConstructor(constructor) => constructor.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            AnonymousClassExpressionMember::Constant(constant) => constant.final_position(),
-            AnonymousClassExpressionMember::Property(property) => property.final_position(),
-            AnonymousClassExpressionMember::ConcreteMethod(method) => method.final_position(),
-            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => {
-                constructor.final_position()
-            }
+            Self::Constant(constant) => constant.final_position(),
+            Self::Property(property) => property.final_position(),
+            Self::ConcreteMethod(method) => method.final_position(),
+            Self::ConcreteConstructor(constructor) => constructor.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            AnonymousClassExpressionMember::Constant(constant) => vec![constant],
-            AnonymousClassExpressionMember::Property(property) => vec![property],
-            AnonymousClassExpressionMember::ConcreteMethod(method) => vec![method],
-            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => vec![constructor],
+            Self::Constant(constant) => vec![constant],
+            Self::Property(property) => vec![property],
+            Self::ConcreteMethod(method) => vec![method],
+            Self::ConcreteConstructor(constructor) => vec![constructor],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            AnonymousClassExpressionMember::Constant(constant) => constant.get_description(),
-            AnonymousClassExpressionMember::Property(property) => property.get_description(),
-            AnonymousClassExpressionMember::ConcreteMethod(method) => method.get_description(),
-            AnonymousClassExpressionMember::ConcreteConstructor(constructor) => {
-                constructor.get_description()
-            }
+            Self::Constant(constant) => constant.get_description(),
+            Self::Property(property) => property.get_description(),
+            Self::ConcreteMethod(method) => method.get_description(),
+            Self::ConcreteConstructor(constructor) => constructor.get_description(),
         }
     }
 }

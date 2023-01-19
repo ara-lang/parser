@@ -116,29 +116,29 @@ impl Node for EnumDefinition {
 
     fn initial_position(&self) -> usize {
         match &self {
-            EnumDefinition::Backed(definition) => definition.initial_position(),
-            EnumDefinition::Unit(definition) => definition.initial_position(),
+            Self::Backed(definition) => definition.initial_position(),
+            Self::Unit(definition) => definition.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            EnumDefinition::Backed(definition) => definition.final_position(),
-            EnumDefinition::Unit(definition) => definition.final_position(),
+            Self::Backed(definition) => definition.final_position(),
+            Self::Unit(definition) => definition.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            EnumDefinition::Backed(definition) => vec![definition],
-            EnumDefinition::Unit(definition) => vec![definition],
+            Self::Backed(definition) => vec![definition],
+            Self::Unit(definition) => vec![definition],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            EnumDefinition::Backed(definition) => definition.get_description(),
-            EnumDefinition::Unit(definition) => definition.get_description(),
+            Self::Backed(definition) => definition.get_description(),
+            Self::Unit(definition) => definition.get_description(),
         }
     }
 }

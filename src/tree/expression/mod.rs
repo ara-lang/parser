@@ -116,13 +116,11 @@ impl Expression {
     /// If `initilization` is true, the expression is allowed to contain a class initialization expression.
     pub fn is_constant(&self, initilization: bool) -> bool {
         match &self {
-            Expression::Literal(_) => true,
-            Expression::Identifier(_) => true,
-            Expression::MagicConstant(_) => true,
-            Expression::Parenthesized(expression) => {
-                expression.expression.is_constant(initilization)
-            }
-            Expression::ArithmeticOperation(expression) => match &expression {
+            Self::Literal(_) => true,
+            Self::Identifier(_) => true,
+            Self::MagicConstant(_) => true,
+            Self::Parenthesized(expression) => expression.expression.is_constant(initilization),
+            Self::ArithmeticOperation(expression) => match &expression {
                 ArithmeticOperationExpression::Addition { left, right, .. }
                 | ArithmeticOperationExpression::Subtraction { left, right, .. }
                 | ArithmeticOperationExpression::Multiplication { left, right, .. }
@@ -140,10 +138,10 @@ impl Expression {
                 | ArithmeticOperationExpression::PostIncrement { .. }
                 | ArithmeticOperationExpression::PostDecrement { .. } => false,
             },
-            Expression::ArrayOperation(ArrayOperationExpression::Access {
-                array, index, ..
-            }) => array.is_constant(initilization) && index.is_constant(initilization),
-            Expression::BitwiseOperation(expression) => match &expression {
+            Self::ArrayOperation(ArrayOperationExpression::Access { array, index, .. }) => {
+                array.is_constant(initilization) && index.is_constant(initilization)
+            }
+            Self::BitwiseOperation(expression) => match &expression {
                 BitwiseOperationExpression::And { left, right, .. }
                 | BitwiseOperationExpression::Or { left, right, .. }
                 | BitwiseOperationExpression::Xor { left, right, .. }
@@ -153,7 +151,7 @@ impl Expression {
                 }
                 BitwiseOperationExpression::Not { right, .. } => right.is_constant(initilization),
             },
-            Expression::ClassOperation(expression) => match &expression {
+            Self::ClassOperation(expression) => match &expression {
                 ClassOperationExpression::Initialization {
                     class, arguments, ..
                 } if initilization => match class {
@@ -180,12 +178,10 @@ impl Expression {
                 }
                 _ => false,
             },
-            Expression::CoalesceOperation(CoalesceOperationExpression::Coalesce {
-                left,
-                right,
-                ..
+            Self::CoalesceOperation(CoalesceOperationExpression::Coalesce {
+                left, right, ..
             }) => left.is_constant(initilization) && right.is_constant(initilization),
-            Expression::ComparisonOperation(expression) => match &expression {
+            Self::ComparisonOperation(expression) => match &expression {
                 ComparisonOperationExpression::Equal { left, right, .. }
                 | ComparisonOperationExpression::NotEqual { left, right, .. }
                 | ComparisonOperationExpression::Identical { left, right, .. }
@@ -200,17 +196,17 @@ impl Expression {
                     left.is_constant(initilization) && right.is_constant(initilization)
                 }
             },
-            Expression::LogicalOperation(expression) => match &expression {
+            Self::LogicalOperation(expression) => match &expression {
                 LogicalOperationExpression::And { left, right, .. }
                 | LogicalOperationExpression::Or { left, right, .. } => {
                     left.is_constant(initilization) && right.is_constant(initilization)
                 }
                 LogicalOperationExpression::Not { right, .. } => right.is_constant(initilization),
             },
-            Expression::StringOperation(StringOperationExpression::Concat {
-                left, right, ..
-            }) => left.is_constant(initilization) && right.is_constant(initilization),
-            Expression::TernaryOperation(expression) => match &expression {
+            Self::StringOperation(StringOperationExpression::Concat { left, right, .. }) => {
+                left.is_constant(initilization) && right.is_constant(initilization)
+            }
+            Self::TernaryOperation(expression) => match &expression {
                 TernaryOperationExpression::Ternary {
                     condition,
                     if_true,
@@ -232,15 +228,15 @@ impl Expression {
                     ..
                 } => condition.is_constant(initilization) && if_false.is_constant(initilization),
             },
-            Expression::Vec(expression) => expression
+            Self::Vec(expression) => expression
                 .elements
                 .inner
                 .iter()
                 .all(|element| element.value.is_constant(initilization)),
-            Expression::Dict(expression) => expression.elements.inner.iter().all(|element| {
+            Self::Dict(expression) => expression.elements.inner.iter().all(|element| {
                 element.value.is_constant(initilization) && element.key.is_constant(initilization)
             }),
-            Expression::Tuple(expression) => expression
+            Self::Tuple(expression) => expression
                 .elements
                 .inner
                 .iter()
@@ -252,14 +248,12 @@ impl Expression {
     /// Return true if the expression is writable
     pub fn is_writable(&self) -> bool {
         match &self {
-            Expression::Variable(_)
-            | Expression::ArrayOperation(ArrayOperationExpression::Push { .. })
-            | Expression::ArrayOperation(ArrayOperationExpression::Access { .. })
-            | Expression::ObjectOperation(ObjectOperationExpression::PropertyFetch { .. })
-            | Expression::ClassOperation(ClassOperationExpression::StaticPropertyFetch {
-                ..
-            }) => true,
-            Expression::Tuple(TupleExpression { elements, .. }) => {
+            Self::Variable(_)
+            | Self::ArrayOperation(ArrayOperationExpression::Push { .. })
+            | Self::ArrayOperation(ArrayOperationExpression::Access { .. })
+            | Self::ObjectOperation(ObjectOperationExpression::PropertyFetch { .. })
+            | Self::ClassOperation(ClassOperationExpression::StaticPropertyFetch { .. }) => true,
+            Self::Tuple(TupleExpression { elements, .. }) => {
                 elements.inner.iter().all(|element| element.is_writable())
             }
             _ => false,
@@ -269,13 +263,12 @@ impl Expression {
     /// Return true if the expression is readable
     pub fn is_readable(&self) -> bool {
         match &self {
-            Expression::AssignmentOperation(..)
-            | Expression::ExitConstruct(..)
-            | Expression::ExceptionOperation(ExceptionOperationExpression::Throw { .. })
-            | Expression::ArrayOperation(ArrayOperationExpression::Push { .. }) => false,
-            Expression::AsyncOperation(AsyncOperationExpression::Concurrently {
-                expressions,
-                ..
+            Self::AssignmentOperation(..)
+            | Self::ExitConstruct(..)
+            | Self::ExceptionOperation(ExceptionOperationExpression::Throw { .. })
+            | Self::ArrayOperation(ArrayOperationExpression::Push { .. }) => false,
+            Self::AsyncOperation(AsyncOperationExpression::Concurrently {
+                expressions, ..
             }) => expressions
                 .inner
                 .iter()
@@ -292,137 +285,137 @@ impl Node for Expression {
 
     fn initial_position(&self) -> usize {
         match &self {
-            Expression::Parenthesized(expression) => expression.initial_position(),
-            Expression::ExitConstruct(expression) => expression.initial_position(),
-            Expression::Literal(expression) => expression.initial_position(),
-            Expression::ArithmeticOperation(expression) => expression.initial_position(),
-            Expression::AsyncOperation(expression) => expression.initial_position(),
-            Expression::ArrayOperation(expression) => expression.initial_position(),
-            Expression::AssignmentOperation(expression) => expression.initial_position(),
-            Expression::BitwiseOperation(expression) => expression.initial_position(),
-            Expression::ClassOperation(expression) => expression.initial_position(),
-            Expression::CoalesceOperation(expression) => expression.initial_position(),
-            Expression::ComparisonOperation(expression) => expression.initial_position(),
-            Expression::ExceptionOperation(expression) => expression.initial_position(),
-            Expression::FunctionOperation(expression) => expression.initial_position(),
-            Expression::GeneratorOperation(expression) => expression.initial_position(),
-            Expression::LogicalOperation(expression) => expression.initial_position(),
-            Expression::ObjectOperation(expression) => expression.initial_position(),
-            Expression::RangeOperation(expression) => expression.initial_position(),
-            Expression::StringOperation(expression) => expression.initial_position(),
-            Expression::TypeOperation(expression) => expression.initial_position(),
-            Expression::TernaryOperation(expression) => expression.initial_position(),
-            Expression::Identifier(expression) => expression.initial_position(),
-            Expression::Variable(expression) => expression.initial_position(),
-            Expression::Match(expression) => expression.initial_position(),
-            Expression::AnonymousFunction(expression) => expression.initial_position(),
-            Expression::ArrowFunction(expression) => expression.initial_position(),
-            Expression::Vec(expression) => expression.initial_position(),
-            Expression::Dict(expression) => expression.initial_position(),
-            Expression::Tuple(expression) => expression.initial_position(),
-            Expression::MagicConstant(expression) => expression.initial_position(),
+            Self::Parenthesized(expression) => expression.initial_position(),
+            Self::ExitConstruct(expression) => expression.initial_position(),
+            Self::Literal(expression) => expression.initial_position(),
+            Self::ArithmeticOperation(expression) => expression.initial_position(),
+            Self::AsyncOperation(expression) => expression.initial_position(),
+            Self::ArrayOperation(expression) => expression.initial_position(),
+            Self::AssignmentOperation(expression) => expression.initial_position(),
+            Self::BitwiseOperation(expression) => expression.initial_position(),
+            Self::ClassOperation(expression) => expression.initial_position(),
+            Self::CoalesceOperation(expression) => expression.initial_position(),
+            Self::ComparisonOperation(expression) => expression.initial_position(),
+            Self::ExceptionOperation(expression) => expression.initial_position(),
+            Self::FunctionOperation(expression) => expression.initial_position(),
+            Self::GeneratorOperation(expression) => expression.initial_position(),
+            Self::LogicalOperation(expression) => expression.initial_position(),
+            Self::ObjectOperation(expression) => expression.initial_position(),
+            Self::RangeOperation(expression) => expression.initial_position(),
+            Self::StringOperation(expression) => expression.initial_position(),
+            Self::TypeOperation(expression) => expression.initial_position(),
+            Self::TernaryOperation(expression) => expression.initial_position(),
+            Self::Identifier(expression) => expression.initial_position(),
+            Self::Variable(expression) => expression.initial_position(),
+            Self::Match(expression) => expression.initial_position(),
+            Self::AnonymousFunction(expression) => expression.initial_position(),
+            Self::ArrowFunction(expression) => expression.initial_position(),
+            Self::Vec(expression) => expression.initial_position(),
+            Self::Dict(expression) => expression.initial_position(),
+            Self::Tuple(expression) => expression.initial_position(),
+            Self::MagicConstant(expression) => expression.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            Expression::Parenthesized(expression) => expression.final_position(),
-            Expression::ExitConstruct(expression) => expression.final_position(),
-            Expression::Literal(expression) => expression.final_position(),
-            Expression::ArithmeticOperation(expression) => expression.final_position(),
-            Expression::AsyncOperation(expression) => expression.final_position(),
-            Expression::ArrayOperation(expression) => expression.final_position(),
-            Expression::AssignmentOperation(expression) => expression.final_position(),
-            Expression::BitwiseOperation(expression) => expression.final_position(),
-            Expression::ClassOperation(expression) => expression.final_position(),
-            Expression::CoalesceOperation(expression) => expression.final_position(),
-            Expression::ComparisonOperation(expression) => expression.final_position(),
-            Expression::ExceptionOperation(expression) => expression.final_position(),
-            Expression::FunctionOperation(expression) => expression.final_position(),
-            Expression::GeneratorOperation(expression) => expression.final_position(),
-            Expression::LogicalOperation(expression) => expression.final_position(),
-            Expression::ObjectOperation(expression) => expression.final_position(),
-            Expression::RangeOperation(expression) => expression.final_position(),
-            Expression::StringOperation(expression) => expression.final_position(),
-            Expression::TypeOperation(expression) => expression.final_position(),
-            Expression::TernaryOperation(expression) => expression.final_position(),
-            Expression::Identifier(expression) => expression.final_position(),
-            Expression::Variable(expression) => expression.final_position(),
-            Expression::Match(expression) => expression.final_position(),
-            Expression::AnonymousFunction(expression) => expression.final_position(),
-            Expression::ArrowFunction(expression) => expression.final_position(),
-            Expression::Vec(expression) => expression.final_position(),
-            Expression::Dict(expression) => expression.final_position(),
-            Expression::Tuple(expression) => expression.final_position(),
-            Expression::MagicConstant(expression) => expression.final_position(),
+            Self::Parenthesized(expression) => expression.final_position(),
+            Self::ExitConstruct(expression) => expression.final_position(),
+            Self::Literal(expression) => expression.final_position(),
+            Self::ArithmeticOperation(expression) => expression.final_position(),
+            Self::AsyncOperation(expression) => expression.final_position(),
+            Self::ArrayOperation(expression) => expression.final_position(),
+            Self::AssignmentOperation(expression) => expression.final_position(),
+            Self::BitwiseOperation(expression) => expression.final_position(),
+            Self::ClassOperation(expression) => expression.final_position(),
+            Self::CoalesceOperation(expression) => expression.final_position(),
+            Self::ComparisonOperation(expression) => expression.final_position(),
+            Self::ExceptionOperation(expression) => expression.final_position(),
+            Self::FunctionOperation(expression) => expression.final_position(),
+            Self::GeneratorOperation(expression) => expression.final_position(),
+            Self::LogicalOperation(expression) => expression.final_position(),
+            Self::ObjectOperation(expression) => expression.final_position(),
+            Self::RangeOperation(expression) => expression.final_position(),
+            Self::StringOperation(expression) => expression.final_position(),
+            Self::TypeOperation(expression) => expression.final_position(),
+            Self::TernaryOperation(expression) => expression.final_position(),
+            Self::Identifier(expression) => expression.final_position(),
+            Self::Variable(expression) => expression.final_position(),
+            Self::Match(expression) => expression.final_position(),
+            Self::AnonymousFunction(expression) => expression.final_position(),
+            Self::ArrowFunction(expression) => expression.final_position(),
+            Self::Vec(expression) => expression.final_position(),
+            Self::Dict(expression) => expression.final_position(),
+            Self::Tuple(expression) => expression.final_position(),
+            Self::MagicConstant(expression) => expression.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            Expression::Parenthesized(expression) => vec![expression],
-            Expression::ExitConstruct(expression) => vec![expression],
-            Expression::Literal(expression) => vec![expression],
-            Expression::ArithmeticOperation(expression) => vec![expression],
-            Expression::AsyncOperation(expression) => vec![expression],
-            Expression::ArrayOperation(expression) => vec![expression],
-            Expression::AssignmentOperation(expression) => vec![expression],
-            Expression::BitwiseOperation(expression) => vec![expression],
-            Expression::ClassOperation(expression) => vec![expression],
-            Expression::CoalesceOperation(expression) => vec![expression],
-            Expression::ComparisonOperation(expression) => vec![expression],
-            Expression::ExceptionOperation(expression) => vec![expression],
-            Expression::FunctionOperation(expression) => vec![expression],
-            Expression::GeneratorOperation(expression) => vec![expression],
-            Expression::LogicalOperation(expression) => vec![expression],
-            Expression::ObjectOperation(expression) => vec![expression],
-            Expression::RangeOperation(expression) => vec![expression],
-            Expression::StringOperation(expression) => vec![expression],
-            Expression::TypeOperation(expression) => vec![expression],
-            Expression::TernaryOperation(expression) => vec![expression],
-            Expression::Identifier(expression) => vec![expression],
-            Expression::Variable(expression) => vec![expression],
-            Expression::Match(expression) => vec![expression],
-            Expression::AnonymousFunction(expression) => vec![expression],
-            Expression::ArrowFunction(expression) => vec![expression],
-            Expression::Vec(expression) => vec![expression],
-            Expression::Dict(expression) => vec![expression],
-            Expression::Tuple(expression) => vec![expression],
-            Expression::MagicConstant(expression) => vec![expression],
+            Self::Parenthesized(expression) => vec![expression],
+            Self::ExitConstruct(expression) => vec![expression],
+            Self::Literal(expression) => vec![expression],
+            Self::ArithmeticOperation(expression) => vec![expression],
+            Self::AsyncOperation(expression) => vec![expression],
+            Self::ArrayOperation(expression) => vec![expression],
+            Self::AssignmentOperation(expression) => vec![expression],
+            Self::BitwiseOperation(expression) => vec![expression],
+            Self::ClassOperation(expression) => vec![expression],
+            Self::CoalesceOperation(expression) => vec![expression],
+            Self::ComparisonOperation(expression) => vec![expression],
+            Self::ExceptionOperation(expression) => vec![expression],
+            Self::FunctionOperation(expression) => vec![expression],
+            Self::GeneratorOperation(expression) => vec![expression],
+            Self::LogicalOperation(expression) => vec![expression],
+            Self::ObjectOperation(expression) => vec![expression],
+            Self::RangeOperation(expression) => vec![expression],
+            Self::StringOperation(expression) => vec![expression],
+            Self::TypeOperation(expression) => vec![expression],
+            Self::TernaryOperation(expression) => vec![expression],
+            Self::Identifier(expression) => vec![expression],
+            Self::Variable(expression) => vec![expression],
+            Self::Match(expression) => vec![expression],
+            Self::AnonymousFunction(expression) => vec![expression],
+            Self::ArrowFunction(expression) => vec![expression],
+            Self::Vec(expression) => vec![expression],
+            Self::Dict(expression) => vec![expression],
+            Self::Tuple(expression) => vec![expression],
+            Self::MagicConstant(expression) => vec![expression],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            Expression::Parenthesized(expression) => expression.get_description(),
-            Expression::ExitConstruct(expression) => expression.get_description(),
-            Expression::Literal(expression) => expression.get_description(),
-            Expression::ArithmeticOperation(expression) => expression.get_description(),
-            Expression::AsyncOperation(expression) => expression.get_description(),
-            Expression::ArrayOperation(expression) => expression.get_description(),
-            Expression::AssignmentOperation(expression) => expression.get_description(),
-            Expression::BitwiseOperation(expression) => expression.get_description(),
-            Expression::ClassOperation(expression) => expression.get_description(),
-            Expression::CoalesceOperation(expression) => expression.get_description(),
-            Expression::ComparisonOperation(expression) => expression.get_description(),
-            Expression::ExceptionOperation(expression) => expression.get_description(),
-            Expression::FunctionOperation(expression) => expression.get_description(),
-            Expression::GeneratorOperation(expression) => expression.get_description(),
-            Expression::LogicalOperation(expression) => expression.get_description(),
-            Expression::ObjectOperation(expression) => expression.get_description(),
-            Expression::RangeOperation(expression) => expression.get_description(),
-            Expression::StringOperation(expression) => expression.get_description(),
-            Expression::TypeOperation(expression) => expression.get_description(),
-            Expression::TernaryOperation(expression) => expression.get_description(),
-            Expression::Identifier(expression) => expression.get_description(),
-            Expression::Variable(expression) => expression.get_description(),
-            Expression::Match(expression) => expression.get_description(),
-            Expression::AnonymousFunction(expression) => expression.get_description(),
-            Expression::ArrowFunction(expression) => expression.get_description(),
-            Expression::Vec(expression) => expression.get_description(),
-            Expression::Dict(expression) => expression.get_description(),
-            Expression::Tuple(expression) => expression.get_description(),
-            Expression::MagicConstant(expression) => expression.get_description(),
+            Self::Parenthesized(expression) => expression.get_description(),
+            Self::ExitConstruct(expression) => expression.get_description(),
+            Self::Literal(expression) => expression.get_description(),
+            Self::ArithmeticOperation(expression) => expression.get_description(),
+            Self::AsyncOperation(expression) => expression.get_description(),
+            Self::ArrayOperation(expression) => expression.get_description(),
+            Self::AssignmentOperation(expression) => expression.get_description(),
+            Self::BitwiseOperation(expression) => expression.get_description(),
+            Self::ClassOperation(expression) => expression.get_description(),
+            Self::CoalesceOperation(expression) => expression.get_description(),
+            Self::ComparisonOperation(expression) => expression.get_description(),
+            Self::ExceptionOperation(expression) => expression.get_description(),
+            Self::FunctionOperation(expression) => expression.get_description(),
+            Self::GeneratorOperation(expression) => expression.get_description(),
+            Self::LogicalOperation(expression) => expression.get_description(),
+            Self::ObjectOperation(expression) => expression.get_description(),
+            Self::RangeOperation(expression) => expression.get_description(),
+            Self::StringOperation(expression) => expression.get_description(),
+            Self::TypeOperation(expression) => expression.get_description(),
+            Self::TernaryOperation(expression) => expression.get_description(),
+            Self::Identifier(expression) => expression.get_description(),
+            Self::Variable(expression) => expression.get_description(),
+            Self::Match(expression) => expression.get_description(),
+            Self::AnonymousFunction(expression) => expression.get_description(),
+            Self::ArrowFunction(expression) => expression.get_description(),
+            Self::Vec(expression) => expression.get_description(),
+            Self::Dict(expression) => expression.get_description(),
+            Self::Tuple(expression) => expression.get_description(),
+            Self::MagicConstant(expression) => expression.get_description(),
         }
     }
 }

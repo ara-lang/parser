@@ -137,24 +137,22 @@ impl Node for TryCatchTypeStatement {
 
     fn initial_position(&self) -> usize {
         match &self {
-            TryCatchTypeStatement::Identifier(identifier) => identifier.initial_position(),
-            TryCatchTypeStatement::Union(identifiers) => identifiers[0].initial_position(),
+            Self::Identifier(identifier) => identifier.initial_position(),
+            Self::Union(identifiers) => identifiers[0].initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            TryCatchTypeStatement::Identifier(identifier) => identifier.final_position(),
-            TryCatchTypeStatement::Union(identifiers) => {
-                identifiers[identifiers.len() - 1].final_position()
-            }
+            Self::Identifier(identifier) => identifier.final_position(),
+            Self::Union(identifiers) => identifiers[identifiers.len() - 1].final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            TryCatchTypeStatement::Identifier(identifier) => vec![identifier],
-            TryCatchTypeStatement::Union(identifiers) => identifiers
+            Self::Identifier(identifier) => vec![identifier],
+            Self::Union(identifiers) => identifiers
                 .iter()
                 .map(|identifier| identifier as &dyn Node)
                 .collect(),

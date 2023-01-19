@@ -20,25 +20,25 @@ pub enum MagicConstant {
 impl Node for MagicConstant {
     fn initial_position(&self) -> usize {
         match &self {
-            MagicConstant::Directory { position, .. } => *position,
-            MagicConstant::File { position, .. } => *position,
-            MagicConstant::Line { position, .. } => *position,
-            MagicConstant::Class { position, .. } => *position,
-            MagicConstant::Function { position, .. } => *position,
-            MagicConstant::Method { position, .. } => *position,
-            MagicConstant::Namespace { position, .. } => *position,
+            Self::Directory { position, .. } => *position,
+            Self::File { position, .. } => *position,
+            Self::Line { position, .. } => *position,
+            Self::Class { position, .. } => *position,
+            Self::Function { position, .. } => *position,
+            Self::Method { position, .. } => *position,
+            Self::Namespace { position, .. } => *position,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            MagicConstant::Directory { position, value } => position + value.len(),
-            MagicConstant::File { position, value } => position + value.len(),
-            MagicConstant::Line { position, value } => position + value.len(),
-            MagicConstant::Class { position, value } => position + value.len(),
-            MagicConstant::Function { position, value } => position + value.len(),
-            MagicConstant::Method { position, value } => position + value.len(),
-            MagicConstant::Namespace { position, value } => position + value.len(),
+            Self::Directory { position, value } => position + value.len(),
+            Self::File { position, value } => position + value.len(),
+            Self::Line { position, value } => position + value.len(),
+            Self::Class { position, value } => position + value.len(),
+            Self::Function { position, value } => position + value.len(),
+            Self::Method { position, value } => position + value.len(),
+            Self::Namespace { position, value } => position + value.len(),
         }
     }
 
@@ -48,13 +48,13 @@ impl Node for MagicConstant {
 
     fn get_description(&self) -> String {
         match &self {
-            MagicConstant::Directory { .. } => "directory magic constant expression".to_string(),
-            MagicConstant::File { .. } => "file magic constant expression".to_string(),
-            MagicConstant::Line { .. } => "line magic constant expression".to_string(),
-            MagicConstant::Class { .. } => "class magic constant expression".to_string(),
-            MagicConstant::Function { .. } => "function magic constant expression".to_string(),
-            MagicConstant::Method { .. } => "method magic constant expression".to_string(),
-            MagicConstant::Namespace { .. } => "namespace magic constant expression".to_string(),
+            Self::Directory { .. } => "directory magic constant expression".to_string(),
+            Self::File { .. } => "file magic constant expression".to_string(),
+            Self::Line { .. } => "line magic constant expression".to_string(),
+            Self::Class { .. } => "class magic constant expression".to_string(),
+            Self::Function { .. } => "function magic constant expression".to_string(),
+            Self::Method { .. } => "method magic constant expression".to_string(),
+            Self::Namespace { .. } => "namespace magic constant expression".to_string(),
         }
     }
 }
