@@ -34,9 +34,9 @@ pub enum PropertyEntryDefinition {
 
 impl PropertyEntryDefinition {
     pub fn variable(&self) -> &Variable {
-        match self {
-            PropertyEntryDefinition::Uninitialized { variable } => variable,
-            PropertyEntryDefinition::Initialized { variable, .. } => variable,
+        match &self {
+            Self::Uninitialized { variable } => variable,
+            Self::Initialized { variable, .. } => variable,
         }
     }
 }
@@ -79,23 +79,23 @@ impl Node for PropertyDefinition {
 
 impl Node for PropertyEntryDefinition {
     fn initial_position(&self) -> usize {
-        match self {
-            PropertyEntryDefinition::Uninitialized { variable } => variable.initial_position(),
-            PropertyEntryDefinition::Initialized { variable, .. } => variable.initial_position(),
+        match &self {
+            Self::Uninitialized { variable } => variable.initial_position(),
+            Self::Initialized { variable, .. } => variable.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            PropertyEntryDefinition::Uninitialized { variable } => variable.final_position(),
-            PropertyEntryDefinition::Initialized { value, .. } => value.final_position(),
+        match &self {
+            Self::Uninitialized { variable } => variable.final_position(),
+            Self::Initialized { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
-            PropertyEntryDefinition::Uninitialized { variable } => vec![variable],
-            PropertyEntryDefinition::Initialized {
+        match &self {
+            Self::Uninitialized { variable } => vec![variable],
+            Self::Initialized {
                 variable, value, ..
             } => vec![variable, value],
         }
@@ -103,10 +103,8 @@ impl Node for PropertyEntryDefinition {
 
     fn get_description(&self) -> String {
         match &self {
-            PropertyEntryDefinition::Uninitialized { .. } => {
-                "uninitialized property entry".to_string()
-            }
-            PropertyEntryDefinition::Initialized { .. } => "initialized property entry".to_string(),
+            Self::Uninitialized { .. } => "uninitialized property entry".to_string(),
+            Self::Initialized { .. } => "initialized property entry".to_string(),
         }
     }
 }

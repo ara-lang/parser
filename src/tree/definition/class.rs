@@ -191,7 +191,7 @@ impl Node for ClassDefinitionBody {
 
 impl Node for ClassDefinitionMember {
     fn comments(&self) -> Option<&CommentGroup> {
-        match self {
+        match &self {
             Self::Constant(constant) => constant.comments(),
             Self::Property(property) => property.comments(),
             Self::AbstractMethod(method) => method.comments(),
@@ -202,7 +202,7 @@ impl Node for ClassDefinitionMember {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Constant(constant) => constant.initial_position(),
             Self::Property(property) => property.initial_position(),
             Self::AbstractMethod(method) => method.initial_position(),
@@ -213,7 +213,7 @@ impl Node for ClassDefinitionMember {
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Constant(constant) => constant.final_position(),
             Self::Property(property) => property.final_position(),
             Self::AbstractMethod(method) => method.final_position(),

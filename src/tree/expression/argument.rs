@@ -54,49 +54,46 @@ pub struct ArgumentPlaceholderExpression {
 impl Node for ArgumentExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ArgumentExpression::Value { comments, .. }
-            | ArgumentExpression::Spread { comments, .. }
-            | ArgumentExpression::ReverseSpread { comments, .. }
-            | ArgumentExpression::Named { comments, .. } => Some(comments),
+            Self::Value { comments, .. }
+            | Self::Spread { comments, .. }
+            | Self::ReverseSpread { comments, .. }
+            | Self::Named { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
-        match self {
-            ArgumentExpression::Value { value, .. }
-            | ArgumentExpression::ReverseSpread { value, .. } => value.initial_position(),
-            ArgumentExpression::Spread { ellipsis, .. } => *ellipsis,
-            ArgumentExpression::Named { name, .. } => name.initial_position(),
+        match &self {
+            Self::Value { value, .. } | Self::ReverseSpread { value, .. } => {
+                value.initial_position()
+            }
+            Self::Spread { ellipsis, .. } => *ellipsis,
+            Self::Named { name, .. } => name.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            ArgumentExpression::Value { value, .. } | ArgumentExpression::Spread { value, .. } => {
-                value.final_position()
-            }
-            ArgumentExpression::ReverseSpread { ellipsis, .. } => *ellipsis,
-            ArgumentExpression::Named { value, .. } => value.final_position(),
+        match &self {
+            Self::Value { value, .. } | Self::Spread { value, .. } => value.final_position(),
+            Self::ReverseSpread { ellipsis, .. } => *ellipsis,
+            Self::Named { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
-            ArgumentExpression::Value { value, .. }
-            | ArgumentExpression::Spread { value, .. }
-            | ArgumentExpression::ReverseSpread { value, .. } => vec![value],
-            ArgumentExpression::Named { name, value, .. } => vec![name, value],
+        match &self {
+            Self::Value { value, .. }
+            | Self::Spread { value, .. }
+            | Self::ReverseSpread { value, .. } => vec![value],
+            Self::Named { name, value, .. } => vec![name, value],
         }
     }
 
     fn get_description(&self) -> String {
-        match self {
-            ArgumentExpression::Value { .. } => "value argument expression".to_string(),
-            ArgumentExpression::Spread { .. } => "spread argument expression".to_string(),
-            ArgumentExpression::ReverseSpread { .. } => {
-                "reverse spread argument expression".to_string()
-            }
-            ArgumentExpression::Named { .. } => "named argument expression".to_string(),
+        match &self {
+            Self::Value { .. } => "value argument expression".to_string(),
+            Self::Spread { .. } => "spread argument expression".to_string(),
+            Self::ReverseSpread { .. } => "reverse spread argument expression".to_string(),
+            Self::Named { .. } => "named argument expression".to_string(),
         }
     }
 }

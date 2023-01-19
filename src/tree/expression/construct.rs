@@ -26,32 +26,31 @@ pub enum ExitConstructExpression {
 
 impl Node for ExitConstructExpression {
     fn comments(&self) -> Option<&CommentGroup> {
-        match self {
-            ExitConstructExpression::Exit { comments, .. } => Some(comments),
-            ExitConstructExpression::ExitWith { comments, .. } => Some(comments),
+        match &self {
+            Self::Exit { comments, .. } => Some(comments),
+            Self::ExitWith { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
-        match self {
-            ExitConstructExpression::Exit { exit, .. }
-            | ExitConstructExpression::ExitWith { exit, .. } => exit.initial_position(),
+        match &self {
+            Self::Exit { exit, .. } | Self::ExitWith { exit, .. } => exit.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            ExitConstructExpression::Exit { exit, .. } => exit.final_position(),
-            ExitConstructExpression::ExitWith {
+        match &self {
+            Self::Exit { exit, .. } => exit.final_position(),
+            Self::ExitWith {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
-            ExitConstructExpression::Exit { exit, .. } => vec![exit],
-            ExitConstructExpression::ExitWith { exit, value, .. } => {
+        match &self {
+            Self::Exit { exit, .. } => vec![exit],
+            Self::ExitWith { exit, value, .. } => {
                 if let Some(value) = value {
                     vec![exit, value.as_ref()]
                 } else {

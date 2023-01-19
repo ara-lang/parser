@@ -123,29 +123,29 @@ pub struct ContinueStatement {
 
 impl ForeachIteratorStatement {
     pub fn expression(&self) -> &Expression {
-        match self {
-            ForeachIteratorStatement::Value { expression, .. } => expression,
-            ForeachIteratorStatement::ParenthesizedValue { expression, .. } => expression,
-            ForeachIteratorStatement::KeyAndValue { expression, .. } => expression,
-            ForeachIteratorStatement::ParenthesizedKeyAndValue { expression, .. } => expression,
+        match &self {
+            Self::Value { expression, .. } => expression,
+            Self::ParenthesizedValue { expression, .. } => expression,
+            Self::KeyAndValue { expression, .. } => expression,
+            Self::ParenthesizedKeyAndValue { expression, .. } => expression,
         }
     }
 
     pub fn key(&self) -> Option<&Variable> {
-        match self {
-            ForeachIteratorStatement::Value { .. } => None,
-            ForeachIteratorStatement::ParenthesizedValue { .. } => None,
-            ForeachIteratorStatement::KeyAndValue { key, .. } => Some(key),
-            ForeachIteratorStatement::ParenthesizedKeyAndValue { key, .. } => Some(key),
+        match &self {
+            Self::Value { .. } => None,
+            Self::ParenthesizedValue { .. } => None,
+            Self::KeyAndValue { key, .. } => Some(key),
+            Self::ParenthesizedKeyAndValue { key, .. } => Some(key),
         }
     }
 
     pub fn value(&self) -> &Variable {
-        match self {
-            ForeachIteratorStatement::Value { value, .. } => value,
-            ForeachIteratorStatement::ParenthesizedValue { value, .. } => value,
-            ForeachIteratorStatement::KeyAndValue { value, .. } => value,
-            ForeachIteratorStatement::ParenthesizedKeyAndValue { value, .. } => value,
+        match &self {
+            Self::Value { value, .. } => value,
+            Self::ParenthesizedValue { value, .. } => value,
+            Self::KeyAndValue { value, .. } => value,
+            Self::ParenthesizedKeyAndValue { value, .. } => value,
         }
     }
 }
@@ -178,42 +178,40 @@ impl Node for ForeachIteratorStatement {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
-            ForeachIteratorStatement::Value { expression, .. }
-            | ForeachIteratorStatement::KeyAndValue { expression, .. } => {
+        match &self {
+            Self::Value { expression, .. } | Self::KeyAndValue { expression, .. } => {
                 expression.initial_position()
             }
-            ForeachIteratorStatement::ParenthesizedValue {
+            Self::ParenthesizedValue {
                 left_parenthesis, ..
             }
-            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
+            | Self::ParenthesizedKeyAndValue {
                 left_parenthesis, ..
             } => *left_parenthesis,
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            ForeachIteratorStatement::Value { value, .. }
-            | ForeachIteratorStatement::KeyAndValue { value, .. } => value.final_position(),
-            ForeachIteratorStatement::ParenthesizedValue {
+        match &self {
+            Self::Value { value, .. } | Self::KeyAndValue { value, .. } => value.final_position(),
+            Self::ParenthesizedValue {
                 right_parenthesis, ..
             }
-            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
+            | Self::ParenthesizedKeyAndValue {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
-            ForeachIteratorStatement::Value {
+        match &self {
+            Self::Value {
                 expression,
                 r#as,
                 value,
                 ..
             }
-            | ForeachIteratorStatement::ParenthesizedValue {
+            | Self::ParenthesizedValue {
                 expression,
                 r#as,
                 value,
@@ -221,14 +219,14 @@ impl Node for ForeachIteratorStatement {
             } => {
                 vec![expression, r#as, value]
             }
-            ForeachIteratorStatement::KeyAndValue {
+            Self::KeyAndValue {
                 expression,
                 r#as,
                 key,
                 value,
                 ..
             }
-            | ForeachIteratorStatement::ParenthesizedKeyAndValue {
+            | Self::ParenthesizedKeyAndValue {
                 expression,
                 r#as,
                 key,
@@ -273,8 +271,8 @@ impl Node for ForIteratorStatement {
     }
 
     fn initial_position(&self) -> usize {
-        match self {
-            ForIteratorStatement::Standalone {
+        match &self {
+            Self::Standalone {
                 initializations,
                 initializations_semicolon,
                 ..
@@ -285,15 +283,15 @@ impl Node for ForIteratorStatement {
                     *initializations_semicolon
                 }
             }
-            ForIteratorStatement::Parenthesized {
+            Self::Parenthesized {
                 left_parenthesis, ..
             } => *left_parenthesis,
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            ForIteratorStatement::Standalone {
+        match &self {
+            Self::Standalone {
                 conditions_semicolon,
                 r#loop,
                 ..
@@ -304,7 +302,7 @@ impl Node for ForIteratorStatement {
                     conditions_semicolon + 1
                 }
             }
-            ForIteratorStatement::Parenthesized {
+            Self::Parenthesized {
                 right_parenthesis, ..
             } => right_parenthesis + 1,
         }
@@ -312,13 +310,13 @@ impl Node for ForIteratorStatement {
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ForIteratorStatement::Standalone {
+            Self::Standalone {
                 initializations,
                 conditions,
                 r#loop,
                 ..
             }
-            | ForIteratorStatement::Parenthesized {
+            | Self::Parenthesized {
                 initializations,
                 conditions,
                 r#loop,

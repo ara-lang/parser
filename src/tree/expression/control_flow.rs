@@ -104,21 +104,21 @@ impl Node for MatchArmExpression {
 
 impl Node for MatchArmConditionExpression {
     fn initial_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Expressions(expressions) => expressions.inner.first().unwrap().initial_position(),
             Self::Default(default) => default.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
+        match &self {
             Self::Expressions(expressions) => expressions.inner.last().unwrap().final_position(),
             Self::Default(default) => default.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        match self {
+        match &self {
             Self::Expressions(expressions) => expressions
                 .inner
                 .iter()

@@ -65,54 +65,54 @@ impl Node for DefinitionTree {
 
 impl Node for Definition {
     fn initial_position(&self) -> usize {
-        match self {
-            Definition::Namespace(definition) => definition.initial_position(),
-            Definition::Use(definition) => definition.initial_position(),
-            Definition::TypeAlias(definition) => definition.initial_position(),
-            Definition::Constant(definition) => definition.initial_position(),
-            Definition::Function(definition) => definition.initial_position(),
-            Definition::Interface(definition) => definition.initial_position(),
-            Definition::Enum(definition) => definition.initial_position(),
-            Definition::Class(definition) => definition.initial_position(),
+        match &self {
+            Self::Namespace(definition) => definition.initial_position(),
+            Self::Use(definition) => definition.initial_position(),
+            Self::TypeAlias(definition) => definition.initial_position(),
+            Self::Constant(definition) => definition.initial_position(),
+            Self::Function(definition) => definition.initial_position(),
+            Self::Interface(definition) => definition.initial_position(),
+            Self::Enum(definition) => definition.initial_position(),
+            Self::Class(definition) => definition.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
-        match self {
-            Definition::Namespace(definition) => definition.final_position(),
-            Definition::Use(definition) => definition.final_position(),
-            Definition::TypeAlias(definition) => definition.final_position(),
-            Definition::Constant(definition) => definition.final_position(),
-            Definition::Function(definition) => definition.final_position(),
-            Definition::Interface(definition) => definition.final_position(),
-            Definition::Enum(definition) => definition.final_position(),
-            Definition::Class(definition) => definition.final_position(),
+        match &self {
+            Self::Namespace(definition) => definition.final_position(),
+            Self::Use(definition) => definition.final_position(),
+            Self::TypeAlias(definition) => definition.final_position(),
+            Self::Constant(definition) => definition.final_position(),
+            Self::Function(definition) => definition.final_position(),
+            Self::Interface(definition) => definition.final_position(),
+            Self::Enum(definition) => definition.final_position(),
+            Self::Class(definition) => definition.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            Definition::Namespace(definition) => vec![definition.as_ref()],
-            Definition::Use(definition) => vec![definition.as_ref()],
-            Definition::TypeAlias(definition) => vec![definition.as_ref()],
-            Definition::Constant(definition) => vec![definition.as_ref()],
-            Definition::Function(definition) => vec![definition.as_ref()],
-            Definition::Interface(definition) => vec![definition.as_ref()],
-            Definition::Enum(definition) => vec![definition.as_ref()],
-            Definition::Class(definition) => vec![definition.as_ref()],
+            Self::Namespace(definition) => vec![definition.as_ref()],
+            Self::Use(definition) => vec![definition.as_ref()],
+            Self::TypeAlias(definition) => vec![definition.as_ref()],
+            Self::Constant(definition) => vec![definition.as_ref()],
+            Self::Function(definition) => vec![definition.as_ref()],
+            Self::Interface(definition) => vec![definition.as_ref()],
+            Self::Enum(definition) => vec![definition.as_ref()],
+            Self::Class(definition) => vec![definition.as_ref()],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            Definition::Namespace(definition) => definition.get_description(),
-            Definition::Use(definition) => definition.get_description(),
-            Definition::TypeAlias(definition) => definition.get_description(),
-            Definition::Constant(definition) => definition.get_description(),
-            Definition::Function(definition) => definition.get_description(),
-            Definition::Interface(definition) => definition.get_description(),
-            Definition::Enum(definition) => definition.get_description(),
-            Definition::Class(definition) => definition.get_description(),
+            Self::Namespace(definition) => definition.get_description(),
+            Self::Use(definition) => definition.get_description(),
+            Self::TypeAlias(definition) => definition.get_description(),
+            Self::Constant(definition) => definition.get_description(),
+            Self::Function(definition) => definition.get_description(),
+            Self::Interface(definition) => definition.get_description(),
+            Self::Enum(definition) => definition.get_description(),
+            Self::Class(definition) => definition.get_description(),
         }
     }
 }

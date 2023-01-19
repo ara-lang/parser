@@ -619,13 +619,13 @@ pub enum RangeOperationExpression {
 
 impl RangeOperationExpression {
     pub fn has_start(&self) -> bool {
-        match self {
-            RangeOperationExpression::Between { .. } => true,
-            RangeOperationExpression::BetweenInclusive { .. } => true,
-            RangeOperationExpression::To { .. } => false,
-            RangeOperationExpression::ToInclusive { .. } => false,
-            RangeOperationExpression::From { .. } => true,
-            RangeOperationExpression::Full { .. } => false,
+        match &self {
+            Self::Between { .. } => true,
+            Self::BetweenInclusive { .. } => true,
+            Self::To { .. } => false,
+            Self::ToInclusive { .. } => false,
+            Self::From { .. } => true,
+            Self::Full { .. } => false,
         }
     }
 }
@@ -633,71 +633,70 @@ impl RangeOperationExpression {
 impl Node for ArithmeticOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ArithmeticOperationExpression::Addition { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Subtraction { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Multiplication { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Division { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Modulo { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Exponentiation { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Negative { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::Positive { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::PreIncrement { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::PreDecrement { comments, .. } => Some(comments),
-            ArithmeticOperationExpression::PostIncrement { .. } => None,
-            ArithmeticOperationExpression::PostDecrement { .. } => None,
+            Self::Addition { comments, .. } => Some(comments),
+            Self::Subtraction { comments, .. } => Some(comments),
+            Self::Multiplication { comments, .. } => Some(comments),
+            Self::Division { comments, .. } => Some(comments),
+            Self::Modulo { comments, .. } => Some(comments),
+            Self::Exponentiation { comments, .. } => Some(comments),
+            Self::Negative { comments, .. } => Some(comments),
+            Self::Positive { comments, .. } => Some(comments),
+            Self::PreIncrement { comments, .. } => Some(comments),
+            Self::PreDecrement { comments, .. } => Some(comments),
+            Self::PostIncrement { .. } => None,
+            Self::PostDecrement { .. } => None,
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ArithmeticOperationExpression::Addition { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Subtraction { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Multiplication { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Division { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Modulo { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Exponentiation { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::Negative { minus, .. } => *minus,
-            ArithmeticOperationExpression::Positive { plus, .. } => *plus,
-            ArithmeticOperationExpression::PreIncrement { increment, .. } => *increment,
-            ArithmeticOperationExpression::PreDecrement { decrement, .. } => *decrement,
-            ArithmeticOperationExpression::PostIncrement { left, .. } => left.initial_position(),
-            ArithmeticOperationExpression::PostDecrement { left, .. } => left.initial_position(),
+            Self::Addition { left, .. } => left.initial_position(),
+            Self::Subtraction { left, .. } => left.initial_position(),
+            Self::Multiplication { left, .. } => left.initial_position(),
+            Self::Division { left, .. } => left.initial_position(),
+            Self::Modulo { left, .. } => left.initial_position(),
+            Self::Exponentiation { left, .. } => left.initial_position(),
+            Self::Negative { minus, .. } => *minus,
+            Self::Positive { plus, .. } => *plus,
+            Self::PreIncrement { increment, .. } => *increment,
+            Self::PreDecrement { decrement, .. } => *decrement,
+            Self::PostIncrement { left, .. } => left.initial_position(),
+            Self::PostDecrement { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ArithmeticOperationExpression::Addition { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Subtraction { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Multiplication { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Division { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Modulo { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Exponentiation { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Negative { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::Positive { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::PreIncrement { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::PreDecrement { right, .. } => right.final_position(),
-            ArithmeticOperationExpression::PostIncrement { increment, .. } => *increment,
-            ArithmeticOperationExpression::PostDecrement { decrement, .. } => *decrement,
+            Self::Addition { right, .. } => right.final_position(),
+            Self::Subtraction { right, .. } => right.final_position(),
+            Self::Multiplication { right, .. } => right.final_position(),
+            Self::Division { right, .. } => right.final_position(),
+            Self::Modulo { right, .. } => right.final_position(),
+            Self::Exponentiation { right, .. } => right.final_position(),
+            Self::Negative { right, .. } => right.final_position(),
+            Self::Positive { right, .. } => right.final_position(),
+            Self::PreIncrement { right, .. } => right.final_position(),
+            Self::PreDecrement { right, .. } => right.final_position(),
+            Self::PostIncrement { increment, .. } => *increment,
+            Self::PostDecrement { decrement, .. } => *decrement,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ArithmeticOperationExpression::Addition { left, right, .. }
-            | ArithmeticOperationExpression::Subtraction { left, right, .. }
-            | ArithmeticOperationExpression::Multiplication { left, right, .. }
-            | ArithmeticOperationExpression::Division { left, right, .. }
-            | ArithmeticOperationExpression::Modulo { left, right, .. }
-            | ArithmeticOperationExpression::Exponentiation { left, right, .. } => {
+            Self::Addition { left, right, .. }
+            | Self::Subtraction { left, right, .. }
+            | Self::Multiplication { left, right, .. }
+            | Self::Division { left, right, .. }
+            | Self::Modulo { left, right, .. }
+            | Self::Exponentiation { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
-            ArithmeticOperationExpression::Negative { right, .. }
-            | ArithmeticOperationExpression::Positive { right, .. }
-            | ArithmeticOperationExpression::PreIncrement { right, .. }
-            | ArithmeticOperationExpression::PreDecrement { right, .. } => vec![right.as_ref()],
-            ArithmeticOperationExpression::PostIncrement { left, .. }
-            | ArithmeticOperationExpression::PostDecrement { left, .. } => {
+            Self::Negative { right, .. }
+            | Self::Positive { right, .. }
+            | Self::PreIncrement { right, .. }
+            | Self::PreDecrement { right, .. } => vec![right.as_ref()],
+            Self::PostIncrement { left, .. } | Self::PostDecrement { left, .. } => {
                 vec![left.as_ref()]
             }
         }
@@ -705,40 +704,28 @@ impl Node for ArithmeticOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            ArithmeticOperationExpression::Addition { .. } => {
-                "addition arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::Subtraction { .. } => {
-                "subtraction arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::Multiplication { .. } => {
+            Self::Addition { .. } => "addition arithmetic operation expression".to_string(),
+            Self::Subtraction { .. } => "subtraction arithmetic operation expression".to_string(),
+            Self::Multiplication { .. } => {
                 "multiplication arithmetic operation expression".to_string()
             }
-            ArithmeticOperationExpression::Division { .. } => {
-                "division arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::Modulo { .. } => {
-                "modulo arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::Exponentiation { .. } => {
+            Self::Division { .. } => "division arithmetic operation expression".to_string(),
+            Self::Modulo { .. } => "modulo arithmetic operation expression".to_string(),
+            Self::Exponentiation { .. } => {
                 "exponentiation arithmetic operation expression".to_string()
             }
-            ArithmeticOperationExpression::Negative { .. } => {
-                "negative arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::Positive { .. } => {
-                "positive arithmetic operation expression".to_string()
-            }
-            ArithmeticOperationExpression::PreIncrement { .. } => {
+            Self::Negative { .. } => "negative arithmetic operation expression".to_string(),
+            Self::Positive { .. } => "positive arithmetic operation expression".to_string(),
+            Self::PreIncrement { .. } => {
                 "pre-increment arithmetic operation expression".to_string()
             }
-            ArithmeticOperationExpression::PreDecrement { .. } => {
+            Self::PreDecrement { .. } => {
                 "pre-decrement arithmetic operation expression".to_string()
             }
-            ArithmeticOperationExpression::PostIncrement { .. } => {
+            Self::PostIncrement { .. } => {
                 "post-increment arithmetic operation expression".to_string()
             }
-            ArithmeticOperationExpression::PostDecrement { .. } => {
+            Self::PostDecrement { .. } => {
                 "post-decrement arithmetic operation expression".to_string()
             }
         }
@@ -748,77 +735,77 @@ impl Node for ArithmeticOperationExpression {
 impl Node for AssignmentOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            AssignmentOperationExpression::Assignment { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Addition { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Subtraction { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Multiplication { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Division { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Modulo { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Exponentiation { comments, .. } => Some(comments),
-            AssignmentOperationExpression::BitwiseAnd { comments, .. } => Some(comments),
-            AssignmentOperationExpression::BitwiseOr { comments, .. } => Some(comments),
-            AssignmentOperationExpression::BitwiseXor { comments, .. } => Some(comments),
-            AssignmentOperationExpression::LeftShift { comments, .. } => Some(comments),
-            AssignmentOperationExpression::RightShift { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Coalesce { comments, .. } => Some(comments),
-            AssignmentOperationExpression::Concat { comments, .. } => Some(comments),
+            Self::Assignment { comments, .. } => Some(comments),
+            Self::Addition { comments, .. } => Some(comments),
+            Self::Subtraction { comments, .. } => Some(comments),
+            Self::Multiplication { comments, .. } => Some(comments),
+            Self::Division { comments, .. } => Some(comments),
+            Self::Modulo { comments, .. } => Some(comments),
+            Self::Exponentiation { comments, .. } => Some(comments),
+            Self::BitwiseAnd { comments, .. } => Some(comments),
+            Self::BitwiseOr { comments, .. } => Some(comments),
+            Self::BitwiseXor { comments, .. } => Some(comments),
+            Self::LeftShift { comments, .. } => Some(comments),
+            Self::RightShift { comments, .. } => Some(comments),
+            Self::Coalesce { comments, .. } => Some(comments),
+            Self::Concat { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            AssignmentOperationExpression::Assignment { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Addition { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Subtraction { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Multiplication { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Division { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Modulo { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Exponentiation { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::BitwiseAnd { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::BitwiseOr { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::BitwiseXor { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::LeftShift { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::RightShift { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Coalesce { left, .. } => left.initial_position(),
-            AssignmentOperationExpression::Concat { left, .. } => left.initial_position(),
+            Self::Assignment { left, .. } => left.initial_position(),
+            Self::Addition { left, .. } => left.initial_position(),
+            Self::Subtraction { left, .. } => left.initial_position(),
+            Self::Multiplication { left, .. } => left.initial_position(),
+            Self::Division { left, .. } => left.initial_position(),
+            Self::Modulo { left, .. } => left.initial_position(),
+            Self::Exponentiation { left, .. } => left.initial_position(),
+            Self::BitwiseAnd { left, .. } => left.initial_position(),
+            Self::BitwiseOr { left, .. } => left.initial_position(),
+            Self::BitwiseXor { left, .. } => left.initial_position(),
+            Self::LeftShift { left, .. } => left.initial_position(),
+            Self::RightShift { left, .. } => left.initial_position(),
+            Self::Coalesce { left, .. } => left.initial_position(),
+            Self::Concat { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            AssignmentOperationExpression::Assignment { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Addition { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Subtraction { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Multiplication { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Division { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Modulo { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Exponentiation { right, .. } => right.final_position(),
-            AssignmentOperationExpression::BitwiseAnd { right, .. } => right.final_position(),
-            AssignmentOperationExpression::BitwiseOr { right, .. } => right.final_position(),
-            AssignmentOperationExpression::BitwiseXor { right, .. } => right.final_position(),
-            AssignmentOperationExpression::LeftShift { right, .. } => right.final_position(),
-            AssignmentOperationExpression::RightShift { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Coalesce { right, .. } => right.final_position(),
-            AssignmentOperationExpression::Concat { right, .. } => right.final_position(),
+            Self::Assignment { right, .. } => right.final_position(),
+            Self::Addition { right, .. } => right.final_position(),
+            Self::Subtraction { right, .. } => right.final_position(),
+            Self::Multiplication { right, .. } => right.final_position(),
+            Self::Division { right, .. } => right.final_position(),
+            Self::Modulo { right, .. } => right.final_position(),
+            Self::Exponentiation { right, .. } => right.final_position(),
+            Self::BitwiseAnd { right, .. } => right.final_position(),
+            Self::BitwiseOr { right, .. } => right.final_position(),
+            Self::BitwiseXor { right, .. } => right.final_position(),
+            Self::LeftShift { right, .. } => right.final_position(),
+            Self::RightShift { right, .. } => right.final_position(),
+            Self::Coalesce { right, .. } => right.final_position(),
+            Self::Concat { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            AssignmentOperationExpression::Assignment { left, right, .. }
-            | AssignmentOperationExpression::Addition { left, right, .. }
-            | AssignmentOperationExpression::Subtraction { left, right, .. }
-            | AssignmentOperationExpression::Multiplication { left, right, .. }
-            | AssignmentOperationExpression::Division { left, right, .. }
-            | AssignmentOperationExpression::Modulo { left, right, .. }
-            | AssignmentOperationExpression::Exponentiation { left, right, .. }
-            | AssignmentOperationExpression::BitwiseAnd { left, right, .. }
-            | AssignmentOperationExpression::BitwiseOr { left, right, .. }
-            | AssignmentOperationExpression::BitwiseXor { left, right, .. }
-            | AssignmentOperationExpression::LeftShift { left, right, .. }
-            | AssignmentOperationExpression::RightShift { left, right, .. }
-            | AssignmentOperationExpression::Coalesce { left, right, .. }
-            | AssignmentOperationExpression::Concat { left, right, .. } => {
+            Self::Assignment { left, right, .. }
+            | Self::Addition { left, right, .. }
+            | Self::Subtraction { left, right, .. }
+            | Self::Multiplication { left, right, .. }
+            | Self::Division { left, right, .. }
+            | Self::Modulo { left, right, .. }
+            | Self::Exponentiation { left, right, .. }
+            | Self::BitwiseAnd { left, right, .. }
+            | Self::BitwiseOr { left, right, .. }
+            | Self::BitwiseXor { left, right, .. }
+            | Self::LeftShift { left, right, .. }
+            | Self::RightShift { left, right, .. }
+            | Self::Coalesce { left, right, .. }
+            | Self::Concat { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
@@ -826,48 +813,24 @@ impl Node for AssignmentOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            AssignmentOperationExpression::Assignment { .. } => {
-                "assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Addition { .. } => {
-                "addition assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Subtraction { .. } => {
-                "subtraction assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Multiplication { .. } => {
+            Self::Assignment { .. } => "assignment operation expression".to_string(),
+            Self::Addition { .. } => "addition assignment operation expression".to_string(),
+            Self::Subtraction { .. } => "subtraction assignment operation expression".to_string(),
+            Self::Multiplication { .. } => {
                 "multiplication assignment operation expression".to_string()
             }
-            AssignmentOperationExpression::Division { .. } => {
-                "division assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Modulo { .. } => {
-                "modulo assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Exponentiation { .. } => {
+            Self::Division { .. } => "division assignment operation expression".to_string(),
+            Self::Modulo { .. } => "modulo assignment operation expression".to_string(),
+            Self::Exponentiation { .. } => {
                 "exponentiation assignment operation expression".to_string()
             }
-            AssignmentOperationExpression::BitwiseAnd { .. } => {
-                "bitwise AND assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::BitwiseOr { .. } => {
-                "bitwise OR assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::BitwiseXor { .. } => {
-                "bitwise XOR assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::LeftShift { .. } => {
-                "left shift assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::RightShift { .. } => {
-                "right shift assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Coalesce { .. } => {
-                "coalesce assignment operation expression".to_string()
-            }
-            AssignmentOperationExpression::Concat { .. } => {
-                "concat assignment operation expression".to_string()
-            }
+            Self::BitwiseAnd { .. } => "bitwise AND assignment operation expression".to_string(),
+            Self::BitwiseOr { .. } => "bitwise OR assignment operation expression".to_string(),
+            Self::BitwiseXor { .. } => "bitwise XOR assignment operation expression".to_string(),
+            Self::LeftShift { .. } => "left shift assignment operation expression".to_string(),
+            Self::RightShift { .. } => "right shift assignment operation expression".to_string(),
+            Self::Coalesce { .. } => "coalesce assignment operation expression".to_string(),
+            Self::Concat { .. } => "concat assignment operation expression".to_string(),
         }
     }
 }
@@ -875,68 +838,58 @@ impl Node for AssignmentOperationExpression {
 impl Node for BitwiseOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            BitwiseOperationExpression::And { comments, .. } => Some(comments),
-            BitwiseOperationExpression::Or { comments, .. } => Some(comments),
-            BitwiseOperationExpression::Xor { comments, .. } => Some(comments),
-            BitwiseOperationExpression::LeftShift { comments, .. } => Some(comments),
-            BitwiseOperationExpression::RightShift { comments, .. } => Some(comments),
-            BitwiseOperationExpression::Not { comments, .. } => Some(comments),
+            Self::And { comments, .. } => Some(comments),
+            Self::Or { comments, .. } => Some(comments),
+            Self::Xor { comments, .. } => Some(comments),
+            Self::LeftShift { comments, .. } => Some(comments),
+            Self::RightShift { comments, .. } => Some(comments),
+            Self::Not { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            BitwiseOperationExpression::And { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::Or { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::Xor { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::LeftShift { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::RightShift { left, .. } => left.initial_position(),
-            BitwiseOperationExpression::Not { not, .. } => *not,
+            Self::And { left, .. } => left.initial_position(),
+            Self::Or { left, .. } => left.initial_position(),
+            Self::Xor { left, .. } => left.initial_position(),
+            Self::LeftShift { left, .. } => left.initial_position(),
+            Self::RightShift { left, .. } => left.initial_position(),
+            Self::Not { not, .. } => *not,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            BitwiseOperationExpression::And { right, .. } => right.final_position(),
-            BitwiseOperationExpression::Or { right, .. } => right.final_position(),
-            BitwiseOperationExpression::Xor { right, .. } => right.final_position(),
-            BitwiseOperationExpression::LeftShift { right, .. } => right.final_position(),
-            BitwiseOperationExpression::RightShift { right, .. } => right.final_position(),
-            BitwiseOperationExpression::Not { right, .. } => right.final_position(),
+            Self::And { right, .. } => right.final_position(),
+            Self::Or { right, .. } => right.final_position(),
+            Self::Xor { right, .. } => right.final_position(),
+            Self::LeftShift { right, .. } => right.final_position(),
+            Self::RightShift { right, .. } => right.final_position(),
+            Self::Not { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            BitwiseOperationExpression::And { left, right, .. }
-            | BitwiseOperationExpression::Or { left, right, .. }
-            | BitwiseOperationExpression::Xor { left, right, .. }
-            | BitwiseOperationExpression::LeftShift { left, right, .. }
-            | BitwiseOperationExpression::RightShift { left, right, .. } => {
+            Self::And { left, right, .. }
+            | Self::Or { left, right, .. }
+            | Self::Xor { left, right, .. }
+            | Self::LeftShift { left, right, .. }
+            | Self::RightShift { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
-            BitwiseOperationExpression::Not { right, .. } => vec![right.as_ref()],
+            Self::Not { right, .. } => vec![right.as_ref()],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            BitwiseOperationExpression::And { .. } => {
-                "bitwise AND operation expression".to_string()
-            }
-            BitwiseOperationExpression::Or { .. } => "bitwise OR operation expression".to_string(),
-            BitwiseOperationExpression::Xor { .. } => {
-                "bitwise XOR operation expression".to_string()
-            }
-            BitwiseOperationExpression::LeftShift { .. } => {
-                "left shift operation expression".to_string()
-            }
-            BitwiseOperationExpression::RightShift { .. } => {
-                "right shift operation expression".to_string()
-            }
-            BitwiseOperationExpression::Not { .. } => {
-                "bitwise NOT operation expression".to_string()
-            }
+            Self::And { .. } => "bitwise AND operation expression".to_string(),
+            Self::Or { .. } => "bitwise OR operation expression".to_string(),
+            Self::Xor { .. } => "bitwise XOR operation expression".to_string(),
+            Self::LeftShift { .. } => "left shift operation expression".to_string(),
+            Self::RightShift { .. } => "right shift operation expression".to_string(),
+            Self::Not { .. } => "bitwise NOT operation expression".to_string(),
         }
     }
 }
@@ -944,57 +897,57 @@ impl Node for BitwiseOperationExpression {
 impl Node for ComparisonOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ComparisonOperationExpression::Equal { comments, .. }
-            | ComparisonOperationExpression::NotEqual { comments, .. }
-            | ComparisonOperationExpression::Identical { comments, .. }
-            | ComparisonOperationExpression::NotIdentical { comments, .. }
-            | ComparisonOperationExpression::LessThan { comments, .. }
-            | ComparisonOperationExpression::LessThanOrEqual { comments, .. }
-            | ComparisonOperationExpression::GreaterThan { comments, .. }
-            | ComparisonOperationExpression::GreaterThanOrEqual { comments, .. }
-            | ComparisonOperationExpression::Spaceship { comments, .. } => Some(comments),
+            Self::Equal { comments, .. }
+            | Self::NotEqual { comments, .. }
+            | Self::Identical { comments, .. }
+            | Self::NotIdentical { comments, .. }
+            | Self::LessThan { comments, .. }
+            | Self::LessThanOrEqual { comments, .. }
+            | Self::GreaterThan { comments, .. }
+            | Self::GreaterThanOrEqual { comments, .. }
+            | Self::Spaceship { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ComparisonOperationExpression::Equal { left, .. }
-            | ComparisonOperationExpression::NotEqual { left, .. }
-            | ComparisonOperationExpression::Identical { left, .. }
-            | ComparisonOperationExpression::NotIdentical { left, .. }
-            | ComparisonOperationExpression::LessThan { left, .. }
-            | ComparisonOperationExpression::LessThanOrEqual { left, .. }
-            | ComparisonOperationExpression::GreaterThan { left, .. }
-            | ComparisonOperationExpression::GreaterThanOrEqual { left, .. }
-            | ComparisonOperationExpression::Spaceship { left, .. } => left.initial_position(),
+            Self::Equal { left, .. }
+            | Self::NotEqual { left, .. }
+            | Self::Identical { left, .. }
+            | Self::NotIdentical { left, .. }
+            | Self::LessThan { left, .. }
+            | Self::LessThanOrEqual { left, .. }
+            | Self::GreaterThan { left, .. }
+            | Self::GreaterThanOrEqual { left, .. }
+            | Self::Spaceship { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ComparisonOperationExpression::Equal { right, .. }
-            | ComparisonOperationExpression::NotEqual { right, .. }
-            | ComparisonOperationExpression::Identical { right, .. }
-            | ComparisonOperationExpression::NotIdentical { right, .. }
-            | ComparisonOperationExpression::LessThan { right, .. }
-            | ComparisonOperationExpression::LessThanOrEqual { right, .. }
-            | ComparisonOperationExpression::GreaterThan { right, .. }
-            | ComparisonOperationExpression::GreaterThanOrEqual { right, .. }
-            | ComparisonOperationExpression::Spaceship { right, .. } => right.final_position(),
+            Self::Equal { right, .. }
+            | Self::NotEqual { right, .. }
+            | Self::Identical { right, .. }
+            | Self::NotIdentical { right, .. }
+            | Self::LessThan { right, .. }
+            | Self::LessThanOrEqual { right, .. }
+            | Self::GreaterThan { right, .. }
+            | Self::GreaterThanOrEqual { right, .. }
+            | Self::Spaceship { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ComparisonOperationExpression::Equal { left, right, .. }
-            | ComparisonOperationExpression::NotEqual { left, right, .. }
-            | ComparisonOperationExpression::Identical { left, right, .. }
-            | ComparisonOperationExpression::NotIdentical { left, right, .. }
-            | ComparisonOperationExpression::LessThan { left, right, .. }
-            | ComparisonOperationExpression::LessThanOrEqual { left, right, .. }
-            | ComparisonOperationExpression::GreaterThan { left, right, .. }
-            | ComparisonOperationExpression::GreaterThanOrEqual { left, right, .. }
-            | ComparisonOperationExpression::Spaceship { left, right, .. } => {
+            Self::Equal { left, right, .. }
+            | Self::NotEqual { left, right, .. }
+            | Self::Identical { left, right, .. }
+            | Self::NotIdentical { left, right, .. }
+            | Self::LessThan { left, right, .. }
+            | Self::LessThanOrEqual { left, right, .. }
+            | Self::GreaterThan { left, right, .. }
+            | Self::GreaterThanOrEqual { left, right, .. }
+            | Self::Spaceship { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
@@ -1002,33 +955,21 @@ impl Node for ComparisonOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            ComparisonOperationExpression::Equal { .. } => {
-                "equal comparison operation expression".to_string()
-            }
-            ComparisonOperationExpression::NotEqual { .. } => {
-                "not equal comparison operation expression".to_string()
-            }
-            ComparisonOperationExpression::Identical { .. } => {
-                "identical comparison operation expression".to_string()
-            }
-            ComparisonOperationExpression::NotIdentical { .. } => {
+            Self::Equal { .. } => "equal comparison operation expression".to_string(),
+            Self::NotEqual { .. } => "not equal comparison operation expression".to_string(),
+            Self::Identical { .. } => "identical comparison operation expression".to_string(),
+            Self::NotIdentical { .. } => {
                 "not identical comparison operation expression".to_string()
             }
-            ComparisonOperationExpression::LessThan { .. } => {
-                "less than comparison operation expression".to_string()
-            }
-            ComparisonOperationExpression::LessThanOrEqual { .. } => {
+            Self::LessThan { .. } => "less than comparison operation expression".to_string(),
+            Self::LessThanOrEqual { .. } => {
                 "less than or equal comparison operation expression".to_string()
             }
-            ComparisonOperationExpression::GreaterThan { .. } => {
-                "greater than comparison operation expression".to_string()
-            }
-            ComparisonOperationExpression::GreaterThanOrEqual { .. } => {
+            Self::GreaterThan { .. } => "greater than comparison operation expression".to_string(),
+            Self::GreaterThanOrEqual { .. } => {
                 "greater than or equal comparison operation expression".to_string()
             }
-            ComparisonOperationExpression::Spaceship { .. } => {
-                "spaceship comparison operation expression".to_string()
-            }
+            Self::Spaceship { .. } => "spaceship comparison operation expression".to_string(),
         }
     }
 }
@@ -1036,47 +977,42 @@ impl Node for ComparisonOperationExpression {
 impl Node for LogicalOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            LogicalOperationExpression::And { comments, .. } => Some(comments),
-            LogicalOperationExpression::Or { comments, .. } => Some(comments),
-            LogicalOperationExpression::Not { comments, .. } => Some(comments),
+            Self::And { comments, .. } => Some(comments),
+            Self::Or { comments, .. } => Some(comments),
+            Self::Not { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            LogicalOperationExpression::And { left, .. } => left.initial_position(),
-            LogicalOperationExpression::Or { left, .. } => left.initial_position(),
-            LogicalOperationExpression::Not { bang, .. } => *bang,
+            Self::And { left, .. } => left.initial_position(),
+            Self::Or { left, .. } => left.initial_position(),
+            Self::Not { bang, .. } => *bang,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            LogicalOperationExpression::And { right, .. } => right.final_position(),
-            LogicalOperationExpression::Or { right, .. } => right.final_position(),
-            LogicalOperationExpression::Not { right, .. } => right.final_position(),
+            Self::And { right, .. } => right.final_position(),
+            Self::Or { right, .. } => right.final_position(),
+            Self::Not { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            LogicalOperationExpression::And { left, right, .. }
-            | LogicalOperationExpression::Or { left, right, .. } => {
+            Self::And { left, right, .. } | Self::Or { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
-            LogicalOperationExpression::Not { right, .. } => vec![right.as_ref()],
+            Self::Not { right, .. } => vec![right.as_ref()],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            LogicalOperationExpression::And { .. } => {
-                "logical AND operation expression".to_string()
-            }
-            LogicalOperationExpression::Or { .. } => "logical OR operation expression".to_string(),
-            LogicalOperationExpression::Not { .. } => {
-                "logical NOT operation expression".to_string()
-            }
+            Self::And { .. } => "logical AND operation expression".to_string(),
+            Self::Or { .. } => "logical OR operation expression".to_string(),
+            Self::Not { .. } => "logical NOT operation expression".to_string(),
         }
     }
 }
@@ -1084,25 +1020,25 @@ impl Node for LogicalOperationExpression {
 impl Node for StringOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            StringOperationExpression::Concat { comments, .. } => Some(comments),
+            Self::Concat { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            StringOperationExpression::Concat { left, .. } => left.initial_position(),
+            Self::Concat { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            StringOperationExpression::Concat { right, .. } => right.final_position(),
+            Self::Concat { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            StringOperationExpression::Concat { left, right, .. } => {
+            Self::Concat { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
@@ -1110,9 +1046,7 @@ impl Node for StringOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            StringOperationExpression::Concat { .. } => {
-                "string concatenation operation expression".to_string()
-            }
+            Self::Concat { .. } => "string concatenation operation expression".to_string(),
         }
     }
 }
@@ -1120,55 +1054,54 @@ impl Node for StringOperationExpression {
 impl Node for ArrayOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ArrayOperationExpression::Access { comments, .. }
-            | ArrayOperationExpression::Push { comments, .. }
-            | ArrayOperationExpression::Isset { comments, .. }
-            | ArrayOperationExpression::Unset { comments, .. }
-            | ArrayOperationExpression::In { comments, .. } => Some(comments),
+            Self::Access { comments, .. }
+            | Self::Push { comments, .. }
+            | Self::Isset { comments, .. }
+            | Self::Unset { comments, .. }
+            | Self::In { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ArrayOperationExpression::Access { array, .. }
-            | ArrayOperationExpression::Push { array, .. } => array.initial_position(),
-            ArrayOperationExpression::Isset { isset, .. } => isset.initial_position(),
-            ArrayOperationExpression::Unset { unset, .. } => unset.initial_position(),
-            ArrayOperationExpression::In { item, .. } => item.initial_position(),
+            Self::Access { array, .. } | Self::Push { array, .. } => array.initial_position(),
+            Self::Isset { isset, .. } => isset.initial_position(),
+            Self::Unset { unset, .. } => unset.initial_position(),
+            Self::In { item, .. } => item.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ArrayOperationExpression::Access { right_bracket, .. }
-            | ArrayOperationExpression::Push { right_bracket, .. } => right_bracket + 1,
-            ArrayOperationExpression::Isset { item, .. }
-            | ArrayOperationExpression::Unset { item, .. } => item.final_position(),
-            ArrayOperationExpression::In { array, .. } => array.final_position(),
+            Self::Access { right_bracket, .. } | Self::Push { right_bracket, .. } => {
+                right_bracket + 1
+            }
+            Self::Isset { item, .. } | Self::Unset { item, .. } => item.final_position(),
+            Self::In { array, .. } => array.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ArrayOperationExpression::Access { array, index, .. } => {
+            Self::Access { array, index, .. } => {
                 vec![array.as_ref(), index.as_ref()]
             }
-            ArrayOperationExpression::Push { array, .. } => {
+            Self::Push { array, .. } => {
                 vec![array.as_ref()]
             }
-            ArrayOperationExpression::Isset {
+            Self::Isset {
                 isset: keyword,
                 item,
                 ..
             }
-            | ArrayOperationExpression::Unset {
+            | Self::Unset {
                 unset: keyword,
                 item,
                 ..
             } => {
                 vec![keyword, item.as_ref()]
             }
-            ArrayOperationExpression::In {
+            Self::In {
                 item, r#in, array, ..
             } => {
                 vec![item.as_ref(), r#in, array.as_ref()]
@@ -1178,17 +1111,11 @@ impl Node for ArrayOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            ArrayOperationExpression::Access { .. } => {
-                "array access operation expression".to_string()
-            }
-            ArrayOperationExpression::Push { .. } => "array push operation expression".to_string(),
-            ArrayOperationExpression::Isset { .. } => {
-                "array isset operation expression".to_string()
-            }
-            ArrayOperationExpression::Unset { .. } => {
-                "array unset operation expression".to_string()
-            }
-            ArrayOperationExpression::In { .. } => "array in operation expression".to_string(),
+            Self::Access { .. } => "array access operation expression".to_string(),
+            Self::Push { .. } => "array push operation expression".to_string(),
+            Self::Isset { .. } => "array isset operation expression".to_string(),
+            Self::Unset { .. } => "array unset operation expression".to_string(),
+            Self::In { .. } => "array in operation expression".to_string(),
         }
     }
 }
@@ -1196,25 +1123,25 @@ impl Node for ArrayOperationExpression {
 impl Node for CoalesceOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            CoalesceOperationExpression::Coalesce { comments, .. } => Some(comments),
+            Self::Coalesce { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            CoalesceOperationExpression::Coalesce { left, .. } => left.initial_position(),
+            Self::Coalesce { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            CoalesceOperationExpression::Coalesce { right, .. } => right.final_position(),
+            Self::Coalesce { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            CoalesceOperationExpression::Coalesce { left, right, .. } => {
+            Self::Coalesce { left, right, .. } => {
                 vec![left.as_ref(), right.as_ref()]
             }
         }
@@ -1222,9 +1149,7 @@ impl Node for CoalesceOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            CoalesceOperationExpression::Coalesce { .. } => {
-                "coalesce operation expression".to_string()
-            }
+            Self::Coalesce { .. } => "coalesce operation expression".to_string(),
         }
     }
 }
@@ -1232,48 +1157,42 @@ impl Node for CoalesceOperationExpression {
 impl Node for TernaryOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            TernaryOperationExpression::Ternary { comments, .. } => Some(comments),
-            TernaryOperationExpression::ShortTernary { comments, .. } => Some(comments),
-            TernaryOperationExpression::ImplicitShortTernary { comments, .. } => Some(comments),
+            Self::Ternary { comments, .. } => Some(comments),
+            Self::ShortTernary { comments, .. } => Some(comments),
+            Self::ImplicitShortTernary { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            TernaryOperationExpression::Ternary { condition, .. } => condition.initial_position(),
-            TernaryOperationExpression::ShortTernary { condition, .. } => {
-                condition.initial_position()
-            }
-            TernaryOperationExpression::ImplicitShortTernary { condition, .. } => {
-                condition.initial_position()
-            }
+            Self::Ternary { condition, .. } => condition.initial_position(),
+            Self::ShortTernary { condition, .. } => condition.initial_position(),
+            Self::ImplicitShortTernary { condition, .. } => condition.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            TernaryOperationExpression::Ternary { if_false, .. } => if_false.final_position(),
-            TernaryOperationExpression::ShortTernary { if_false, .. } => if_false.final_position(),
-            TernaryOperationExpression::ImplicitShortTernary { if_false, .. } => {
-                if_false.final_position()
-            }
+            Self::Ternary { if_false, .. } => if_false.final_position(),
+            Self::ShortTernary { if_false, .. } => if_false.final_position(),
+            Self::ImplicitShortTernary { if_false, .. } => if_false.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            TernaryOperationExpression::Ternary {
+            Self::Ternary {
                 condition,
                 if_true,
                 if_false,
                 ..
             } => vec![condition.as_ref(), if_true.as_ref(), if_false.as_ref()],
-            TernaryOperationExpression::ShortTernary {
+            Self::ShortTernary {
                 condition,
                 if_false,
                 ..
             } => vec![condition.as_ref(), if_false.as_ref()],
-            TernaryOperationExpression::ImplicitShortTernary {
+            Self::ImplicitShortTernary {
                 condition,
                 if_false,
                 ..
@@ -1283,13 +1202,9 @@ impl Node for TernaryOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            TernaryOperationExpression::Ternary { .. } => {
-                "ternary operation expression".to_string()
-            }
-            TernaryOperationExpression::ShortTernary { .. } => {
-                "short ternary operation expression".to_string()
-            }
-            TernaryOperationExpression::ImplicitShortTernary { .. } => {
+            Self::Ternary { .. } => "ternary operation expression".to_string(),
+            Self::ShortTernary { .. } => "short ternary operation expression".to_string(),
+            Self::ImplicitShortTernary { .. } => {
                 "implicit short ternary operation expression".to_string()
             }
         }
@@ -1299,46 +1214,46 @@ impl Node for TernaryOperationExpression {
 impl Node for TypeOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            TypeOperationExpression::Instanceof { comments, .. } => Some(comments),
-            TypeOperationExpression::Is { comments, .. } => Some(comments),
-            TypeOperationExpression::Into { comments, .. } => Some(comments),
-            TypeOperationExpression::As { comments, .. } => Some(comments),
+            Self::Instanceof { comments, .. } => Some(comments),
+            Self::Is { comments, .. } => Some(comments),
+            Self::Into { comments, .. } => Some(comments),
+            Self::As { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            TypeOperationExpression::Instanceof { left, .. } => left.initial_position(),
-            TypeOperationExpression::Is { left, .. } => left.initial_position(),
-            TypeOperationExpression::Into { left, .. } => left.initial_position(),
-            TypeOperationExpression::As { left, .. } => left.initial_position(),
+            Self::Instanceof { left, .. } => left.initial_position(),
+            Self::Is { left, .. } => left.initial_position(),
+            Self::Into { left, .. } => left.initial_position(),
+            Self::As { left, .. } => left.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            TypeOperationExpression::Instanceof { right, .. } => right.final_position(),
-            TypeOperationExpression::Is { right, .. } => right.final_position(),
-            TypeOperationExpression::Into { right, .. } => right.final_position(),
-            TypeOperationExpression::As { right, .. } => right.final_position(),
+            Self::Instanceof { right, .. } => right.final_position(),
+            Self::Is { right, .. } => right.final_position(),
+            Self::Into { right, .. } => right.final_position(),
+            Self::As { right, .. } => right.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            TypeOperationExpression::Instanceof {
+            Self::Instanceof {
                 left,
                 instanceof,
                 right,
                 ..
             } => vec![left.as_ref(), instanceof, right],
-            TypeOperationExpression::Is {
+            Self::Is {
                 left, is, right, ..
             } => vec![left.as_ref(), is, right],
-            TypeOperationExpression::Into {
+            Self::Into {
                 left, into, right, ..
             } => vec![left.as_ref(), into, right],
-            TypeOperationExpression::As {
+            Self::As {
                 left, r#as, right, ..
             } => vec![left.as_ref(), r#as, right],
         }
@@ -1346,12 +1261,10 @@ impl Node for TypeOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            TypeOperationExpression::Instanceof { .. } => {
-                "instanceof type operation expression".to_string()
-            }
-            TypeOperationExpression::Is { .. } => "is type operation expression".to_string(),
-            TypeOperationExpression::Into { .. } => "into type operation expression".to_string(),
-            TypeOperationExpression::As { .. } => "as type operation expression".to_string(),
+            Self::Instanceof { .. } => "instanceof type operation expression".to_string(),
+            Self::Is { .. } => "is type operation expression".to_string(),
+            Self::Into { .. } => "into type operation expression".to_string(),
+            Self::As { .. } => "as type operation expression".to_string(),
         }
     }
 }
@@ -1359,38 +1272,38 @@ impl Node for TypeOperationExpression {
 impl Node for GeneratorOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            GeneratorOperationExpression::Yield { comments, .. } => Some(comments),
-            GeneratorOperationExpression::YieldValue { comments, .. } => Some(comments),
-            GeneratorOperationExpression::YieldKeyValue { comments, .. } => Some(comments),
-            GeneratorOperationExpression::YieldFrom { comments, .. } => Some(comments),
+            Self::Yield { comments, .. } => Some(comments),
+            Self::YieldValue { comments, .. } => Some(comments),
+            Self::YieldKeyValue { comments, .. } => Some(comments),
+            Self::YieldFrom { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. }
-            | GeneratorOperationExpression::YieldValue { r#yield, .. }
-            | GeneratorOperationExpression::YieldKeyValue { r#yield, .. }
-            | GeneratorOperationExpression::YieldFrom { r#yield, .. } => r#yield.initial_position(),
+            Self::Yield { r#yield, .. }
+            | Self::YieldValue { r#yield, .. }
+            | Self::YieldKeyValue { r#yield, .. }
+            | Self::YieldFrom { r#yield, .. } => r#yield.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. } => r#yield.final_position(),
-            GeneratorOperationExpression::YieldValue { value, .. } => value.final_position(),
-            GeneratorOperationExpression::YieldKeyValue { value, .. } => value.final_position(),
-            GeneratorOperationExpression::YieldFrom { value, .. } => value.final_position(),
+            Self::Yield { r#yield, .. } => r#yield.final_position(),
+            Self::YieldValue { value, .. } => value.final_position(),
+            Self::YieldKeyValue { value, .. } => value.final_position(),
+            Self::YieldFrom { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            GeneratorOperationExpression::Yield { r#yield, .. } => vec![r#yield],
-            GeneratorOperationExpression::YieldValue { r#yield, value, .. } => {
+            Self::Yield { r#yield, .. } => vec![r#yield],
+            Self::YieldValue { r#yield, value, .. } => {
                 vec![r#yield, value.as_ref()]
             }
-            GeneratorOperationExpression::YieldKeyValue {
+            Self::YieldKeyValue {
                 r#yield,
                 key,
                 value,
@@ -1398,7 +1311,7 @@ impl Node for GeneratorOperationExpression {
             } => {
                 vec![r#yield, key.as_ref(), value.as_ref()]
             }
-            GeneratorOperationExpression::YieldFrom {
+            Self::YieldFrom {
                 r#yield,
                 from,
                 value,
@@ -1409,18 +1322,12 @@ impl Node for GeneratorOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            GeneratorOperationExpression::Yield { .. } => {
-                "yield generator operation expression".to_string()
-            }
-            GeneratorOperationExpression::YieldValue { .. } => {
-                "yield value generator operation expression".to_string()
-            }
-            GeneratorOperationExpression::YieldKeyValue { .. } => {
+            Self::Yield { .. } => "yield generator operation expression".to_string(),
+            Self::YieldValue { .. } => "yield value generator operation expression".to_string(),
+            Self::YieldKeyValue { .. } => {
                 "yield key value generator operation expression".to_string()
             }
-            GeneratorOperationExpression::YieldFrom { .. } => {
-                "yield from generator operation expression".to_string()
-            }
+            Self::YieldFrom { .. } => "yield from generator operation expression".to_string(),
         }
     }
 }
@@ -1428,33 +1335,31 @@ impl Node for GeneratorOperationExpression {
 impl Node for ExceptionOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ExceptionOperationExpression::Throw { comments, .. } => Some(comments),
+            Self::Throw { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ExceptionOperationExpression::Throw { throw, .. } => throw.initial_position(),
+            Self::Throw { throw, .. } => throw.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ExceptionOperationExpression::Throw { value, .. } => value.final_position(),
+            Self::Throw { value, .. } => value.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ExceptionOperationExpression::Throw { throw, value, .. } => vec![throw, value.as_ref()],
+            Self::Throw { throw, value, .. } => vec![throw, value.as_ref()],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            ExceptionOperationExpression::Throw { .. } => {
-                "throw exception operation expression".to_string()
-            }
+            Self::Throw { .. } => "throw exception operation expression".to_string(),
         }
     }
 }
@@ -1462,60 +1367,48 @@ impl Node for ExceptionOperationExpression {
 impl Node for ObjectOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ObjectOperationExpression::Clone { comments, .. } => Some(comments),
-            ObjectOperationExpression::MethodCall { comments, .. } => Some(comments),
-            ObjectOperationExpression::NullsafeMethodCall { comments, .. } => Some(comments),
-            ObjectOperationExpression::MethodClosureCreation { comments, .. } => Some(comments),
-            ObjectOperationExpression::PropertyFetch { comments, .. } => Some(comments),
-            ObjectOperationExpression::NullsafePropertyFetch { comments, .. } => Some(comments),
+            Self::Clone { comments, .. } => Some(comments),
+            Self::MethodCall { comments, .. } => Some(comments),
+            Self::NullsafeMethodCall { comments, .. } => Some(comments),
+            Self::MethodClosureCreation { comments, .. } => Some(comments),
+            Self::PropertyFetch { comments, .. } => Some(comments),
+            Self::NullsafePropertyFetch { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ObjectOperationExpression::Clone { clone, .. } => clone.initial_position(),
-            ObjectOperationExpression::MethodCall { object, .. } => object.initial_position(),
-            ObjectOperationExpression::NullsafeMethodCall { object, .. } => {
-                object.initial_position()
-            }
-            ObjectOperationExpression::MethodClosureCreation { object, .. } => {
-                object.initial_position()
-            }
-            ObjectOperationExpression::PropertyFetch { object, .. } => object.initial_position(),
-            ObjectOperationExpression::NullsafePropertyFetch { object, .. } => {
-                object.initial_position()
-            }
+            Self::Clone { clone, .. } => clone.initial_position(),
+            Self::MethodCall { object, .. } => object.initial_position(),
+            Self::NullsafeMethodCall { object, .. } => object.initial_position(),
+            Self::MethodClosureCreation { object, .. } => object.initial_position(),
+            Self::PropertyFetch { object, .. } => object.initial_position(),
+            Self::NullsafePropertyFetch { object, .. } => object.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ObjectOperationExpression::Clone { object, .. } => object.final_position(),
-            ObjectOperationExpression::MethodCall { arguments, .. } => arguments.final_position(),
-            ObjectOperationExpression::NullsafeMethodCall { arguments, .. } => {
-                arguments.final_position()
-            }
-            ObjectOperationExpression::MethodClosureCreation { placeholder, .. } => {
-                placeholder.final_position()
-            }
-            ObjectOperationExpression::PropertyFetch { property, .. } => property.final_position(),
-            ObjectOperationExpression::NullsafePropertyFetch { property, .. } => {
-                property.final_position()
-            }
+            Self::Clone { object, .. } => object.final_position(),
+            Self::MethodCall { arguments, .. } => arguments.final_position(),
+            Self::NullsafeMethodCall { arguments, .. } => arguments.final_position(),
+            Self::MethodClosureCreation { placeholder, .. } => placeholder.final_position(),
+            Self::PropertyFetch { property, .. } => property.final_position(),
+            Self::NullsafePropertyFetch { property, .. } => property.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ObjectOperationExpression::Clone { clone, object, .. } => vec![clone, object.as_ref()],
-            ObjectOperationExpression::MethodCall {
+            Self::Clone { clone, object, .. } => vec![clone, object.as_ref()],
+            Self::MethodCall {
                 object,
                 method,
                 generics,
                 arguments,
                 ..
             }
-            | ObjectOperationExpression::NullsafeMethodCall {
+            | Self::NullsafeMethodCall {
                 object,
                 method,
                 generics,
@@ -1531,7 +1424,7 @@ impl Node for ObjectOperationExpression {
 
                 children
             }
-            ObjectOperationExpression::MethodClosureCreation {
+            Self::MethodClosureCreation {
                 object,
                 method,
                 generics,
@@ -1547,10 +1440,10 @@ impl Node for ObjectOperationExpression {
 
                 children
             }
-            ObjectOperationExpression::PropertyFetch {
+            Self::PropertyFetch {
                 object, property, ..
             }
-            | ObjectOperationExpression::NullsafePropertyFetch {
+            | Self::NullsafePropertyFetch {
                 object, property, ..
             } => {
                 vec![object.as_ref(), property]
@@ -1560,22 +1453,16 @@ impl Node for ObjectOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            ObjectOperationExpression::Clone { .. } => {
-                "object clone operation expression".to_string()
-            }
-            ObjectOperationExpression::MethodCall { .. } => {
-                "object method call operation expression".to_string()
-            }
-            ObjectOperationExpression::NullsafeMethodCall { .. } => {
+            Self::Clone { .. } => "object clone operation expression".to_string(),
+            Self::MethodCall { .. } => "object method call operation expression".to_string(),
+            Self::NullsafeMethodCall { .. } => {
                 "object nullsafe method call operation expression".to_string()
             }
-            ObjectOperationExpression::MethodClosureCreation { .. } => {
+            Self::MethodClosureCreation { .. } => {
                 "object method closure creation operation expression".to_string()
             }
-            ObjectOperationExpression::PropertyFetch { .. } => {
-                "object property fetch operation expression".to_string()
-            }
-            ObjectOperationExpression::NullsafePropertyFetch { .. } => {
+            Self::PropertyFetch { .. } => "object property fetch operation expression".to_string(),
+            Self::NullsafePropertyFetch { .. } => {
                 "object nullsafe property fetch operation expression".to_string()
             }
         }
@@ -1585,48 +1472,36 @@ impl Node for ObjectOperationExpression {
 impl Node for ClassOperationInitializationClassExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(_) => None,
-            ClassOperationInitializationClassExpression::Variable(_) => None,
+            Self::Identifier(_) => None,
+            Self::Variable(_) => None,
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => {
-                identifier.initial_position()
-            }
-            ClassOperationInitializationClassExpression::Variable(variable) => {
-                variable.initial_position()
-            }
+            Self::Identifier(identifier) => identifier.initial_position(),
+            Self::Variable(variable) => variable.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => {
-                identifier.final_position()
-            }
-            ClassOperationInitializationClassExpression::Variable(variable) => {
-                variable.final_position()
-            }
+            Self::Identifier(identifier) => identifier.final_position(),
+            Self::Variable(variable) => variable.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => vec![identifier],
-            ClassOperationInitializationClassExpression::Variable(variable) => vec![variable],
+            Self::Identifier(identifier) => vec![identifier],
+            Self::Variable(variable) => vec![variable],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            ClassOperationInitializationClassExpression::Identifier(identifier) => {
-                identifier.get_description()
-            }
-            ClassOperationInitializationClassExpression::Variable(variable) => {
-                variable.get_description()
-            }
+            Self::Identifier(identifier) => identifier.get_description(),
+            Self::Variable(variable) => variable.get_description(),
         }
     }
 }
@@ -1634,56 +1509,42 @@ impl Node for ClassOperationInitializationClassExpression {
 impl Node for ClassOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ClassOperationExpression::Initialization { comments, .. } => Some(comments),
-            ClassOperationExpression::AnonymousInitialization { comments, .. } => Some(comments),
-            ClassOperationExpression::StaticMethodCall { comments, .. } => Some(comments),
-            ClassOperationExpression::StaticMethodClosureCreation { comments, .. } => {
-                Some(comments)
-            }
-            ClassOperationExpression::StaticPropertyFetch { comments, .. } => Some(comments),
-            ClassOperationExpression::ConstantFetch { comments, .. } => Some(comments),
+            Self::Initialization { comments, .. } => Some(comments),
+            Self::AnonymousInitialization { comments, .. } => Some(comments),
+            Self::StaticMethodCall { comments, .. } => Some(comments),
+            Self::StaticMethodClosureCreation { comments, .. } => Some(comments),
+            Self::StaticPropertyFetch { comments, .. } => Some(comments),
+            Self::ConstantFetch { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ClassOperationExpression::Initialization { new, .. }
+            Self::Initialization { new, .. }
             | ClassOperationExpression::AnonymousInitialization { new, .. } => {
                 new.initial_position()
             }
-            ClassOperationExpression::StaticMethodCall { class, .. } => class.initial_position(),
-            ClassOperationExpression::StaticMethodClosureCreation { class, .. } => {
-                class.initial_position()
-            }
-            ClassOperationExpression::StaticPropertyFetch { class, .. } => class.initial_position(),
-            ClassOperationExpression::ConstantFetch { class, .. } => class.initial_position(),
+            Self::StaticMethodCall { class, .. } => class.initial_position(),
+            Self::StaticMethodClosureCreation { class, .. } => class.initial_position(),
+            Self::StaticPropertyFetch { class, .. } => class.initial_position(),
+            Self::ConstantFetch { class, .. } => class.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ClassOperationExpression::Initialization { arguments, .. } => {
-                arguments.final_position()
-            }
-            ClassOperationExpression::AnonymousInitialization { class, .. } => {
-                class.final_position()
-            }
-            ClassOperationExpression::StaticMethodCall { arguments, .. } => {
-                arguments.final_position()
-            }
-            ClassOperationExpression::StaticMethodClosureCreation { placeholder, .. } => {
-                placeholder.final_position()
-            }
-            ClassOperationExpression::StaticPropertyFetch { property, .. } => {
-                property.final_position()
-            }
-            ClassOperationExpression::ConstantFetch { constant, .. } => constant.final_position(),
+            Self::Initialization { arguments, .. } => arguments.final_position(),
+            Self::AnonymousInitialization { class, .. } => class.final_position(),
+            Self::StaticMethodCall { arguments, .. } => arguments.final_position(),
+            Self::StaticMethodClosureCreation { placeholder, .. } => placeholder.final_position(),
+            Self::StaticPropertyFetch { property, .. } => property.final_position(),
+            Self::ConstantFetch { constant, .. } => constant.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ClassOperationExpression::Initialization {
+            Self::Initialization {
                 new,
                 class,
                 generics,
@@ -1699,10 +1560,10 @@ impl Node for ClassOperationExpression {
 
                 children
             }
-            ClassOperationExpression::AnonymousInitialization { new, class, .. } => {
+            Self::AnonymousInitialization { new, class, .. } => {
                 vec![new, class]
             }
-            ClassOperationExpression::StaticMethodCall {
+            Self::StaticMethodCall {
                 class,
                 method,
                 generics,
@@ -1718,7 +1579,7 @@ impl Node for ClassOperationExpression {
 
                 children
             }
-            ClassOperationExpression::StaticMethodClosureCreation {
+            Self::StaticMethodClosureCreation {
                 class,
                 generics,
                 method,
@@ -1734,12 +1595,12 @@ impl Node for ClassOperationExpression {
 
                 children
             }
-            ClassOperationExpression::StaticPropertyFetch {
+            Self::StaticPropertyFetch {
                 class, property, ..
             } => {
                 vec![class.as_ref(), property]
             }
-            ClassOperationExpression::ConstantFetch {
+            Self::ConstantFetch {
                 class, constant, ..
             } => {
                 vec![class.as_ref(), constant]
@@ -1749,24 +1610,20 @@ impl Node for ClassOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            ClassOperationExpression::Initialization { .. } => {
-                "class initialization operation expression".to_string()
-            }
-            ClassOperationExpression::AnonymousInitialization { .. } => {
+            Self::Initialization { .. } => "class initialization operation expression".to_string(),
+            Self::AnonymousInitialization { .. } => {
                 "class anonymous initialization operation expression".to_string()
             }
-            ClassOperationExpression::StaticMethodCall { .. } => {
+            Self::StaticMethodCall { .. } => {
                 "class static method call operation expression".to_string()
             }
-            ClassOperationExpression::StaticMethodClosureCreation { .. } => {
+            Self::StaticMethodClosureCreation { .. } => {
                 "class static method closure creation operation expression".to_string()
             }
-            ClassOperationExpression::StaticPropertyFetch { .. } => {
+            Self::StaticPropertyFetch { .. } => {
                 "class static property fetch operation expression".to_string()
             }
-            ClassOperationExpression::ConstantFetch { .. } => {
-                "class constant fetch operation expression".to_string()
-            }
+            Self::ConstantFetch { .. } => "class constant fetch operation expression".to_string(),
         }
     }
 }
@@ -1774,32 +1631,28 @@ impl Node for ClassOperationExpression {
 impl Node for FunctionOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            FunctionOperationExpression::Call { comments, .. } => Some(comments),
-            FunctionOperationExpression::ClosureCreation { comments, .. } => Some(comments),
+            Self::Call { comments, .. } => Some(comments),
+            Self::ClosureCreation { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            FunctionOperationExpression::Call { function, .. } => function.initial_position(),
-            FunctionOperationExpression::ClosureCreation { function, .. } => {
-                function.initial_position()
-            }
+            Self::Call { function, .. } => function.initial_position(),
+            Self::ClosureCreation { function, .. } => function.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            FunctionOperationExpression::Call { arguments, .. } => arguments.final_position(),
-            FunctionOperationExpression::ClosureCreation { placeholder, .. } => {
-                placeholder.final_position()
-            }
+            Self::Call { arguments, .. } => arguments.final_position(),
+            Self::ClosureCreation { placeholder, .. } => placeholder.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            FunctionOperationExpression::Call {
+            Self::Call {
                 function,
                 generics,
                 arguments,
@@ -1814,7 +1667,7 @@ impl Node for FunctionOperationExpression {
 
                 children
             }
-            FunctionOperationExpression::ClosureCreation {
+            Self::ClosureCreation {
                 function,
                 generics,
                 placeholder,
@@ -1834,10 +1687,8 @@ impl Node for FunctionOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            FunctionOperationExpression::Call { .. } => {
-                "function call operation expression".to_string()
-            }
-            FunctionOperationExpression::ClosureCreation { .. } => {
+            Self::Call { .. } => "function call operation expression".to_string(),
+            Self::ClosureCreation { .. } => {
                 "function closure creation operation expression".to_string()
             }
         }
@@ -1847,43 +1698,41 @@ impl Node for FunctionOperationExpression {
 impl Node for AsyncOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            AsyncOperationExpression::Await { comments, .. } => Some(comments),
-            AsyncOperationExpression::Async { comments, .. } => Some(comments),
-            AsyncOperationExpression::Concurrently { comments, .. } => Some(comments),
+            Self::Await { comments, .. } => Some(comments),
+            Self::Async { comments, .. } => Some(comments),
+            Self::Concurrently { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            AsyncOperationExpression::Await { r#await, .. } => r#await.initial_position(),
-            AsyncOperationExpression::Async { r#async, .. } => r#async.initial_position(),
-            AsyncOperationExpression::Concurrently { concurrently, .. } => {
-                concurrently.initial_position()
-            }
+            Self::Await { r#await, .. } => r#await.initial_position(),
+            Self::Async { r#async, .. } => r#async.initial_position(),
+            Self::Concurrently { concurrently, .. } => concurrently.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            AsyncOperationExpression::Await { expression, .. } => expression.final_position(),
-            AsyncOperationExpression::Async { expression, .. } => expression.final_position(),
-            AsyncOperationExpression::Concurrently { right_brace, .. } => right_brace + 1,
+            Self::Await { expression, .. } => expression.final_position(),
+            Self::Async { expression, .. } => expression.final_position(),
+            Self::Concurrently { right_brace, .. } => right_brace + 1,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            AsyncOperationExpression::Await {
+            Self::Await {
                 r#await,
                 expression,
                 ..
             } => vec![r#await, expression.as_ref()],
-            AsyncOperationExpression::Async {
+            Self::Async {
                 r#async,
                 expression,
                 ..
             } => vec![r#async, expression.as_ref()],
-            AsyncOperationExpression::Concurrently {
+            Self::Concurrently {
                 concurrently,
                 expressions,
                 ..
@@ -1900,13 +1749,9 @@ impl Node for AsyncOperationExpression {
 
     fn get_description(&self) -> String {
         match &self {
-            AsyncOperationExpression::Await { .. } => {
-                "async await operation expression".to_string()
-            }
-            AsyncOperationExpression::Async { .. } => "async operation expression".to_string(),
-            AsyncOperationExpression::Concurrently { .. } => {
-                "async concurrently operation expression".to_string()
-            }
+            Self::Await { .. } => "async await operation expression".to_string(),
+            Self::Async { .. } => "async operation expression".to_string(),
+            Self::Concurrently { .. } => "async concurrently operation expression".to_string(),
         }
     }
 }
@@ -1914,66 +1759,62 @@ impl Node for AsyncOperationExpression {
 impl Node for RangeOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            RangeOperationExpression::Between { comments, .. } => Some(comments),
-            RangeOperationExpression::BetweenInclusive { comments, .. } => Some(comments),
-            RangeOperationExpression::To { comments, .. } => Some(comments),
-            RangeOperationExpression::ToInclusive { comments, .. } => Some(comments),
-            RangeOperationExpression::From { comments, .. } => Some(comments),
-            RangeOperationExpression::Full { comments, .. } => Some(comments),
+            Self::Between { comments, .. } => Some(comments),
+            Self::BetweenInclusive { comments, .. } => Some(comments),
+            Self::To { comments, .. } => Some(comments),
+            Self::ToInclusive { comments, .. } => Some(comments),
+            Self::From { comments, .. } => Some(comments),
+            Self::Full { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            RangeOperationExpression::Between { from, .. } => from.initial_position(),
-            RangeOperationExpression::BetweenInclusive { from, .. } => from.initial_position(),
-            RangeOperationExpression::To { double_dot, .. } => *double_dot,
-            RangeOperationExpression::ToInclusive { double_dot, .. } => *double_dot,
-            RangeOperationExpression::From { from, .. } => from.initial_position(),
-            RangeOperationExpression::Full { double_dot, .. } => *double_dot,
+            Self::Between { from, .. } => from.initial_position(),
+            Self::BetweenInclusive { from, .. } => from.initial_position(),
+            Self::To { double_dot, .. } => *double_dot,
+            Self::ToInclusive { double_dot, .. } => *double_dot,
+            Self::From { from, .. } => from.initial_position(),
+            Self::Full { double_dot, .. } => *double_dot,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            RangeOperationExpression::Between { to, .. } => to.final_position(),
-            RangeOperationExpression::BetweenInclusive { to, .. } => to.final_position(),
-            RangeOperationExpression::To { to, .. } => to.final_position(),
-            RangeOperationExpression::ToInclusive { to, .. } => to.final_position(),
-            RangeOperationExpression::From { double_dot, .. } => *double_dot,
-            RangeOperationExpression::Full { double_dot, .. } => *double_dot,
+            Self::Between { to, .. } => to.final_position(),
+            Self::BetweenInclusive { to, .. } => to.final_position(),
+            Self::To { to, .. } => to.final_position(),
+            Self::ToInclusive { to, .. } => to.final_position(),
+            Self::From { double_dot, .. } => *double_dot,
+            Self::Full { double_dot, .. } => *double_dot,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            RangeOperationExpression::Between { from, to, .. } => {
+            Self::Between { from, to, .. } => {
                 vec![from.as_ref(), to.as_ref()]
             }
-            RangeOperationExpression::BetweenInclusive { from, to, .. } => {
+            Self::BetweenInclusive { from, to, .. } => {
                 vec![from.as_ref(), to.as_ref()]
             }
-            RangeOperationExpression::To { to, .. } => vec![to.as_ref()],
-            RangeOperationExpression::ToInclusive { to, .. } => vec![to.as_ref()],
-            RangeOperationExpression::From { from, .. } => vec![from.as_ref()],
-            RangeOperationExpression::Full { .. } => vec![],
+            Self::To { to, .. } => vec![to.as_ref()],
+            Self::ToInclusive { to, .. } => vec![to.as_ref()],
+            Self::From { from, .. } => vec![from.as_ref()],
+            Self::Full { .. } => vec![],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            RangeOperationExpression::Between { .. } => {
-                "range between operation expression".to_string()
-            }
-            RangeOperationExpression::BetweenInclusive { .. } => {
+            Self::Between { .. } => "range between operation expression".to_string(),
+            Self::BetweenInclusive { .. } => {
                 "range between inclusive operation expression".to_string()
             }
-            RangeOperationExpression::To { .. } => "range to operation expression".to_string(),
-            RangeOperationExpression::ToInclusive { .. } => {
-                "range to inclusive operation expression".to_string()
-            }
-            RangeOperationExpression::From { .. } => "range from operation expression".to_string(),
-            RangeOperationExpression::Full { .. } => "range full operation expression".to_string(),
+            Self::To { .. } => "range to operation expression".to_string(),
+            Self::ToInclusive { .. } => "range to inclusive operation expression".to_string(),
+            Self::From { .. } => "range from operation expression".to_string(),
+            Self::Full { .. } => "range full operation expression".to_string(),
         }
     }
 }

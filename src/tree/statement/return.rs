@@ -25,28 +25,28 @@ pub enum ReturnStatement {
 impl Node for ReturnStatement {
     fn comments(&self) -> Option<&CommentGroup> {
         match &self {
-            ReturnStatement::Explicit { comments, .. } => Some(comments),
-            ReturnStatement::Implicit { comments, .. } => Some(comments),
+            Self::Explicit { comments, .. } => Some(comments),
+            Self::Implicit { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
-            ReturnStatement::Explicit { r#return, .. } => r#return.initial_position(),
-            ReturnStatement::Implicit { expression, .. } => expression.initial_position(),
+            Self::Explicit { r#return, .. } => r#return.initial_position(),
+            Self::Implicit { expression, .. } => expression.initial_position(),
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
-            ReturnStatement::Explicit { semicolon, .. } => semicolon + 1,
-            ReturnStatement::Implicit { expression, .. } => expression.final_position(),
+            Self::Explicit { semicolon, .. } => semicolon + 1,
+            Self::Implicit { expression, .. } => expression.final_position(),
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
-            ReturnStatement::Explicit {
+            Self::Explicit {
                 r#return,
                 expression,
                 ..
@@ -57,14 +57,14 @@ impl Node for ReturnStatement {
                     vec![r#return]
                 }
             }
-            ReturnStatement::Implicit { expression, .. } => vec![expression],
+            Self::Implicit { expression, .. } => vec![expression],
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
-            ReturnStatement::Explicit { .. } => "explicit return statement".to_string(),
-            ReturnStatement::Implicit { .. } => "implicit return statement".to_string(),
+            Self::Explicit { .. } => "explicit return statement".to_string(),
+            Self::Implicit { .. } => "implicit return statement".to_string(),
         }
     }
 }

@@ -92,7 +92,7 @@ impl Precedence {
     }
 
     pub fn associativity(&self) -> Option<Associativity> {
-        Some(match self {
+        Some(match &self {
             Self::TypeCheck
             | Self::ArrayContains
             | Self::MulDivMod
