@@ -17,6 +17,18 @@ use crate::tree::Node;
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
+pub enum FunctionalOperationExpression {
+    Pipe {
+        comments: CommentGroup,
+        left: Box<Expression>,
+        pipe: usize,
+        greater_than: usize,
+        right: Box<Expression>,
+    },
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum ArithmeticOperationExpression {
     Addition {
         comments: CommentGroup,
@@ -626,6 +638,38 @@ impl RangeOperationExpression {
             Self::ToInclusive { .. } => false,
             Self::From { .. } => true,
             Self::Full { .. } => false,
+        }
+    }
+}
+
+impl Node for FunctionalOperationExpression {
+    fn comments(&self) -> Option<&CommentGroup> {
+        match self {
+            Self::Pipe { comments, .. } => Some(comments),
+        }
+    }
+
+    fn initial_position(&self) -> usize {
+        match &self {
+            Self::Pipe { left, .. } => left.initial_position(),
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match &self {
+            Self::Pipe { right, .. } => right.final_position(),
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match &self {
+            Self::Pipe { left, right, .. } => vec![left.as_ref(), right.as_ref()],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        match &self {
+            Self::Pipe { .. } => "pipe functional operation expression".to_string(),
         }
     }
 }

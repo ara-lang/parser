@@ -23,6 +23,7 @@ use crate::tree::expression::operator::CoalesceOperationExpression;
 use crate::tree::expression::operator::ComparisonOperationExpression;
 use crate::tree::expression::operator::ExceptionOperationExpression;
 use crate::tree::expression::operator::FunctionOperationExpression;
+use crate::tree::expression::operator::FunctionalOperationExpression;
 use crate::tree::expression::operator::GeneratorOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
 use crate::tree::expression::operator::ObjectOperationExpression;
@@ -51,6 +52,7 @@ pub enum Expression {
     Parenthesized(ParenthesizedExpression),
     ExitConstruct(ExitConstructExpression),
     Literal(Literal),
+    FunctionalOperation(FunctionalOperationExpression),
     ArithmeticOperation(ArithmeticOperationExpression),
     AsyncOperation(AsyncOperationExpression),
     ArrayOperation(ArrayOperationExpression),
@@ -314,6 +316,7 @@ impl Node for Expression {
             Self::Dict(expression) => expression.initial_position(),
             Self::Tuple(expression) => expression.initial_position(),
             Self::MagicConstant(expression) => expression.initial_position(),
+            Self::FunctionalOperation(expression) => expression.initial_position(),
         }
     }
 
@@ -348,6 +351,7 @@ impl Node for Expression {
             Self::Dict(expression) => expression.final_position(),
             Self::Tuple(expression) => expression.final_position(),
             Self::MagicConstant(expression) => expression.final_position(),
+            Self::FunctionalOperation(expression) => expression.final_position(),
         }
     }
 
@@ -382,6 +386,7 @@ impl Node for Expression {
             Self::Dict(expression) => vec![expression],
             Self::Tuple(expression) => vec![expression],
             Self::MagicConstant(expression) => vec![expression],
+            Self::FunctionalOperation(expression) => vec![expression],
         }
     }
 
@@ -416,6 +421,7 @@ impl Node for Expression {
             Self::Dict(expression) => expression.get_description(),
             Self::Tuple(expression) => expression.get_description(),
             Self::MagicConstant(expression) => expression.get_description(),
+            Self::FunctionalOperation(expression) => expression.get_description(),
         }
     }
 }
