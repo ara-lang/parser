@@ -1,5 +1,4 @@
 use std::env;
-use std::ops::Deref;
 
 use ara_parser::parser;
 use ara_parser::traverser::visitor::NodeVisitor;
@@ -75,7 +74,7 @@ fn main() -> Result<(), Error> {
             ReportBuilder::new(&source_map)
                 .with_charset(CharSet::Unicode)
                 .with_colors(ColorChoice::Always)
-                .print(report.deref())?;
+                .print(report.as_ref())?;
         }
     }
 
