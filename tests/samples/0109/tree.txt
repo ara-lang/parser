@@ -1,0 +1,331 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "pipe",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 13,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 14,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 15,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 17,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 22,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 28,
+                                                name: "$f1",
+                                            },
+                                        ),
+                                        equals: 32,
+                                        right: FunctionalOperation(
+                                            Pipe {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 34,
+                                                        name: "$a1",
+                                                    },
+                                                ),
+                                                pipe: 38,
+                                                greater_than: 39,
+                                                right: Variable(
+                                                    Variable {
+                                                        position: 41,
+                                                        name: "$b1",
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 44,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 55,
+                                                name: "$f2",
+                                            },
+                                        ),
+                                        equals: 59,
+                                        right: FunctionalOperation(
+                                            Pipe {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: FunctionalOperation(
+                                                    Pipe {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left: Variable(
+                                                            Variable {
+                                                                position: 61,
+                                                                name: "$a2",
+                                                            },
+                                                        ),
+                                                        pipe: 65,
+                                                        greater_than: 66,
+                                                        right: Variable(
+                                                            Variable {
+                                                                position: 68,
+                                                                name: "$b2",
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                                pipe: 72,
+                                                greater_than: 73,
+                                                right: Variable(
+                                                    Variable {
+                                                        position: 75,
+                                                        name: "$c2",
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 78,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 89,
+                                                name: "$f3",
+                                            },
+                                        ),
+                                        equals: 93,
+                                        right: FunctionalOperation(
+                                            Pipe {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: FunctionalOperation(
+                                                    Pipe {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left: FunctionalOperation(
+                                                            Pipe {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left: Variable(
+                                                                    Variable {
+                                                                        position: 95,
+                                                                        name: "$a3",
+                                                                    },
+                                                                ),
+                                                                pipe: 99,
+                                                                greater_than: 100,
+                                                                right: Variable(
+                                                                    Variable {
+                                                                        position: 102,
+                                                                        name: "$b3",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ),
+                                                        pipe: 106,
+                                                        greater_than: 107,
+                                                        right: Variable(
+                                                            Variable {
+                                                                position: 109,
+                                                                name: "$c3",
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                                pipe: 113,
+                                                greater_than: 114,
+                                                right: Variable(
+                                                    Variable {
+                                                        position: 116,
+                                                        name: "$d3",
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 119,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 130,
+                                                name: "$f4",
+                                            },
+                                        ),
+                                        equals: 134,
+                                        right: FunctionalOperation(
+                                            Pipe {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: FunctionalOperation(
+                                                    Pipe {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left: FunctionOperation(
+                                                            ClosureCreation {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Identifier(
+                                                                    Identifier {
+                                                                        position: 136,
+                                                                        value: "f1",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                placeholder: ArgumentPlaceholderExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 138,
+                                                                    ellipsis: 139,
+                                                                    right_parenthesis: 142,
+                                                                },
+                                                            },
+                                                        ),
+                                                        pipe: 144,
+                                                        greater_than: 145,
+                                                        right: FunctionOperation(
+                                                            ClosureCreation {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Identifier(
+                                                                    Identifier {
+                                                                        position: 147,
+                                                                        value: "f2",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                placeholder: ArgumentPlaceholderExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 149,
+                                                                    ellipsis: 150,
+                                                                    right_parenthesis: 153,
+                                                                },
+                                                            },
+                                                        ),
+                                                    },
+                                                ),
+                                                pipe: 155,
+                                                greater_than: 156,
+                                                right: FunctionOperation(
+                                                    ClosureCreation {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        function: Identifier(
+                                                            Identifier {
+                                                                position: 158,
+                                                                value: "f3",
+                                                            },
+                                                        ),
+                                                        generics: None,
+                                                        placeholder: ArgumentPlaceholderExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left_parenthesis: 160,
+                                                            ellipsis: 161,
+                                                            right_parenthesis: 164,
+                                                        },
+                                                    },
+                                                ),
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 165,
+                            },
+                        ),
+                    ],
+                    right_brace: 167,
+                },
+            },
+        ),
+    ],
+    eof: 169,
+}
