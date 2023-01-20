@@ -13,17 +13,9 @@ pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition>
     Ok(ConstantDefinition {
         comments: state.iterator.comments(),
         r#const: utils::skip_keyword(state, TokenKind::Const)?,
-        entries: utils::at_least_one_comma_separated(
-            state,
-            &|state| {
-                Ok(ConstantDefinitionEntry {
-                    name: identifier::constant_identifier(state)?,
-                    equals: utils::skip(state, TokenKind::Equals)?,
-                    value: expression::create(state)?,
-                })
-            },
-            TokenKind::SemiColon,
-        )?,
+        name: identifier::constant_identifier(state)?,
+        equals: utils::skip(state, TokenKind::Equals)?,
+        value: expression::create(state)?,
         semicolon: utils::skip_semicolon(state)?,
     })
 }

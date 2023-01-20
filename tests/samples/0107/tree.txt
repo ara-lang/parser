@@ -9,47 +9,40 @@ DefinitionTree {
                     value: "const",
                     position: 0,
                 },
-                entries: CommaSeparated {
-                    inner: [
-                        ConstantDefinitionEntry {
-                            name: Identifier {
-                                position: 6,
-                                value: "ONE",
-                            },
-                            equals: 10,
-                            value: ClassOperation(
-                                Initialization {
-                                    comments: CommentGroup {
-                                        comments: [],
-                                    },
-                                    new: Keyword {
-                                        value: "new",
-                                        position: 12,
-                                    },
-                                    class: Identifier(
-                                        Identifier {
-                                            position: 16,
-                                            value: "Foo",
-                                        },
-                                    ),
-                                    generics: None,
-                                    arguments: ArgumentListExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 19,
-                                        arguments: CommaSeparated {
-                                            inner: [],
-                                            commas: [],
-                                        },
-                                        right_parenthesis: 20,
-                                    },
-                                },
-                            ),
-                        },
-                    ],
-                    commas: [],
+                name: Identifier {
+                    position: 6,
+                    value: "ONE",
                 },
+                equals: 10,
+                value: ClassOperation(
+                    Initialization {
+                        comments: CommentGroup {
+                            comments: [],
+                        },
+                        new: Keyword {
+                            value: "new",
+                            position: 12,
+                        },
+                        class: Identifier(
+                            Identifier {
+                                position: 16,
+                                value: "Foo",
+                            },
+                        ),
+                        generics: None,
+                        arguments: ArgumentListExpression {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            left_parenthesis: 19,
+                            arguments: CommaSeparated {
+                                inner: [],
+                                commas: [],
+                            },
+                            right_parenthesis: 20,
+                        },
+                    },
+                ),
                 semicolon: 21,
             },
         ),

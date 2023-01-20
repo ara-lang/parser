@@ -21,29 +21,22 @@ DefinitionTree {
                                 value: "const",
                                 position: 18,
                             },
-                            entries: CommaSeparated {
-                                inner: [
-                                    ConstantDefinitionEntry {
-                                        name: Identifier {
-                                            position: 24,
-                                            value: "using",
-                                        },
-                                        equals: 30,
-                                        value: Literal(
-                                            Integer(
-                                                LiteralInteger {
-                                                    comments: CommentGroup {
-                                                        comments: [],
-                                                    },
-                                                    value: "1",
-                                                    position: 32,
-                                                },
-                                            ),
-                                        ),
-                                    },
-                                ],
-                                commas: [],
+                            name: Identifier {
+                                position: 24,
+                                value: "using",
                             },
+                            equals: 30,
+                            value: Literal(
+                                Integer(
+                                    LiteralInteger {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        value: "1",
+                                        position: 32,
+                                    },
+                                ),
+                            ),
                             semicolon: 33,
                         },
                     ),

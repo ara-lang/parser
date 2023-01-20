@@ -1,0 +1,9 @@
+error[P0013]: unexpected token `,`, expected `;`
+  --> 0043/code.ara:1:14
+  |
+1 | const   A = 3,
+  |              ^
+
+error: failed to parse "0043/code.ara" due to the above issue(s)
+ = summary: 1 error(s)
+

@@ -24,7 +24,9 @@ pub struct ConstantDefinitionEntry {
 pub struct ConstantDefinition {
     pub comments: CommentGroup,
     pub r#const: Keyword,
-    pub entries: CommaSeparated<ConstantDefinitionEntry>,
+    pub name: Identifier,
+    pub equals: usize,
+    pub value: Expression,
     pub semicolon: usize,
 }
 
@@ -71,13 +73,7 @@ impl Node for ConstantDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.r#const];
-
-        for entry in &self.entries.inner {
-            children.push(entry);
-        }
-
-        children
+        vec![&self.r#const, &self.name, &self.value]
     }
 
     fn get_description(&self) -> String {
