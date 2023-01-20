@@ -11,6 +11,7 @@ use crate::tree::expression::operator::ArrayOperationExpression;
 use crate::tree::expression::operator::AssignmentOperationExpression;
 use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ComparisonOperationExpression;
+use crate::tree::expression::operator::FunctionalOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
 use crate::tree::expression::operator::RangeOperationExpression;
 use crate::tree::expression::operator::StringOperationExpression;
@@ -120,6 +121,32 @@ pub fn infix(
                     comments,
                     from: Box::new(left),
                     double_dot: position,
+                })
+            }
+        }
+        TokenKind::Pipe => {
+            let left = Box::new(left);
+
+            if op.kind == TokenKind::GreaterThan {
+                let greater_than = op.position;
+                state.iterator.next();
+                let right = Box::new(expression::for_precedence(state, right_precedence)?);
+
+                Expression::FunctionalOperation(FunctionalOperationExpression::Pipe {
+                    comments,
+                    left,
+                    pipe: position,
+                    greater_than,
+                    right,
+                })
+            } else {
+                let right = Box::new(expression::for_precedence(state, right_precedence)?);
+
+                Expression::BitwiseOperation(BitwiseOperationExpression::Or {
+                    comments,
+                    left,
+                    or: position,
+                    right,
                 })
             }
         }
@@ -296,12 +323,6 @@ pub fn infix(
                         right,
                     })
                 }
-                TokenKind::Pipe => Expression::BitwiseOperation(BitwiseOperationExpression::Or {
-                    comments,
-                    left,
-                    or: position,
-                    right,
-                }),
                 TokenKind::Caret => Expression::BitwiseOperation(BitwiseOperationExpression::Xor {
                     comments,
                     left,
