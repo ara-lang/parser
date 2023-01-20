@@ -9,24 +9,17 @@ DefinitionTree {
                     value: "const",
                     position: 0,
                 },
-                entries: CommaSeparated {
-                    inner: [
-                        ConstantDefinitionEntry {
-                            name: Identifier {
-                                position: 6,
-                                value: "a",
-                            },
-                            equals: 8,
-                            value: Identifier(
-                                Identifier {
-                                    position: 10,
-                                    value: "\null",
-                                },
-                            ),
-                        },
-                    ],
-                    commas: [],
+                name: Identifier {
+                    position: 6,
+                    value: "a",
                 },
+                equals: 8,
+                value: Identifier(
+                    Identifier {
+                        position: 10,
+                        value: "\null",
+                    },
+                ),
                 semicolon: 15,
             },
         ),

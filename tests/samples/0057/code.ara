@@ -9,7 +9,7 @@ interface A extends B, C {
 
     #[R]
     #[P]
-    final public const R = 344, P = 214;
+    final public const R = 344;
 
     #[R]
     #[P]

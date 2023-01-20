@@ -1,1 +1,2 @@
-const FOO = 1;
+const FOO = 1; 
+const BAR = FOO;

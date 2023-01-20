@@ -38,29 +38,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 16,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 22,
-                                                value: "foo",
-                                            },
-                                            equals: 26,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "1",
-                                                        position: 28,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 22,
+                                    value: "foo",
                                 },
+                                equals: 26,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "1",
+                                            position: 28,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 29,
                             },
                         ),

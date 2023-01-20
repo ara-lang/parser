@@ -9,32 +9,48 @@ DefinitionTree {
                     value: "const",
                     position: 0,
                 },
-                entries: CommaSeparated {
-                    inner: [
-                        ConstantDefinitionEntry {
-                            name: Identifier {
-                                position: 6,
-                                value: "FOO",
-                            },
-                            equals: 10,
-                            value: Literal(
-                                Integer(
-                                    LiteralInteger {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        value: "1",
-                                        position: 12,
-                                    },
-                                ),
-                            ),
-                        },
-                    ],
-                    commas: [],
+                name: Identifier {
+                    position: 6,
+                    value: "FOO",
                 },
+                equals: 10,
+                value: Literal(
+                    Integer(
+                        LiteralInteger {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            value: "1",
+                            position: 12,
+                        },
+                    ),
+                ),
                 semicolon: 13,
             },
         ),
+        Constant(
+            ConstantDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                const: Keyword {
+                    value: "const",
+                    position: 16,
+                },
+                name: Identifier {
+                    position: 22,
+                    value: "BAR",
+                },
+                equals: 26,
+                value: Identifier(
+                    Identifier {
+                        position: 28,
+                        value: "FOO",
+                    },
+                ),
+                semicolon: 31,
+            },
+        ),
     ],
-    eof: 14,
+    eof: 33,
 }

@@ -129,29 +129,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 56,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 62,
-                                                value: "F",
-                                            },
-                                            equals: 64,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "344",
-                                                        position: 66,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 62,
+                                    value: "F",
                                 },
+                                equals: 64,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "344",
+                                            position: 66,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 69,
                             },
                         ),
@@ -193,29 +186,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 92,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 98,
-                                                value: "O",
-                                            },
-                                            equals: 100,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "344",
-                                                        position: 102,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 98,
+                                    value: "O",
                                 },
+                                equals: 100,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "344",
+                                            position: 102,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 105,
                             },
                         ),
@@ -279,50 +265,23 @@ DefinitionTree {
                                     value: "const",
                                     position: 143,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 149,
-                                                value: "R",
-                                            },
-                                            equals: 151,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "344",
-                                                        position: 153,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 158,
-                                                value: "P",
-                                            },
-                                            equals: 160,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "214",
-                                                        position: 162,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [
-                                        156,
-                                    ],
+                                name: Identifier {
+                                    position: 149,
+                                    value: "R",
                                 },
-                                semicolon: 165,
+                                equals: 151,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "344",
+                                            position: 153,
+                                        },
+                                    ),
+                                ),
+                                semicolon: 156,
                             },
                         ),
                         Constant(
@@ -332,13 +291,29 @@ DefinitionTree {
                                 },
                                 attributes: [
                                     AttributeGroupDefinition {
+                                        hash_left_bracket: 163,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        position: 165,
+                                                        value: "R",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: 166,
+                                    },
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 172,
                                         members: CommaSeparated {
                                             inner: [
                                                 AttributeDefinition {
                                                     name: Identifier {
                                                         position: 174,
-                                                        value: "R",
+                                                        value: "P",
                                                     },
                                                     arguments: None,
                                                 },
@@ -347,62 +322,39 @@ DefinitionTree {
                                         },
                                         right_bracket: 175,
                                     },
-                                    AttributeGroupDefinition {
-                                        hash_left_bracket: 181,
-                                        members: CommaSeparated {
-                                            inner: [
-                                                AttributeDefinition {
-                                                    name: Identifier {
-                                                        position: 183,
-                                                        value: "P",
-                                                    },
-                                                    arguments: None,
-                                                },
-                                            ],
-                                            commas: [],
-                                        },
-                                        right_bracket: 184,
-                                    },
                                 ],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 196,
+                                    position: 187,
                                     modifiers: [
                                         Final(
                                             Keyword {
                                                 value: "final",
-                                                position: 190,
+                                                position: 181,
                                             },
                                         ),
                                     ],
                                 },
                                 const: Keyword {
                                     value: "const",
-                                    position: 196,
+                                    position: 187,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 202,
-                                                value: "M",
+                                name: Identifier {
+                                    position: 193,
+                                    value: "M",
+                                },
+                                equals: 195,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
                                             },
-                                            equals: 204,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "34",
-                                                        position: 206,
-                                                    },
-                                                ),
-                                            ),
+                                            value: "34",
+                                            position: 197,
                                         },
-                                    ],
-                                    commas: [],
-                                },
-                                semicolon: 208,
+                                    ),
+                                ),
+                                semicolon: 199,
                             },
                         ),
                         Method(
@@ -412,12 +364,12 @@ DefinitionTree {
                                 },
                                 attributes: [
                                     AttributeGroupDefinition {
-                                        hash_left_bracket: 215,
+                                        hash_left_bracket: 206,
                                         members: CommaSeparated {
                                             inner: [
                                                 AttributeDefinition {
                                                     name: Identifier {
-                                                        position: 217,
+                                                        position: 208,
                                                         value: "M",
                                                     },
                                                     arguments: None,
@@ -425,26 +377,26 @@ DefinitionTree {
                                             ],
                                             commas: [],
                                         },
-                                        right_bracket: 218,
+                                        right_bracket: 209,
                                     },
                                 ],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 231,
+                                    position: 222,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 224,
+                                                position: 215,
                                             },
                                         ),
                                     ],
                                 },
                                 function: Keyword {
                                     value: "function",
-                                    position: 231,
+                                    position: 222,
                                 },
                                 name: Identifier {
-                                    position: 240,
+                                    position: 231,
                                     value: "bar",
                                 },
                                 templates: None,
@@ -452,24 +404,24 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_parenthesis: 243,
+                                    left_parenthesis: 234,
                                     parameters: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    right_parenthesis: 244,
+                                    right_parenthesis: 235,
                                 },
                                 return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 245,
+                                    colon: 236,
                                     type_definition: Void(
                                         Keyword {
                                             value: "void",
-                                            position: 247,
+                                            position: 238,
                                         },
                                     ),
                                 },
                                 constraints: None,
-                                semicolon: 251,
+                                semicolon: 242,
                             },
                         ),
                         Method(
@@ -479,13 +431,29 @@ DefinitionTree {
                                 },
                                 attributes: [
                                     AttributeGroupDefinition {
+                                        hash_left_bracket: 249,
+                                        members: CommaSeparated {
+                                            inner: [
+                                                AttributeDefinition {
+                                                    name: Identifier {
+                                                        position: 251,
+                                                        value: "Q",
+                                                    },
+                                                    arguments: None,
+                                                },
+                                            ],
+                                            commas: [],
+                                        },
+                                        right_bracket: 252,
+                                    },
+                                    AttributeGroupDefinition {
                                         hash_left_bracket: 258,
                                         members: CommaSeparated {
                                             inner: [
                                                 AttributeDefinition {
                                                     name: Identifier {
                                                         position: 260,
-                                                        value: "Q",
+                                                        value: "S",
                                                     },
                                                     arguments: None,
                                                 },
@@ -494,46 +462,30 @@ DefinitionTree {
                                         },
                                         right_bracket: 261,
                                     },
-                                    AttributeGroupDefinition {
-                                        hash_left_bracket: 267,
-                                        members: CommaSeparated {
-                                            inner: [
-                                                AttributeDefinition {
-                                                    name: Identifier {
-                                                        position: 269,
-                                                        value: "S",
-                                                    },
-                                                    arguments: None,
-                                                },
-                                            ],
-                                            commas: [],
-                                        },
-                                        right_bracket: 270,
-                                    },
                                 ],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 290,
+                                    position: 281,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 276,
+                                                position: 267,
                                             },
                                         ),
                                         Static(
                                             Keyword {
                                                 value: "static",
-                                                position: 283,
+                                                position: 274,
                                             },
                                         ),
                                     ],
                                 },
                                 function: Keyword {
                                     value: "function",
-                                    position: 290,
+                                    position: 281,
                                 },
                                 name: Identifier {
-                                    position: 299,
+                                    position: 290,
                                     value: "baz",
                                 },
                                 templates: None,
@@ -541,31 +493,31 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_parenthesis: 302,
+                                    left_parenthesis: 293,
                                     parameters: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    right_parenthesis: 303,
+                                    right_parenthesis: 294,
                                 },
                                 return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 304,
+                                    colon: 295,
                                     type_definition: Void(
                                         Keyword {
                                             value: "void",
-                                            position: 306,
+                                            position: 297,
                                         },
                                     ),
                                 },
                                 constraints: None,
-                                semicolon: 310,
+                                semicolon: 301,
                             },
                         ),
                     ],
-                    right_brace: 312,
+                    right_brace: 303,
                 },
             },
         ),
     ],
-    eof: 314,
+    eof: 305,
 }
