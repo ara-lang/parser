@@ -64,7 +64,7 @@ pub struct FunctionDefinition {
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct ConstructorParameterDefinition {
+pub struct MethodParameterDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     pub comments: CommentGroup,
     pub modifiers: ModifierGroupDefinition,
@@ -76,35 +76,11 @@ pub struct ConstructorParameterDefinition {
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct ConstructorParameterListDefinition {
+pub struct MethodParameterListDefinition {
     pub comments: CommentGroup,
     pub left_parenthesis: usize,
-    pub parameters: CommaSeparated<ConstructorParameterDefinition>,
+    pub parameters: CommaSeparated<MethodParameterDefinition>,
     pub right_parenthesis: usize,
-}
-
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
-#[serde(rename_all = "snake_case")]
-pub struct AbstractConstructorDefinition {
-    pub comments: CommentGroup,
-    pub attributes: Vec<AttributeGroupDefinition>,
-    pub modifiers: ModifierGroupDefinition,
-    pub function: Keyword,
-    pub name: Identifier,
-    pub parameters: FunctionLikeParameterListDefinition,
-    pub semicolon: usize,
-}
-
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
-#[serde(rename_all = "snake_case")]
-pub struct ConcreteConstructorDefinition {
-    pub comments: CommentGroup,
-    pub attributes: Vec<AttributeGroupDefinition>,
-    pub modifiers: ModifierGroupDefinition,
-    pub function: Keyword,
-    pub name: Identifier,
-    pub parameters: ConstructorParameterListDefinition,
-    pub body: BlockStatement,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
@@ -126,32 +102,24 @@ pub struct MethodTypeConstraintGroupDefinition {
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct AbstractMethodDefinition {
-    pub comments: CommentGroup,
-    pub attributes: Vec<AttributeGroupDefinition>,
-    pub modifiers: ModifierGroupDefinition,
-    pub function: Keyword,
-    pub name: Identifier,
-    pub templates: Option<TemplateGroupDefinition>,
-    pub parameters: FunctionLikeParameterListDefinition,
-    pub return_type: FunctionLikeReturnTypeDefinition,
-    pub constraints: Option<MethodTypeConstraintGroupDefinition>,
-    pub semicolon: usize,
+pub enum MethodBodyDefinition {
+    Concrete(BlockStatement),
+    Abstract(usize),
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct ConcreteMethodDefinition {
+pub struct MethodDefinition {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
     pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
-    pub parameters: FunctionLikeParameterListDefinition,
-    pub return_type: FunctionLikeReturnTypeDefinition,
+    pub parameters: MethodParameterListDefinition,
+    pub return_type: Option<FunctionLikeReturnTypeDefinition>,
     pub constraints: Option<MethodTypeConstraintGroupDefinition>,
-    pub body: BlockStatement,
+    pub body: MethodBodyDefinition,
 }
 
 impl Node for FunctionLikeReturnTypeDefinition {
@@ -297,7 +265,7 @@ impl Node for FunctionDefinition {
     }
 }
 
-impl Node for ConstructorParameterDefinition {
+impl Node for MethodParameterDefinition {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
@@ -329,11 +297,11 @@ impl Node for ConstructorParameterDefinition {
     }
 
     fn get_description(&self) -> String {
-        "constructor parameter definition".to_string()
+        "method parameter definition".to_string()
     }
 }
 
-impl Node for ConstructorParameterListDefinition {
+impl Node for MethodParameterListDefinition {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
@@ -357,130 +325,7 @@ impl Node for ConstructorParameterListDefinition {
     }
 
     fn get_description(&self) -> String {
-        "constructor parameter list definition".to_string()
-    }
-}
-
-impl Node for AbstractConstructorDefinition {
-    fn comments(&self) -> Option<&CommentGroup> {
-        Some(&self.comments)
-    }
-
-    fn initial_position(&self) -> usize {
-        if let Some(attributes) = self.attributes.first() {
-            return attributes.initial_position();
-        }
-
-        self.modifiers.initial_position()
-    }
-
-    fn final_position(&self) -> usize {
-        self.semicolon + 1
-    }
-
-    fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
-
-        for attribute in &self.attributes {
-            children.push(attribute);
-        }
-
-        children.push(&self.modifiers);
-
-        children.push(&self.function);
-        children.push(&self.name);
-        children.push(&self.parameters);
-
-        children
-    }
-
-    fn get_description(&self) -> String {
-        "abstract constructor definition".to_string()
-    }
-}
-
-impl Node for ConcreteConstructorDefinition {
-    fn comments(&self) -> Option<&CommentGroup> {
-        Some(&self.comments)
-    }
-
-    fn initial_position(&self) -> usize {
-        if let Some(attributes) = self.attributes.first() {
-            return attributes.initial_position();
-        }
-
-        self.modifiers.initial_position()
-    }
-
-    fn final_position(&self) -> usize {
-        self.body.final_position()
-    }
-
-    fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
-
-        for attribute in &self.attributes {
-            children.push(attribute);
-        }
-
-        children.push(&self.modifiers);
-        children.push(&self.function);
-        children.push(&self.name);
-        children.push(&self.parameters);
-        children.push(&self.body);
-
-        children
-    }
-
-    fn get_description(&self) -> String {
-        "concrete constructor definition".to_string()
-    }
-}
-
-impl Node for AbstractMethodDefinition {
-    fn comments(&self) -> Option<&CommentGroup> {
-        Some(&self.comments)
-    }
-
-    fn initial_position(&self) -> usize {
-        if let Some(attributes) = self.attributes.first() {
-            return attributes.initial_position();
-        }
-
-        self.modifiers.initial_position()
-    }
-
-    fn final_position(&self) -> usize {
-        self.semicolon + 1
-    }
-
-    fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![];
-
-        for attribute in &self.attributes {
-            children.push(attribute);
-        }
-
-        children.push(&self.modifiers);
-        children.push(&self.function);
-        children.push(&self.name);
-
-        if let Some(templates) = &self.templates {
-            children.push(templates);
-        }
-
-        children.push(&self.parameters);
-        children.push(&self.return_type);
-
-        if let Some(constraints) = &self.constraints {
-            children.push(constraints);
-        }
-
-        children
-    }
-
-    fn get_description(&self) -> String {
-        "abstract method definition".to_string()
+        "method parameter list definition".to_string()
     }
 }
 
@@ -542,7 +387,34 @@ impl Node for MethodTypeConstraintGroupDefinition {
     }
 }
 
-impl Node for ConcreteMethodDefinition {
+impl Node for MethodBodyDefinition {
+    fn initial_position(&self) -> usize {
+        match &self {
+            MethodBodyDefinition::Concrete(block) => block.initial_position(),
+            MethodBodyDefinition::Abstract(semicolon) => *semicolon,
+        }
+    }
+
+    fn final_position(&self) -> usize {
+        match &self {
+            MethodBodyDefinition::Concrete(block) => block.final_position(),
+            MethodBodyDefinition::Abstract(semicolon) => semicolon + 1,
+        }
+    }
+
+    fn children(&self) -> Vec<&dyn Node> {
+        match &self {
+            MethodBodyDefinition::Concrete(block) => vec![block],
+            MethodBodyDefinition::Abstract(..) => vec![],
+        }
+    }
+
+    fn get_description(&self) -> String {
+        "method body definition".to_string()
+    }
+}
+
+impl Node for MethodDefinition {
     fn comments(&self) -> Option<&CommentGroup> {
         Some(&self.comments)
     }
@@ -575,7 +447,9 @@ impl Node for ConcreteMethodDefinition {
         }
 
         children.push(&self.parameters);
-        children.push(&self.return_type);
+        if let Some(return_type) = &self.return_type {
+            children.push(return_type);
+        }
 
         if let Some(constraints) = &self.constraints {
             children.push(constraints);

@@ -1,4 +1,4 @@
-error[P0013]: unexpected token `implements`, expected `(`
+error[P0011]: unexpected token `implements`, expected `(`
   --> 0023/code.ara:3:22
   |
 3 |     return new class implements Foo, Bar {};

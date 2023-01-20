@@ -110,7 +110,7 @@ DefinitionTree {
                                                         },
                                                     },
                                                 ),
-                                                body: AnonymousClassExpressionBody {
+                                                body: ClassDefinitionBody {
                                                     left_brace: 69,
                                                     members: [],
                                                     right_brace: 70,

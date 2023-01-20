@@ -1,0 +1,319 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [
+                    AttributeGroupDefinition {
+                        hash_left_bracket: 1,
+                        members: CommaSeparated {
+                            inner: [
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        position: 3,
+                                        value: "Baz",
+                                    },
+                                    arguments: Some(
+                                        ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 6,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Spread {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: 7,
+                                                        value: Identifier(
+                                                            Identifier {
+                                                                position: 10,
+                                                                value: "BAZ",
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 13,
+                                        },
+                                    ),
+                                },
+                            ],
+                            commas: [],
+                        },
+                        right_bracket: 14,
+                    },
+                ],
+                function: Keyword {
+                    value: "function",
+                    position: 16,
+                },
+                name: Identifier {
+                    position: 25,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 28,
+                    parameters: CommaSeparated {
+                        inner: [
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            position: 34,
+                                            value: "Bar",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    position: 38,
+                                    name: "$bar",
+                                },
+                                default: Some(
+                                    FunctionLikeParameterDefaultValueDefinition {
+                                        equals: 43,
+                                        value: ClassOperation(
+                                            Initialization {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                new: Keyword {
+                                                    value: "new",
+                                                    position: 45,
+                                                },
+                                                class: Identifier(
+                                                    Identifier {
+                                                        position: 49,
+                                                        value: "Bar",
+                                                    },
+                                                ),
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 52,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            Spread {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                ellipsis: 53,
+                                                                value: Identifier(
+                                                                    Identifier {
+                                                                        position: 56,
+                                                                        value: "BAZ",
+                                                                    },
+                                                                ),
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 59,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ],
+                        commas: [
+                            60,
+                        ],
+                    },
+                    right_parenthesis: 62,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 63,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 65,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 70,
+                    statements: [],
+                    right_brace: 71,
+                },
+            },
+        ),
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [
+                    AttributeGroupDefinition {
+                        hash_left_bracket: 74,
+                        members: CommaSeparated {
+                            inner: [
+                                AttributeDefinition {
+                                    name: Identifier {
+                                        position: 76,
+                                        value: "Bar",
+                                    },
+                                    arguments: Some(
+                                        ArgumentListExpression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_parenthesis: 79,
+                                            arguments: CommaSeparated {
+                                                inner: [
+                                                    Spread {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        ellipsis: 80,
+                                                        value: Identifier(
+                                                            Identifier {
+                                                                position: 83,
+                                                                value: "BAZ",
+                                                            },
+                                                        ),
+                                                    },
+                                                ],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 86,
+                                        },
+                                    ),
+                                },
+                            ],
+                            commas: [],
+                        },
+                        right_bracket: 87,
+                    },
+                ],
+                function: Keyword {
+                    value: "function",
+                    position: 89,
+                },
+                name: Identifier {
+                    position: 98,
+                    value: "qux",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 101,
+                    parameters: CommaSeparated {
+                        inner: [
+                            FunctionLikeParameterDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                type_definition: Identifier(
+                                    TemplatedIdentifier {
+                                        name: Identifier {
+                                            position: 107,
+                                            value: "Bar",
+                                        },
+                                        templates: None,
+                                    },
+                                ),
+                                ellipsis: None,
+                                variable: Variable {
+                                    position: 111,
+                                    name: "$bar",
+                                },
+                                default: Some(
+                                    FunctionLikeParameterDefaultValueDefinition {
+                                        equals: 116,
+                                        value: ClassOperation(
+                                            Initialization {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                new: Keyword {
+                                                    value: "new",
+                                                    position: 118,
+                                                },
+                                                class: Identifier(
+                                                    Identifier {
+                                                        position: 122,
+                                                        value: "Bar",
+                                                    },
+                                                ),
+                                                generics: None,
+                                                arguments: ArgumentListExpression {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_parenthesis: 125,
+                                                    arguments: CommaSeparated {
+                                                        inner: [
+                                                            ReverseSpread {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                value: Identifier(
+                                                                    Identifier {
+                                                                        position: 126,
+                                                                        value: "BAZ",
+                                                                    },
+                                                                ),
+                                                                ellipsis: 129,
+                                                            },
+                                                        ],
+                                                        commas: [],
+                                                    },
+                                                    right_parenthesis: 132,
+                                                },
+                                            },
+                                        ),
+                                    },
+                                ),
+                            },
+                        ],
+                        commas: [
+                            133,
+                        ],
+                    },
+                    right_parenthesis: 135,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 136,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 138,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 143,
+                    statements: [],
+                    right_brace: 144,
+                },
+            },
+        ),
+    ],
+    eof: 146,
+}

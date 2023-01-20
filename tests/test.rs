@@ -1,7 +1,6 @@
 use std::env;
 use std::fs::read_dir;
 use std::io;
-use std::ops::Deref;
 use std::path::PathBuf;
 
 use pretty_assertions::assert_str_eq;
@@ -59,7 +58,7 @@ fn test_fixtures() -> io::Result<()> {
                     .with_charset(CharSet::Ascii)
                     .with_colors(ColorChoice::Never);
 
-                let error = builder.as_string(report.deref()).unwrap();
+                let error = builder.as_string(report.as_ref()).unwrap();
 
                 let expected_error = std::fs::read_to_string(&error_filename)?;
 

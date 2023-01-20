@@ -7,11 +7,11 @@ use crate::parser::internal::utils;
 use crate::parser::internal::variable;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
-use crate::tree::definition::function::ConstructorParameterDefinition;
-use crate::tree::definition::function::ConstructorParameterListDefinition;
 use crate::tree::definition::function::FunctionLikeParameterDefaultValueDefinition;
 use crate::tree::definition::function::FunctionLikeParameterDefinition;
 use crate::tree::definition::function::FunctionLikeParameterListDefinition;
+use crate::tree::definition::function::MethodParameterDefinition;
+use crate::tree::definition::function::MethodParameterListDefinition;
 
 pub fn function_like_parameter_list_definition(
     state: &mut State,
@@ -43,18 +43,7 @@ pub fn function_like_parameter_list_definition(
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
                     equals: current.position,
-                    value: {
-                        let expression = expression::create(state)?;
-
-                        if !expression.is_constant(true) {
-                            crate::parser_report!(
-                                state,
-                                invalid_constant_initialization_expression(&expression)
-                            );
-                        }
-
-                        expression
-                    },
+                    value: expression::create(state)?,
                 })
             } else {
                 None
@@ -82,13 +71,13 @@ pub fn function_like_parameter_list_definition(
     })
 }
 
-pub fn constructor_parameter_list_definition(
+pub fn method_parameter_list_definition(
     state: &mut State,
-) -> ParseResult<ConstructorParameterListDefinition> {
+) -> ParseResult<MethodParameterListDefinition> {
     let comments = state.iterator.comments();
 
     let left_parenthesis = utils::skip_left_parenthesis(state)?;
-    let parameters = utils::comma_separated::<ConstructorParameterDefinition>(
+    let parameters = utils::comma_separated::<MethodParameterDefinition>(
         state,
         &|state| {
             attribute::gather(state)?;
@@ -111,24 +100,13 @@ pub fn constructor_parameter_list_definition(
 
                 Some(FunctionLikeParameterDefaultValueDefinition {
                     equals: current.position,
-                    value: {
-                        let expression = expression::create(state)?;
-
-                        if !expression.is_constant(true) {
-                            crate::parser_report!(
-                                state,
-                                invalid_constant_initialization_expression(&expression)
-                            );
-                        }
-
-                        expression
-                    },
+                    value: expression::create(state)?,
                 })
             } else {
                 None
             };
 
-            let parameter = ConstructorParameterDefinition {
+            let parameter = MethodParameterDefinition {
                 comments: state.iterator.comments(),
                 variable,
                 attributes: state.get_attributes(),
@@ -145,7 +123,7 @@ pub fn constructor_parameter_list_definition(
 
     let right_parenthesis = utils::skip_right_parenthesis(state)?;
 
-    Ok(ConstructorParameterListDefinition {
+    Ok(MethodParameterListDefinition {
         comments,
         left_parenthesis,
         parameters,

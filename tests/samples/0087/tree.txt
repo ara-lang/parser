@@ -19,8 +19,8 @@ DefinitionTree {
                 body: InterfaceDefinitionBody {
                     left_brace: 15,
                     members: [
-                        Constructor(
-                            AbstractConstructorDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -44,18 +44,23 @@ DefinitionTree {
                                     position: 37,
                                     value: "__construct",
                                 },
-                                parameters: FunctionLikeParameterListDefinition {
+                                templates: None,
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
                                     left_parenthesis: 48,
                                     parameters: CommaSeparated {
                                         inner: [
-                                            FunctionLikeParameterDefinition {
+                                            MethodParameterDefinition {
+                                                attributes: [],
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                attributes: [],
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 49,
+                                                    modifiers: [],
+                                                },
                                                 type_definition: String(
                                                     Keyword {
                                                         value: "string",
@@ -74,11 +79,15 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 60,
                                 },
-                                semicolon: 61,
+                                return_type: None,
+                                constraints: None,
+                                body: Abstract(
+                                    61,
+                                ),
                             },
                         ),
                         Method(
-                            AbstractMethodDefinition {
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -103,7 +112,7 @@ DefinitionTree {
                                     value: "doSomething",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -114,17 +123,21 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 96,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 97,
-                                    type_definition: Void(
-                                        Keyword {
-                                            value: "void",
-                                            position: 99,
-                                        },
-                                    ),
-                                },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 97,
+                                        type_definition: Void(
+                                            Keyword {
+                                                value: "void",
+                                                position: 99,
+                                            },
+                                        ),
+                                    },
+                                ),
                                 constraints: None,
-                                semicolon: 103,
+                                body: Abstract(
+                                    103,
+                                ),
                             },
                         ),
                     ],
@@ -182,8 +195,8 @@ DefinitionTree {
                 body: ClassDefinitionBody {
                     left_brace: 144,
                     members: [
-                        ConcreteConstructor(
-                            ConcreteConstructorDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -207,14 +220,15 @@ DefinitionTree {
                                     position: 166,
                                     value: "__construct",
                                 },
-                                parameters: ConstructorParameterListDefinition {
+                                templates: None,
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
                                     left_parenthesis: 177,
                                     parameters: CommaSeparated {
                                         inner: [
-                                            ConstructorParameterDefinition {
+                                            MethodParameterDefinition {
                                                 attributes: [],
                                                 comments: CommentGroup {
                                                     comments: [],
@@ -241,18 +255,22 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 189,
                                 },
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
+                                return_type: None,
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 191,
+                                        statements: [],
+                                        right_brace: 212,
                                     },
-                                    left_brace: 191,
-                                    statements: [],
-                                    right_brace: 212,
-                                },
+                                ),
                             },
                         ),
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [
                                         Comment {
@@ -283,7 +301,7 @@ DefinitionTree {
                                     value: "doSomething",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -294,24 +312,28 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 247,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 248,
-                                    type_definition: Void(
-                                        Keyword {
-                                            value: "void",
-                                            position: 250,
-                                        },
-                                    ),
-                                },
-                                constraints: None,
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 248,
+                                        type_definition: Void(
+                                            Keyword {
+                                                value: "void",
+                                                position: 250,
+                                            },
+                                        ),
                                     },
-                                    left_brace: 255,
-                                    statements: [],
-                                    right_brace: 276,
-                                },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 255,
+                                        statements: [],
+                                        right_brace: 276,
+                                    },
+                                ),
                             },
                         ),
                     ],

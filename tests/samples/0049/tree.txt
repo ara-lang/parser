@@ -66,8 +66,8 @@ DefinitionTree {
                 body: ClassDefinitionBody {
                     left_brace: 32,
                     members: [
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -92,7 +92,7 @@ DefinitionTree {
                                     value: "bar",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -103,71 +103,75 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 58,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 59,
-                                    type_definition: Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 61,
-                                                value: "parent",
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 59,
+                                        type_definition: Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 61,
+                                                    value: "parent",
+                                                },
+                                                templates: None,
                                             },
-                                            templates: None,
-                                        },
-                                    ),
-                                },
-                                constraints: None,
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
+                                        ),
                                     },
-                                    left_brace: 68,
-                                    statements: [
-                                        Return(
-                                            Explicit {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                return: Keyword {
-                                                    value: "return",
-                                                    position: 78,
-                                                },
-                                                expression: Some(
-                                                    ClassOperation(
-                                                        Initialization {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            new: Keyword {
-                                                                value: "new",
-                                                                position: 85,
-                                                            },
-                                                            class: Identifier(
-                                                                Identifier {
-                                                                    position: 89,
-                                                                    value: "s",
-                                                                },
-                                                            ),
-                                                            generics: None,
-                                                            arguments: ArgumentListExpression {
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 68,
+                                        statements: [
+                                            Return(
+                                                Explicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    return: Keyword {
+                                                        value: "return",
+                                                        position: 78,
+                                                    },
+                                                    expression: Some(
+                                                        ClassOperation(
+                                                            Initialization {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                left_parenthesis: 90,
-                                                                arguments: CommaSeparated {
-                                                                    inner: [],
-                                                                    commas: [],
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 85,
                                                                 },
-                                                                right_parenthesis: 91,
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 89,
+                                                                        value: "s",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 90,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 91,
+                                                                },
                                                             },
-                                                        },
+                                                        ),
                                                     ),
-                                                ),
-                                                semicolon: 92,
-                                            },
-                                        ),
-                                    ],
-                                    right_brace: 98,
-                                },
+                                                    semicolon: 92,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 98,
+                                    },
+                                ),
                             },
                         ),
                     ],

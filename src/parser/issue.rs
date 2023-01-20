@@ -6,8 +6,6 @@ use ara_reporting::issue::Issue;
 use crate::lexer::token::Token;
 use crate::lexer::token::TokenKind;
 use crate::parser::state::State as ParserState;
-use crate::tree::definition::function::ConcreteConstructorDefinition;
-use crate::tree::definition::function::ConcreteMethodDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::Node;
 
@@ -79,37 +77,6 @@ pub enum ParserIssueCode {
     /// - Change the enum to a unit enum
     BackedEnumCaseMustHaveValue = 4,
 
-    /// Enum cannot have a constructor ( code = 5 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// enum Foo {
-    ///     public function __construct() {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the constructor
-    /// - Change the enum to a class
-    EnumCannotHaveConstructor = 5,
-
-    /// Enum cannot have a magic method ( code = 6 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// enum Foo {
-    ///    public function __toString() {}
-    /// }
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the magic method
-    EnumCannotHaveMagicMethod = 6,
-
     /// Missing item definition after attributes ( code = 7 )
     ///
     /// Example:
@@ -122,7 +89,7 @@ pub enum ParserIssueCode {
     ///
     /// - Add an item definition after the attributes
     /// - Remove the attributes
-    MissingItemDefinitionAfterAttributes = 7,
+    MissingItemDefinitionAfterAttributes = 5,
 
     /// Reserved keyword cannot be used for type name ( code = 8 )
     ///
@@ -135,7 +102,7 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForTypeName = 8,
+    ReservedKeywordCannotBeUsedForTypeName = 6,
 
     /// Reserved keyword cannot be used for constant name ( code = 9 )
     ///
@@ -148,7 +115,7 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different name
-    ReservedKeywordCannotBeUsedForConstantName = 9,
+    ReservedKeywordCannotBeUsedForConstantName = 7,
 
     /// Type cannot be used in current context ( code = 10 )
     ///
@@ -161,7 +128,7 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Use a different type
-    TypeCannotBeUsedInCurrentContext = 10,
+    TypeCannotBeUsedInCurrentContext = 8,
 
     /// Missing item expression after attribute(s) ( code = 11 )
     ///
@@ -177,7 +144,7 @@ pub enum ParserIssueCode {
     ///
     /// - Add an item expression after the attribute(s)
     /// - Remove the attribute(s)
-    MissingItemExpressionAfterAttributes = 11,
+    MissingItemExpressionAfterAttributes = 9,
 
     /// Enum backing type must be either `int` or `string` ( code = 12 )
     ///
@@ -192,7 +159,7 @@ pub enum ParserIssueCode {
     /// Possible solution(s):
     ///
     /// - Change the backing type to `int` or `string`
-    InvalidEnumBackingType = 12,
+    InvalidEnumBackingType = 10,
 
     /// Unexpected token ( code = 13 )
     ///
@@ -202,38 +169,7 @@ pub enum ParserIssueCode {
     /// function foo() -> void {
     /// }
     /// ```
-    UnexpectedToken = 13,
-
-    /// Invalid constant initialization expression ( code = 14 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// function foo(
-    ///     Closure<(), void> $a = (
-    ///         function(): void { }
-    ///     )
-    /// ): void {}
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Use a valid constant initialization expression
-    InvalidConstantInitializationExpression = 14,
-
-    /// Invalid empty type template ( code = 15 )
-    ///
-    /// Example:
-    ///
-    /// ```ara
-    /// type Foo = Bar<>;
-    /// ```
-    ///
-    /// Possible solution(s):
-    ///
-    /// - Remove the empty type template
-    /// - Add a type template
-    ExpectedAtLeastOneTypeInTemplateGroup = 15,
+    UnexpectedToken = 11,
 }
 
 pub(crate) fn unreachable_code<M: Into<String>>(state: &ParserState, message: M) -> Issue {
@@ -318,48 +254,6 @@ pub(crate) fn backed_enum_case_must_have_value(
         ),
     )
     .with_source(origin, case.initial_position(), semicolon + 1)
-    .with_annotation(Annotation::secondary(
-        origin,
-        r#enum.initial_position(),
-        r#enum.final_position(),
-    ))
-}
-
-pub(crate) fn enum_cannot_have_constructor(
-    state: &ParserState,
-    r#enum: &Identifier,
-    constructor: &ConcreteConstructorDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::EnumCannotHaveConstructor,
-        format!("enum `{}` cannot have constructor", state.named(&r#enum),),
-    )
-    .with_source(
-        origin,
-        constructor.initial_position(),
-        constructor.final_position(),
-    )
-    .with_annotation(Annotation::secondary(
-        origin,
-        r#enum.initial_position(),
-        r#enum.final_position(),
-    ))
-}
-
-pub(crate) fn enum_cannot_have_magic_method(
-    state: &ParserState,
-    r#enum: &Identifier,
-    method: &ConcreteMethodDefinition,
-) -> Issue {
-    let origin = state.source.name();
-
-    Issue::error(
-        ParserIssueCode::EnumCannotHaveMagicMethod,
-        format!("enum `{}` cannot have magic method", state.named(&r#enum),),
-    )
-    .with_source(origin, method.initial_position(), method.final_position())
     .with_annotation(Annotation::secondary(
         origin,
         r#enum.initial_position(),
@@ -546,33 +440,6 @@ pub(crate) fn unexpected_token<T: ToString>(
         found.position,
         found.position + found.value.len(),
     )
-}
-
-pub(crate) fn invalid_constant_initialization_expression(
-    state: &ParserState,
-    expression: &dyn Node,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::InvalidConstantInitializationExpression,
-        "invalid constant initialization expression",
-    )
-    .with_source(
-        state.source.name(),
-        expression.initial_position(),
-        expression.final_position(),
-    )
-}
-
-pub(crate) fn expected_at_least_one_type_in_template_group(
-    state: &ParserState,
-    less_than: usize,
-    greater_than: usize,
-) -> Issue {
-    Issue::error(
-        ParserIssueCode::ExpectedAtLeastOneTypeInTemplateGroup,
-        "expected at least one type in template group",
-    )
-    .with_source(state.source.name(), less_than, greater_than)
 }
 
 impl ::std::fmt::Display for ParserIssueCode {

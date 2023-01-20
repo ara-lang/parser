@@ -5,7 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::constant::ClassishConstantDefinition;
-use crate::tree::definition::function::ConcreteMethodDefinition;
+use crate::tree::definition::function::MethodDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
@@ -50,7 +50,7 @@ pub struct UnitEnumBodyDefinition {
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum UnitEnumMemberDefinition {
     Case(UnitEnumCaseDefinition),
-    Method(ConcreteMethodDefinition),
+    Method(MethodDefinition),
     Constant(ClassishConstantDefinition),
 }
 
@@ -94,7 +94,7 @@ pub struct BackedEnumBodyDefinition {
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum BackedEnumMemberDefinition {
     Case(BackedEnumCaseDefinition),
-    Method(ConcreteMethodDefinition),
+    Method(MethodDefinition),
     Constant(ClassishConstantDefinition),
 }
 

@@ -2,8 +2,6 @@ use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::attribute;
 use crate::parser::internal::definition::constant::classish_constant_definition;
 use crate::parser::internal::definition::function::method_definition;
-use crate::parser::internal::definition::function::MethodDefinitionReference;
-use crate::parser::internal::definition::function::MethodDefinitionType;
 use crate::parser::internal::definition::modifier;
 use crate::parser::internal::definition::property;
 use crate::parser::internal::definition::template;
@@ -83,7 +81,7 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
     })
 }
 
-fn class_definition_member(state: &mut State) -> ParseResult<ClassDefinitionMember> {
+pub fn class_definition_member(state: &mut State) -> ParseResult<ClassDefinitionMember> {
     attribute::gather(state)?;
 
     let modifiers = modifier::collect(state)?;
@@ -93,22 +91,7 @@ fn class_definition_member(state: &mut State) -> ParseResult<ClassDefinitionMemb
     }
 
     if state.iterator.current().kind == TokenKind::Function {
-        let method = method_definition(state, MethodDefinitionType::Either, modifiers)?;
-
-        return match method {
-            MethodDefinitionReference::Abstract(method) => {
-                Ok(ClassDefinitionMember::AbstractMethod(method))
-            }
-            MethodDefinitionReference::Concrete(method) => {
-                Ok(ClassDefinitionMember::ConcreteMethod(method))
-            }
-            MethodDefinitionReference::AbstractConstructor(ctor) => {
-                Ok(ClassDefinitionMember::AbstractConstructor(ctor))
-            }
-            MethodDefinitionReference::ConcreteConstructor(ctor) => {
-                Ok(ClassDefinitionMember::ConcreteConstructor(ctor))
-            }
-        };
+        return method_definition(state, modifiers).map(ClassDefinitionMember::Method);
     }
 
     property::property_definition(state, modifiers).map(ClassDefinitionMember::Property)

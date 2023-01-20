@@ -43,8 +43,8 @@ DefinitionTree {
                             body: ClassDefinitionBody {
                                 left_brace: 36,
                                 members: [
-                                    ConcreteConstructor(
-                                        ConcreteConstructorDefinition {
+                                    Method(
+                                        MethodDefinition {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
@@ -68,14 +68,15 @@ DefinitionTree {
                                                 position: 59,
                                                 value: "__construct",
                                             },
-                                            parameters: ConstructorParameterListDefinition {
+                                            templates: None,
+                                            parameters: MethodParameterListDefinition {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
                                                 left_parenthesis: 70,
                                                 parameters: CommaSeparated {
                                                     inner: [
-                                                        ConstructorParameterDefinition {
+                                                        MethodParameterDefinition {
                                                             attributes: [],
                                                             comments: CommentGroup {
                                                                 comments: [],
@@ -132,14 +133,18 @@ DefinitionTree {
                                                 },
                                                 right_parenthesis: 125,
                                             },
-                                            body: BlockStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
+                                            return_type: None,
+                                            constraints: None,
+                                            body: Concrete(
+                                                BlockStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    left_brace: 127,
+                                                    statements: [],
+                                                    right_brace: 128,
                                                 },
-                                                left_brace: 127,
-                                                statements: [],
-                                                right_brace: 128,
-                                            },
+                                            ),
                                         },
                                     ),
                                 ],

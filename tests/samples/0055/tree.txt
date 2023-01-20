@@ -65,8 +65,8 @@ DefinitionTree {
                                 semicolon: 32,
                             },
                         ),
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -97,7 +97,7 @@ DefinitionTree {
                                     value: "foo",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -108,103 +108,107 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 66,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 67,
-                                    type_definition: Void(
-                                        Keyword {
-                                            value: "void",
-                                            position: 69,
-                                        },
-                                    ),
-                                },
-                                constraints: None,
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
-                                    },
-                                    left_brace: 74,
-                                    statements: [
-                                        Expression(
-                                            ExpressionStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: AssignmentOperation(
-                                                    Assignment {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left: Variable(
-                                                            Variable {
-                                                                position: 84,
-                                                                name: "$a",
-                                                            },
-                                                        ),
-                                                        equals: 87,
-                                                        right: ClassOperation(
-                                                            ConstantFetch {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                class: Identifier(
-                                                                    Identifier {
-                                                                        position: 89,
-                                                                        value: "static",
-                                                                    },
-                                                                ),
-                                                                double_colon: 95,
-                                                                constant: Identifier {
-                                                                    position: 97,
-                                                                    value: "foo",
-                                                                },
-                                                            },
-                                                        ),
-                                                    },
-                                                ),
-                                                semicolon: 100,
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 67,
+                                        type_definition: Void(
+                                            Keyword {
+                                                value: "void",
+                                                position: 69,
                                             },
                                         ),
-                                        Expression(
-                                            ExpressionStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: ClassOperation(
-                                                    StaticMethodCall {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        class: Identifier(
-                                                            Identifier {
-                                                                position: 111,
-                                                                value: "static",
-                                                            },
-                                                        ),
-                                                        double_colon: 117,
-                                                        method: Identifier {
-                                                            position: 119,
-                                                            value: "foo",
-                                                        },
-                                                        generics: None,
-                                                        arguments: ArgumentListExpression {
+                                    },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 74,
+                                        statements: [
+                                            Expression(
+                                                ExpressionStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: 122,
-                                                            arguments: CommaSeparated {
-                                                                inner: [],
-                                                                commas: [],
-                                                            },
-                                                            right_parenthesis: 123,
+                                                            left: Variable(
+                                                                Variable {
+                                                                    position: 84,
+                                                                    name: "$a",
+                                                                },
+                                                            ),
+                                                            equals: 87,
+                                                            right: ClassOperation(
+                                                                ConstantFetch {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    class: Identifier(
+                                                                        Identifier {
+                                                                            position: 89,
+                                                                            value: "static",
+                                                                        },
+                                                                    ),
+                                                                    double_colon: 95,
+                                                                    constant: Identifier {
+                                                                        position: 97,
+                                                                        value: "foo",
+                                                                    },
+                                                                },
+                                                            ),
                                                         },
+                                                    ),
+                                                    semicolon: 100,
+                                                },
+                                            ),
+                                            Expression(
+                                                ExpressionStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
                                                     },
-                                                ),
-                                                semicolon: 124,
-                                            },
-                                        ),
-                                    ],
-                                    right_brace: 130,
-                                },
+                                                    expression: ClassOperation(
+                                                        StaticMethodCall {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 111,
+                                                                    value: "static",
+                                                                },
+                                                            ),
+                                                            double_colon: 117,
+                                                            method: Identifier {
+                                                                position: 119,
+                                                                value: "foo",
+                                                            },
+                                                            generics: None,
+                                                            arguments: ArgumentListExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 122,
+                                                                arguments: CommaSeparated {
+                                                                    inner: [],
+                                                                    commas: [],
+                                                                },
+                                                                right_parenthesis: 123,
+                                                            },
+                                                        },
+                                                    ),
+                                                    semicolon: 124,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 130,
+                                    },
+                                ),
                             },
                         ),
                     ],

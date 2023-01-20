@@ -20,7 +20,7 @@ DefinitionTree {
                         left_brace: 9,
                         members: [
                             Method(
-                                ConcreteMethodDefinition {
+                                MethodDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -45,7 +45,7 @@ DefinitionTree {
                                         value: "bar",
                                     },
                                     templates: None,
-                                    parameters: FunctionLikeParameterListDefinition {
+                                    parameters: MethodParameterListDefinition {
                                         comments: CommentGroup {
                                             comments: [],
                                         },
@@ -56,62 +56,66 @@ DefinitionTree {
                                         },
                                         right_parenthesis: 35,
                                     },
-                                    return_type: FunctionLikeReturnTypeDefinition {
-                                        colon: 36,
-                                        type_definition: Identifier(
-                                            TemplatedIdentifier {
-                                                name: Identifier {
-                                                    position: 38,
-                                                    value: "parent",
-                                                },
-                                                templates: None,
-                                            },
-                                        ),
-                                    },
-                                    constraints: None,
-                                    body: BlockStatement {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_brace: 45,
-                                        statements: [
-                                            Expression(
-                                                ExpressionStatement {
-                                                    comments: CommentGroup {
-                                                        comments: [],
+                                    return_type: Some(
+                                        FunctionLikeReturnTypeDefinition {
+                                            colon: 36,
+                                            type_definition: Identifier(
+                                                TemplatedIdentifier {
+                                                    name: Identifier {
+                                                        position: 38,
+                                                        value: "parent",
                                                     },
-                                                    expression: ExitConstruct(
-                                                        ExitWith {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            exit: Keyword {
-                                                                value: "exit",
-                                                                position: 55,
-                                                            },
-                                                            left_parenthesis: 59,
-                                                            value: Some(
-                                                                Literal(
-                                                                    Integer(
-                                                                        LiteralInteger {
-                                                                            comments: CommentGroup {
-                                                                                comments: [],
-                                                                            },
-                                                                            value: "1",
-                                                                            position: 60,
-                                                                        },
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                            right_parenthesis: 61,
-                                                        },
-                                                    ),
-                                                    semicolon: 62,
+                                                    templates: None,
                                                 },
                                             ),
-                                        ],
-                                        right_brace: 68,
-                                    },
+                                        },
+                                    ),
+                                    constraints: None,
+                                    body: Concrete(
+                                        BlockStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            left_brace: 45,
+                                            statements: [
+                                                Expression(
+                                                    ExpressionStatement {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        expression: ExitConstruct(
+                                                            ExitWith {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                exit: Keyword {
+                                                                    value: "exit",
+                                                                    position: 55,
+                                                                },
+                                                                left_parenthesis: 59,
+                                                                value: Some(
+                                                                    Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "1",
+                                                                                position: 60,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                ),
+                                                                right_parenthesis: 61,
+                                                            },
+                                                        ),
+                                                        semicolon: 62,
+                                                    },
+                                                ),
+                                            ],
+                                            right_brace: 68,
+                                        },
+                                    ),
                                 },
                             ),
                         ],

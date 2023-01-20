@@ -5,8 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::constant::ClassishConstantDefinition;
-use crate::tree::definition::function::AbstractConstructorDefinition;
-use crate::tree::definition::function::AbstractMethodDefinition;
+use crate::tree::definition::function::MethodDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
 use crate::tree::identifier::Identifier;
 use crate::tree::identifier::TemplatedIdentifier;
@@ -45,8 +44,7 @@ pub struct InterfaceDefinitionBody {
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum InterfaceDefinitionMember {
     Constant(ClassishConstantDefinition),
-    Constructor(AbstractConstructorDefinition),
-    Method(AbstractMethodDefinition),
+    Method(MethodDefinition),
 }
 
 impl Node for InterfaceDefinition {
@@ -151,7 +149,6 @@ impl Node for InterfaceDefinitionMember {
     fn initial_position(&self) -> usize {
         match &self {
             Self::Constant(constant) => constant.initial_position(),
-            Self::Constructor(constructor) => constructor.initial_position(),
             Self::Method(method) => method.initial_position(),
         }
     }
@@ -159,7 +156,6 @@ impl Node for InterfaceDefinitionMember {
     fn final_position(&self) -> usize {
         match &self {
             Self::Constant(constant) => constant.final_position(),
-            Self::Constructor(constructor) => constructor.final_position(),
             Self::Method(method) => method.final_position(),
         }
     }
@@ -167,7 +163,6 @@ impl Node for InterfaceDefinitionMember {
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
             Self::Constant(constant) => vec![constant],
-            Self::Constructor(constructor) => vec![constructor],
             Self::Method(method) => vec![method],
         }
     }
@@ -175,7 +170,6 @@ impl Node for InterfaceDefinitionMember {
     fn get_description(&self) -> String {
         match &self {
             Self::Constant(constant) => constant.get_description(),
-            Self::Constructor(constructor) => constructor.get_description(),
             Self::Method(method) => method.get_description(),
         }
     }
