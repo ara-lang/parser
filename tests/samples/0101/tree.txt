@@ -87,6 +87,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 56,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -146,6 +148,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 90,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -206,6 +210,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 125,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -260,6 +266,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 230,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -315,6 +323,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 336,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -358,6 +368,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 439,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                     ],

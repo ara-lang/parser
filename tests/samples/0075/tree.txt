@@ -547,6 +547,8 @@ DefinitionTree {
                                                         ],
                                                         right_brace: 364,
                                                     },
+                                                    else: None,
+                                                    else_block: None,
                                                 },
                                             ),
                                             Return(
@@ -952,6 +954,8 @@ DefinitionTree {
                                                         ],
                                                         right_brace: 606,
                                                     },
+                                                    else: None,
+                                                    else_block: None,
                                                 },
                                             ),
                                             Return(
@@ -1236,6 +1240,8 @@ DefinitionTree {
                                                         ],
                                                         right_brace: 811,
                                                     },
+                                                    else: None,
+                                                    else_block: None,
                                                 },
                                             ),
                                             Return(

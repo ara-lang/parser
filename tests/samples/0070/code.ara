@@ -20,6 +20,7 @@ function bar(): void {
     foreach $a as $b => $c {  }
     foreach ($a) as $b => $c {}
     foreach ($a as $b => $c) {}
+    foreach ($a as $b => $c) {} else {}
 
     for $a = 0; $a < 10; $a++ {  }
     for ($a = 0; $a < 10; $a++) {}

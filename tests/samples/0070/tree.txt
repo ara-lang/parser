@@ -611,6 +611,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 318,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -655,6 +657,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 344,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -692,6 +696,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 370,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -732,6 +738,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 402,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -781,6 +789,8 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 434,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Foreach(
@@ -823,6 +833,66 @@ DefinitionTree {
                                     statements: [],
                                     right_brace: 466,
                                 },
+                                else: None,
+                                else_block: None,
+                            },
+                        ),
+                        Foreach(
+                            ForeachStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                foreach: Keyword {
+                                    value: "foreach",
+                                    position: 472,
+                                },
+                                iterator: ParenthesizedKeyAndValue {
+                                    left_parenthesis: 480,
+                                    expression: Variable(
+                                        Variable {
+                                            position: 481,
+                                            name: "$a",
+                                        },
+                                    ),
+                                    as: Keyword {
+                                        value: "as",
+                                        position: 484,
+                                    },
+                                    key: Variable {
+                                        position: 487,
+                                        name: "$b",
+                                    },
+                                    double_arrow: 490,
+                                    value: Variable {
+                                        position: 493,
+                                        name: "$c",
+                                    },
+                                    right_parenthesis: 495,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 497,
+                                    statements: [],
+                                    right_brace: 498,
+                                },
+                                else: Some(
+                                    Keyword {
+                                        value: "else",
+                                        position: 500,
+                                    },
+                                ),
+                                else_block: Some(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 505,
+                                        statements: [],
+                                        right_brace: 506,
+                                    },
+                                ),
                             },
                         ),
                         For(
@@ -832,7 +902,7 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 473,
+                                    position: 513,
                                 },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
@@ -844,11 +914,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 477,
+                                                            position: 517,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    equals: 480,
+                                                    equals: 520,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -856,7 +926,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "0",
-                                                                position: 482,
+                                                                position: 522,
                                                             },
                                                         ),
                                                     ),
@@ -865,7 +935,7 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    initializations_semicolon: 483,
+                                    initializations_semicolon: 523,
                                     conditions: CommaSeparated {
                                         inner: [
                                             ComparisonOperation(
@@ -875,11 +945,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 485,
+                                                            position: 525,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    less_than: 488,
+                                                    less_than: 528,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -887,7 +957,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "10",
-                                                                position: 490,
+                                                                position: 530,
                                                             },
                                                         ),
                                                     ),
@@ -896,18 +966,18 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 492,
+                                    conditions_semicolon: 532,
                                     loop: CommaSeparated {
                                         inner: [
                                             ArithmeticOperation(
                                                 PostIncrement {
                                                     left: Variable(
                                                         Variable {
-                                                            position: 494,
+                                                            position: 534,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    increment: 496,
+                                                    increment: 536,
                                                 },
                                             ),
                                         ],
@@ -918,9 +988,9 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 499,
+                                    left_brace: 539,
                                     statements: [],
-                                    right_brace: 502,
+                                    right_brace: 542,
                                 },
                             },
                         ),
@@ -931,10 +1001,10 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 508,
+                                    position: 548,
                                 },
                                 iterator: Parenthesized {
-                                    left_parenthesis: 512,
+                                    left_parenthesis: 552,
                                     initializations: CommaSeparated {
                                         inner: [
                                             AssignmentOperation(
@@ -944,11 +1014,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 513,
+                                                            position: 553,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    equals: 516,
+                                                    equals: 556,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -956,7 +1026,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "0",
-                                                                position: 518,
+                                                                position: 558,
                                                             },
                                                         ),
                                                     ),
@@ -965,7 +1035,7 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    initializations_semicolon: 519,
+                                    initializations_semicolon: 559,
                                     conditions: CommaSeparated {
                                         inner: [
                                             ComparisonOperation(
@@ -975,11 +1045,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 521,
+                                                            position: 561,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    less_than: 524,
+                                                    less_than: 564,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -987,7 +1057,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "10",
-                                                                position: 526,
+                                                                position: 566,
                                                             },
                                                         ),
                                                     ),
@@ -996,32 +1066,32 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 528,
+                                    conditions_semicolon: 568,
                                     loop: CommaSeparated {
                                         inner: [
                                             ArithmeticOperation(
                                                 PostIncrement {
                                                     left: Variable(
                                                         Variable {
-                                                            position: 530,
+                                                            position: 570,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    increment: 532,
+                                                    increment: 572,
                                                 },
                                             ),
                                         ],
                                         commas: [],
                                     },
-                                    right_parenthesis: 534,
+                                    right_parenthesis: 574,
                                 },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 536,
+                                    left_brace: 576,
                                     statements: [],
-                                    right_brace: 537,
+                                    right_brace: 577,
                                 },
                             },
                         ),
@@ -1032,7 +1102,7 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 543,
+                                    position: 583,
                                 },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
@@ -1042,7 +1112,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_parenthesis: 547,
+                                                    left_parenthesis: 587,
                                                     expression: AssignmentOperation(
                                                         Assignment {
                                                             comments: CommentGroup {
@@ -1050,11 +1120,11 @@ DefinitionTree {
                                                             },
                                                             left: Variable(
                                                                 Variable {
-                                                                    position: 548,
+                                                                    position: 588,
                                                                     name: "$a",
                                                                 },
                                                             ),
-                                                            equals: 551,
+                                                            equals: 591,
                                                             right: Literal(
                                                                 Integer(
                                                                     LiteralInteger {
@@ -1062,19 +1132,19 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         value: "0",
-                                                                        position: 553,
+                                                                        position: 593,
                                                                     },
                                                                 ),
                                                             ),
                                                         },
                                                     ),
-                                                    right_parenthesis: 554,
+                                                    right_parenthesis: 594,
                                                 },
                                             ),
                                         ],
                                         commas: [],
                                     },
-                                    initializations_semicolon: 555,
+                                    initializations_semicolon: 595,
                                     conditions: CommaSeparated {
                                         inner: [
                                             ComparisonOperation(
@@ -1084,11 +1154,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 557,
+                                                            position: 597,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    less_than: 560,
+                                                    less_than: 600,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -1096,7 +1166,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "10",
-                                                                position: 562,
+                                                                position: 602,
                                                             },
                                                         ),
                                                     ),
@@ -1105,18 +1175,18 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 564,
+                                    conditions_semicolon: 604,
                                     loop: CommaSeparated {
                                         inner: [
                                             ArithmeticOperation(
                                                 PostIncrement {
                                                     left: Variable(
                                                         Variable {
-                                                            position: 566,
+                                                            position: 606,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    increment: 568,
+                                                    increment: 608,
                                                 },
                                             ),
                                         ],
@@ -1127,9 +1197,9 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 571,
+                                    left_brace: 611,
                                     statements: [],
-                                    right_brace: 572,
+                                    right_brace: 612,
                                 },
                             },
                         ),
@@ -1140,7 +1210,7 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 578,
+                                    position: 618,
                                 },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
@@ -1150,7 +1220,7 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_parenthesis: 582,
+                                                    left_parenthesis: 622,
                                                     expression: AssignmentOperation(
                                                         Assignment {
                                                             comments: CommentGroup {
@@ -1158,11 +1228,11 @@ DefinitionTree {
                                                             },
                                                             left: Variable(
                                                                 Variable {
-                                                                    position: 583,
+                                                                    position: 623,
                                                                     name: "$a",
                                                                 },
                                                             ),
-                                                            equals: 586,
+                                                            equals: 626,
                                                             right: Literal(
                                                                 Integer(
                                                                     LiteralInteger {
@@ -1170,13 +1240,13 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         value: "0",
-                                                                        position: 588,
+                                                                        position: 628,
                                                                     },
                                                                 ),
                                                             ),
                                                         },
                                                     ),
-                                                    right_parenthesis: 589,
+                                                    right_parenthesis: 629,
                                                 },
                                             ),
                                             AssignmentOperation(
@@ -1186,11 +1256,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 592,
+                                                            position: 632,
                                                             name: "$i",
                                                         },
                                                     ),
-                                                    equals: 595,
+                                                    equals: 635,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -1198,7 +1268,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "10",
-                                                                position: 597,
+                                                                position: 637,
                                                             },
                                                         ),
                                                     ),
@@ -1206,10 +1276,10 @@ DefinitionTree {
                                             ),
                                         ],
                                         commas: [
-                                            590,
+                                            630,
                                         ],
                                     },
-                                    initializations_semicolon: 599,
+                                    initializations_semicolon: 639,
                                     conditions: CommaSeparated {
                                         inner: [
                                             ComparisonOperation(
@@ -1219,11 +1289,11 @@ DefinitionTree {
                                                     },
                                                     left: Variable(
                                                         Variable {
-                                                            position: 601,
+                                                            position: 641,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    less_than: 604,
+                                                    less_than: 644,
                                                     right: Literal(
                                                         Integer(
                                                             LiteralInteger {
@@ -1231,7 +1301,7 @@ DefinitionTree {
                                                                     comments: [],
                                                                 },
                                                                 value: "10",
-                                                                position: 606,
+                                                                position: 646,
                                                             },
                                                         ),
                                                     ),
@@ -1240,18 +1310,18 @@ DefinitionTree {
                                         ],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 608,
+                                    conditions_semicolon: 648,
                                     loop: CommaSeparated {
                                         inner: [
                                             ArithmeticOperation(
                                                 PostIncrement {
                                                     left: Variable(
                                                         Variable {
-                                                            position: 610,
+                                                            position: 650,
                                                             name: "$a",
                                                         },
                                                     ),
-                                                    increment: 612,
+                                                    increment: 652,
                                                 },
                                             ),
                                             Parenthesized(
@@ -1259,24 +1329,24 @@ DefinitionTree {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_parenthesis: 616,
+                                                    left_parenthesis: 656,
                                                     expression: ArithmeticOperation(
                                                         PostDecrement {
                                                             left: Variable(
                                                                 Variable {
-                                                                    position: 617,
+                                                                    position: 657,
                                                                     name: "$i",
                                                                 },
                                                             ),
-                                                            decrement: 619,
+                                                            decrement: 659,
                                                         },
                                                     ),
-                                                    right_parenthesis: 621,
+                                                    right_parenthesis: 661,
                                                 },
                                             ),
                                         ],
                                         commas: [
-                                            614,
+                                            654,
                                         ],
                                     },
                                 },
@@ -1284,9 +1354,9 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 623,
+                                    left_brace: 663,
                                     statements: [],
-                                    right_brace: 624,
+                                    right_brace: 664,
                                 },
                             },
                         ),
@@ -1297,19 +1367,19 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 631,
+                                    position: 671,
                                 },
                                 iterator: Standalone {
                                     initializations: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    initializations_semicolon: 635,
+                                    initializations_semicolon: 675,
                                     conditions: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 636,
+                                    conditions_semicolon: 676,
                                     loop: CommaSeparated {
                                         inner: [],
                                         commas: [],
@@ -1319,9 +1389,9 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 638,
+                                    left_brace: 678,
                                     statements: [],
-                                    right_brace: 641,
+                                    right_brace: 681,
                                 },
                             },
                         ),
@@ -1332,33 +1402,33 @@ DefinitionTree {
                                 },
                                 for: Keyword {
                                     value: "for",
-                                    position: 647,
+                                    position: 687,
                                 },
                                 iterator: Parenthesized {
-                                    left_parenthesis: 651,
+                                    left_parenthesis: 691,
                                     initializations: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    initializations_semicolon: 652,
+                                    initializations_semicolon: 692,
                                     conditions: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    conditions_semicolon: 653,
+                                    conditions_semicolon: 693,
                                     loop: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    right_parenthesis: 654,
+                                    right_parenthesis: 694,
                                 },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 656,
+                                    left_brace: 696,
                                     statements: [],
-                                    right_brace: 657,
+                                    right_brace: 697,
                                 },
                             },
                         ),
@@ -1374,11 +1444,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                position: 664,
+                                                position: 704,
                                                 name: "$a",
                                             },
                                         ),
-                                        equals: 667,
+                                        equals: 707,
                                         right: Match(
                                             MatchExpression {
                                                 comments: CommentGroup {
@@ -1386,18 +1456,18 @@ DefinitionTree {
                                                 },
                                                 match: Keyword {
                                                     value: "match",
-                                                    position: 669,
+                                                    position: 709,
                                                 },
                                                 expression: Some(
                                                     Variable(
                                                         Variable {
-                                                            position: 675,
+                                                            position: 715,
                                                             name: "$a",
                                                         },
                                                     ),
                                                 ),
                                                 body: MatchBodyExpression {
-                                                    left_brace: 678,
+                                                    left_brace: 718,
                                                     arms: CommaSeparated {
                                                         inner: [
                                                             MatchArmExpression {
@@ -1411,7 +1481,7 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         value: "1",
-                                                                                        position: 688,
+                                                                                        position: 728,
                                                                                     },
                                                                                 ),
                                                                             ),
@@ -1419,7 +1489,7 @@ DefinitionTree {
                                                                         commas: [],
                                                                     },
                                                                 ),
-                                                                arrow: 690,
+                                                                arrow: 730,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1427,7 +1497,7 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "2",
-                                                                            position: 693,
+                                                                            position: 733,
                                                                         },
                                                                     ),
                                                                 ),
@@ -1443,7 +1513,7 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         value: "3",
-                                                                                        position: 704,
+                                                                                        position: 744,
                                                                                     },
                                                                                 ),
                                                                             ),
@@ -1451,7 +1521,7 @@ DefinitionTree {
                                                                         commas: [],
                                                                     },
                                                                 ),
-                                                                arrow: 706,
+                                                                arrow: 746,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1459,7 +1529,7 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "4",
-                                                                            position: 709,
+                                                                            position: 749,
                                                                         },
                                                                     ),
                                                                 ),
@@ -1468,10 +1538,10 @@ DefinitionTree {
                                                                 condition: Default(
                                                                     Keyword {
                                                                         value: "default",
-                                                                        position: 720,
+                                                                        position: 760,
                                                                     },
                                                                 ),
-                                                                arrow: 728,
+                                                                arrow: 768,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1479,25 +1549,25 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "5",
-                                                                            position: 731,
+                                                                            position: 771,
                                                                         },
                                                                     ),
                                                                 ),
                                                             },
                                                         ],
                                                         commas: [
-                                                            694,
-                                                            710,
-                                                            732,
+                                                            734,
+                                                            750,
+                                                            772,
                                                         ],
                                                     },
-                                                    right_brace: 738,
+                                                    right_brace: 778,
                                                 },
                                             },
                                         ),
                                     },
                                 ),
-                                semicolon: 739,
+                                semicolon: 779,
                             },
                         ),
                         Expression(
@@ -1512,11 +1582,11 @@ DefinitionTree {
                                         },
                                         left: Variable(
                                             Variable {
-                                                position: 746,
+                                                position: 786,
                                                 name: "$a",
                                             },
                                         ),
-                                        equals: 749,
+                                        equals: 789,
                                         right: Match(
                                             MatchExpression {
                                                 comments: CommentGroup {
@@ -1524,7 +1594,7 @@ DefinitionTree {
                                                 },
                                                 match: Keyword {
                                                     value: "match",
-                                                    position: 751,
+                                                    position: 791,
                                                 },
                                                 expression: Some(
                                                     Parenthesized(
@@ -1532,19 +1602,19 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: 757,
+                                                            left_parenthesis: 797,
                                                             expression: Variable(
                                                                 Variable {
-                                                                    position: 758,
+                                                                    position: 798,
                                                                     name: "$a",
                                                                 },
                                                             ),
-                                                            right_parenthesis: 760,
+                                                            right_parenthesis: 800,
                                                         },
                                                     ),
                                                 ),
                                                 body: MatchBodyExpression {
-                                                    left_brace: 762,
+                                                    left_brace: 802,
                                                     arms: CommaSeparated {
                                                         inner: [
                                                             MatchArmExpression {
@@ -1558,7 +1628,7 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         value: "1",
-                                                                                        position: 772,
+                                                                                        position: 812,
                                                                                     },
                                                                                 ),
                                                                             ),
@@ -1566,7 +1636,7 @@ DefinitionTree {
                                                                         commas: [],
                                                                     },
                                                                 ),
-                                                                arrow: 774,
+                                                                arrow: 814,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1574,7 +1644,7 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "2",
-                                                                            position: 777,
+                                                                            position: 817,
                                                                         },
                                                                     ),
                                                                 ),
@@ -1590,7 +1660,7 @@ DefinitionTree {
                                                                                             comments: [],
                                                                                         },
                                                                                         value: "3",
-                                                                                        position: 788,
+                                                                                        position: 828,
                                                                                     },
                                                                                 ),
                                                                             ),
@@ -1598,7 +1668,7 @@ DefinitionTree {
                                                                         commas: [],
                                                                     },
                                                                 ),
-                                                                arrow: 790,
+                                                                arrow: 830,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1606,7 +1676,7 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "4",
-                                                                            position: 793,
+                                                                            position: 833,
                                                                         },
                                                                     ),
                                                                 ),
@@ -1615,10 +1685,10 @@ DefinitionTree {
                                                                 condition: Default(
                                                                     Keyword {
                                                                         value: "default",
-                                                                        position: 804,
+                                                                        position: 844,
                                                                     },
                                                                 ),
-                                                                arrow: 812,
+                                                                arrow: 852,
                                                                 expression: Literal(
                                                                     Integer(
                                                                         LiteralInteger {
@@ -1626,32 +1696,32 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             value: "5",
-                                                                            position: 815,
+                                                                            position: 855,
                                                                         },
                                                                     ),
                                                                 ),
                                                             },
                                                         ],
                                                         commas: [
-                                                            778,
-                                                            794,
-                                                            816,
+                                                            818,
+                                                            834,
+                                                            856,
                                                         ],
                                                     },
-                                                    right_brace: 822,
+                                                    right_brace: 862,
                                                 },
                                             },
                                         ),
                                     },
                                 ),
-                                semicolon: 823,
+                                semicolon: 863,
                             },
                         ),
                     ],
-                    right_brace: 825,
+                    right_brace: 865,
                 },
             },
         ),
     ],
-    eof: 827,
+    eof: 867,
 }

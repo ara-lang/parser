@@ -18,6 +18,8 @@ pub struct ForeachStatement {
     pub foreach: Keyword,
     pub iterator: ForeachIteratorStatement,
     pub block: BlockStatement,
+    pub r#else: Option<Keyword>,
+    pub else_block: Option<BlockStatement>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
@@ -164,7 +166,17 @@ impl Node for ForeachStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.foreach, &self.iterator, &self.block]
+        let mut children: Vec<&dyn Node> = vec![&self.foreach, &self.iterator, &self.block];
+
+        if let Some(r#else) = &self.r#else {
+            children.push(r#else);
+        }
+
+        if let Some(else_block) = &self.else_block {
+            children.push(else_block);
+        }
+
+        children
     }
 
     fn get_description(&self) -> String {
