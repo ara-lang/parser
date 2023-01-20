@@ -1,8 +1,8 @@
 error[P0013]: unexpected token `,`, expected `;`
-   --> 0043/code.ara:10:31
+   --> 0043/code.ara:10:35
    |
-10 |     final public const R = 344, P = 214;
-   |                               ^
+10 |     final public const u16 R = 344, P = 214;
+   |                                   ^
 
 error: failed to parse "0043/code.ara" due to the above issue(s)
  = summary: 1 error(s)

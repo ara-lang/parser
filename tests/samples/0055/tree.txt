@@ -38,11 +38,19 @@ DefinitionTree {
                                     value: "const",
                                     position: 16,
                                 },
+                                type_definition: UnsignedInteger(
+                                    U8(
+                                        Keyword {
+                                            value: "u8",
+                                            position: 22,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 22,
+                                    position: 25,
                                     value: "foo",
                                 },
-                                equals: 26,
+                                equals: 29,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
@@ -50,11 +58,11 @@ DefinitionTree {
                                                 comments: [],
                                             },
                                             value: "1",
-                                            position: 28,
+                                            position: 31,
                                         },
                                     ),
                                 ),
-                                semicolon: 29,
+                                semicolon: 32,
                             },
                         ),
                         ConcreteMethod(
@@ -64,28 +72,28 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 50,
+                                    position: 53,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 36,
+                                                position: 39,
                                             },
                                         ),
                                         Static(
                                             Keyword {
                                                 value: "static",
-                                                position: 43,
+                                                position: 46,
                                             },
                                         ),
                                     ],
                                 },
                                 function: Keyword {
                                     value: "function",
-                                    position: 50,
+                                    position: 53,
                                 },
                                 name: Identifier {
-                                    position: 59,
+                                    position: 62,
                                     value: "foo",
                                 },
                                 templates: None,
@@ -93,19 +101,19 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_parenthesis: 62,
+                                    left_parenthesis: 65,
                                     parameters: CommaSeparated {
                                         inner: [],
                                         commas: [],
                                     },
-                                    right_parenthesis: 63,
+                                    right_parenthesis: 66,
                                 },
                                 return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 64,
+                                    colon: 67,
                                     type_definition: Void(
                                         Keyword {
                                             value: "void",
-                                            position: 66,
+                                            position: 69,
                                         },
                                     ),
                                 },
@@ -114,7 +122,7 @@ DefinitionTree {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
-                                    left_brace: 71,
+                                    left_brace: 74,
                                     statements: [
                                         Expression(
                                             ExpressionStatement {
@@ -128,11 +136,11 @@ DefinitionTree {
                                                         },
                                                         left: Variable(
                                                             Variable {
-                                                                position: 81,
+                                                                position: 84,
                                                                 name: "$a",
                                                             },
                                                         ),
-                                                        equals: 84,
+                                                        equals: 87,
                                                         right: ClassOperation(
                                                             ConstantFetch {
                                                                 comments: CommentGroup {
@@ -140,20 +148,20 @@ DefinitionTree {
                                                                 },
                                                                 class: Identifier(
                                                                     Identifier {
-                                                                        position: 86,
+                                                                        position: 89,
                                                                         value: "static",
                                                                     },
                                                                 ),
-                                                                double_colon: 92,
+                                                                double_colon: 95,
                                                                 constant: Identifier {
-                                                                    position: 94,
+                                                                    position: 97,
                                                                     value: "foo",
                                                                 },
                                                             },
                                                         ),
                                                     },
                                                 ),
-                                                semicolon: 97,
+                                                semicolon: 100,
                                             },
                                         ),
                                         Expression(
@@ -168,13 +176,13 @@ DefinitionTree {
                                                         },
                                                         class: Identifier(
                                                             Identifier {
-                                                                position: 108,
+                                                                position: 111,
                                                                 value: "static",
                                                             },
                                                         ),
-                                                        double_colon: 114,
+                                                        double_colon: 117,
                                                         method: Identifier {
-                                                            position: 116,
+                                                            position: 119,
                                                             value: "foo",
                                                         },
                                                         generics: None,
@@ -182,28 +190,28 @@ DefinitionTree {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            left_parenthesis: 119,
+                                                            left_parenthesis: 122,
                                                             arguments: CommaSeparated {
                                                                 inner: [],
                                                                 commas: [],
                                                             },
-                                                            right_parenthesis: 120,
+                                                            right_parenthesis: 123,
                                                         },
                                                     },
                                                 ),
-                                                semicolon: 121,
+                                                semicolon: 124,
                                             },
                                         ),
                                     ],
-                                    right_brace: 127,
+                                    right_brace: 130,
                                 },
                             },
                         ),
                     ],
-                    right_brace: 129,
+                    right_brace: 132,
                 },
             },
         ),
     ],
-    eof: 131,
+    eof: 134,
 }

@@ -1,9 +1,9 @@
 namespace in;
 
-const in = 1;
+const u8 in = 1;
 interface in {}
 class in {
-    public const in = 1;
+    public const u8 in = 1;
 
     public function in(): void {}
 }

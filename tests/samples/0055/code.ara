@@ -1,5 +1,5 @@
 class Foo {
-    const foo = 1;
+    const u8 foo = 1;
 
     public static function foo(): void {
         $a = static::foo;

@@ -1,11 +1,11 @@
 interface A extends B, C {
     #[R]
-    const F = 344;
+    const u16 F = 344;
 
     #[R]
-    public const O = 344;
+    public const u16 O = 344;
 
     #[R]
     #[P]
-    final public const R = 344, P = 214;
+    final public const u16 R = 344, P = 214;
 }

@@ -5,6 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::modifier::ModifierGroupDefinition;
+use crate::tree::definition::r#type::TypeDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::identifier::Identifier;
 use crate::tree::token::Keyword;
@@ -15,6 +16,7 @@ use crate::tree::Node;
 pub struct ConstantDefinition {
     pub comments: CommentGroup,
     pub r#const: Keyword,
+    pub type_definition: TypeDefinition,
     pub name: Identifier,
     pub equals: usize,
     pub value: Expression,
@@ -28,6 +30,7 @@ pub struct ClassishConstantDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     pub modifiers: ModifierGroupDefinition,
     pub r#const: Keyword,
+    pub type_definition: TypeDefinition,
     pub name: Identifier,
     pub equals: usize,
     pub value: Expression,
@@ -48,7 +51,12 @@ impl Node for ConstantDefinition {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.r#const, &self.name, &self.value]
+        vec![
+            &self.r#const,
+            &self.type_definition,
+            &self.name,
+            &self.value,
+        ]
     }
 
     fn get_description(&self) -> String {
@@ -81,6 +89,7 @@ impl Node for ClassishConstantDefinition {
 
         children.push(&self.modifiers);
         children.push(&self.r#const);
+        children.push(&self.type_definition);
         children.push(&self.name);
         children.push(&self.value);
 

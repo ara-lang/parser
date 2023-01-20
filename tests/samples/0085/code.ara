@@ -1,4 +1,4 @@
-const FOO = vec[
+const vec<mixed> FOO = vec[
     Qux,
     Foo::Bar,
     1 + 2,
@@ -109,7 +109,7 @@ function foo(
 }
 
 class Bar {
-    private const FOO = vec[
+    private const vec<mixed> FOO = vec[
         Qux,
         Foo::Bar,
         1 + 2,
