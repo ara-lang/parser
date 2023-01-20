@@ -84,65 +84,58 @@ DefinitionTree {
                                     value: "CONST",
                                     position: 40,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 46,
-                                                value: "FOO",
+                                name: Identifier {
+                                    position: 46,
+                                    value: "FOO",
+                                },
+                                equals: 50,
+                                value: ArrowFunction(
+                                    ArrowFunctionExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        attributes: [],
+                                        static: None,
+                                        fn: Keyword {
+                                            value: "fn",
+                                            position: 52,
+                                        },
+                                        parameters: FunctionLikeParameterListDefinition {
+                                            comments: CommentGroup {
+                                                comments: [],
                                             },
-                                            equals: 50,
-                                            value: ArrowFunction(
-                                                ArrowFunctionExpression {
+                                            left_parenthesis: 54,
+                                            parameters: CommaSeparated {
+                                                inner: [],
+                                                commas: [],
+                                            },
+                                            right_parenthesis: 55,
+                                        },
+                                        return_type: FunctionLikeReturnTypeDefinition {
+                                            colon: 56,
+                                            type_definition: SignedInteger(
+                                                Default(
+                                                    Keyword {
+                                                        value: "int",
+                                                        position: 58,
+                                                    },
+                                                ),
+                                            ),
+                                        },
+                                        double_arrow: 62,
+                                        body: Literal(
+                                            Integer(
+                                                LiteralInteger {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    attributes: [],
-                                                    static: None,
-                                                    fn: Keyword {
-                                                        value: "fn",
-                                                        position: 52,
-                                                    },
-                                                    parameters: FunctionLikeParameterListDefinition {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left_parenthesis: 54,
-                                                        parameters: CommaSeparated {
-                                                            inner: [],
-                                                            commas: [],
-                                                        },
-                                                        right_parenthesis: 55,
-                                                    },
-                                                    return_type: FunctionLikeReturnTypeDefinition {
-                                                        colon: 56,
-                                                        type_definition: SignedInteger(
-                                                            Default(
-                                                                Keyword {
-                                                                    value: "int",
-                                                                    position: 58,
-                                                                },
-                                                            ),
-                                                        ),
-                                                    },
-                                                    double_arrow: 62,
-                                                    body: Literal(
-                                                        Integer(
-                                                            LiteralInteger {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                value: "1",
-                                                                position: 65,
-                                                            },
-                                                        ),
-                                                    ),
+                                                    value: "1",
+                                                    position: 65,
                                                 },
                                             ),
-                                        },
-                                    ],
-                                    commas: [],
-                                },
+                                        ),
+                                    },
+                                ),
                                 semicolon: 66,
                             },
                         ),

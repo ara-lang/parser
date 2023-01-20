@@ -3217,1080 +3217,1073 @@ DefinitionTree {
                                     value: "const",
                                     position: 1533,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 1539,
-                                                value: "FOO",
-                                            },
-                                            equals: 1543,
-                                            value: Vec(
-                                                VecExpression {
-                                                    comments: CommentGroup {
-                                                        comments: [],
-                                                    },
-                                                    vec: Keyword {
-                                                        value: "vec",
-                                                        position: 1545,
-                                                    },
-                                                    left_bracket: 1548,
-                                                    elements: CommaSeparated {
-                                                        inner: [
-                                                            VecElementExpression {
-                                                                value: Identifier(
-                                                                    Identifier {
-                                                                        position: 1558,
-                                                                        value: "Qux",
-                                                                    },
-                                                                ),
+                                name: Identifier {
+                                    position: 1539,
+                                    value: "FOO",
+                                },
+                                equals: 1543,
+                                value: Vec(
+                                    VecExpression {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        vec: Keyword {
+                                            value: "vec",
+                                            position: 1545,
+                                        },
+                                        left_bracket: 1548,
+                                        elements: CommaSeparated {
+                                            inner: [
+                                                VecElementExpression {
+                                                    value: Identifier(
+                                                        Identifier {
+                                                            position: 1558,
+                                                            value: "Qux",
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ClassOperation(
+                                                        ConstantFetch {
+                                                            comments: CommentGroup {
+                                                                comments: [],
                                                             },
-                                                            VecElementExpression {
-                                                                value: ClassOperation(
-                                                                    ConstantFetch {
+                                                            class: Identifier(
+                                                                Identifier {
+                                                                    position: 1571,
+                                                                    value: "Foo",
+                                                                },
+                                                            ),
+                                                            double_colon: 1574,
+                                                            constant: Identifier {
+                                                                position: 1576,
+                                                                value: "Bar",
+                                                            },
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Addition {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        class: Identifier(
-                                                                            Identifier {
-                                                                                position: 1571,
-                                                                                value: "Foo",
+                                                                        value: "1",
+                                                                        position: 1589,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            plus: 1591,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "2",
+                                                                        position: 1593,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Subtraction {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "3",
+                                                                        position: 1604,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            minus: 1606,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "4",
+                                                                        position: 1608,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Multiplication {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "5",
+                                                                        position: 1619,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            asterisk: 1621,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "6",
+                                                                        position: 1623,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Division {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "7",
+                                                                        position: 1634,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            slash: 1636,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "8",
+                                                                        position: 1638,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Modulo {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "9",
+                                                                        position: 1649,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            percent: 1651,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "10",
+                                                                        position: 1653,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Exponentiation {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "11",
+                                                                        position: 1665,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            pow: 1668,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "12",
+                                                                        position: 1671,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        LeftShift {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "13",
+                                                                        position: 1683,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            left_shift: 1686,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "14",
+                                                                        position: 1689,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        RightShift {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "15",
+                                                                        position: 1701,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            right_shift: 1704,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "16",
+                                                                        position: 1707,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        And {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "17",
+                                                                        position: 1719,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            and: 1722,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "18",
+                                                                        position: 1724,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        Or {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "19",
+                                                                        position: 1736,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            or: 1739,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "20",
+                                                                        position: 1741,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        Xor {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "21",
+                                                                        position: 1753,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            xor: 1756,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "22",
+                                                                        position: 1758,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: LogicalOperation(
+                                                        And {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "23",
+                                                                        position: 1770,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_ampersand: 1773,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "24",
+                                                                        position: 1776,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: LogicalOperation(
+                                                        Or {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "25",
+                                                                        position: 1788,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_pipe: 1791,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "26",
+                                                                        position: 1794,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: CoalesceOperation(
+                                                        Coalesce {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "27",
+                                                                        position: 1806,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_question: 1809,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "28",
+                                                                        position: 1812,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        Spaceship {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "29",
+                                                                        position: 1824,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            spaceship: 1827,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "30",
+                                                                        position: 1831,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        Identical {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "31",
+                                                                        position: 1843,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            triple_equals: 1846,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "32",
+                                                                        position: 1850,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        NotIdentical {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "33",
+                                                                        position: 1862,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            bang_double_equals: 1865,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "34",
+                                                                        position: 1869,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        Equal {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "35",
+                                                                        position: 1881,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            double_equals: 1884,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "36",
+                                                                        position: 1887,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        NotEqual {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "37",
+                                                                        position: 1899,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            bang_equals: 1902,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "38",
+                                                                        position: 1905,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        LessThanOrEqual {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "39",
+                                                                        position: 1917,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            less_than_equals: 1920,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "40",
+                                                                        position: 1923,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        GreaterThanOrEqual {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "41",
+                                                                        position: 1935,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            greater_than_equals: 1938,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "42",
+                                                                        position: 1941,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        LessThan {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "43",
+                                                                        position: 1953,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            less_than: 1956,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "44",
+                                                                        position: 1958,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ComparisonOperation(
+                                                        GreaterThan {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "45",
+                                                                        position: 1970,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            greater_than: 1973,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: "46",
+                                                                        position: 1975,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: StringOperation(
+                                                        Concat {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Literal(
+                                                                String(
+                                                                    LiteralString {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: ""a"",
+                                                                        position: 1987,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                            dot: 1991,
+                                                            right: Literal(
+                                                                String(
+                                                                    LiteralString {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        value: ""b"",
+                                                                        position: 1993,
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: LogicalOperation(
+                                                        Not {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            bang: 2006,
+                                                            right: Identifier(
+                                                                Identifier {
+                                                                    position: 2007,
+                                                                    value: "Biz",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: BitwiseOperation(
+                                                        Not {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            not: 2020,
+                                                            right: Identifier(
+                                                                Identifier {
+                                                                    position: 2021,
+                                                                    value: "Baz",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Positive {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            plus: 2034,
+                                                            right: Identifier(
+                                                                Identifier {
+                                                                    position: 2035,
+                                                                    value: "Qux",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: ArithmeticOperation(
+                                                        Negative {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            minus: 2048,
+                                                            right: Identifier(
+                                                                Identifier {
+                                                                    position: 2049,
+                                                                    value: "Foo",
+                                                                },
+                                                            ),
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: Tuple(
+                                                        TupleExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left_parenthesis: 2062,
+                                                            elements: CommaSeparated {
+                                                                inner: [
+                                                                    Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "1",
+                                                                                position: 2063,
                                                                             },
                                                                         ),
-                                                                        double_colon: 1574,
-                                                                        constant: Identifier {
-                                                                            position: 1576,
-                                                                            value: "Bar",
-                                                                        },
-                                                                    },
-                                                                ),
+                                                                    ),
+                                                                    Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "2",
+                                                                                position: 2066,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    Literal(
+                                                                        Integer(
+                                                                            LiteralInteger {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "3",
+                                                                                position: 2069,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                ],
+                                                                commas: [
+                                                                    2064,
+                                                                    2067,
+                                                                ],
                                                             },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Addition {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
+                                                            right_parenthesis: 2070,
+                                                        },
+                                                    ),
+                                                },
+                                                VecElementExpression {
+                                                    value: Dict(
+                                                        DictExpression {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            dict: Keyword {
+                                                                value: "dict",
+                                                                position: 2081,
+                                                            },
+                                                            left_bracket: 2085,
+                                                            elements: CommaSeparated {
+                                                                inner: [
+                                                                    DictElementExpression {
+                                                                        key: Literal(
                                                                             Integer(
                                                                                 LiteralInteger {
                                                                                     comments: CommentGroup {
                                                                                         comments: [],
                                                                                     },
                                                                                     value: "1",
-                                                                                    position: 1589,
+                                                                                    position: 2099,
                                                                                 },
                                                                             ),
                                                                         ),
-                                                                        plus: 1591,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "2",
-                                                                                    position: 1593,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Subtraction {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "3",
-                                                                                    position: 1604,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        minus: 1606,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "4",
-                                                                                    position: 1608,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Multiplication {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "5",
-                                                                                    position: 1619,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        asterisk: 1621,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "6",
-                                                                                    position: 1623,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Division {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "7",
-                                                                                    position: 1634,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        slash: 1636,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "8",
-                                                                                    position: 1638,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Modulo {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "9",
-                                                                                    position: 1649,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        percent: 1651,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "10",
-                                                                                    position: 1653,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Exponentiation {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "11",
-                                                                                    position: 1665,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        pow: 1668,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "12",
-                                                                                    position: 1671,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    LeftShift {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "13",
-                                                                                    position: 1683,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        left_shift: 1686,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "14",
-                                                                                    position: 1689,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    RightShift {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "15",
-                                                                                    position: 1701,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        right_shift: 1704,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "16",
-                                                                                    position: 1707,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    And {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "17",
-                                                                                    position: 1719,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        and: 1722,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "18",
-                                                                                    position: 1724,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    Or {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "19",
-                                                                                    position: 1736,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        or: 1739,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "20",
-                                                                                    position: 1741,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    Xor {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "21",
-                                                                                    position: 1753,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        xor: 1756,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "22",
-                                                                                    position: 1758,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: LogicalOperation(
-                                                                    And {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "23",
-                                                                                    position: 1770,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        double_ampersand: 1773,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "24",
-                                                                                    position: 1776,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: LogicalOperation(
-                                                                    Or {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "25",
-                                                                                    position: 1788,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        double_pipe: 1791,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "26",
-                                                                                    position: 1794,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: CoalesceOperation(
-                                                                    Coalesce {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "27",
-                                                                                    position: 1806,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        double_question: 1809,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "28",
-                                                                                    position: 1812,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    Spaceship {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "29",
-                                                                                    position: 1824,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        spaceship: 1827,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "30",
-                                                                                    position: 1831,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    Identical {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "31",
-                                                                                    position: 1843,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        triple_equals: 1846,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "32",
-                                                                                    position: 1850,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    NotIdentical {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "33",
-                                                                                    position: 1862,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        bang_double_equals: 1865,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "34",
-                                                                                    position: 1869,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    Equal {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "35",
-                                                                                    position: 1881,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        double_equals: 1884,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "36",
-                                                                                    position: 1887,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    NotEqual {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "37",
-                                                                                    position: 1899,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        bang_equals: 1902,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "38",
-                                                                                    position: 1905,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    LessThanOrEqual {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "39",
-                                                                                    position: 1917,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        less_than_equals: 1920,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "40",
-                                                                                    position: 1923,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    GreaterThanOrEqual {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "41",
-                                                                                    position: 1935,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        greater_than_equals: 1938,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "42",
-                                                                                    position: 1941,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    LessThan {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "43",
-                                                                                    position: 1953,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        less_than: 1956,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "44",
-                                                                                    position: 1958,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ComparisonOperation(
-                                                                    GreaterThan {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "45",
-                                                                                    position: 1970,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                        greater_than: 1973,
-                                                                        right: Literal(
-                                                                            Integer(
-                                                                                LiteralInteger {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    value: "46",
-                                                                                    position: 1975,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: StringOperation(
-                                                                    Concat {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Literal(
+                                                                        double_arrow: 2101,
+                                                                        value: Literal(
                                                                             String(
                                                                                 LiteralString {
                                                                                     comments: CommentGroup {
                                                                                         comments: [],
                                                                                     },
                                                                                     value: ""a"",
-                                                                                    position: 1987,
+                                                                                    position: 2104,
                                                                                 },
                                                                             ),
                                                                         ),
-                                                                        dot: 1991,
-                                                                        right: Literal(
+                                                                    },
+                                                                    DictElementExpression {
+                                                                        key: Literal(
+                                                                            Integer(
+                                                                                LiteralInteger {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    value: "2",
+                                                                                    position: 2121,
+                                                                                },
+                                                                            ),
+                                                                        ),
+                                                                        double_arrow: 2123,
+                                                                        value: Literal(
                                                                             String(
                                                                                 LiteralString {
                                                                                     comments: CommentGroup {
                                                                                         comments: [],
                                                                                     },
                                                                                     value: ""b"",
-                                                                                    position: 1993,
+                                                                                    position: 2126,
                                                                                 },
                                                                             ),
                                                                         ),
                                                                     },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: LogicalOperation(
-                                                                    Not {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        bang: 2006,
-                                                                        right: Identifier(
-                                                                            Identifier {
-                                                                                position: 2007,
-                                                                                value: "Biz",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: BitwiseOperation(
-                                                                    Not {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        not: 2020,
-                                                                        right: Identifier(
-                                                                            Identifier {
-                                                                                position: 2021,
-                                                                                value: "Baz",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Positive {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        plus: 2034,
-                                                                        right: Identifier(
-                                                                            Identifier {
-                                                                                position: 2035,
-                                                                                value: "Qux",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: ArithmeticOperation(
-                                                                    Negative {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        minus: 2048,
-                                                                        right: Identifier(
-                                                                            Identifier {
-                                                                                position: 2049,
-                                                                                value: "Foo",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: Tuple(
-                                                                    TupleExpression {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left_parenthesis: 2062,
-                                                                        elements: CommaSeparated {
-                                                                            inner: [
-                                                                                Literal(
-                                                                                    Integer(
-                                                                                        LiteralInteger {
-                                                                                            comments: CommentGroup {
-                                                                                                comments: [],
-                                                                                            },
-                                                                                            value: "1",
-                                                                                            position: 2063,
-                                                                                        },
-                                                                                    ),
-                                                                                ),
-                                                                                Literal(
-                                                                                    Integer(
-                                                                                        LiteralInteger {
-                                                                                            comments: CommentGroup {
-                                                                                                comments: [],
-                                                                                            },
-                                                                                            value: "2",
-                                                                                            position: 2066,
-                                                                                        },
-                                                                                    ),
-                                                                                ),
-                                                                                Literal(
-                                                                                    Integer(
-                                                                                        LiteralInteger {
-                                                                                            comments: CommentGroup {
-                                                                                                comments: [],
-                                                                                            },
-                                                                                            value: "3",
-                                                                                            position: 2069,
-                                                                                        },
-                                                                                    ),
-                                                                                ),
-                                                                            ],
-                                                                            commas: [
-                                                                                2064,
-                                                                                2067,
-                                                                            ],
-                                                                        },
-                                                                        right_parenthesis: 2070,
-                                                                    },
-                                                                ),
-                                                            },
-                                                            VecElementExpression {
-                                                                value: Dict(
-                                                                    DictExpression {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        dict: Keyword {
-                                                                            value: "dict",
-                                                                            position: 2081,
-                                                                        },
-                                                                        left_bracket: 2085,
-                                                                        elements: CommaSeparated {
-                                                                            inner: [
-                                                                                DictElementExpression {
-                                                                                    key: Literal(
-                                                                                        Integer(
-                                                                                            LiteralInteger {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: "1",
-                                                                                                position: 2099,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
-                                                                                    double_arrow: 2101,
-                                                                                    value: Literal(
-                                                                                        String(
-                                                                                            LiteralString {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: ""a"",
-                                                                                                position: 2104,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
+                                                                    DictElementExpression {
+                                                                        key: Literal(
+                                                                            Integer(
+                                                                                LiteralInteger {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    value: "3",
+                                                                                    position: 2143,
                                                                                 },
-                                                                                DictElementExpression {
-                                                                                    key: Literal(
-                                                                                        Integer(
-                                                                                            LiteralInteger {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: "2",
-                                                                                                position: 2121,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
-                                                                                    double_arrow: 2123,
-                                                                                    value: Literal(
-                                                                                        String(
-                                                                                            LiteralString {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: ""b"",
-                                                                                                position: 2126,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
+                                                                            ),
+                                                                        ),
+                                                                        double_arrow: 2145,
+                                                                        value: Literal(
+                                                                            String(
+                                                                                LiteralString {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    value: ""c"",
+                                                                                    position: 2148,
                                                                                 },
-                                                                                DictElementExpression {
-                                                                                    key: Literal(
-                                                                                        Integer(
-                                                                                            LiteralInteger {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: "3",
-                                                                                                position: 2143,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
-                                                                                    double_arrow: 2145,
-                                                                                    value: Literal(
-                                                                                        String(
-                                                                                            LiteralString {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: ""c"",
-                                                                                                position: 2148,
-                                                                                            },
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            ],
-                                                                            commas: [
-                                                                                2107,
-                                                                                2129,
-                                                                                2151,
-                                                                            ],
-                                                                        },
-                                                                        right_bracket: 2161,
+                                                                            ),
+                                                                        ),
                                                                     },
-                                                                ),
+                                                                ],
+                                                                commas: [
+                                                                    2107,
+                                                                    2129,
+                                                                    2151,
+                                                                ],
                                                             },
-                                                        ],
-                                                        commas: [
-                                                            1561,
-                                                            1579,
-                                                            1594,
-                                                            1609,
-                                                            1624,
-                                                            1639,
-                                                            1655,
-                                                            1673,
-                                                            1691,
-                                                            1709,
-                                                            1726,
-                                                            1743,
-                                                            1760,
-                                                            1778,
-                                                            1796,
-                                                            1814,
-                                                            1833,
-                                                            1852,
-                                                            1871,
-                                                            1889,
-                                                            1907,
-                                                            1925,
-                                                            1943,
-                                                            1960,
-                                                            1977,
-                                                            1996,
-                                                            2010,
-                                                            2024,
-                                                            2038,
-                                                            2052,
-                                                            2071,
-                                                            2162,
-                                                        ],
-                                                    },
-                                                    right_bracket: 2168,
+                                                            right_bracket: 2161,
+                                                        },
+                                                    ),
                                                 },
-                                            ),
+                                            ],
+                                            commas: [
+                                                1561,
+                                                1579,
+                                                1594,
+                                                1609,
+                                                1624,
+                                                1639,
+                                                1655,
+                                                1673,
+                                                1691,
+                                                1709,
+                                                1726,
+                                                1743,
+                                                1760,
+                                                1778,
+                                                1796,
+                                                1814,
+                                                1833,
+                                                1852,
+                                                1871,
+                                                1889,
+                                                1907,
+                                                1925,
+                                                1943,
+                                                1960,
+                                                1977,
+                                                1996,
+                                                2010,
+                                                2024,
+                                                2038,
+                                                2052,
+                                                2071,
+                                                2162,
+                                            ],
                                         },
-                                    ],
-                                    commas: [],
-                                },
+                                        right_bracket: 2168,
+                                    },
+                                ),
                                 semicolon: 2169,
                             },
                         ),

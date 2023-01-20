@@ -1,2 +1,11 @@
-const   A = 3,
-        B = 3;
+interface A extends B, C {
+    #[R]
+    const F = 344;
+
+    #[R]
+    public const O = 344;
+
+    #[R]
+    #[P]
+    final public const R = 344, P = 214;
+}

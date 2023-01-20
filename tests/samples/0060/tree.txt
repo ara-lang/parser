@@ -226,29 +226,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 171,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 177,
-                                                value: "static",
-                                            },
-                                            equals: 184,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "2413",
-                                                        position: 186,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 177,
+                                    value: "static",
                                 },
+                                equals: 184,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "2413",
+                                            position: 186,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 190,
                             },
                         ),
@@ -266,29 +259,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 196,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 202,
-                                                value: "self",
-                                            },
-                                            equals: 207,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "2432",
-                                                        position: 209,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 202,
+                                    value: "self",
                                 },
+                                equals: 207,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "2432",
+                                            position: 209,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 213,
                             },
                         ),
@@ -306,29 +292,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 219,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 225,
-                                                value: "return",
-                                            },
-                                            equals: 232,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "2433",
-                                                        position: 234,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 225,
+                                    value: "return",
                                 },
+                                equals: 232,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "2433",
+                                            position: 234,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 238,
                             },
                         ),
@@ -346,29 +325,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 244,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 250,
-                                                value: "parent",
-                                            },
-                                            equals: 257,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "2543",
-                                                        position: 259,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 250,
+                                    value: "parent",
                                 },
+                                equals: 257,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "2543",
+                                            position: 259,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 263,
                             },
                         ),
@@ -386,29 +358,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 269,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 275,
-                                                value: "enum",
-                                            },
-                                            equals: 280,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "24133",
-                                                        position: 282,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 275,
+                                    value: "enum",
                                 },
+                                equals: 280,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "24133",
+                                            position: 282,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 287,
                             },
                         ),
@@ -426,29 +391,22 @@ DefinitionTree {
                                     value: "const",
                                     position: 293,
                                 },
-                                entries: CommaSeparated {
-                                    inner: [
-                                        ConstantDefinitionEntry {
-                                            name: Identifier {
-                                                position: 299,
-                                                value: "from",
-                                            },
-                                            equals: 304,
-                                            value: Literal(
-                                                Integer(
-                                                    LiteralInteger {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        value: "25443",
-                                                        position: 306,
-                                                    },
-                                                ),
-                                            ),
-                                        },
-                                    ],
-                                    commas: [],
+                                name: Identifier {
+                                    position: 299,
+                                    value: "from",
                                 },
+                                equals: 304,
+                                value: Literal(
+                                    Integer(
+                                        LiteralInteger {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            value: "25443",
+                                            position: 306,
+                                        },
+                                    ),
+                                ),
                                 semicolon: 311,
                             },
                         ),
