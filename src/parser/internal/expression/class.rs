@@ -1,21 +1,15 @@
 use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::attribute;
-use crate::parser::internal::definition::constant::classish_constant_definition;
-use crate::parser::internal::definition::function::method_definition;
-use crate::parser::internal::definition::function::MethodDefinitionReference;
-use crate::parser::internal::definition::function::MethodDefinitionType;
-use crate::parser::internal::definition::modifier;
-use crate::parser::internal::definition::property;
+use crate::parser::internal::definition::class::class_definition_member;
 use crate::parser::internal::expression::argument;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
+use crate::tree::definition::class::ClassDefinitionBody;
 use crate::tree::definition::class::ClassDefinitionExtends;
 use crate::tree::definition::class::ClassDefinitionImplements;
 use crate::tree::expression::class::AnonymousClassExpression;
-use crate::tree::expression::class::AnonymousClassExpressionBody;
-use crate::tree::expression::class::AnonymousClassExpressionMember;
 use crate::tree::expression::operator::ClassOperationExpression;
 
 pub fn anonymous_initialization_class_operation_expression(
@@ -69,12 +63,12 @@ pub fn anonymous_class_expression(state: &mut State) -> ParseResult<AnonymousCla
         arguments,
         extends,
         implements,
-        body: AnonymousClassExpressionBody {
+        body: ClassDefinitionBody {
             left_brace: utils::skip_left_brace(state)?,
             members: {
                 let mut members = Vec::new();
                 while state.iterator.current().kind != TokenKind::RightBrace {
-                    members.push(anonymous_class_expression_member(state)?);
+                    members.push(class_definition_member(state)?);
                 }
 
                 members
@@ -82,37 +76,4 @@ pub fn anonymous_class_expression(state: &mut State) -> ParseResult<AnonymousCla
             right_brace: utils::skip_right_brace(state)?,
         },
     })
-}
-
-fn anonymous_class_expression_member(
-    state: &mut State,
-) -> ParseResult<AnonymousClassExpressionMember> {
-    attribute::gather(state)?;
-
-    let modifiers = modifier::collect(state)?;
-
-    if state.iterator.current().kind == TokenKind::Const {
-        return classish_constant_definition(state, modifiers)
-            .map(AnonymousClassExpressionMember::Constant);
-    }
-
-    if state.iterator.current().kind == TokenKind::Function {
-        let method = method_definition(state, MethodDefinitionType::Concrete, modifiers)?;
-
-        match method {
-            MethodDefinitionReference::Concrete(method) => {
-                return Ok(AnonymousClassExpressionMember::ConcreteMethod(method));
-            }
-            MethodDefinitionReference::ConcreteConstructor(ctor) => {
-                return Ok(AnonymousClassExpressionMember::ConcreteConstructor(ctor));
-            }
-            MethodDefinitionReference::Abstract(_)
-            | MethodDefinitionReference::AbstractConstructor(_) => crate::parser_bail!(
-                state,
-                unreachable_code("unexpected abstract method in anonymous class")
-            ),
-        }
-    }
-
-    property::property_definition(state, modifiers).map(AnonymousClassExpressionMember::Property)
 }

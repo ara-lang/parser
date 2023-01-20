@@ -1,4 +1,4 @@
-error[P0013]: unexpected token `,`, expected `;`
+error[P0011]: unexpected token `,`, expected `;`
    --> 0043/code.ara:10:35
    |
 10 |     final public const u16 R = 344, P = 214;

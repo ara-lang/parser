@@ -95,8 +95,8 @@ DefinitionTree {
                 body: ClassDefinitionBody {
                     left_brace: 58,
                     members: [
-                        ConcreteConstructor(
-                            ConcreteConstructorDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -120,14 +120,15 @@ DefinitionTree {
                                     position: 80,
                                     value: "__construct",
                                 },
-                                parameters: ConstructorParameterListDefinition {
+                                templates: None,
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
                                     left_parenthesis: 91,
                                     parameters: CommaSeparated {
                                         inner: [
-                                            ConstructorParameterDefinition {
+                                            MethodParameterDefinition {
                                                 attributes: [],
                                                 comments: CommentGroup {
                                                     comments: [],
@@ -205,18 +206,22 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 136,
                                 },
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
+                                return_type: None,
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 138,
+                                        statements: [],
+                                        right_brace: 139,
                                     },
-                                    left_brace: 138,
-                                    statements: [],
-                                    right_brace: 139,
-                                },
+                                ),
                             },
                         ),
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -241,18 +246,22 @@ DefinitionTree {
                                     value: "filter",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
                                     left_parenthesis: 168,
                                     parameters: CommaSeparated {
                                         inner: [
-                                            FunctionLikeParameterDefinition {
+                                            MethodParameterDefinition {
+                                                attributes: [],
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                attributes: [],
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 169,
+                                                    modifiers: [],
+                                                },
                                                 type_definition: Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
@@ -313,311 +322,315 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 193,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 194,
-                                    type_definition: Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 196,
-                                                value: "Collection",
-                                            },
-                                            templates: Some(
-                                                TypeTemplateGroupDefinition {
-                                                    comments: CommentGroup {
-                                                        comments: [],
-                                                    },
-                                                    less_than: 206,
-                                                    members: CommaSeparated {
-                                                        inner: [
-                                                            Identifier(
-                                                                TemplatedIdentifier {
-                                                                    name: Identifier {
-                                                                        position: 207,
-                                                                        value: "T",
-                                                                    },
-                                                                    templates: None,
-                                                                },
-                                                            ),
-                                                        ],
-                                                        commas: [],
-                                                    },
-                                                    greater_than: 208,
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 194,
+                                        type_definition: Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 196,
+                                                    value: "Collection",
                                                 },
-                                            ),
-                                        },
-                                    ),
-                                },
-                                constraints: None,
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
-                                    },
-                                    left_brace: 210,
-                                    statements: [
-                                        Expression(
-                                            ExpressionStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: AssignmentOperation(
-                                                    Assignment {
+                                                templates: Some(
+                                                    TypeTemplateGroupDefinition {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        left: Variable(
-                                                            Variable {
-                                                                position: 220,
-                                                                name: "$result",
-                                                            },
-                                                        ),
-                                                        equals: 228,
-                                                        right: Vec(
-                                                            VecExpression {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                vec: Keyword {
-                                                                    value: "vec",
-                                                                    position: 230,
-                                                                },
-                                                                left_bracket: 233,
-                                                                elements: CommaSeparated {
-                                                                    inner: [],
-                                                                    commas: [],
-                                                                },
-                                                                right_bracket: 234,
-                                                            },
-                                                        ),
+                                                        less_than: 206,
+                                                        members: CommaSeparated {
+                                                            inner: [
+                                                                Identifier(
+                                                                    TemplatedIdentifier {
+                                                                        name: Identifier {
+                                                                            position: 207,
+                                                                            value: "T",
+                                                                        },
+                                                                        templates: None,
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 208,
                                                     },
                                                 ),
-                                                semicolon: 235,
                                             },
                                         ),
-                                        Foreach(
-                                            ForeachStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                foreach: Keyword {
-                                                    value: "foreach",
-                                                    position: 245,
-                                                },
-                                                iterator: Value {
-                                                    expression: ObjectOperation(
-                                                        PropertyFetch {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            object: Variable(
-                                                                Variable {
-                                                                    position: 253,
-                                                                    name: "$this",
-                                                                },
-                                                            ),
-                                                            arrow: 258,
-                                                            property: Identifier {
-                                                                position: 260,
-                                                                value: "items",
-                                                            },
-                                                        },
-                                                    ),
-                                                    as: Keyword {
-                                                        value: "as",
-                                                        position: 266,
-                                                    },
-                                                    value: Variable {
-                                                        position: 269,
-                                                        name: "$item",
-                                                    },
-                                                },
-                                                block: BlockStatement {
+                                    },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 210,
+                                        statements: [
+                                            Expression(
+                                                ExpressionStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_brace: 275,
-                                                    statements: [
-                                                        If(
-                                                            IfStatement {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                if: Keyword {
-                                                                    value: "if",
-                                                                    position: 289,
-                                                                },
-                                                                condition: FunctionOperation(
-                                                                    Call {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        function: Variable(
-                                                                            Variable {
-                                                                                position: 292,
-                                                                                name: "$func",
-                                                                            },
-                                                                        ),
-                                                                        generics: None,
-                                                                        arguments: ArgumentListExpression {
-                                                                            comments: CommentGroup {
-                                                                                comments: [],
-                                                                            },
-                                                                            left_parenthesis: 297,
-                                                                            arguments: CommaSeparated {
-                                                                                inner: [
-                                                                                    Value {
-                                                                                        comments: CommentGroup {
-                                                                                            comments: [],
-                                                                                        },
-                                                                                        value: Variable(
-                                                                                            Variable {
-                                                                                                position: 298,
-                                                                                                name: "$item",
-                                                                                            },
-                                                                                        ),
-                                                                                    },
-                                                                                ],
-                                                                                commas: [],
-                                                                            },
-                                                                            right_parenthesis: 303,
-                                                                        },
-                                                                    },
-                                                                ),
-                                                                block: BlockStatement {
-                                                                    comments: CommentGroup {
-                                                                        comments: [],
-                                                                    },
-                                                                    left_brace: 305,
-                                                                    statements: [
-                                                                        Expression(
-                                                                            ExpressionStatement {
-                                                                                comments: CommentGroup {
-                                                                                    comments: [],
-                                                                                },
-                                                                                expression: AssignmentOperation(
-                                                                                    Assignment {
-                                                                                        comments: CommentGroup {
-                                                                                            comments: [],
-                                                                                        },
-                                                                                        left: ArrayOperation(
-                                                                                            Push {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                array: Variable(
-                                                                                                    Variable {
-                                                                                                        position: 323,
-                                                                                                        name: "$result",
-                                                                                                    },
-                                                                                                ),
-                                                                                                left_bracket: 330,
-                                                                                                right_bracket: 331,
-                                                                                            },
-                                                                                        ),
-                                                                                        equals: 333,
-                                                                                        right: Variable(
-                                                                                            Variable {
-                                                                                                position: 335,
-                                                                                                name: "$item",
-                                                                                            },
-                                                                                        ),
-                                                                                    },
-                                                                                ),
-                                                                                semicolon: 340,
-                                                                            },
-                                                                        ),
-                                                                    ],
-                                                                    right_brace: 354,
-                                                                },
-                                                                elseifs: [],
-                                                                else: None,
-                                                            },
-                                                        ),
-                                                    ],
-                                                    right_brace: 364,
-                                                },
-                                            },
-                                        ),
-                                        Return(
-                                            Explicit {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                return: Keyword {
-                                                    value: "return",
-                                                    position: 375,
-                                                },
-                                                expression: Some(
-                                                    ClassOperation(
-                                                        Initialization {
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: Keyword {
-                                                                value: "new",
-                                                                position: 382,
-                                                            },
-                                                            class: Identifier(
-                                                                Identifier {
-                                                                    position: 386,
-                                                                    value: "Collection",
+                                                            left: Variable(
+                                                                Variable {
+                                                                    position: 220,
+                                                                    name: "$result",
                                                                 },
                                                             ),
-                                                            generics: Some(
-                                                                GenericGroupExpression {
-                                                                    double_colon_less_than: 396,
-                                                                    types: CommaSeparated {
-                                                                        inner: [
-                                                                            Identifier(
-                                                                                TemplatedIdentifier {
-                                                                                    name: Identifier {
-                                                                                        position: 399,
-                                                                                        value: "T",
-                                                                                    },
-                                                                                    templates: None,
-                                                                                },
-                                                                            ),
-                                                                        ],
+                                                            equals: 228,
+                                                            right: Vec(
+                                                                VecExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    vec: Keyword {
+                                                                        value: "vec",
+                                                                        position: 230,
+                                                                    },
+                                                                    left_bracket: 233,
+                                                                    elements: CommaSeparated {
+                                                                        inner: [],
                                                                         commas: [],
                                                                     },
-                                                                    greater_than: 400,
+                                                                    right_bracket: 234,
                                                                 },
                                                             ),
-                                                            arguments: ArgumentListExpression {
+                                                        },
+                                                    ),
+                                                    semicolon: 235,
+                                                },
+                                            ),
+                                            Foreach(
+                                                ForeachStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    foreach: Keyword {
+                                                        value: "foreach",
+                                                        position: 245,
+                                                    },
+                                                    iterator: Value {
+                                                        expression: ObjectOperation(
+                                                            PropertyFetch {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                left_parenthesis: 401,
-                                                                arguments: CommaSeparated {
-                                                                    inner: [
-                                                                        Value {
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 253,
+                                                                        name: "$this",
+                                                                    },
+                                                                ),
+                                                                arrow: 258,
+                                                                property: Identifier {
+                                                                    position: 260,
+                                                                    value: "items",
+                                                                },
+                                                            },
+                                                        ),
+                                                        as: Keyword {
+                                                            value: "as",
+                                                            position: 266,
+                                                        },
+                                                        value: Variable {
+                                                            position: 269,
+                                                            name: "$item",
+                                                        },
+                                                    },
+                                                    block: BlockStatement {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_brace: 275,
+                                                        statements: [
+                                                            If(
+                                                                IfStatement {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    if: Keyword {
+                                                                        value: "if",
+                                                                        position: 289,
+                                                                    },
+                                                                    condition: FunctionOperation(
+                                                                        Call {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
                                                                             },
-                                                                            value: Variable(
+                                                                            function: Variable(
                                                                                 Variable {
-                                                                                    position: 402,
-                                                                                    name: "$result",
+                                                                                    position: 292,
+                                                                                    name: "$func",
                                                                                 },
                                                                             ),
+                                                                            generics: None,
+                                                                            arguments: ArgumentListExpression {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                left_parenthesis: 297,
+                                                                                arguments: CommaSeparated {
+                                                                                    inner: [
+                                                                                        Value {
+                                                                                            comments: CommentGroup {
+                                                                                                comments: [],
+                                                                                            },
+                                                                                            value: Variable(
+                                                                                                Variable {
+                                                                                                    position: 298,
+                                                                                                    name: "$item",
+                                                                                                },
+                                                                                            ),
+                                                                                        },
+                                                                                    ],
+                                                                                    commas: [],
+                                                                                },
+                                                                                right_parenthesis: 303,
+                                                                            },
                                                                         },
-                                                                    ],
-                                                                    commas: [],
+                                                                    ),
+                                                                    block: BlockStatement {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        left_brace: 305,
+                                                                        statements: [
+                                                                            Expression(
+                                                                                ExpressionStatement {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    expression: AssignmentOperation(
+                                                                                        Assignment {
+                                                                                            comments: CommentGroup {
+                                                                                                comments: [],
+                                                                                            },
+                                                                                            left: ArrayOperation(
+                                                                                                Push {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    array: Variable(
+                                                                                                        Variable {
+                                                                                                            position: 323,
+                                                                                                            name: "$result",
+                                                                                                        },
+                                                                                                    ),
+                                                                                                    left_bracket: 330,
+                                                                                                    right_bracket: 331,
+                                                                                                },
+                                                                                            ),
+                                                                                            equals: 333,
+                                                                                            right: Variable(
+                                                                                                Variable {
+                                                                                                    position: 335,
+                                                                                                    name: "$item",
+                                                                                                },
+                                                                                            ),
+                                                                                        },
+                                                                                    ),
+                                                                                    semicolon: 340,
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        right_brace: 354,
+                                                                    },
+                                                                    elseifs: [],
+                                                                    else: None,
                                                                 },
-                                                                right_parenthesis: 409,
+                                                            ),
+                                                        ],
+                                                        right_brace: 364,
+                                                    },
+                                                },
+                                            ),
+                                            Return(
+                                                Explicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    return: Keyword {
+                                                        value: "return",
+                                                        position: 375,
+                                                    },
+                                                    expression: Some(
+                                                        ClassOperation(
+                                                            Initialization {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 382,
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 386,
+                                                                        value: "Collection",
+                                                                    },
+                                                                ),
+                                                                generics: Some(
+                                                                    GenericGroupExpression {
+                                                                        double_colon_less_than: 396,
+                                                                        types: CommaSeparated {
+                                                                            inner: [
+                                                                                Identifier(
+                                                                                    TemplatedIdentifier {
+                                                                                        name: Identifier {
+                                                                                            position: 399,
+                                                                                            value: "T",
+                                                                                        },
+                                                                                        templates: None,
+                                                                                    },
+                                                                                ),
+                                                                            ],
+                                                                            commas: [],
+                                                                        },
+                                                                        greater_than: 400,
+                                                                    },
+                                                                ),
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 401,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 402,
+                                                                                        name: "$result",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 409,
+                                                                },
                                                             },
-                                                        },
+                                                        ),
                                                     ),
-                                                ),
-                                                semicolon: 410,
-                                            },
-                                        ),
-                                    ],
-                                    right_brace: 416,
-                                },
+                                                    semicolon: 410,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 416,
+                                    },
+                                ),
                             },
                         ),
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -663,18 +676,22 @@ DefinitionTree {
                                         greater_than: 447,
                                     },
                                 ),
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
                                     left_parenthesis: 448,
                                     parameters: CommaSeparated {
                                         inner: [
-                                            FunctionLikeParameterDefinition {
+                                            MethodParameterDefinition {
+                                                attributes: [],
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                attributes: [],
+                                                modifiers: ModifierGroupDefinition {
+                                                    position: 449,
+                                                    modifiers: [],
+                                                },
                                                 type_definition: Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
@@ -738,283 +755,287 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 473,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 474,
-                                    type_definition: Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 476,
-                                                value: "Collection",
-                                            },
-                                            templates: Some(
-                                                TypeTemplateGroupDefinition {
-                                                    comments: CommentGroup {
-                                                        comments: [],
-                                                    },
-                                                    less_than: 486,
-                                                    members: CommaSeparated {
-                                                        inner: [
-                                                            Identifier(
-                                                                TemplatedIdentifier {
-                                                                    name: Identifier {
-                                                                        position: 487,
-                                                                        value: "Tout",
-                                                                    },
-                                                                    templates: None,
-                                                                },
-                                                            ),
-                                                        ],
-                                                        commas: [],
-                                                    },
-                                                    greater_than: 491,
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 474,
+                                        type_definition: Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 476,
+                                                    value: "Collection",
                                                 },
-                                            ),
-                                        },
-                                    ),
-                                },
-                                constraints: None,
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
-                                    },
-                                    left_brace: 493,
-                                    statements: [
-                                        Expression(
-                                            ExpressionStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: AssignmentOperation(
-                                                    Assignment {
+                                                templates: Some(
+                                                    TypeTemplateGroupDefinition {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        left: Variable(
-                                                            Variable {
-                                                                position: 503,
-                                                                name: "$result",
-                                                            },
-                                                        ),
-                                                        equals: 511,
-                                                        right: Vec(
-                                                            VecExpression {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                vec: Keyword {
-                                                                    value: "vec",
-                                                                    position: 513,
-                                                                },
-                                                                left_bracket: 516,
-                                                                elements: CommaSeparated {
-                                                                    inner: [],
-                                                                    commas: [],
-                                                                },
-                                                                right_bracket: 517,
-                                                            },
-                                                        ),
+                                                        less_than: 486,
+                                                        members: CommaSeparated {
+                                                            inner: [
+                                                                Identifier(
+                                                                    TemplatedIdentifier {
+                                                                        name: Identifier {
+                                                                            position: 487,
+                                                                            value: "Tout",
+                                                                        },
+                                                                        templates: None,
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 491,
                                                     },
                                                 ),
-                                                semicolon: 518,
                                             },
                                         ),
-                                        Foreach(
-                                            ForeachStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                foreach: Keyword {
-                                                    value: "foreach",
-                                                    position: 528,
-                                                },
-                                                iterator: Value {
-                                                    expression: ObjectOperation(
-                                                        PropertyFetch {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            object: Variable(
-                                                                Variable {
-                                                                    position: 536,
-                                                                    name: "$this",
-                                                                },
-                                                            ),
-                                                            arrow: 541,
-                                                            property: Identifier {
-                                                                position: 543,
-                                                                value: "items",
-                                                            },
-                                                        },
-                                                    ),
-                                                    as: Keyword {
-                                                        value: "as",
-                                                        position: 549,
-                                                    },
-                                                    value: Variable {
-                                                        position: 552,
-                                                        name: "$item",
-                                                    },
-                                                },
-                                                block: BlockStatement {
+                                    },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 493,
+                                        statements: [
+                                            Expression(
+                                                ExpressionStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_brace: 558,
-                                                    statements: [
-                                                        Expression(
-                                                            ExpressionStatement {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                expression: AssignmentOperation(
-                                                                    Assignment {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: ArrayOperation(
-                                                                            Push {
-                                                                                comments: CommentGroup {
-                                                                                    comments: [],
-                                                                                },
-                                                                                array: Variable(
-                                                                                    Variable {
-                                                                                        position: 572,
-                                                                                        name: "$result",
-                                                                                    },
-                                                                                ),
-                                                                                left_bracket: 579,
-                                                                                right_bracket: 580,
-                                                                            },
-                                                                        ),
-                                                                        equals: 582,
-                                                                        right: FunctionOperation(
-                                                                            Call {
-                                                                                comments: CommentGroup {
-                                                                                    comments: [],
-                                                                                },
-                                                                                function: Variable(
-                                                                                    Variable {
-                                                                                        position: 584,
-                                                                                        name: "$func",
-                                                                                    },
-                                                                                ),
-                                                                                generics: None,
-                                                                                arguments: ArgumentListExpression {
-                                                                                    comments: CommentGroup {
-                                                                                        comments: [],
-                                                                                    },
-                                                                                    left_parenthesis: 589,
-                                                                                    arguments: CommaSeparated {
-                                                                                        inner: [
-                                                                                            Value {
-                                                                                                comments: CommentGroup {
-                                                                                                    comments: [],
-                                                                                                },
-                                                                                                value: Variable(
-                                                                                                    Variable {
-                                                                                                        position: 590,
-                                                                                                        name: "$item",
-                                                                                                    },
-                                                                                                ),
-                                                                                            },
-                                                                                        ],
-                                                                                        commas: [],
-                                                                                    },
-                                                                                    right_parenthesis: 595,
-                                                                                },
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ),
-                                                                semicolon: 596,
-                                                            },
-                                                        ),
-                                                    ],
-                                                    right_brace: 606,
-                                                },
-                                            },
-                                        ),
-                                        Return(
-                                            Explicit {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                return: Keyword {
-                                                    value: "return",
-                                                    position: 617,
-                                                },
-                                                expression: Some(
-                                                    ClassOperation(
-                                                        Initialization {
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
                                                             comments: CommentGroup {
                                                                 comments: [],
                                                             },
-                                                            new: Keyword {
-                                                                value: "new",
-                                                                position: 624,
-                                                            },
-                                                            class: Identifier(
-                                                                Identifier {
-                                                                    position: 628,
-                                                                    value: "Collection",
+                                                            left: Variable(
+                                                                Variable {
+                                                                    position: 503,
+                                                                    name: "$result",
                                                                 },
                                                             ),
-                                                            generics: Some(
-                                                                GenericGroupExpression {
-                                                                    double_colon_less_than: 638,
-                                                                    types: CommaSeparated {
-                                                                        inner: [
-                                                                            Identifier(
-                                                                                TemplatedIdentifier {
-                                                                                    name: Identifier {
-                                                                                        position: 641,
-                                                                                        value: "Tout",
-                                                                                    },
-                                                                                    templates: None,
-                                                                                },
-                                                                            ),
-                                                                        ],
+                                                            equals: 511,
+                                                            right: Vec(
+                                                                VecExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    vec: Keyword {
+                                                                        value: "vec",
+                                                                        position: 513,
+                                                                    },
+                                                                    left_bracket: 516,
+                                                                    elements: CommaSeparated {
+                                                                        inner: [],
                                                                         commas: [],
                                                                     },
-                                                                    greater_than: 645,
+                                                                    right_bracket: 517,
                                                                 },
                                                             ),
-                                                            arguments: ArgumentListExpression {
+                                                        },
+                                                    ),
+                                                    semicolon: 518,
+                                                },
+                                            ),
+                                            Foreach(
+                                                ForeachStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    foreach: Keyword {
+                                                        value: "foreach",
+                                                        position: 528,
+                                                    },
+                                                    iterator: Value {
+                                                        expression: ObjectOperation(
+                                                            PropertyFetch {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                left_parenthesis: 646,
-                                                                arguments: CommaSeparated {
-                                                                    inner: [
-                                                                        Value {
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 536,
+                                                                        name: "$this",
+                                                                    },
+                                                                ),
+                                                                arrow: 541,
+                                                                property: Identifier {
+                                                                    position: 543,
+                                                                    value: "items",
+                                                                },
+                                                            },
+                                                        ),
+                                                        as: Keyword {
+                                                            value: "as",
+                                                            position: 549,
+                                                        },
+                                                        value: Variable {
+                                                            position: 552,
+                                                            name: "$item",
+                                                        },
+                                                    },
+                                                    block: BlockStatement {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_brace: 558,
+                                                        statements: [
+                                                            Expression(
+                                                                ExpressionStatement {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    expression: AssignmentOperation(
+                                                                        Assignment {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
                                                                             },
-                                                                            value: Variable(
-                                                                                Variable {
-                                                                                    position: 647,
-                                                                                    name: "$result",
+                                                                            left: ArrayOperation(
+                                                                                Push {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    array: Variable(
+                                                                                        Variable {
+                                                                                            position: 572,
+                                                                                            name: "$result",
+                                                                                        },
+                                                                                    ),
+                                                                                    left_bracket: 579,
+                                                                                    right_bracket: 580,
+                                                                                },
+                                                                            ),
+                                                                            equals: 582,
+                                                                            right: FunctionOperation(
+                                                                                Call {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    function: Variable(
+                                                                                        Variable {
+                                                                                            position: 584,
+                                                                                            name: "$func",
+                                                                                        },
+                                                                                    ),
+                                                                                    generics: None,
+                                                                                    arguments: ArgumentListExpression {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        left_parenthesis: 589,
+                                                                                        arguments: CommaSeparated {
+                                                                                            inner: [
+                                                                                                Value {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    value: Variable(
+                                                                                                        Variable {
+                                                                                                            position: 590,
+                                                                                                            name: "$item",
+                                                                                                        },
+                                                                                                    ),
+                                                                                                },
+                                                                                            ],
+                                                                                            commas: [],
+                                                                                        },
+                                                                                        right_parenthesis: 595,
+                                                                                    },
                                                                                 },
                                                                             ),
                                                                         },
-                                                                    ],
-                                                                    commas: [],
+                                                                    ),
+                                                                    semicolon: 596,
                                                                 },
-                                                                right_parenthesis: 654,
+                                                            ),
+                                                        ],
+                                                        right_brace: 606,
+                                                    },
+                                                },
+                                            ),
+                                            Return(
+                                                Explicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    return: Keyword {
+                                                        value: "return",
+                                                        position: 617,
+                                                    },
+                                                    expression: Some(
+                                                        ClassOperation(
+                                                            Initialization {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                new: Keyword {
+                                                                    value: "new",
+                                                                    position: 624,
+                                                                },
+                                                                class: Identifier(
+                                                                    Identifier {
+                                                                        position: 628,
+                                                                        value: "Collection",
+                                                                    },
+                                                                ),
+                                                                generics: Some(
+                                                                    GenericGroupExpression {
+                                                                        double_colon_less_than: 638,
+                                                                        types: CommaSeparated {
+                                                                            inner: [
+                                                                                Identifier(
+                                                                                    TemplatedIdentifier {
+                                                                                        name: Identifier {
+                                                                                            position: 641,
+                                                                                            value: "Tout",
+                                                                                        },
+                                                                                        templates: None,
+                                                                                    },
+                                                                                ),
+                                                                            ],
+                                                                            commas: [],
+                                                                        },
+                                                                        greater_than: 645,
+                                                                    },
+                                                                ),
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 646,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 647,
+                                                                                        name: "$result",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 654,
+                                                                },
                                                             },
-                                                        },
+                                                        ),
                                                     ),
-                                                ),
-                                                semicolon: 655,
-                                            },
-                                        ),
-                                    ],
-                                    right_brace: 661,
-                                },
+                                                    semicolon: 655,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 661,
+                                    },
+                                ),
                             },
                         ),
-                        ConcreteMethod(
-                            ConcreteMethodDefinition {
+                        Method(
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -1039,7 +1060,7 @@ DefinitionTree {
                                     value: "sum",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -1050,17 +1071,19 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 688,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 689,
-                                    type_definition: SignedInteger(
-                                        Default(
-                                            Keyword {
-                                                value: "int",
-                                                position: 691,
-                                            },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 689,
+                                        type_definition: SignedInteger(
+                                            Default(
+                                                Keyword {
+                                                    value: "int",
+                                                    position: 691,
+                                                },
+                                            ),
                                         ),
-                                    ),
-                                },
+                                    },
+                                ),
                                 constraints: Some(
                                     MethodTypeConstraintGroupDefinition {
                                         comments: CommentGroup {
@@ -1099,137 +1122,139 @@ DefinitionTree {
                                         },
                                     },
                                 ),
-                                body: BlockStatement {
-                                    comments: CommentGroup {
-                                        comments: [],
-                                    },
-                                    left_brace: 710,
-                                    statements: [
-                                        Expression(
-                                            ExpressionStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: AssignmentOperation(
-                                                    Assignment {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left: Variable(
-                                                            Variable {
-                                                                position: 720,
-                                                                name: "$result",
-                                                            },
-                                                        ),
-                                                        equals: 728,
-                                                        right: Literal(
-                                                            Integer(
-                                                                LiteralInteger {
-                                                                    comments: CommentGroup {
-                                                                        comments: [],
-                                                                    },
-                                                                    value: "0",
-                                                                    position: 730,
-                                                                },
-                                                            ),
-                                                        ),
-                                                    },
-                                                ),
-                                                semicolon: 731,
-                                            },
-                                        ),
-                                        Foreach(
-                                            ForeachStatement {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                foreach: Keyword {
-                                                    value: "foreach",
-                                                    position: 741,
-                                                },
-                                                iterator: Value {
-                                                    expression: ObjectOperation(
-                                                        PropertyFetch {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            object: Variable(
-                                                                Variable {
-                                                                    position: 749,
-                                                                    name: "$this",
-                                                                },
-                                                            ),
-                                                            arrow: 754,
-                                                            property: Identifier {
-                                                                position: 756,
-                                                                value: "items",
-                                                            },
-                                                        },
-                                                    ),
-                                                    as: Keyword {
-                                                        value: "as",
-                                                        position: 762,
-                                                    },
-                                                    value: Variable {
-                                                        position: 765,
-                                                        name: "$item",
-                                                    },
-                                                },
-                                                block: BlockStatement {
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 710,
+                                        statements: [
+                                            Expression(
+                                                ExpressionStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
                                                     },
-                                                    left_brace: 771,
-                                                    statements: [
-                                                        Expression(
-                                                            ExpressionStatement {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
+                                                    expression: AssignmentOperation(
+                                                        Assignment {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            left: Variable(
+                                                                Variable {
+                                                                    position: 720,
+                                                                    name: "$result",
                                                                 },
-                                                                expression: AssignmentOperation(
-                                                                    Addition {
+                                                            ),
+                                                            equals: 728,
+                                                            right: Literal(
+                                                                Integer(
+                                                                    LiteralInteger {
                                                                         comments: CommentGroup {
                                                                             comments: [],
                                                                         },
-                                                                        left: Variable(
-                                                                            Variable {
-                                                                                position: 785,
-                                                                                name: "$result",
-                                                                            },
-                                                                        ),
-                                                                        plus_equals: 793,
-                                                                        right: Variable(
-                                                                            Variable {
-                                                                                position: 796,
-                                                                                name: "$item",
-                                                                            },
-                                                                        ),
+                                                                        value: "0",
+                                                                        position: 730,
                                                                     },
                                                                 ),
-                                                                semicolon: 801,
+                                                            ),
+                                                        },
+                                                    ),
+                                                    semicolon: 731,
+                                                },
+                                            ),
+                                            Foreach(
+                                                ForeachStatement {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    foreach: Keyword {
+                                                        value: "foreach",
+                                                        position: 741,
+                                                    },
+                                                    iterator: Value {
+                                                        expression: ObjectOperation(
+                                                            PropertyFetch {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                object: Variable(
+                                                                    Variable {
+                                                                        position: 749,
+                                                                        name: "$this",
+                                                                    },
+                                                                ),
+                                                                arrow: 754,
+                                                                property: Identifier {
+                                                                    position: 756,
+                                                                    value: "items",
+                                                                },
                                                             },
                                                         ),
-                                                    ],
-                                                    right_brace: 811,
-                                                },
-                                            },
-                                        ),
-                                        Return(
-                                            Implicit {
-                                                comments: CommentGroup {
-                                                    comments: [],
-                                                },
-                                                expression: Variable(
-                                                    Variable {
-                                                        position: 822,
-                                                        name: "$result",
+                                                        as: Keyword {
+                                                            value: "as",
+                                                            position: 762,
+                                                        },
+                                                        value: Variable {
+                                                            position: 765,
+                                                            name: "$item",
+                                                        },
                                                     },
-                                                ),
-                                            },
-                                        ),
-                                    ],
-                                    right_brace: 834,
-                                },
+                                                    block: BlockStatement {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_brace: 771,
+                                                        statements: [
+                                                            Expression(
+                                                                ExpressionStatement {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    expression: AssignmentOperation(
+                                                                        Addition {
+                                                                            comments: CommentGroup {
+                                                                                comments: [],
+                                                                            },
+                                                                            left: Variable(
+                                                                                Variable {
+                                                                                    position: 785,
+                                                                                    name: "$result",
+                                                                                },
+                                                                            ),
+                                                                            plus_equals: 793,
+                                                                            right: Variable(
+                                                                                Variable {
+                                                                                    position: 796,
+                                                                                    name: "$item",
+                                                                                },
+                                                                            ),
+                                                                        },
+                                                                    ),
+                                                                    semicolon: 801,
+                                                                },
+                                                            ),
+                                                        ],
+                                                        right_brace: 811,
+                                                    },
+                                                },
+                                            ),
+                                            Return(
+                                                Implicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    expression: Variable(
+                                                        Variable {
+                                                            position: 822,
+                                                            name: "$result",
+                                                        },
+                                                    ),
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 834,
+                                    },
+                                ),
                             },
                         ),
                     ],

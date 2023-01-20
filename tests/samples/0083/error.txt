@@ -12,15 +12,6 @@ error[P0004]: case `Foo::Bar` of backed enum `Foo` must have a value
 4 |     case Bar;
   |          ^^^^
 
-error[P0005]: enum `Foo` cannot have constructor
-  --> 0083/code.ara:6:5
-  |
-3 | enum Foo: int {
-  |      ---
-  .
-6 |     public function __construct() {}
-  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 error[P0003]: case `Bar::Baz` of unit enum `Bar` cannot have a value
    --> 0083/code.ara:10:10
    |
@@ -29,23 +20,12 @@ error[P0003]: case `Bar::Baz` of unit enum `Bar` cannot have a value
 10 |     case Baz = 1;
    |          ^^^^^^^^
 
-error[P0006]: enum `Bar` cannot have magic method
-   --> 0083/code.ara:12:5
-   |  
- 9 |   enum Bar {
-   |        ---
-   .  
-12 | /     public function __get(string $name): mixed {
-13 | |         return get_var($name);
-14 | |     }
-   | \-----^
-
-error[P0013]: unexpected token `?>`, expected a definition
+error[P0011]: unexpected token `?>`, expected a definition
    --> 0083/code.ara:17:1
    |
 17 | ?>
    | ^^
 
 error: failed to parse "0083/code.ara" due to the above issue(s)
- = summary: 6 error(s)
+ = summary: 4 error(s)
 

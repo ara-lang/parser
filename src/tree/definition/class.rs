@@ -5,10 +5,7 @@ use serde::Serialize;
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::constant::ClassishConstantDefinition;
-use crate::tree::definition::function::AbstractConstructorDefinition;
-use crate::tree::definition::function::AbstractMethodDefinition;
-use crate::tree::definition::function::ConcreteConstructorDefinition;
-use crate::tree::definition::function::ConcreteMethodDefinition;
+use crate::tree::definition::function::MethodDefinition;
 use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::property::PropertyDefinition;
 use crate::tree::definition::template::TemplateGroupDefinition;
@@ -59,10 +56,7 @@ pub struct ClassDefinitionBody {
 pub enum ClassDefinitionMember {
     Constant(ClassishConstantDefinition),
     Property(PropertyDefinition),
-    AbstractMethod(AbstractMethodDefinition),
-    AbstractConstructor(AbstractConstructorDefinition),
-    ConcreteMethod(ConcreteMethodDefinition),
-    ConcreteConstructor(ConcreteConstructorDefinition),
+    Method(MethodDefinition),
 }
 
 impl Node for ClassDefinition {
@@ -194,10 +188,7 @@ impl Node for ClassDefinitionMember {
         match &self {
             Self::Constant(constant) => constant.comments(),
             Self::Property(property) => property.comments(),
-            Self::AbstractMethod(method) => method.comments(),
-            Self::AbstractConstructor(constructor) => constructor.comments(),
-            Self::ConcreteMethod(method) => method.comments(),
-            Self::ConcreteConstructor(constructor) => constructor.comments(),
+            Self::Method(method) => method.comments(),
         }
     }
 
@@ -205,10 +196,7 @@ impl Node for ClassDefinitionMember {
         match &self {
             Self::Constant(constant) => constant.initial_position(),
             Self::Property(property) => property.initial_position(),
-            Self::AbstractMethod(method) => method.initial_position(),
-            Self::AbstractConstructor(constructor) => constructor.initial_position(),
-            Self::ConcreteMethod(method) => method.initial_position(),
-            Self::ConcreteConstructor(constructor) => constructor.initial_position(),
+            Self::Method(method) => method.initial_position(),
         }
     }
 
@@ -216,10 +204,7 @@ impl Node for ClassDefinitionMember {
         match &self {
             Self::Constant(constant) => constant.final_position(),
             Self::Property(property) => property.final_position(),
-            Self::AbstractMethod(method) => method.final_position(),
-            Self::AbstractConstructor(constructor) => constructor.final_position(),
-            Self::ConcreteMethod(method) => method.final_position(),
-            Self::ConcreteConstructor(constructor) => constructor.final_position(),
+            Self::Method(method) => method.final_position(),
         }
     }
 
@@ -227,10 +212,7 @@ impl Node for ClassDefinitionMember {
         match &self {
             Self::Constant(constant) => vec![constant],
             Self::Property(property) => vec![property],
-            Self::AbstractMethod(method) => vec![method],
-            Self::AbstractConstructor(constructor) => vec![constructor],
-            Self::ConcreteMethod(method) => vec![method],
-            Self::ConcreteConstructor(constructor) => vec![constructor],
+            Self::Method(method) => vec![method],
         }
     }
 
@@ -238,10 +220,7 @@ impl Node for ClassDefinitionMember {
         match &self {
             Self::Constant(constant) => constant.get_description(),
             Self::Property(property) => property.get_description(),
-            Self::AbstractMethod(method) => method.get_description(),
-            Self::AbstractConstructor(constructor) => constructor.get_description(),
-            Self::ConcreteMethod(method) => method.get_description(),
-            Self::ConcreteConstructor(constructor) => constructor.get_description(),
+            Self::Method(method) => method.get_description(),
         }
     }
 }

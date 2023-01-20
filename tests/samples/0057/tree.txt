@@ -390,7 +390,7 @@ DefinitionTree {
                             },
                         ),
                         Method(
-                            AbstractMethodDefinition {
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -432,7 +432,7 @@ DefinitionTree {
                                     value: "bar",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -443,21 +443,25 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 251,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 252,
-                                    type_definition: Void(
-                                        Keyword {
-                                            value: "void",
-                                            position: 254,
-                                        },
-                                    ),
-                                },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 252,
+                                        type_definition: Void(
+                                            Keyword {
+                                                value: "void",
+                                                position: 254,
+                                            },
+                                        ),
+                                    },
+                                ),
                                 constraints: None,
-                                semicolon: 258,
+                                body: Abstract(
+                                    258,
+                                ),
                             },
                         ),
                         Method(
-                            AbstractMethodDefinition {
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -521,7 +525,7 @@ DefinitionTree {
                                     value: "baz",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -532,17 +536,21 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 310,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 311,
-                                    type_definition: Void(
-                                        Keyword {
-                                            value: "void",
-                                            position: 313,
-                                        },
-                                    ),
-                                },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 311,
+                                        type_definition: Void(
+                                            Keyword {
+                                                value: "void",
+                                                position: 313,
+                                            },
+                                        ),
+                                    },
+                                ),
                                 constraints: None,
-                                semicolon: 317,
+                                body: Abstract(
+                                    317,
+                                ),
                             },
                         ),
                     ],

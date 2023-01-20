@@ -62,7 +62,7 @@ DefinitionTree {
                     left_brace: 40,
                     members: [
                         Method(
-                            AbstractMethodDefinition {
+                            MethodDefinition {
                                 comments: CommentGroup {
                                     comments: [],
                                 },
@@ -87,7 +87,7 @@ DefinitionTree {
                                     value: "bar",
                                 },
                                 templates: None,
-                                parameters: FunctionLikeParameterListDefinition {
+                                parameters: MethodParameterListDefinition {
                                     comments: CommentGroup {
                                         comments: [],
                                     },
@@ -98,20 +98,24 @@ DefinitionTree {
                                     },
                                     right_parenthesis: 66,
                                 },
-                                return_type: FunctionLikeReturnTypeDefinition {
-                                    colon: 67,
-                                    type_definition: Identifier(
-                                        TemplatedIdentifier {
-                                            name: Identifier {
-                                                position: 69,
-                                                value: "parent",
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 67,
+                                        type_definition: Identifier(
+                                            TemplatedIdentifier {
+                                                name: Identifier {
+                                                    position: 69,
+                                                    value: "parent",
+                                                },
+                                                templates: None,
                                             },
-                                            templates: None,
-                                        },
-                                    ),
-                                },
+                                        ),
+                                    },
+                                ),
                                 constraints: None,
-                                semicolon: 75,
+                                body: Abstract(
+                                    75,
+                                ),
                             },
                         ),
                     ],

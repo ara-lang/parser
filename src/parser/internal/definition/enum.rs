@@ -2,15 +2,12 @@ use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::attribute;
 use crate::parser::internal::definition::constant;
 use crate::parser::internal::definition::function;
-use crate::parser::internal::definition::function::MethodDefinitionReference;
 use crate::parser::internal::definition::modifier;
 use crate::parser::internal::expression;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
 use crate::parser::result::ParseResult;
 use crate::parser::state::State;
-use crate::tree::definition::function::ConcreteMethodDefinition;
-use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::definition::r#enum::BackedEnumBodyDefinition;
 use crate::tree::definition::r#enum::BackedEnumCaseDefinition;
 use crate::tree::definition::r#enum::BackedEnumDefinition;
@@ -164,8 +161,9 @@ fn unit_enum_definition_member(
             .map(Some);
     }
 
-    concrete_method_definition(state, modifiers, enum_name)
-        .map(|method| method.map(UnitEnumMemberDefinition::Method))
+    Ok(Some(UnitEnumMemberDefinition::Method(
+        function::method_definition(state, modifiers)?,
+    )))
 }
 
 fn backed_enum_definition_member(
@@ -214,42 +212,7 @@ fn backed_enum_definition_member(
             .map(Some);
     }
 
-    concrete_method_definition(state, modifiers, enum_name)
-        .map(|method| method.map(BackedEnumMemberDefinition::Method))
-}
-
-fn concrete_method_definition(
-    state: &mut State,
-    modifiers: ModifierGroupDefinition,
-    enum_name: &Identifier,
-) -> ParseResult<Option<ConcreteMethodDefinition>> {
-    let method =
-        function::method_definition(state, function::MethodDefinitionType::Concrete, modifiers)?;
-
-    match method {
-        MethodDefinitionReference::ConcreteConstructor(constructor) => {
-            crate::parser_report!(state, enum_cannot_have_constructor(enum_name, &constructor));
-
-            Ok(None)
-        }
-        MethodDefinitionReference::Concrete(method) => {
-            match method.name.value[..].to_ascii_lowercase().as_slice() {
-                b"__get" | b"__set" | b"__serialize" | b"__unserialize" | b"__destruct"
-                | b"__wakeup" | b"__sleep" | b"__set_state" | b"__unset" | b"__isset"
-                | b"__debuginfo" | b"__clone" | b"__tostring" => {
-                    crate::parser_report!(state, enum_cannot_have_magic_method(enum_name, &method));
-                }
-                _ => {}
-            }
-
-            Ok(Some(method))
-        }
-        MethodDefinitionReference::Abstract(_)
-        | MethodDefinitionReference::AbstractConstructor(_) => {
-            crate::parser_bail!(
-                state,
-                unreachable_code("unexpected abstract method in enum definition")
-            )
-        }
-    }
+    Ok(Some(BackedEnumMemberDefinition::Method(
+        function::method_definition(state, modifiers)?,
+    )))
 }

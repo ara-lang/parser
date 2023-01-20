@@ -2,8 +2,6 @@ use crate::lexer::token::TokenKind;
 use crate::parser::internal::definition::attribute;
 use crate::parser::internal::definition::constant;
 use crate::parser::internal::definition::function::method_definition;
-use crate::parser::internal::definition::function::MethodDefinitionReference;
-use crate::parser::internal::definition::function::MethodDefinitionType;
 use crate::parser::internal::definition::modifier;
 use crate::parser::internal::definition::template;
 use crate::parser::internal::identifier;
@@ -74,22 +72,6 @@ fn interface_definition_member(state: &mut State) -> ParseResult<InterfaceDefini
         constant::classish_constant_definition(state, modifiers)
             .map(InterfaceDefinitionMember::Constant)
     } else {
-        let method = method_definition(state, MethodDefinitionType::Abstract, modifiers)?;
-
-        match method {
-            MethodDefinitionReference::Abstract(method) => {
-                Ok(InterfaceDefinitionMember::Method(method))
-            }
-            MethodDefinitionReference::AbstractConstructor(ctor) => {
-                Ok(InterfaceDefinitionMember::Constructor(ctor))
-            }
-            MethodDefinitionReference::ConcreteConstructor(_)
-            | MethodDefinitionReference::Concrete(_) => {
-                crate::parser_bail!(
-                    state,
-                    unreachable_code("unexpected concrete method in interface definition")
-                )
-            }
-        }
+        method_definition(state, modifiers).map(InterfaceDefinitionMember::Method)
     }
 }

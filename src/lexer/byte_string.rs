@@ -1,10 +1,10 @@
-use schemars::JsonSchema;
-use serde::Deserialize;
-use serde::Serialize;
-
 use std::ops::Deref;
 use std::ops::DerefMut;
 use std::str::from_utf8;
+
+use schemars::JsonSchema;
+use serde::Deserialize;
+use serde::Serialize;
 
 /// A wrapper for Vec<u8> that provides a human-readable Debug impl and
 /// a few other conveniences.
