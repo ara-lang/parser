@@ -8,13 +8,13 @@ enum a: int {
 }
 
 class f {
-    const static = 2413;
-    const self = 2432;
-    const return = 2433;
-    const parent = 2543;
-    const enum = 24133;
-    const from = 25443;
+    const u8 static = 1;
+    const u16 self = 2;
+    const u32 return = 3;
+    const i8 parent = 4;
+    const i16 enum = 5;
+    const i32 from = 6;
 }
 
-const from = 243;
-const enum = 243;
+const u64 from = 243;
+const i64 enum = 243;

@@ -1,4 +1,5 @@
 use crate::lexer::token::TokenKind;
+use crate::parser::internal::definition::r#type;
 use crate::parser::internal::expression;
 use crate::parser::internal::identifier;
 use crate::parser::internal::utils;
@@ -12,6 +13,7 @@ pub fn constant_definition(state: &mut State) -> ParseResult<ConstantDefinition>
     Ok(ConstantDefinition {
         comments: state.iterator.comments(),
         r#const: utils::skip_keyword(state, TokenKind::Const)?,
+        type_definition: r#type::type_definition(state)?,
         name: identifier::constant_identifier(state)?,
         equals: utils::skip(state, TokenKind::Equals)?,
         value: expression::create(state)?,
@@ -28,6 +30,7 @@ pub fn classish_constant_definition(
         attributes: state.get_attributes(),
         modifiers,
         r#const: utils::skip_keyword(state, TokenKind::Const)?,
+        type_definition: r#type::type_definition(state)?,
         name: identifier::constant_identifier(state)?,
         equals: utils::skip(state, TokenKind::Equals)?,
         value: expression::create(state)?,

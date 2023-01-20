@@ -1,10 +1,10 @@
-const FOO = new Foo();
+const Foo FOO = new Foo();
 
-const BAR = function(): Bar {
+const Bar BAR = function(): Bar {
     return new Bar();
 };
 
-const BAZ = fn(): Baz => new Baz();
+const Baz BAZ = fn(): Baz => new Baz();
 
 #[Foo(new Bar($bar), new Baz($baz), new Qux(function(): void {}))]
 function foo(
@@ -14,13 +14,13 @@ function foo(
 ): void {}
 
 class Bar {
-    const FOO = new Foo();
+    const Foo FOO = new Foo();
 
-    const BAR = function(): Bar {
+    const Bar BAR = function(): Bar {
         return new Bar();
     };
 
-    const BAZ = fn(): Baz => new Baz();
+    const Baz BAZ = fn(): Baz => new Baz();
 
     private mixed $a FOO = new Foo();
 

@@ -1,9 +1,9 @@
 namespace where;
 
-const where = 1;
+const u8 where = 1;
 interface where {}
 class where {
-    public const where = 1;
+    public const u8 where = 1;
 
     public function where(): void {}
 }
@@ -26,10 +26,10 @@ function where(): int {
 
 namespace type;
 
-const type = 1;
+const u8 type = 1;
 interface type {}
 class type {
-    public const type = 1;
+    public const u8 type = 1;
 
     public function type(): void {}
 }

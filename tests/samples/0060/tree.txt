@@ -226,19 +226,27 @@ DefinitionTree {
                                     value: "const",
                                     position: 171,
                                 },
+                                type_definition: UnsignedInteger(
+                                    U8(
+                                        Keyword {
+                                            value: "u8",
+                                            position: 177,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 177,
+                                    position: 180,
                                     value: "static",
                                 },
-                                equals: 184,
+                                equals: 187,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "2413",
-                                            position: 186,
+                                            value: "1",
+                                            position: 189,
                                         },
                                     ),
                                 ),
@@ -259,23 +267,31 @@ DefinitionTree {
                                     value: "const",
                                     position: 196,
                                 },
+                                type_definition: UnsignedInteger(
+                                    U16(
+                                        Keyword {
+                                            value: "u16",
+                                            position: 202,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 202,
+                                    position: 206,
                                     value: "self",
                                 },
-                                equals: 207,
+                                equals: 211,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "2432",
-                                            position: 209,
+                                            value: "2",
+                                            position: 213,
                                         },
                                     ),
                                 ),
-                                semicolon: 213,
+                                semicolon: 214,
                             },
                         ),
                         Constant(
@@ -285,30 +301,38 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 219,
+                                    position: 220,
                                     modifiers: [],
                                 },
                                 const: Keyword {
                                     value: "const",
-                                    position: 219,
+                                    position: 220,
                                 },
+                                type_definition: UnsignedInteger(
+                                    U32(
+                                        Keyword {
+                                            value: "u32",
+                                            position: 226,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 225,
+                                    position: 230,
                                     value: "return",
                                 },
-                                equals: 232,
+                                equals: 237,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "2433",
-                                            position: 234,
+                                            value: "3",
+                                            position: 239,
                                         },
                                     ),
                                 ),
-                                semicolon: 238,
+                                semicolon: 240,
                             },
                         ),
                         Constant(
@@ -318,30 +342,38 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 244,
+                                    position: 246,
                                     modifiers: [],
                                 },
                                 const: Keyword {
                                     value: "const",
-                                    position: 244,
+                                    position: 246,
                                 },
+                                type_definition: SignedInteger(
+                                    I8(
+                                        Keyword {
+                                            value: "i8",
+                                            position: 252,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 250,
+                                    position: 255,
                                     value: "parent",
                                 },
-                                equals: 257,
+                                equals: 262,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "2543",
-                                            position: 259,
+                                            value: "4",
+                                            position: 264,
                                         },
                                     ),
                                 ),
-                                semicolon: 263,
+                                semicolon: 265,
                             },
                         ),
                         Constant(
@@ -351,30 +383,38 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 269,
+                                    position: 271,
                                     modifiers: [],
                                 },
                                 const: Keyword {
                                     value: "const",
-                                    position: 269,
+                                    position: 271,
                                 },
+                                type_definition: SignedInteger(
+                                    I16(
+                                        Keyword {
+                                            value: "i16",
+                                            position: 277,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 275,
+                                    position: 281,
                                     value: "enum",
                                 },
-                                equals: 280,
+                                equals: 286,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "24133",
-                                            position: 282,
+                                            value: "5",
+                                            position: 288,
                                         },
                                     ),
                                 ),
-                                semicolon: 287,
+                                semicolon: 289,
                             },
                         ),
                         Constant(
@@ -384,34 +424,42 @@ DefinitionTree {
                                 },
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 293,
+                                    position: 295,
                                     modifiers: [],
                                 },
                                 const: Keyword {
                                     value: "const",
-                                    position: 293,
+                                    position: 295,
                                 },
+                                type_definition: SignedInteger(
+                                    I32(
+                                        Keyword {
+                                            value: "i32",
+                                            position: 301,
+                                        },
+                                    ),
+                                ),
                                 name: Identifier {
-                                    position: 299,
+                                    position: 305,
                                     value: "from",
                                 },
-                                equals: 304,
+                                equals: 310,
                                 value: Literal(
                                     Integer(
                                         LiteralInteger {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            value: "25443",
-                                            position: 306,
+                                            value: "6",
+                                            position: 312,
                                         },
                                     ),
                                 ),
-                                semicolon: 311,
+                                semicolon: 313,
                             },
                         ),
                     ],
-                    right_brace: 313,
+                    right_brace: 315,
                 },
             },
         ),
@@ -422,13 +470,22 @@ DefinitionTree {
                 },
                 const: Keyword {
                     value: "const",
-                    position: 316,
+                    position: 318,
                 },
+                type_definition: Identifier(
+                    TemplatedIdentifier {
+                        name: Identifier {
+                            position: 324,
+                            value: "u64",
+                        },
+                        templates: None,
+                    },
+                ),
                 name: Identifier {
-                    position: 322,
+                    position: 328,
                     value: "from",
                 },
-                equals: 327,
+                equals: 333,
                 value: Literal(
                     Integer(
                         LiteralInteger {
@@ -436,11 +493,11 @@ DefinitionTree {
                                 comments: [],
                             },
                             value: "243",
-                            position: 329,
+                            position: 335,
                         },
                     ),
                 ),
-                semicolon: 332,
+                semicolon: 338,
             },
         ),
         Constant(
@@ -450,13 +507,21 @@ DefinitionTree {
                 },
                 const: Keyword {
                     value: "const",
-                    position: 334,
-                },
-                name: Identifier {
                     position: 340,
+                },
+                type_definition: SignedInteger(
+                    I64(
+                        Keyword {
+                            value: "i64",
+                            position: 346,
+                        },
+                    ),
+                ),
+                name: Identifier {
+                    position: 350,
                     value: "enum",
                 },
-                equals: 345,
+                equals: 355,
                 value: Literal(
                     Integer(
                         LiteralInteger {
@@ -464,13 +529,13 @@ DefinitionTree {
                                 comments: [],
                             },
                             value: "243",
-                            position: 347,
+                            position: 357,
                         },
                     ),
                 ),
-                semicolon: 350,
+                semicolon: 360,
             },
         ),
     ],
-    eof: 352,
+    eof: 362,
 }

@@ -1,9 +1,9 @@
 namespace using;
 
-const using = 1;
+const u8 using = 1;
 interface using {}
 class using {
-    public const using = 1;
+    public const u8 using = 1;
 
     public function using(): void {}
 }

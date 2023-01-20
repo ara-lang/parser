@@ -9,20 +9,33 @@ DefinitionTree {
                     value: "const",
                     position: 0,
                 },
+                type_definition: Literal(
+                    Null(
+                        LiteralNull {
+                            comments: CommentGroup {
+                                comments: [],
+                            },
+                            null: Keyword {
+                                value: "null",
+                                position: 6,
+                            },
+                        },
+                    ),
+                ),
                 name: Identifier {
-                    position: 6,
+                    position: 11,
                     value: "a",
                 },
-                equals: 8,
+                equals: 13,
                 value: Identifier(
                     Identifier {
-                        position: 10,
+                        position: 15,
                         value: "\null",
                     },
                 ),
-                semicolon: 15,
+                semicolon: 20,
             },
         ),
     ],
-    eof: 16,
+    eof: 21,
 }

@@ -2,18 +2,18 @@
 #[C, D]
 interface A extends B, C {
     #[R]
-    const F = 344;
+    const int F = 344;
 
     #[R]
-    public const O = 344;
-
-    #[R]
-    #[P]
-    final public const R = 344;
+    public const int O = 344;
 
     #[R]
     #[P]
-    final const M = 34;
+    final public const int R = 344;
+
+    #[R]
+    #[P]
+    final const int M = 34;
 
     #[M]
     public function bar(): void;

@@ -1,1 +1,1 @@
-const FOO = 1, BAR = 2;
+const int FOO = 1, BAR = 2;

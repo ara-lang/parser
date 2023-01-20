@@ -9,11 +9,19 @@ DefinitionTree {
                     value: "const",
                     position: 0,
                 },
+                type_definition: UnsignedInteger(
+                    U8(
+                        Keyword {
+                            value: "u8",
+                            position: 6,
+                        },
+                    ),
+                ),
                 name: Identifier {
-                    position: 6,
+                    position: 9,
                     value: "FOO",
                 },
-                equals: 10,
+                equals: 13,
                 value: Literal(
                     Integer(
                         LiteralInteger {
@@ -21,11 +29,11 @@ DefinitionTree {
                                 comments: [],
                             },
                             value: "1",
-                            position: 12,
+                            position: 15,
                         },
                     ),
                 ),
-                semicolon: 13,
+                semicolon: 16,
             },
         ),
         Constant(
@@ -35,22 +43,30 @@ DefinitionTree {
                 },
                 const: Keyword {
                     value: "const",
-                    position: 16,
+                    position: 19,
                 },
+                type_definition: UnsignedInteger(
+                    U8(
+                        Keyword {
+                            value: "u8",
+                            position: 25,
+                        },
+                    ),
+                ),
                 name: Identifier {
-                    position: 22,
+                    position: 28,
                     value: "BAR",
                 },
-                equals: 26,
+                equals: 32,
                 value: Identifier(
                     Identifier {
-                        position: 28,
+                        position: 34,
                         value: "FOO",
                     },
                 ),
-                semicolon: 31,
+                semicolon: 37,
             },
         ),
     ],
-    eof: 33,
+    eof: 39,
 }
