@@ -192,10 +192,7 @@ DefinitionTree {
                         },
                     ],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 208,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 208,
@@ -482,10 +479,7 @@ DefinitionTree {
                         },
                     ],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 406,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 406,
@@ -870,10 +864,7 @@ DefinitionTree {
                         },
                     ],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 636,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 636,
@@ -1348,10 +1339,7 @@ DefinitionTree {
                         },
                     ],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 884,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 884,
@@ -1628,10 +1616,7 @@ DefinitionTree {
                         },
                     ],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 1097,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 1097,

@@ -54,7 +54,7 @@ pub struct FunctionLikeParameterListDefinition {
 pub struct FunctionDefinition {
     pub attributes: Vec<AttributeGroupDefinition>,
     pub comments: CommentGroup,
-    pub modifiers: ModifierGroupDefinition,
+    pub modifiers: Option<ModifierGroupDefinition>,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,

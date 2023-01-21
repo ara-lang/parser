@@ -215,10 +215,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 125,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 125,
@@ -620,10 +617,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 296,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 296,

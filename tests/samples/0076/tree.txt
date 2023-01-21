@@ -215,10 +215,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 143,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 143,
@@ -620,10 +617,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 386,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 386,
@@ -897,10 +891,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 560,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 560,
@@ -1302,10 +1293,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 779,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 779,

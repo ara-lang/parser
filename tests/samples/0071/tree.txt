@@ -114,10 +114,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 79,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 79,
@@ -258,10 +255,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 134,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 134,
@@ -446,10 +440,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 220,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 220,
@@ -919,10 +910,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 448,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 448,
@@ -1120,10 +1108,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 517,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 517,
@@ -1283,10 +1268,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 591,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 591,
@@ -1858,10 +1840,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 837,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 837,
@@ -2133,10 +2112,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 999,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 999,
@@ -2440,10 +2416,7 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: ModifierGroupDefinition {
-                    position: 1190,
-                    modifiers: [],
-                },
+                modifiers: None,
                 function: Keyword {
                     value: "function",
                     position: 1190,

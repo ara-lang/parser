@@ -18,10 +18,7 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: ModifierGroupDefinition {
-                                position: 22,
-                                modifiers: [],
-                            },
+                            modifiers: None,
                             function: Keyword {
                                 value: "function",
                                 position: 22,

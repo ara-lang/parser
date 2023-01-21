@@ -17,14 +17,10 @@ use crate::tree::definition::function::MethodTypeConstraintGroupDefinition;
 use crate::tree::definition::modifier::ModifierGroupDefinition;
 
 pub fn function_definition(state: &mut State) -> ParseResult<FunctionDefinition> {
-    let comments = state.iterator.comments();
-    let attributes = state.get_attributes();
-    let modifiers = modifier::collect(state)?;
-
     Ok(FunctionDefinition {
-        comments,
-        attributes,
-        modifiers,
+        comments: state.iterator.comments(),
+        attributes: state.get_attributes(),
+        modifiers: modifier::collect_some(state)?,
         function: utils::skip_keyword(state, TokenKind::Function)?,
         name: identifier::identifier_maybe_soft_reserved(state)?,
         templates: if state.iterator.current().kind == TokenKind::LessThan {
