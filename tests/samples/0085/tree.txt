@@ -1105,9 +1105,6 @@ DefinitionTree {
         ),
         Function(
             FunctionDefinition {
-                comments: CommentGroup {
-                    comments: [],
-                },
                 attributes: [
                     AttributeGroupDefinition {
                         hash_left_bracket: 502,
@@ -2120,6 +2117,13 @@ DefinitionTree {
                         right_bracket: 923,
                     },
                 ],
+                comments: CommentGroup {
+                    comments: [],
+                },
+                modifiers: ModifierGroupDefinition {
+                    position: 925,
+                    modifiers: [],
+                },
                 function: Keyword {
                     value: "function",
                     position: 925,

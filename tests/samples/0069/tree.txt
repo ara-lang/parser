@@ -39,10 +39,14 @@ DefinitionTree {
                     ),
                     Function(
                         FunctionDefinition {
+                            attributes: [],
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            attributes: [],
+                            modifiers: ModifierGroupDefinition {
+                                position: 40,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 40,
@@ -377,10 +381,14 @@ DefinitionTree {
                     ),
                     Function(
                         FunctionDefinition {
+                            attributes: [],
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            attributes: [],
+                            modifiers: ModifierGroupDefinition {
+                                position: 188,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 188,

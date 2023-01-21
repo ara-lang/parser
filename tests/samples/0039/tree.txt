@@ -14,10 +14,14 @@ DefinitionTree {
                 definitions: [
                     Function(
                         FunctionDefinition {
+                            attributes: [],
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            attributes: [],
+                            modifiers: ModifierGroupDefinition {
+                                position: 22,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 22,

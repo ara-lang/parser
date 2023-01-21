@@ -52,8 +52,9 @@ pub struct FunctionLikeParameterListDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionDefinition {
-    pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
+    pub comments: CommentGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,

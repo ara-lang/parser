@@ -1,0 +1,244 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                attributes: [],
+                comments: CommentGroup {
+                    comments: [],
+                },
+                modifiers: ModifierGroupDefinition {
+                    position: 6,
+                    modifiers: [
+                        Async(
+                            Keyword {
+                                value: "async",
+                                position: 0,
+                            },
+                        ),
+                    ],
+                },
+                function: Keyword {
+                    value: "function",
+                    position: 6,
+                },
+                name: Identifier {
+                    position: 15,
+                    value: "baz",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 18,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 19,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 20,
+                    type_definition: String(
+                        Keyword {
+                            value: "string",
+                            position: 22,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 29,
+                    statements: [
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 35,
+                                },
+                                expression: Some(
+                                    FunctionOperation(
+                                        Call {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            function: Identifier(
+                                                Identifier {
+                                                    position: 42,
+                                                    value: "foo",
+                                                },
+                                            ),
+                                            generics: None,
+                                            arguments: ArgumentListExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 45,
+                                                arguments: CommaSeparated {
+                                                    inner: [],
+                                                    commas: [],
+                                                },
+                                                right_parenthesis: 46,
+                                            },
+                                        },
+                                    ),
+                                ),
+                                semicolon: 47,
+                            },
+                        ),
+                    ],
+                    right_brace: 49,
+                },
+            },
+        ),
+        Class(
+            ClassDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                modifiers: ModifierGroupDefinition {
+                    position: 62,
+                    modifiers: [
+                        Final(
+                            Keyword {
+                                value: "final",
+                                position: 56,
+                            },
+                        ),
+                    ],
+                },
+                class: Keyword {
+                    value: "class",
+                    position: 62,
+                },
+                name: Identifier {
+                    position: 68,
+                    value: "Foo",
+                },
+                templates: None,
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: 72,
+                    members: [
+                        Method(
+                            MethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ModifierGroupDefinition {
+                                    position: 91,
+                                    modifiers: [
+                                        Async(
+                                            Keyword {
+                                                value: "async",
+                                                position: 78,
+                                            },
+                                        ),
+                                        Public(
+                                            Keyword {
+                                                value: "public",
+                                                position: 84,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Keyword {
+                                    value: "function",
+                                    position: 91,
+                                },
+                                name: Identifier {
+                                    position: 100,
+                                    value: "bar",
+                                },
+                                templates: None,
+                                parameters: MethodParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 103,
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 104,
+                                },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 105,
+                                        type_definition: String(
+                                            Keyword {
+                                                value: "string",
+                                                position: 107,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 114,
+                                        statements: [
+                                            Return(
+                                                Explicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    return: Keyword {
+                                                        value: "return",
+                                                        position: 124,
+                                                    },
+                                                    expression: Some(
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Identifier(
+                                                                    Identifier {
+                                                                        position: 131,
+                                                                        value: "bar",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 134,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 135,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                    semicolon: 136,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 142,
+                                    },
+                                ),
+                            },
+                        ),
+                    ],
+                    right_brace: 144,
+                },
+            },
+        ),
+    ],
+    eof: 146,
+}

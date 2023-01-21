@@ -1,0 +1,9 @@
+async function baz(): string {
+    return foo();
+}
+    
+final class Foo {
+    async public function bar(): string {
+        return bar();
+    }
+}

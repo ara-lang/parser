@@ -15,6 +15,7 @@ pub enum ModifierDefinition {
     Readonly(Keyword),
     Final(Keyword),
     Abstract(Keyword),
+    Async(Keyword),
 }
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
@@ -60,6 +61,7 @@ impl Node for ModifierDefinition {
             | Self::Readonly(keyword)
             | Self::Static(keyword)
             | Self::Abstract(keyword)
+            | Self::Async(keyword)
             | Self::Final(keyword) => keyword.initial_position(),
         }
     }
@@ -72,6 +74,7 @@ impl Node for ModifierDefinition {
             | Self::Readonly(keyword)
             | Self::Static(keyword)
             | Self::Abstract(keyword)
+            | Self::Async(keyword)
             | Self::Final(keyword) => keyword.final_position(),
         }
     }
@@ -84,6 +87,7 @@ impl Node for ModifierDefinition {
             | Self::Readonly(keyword)
             | Self::Static(keyword)
             | Self::Abstract(keyword)
+            | Self::Async(keyword)
             | Self::Final(keyword) => vec![keyword as &dyn Node],
         }
     }
@@ -96,6 +100,7 @@ impl Node for ModifierDefinition {
             Self::Readonly(_keyword) => "readonly modifier definition".to_string(),
             Self::Static(_keyword) => "static modifier definition".to_string(),
             Self::Abstract(_keyword) => "abstract modifier definition".to_string(),
+            Self::Async(_keyword) => "async modifier definition".to_string(),
             Self::Final(_keyword) => "final modifier definition".to_string(),
         }
     }
@@ -110,6 +115,7 @@ impl std::fmt::Display for ModifierDefinition {
             | Self::Readonly(keyword)
             | Self::Static(keyword)
             | Self::Abstract(keyword)
+            | Self::Async(keyword)
             | Self::Final(keyword) => write!(f, "{}", keyword.value),
         }
     }
