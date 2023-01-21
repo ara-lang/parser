@@ -20,7 +20,7 @@ pub fn function_definition(state: &mut State) -> ParseResult<FunctionDefinition>
     Ok(FunctionDefinition {
         comments: state.iterator.comments(),
         attributes: state.get_attributes(),
-        modifiers: modifier::collect_some(state)?,
+        modifiers: modifier::collect(state)?,
         function: utils::skip_keyword(state, TokenKind::Function)?,
         name: identifier::identifier_maybe_soft_reserved(state)?,
         templates: if state.iterator.current().kind == TokenKind::LessThan {

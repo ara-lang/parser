@@ -6,19 +6,17 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: Some(
-                    ModifierGroupDefinition {
-                        position: 6,
-                        modifiers: [
-                            Async(
-                                Keyword {
-                                    value: "async",
-                                    position: 0,
-                                },
-                            ),
-                        ],
-                    },
-                ),
+                modifiers: ModifierGroupDefinition {
+                    position: 6,
+                    modifiers: [
+                        Async(
+                            Keyword {
+                                value: "async",
+                                position: 0,
+                            },
+                        ),
+                    ],
+                },
                 function: Keyword {
                     value: "function",
                     position: 6,

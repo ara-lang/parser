@@ -6,7 +6,10 @@ DefinitionTree {
                 comments: CommentGroup {
                     comments: [],
                 },
-                modifiers: None,
+                modifiers: ModifierGroupDefinition {
+                    position: 2,
+                    modifiers: [],
+                },
                 function: Keyword {
                     value: "function",
                     position: 2,

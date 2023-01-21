@@ -215,7 +215,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: None,
+                            modifiers: ModifierGroupDefinition {
+                                position: 143,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 143,
@@ -617,7 +620,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: None,
+                            modifiers: ModifierGroupDefinition {
+                                position: 386,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 386,
@@ -891,7 +897,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: None,
+                            modifiers: ModifierGroupDefinition {
+                                position: 560,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 560,
@@ -1293,7 +1302,10 @@ DefinitionTree {
                             comments: CommentGroup {
                                 comments: [],
                             },
-                            modifiers: None,
+                            modifiers: ModifierGroupDefinition {
+                                position: 779,
+                                modifiers: [],
+                            },
                             function: Keyword {
                                 value: "function",
                                 position: 779,

@@ -61,10 +61,3 @@ pub fn collect(state: &mut State) -> ParseResult<ModifierGroupDefinition> {
         modifiers,
     })
 }
-
-pub fn collect_some(state: &mut State) -> ParseResult<Option<ModifierGroupDefinition>> {
-    match collect(state) {
-        Ok(modifiers) if !modifiers.modifiers.is_empty() => Ok(Some(modifiers)),
-        _ => Ok(None),
-    }
-}
