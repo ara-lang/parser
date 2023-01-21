@@ -1,0 +1,183 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 27,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        equals: 30,
+                                        right: FunctionalOperation(
+                                            Expression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                dollar: 32,
+                                                generics: None,
+                                                left_parenthesis: 33,
+                                                expression: Literal(
+                                                    Integer(
+                                                        LiteralInteger {
+                                                            comments: CommentGroup {
+                                                                comments: [],
+                                                            },
+                                                            value: "123",
+                                                            position: 34,
+                                                        },
+                                                    ),
+                                                ),
+                                                right_parenthesis: 37,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 38,
+                            },
+                        ),
+                        Expression(
+                            ExpressionStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                expression: AssignmentOperation(
+                                    Assignment {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left: Variable(
+                                            Variable {
+                                                position: 44,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        equals: 47,
+                                        right: FunctionalOperation(
+                                            Expression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                dollar: 49,
+                                                generics: Some(
+                                                    GenericGroupExpression {
+                                                        double_colon_less_than: 50,
+                                                        types: CommaSeparated {
+                                                            inner: [
+                                                                SignedInteger(
+                                                                    Default(
+                                                                        Keyword {
+                                                                            value: "int",
+                                                                            position: 53,
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            commas: [],
+                                                        },
+                                                        greater_than: 56,
+                                                    },
+                                                ),
+                                                left_parenthesis: 57,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 58,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 60,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                semicolon: 61,
+                            },
+                        ),
+                        Return(
+                            Explicit {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                return: Keyword {
+                                    value: "return",
+                                    position: 67,
+                                },
+                                expression: Some(
+                                    FunctionalOperation(
+                                        Expression {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            dollar: 74,
+                                            generics: None,
+                                            left_parenthesis: 75,
+                                            expression: Variable(
+                                                Variable {
+                                                    position: 76,
+                                                    name: "$b",
+                                                },
+                                            ),
+                                            right_parenthesis: 78,
+                                        },
+                                    ),
+                                ),
+                                semicolon: 79,
+                            },
+                        ),
+                    ],
+                    right_brace: 81,
+                },
+            },
+        ),
+    ],
+    eof: 83,
+}

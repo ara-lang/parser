@@ -24,6 +24,7 @@ use crate::tree::expression::operator::BitwiseOperationExpression;
 use crate::tree::expression::operator::ClassOperationExpression;
 use crate::tree::expression::operator::ClassOperationInitializationClassExpression;
 use crate::tree::expression::operator::ExceptionOperationExpression;
+use crate::tree::expression::operator::FunctionalOperationExpression;
 use crate::tree::expression::operator::GeneratorOperationExpression;
 use crate::tree::expression::operator::LogicalOperationExpression;
 use crate::tree::expression::operator::ObjectOperationExpression;
@@ -144,7 +145,7 @@ macro_rules! expressions {
 expressions! {
     using(state):
 
-    #[before(static_arrow_function), current(TokenKind::Attribute)]
+    #[before(functional_expression), current(TokenKind::Attribute)]
     attributes({
         attribute::gather(state)?;
 
@@ -172,6 +173,24 @@ expressions! {
                 );
             }
         }
+    })
+
+    #[before(static_arrow_function), current(TokenKind::Dollar), peek(TokenKind::Generic | TokenKind::LeftParen)]
+    functional_expression({
+        let dollar = state.iterator.current().position;
+        state.iterator.next();
+        Ok(Expression::FunctionalOperation(FunctionalOperationExpression::Expression {
+            comments: state.iterator.comments(),
+            dollar,
+            generics: if state.iterator.current().kind == TokenKind::Generic {
+                Some(generic::generic_group(state)?)
+            } else {
+                None
+            },
+            left_parenthesis: utils::skip_left_parenthesis(state)?,
+            expression: Box::new(create(state)?),
+            right_parenthesis: utils::skip_right_parenthesis(state)?,
+        }))
     })
 
     #[before(static_anonymous_function), current(TokenKind::Static), peek(TokenKind::Fn)]
