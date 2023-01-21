@@ -245,7 +245,10 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             attributes: [],
-                                                                            static: None,
+                                                                            modifiers: ModifierGroupDefinition {
+                                                                                position: 120,
+                                                                                modifiers: [],
+                                                                            },
                                                                             fn: Keyword {
                                                                                 value: "fn",
                                                                                 position: 120,
@@ -551,7 +554,10 @@ DefinitionTree {
                                                                                 comments: [],
                                                                             },
                                                                             attributes: [],
-                                                                            static: None,
+                                                                            modifiers: ModifierGroupDefinition {
+                                                                                position: 251,
+                                                                                modifiers: [],
+                                                                            },
                                                                             fn: Keyword {
                                                                                 value: "fn",
                                                                                 position: 251,

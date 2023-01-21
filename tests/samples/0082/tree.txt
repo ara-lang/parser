@@ -1578,7 +1578,10 @@ DefinitionTree {
                                                                                     comments: [],
                                                                                 },
                                                                                 attributes: [],
-                                                                                static: None,
+                                                                                modifiers: ModifierGroupDefinition {
+                                                                                    position: 993,
+                                                                                    modifiers: [],
+                                                                                },
                                                                                 fn: Keyword {
                                                                                     value: "fn",
                                                                                     position: 993,
@@ -1702,16 +1705,26 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         attributes: [],
-                                                                        static: None,
+                                                                        modifiers: ModifierGroupDefinition {
+                                                                            position: 1058,
+                                                                            modifiers: [
+                                                                                Static(
+                                                                                    Keyword {
+                                                                                        value: "static",
+                                                                                        position: 1051,
+                                                                                    },
+                                                                                ),
+                                                                            ],
+                                                                        },
                                                                         fn: Keyword {
                                                                             value: "fn",
-                                                                            position: 1051,
+                                                                            position: 1058,
                                                                         },
                                                                         parameters: FunctionLikeParameterListDefinition {
                                                                             comments: CommentGroup {
                                                                                 comments: [],
                                                                             },
-                                                                            left_parenthesis: 1053,
+                                                                            left_parenthesis: 1060,
                                                                             parameters: CommaSeparated {
                                                                                 inner: [
                                                                                     FunctionLikeParameterDefinition {
@@ -1722,7 +1735,7 @@ DefinitionTree {
                                                                                         type_definition: Identifier(
                                                                                             TemplatedIdentifier {
                                                                                                 name: Identifier {
-                                                                                                    position: 1054,
+                                                                                                    position: 1061,
                                                                                                     value: "num",
                                                                                                 },
                                                                                                 templates: None,
@@ -1730,7 +1743,7 @@ DefinitionTree {
                                                                                         ),
                                                                                         ellipsis: None,
                                                                                         variable: Variable {
-                                                                                            position: 1058,
+                                                                                            position: 1065,
                                                                                             name: "$n",
                                                                                         },
                                                                                         default: None,
@@ -1738,20 +1751,20 @@ DefinitionTree {
                                                                                 ],
                                                                                 commas: [],
                                                                             },
-                                                                            right_parenthesis: 1060,
+                                                                            right_parenthesis: 1067,
                                                                         },
                                                                         return_type: FunctionLikeReturnTypeDefinition {
-                                                                            colon: 1061,
+                                                                            colon: 1068,
                                                                             type_definition: FloatingPoint(
                                                                                 Default(
                                                                                     Keyword {
                                                                                         value: "float",
-                                                                                        position: 1063,
+                                                                                        position: 1070,
                                                                                     },
                                                                                 ),
                                                                             ),
                                                                         },
-                                                                        double_arrow: 1069,
+                                                                        double_arrow: 1076,
                                                                         body: TernaryOperation(
                                                                             Ternary {
                                                                                 comments: CommentGroup {
@@ -1764,32 +1777,32 @@ DefinitionTree {
                                                                                         },
                                                                                         left: Variable(
                                                                                             Variable {
-                                                                                                position: 1072,
+                                                                                                position: 1079,
                                                                                                 name: "$n",
                                                                                             },
                                                                                         ),
                                                                                         is: Keyword {
                                                                                             value: "is",
-                                                                                            position: 1075,
+                                                                                            position: 1082,
                                                                                         },
                                                                                         right: FloatingPoint(
                                                                                             Default(
                                                                                                 Keyword {
                                                                                                     value: "float",
-                                                                                                    position: 1078,
+                                                                                                    position: 1085,
                                                                                                 },
                                                                                             ),
                                                                                         ),
                                                                                     },
                                                                                 ),
-                                                                                question: 1084,
+                                                                                question: 1091,
                                                                                 if_true: Variable(
                                                                                     Variable {
-                                                                                        position: 1086,
+                                                                                        position: 1093,
                                                                                         name: "$n",
                                                                                     },
                                                                                 ),
-                                                                                colon: 1089,
+                                                                                colon: 1096,
                                                                                 if_false: ArithmeticOperation(
                                                                                     Addition {
                                                                                         comments: CommentGroup {
@@ -1797,11 +1810,11 @@ DefinitionTree {
                                                                                         },
                                                                                         left: Variable(
                                                                                             Variable {
-                                                                                                position: 1091,
+                                                                                                position: 1098,
                                                                                                 name: "$n",
                                                                                             },
                                                                                         ),
-                                                                                        plus: 1094,
+                                                                                        plus: 1101,
                                                                                         right: Literal(
                                                                                             Float(
                                                                                                 LiteralFloat {
@@ -1809,7 +1822,7 @@ DefinitionTree {
                                                                                                         comments: [],
                                                                                                     },
                                                                                                     value: "0.0",
-                                                                                                    position: 1096,
+                                                                                                    position: 1103,
                                                                                                 },
                                                                                             ),
                                                                                         ),
@@ -1823,13 +1836,13 @@ DefinitionTree {
                                                         ],
                                                         commas: [],
                                                     },
-                                                    right_parenthesis: 1106,
+                                                    right_parenthesis: 1113,
                                                 },
                                             },
                                         ),
-                                        arrow: 1114,
+                                        arrow: 1121,
                                         method: Identifier {
-                                            position: 1116,
+                                            position: 1123,
                                             value: "sum",
                                         },
                                         generics: None,
@@ -1837,22 +1850,22 @@ DefinitionTree {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: 1119,
+                                            left_parenthesis: 1126,
                                             arguments: CommaSeparated {
                                                 inner: [],
                                                 commas: [],
                                             },
-                                            right_parenthesis: 1120,
+                                            right_parenthesis: 1127,
                                         },
                                     },
                                 ),
                             },
                         ),
                     ],
-                    right_brace: 1122,
+                    right_brace: 1129,
                 },
             },
         ),
     ],
-    eof: 1123,
+    eof: 1130,
 }

@@ -1578,7 +1578,10 @@ DefinitionTree {
                                                                                     comments: [],
                                                                                 },
                                                                                 attributes: [],
-                                                                                static: None,
+                                                                                modifiers: ModifierGroupDefinition {
+                                                                                    position: 993,
+                                                                                    modifiers: [],
+                                                                                },
                                                                                 fn: Keyword {
                                                                                     value: "fn",
                                                                                     position: 993,
@@ -1702,7 +1705,10 @@ DefinitionTree {
                                                                             comments: [],
                                                                         },
                                                                         attributes: [],
-                                                                        static: None,
+                                                                        modifiers: ModifierGroupDefinition {
+                                                                            position: 1051,
+                                                                            modifiers: [],
+                                                                        },
                                                                         fn: Keyword {
                                                                             value: "fn",
                                                                             position: 1051,
