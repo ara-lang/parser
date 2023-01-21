@@ -6,4 +6,8 @@ final class Foo {
     async public function bar(): string {
         return bar();
     }
+    
+    async public static function baz(): string {
+        return baz();
+    }
 }

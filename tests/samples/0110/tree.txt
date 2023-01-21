@@ -234,11 +234,124 @@ DefinitionTree {
                                 ),
                             },
                         ),
+                        Method(
+                            MethodDefinition {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                attributes: [],
+                                modifiers: ModifierGroupDefinition {
+                                    position: 173,
+                                    modifiers: [
+                                        Async(
+                                            Keyword {
+                                                value: "async",
+                                                position: 153,
+                                            },
+                                        ),
+                                        Public(
+                                            Keyword {
+                                                value: "public",
+                                                position: 159,
+                                            },
+                                        ),
+                                        Static(
+                                            Keyword {
+                                                value: "static",
+                                                position: 166,
+                                            },
+                                        ),
+                                    ],
+                                },
+                                function: Keyword {
+                                    value: "function",
+                                    position: 173,
+                                },
+                                name: Identifier {
+                                    position: 182,
+                                    value: "baz",
+                                },
+                                templates: None,
+                                parameters: MethodParameterListDefinition {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_parenthesis: 185,
+                                    parameters: CommaSeparated {
+                                        inner: [],
+                                        commas: [],
+                                    },
+                                    right_parenthesis: 186,
+                                },
+                                return_type: Some(
+                                    FunctionLikeReturnTypeDefinition {
+                                        colon: 187,
+                                        type_definition: String(
+                                            Keyword {
+                                                value: "string",
+                                                position: 189,
+                                            },
+                                        ),
+                                    },
+                                ),
+                                constraints: None,
+                                body: Concrete(
+                                    BlockStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        left_brace: 196,
+                                        statements: [
+                                            Return(
+                                                Explicit {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    return: Keyword {
+                                                        value: "return",
+                                                        position: 206,
+                                                    },
+                                                    expression: Some(
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Identifier(
+                                                                    Identifier {
+                                                                        position: 213,
+                                                                        value: "baz",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 216,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 217,
+                                                                },
+                                                            },
+                                                        ),
+                                                    ),
+                                                    semicolon: 218,
+                                                },
+                                            ),
+                                        ],
+                                        right_brace: 224,
+                                    },
+                                ),
+                            },
+                        ),
                     ],
-                    right_brace: 144,
+                    right_brace: 226,
                 },
             },
         ),
     ],
-    eof: 146,
+    eof: 228,
 }
