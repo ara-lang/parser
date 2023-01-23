@@ -35,11 +35,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
             })
         }
         TokenKind::Generic | TokenKind::LeftParen => {
-            let generics = if kind == &TokenKind::Generic {
-                Some(generic::generic_group(state)?)
-            } else {
-                None
-            };
+            let generics = generic::generic_group(state)?;
 
             let comments = state.iterator.comments();
             // `(...)` closure creation
@@ -115,11 +111,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
 
                     let current = state.iterator.current();
                     if current.kind == TokenKind::LeftParen || current.kind == TokenKind::Generic {
-                        let generics = if current.kind == TokenKind::Generic {
-                            Some(generic::generic_group(state)?)
-                        } else {
-                            None
-                        };
+                        let generics = generic::generic_group(state)?;
 
                         if state.iterator.lookahead(1).kind == TokenKind::Ellipsis
                             && state.iterator.lookahead(2).kind == TokenKind::RightParen
@@ -191,11 +183,7 @@ pub fn postfix(state: &mut State, left: Expression, kind: &TokenKind) -> ParseRe
 
             let current = state.iterator.current();
             if current.kind == TokenKind::LeftParen || current.kind == TokenKind::Generic {
-                let generics = if current.kind == TokenKind::Generic {
-                    Some(generic::generic_group(state)?)
-                } else {
-                    None
-                };
+                let generics = generic::generic_group(state)?;
 
                 if kind == &TokenKind::QuestionArrow {
                     let arguments = argument::argument_list_expression(state)?;

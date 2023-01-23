@@ -182,11 +182,7 @@ expressions! {
         Ok(Expression::FunctionalOperation(FunctionalOperationExpression::Expression {
             comments: state.iterator.comments(),
             dollar,
-            generics: if state.iterator.current().kind == TokenKind::Generic {
-                Some(generic::generic_group(state)?)
-            } else {
-                None
-            },
+            generics: generic::generic_group(state)?,
             left_parenthesis: utils::skip_left_parenthesis(state)?,
             expression: Box::new(create(state)?),
             right_parenthesis: utils::skip_right_parenthesis(state)?,
@@ -306,11 +302,7 @@ expressions! {
                         identifier::fully_qualified_type_identifier_including_self(state)?
                     )
                 },
-                generics: if state.iterator.current().kind == TokenKind::Generic {
-                    Some(generic::generic_group(state)?)
-                } else {
-                    None
-                },
+                generics: generic::generic_group(state)?,
                 arguments: argument::argument_list_expression(state)?
             }
         ))
