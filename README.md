@@ -25,31 +25,28 @@ ara_parser = "0.6.1"
 
 ```rust
 use ara_parser::parser;
-use ara_reporting::builder::Charset;
+use ara_reporting::builder::CharSet;
 use ara_reporting::builder::ColorChoice;
 use ara_reporting::builder::ReportBuilder;
 use ara_reporting::error::Error;
 use ara_source::loader::load_directories;
 
 fn main() -> Result<(), Error> {
+   let source_map = load_directories("/path/to/project", vec!["src/"]).unwrap();
 
-    let source_map = load_directories("/path/to/project", vec![
-        "src/"
-    ]).unwrap();
+   match parser::parse_map(&source_map) {
+      Ok(tree_map) => tree_map.trees.iter().for_each(|tree| {
+         println!("{:#?}", tree.definitions);
+      }),
+      Err(report) => {
+         ReportBuilder::new(&source_map)
+                 .with_charset(CharSet::Unicode)
+                 .with_colors(ColorChoice::Always)
+                 .print(report.as_ref())?;
+      }
+   }
 
-    match parser::parse_map(&source_map) {
-        Ok(tree_map) => tree_map.trees.iter().for_each(|tree| {
-            println!("{:#?}", tree.definitions);
-        }),
-        Err(report) => {
-            ReportBuilder::new(&source_map, report)
-                .with_charset(Charset::Unicode)
-                .with_colors(ColorChoice::Always)
-                .print()?;
-        }
-    }
-
-    Ok(())
+   Ok(())
 }
 ```
 
