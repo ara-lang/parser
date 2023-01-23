@@ -2072,6 +2072,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 976,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -2375,6 +2377,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 1166,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(

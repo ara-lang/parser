@@ -20,92 +20,112 @@ use crate::tree::statement::r#loop::WhileStatement;
 use crate::tree::utils::CommaSeparated;
 
 pub fn foreach_statement(state: &mut State) -> ParseResult<ForeachStatement> {
-    Ok(ForeachStatement {
-        comments: state.iterator.comments(),
-        foreach: utils::skip_keyword(state, TokenKind::Foreach)?,
-        iterator: 'iterator: {
-            let expression = if state.iterator.current().kind == TokenKind::LeftParen {
-                // this could be either:
-                // 1. foreach ($array as $value)
-                // 2. foreach ($array as $key => $value) { ... }
-                // 3. foreach ($array) as $value { ... }
-                // 4. foreach ($array) as $key => $value { ... }
-                let left_parenthesis = utils::skip(state, TokenKind::LeftParen)?;
-                let expression = expression::create(state)?;
-                if state.iterator.current().kind == TokenKind::As {
-                    // this is either 1 or 2
-                    let r#as = utils::skip_keyword(state, TokenKind::As)?;
-                    let mut value = variable::parse(state)?;
-                    let current = state.iterator.current();
+    let comments = state.iterator.comments();
+    let foreach = utils::skip_keyword(state, TokenKind::Foreach)?;
 
-                    break 'iterator if current.kind == TokenKind::DoubleArrow {
-                        state.iterator.next();
-                        let double_arrow = current.position;
-                        let mut key = variable::parse(state)?;
-                        std::mem::swap(&mut value, &mut key);
-
-                        ForeachIteratorStatement::ParenthesizedKeyAndValue {
-                            left_parenthesis,
-                            expression,
-                            r#as,
-                            key,
-                            double_arrow,
-                            value,
-                            right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
-                        }
-                    } else {
-                        ForeachIteratorStatement::ParenthesizedValue {
-                            left_parenthesis,
-                            expression,
-                            r#as,
-                            value,
-                            right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
-                        }
-                    };
-                } else {
-                    // this is either 3 or 4
-                    Expression::Parenthesized(ParenthesizedExpression {
-                        comments: state.iterator.comments(),
-                        left_parenthesis,
-                        expression: Box::new(expression),
-                        right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
-                    })
-                }
-            } else {
-                expression::create(state)?
-            };
-
+    let iterator = 'iterator: {
+        let expression = if state.iterator.current().kind == TokenKind::LeftParen {
             // this could be either:
-            // 1. foreach $array as $value { ... }
-            // 2. foreach $array as $key => $value { ... }
-            let r#as = utils::skip_keyword(state, TokenKind::As)?;
+            // 1. foreach ($array as $value)
+            // 2. foreach ($array as $key => $value) { ... }
+            // 3. foreach ($array) as $value { ... }
+            // 4. foreach ($array) as $key => $value { ... }
+            let left_parenthesis = utils::skip(state, TokenKind::LeftParen)?;
+            let expression = expression::create(state)?;
+            if state.iterator.current().kind == TokenKind::As {
+                // this is either 1 or 2
+                let r#as = utils::skip_keyword(state, TokenKind::As)?;
+                let mut value = variable::parse(state)?;
+                let current = state.iterator.current();
 
-            let mut value = variable::parse(state)?;
+                break 'iterator if current.kind == TokenKind::DoubleArrow {
+                    state.iterator.next();
+                    let double_arrow = current.position;
+                    let mut key = variable::parse(state)?;
+                    std::mem::swap(&mut value, &mut key);
 
-            let current = state.iterator.current();
-            if current.kind == TokenKind::DoubleArrow {
-                state.iterator.next();
-                let double_arrow = current.position;
-                let mut key = variable::parse(state)?;
-                std::mem::swap(&mut value, &mut key);
-
-                ForeachIteratorStatement::KeyAndValue {
-                    expression,
-                    r#as,
-                    key,
-                    double_arrow,
-                    value,
-                }
+                    ForeachIteratorStatement::ParenthesizedKeyAndValue {
+                        left_parenthesis,
+                        expression,
+                        r#as,
+                        key,
+                        double_arrow,
+                        value,
+                        right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
+                    }
+                } else {
+                    ForeachIteratorStatement::ParenthesizedValue {
+                        left_parenthesis,
+                        expression,
+                        r#as,
+                        value,
+                        right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
+                    }
+                };
             } else {
-                ForeachIteratorStatement::Value {
-                    expression,
-                    r#as,
-                    value,
-                }
+                // this is either 3 or 4
+                Expression::Parenthesized(ParenthesizedExpression {
+                    comments: state.iterator.comments(),
+                    left_parenthesis,
+                    expression: Box::new(expression),
+                    right_parenthesis: utils::skip(state, TokenKind::RightParen)?,
+                })
             }
-        },
-        block: block::block_statement(state)?,
-    })
+        } else {
+            expression::create(state)?
+        };
+
+        // this could be either:
+        // 1. foreach $array as $value { ... }
+        // 2. foreach $array as $key => $value { ... }
+        let r#as = utils::skip_keyword(state, TokenKind::As)?;
+
+        let mut value = variable::parse(state)?;
+
+        let current = state.iterator.current();
+        if current.kind == TokenKind::DoubleArrow {
+            state.iterator.next();
+            let double_arrow = current.position;
+            let mut key = variable::parse(state)?;
+            std::mem::swap(&mut value, &mut key);
+
+            ForeachIteratorStatement::KeyAndValue {
+                expression,
+                r#as,
+                key,
+                double_arrow,
+                value,
+            }
+        } else {
+            ForeachIteratorStatement::Value {
+                expression,
+                r#as,
+                value,
+            }
+        }
+    };
+
+    let block = block::block_statement(state)?;
+
+    if state.iterator.current().kind == TokenKind::Else {
+        Ok(ForeachStatement {
+            comments,
+            foreach,
+            iterator,
+            block,
+            r#else: Some(utils::skip_keyword(state, TokenKind::Else)?),
+            else_block: Some(block::block_statement(state)?),
+        })
+    } else {
+        Ok(ForeachStatement {
+            comments,
+            foreach,
+            iterator,
+            block,
+            r#else: None,
+            else_block: None,
+        })
+    }
 }
 
 pub fn for_statement(state: &mut State) -> ParseResult<ForStatement> {

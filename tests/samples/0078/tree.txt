@@ -679,6 +679,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 346,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -1074,6 +1076,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 549,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -1496,6 +1500,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 799,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -1944,6 +1950,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 1033,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -2408,6 +2416,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 1297,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
@@ -2830,6 +2840,8 @@ DefinitionTree {
                                     ],
                                     right_brace: 1576,
                                 },
+                                else: None,
+                                else_block: None,
                             },
                         ),
                         Return(
