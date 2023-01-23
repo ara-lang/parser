@@ -28,56 +28,16 @@ pub fn class_definition(state: &mut State) -> ParseResult<ClassDefinition> {
         None
     };
 
-    let current = state.iterator.current();
-    let extends = if current.kind == TokenKind::Extends {
-        let extends = utils::skip_keyword(state, TokenKind::Extends)?;
-        let parent = identifier::fully_qualified_templated_identifier(state)?;
-
-        Some(ClassDefinitionExtends { extends, parent })
-    } else {
-        None
-    };
-
-    let current = state.iterator.current();
-    let implements = if current.kind == TokenKind::Implements {
-        let implements = utils::skip_keyword(state, TokenKind::Implements)?;
-        let interfaces = utils::at_least_one_comma_separated(
-            state,
-            &identifier::fully_qualified_templated_identifier,
-            TokenKind::LeftBrace,
-        )?;
-
-        Some(ClassDefinitionImplements {
-            implements,
-            interfaces,
-        })
-    } else {
-        None
-    };
-
-    let body = ClassDefinitionBody {
-        left_brace: utils::skip_left_brace(state)?,
-        members: {
-            let mut members = Vec::new();
-            while state.iterator.current().kind != TokenKind::RightBrace {
-                members.push(class_definition_member(state)?);
-            }
-
-            members
-        },
-        right_brace: utils::skip_right_brace(state)?,
-    };
-
     Ok(ClassDefinition {
         comments,
         class,
         name,
         templates,
         modifiers,
-        extends,
-        implements,
+        extends: class_definition_extends(state)?,
+        implements: class_definition_implements(state)?,
         attributes,
-        body,
+        body: class_definition_body(state)?,
     })
 }
 
@@ -95,4 +55,52 @@ pub fn class_definition_member(state: &mut State) -> ParseResult<ClassDefinition
     }
 
     property::property_definition(state, modifiers).map(ClassDefinitionMember::Property)
+}
+
+pub fn class_definition_extends(state: &mut State) -> ParseResult<Option<ClassDefinitionExtends>> {
+    let current = state.iterator.current();
+    if current.kind == TokenKind::Extends {
+        let extends = utils::skip_keyword(state, TokenKind::Extends)?;
+        let parent = identifier::fully_qualified_templated_identifier(state)?;
+
+        Ok(Some(ClassDefinitionExtends { extends, parent }))
+    } else {
+        Ok(None)
+    }
+}
+
+pub fn class_definition_implements(
+    state: &mut State,
+) -> ParseResult<Option<ClassDefinitionImplements>> {
+    let current = state.iterator.current();
+    if current.kind == TokenKind::Implements {
+        let implements = utils::skip_keyword(state, TokenKind::Implements)?;
+        let interfaces = utils::at_least_one_comma_separated(
+            state,
+            &identifier::fully_qualified_templated_identifier,
+            TokenKind::LeftBrace,
+        )?;
+
+        Ok(Some(ClassDefinitionImplements {
+            implements,
+            interfaces,
+        }))
+    } else {
+        Ok(None)
+    }
+}
+
+pub fn class_definition_body(state: &mut State) -> ParseResult<ClassDefinitionBody> {
+    Ok(ClassDefinitionBody {
+        left_brace: utils::skip_left_brace(state)?,
+        members: {
+            let mut members = Vec::new();
+            while state.iterator.current().kind != TokenKind::RightBrace {
+                members.push(class_definition_member(state)?);
+            }
+
+            members
+        },
+        right_brace: utils::skip_right_brace(state)?,
+    })
 }
