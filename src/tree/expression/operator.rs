@@ -25,6 +25,14 @@ pub enum FunctionalOperationExpression {
         greater_than: usize,
         right: Box<Expression>,
     },
+    Expression {
+        comments: CommentGroup,
+        dollar: usize,
+        generics: Option<GenericGroupExpression>,
+        left_parenthesis: usize,
+        expression: Box<Expression>,
+        right_parenthesis: usize,
+    },
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
@@ -645,31 +653,47 @@ impl RangeOperationExpression {
 impl Node for FunctionalOperationExpression {
     fn comments(&self) -> Option<&CommentGroup> {
         match self {
-            Self::Pipe { comments, .. } => Some(comments),
+            Self::Pipe { comments, .. } | Self::Expression { comments, .. } => Some(comments),
         }
     }
 
     fn initial_position(&self) -> usize {
         match &self {
             Self::Pipe { left, .. } => left.initial_position(),
+            Self::Expression { dollar, .. } => *dollar,
         }
     }
 
     fn final_position(&self) -> usize {
         match &self {
             Self::Pipe { right, .. } => right.final_position(),
+            Self::Expression {
+                right_parenthesis, ..
+            } => *right_parenthesis,
         }
     }
 
     fn children(&self) -> Vec<&dyn Node> {
         match &self {
             Self::Pipe { left, right, .. } => vec![left.as_ref(), right.as_ref()],
+            Self::Expression {
+                generics,
+                expression,
+                ..
+            } => {
+                let mut children: Vec<&dyn Node> = vec![expression.as_ref()];
+                if let Some(generics) = generics {
+                    children.push(generics);
+                }
+                children
+            }
         }
     }
 
     fn get_description(&self) -> String {
         match &self {
             Self::Pipe { .. } => "pipe functional operation expression".to_string(),
+            Self::Expression { .. } => "functional operation expression".to_string(),
         }
     }
 }

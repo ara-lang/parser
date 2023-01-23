@@ -1,0 +1,5 @@
+function foo(): void {
+    $a = $(123);
+    $b = $::<int>($a);
+    return $($b);
+}
