@@ -6,8 +6,12 @@ use crate::parser::state::State;
 use crate::tree::expression::generic::GenericGroupExpression;
 use crate::tree::utils::CommaSeparated;
 
-pub fn generic_group(state: &mut State) -> ParseResult<GenericGroupExpression> {
-    Ok(GenericGroupExpression {
+pub fn generic_group(state: &mut State) -> ParseResult<Option<GenericGroupExpression>> {
+    if state.iterator.current().kind != TokenKind::Generic {
+        return Ok(None);
+    }
+
+    Ok(Some(GenericGroupExpression {
         double_colon_less_than: utils::skip(state, TokenKind::Generic)?,
         types: {
             let mut inner = vec![];
@@ -45,5 +49,5 @@ pub fn generic_group(state: &mut State) -> ParseResult<GenericGroupExpression> {
                 utils::skip(state, TokenKind::GreaterThan)?
             }
         },
-    })
+    }))
 }
