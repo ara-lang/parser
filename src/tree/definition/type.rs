@@ -104,7 +104,7 @@ impl TypeDefinition {
         matches!(self, Self::Never(_) | Self::Void(_))
     }
 
-    pub fn is_scalar(&self) -> bool {
+    pub fn is_scalar(&self, include_union: bool) -> bool {
         match &self {
             Self::Literal(literal) => !matches!(literal, Literal::Null(_)),
             | Self::Boolean(_)
@@ -115,6 +115,9 @@ impl TypeDefinition {
             // class, and interface are represented as strings at runtime, so they are considered scalars
             | Self::Class(_, _)
             | Self::Interface(_, _) => true,
+            Self::Union(definitions) if include_union => {
+                definitions.iter().all(|definition| definition.is_scalar(true))
+            },
             _ => false,
         }
     }
