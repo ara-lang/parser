@@ -64,7 +64,12 @@ pub fn using_statement(state: &mut State) -> ParseResult<UsingStatement> {
     let mut inner = vec![];
     let mut commas = vec![];
 
+    let mut current = state.iterator.current();
     loop {
+        if current.kind == TokenKind::If || current.kind == TokenKind::LeftBrace {
+            break;
+        }
+
         inner.push({
             let comments = state.iterator.comments();
             let variable = variable::parse(state)?;
@@ -79,7 +84,7 @@ pub fn using_statement(state: &mut State) -> ParseResult<UsingStatement> {
             }
         });
 
-        let mut current = state.iterator.current();
+        current = state.iterator.current();
         if current.kind != TokenKind::Comma {
             break;
         }
@@ -89,10 +94,6 @@ pub fn using_statement(state: &mut State) -> ParseResult<UsingStatement> {
         state.iterator.next();
 
         current = state.iterator.current();
-
-        if current.kind == TokenKind::If || current.kind == TokenKind::LeftParen {
-            break;
-        }
     }
 
     let assignments = CommaSeparated { inner, commas };

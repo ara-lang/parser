@@ -1,0 +1,251 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: Keyword {
+                                    value: "using",
+                                    position: 27,
+                                },
+                                assignments: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                if_clause: None,
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 33,
+                                    statements: [],
+                                    right_brace: 40,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: Keyword {
+                                    value: "using",
+                                    position: 47,
+                                },
+                                assignments: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 53,
+                                        },
+                                        condition: Variable(
+                                            Variable {
+                                                position: 56,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 59,
+                                    statements: [],
+                                    right_brace: 66,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: Keyword {
+                                    value: "using",
+                                    position: 73,
+                                },
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 79,
+                                                name: "$a",
+                                            },
+                                            equals: 82,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 84,
+                                                            value: "foo",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 87,
+                                                        arguments: CommaSeparated {
+                                                            inner: [],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 88,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: Some(
+                                    UsingIfClauseStatement {
+                                        comments: CommentGroup {
+                                            comments: [],
+                                        },
+                                        if: Keyword {
+                                            value: "if",
+                                            position: 90,
+                                        },
+                                        condition: Variable(
+                                            Variable {
+                                                position: 93,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    },
+                                ),
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 96,
+                                    statements: [],
+                                    right_brace: 103,
+                                },
+                            },
+                        ),
+                        Using(
+                            UsingStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                using: Keyword {
+                                    value: "using",
+                                    position: 110,
+                                },
+                                assignments: CommaSeparated {
+                                    inner: [
+                                        UsingAssignmentStatement {
+                                            comments: CommentGroup {
+                                                comments: [],
+                                            },
+                                            variable: Variable {
+                                                position: 116,
+                                                name: "$a",
+                                            },
+                                            equals: 119,
+                                            expression: FunctionOperation(
+                                                Call {
+                                                    comments: CommentGroup {
+                                                        comments: [],
+                                                    },
+                                                    function: Identifier(
+                                                        Identifier {
+                                                            position: 121,
+                                                            value: "foo",
+                                                        },
+                                                    ),
+                                                    generics: None,
+                                                    arguments: ArgumentListExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 124,
+                                                        arguments: CommaSeparated {
+                                                            inner: [],
+                                                            commas: [],
+                                                        },
+                                                        right_parenthesis: 125,
+                                                    },
+                                                },
+                                            ),
+                                        },
+                                    ],
+                                    commas: [],
+                                },
+                                if_clause: None,
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 127,
+                                    statements: [],
+                                    right_brace: 134,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 136,
+                },
+            },
+        ),
+    ],
+    eof: 138,
+}

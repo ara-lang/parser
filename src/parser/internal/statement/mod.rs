@@ -41,7 +41,12 @@ fn statement(state: &mut State) -> ParseResult<Statement> {
         TokenKind::If => Statement::If(Box::new(control_flow::if_statement(state)?)),
         TokenKind::Try => Statement::Try(Box::new(r#try::try_statement(state)?)),
         TokenKind::LeftBrace => Statement::Block(Box::new(block::block_statement(state)?)),
-        TokenKind::Using if matches!(state.iterator.lookahead(1).kind, TokenKind::Variable) => {
+        TokenKind::Using
+            if matches!(
+                state.iterator.lookahead(1).kind,
+                TokenKind::Variable | TokenKind::LeftBrace | TokenKind::If
+            ) =>
+        {
             Statement::Using(Box::new(control_flow::using_statement(state)?))
         }
         TokenKind::Return => Statement::Return(Box::new(ReturnStatement::Explicit {

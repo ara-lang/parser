@@ -1,0 +1,17 @@
+function foo(): void {
+    using {
+
+    }
+
+    using if $a {
+
+    }
+
+    using $a = foo() if $a {
+
+    }
+
+    using $a = foo() {
+
+    }
+}
