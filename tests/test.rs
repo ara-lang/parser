@@ -15,7 +15,7 @@ use ara_source::loader::SourceLoader;
 #[test]
 fn test_fixtures() -> io::Result<()> {
     let manifest = env::var("CARGO_MANIFEST_DIR").unwrap();
-    let root = format!("{}/tests/samples/", manifest);
+    let root = format!("{manifest}/tests/samples/");
 
     let mut entries = read_dir(&root)?
         .flatten()
@@ -64,7 +64,7 @@ fn test_fixtures() -> io::Result<()> {
 
                 assert_str_eq!(
                     expected_error,
-                    format!("{}", error),
+                    format!("{error}"),
                     "error mismatch for sample `{}`",
                     source_map.sources[0].name()
                 );

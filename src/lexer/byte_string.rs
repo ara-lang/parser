@@ -71,7 +71,7 @@ impl std::fmt::Display for ByteString {
             match b {
                 0 => write!(f, "\\0")?,
                 b'\n' | b'\r' | b'\t' => write!(f, "{}", b.escape_ascii())?,
-                0x01..=0x19 | 0x7f..=0xff => write!(f, "\\x{:02x}", b)?,
+                0x01..=0x19 | 0x7f..=0xff => write!(f, "\\x{b:02x}")?,
                 _ => write!(f, "{}", b as char)?,
             }
         }
@@ -95,7 +95,7 @@ impl std::fmt::Debug for ByteString {
             match b {
                 0 => write!(f, "\\0")?,
                 b'\n' | b'\r' | b'\t' => write!(f, "{}", b.escape_ascii())?,
-                0x01..=0x19 | 0x7f..=0xff => write!(f, "\\x{:02x}", b)?,
+                0x01..=0x19 | 0x7f..=0xff => write!(f, "\\x{b:02x}")?,
                 _ => write!(f, "{}", b as char)?,
             }
         }

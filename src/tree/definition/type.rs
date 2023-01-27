@@ -382,8 +382,8 @@ impl Node for TypeDefinition {
 impl std::fmt::Display for TypeDefinition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match &self {
-            Self::Identifier(inner) => write!(f, "{}", inner),
-            Self::Nullable(_, inner) => write!(f, "?{}", inner),
+            Self::Identifier(inner) => write!(f, "{inner}"),
+            Self::Nullable(_, inner) => write!(f, "?{inner}"),
             Self::Union(inner) => write!(
                 f,
                 "{}",
@@ -433,11 +433,11 @@ impl std::fmt::Display for TypeDefinition {
                 FloatingPointTypeDefinition::F32(_) => write!(f, "f32"),
             },
             Self::String(_) => write!(f, "string"),
-            Self::Dict(_, template) => write!(f, "dict{}", template),
-            Self::Vec(_, template) => write!(f, "vec{}", template),
-            Self::Iterable(_, template) => write!(f, "iterable{}", template),
-            Self::Class(_, template) => write!(f, "class{}", template),
-            Self::Interface(_, template) => write!(f, "interface{}", template),
+            Self::Dict(_, template) => write!(f, "dict{template}"),
+            Self::Vec(_, template) => write!(f, "vec{template}"),
+            Self::Iterable(_, template) => write!(f, "iterable{template}"),
+            Self::Class(_, template) => write!(f, "class{template}"),
+            Self::Interface(_, template) => write!(f, "interface{template}"),
             Self::Object(_) => write!(f, "object"),
             Self::Mixed(_) => write!(f, "mixed"),
             Self::NonNull(_) => write!(f, "nonnull"),
@@ -457,7 +457,7 @@ impl std::fmt::Display for TypeDefinition {
             Self::Parenthesized {
                 type_definition, ..
             } => {
-                write!(f, "({})", type_definition)
+                write!(f, "({type_definition})")
             }
         }
     }

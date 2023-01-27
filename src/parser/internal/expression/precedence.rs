@@ -71,7 +71,7 @@ impl Precedence {
             DoubleDot => Ok(Self::Range),
             _ => crate::parser_bail!(
                 state,
-                unreachable_code(format!("unexpected precedence for operator {:?}", kind))
+                unreachable_code(format!("unexpected precedence for operator {kind:?}"))
             ),
         }
     }
@@ -86,7 +86,7 @@ impl Precedence {
             Arrow | QuestionArrow | DoubleColon => Ok(Self::ObjectAccess),
             _ => crate::parser_bail!(
                 state,
-                unreachable_code(format!("unexpected precedence for operator {:?}", kind))
+                unreachable_code(format!("unexpected precedence for operator {kind:?}"))
             ),
         }
     }

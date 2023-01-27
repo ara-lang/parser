@@ -99,6 +99,6 @@ impl ::std::fmt::Display for LexerIssueCode {
 
 impl From<LexerIssueCode> for String {
     fn from(code: LexerIssueCode) -> String {
-        format!("{}", code)
+        format!("{code}")
     }
 }

@@ -379,7 +379,7 @@ impl Display for TokenKind {
             | Self::MultiLineComment
             | Self::HashMarkComment
             | Self::DocumentComment => {
-                return write!(f, "{:?}", self);
+                return write!(f, "{self:?}");
             }
             Self::Where => "where",
             Self::Async => "async",
@@ -422,6 +422,6 @@ impl Display for TokenKind {
             Self::TraitConstant => "__TRAIT__",
         };
 
-        write!(f, "{}", s)
+        write!(f, "{s}")
     }
 }
