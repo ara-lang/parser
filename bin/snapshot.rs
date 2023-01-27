@@ -12,7 +12,7 @@ use ara_source::loader::SourceLoader;
 
 fn main() -> io::Result<()> {
     let manifest = env::var("CARGO_MANIFEST_DIR").unwrap();
-    let root = format!("{}/tests/samples/", manifest);
+    let root = format!("{manifest}/tests/samples/");
 
     let mut entries = read_dir(&root)?
         .flatten()

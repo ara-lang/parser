@@ -79,7 +79,7 @@ impl std::fmt::Display for TemplatedIdentifier {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.name)?;
         if let Some(templates) = &self.templates {
-            write!(f, "{}", templates)?;
+            write!(f, "{templates}")?;
         }
 
         Ok(())

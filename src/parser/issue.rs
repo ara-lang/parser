@@ -295,8 +295,7 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForTypeName,
         format!(
-            "reserved keyword `{}` cannot be used as a type name",
-            identifier,
+            "reserved keyword `{identifier}` cannot be used as a type name",
         ),
     )
     .with_source(
@@ -313,8 +312,7 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForConstantName,
         format!(
-            "reserved keyword `{}` cannot be used as a constant name",
-            identifier,
+            "reserved keyword `{identifier}` cannot be used as a constant name",
         ),
     )
     .with_source(
@@ -331,8 +329,7 @@ pub(crate) fn type_cannot_be_used_in_current_context(
     Issue::error(
         ParserIssueCode::TypeCannotBeUsedInCurrentContext,
         format!(
-            "type `{}` cannot be used in the current context",
-            identifier,
+            "type `{identifier}` cannot be used in the current context",
         ),
     )
     .with_source(
@@ -375,7 +372,7 @@ pub(crate) fn invalid_enum_backing_type(
 ) -> Issue {
     Issue::error(
         ParserIssueCode::InvalidEnumBackingType,
-        format!("invalid enum backing type `{}`", backing_identifier),
+        format!("invalid enum backing type `{backing_identifier}`"),
     )
     .with_source(
         state.source.name(),
@@ -408,7 +405,7 @@ pub(crate) fn unexpected_token<T: ToString>(
     };
 
     let message = if expected.is_empty() {
-        format!("unexpected {}", found_name)
+        format!("unexpected {found_name}")
     } else {
         let expected: Vec<String> = expected
             .iter()
@@ -418,7 +415,7 @@ pub(crate) fn unexpected_token<T: ToString>(
                 if s.starts_with("a ") || s.starts_with("an ") {
                     s
                 } else {
-                    format!("`{}`", s)
+                    format!("`{s}`")
                 }
             })
             .collect();
@@ -432,7 +429,7 @@ pub(crate) fn unexpected_token<T: ToString>(
             expected.join(", or ")
         };
 
-        format!("unexpected {}, expected {}", found_name, expected)
+        format!("unexpected {found_name}, expected {expected}")
     };
 
     Issue::error(ParserIssueCode::UnexpectedToken, message).with_source(
@@ -450,6 +447,6 @@ impl ::std::fmt::Display for ParserIssueCode {
 
 impl From<ParserIssueCode> for String {
     fn from(code: ParserIssueCode) -> Self {
-        format!("{}", code)
+        format!("{code}")
     }
 }

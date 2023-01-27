@@ -90,7 +90,7 @@ impl<'a> State<'a> {
 
     pub fn named<T: Display + ?Sized>(&self, name: &T) -> String {
         if let Some(namespace) = &self.namespace {
-            format!("{}\\{}", namespace, name)
+            format!("{namespace}\\{name}")
         } else {
             name.to_string()
         }
