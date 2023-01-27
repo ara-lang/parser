@@ -294,9 +294,7 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_type_name(
 ) -> Issue {
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForTypeName,
-        format!(
-            "reserved keyword `{identifier}` cannot be used as a type name",
-        ),
+        format!("reserved keyword `{identifier}` cannot be used as a type name",),
     )
     .with_source(
         state.source.name(),
@@ -311,9 +309,7 @@ pub(crate) fn reserved_keyword_cannot_be_used_for_constant_name(
 ) -> Issue {
     Issue::error(
         ParserIssueCode::ReservedKeywordCannotBeUsedForConstantName,
-        format!(
-            "reserved keyword `{identifier}` cannot be used as a constant name",
-        ),
+        format!("reserved keyword `{identifier}` cannot be used as a constant name",),
     )
     .with_source(
         state.source.name(),
@@ -328,9 +324,7 @@ pub(crate) fn type_cannot_be_used_in_current_context(
 ) -> Issue {
     Issue::error(
         ParserIssueCode::TypeCannotBeUsedInCurrentContext,
-        format!(
-            "type `{identifier}` cannot be used in the current context",
-        ),
+        format!("type `{identifier}` cannot be used in the current context",),
     )
     .with_source(
         state.source.name(),
