@@ -1,0 +1,158 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Keyword {
+                                    value: "if",
+                                    position: 27,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 30,
+                                    statements: [],
+                                    right_brace: 41,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Keyword {
+                                    value: "if",
+                                    position: 48,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 51,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        53,
+                                    ],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 55,
+                                    statements: [],
+                                    right_brace: 66,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                        If(
+                            IfStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                if: Keyword {
+                                    value: "if",
+                                    position: 77,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 80,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 84,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 88,
+                                                name: "$c",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        82,
+                                        86,
+                                        90,
+                                    ],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 92,
+                                    statements: [],
+                                    right_brace: 103,
+                                },
+                                elseifs: [],
+                                else: None,
+                            },
+                        ),
+                    ],
+                    right_brace: 105,
+                },
+            },
+        ),
+    ],
+    eof: 107,
+}

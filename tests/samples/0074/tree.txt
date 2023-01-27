@@ -121,29 +121,34 @@ DefinitionTree {
                                     value: "if",
                                     position: 100,
                                 },
-                                condition: TypeOperation(
-                                    Is {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left: Variable(
-                                            Variable {
-                                                position: 103,
-                                                name: "$value",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        TypeOperation(
+                                            Is {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 103,
+                                                        name: "$value",
+                                                    },
+                                                ),
+                                                is: Keyword {
+                                                    value: "is",
+                                                    position: 110,
+                                                },
+                                                right: String(
+                                                    Keyword {
+                                                        value: "string",
+                                                        position: 113,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                        is: Keyword {
-                                            value: "is",
-                                            position: 110,
-                                        },
-                                        right: String(
-                                            Keyword {
-                                                value: "string",
-                                                position: 113,
-                                            },
-                                        ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -185,64 +190,69 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 148,
                                                 },
-                                                condition: LogicalOperation(
-                                                    Or {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left: TypeOperation(
-                                                            Is {
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        LogicalOperation(
+                                                            Or {
                                                                 comments: CommentGroup {
                                                                     comments: [],
                                                                 },
-                                                                left: Variable(
-                                                                    Variable {
-                                                                        position: 151,
-                                                                        name: "$value",
+                                                                left: TypeOperation(
+                                                                    Is {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
+                                                                        },
+                                                                        left: Variable(
+                                                                            Variable {
+                                                                                position: 151,
+                                                                                name: "$value",
+                                                                            },
+                                                                        ),
+                                                                        is: Keyword {
+                                                                            value: "is",
+                                                                            position: 158,
+                                                                        },
+                                                                        right: SignedInteger(
+                                                                            Default(
+                                                                                Keyword {
+                                                                                    value: "int",
+                                                                                    position: 161,
+                                                                                },
+                                                                            ),
+                                                                        ),
                                                                     },
                                                                 ),
-                                                                is: Keyword {
-                                                                    value: "is",
-                                                                    position: 158,
-                                                                },
-                                                                right: SignedInteger(
-                                                                    Default(
-                                                                        Keyword {
-                                                                            value: "int",
-                                                                            position: 161,
+                                                                double_pipe: 165,
+                                                                right: TypeOperation(
+                                                                    Is {
+                                                                        comments: CommentGroup {
+                                                                            comments: [],
                                                                         },
-                                                                    ),
+                                                                        left: Variable(
+                                                                            Variable {
+                                                                                position: 168,
+                                                                                name: "$value",
+                                                                            },
+                                                                        ),
+                                                                        is: Keyword {
+                                                                            value: "is",
+                                                                            position: 175,
+                                                                        },
+                                                                        right: FloatingPoint(
+                                                                            Default(
+                                                                                Keyword {
+                                                                                    value: "float",
+                                                                                    position: 178,
+                                                                                },
+                                                                            ),
+                                                                        ),
+                                                                    },
                                                                 ),
                                                             },
                                                         ),
-                                                        double_pipe: 165,
-                                                        right: TypeOperation(
-                                                            Is {
-                                                                comments: CommentGroup {
-                                                                    comments: [],
-                                                                },
-                                                                left: Variable(
-                                                                    Variable {
-                                                                        position: 168,
-                                                                        name: "$value",
-                                                                    },
-                                                                ),
-                                                                is: Keyword {
-                                                                    value: "is",
-                                                                    position: 175,
-                                                                },
-                                                                right: FloatingPoint(
-                                                                    Default(
-                                                                        Keyword {
-                                                                            value: "float",
-                                                                            position: 178,
-                                                                        },
-                                                                    ),
-                                                                ),
-                                                            },
-                                                        ),
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -258,31 +268,36 @@ DefinitionTree {
                                                                     value: "if",
                                                                     position: 194,
                                                                 },
-                                                                condition: TypeOperation(
-                                                                    Is {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        left: Variable(
-                                                                            Variable {
-                                                                                position: 197,
-                                                                                name: "$value",
+                                                                conditions: CommaSeparated {
+                                                                    inner: [
+                                                                        TypeOperation(
+                                                                            Is {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                left: Variable(
+                                                                                    Variable {
+                                                                                        position: 197,
+                                                                                        name: "$value",
+                                                                                    },
+                                                                                ),
+                                                                                is: Keyword {
+                                                                                    value: "is",
+                                                                                    position: 204,
+                                                                                },
+                                                                                right: SignedInteger(
+                                                                                    Default(
+                                                                                        Keyword {
+                                                                                            value: "int",
+                                                                                            position: 207,
+                                                                                        },
+                                                                                    ),
+                                                                                ),
                                                                             },
                                                                         ),
-                                                                        is: Keyword {
-                                                                            value: "is",
-                                                                            position: 204,
-                                                                        },
-                                                                        right: SignedInteger(
-                                                                            Default(
-                                                                                Keyword {
-                                                                                    value: "int",
-                                                                                    position: 207,
-                                                                                },
-                                                                            ),
-                                                                        ),
-                                                                    },
-                                                                ),
+                                                                    ],
+                                                                    commas: [],
+                                                                },
                                                                 block: BlockStatement {
                                                                     comments: CommentGroup {
                                                                         comments: [],

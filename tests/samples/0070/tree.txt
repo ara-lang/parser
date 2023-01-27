@@ -50,12 +50,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 27,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 30,
-                                        name: "$a",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 30,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -77,21 +82,26 @@ DefinitionTree {
                                     value: "if",
                                     position: 42,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 45,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 46,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 45,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 46,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 48,
                                             },
                                         ),
-                                        right_parenthesis: 48,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -113,12 +123,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 58,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 61,
-                                        name: "$a",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 61,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -170,12 +185,17 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 91,
                                                 },
-                                                condition: Variable(
-                                                    Variable {
-                                                        position: 94,
-                                                        name: "$c",
-                                                    },
-                                                ),
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        Variable(
+                                                            Variable {
+                                                                position: 94,
+                                                                name: "$c",
+                                                            },
+                                                        ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -221,21 +241,26 @@ DefinitionTree {
                                     value: "if",
                                     position: 114,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 117,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 118,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 117,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 118,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 120,
                                             },
                                         ),
-                                        right_parenthesis: 120,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -296,21 +321,26 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 147,
                                                 },
-                                                condition: Parenthesized(
-                                                    ParenthesizedExpression {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left_parenthesis: 150,
-                                                        expression: Variable(
-                                                            Variable {
-                                                                position: 151,
-                                                                name: "$c",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        Parenthesized(
+                                                            ParenthesizedExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 150,
+                                                                expression: Variable(
+                                                                    Variable {
+                                                                        position: 151,
+                                                                        name: "$c",
+                                                                    },
+                                                                ),
+                                                                right_parenthesis: 153,
                                                             },
                                                         ),
-                                                        right_parenthesis: 153,
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -356,12 +386,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 171,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 174,
-                                        name: "$a",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 174,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -403,21 +438,26 @@ DefinitionTree {
                                     value: "if",
                                     position: 194,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 197,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 198,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 197,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 198,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 200,
                                             },
                                         ),
-                                        right_parenthesis: 200,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -459,12 +499,17 @@ DefinitionTree {
                                     value: "while",
                                     position: 218,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 224,
-                                        name: "$a",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 224,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -484,21 +529,26 @@ DefinitionTree {
                                     value: "while",
                                     position: 236,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 242,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 243,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 242,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 243,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 245,
                                             },
                                         ),
-                                        right_parenthesis: 245,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -530,12 +580,17 @@ DefinitionTree {
                                     value: "while",
                                     position: 261,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 267,
-                                        name: "$a",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 267,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 semicolon: 269,
                             },
                         ),
@@ -560,21 +615,26 @@ DefinitionTree {
                                     value: "while",
                                     position: 281,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 287,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 288,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 287,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 288,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 290,
                                             },
                                         ),
-                                        right_parenthesis: 290,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 semicolon: 291,
                             },
                         ),

@@ -1,0 +1,167 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        DoWhile(
+                            DoWhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                do: Keyword {
+                                    value: "do",
+                                    position: 27,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 30,
+                                    statements: [],
+                                    right_brace: 41,
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 43,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                semicolon: 48,
+                            },
+                        ),
+                        DoWhile(
+                            DoWhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                do: Keyword {
+                                    value: "do",
+                                    position: 59,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 62,
+                                    statements: [],
+                                    right_brace: 73,
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 75,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 81,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        83,
+                                    ],
+                                },
+                                semicolon: 85,
+                            },
+                        ),
+                        DoWhile(
+                            DoWhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                do: Keyword {
+                                    value: "do",
+                                    position: 96,
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 99,
+                                    statements: [],
+                                    right_brace: 110,
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 112,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 118,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 122,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 126,
+                                                name: "$c",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        120,
+                                        124,
+                                        128,
+                                    ],
+                                },
+                                semicolon: 130,
+                            },
+                        ),
+                    ],
+                    right_brace: 132,
+                },
+            },
+        ),
+    ],
+    eof: 134,
+}

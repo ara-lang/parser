@@ -62,21 +62,26 @@ DefinitionTree {
                                     value: "while",
                                     position: 36,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 42,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 43,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 42,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 43,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                right_parenthesis: 45,
                                             },
                                         ),
-                                        right_parenthesis: 45,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 semicolon: 46,
                             },
                         ),

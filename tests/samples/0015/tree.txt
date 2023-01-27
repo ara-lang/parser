@@ -73,40 +73,45 @@ DefinitionTree {
                                     value: "if",
                                     position: 32,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 35,
-                                        expression: ComparisonOperation(
-                                            LessThan {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left: Variable(
-                                                    Variable {
-                                                        position: 36,
-                                                        name: "$n",
+                                                left_parenthesis: 35,
+                                                expression: ComparisonOperation(
+                                                    LessThan {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left: Variable(
+                                                            Variable {
+                                                                position: 36,
+                                                                name: "$n",
+                                                            },
+                                                        ),
+                                                        less_than: 39,
+                                                        right: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "2",
+                                                                    position: 41,
+                                                                },
+                                                            ),
+                                                        ),
                                                     },
                                                 ),
-                                                less_than: 39,
-                                                right: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "2",
-                                                            position: 41,
-                                                        },
-                                                    ),
-                                                ),
+                                                right_parenthesis: 42,
                                             },
                                         ),
-                                        right_parenthesis: 42,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],

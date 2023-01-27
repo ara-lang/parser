@@ -589,43 +589,48 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 281,
                                                 },
-                                                condition: FunctionOperation(
-                                                    Call {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        function: Variable(
-                                                            Variable {
-                                                                position: 284,
-                                                                name: "$filter",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Variable(
+                                                                    Variable {
+                                                                        position: 284,
+                                                                        name: "$filter",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 291,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 292,
+                                                                                        name: "$item",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 297,
+                                                                },
                                                             },
                                                         ),
-                                                        generics: None,
-                                                        arguments: ArgumentListExpression {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            left_parenthesis: 291,
-                                                            arguments: CommaSeparated {
-                                                                inner: [
-                                                                    Value {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: Variable(
-                                                                            Variable {
-                                                                                position: 292,
-                                                                                name: "$item",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ],
-                                                                commas: [],
-                                                            },
-                                                            right_parenthesis: 297,
-                                                        },
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -1404,43 +1409,48 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 730,
                                                 },
-                                                condition: FunctionOperation(
-                                                    Call {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        function: Variable(
-                                                            Variable {
-                                                                position: 733,
-                                                                name: "$filter",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Variable(
+                                                                    Variable {
+                                                                        position: 733,
+                                                                        name: "$filter",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 740,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 741,
+                                                                                        name: "$item",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 746,
+                                                                },
                                                             },
                                                         ),
-                                                        generics: None,
-                                                        arguments: ArgumentListExpression {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            left_parenthesis: 740,
-                                                            arguments: CommaSeparated {
-                                                                inner: [
-                                                                    Value {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: Variable(
-                                                                            Variable {
-                                                                                position: 741,
-                                                                                name: "$item",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ],
-                                                                commas: [],
-                                                            },
-                                                            right_parenthesis: 746,
-                                                        },
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -2744,43 +2754,48 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 1507,
                                                 },
-                                                condition: FunctionOperation(
-                                                    Call {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        function: Variable(
-                                                            Variable {
-                                                                position: 1510,
-                                                                name: "$filter",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Variable(
+                                                                    Variable {
+                                                                        position: 1510,
+                                                                        name: "$filter",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 1517,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 1518,
+                                                                                        name: "$item",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 1523,
+                                                                },
                                                             },
                                                         ),
-                                                        generics: None,
-                                                        arguments: ArgumentListExpression {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            left_parenthesis: 1517,
-                                                            arguments: CommaSeparated {
-                                                                inner: [
-                                                                    Value {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: Variable(
-                                                                            Variable {
-                                                                                position: 1518,
-                                                                                name: "$item",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ],
-                                                                commas: [],
-                                                            },
-                                                            right_parenthesis: 1523,
-                                                        },
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],

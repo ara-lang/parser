@@ -334,43 +334,48 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 165,
                                                 },
-                                                condition: FunctionOperation(
-                                                    Call {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        function: Variable(
-                                                            Variable {
-                                                                position: 168,
-                                                                name: "$predicate",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        FunctionOperation(
+                                                            Call {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                function: Variable(
+                                                                    Variable {
+                                                                        position: 168,
+                                                                        name: "$predicate",
+                                                                    },
+                                                                ),
+                                                                generics: None,
+                                                                arguments: ArgumentListExpression {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    left_parenthesis: 178,
+                                                                    arguments: CommaSeparated {
+                                                                        inner: [
+                                                                            Value {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: Variable(
+                                                                                    Variable {
+                                                                                        position: 179,
+                                                                                        name: "$item",
+                                                                                    },
+                                                                                ),
+                                                                            },
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
+                                                                    right_parenthesis: 184,
+                                                                },
                                                             },
                                                         ),
-                                                        generics: None,
-                                                        arguments: ArgumentListExpression {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            left_parenthesis: 178,
-                                                            arguments: CommaSeparated {
-                                                                inner: [
-                                                                    Value {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: Variable(
-                                                                            Variable {
-                                                                                position: 179,
-                                                                                name: "$item",
-                                                                            },
-                                                                        ),
-                                                                    },
-                                                                ],
-                                                                commas: [],
-                                                            },
-                                                            right_parenthesis: 184,
-                                                        },
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],
@@ -909,75 +914,80 @@ DefinitionTree {
                                     value: "if",
                                     position: 431,
                                 },
-                                condition: TypeOperation(
-                                    Is {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left: Variable(
-                                            Variable {
-                                                position: 434,
-                                                name: "$mapper",
-                                            },
-                                        ),
-                                        is: Keyword {
-                                            value: "is",
-                                            position: 442,
-                                        },
-                                        right: Identifier(
-                                            TemplatedIdentifier {
-                                                name: Identifier {
-                                                    position: 445,
-                                                    value: "SomeOtherType",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        TypeOperation(
+                                            Is {
+                                                comments: CommentGroup {
+                                                    comments: [],
                                                 },
-                                                templates: Some(
-                                                    TypeTemplateGroupDefinition {
-                                                        comments: CommentGroup {
-                                                            comments: [],
+                                                left: Variable(
+                                                    Variable {
+                                                        position: 434,
+                                                        name: "$mapper",
+                                                    },
+                                                ),
+                                                is: Keyword {
+                                                    value: "is",
+                                                    position: 442,
+                                                },
+                                                right: Identifier(
+                                                    TemplatedIdentifier {
+                                                        name: Identifier {
+                                                            position: 445,
+                                                            value: "SomeOtherType",
                                                         },
-                                                        less_than: 458,
-                                                        members: CommaSeparated {
-                                                            inner: [
-                                                                Identifier(
-                                                                    TemplatedIdentifier {
-                                                                        name: Identifier {
-                                                                            position: 459,
-                                                                            value: "_",
-                                                                        },
-                                                                        templates: None,
-                                                                    },
-                                                                ),
-                                                                Identifier(
-                                                                    TemplatedIdentifier {
-                                                                        name: Identifier {
-                                                                            position: 462,
-                                                                            value: "_",
-                                                                        },
-                                                                        templates: None,
-                                                                    },
-                                                                ),
-                                                                Identifier(
-                                                                    TemplatedIdentifier {
-                                                                        name: Identifier {
-                                                                            position: 465,
-                                                                            value: "_",
-                                                                        },
-                                                                        templates: None,
-                                                                    },
-                                                                ),
-                                                            ],
-                                                            commas: [
-                                                                460,
-                                                                463,
-                                                            ],
-                                                        },
-                                                        greater_than: 466,
+                                                        templates: Some(
+                                                            TypeTemplateGroupDefinition {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                less_than: 458,
+                                                                members: CommaSeparated {
+                                                                    inner: [
+                                                                        Identifier(
+                                                                            TemplatedIdentifier {
+                                                                                name: Identifier {
+                                                                                    position: 459,
+                                                                                    value: "_",
+                                                                                },
+                                                                                templates: None,
+                                                                            },
+                                                                        ),
+                                                                        Identifier(
+                                                                            TemplatedIdentifier {
+                                                                                name: Identifier {
+                                                                                    position: 462,
+                                                                                    value: "_",
+                                                                                },
+                                                                                templates: None,
+                                                                            },
+                                                                        ),
+                                                                        Identifier(
+                                                                            TemplatedIdentifier {
+                                                                                name: Identifier {
+                                                                                    position: 465,
+                                                                                    value: "_",
+                                                                                },
+                                                                                templates: None,
+                                                                            },
+                                                                        ),
+                                                                    ],
+                                                                    commas: [
+                                                                        460,
+                                                                        463,
+                                                                    ],
+                                                                },
+                                                                greater_than: 466,
+                                                            },
+                                                        ),
                                                     },
                                                 ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],

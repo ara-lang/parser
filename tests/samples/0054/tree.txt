@@ -50,21 +50,26 @@ DefinitionTree {
                                     value: "if",
                                     position: 28,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 31,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 32,
-                                                name: "$foo",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 31,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 32,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                right_parenthesis: 36,
                                             },
                                         ),
-                                        right_parenthesis: 36,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -92,21 +97,26 @@ DefinitionTree {
                                                     value: "if",
                                                     position: 52,
                                                 },
-                                                condition: Parenthesized(
-                                                    ParenthesizedExpression {
-                                                        comments: CommentGroup {
-                                                            comments: [],
-                                                        },
-                                                        left_parenthesis: 55,
-                                                        expression: Variable(
-                                                            Variable {
-                                                                position: 56,
-                                                                name: "$bar",
+                                                conditions: CommaSeparated {
+                                                    inner: [
+                                                        Parenthesized(
+                                                            ParenthesizedExpression {
+                                                                comments: CommentGroup {
+                                                                    comments: [],
+                                                                },
+                                                                left_parenthesis: 55,
+                                                                expression: Variable(
+                                                                    Variable {
+                                                                        position: 56,
+                                                                        name: "$bar",
+                                                                    },
+                                                                ),
+                                                                right_parenthesis: 60,
                                                             },
                                                         ),
-                                                        right_parenthesis: 60,
-                                                    },
-                                                ),
+                                                    ],
+                                                    commas: [],
+                                                },
                                                 block: BlockStatement {
                                                     comments: CommentGroup {
                                                         comments: [],

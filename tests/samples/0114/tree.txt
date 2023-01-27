@@ -1,0 +1,152 @@
+DefinitionTree {
+    definitions: [
+        Function(
+            FunctionDefinition {
+                comments: CommentGroup {
+                    comments: [],
+                },
+                attributes: [],
+                function: Keyword {
+                    value: "function",
+                    position: 0,
+                },
+                name: Identifier {
+                    position: 9,
+                    value: "foo",
+                },
+                templates: None,
+                parameters: FunctionLikeParameterListDefinition {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_parenthesis: 12,
+                    parameters: CommaSeparated {
+                        inner: [],
+                        commas: [],
+                    },
+                    right_parenthesis: 13,
+                },
+                return_type: FunctionLikeReturnTypeDefinition {
+                    colon: 14,
+                    type_definition: Void(
+                        Keyword {
+                            value: "void",
+                            position: 16,
+                        },
+                    ),
+                },
+                body: BlockStatement {
+                    comments: CommentGroup {
+                        comments: [],
+                    },
+                    left_brace: 21,
+                    statements: [
+                        While(
+                            WhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 27,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [],
+                                    commas: [],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 33,
+                                    statements: [],
+                                    right_brace: 44,
+                                },
+                            },
+                        ),
+                        While(
+                            WhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 55,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 61,
+                                                name: "$a",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        63,
+                                    ],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 65,
+                                    statements: [],
+                                    right_brace: 76,
+                                },
+                            },
+                        ),
+                        While(
+                            WhileStatement {
+                                comments: CommentGroup {
+                                    comments: [],
+                                },
+                                while: Keyword {
+                                    value: "while",
+                                    position: 87,
+                                },
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 93,
+                                                name: "$a",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 97,
+                                                name: "$b",
+                                            },
+                                        ),
+                                        Variable(
+                                            Variable {
+                                                position: 101,
+                                                name: "$c",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [
+                                        95,
+                                        99,
+                                        103,
+                                    ],
+                                },
+                                block: BlockStatement {
+                                    comments: CommentGroup {
+                                        comments: [],
+                                    },
+                                    left_brace: 105,
+                                    statements: [],
+                                    right_brace: 116,
+                                },
+                            },
+                        ),
+                    ],
+                    right_brace: 118,
+                },
+            },
+        ),
+    ],
+    eof: 120,
+}

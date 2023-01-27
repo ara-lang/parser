@@ -457,43 +457,48 @@ DefinitionTree {
                                                                         value: "if",
                                                                         position: 289,
                                                                     },
-                                                                    condition: FunctionOperation(
-                                                                        Call {
-                                                                            comments: CommentGroup {
-                                                                                comments: [],
-                                                                            },
-                                                                            function: Variable(
-                                                                                Variable {
-                                                                                    position: 292,
-                                                                                    name: "$func",
+                                                                    conditions: CommaSeparated {
+                                                                        inner: [
+                                                                            FunctionOperation(
+                                                                                Call {
+                                                                                    comments: CommentGroup {
+                                                                                        comments: [],
+                                                                                    },
+                                                                                    function: Variable(
+                                                                                        Variable {
+                                                                                            position: 292,
+                                                                                            name: "$func",
+                                                                                        },
+                                                                                    ),
+                                                                                    generics: None,
+                                                                                    arguments: ArgumentListExpression {
+                                                                                        comments: CommentGroup {
+                                                                                            comments: [],
+                                                                                        },
+                                                                                        left_parenthesis: 297,
+                                                                                        arguments: CommaSeparated {
+                                                                                            inner: [
+                                                                                                Value {
+                                                                                                    comments: CommentGroup {
+                                                                                                        comments: [],
+                                                                                                    },
+                                                                                                    value: Variable(
+                                                                                                        Variable {
+                                                                                                            position: 298,
+                                                                                                            name: "$item",
+                                                                                                        },
+                                                                                                    ),
+                                                                                                },
+                                                                                            ],
+                                                                                            commas: [],
+                                                                                        },
+                                                                                        right_parenthesis: 303,
+                                                                                    },
                                                                                 },
                                                                             ),
-                                                                            generics: None,
-                                                                            arguments: ArgumentListExpression {
-                                                                                comments: CommentGroup {
-                                                                                    comments: [],
-                                                                                },
-                                                                                left_parenthesis: 297,
-                                                                                arguments: CommaSeparated {
-                                                                                    inner: [
-                                                                                        Value {
-                                                                                            comments: CommentGroup {
-                                                                                                comments: [],
-                                                                                            },
-                                                                                            value: Variable(
-                                                                                                Variable {
-                                                                                                    position: 298,
-                                                                                                    name: "$item",
-                                                                                                },
-                                                                                            ),
-                                                                                        },
-                                                                                    ],
-                                                                                    commas: [],
-                                                                                },
-                                                                                right_parenthesis: 303,
-                                                                            },
-                                                                        },
-                                                                    ),
+                                                                        ],
+                                                                        commas: [],
+                                                                    },
                                                                     block: BlockStatement {
                                                                         comments: CommentGroup {
                                                                             comments: [],

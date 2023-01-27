@@ -1,0 +1,13 @@
+function foo(): void {
+    if {
+    
+    }
+
+    if $a, {
+    
+    }
+    
+    if $a, $b, $c, {
+    
+    }
+}
