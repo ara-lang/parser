@@ -42,7 +42,7 @@ pub fn parse_map(map: &SourceMap) -> Result<TreeMap, Box<Report>> {
             )),
         }))
     } else {
-        Ok(TreeMap { trees })
+        Ok(TreeMap::new(trees))
     }
 }
 
@@ -69,8 +69,5 @@ pub fn construct(source: &Source, tokens: &[Token]) -> Result<Tree, Box<Report>>
 
     let definitions = definition::tree(&mut state)?;
 
-    state.finish(Tree {
-        source: source.name().to_string(),
-        definitions,
-    })
+    state.finish(Tree::new(source.name(), definitions))
 }

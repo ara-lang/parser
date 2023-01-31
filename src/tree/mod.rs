@@ -17,10 +17,25 @@ pub struct TreeMap {
     pub trees: Vec<Tree>,
 }
 
+impl TreeMap {
+    pub fn new(trees: Vec<Tree>) -> Self {
+        Self { trees }
+    }
+}
+
 #[derive(Debug)]
 pub struct Tree {
     pub source: String,
     pub definitions: DefinitionTree,
+}
+
+impl Tree {
+    pub fn new<S: Into<String>>(source: S, definitions: DefinitionTree) -> Self {
+        Self {
+            source: source.into(),
+            definitions,
+        }
+    }
 }
 
 pub trait Node: Any {
