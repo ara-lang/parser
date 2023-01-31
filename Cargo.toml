@@ -2,7 +2,7 @@
 name = "ara_parser"
 description = "A fault-tolerant, recursive-descent parser for Ara Programming Language 🌲"
 repository = "https://github.com/ara-lang/ara"
-version = "0.6.3"
+version = "0.6.4"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["Saif Eddin Gmati <azjezz@protonmail.com>"]
@@ -19,7 +19,7 @@ path = "bin/snapshot.rs"
 
 [dependencies]
 ara_source = { version = "0.2.0" }
-ara_reporting = { version = "0.6.0" }
+ara_reporting = { version = "0.6.1" }
 schemars = { version = "0.8.11" }
 serde = { version = "1.0.149", features = ["derive"] }
 serde_json = { version = "1.0.89" }
