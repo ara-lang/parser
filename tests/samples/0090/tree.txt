@@ -50,29 +50,34 @@ DefinitionTree {
                                     value: "if",
                                     position: 27,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 30,
-                                                name: "$a",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 30,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 33,
+                                                },
+                                                array: Variable(
+                                                    Variable {
+                                                        position: 36,
+                                                        name: "$b",
+                                                    },
+                                                ),
                                             },
                                         ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 33,
-                                        },
-                                        array: Variable(
-                                            Variable {
-                                                position: 36,
-                                                name: "$b",
-                                            },
-                                        ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -94,51 +99,56 @@ DefinitionTree {
                                     value: "if",
                                     position: 53,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 56,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 59,
-                                        },
-                                        array: Tuple(
-                                            TupleExpression {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left_parenthesis: 62,
-                                                elements: CommaSeparated {
-                                                    inner: [
-                                                        Variable(
-                                                            Variable {
-                                                                position: 63,
-                                                                name: "$b",
-                                                            },
-                                                        ),
-                                                        Variable(
-                                                            Variable {
-                                                                position: 67,
-                                                                name: "$c",
-                                                            },
-                                                        ),
-                                                    ],
-                                                    commas: [
-                                                        65,
-                                                    ],
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 56,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 59,
                                                 },
-                                                right_parenthesis: 69,
+                                                array: Tuple(
+                                                    TupleExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        left_parenthesis: 62,
+                                                        elements: CommaSeparated {
+                                                            inner: [
+                                                                Variable(
+                                                                    Variable {
+                                                                        position: 63,
+                                                                        name: "$b",
+                                                                    },
+                                                                ),
+                                                                Variable(
+                                                                    Variable {
+                                                                        position: 67,
+                                                                        name: "$c",
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            commas: [
+                                                                65,
+                                                            ],
+                                                        },
+                                                        right_parenthesis: 69,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -160,59 +170,64 @@ DefinitionTree {
                                     value: "if",
                                     position: 85,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 88,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 91,
-                                        },
-                                        array: Vec(
-                                            VecExpression {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                vec: Keyword {
-                                                    value: "vec",
-                                                    position: 94,
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 88,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 91,
                                                 },
-                                                left_bracket: 97,
-                                                elements: CommaSeparated {
-                                                    inner: [
-                                                        VecElementExpression {
-                                                            value: Variable(
-                                                                Variable {
-                                                                    position: 98,
-                                                                    name: "$b",
-                                                                },
-                                                            ),
+                                                array: Vec(
+                                                    VecExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                        VecElementExpression {
-                                                            value: Variable(
-                                                                Variable {
-                                                                    position: 102,
-                                                                    name: "$b",
-                                                                },
-                                                            ),
+                                                        vec: Keyword {
+                                                            value: "vec",
+                                                            position: 94,
                                                         },
-                                                    ],
-                                                    commas: [
-                                                        100,
-                                                    ],
-                                                },
-                                                right_bracket: 104,
+                                                        left_bracket: 97,
+                                                        elements: CommaSeparated {
+                                                            inner: [
+                                                                VecElementExpression {
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 98,
+                                                                            name: "$b",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                                VecElementExpression {
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 102,
+                                                                            name: "$b",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [
+                                                                100,
+                                                            ],
+                                                        },
+                                                        right_bracket: 104,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -234,83 +249,88 @@ DefinitionTree {
                                     value: "if",
                                     position: 120,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 123,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 126,
-                                        },
-                                        array: Dict(
-                                            DictExpression {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                dict: Keyword {
-                                                    value: "dict",
-                                                    position: 129,
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 123,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 126,
                                                 },
-                                                left_bracket: 133,
-                                                elements: CommaSeparated {
-                                                    inner: [
-                                                        DictElementExpression {
-                                                            key: Literal(
-                                                                String(
-                                                                    LiteralString {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: "'a'",
-                                                                        position: 134,
-                                                                    },
-                                                                ),
-                                                            ),
-                                                            double_arrow: 138,
-                                                            value: Variable(
-                                                                Variable {
-                                                                    position: 141,
-                                                                    name: "$b",
-                                                                },
-                                                            ),
+                                                array: Dict(
+                                                    DictExpression {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                        DictElementExpression {
-                                                            key: Literal(
-                                                                String(
-                                                                    LiteralString {
-                                                                        comments: CommentGroup {
-                                                                            comments: [],
-                                                                        },
-                                                                        value: "'b'",
-                                                                        position: 145,
-                                                                    },
-                                                                ),
-                                                            ),
-                                                            double_arrow: 149,
-                                                            value: Variable(
-                                                                Variable {
-                                                                    position: 152,
-                                                                    name: "$c",
-                                                                },
-                                                            ),
+                                                        dict: Keyword {
+                                                            value: "dict",
+                                                            position: 129,
                                                         },
-                                                    ],
-                                                    commas: [
-                                                        143,
-                                                    ],
-                                                },
-                                                right_bracket: 154,
+                                                        left_bracket: 133,
+                                                        elements: CommaSeparated {
+                                                            inner: [
+                                                                DictElementExpression {
+                                                                    key: Literal(
+                                                                        String(
+                                                                            LiteralString {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "'a'",
+                                                                                position: 134,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    double_arrow: 138,
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 141,
+                                                                            name: "$b",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                                DictElementExpression {
+                                                                    key: Literal(
+                                                                        String(
+                                                                            LiteralString {
+                                                                                comments: CommentGroup {
+                                                                                    comments: [],
+                                                                                },
+                                                                                value: "'b'",
+                                                                                position: 145,
+                                                                            },
+                                                                        ),
+                                                                    ),
+                                                                    double_arrow: 149,
+                                                                    value: Variable(
+                                                                        Variable {
+                                                                            position: 152,
+                                                                            name: "$c",
+                                                                        },
+                                                                    ),
+                                                                },
+                                                            ],
+                                                            commas: [
+                                                                143,
+                                                            ],
+                                                        },
+                                                        right_bracket: 154,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],

@@ -50,12 +50,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 31,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 34,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 34,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -104,12 +109,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 49,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 52,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 52,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -169,12 +179,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 69,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 72,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 72,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -235,12 +250,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 90,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 93,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 93,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -289,12 +309,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 109,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 112,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 112,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -344,12 +369,17 @@ DefinitionTree {
                                     value: "if",
                                     position: 129,
                                 },
-                                condition: Variable(
-                                    Variable {
-                                        position: 132,
-                                        name: "$x",
-                                    },
-                                ),
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Variable(
+                                            Variable {
+                                                position: 132,
+                                                name: "$x",
+                                            },
+                                        ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],

@@ -232,7 +232,7 @@ pub fn do_while_statement(state: &mut State) -> ParseResult<DoWhileStatement> {
         r#do: utils::skip_keyword(state, TokenKind::Do)?,
         block: block::block_statement(state)?,
         r#while: utils::skip_keyword(state, TokenKind::While)?,
-        condition: expression::create(state)?,
+        conditions: utils::comma_separated(state, &expression::create, TokenKind::SemiColon)?,
         semicolon: utils::skip_semicolon(state)?,
     })
 }
@@ -241,7 +241,7 @@ pub fn while_statement(state: &mut State) -> ParseResult<WhileStatement> {
     Ok(WhileStatement {
         comments: state.iterator.comments(),
         r#while: utils::skip_keyword(state, TokenKind::While)?,
-        condition: expression::create(state)?,
+        conditions: utils::comma_separated(state, &expression::create, TokenKind::LeftBrace)?,
         block: block::block_statement(state)?,
     })
 }

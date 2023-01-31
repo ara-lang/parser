@@ -92,7 +92,7 @@ pub struct DoWhileStatement {
     pub r#do: Keyword,
     pub block: BlockStatement,
     pub r#while: Keyword,
-    pub condition: Expression,
+    pub conditions: CommaSeparated<Expression>,
     pub semicolon: usize,
 }
 
@@ -101,7 +101,7 @@ pub struct DoWhileStatement {
 pub struct WhileStatement {
     pub comments: CommentGroup,
     pub r#while: Keyword,
-    pub condition: Expression,
+    pub conditions: CommaSeparated<Expression>,
     pub block: BlockStatement,
 }
 
@@ -372,7 +372,13 @@ impl Node for DoWhileStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.r#do, &self.block, &self.r#while, &self.condition]
+        let mut children: Vec<&dyn Node> = vec![&self.r#do, &self.block, &self.r#while];
+
+        for condition in &self.conditions.inner {
+            children.push(condition);
+        }
+
+        children
     }
 
     fn get_description(&self) -> String {
@@ -394,7 +400,13 @@ impl Node for WhileStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        vec![&self.r#while, &self.condition, &self.block]
+        let mut children: Vec<&dyn Node> = vec![&self.r#while, &self.block];
+
+        for condition in &self.conditions.inner {
+            children.push(condition);
+        }
+
+        children
     }
 
     fn get_description(&self) -> String {

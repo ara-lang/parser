@@ -50,42 +50,47 @@ DefinitionTree {
                                     value: "if",
                                     position: 31,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 34,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 37,
-                                        },
-                                        array: RangeOperation(
-                                            From {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                from: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "1",
-                                                            position: 40,
-                                                        },
-                                                    ),
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 34,
+                                                        name: "$a",
+                                                    },
                                                 ),
-                                                double_dot: 41,
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 37,
+                                                },
+                                                array: RangeOperation(
+                                                    From {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 40,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 41,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -107,53 +112,58 @@ DefinitionTree {
                                     value: "if",
                                     position: 51,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 54,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 57,
-                                        },
-                                        array: RangeOperation(
-                                            Between {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                from: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "1",
-                                                            position: 60,
-                                                        },
-                                                    ),
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 54,
+                                                        name: "$a",
+                                                    },
                                                 ),
-                                                double_dot: 61,
-                                                to: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "10",
-                                                            position: 63,
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 57,
+                                                },
+                                                array: RangeOperation(
+                                                    Between {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                    ),
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 60,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 61,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 63,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
                                                 ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -175,54 +185,59 @@ DefinitionTree {
                                     value: "if",
                                     position: 73,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 76,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 79,
-                                        },
-                                        array: RangeOperation(
-                                            BetweenInclusive {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                from: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "1",
-                                                            position: 82,
-                                                        },
-                                                    ),
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 76,
+                                                        name: "$a",
+                                                    },
                                                 ),
-                                                double_dot: 83,
-                                                equals: 85,
-                                                to: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "10",
-                                                            position: 86,
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 79,
+                                                },
+                                                array: RangeOperation(
+                                                    BetweenInclusive {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                    ),
+                                                        from: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "1",
+                                                                    position: 82,
+                                                                },
+                                                            ),
+                                                        ),
+                                                        double_dot: 83,
+                                                        equals: 85,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 86,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
                                                 ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -244,42 +259,47 @@ DefinitionTree {
                                     value: "if",
                                     position: 96,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 99,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 102,
-                                        },
-                                        array: RangeOperation(
-                                            To {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                double_dot: 105,
-                                                to: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "10",
-                                                            position: 107,
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 99,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 102,
+                                                },
+                                                array: RangeOperation(
+                                                    To {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                    ),
+                                                        double_dot: 105,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 107,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
                                                 ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -301,43 +321,48 @@ DefinitionTree {
                                     value: "if",
                                     position: 117,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 120,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 123,
-                                        },
-                                        array: RangeOperation(
-                                            ToInclusive {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                double_dot: 126,
-                                                equals: 128,
-                                                to: Literal(
-                                                    Integer(
-                                                        LiteralInteger {
-                                                            comments: CommentGroup {
-                                                                comments: [],
-                                                            },
-                                                            value: "10",
-                                                            position: 129,
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 120,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 123,
+                                                },
+                                                array: RangeOperation(
+                                                    ToInclusive {
+                                                        comments: CommentGroup {
+                                                            comments: [],
                                                         },
-                                                    ),
+                                                        double_dot: 126,
+                                                        equals: 128,
+                                                        to: Literal(
+                                                            Integer(
+                                                                LiteralInteger {
+                                                                    comments: CommentGroup {
+                                                                        comments: [],
+                                                                    },
+                                                                    value: "10",
+                                                                    position: 129,
+                                                                },
+                                                            ),
+                                                        ),
+                                                    },
                                                 ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
@@ -359,31 +384,36 @@ DefinitionTree {
                                     value: "if",
                                     position: 139,
                                 },
-                                condition: ArrayOperation(
-                                    In {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        item: Variable(
-                                            Variable {
-                                                position: 142,
-                                                name: "$a",
-                                            },
-                                        ),
-                                        in: Keyword {
-                                            value: "in",
-                                            position: 145,
-                                        },
-                                        array: RangeOperation(
-                                            Full {
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        ArrayOperation(
+                                            In {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                double_dot: 148,
+                                                item: Variable(
+                                                    Variable {
+                                                        position: 142,
+                                                        name: "$a",
+                                                    },
+                                                ),
+                                                in: Keyword {
+                                                    value: "in",
+                                                    position: 145,
+                                                },
+                                                array: RangeOperation(
+                                                    Full {
+                                                        comments: CommentGroup {
+                                                            comments: [],
+                                                        },
+                                                        double_dot: 148,
+                                                    },
+                                                ),
                                             },
                                         ),
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],

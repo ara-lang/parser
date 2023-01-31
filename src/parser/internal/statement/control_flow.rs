@@ -17,8 +17,8 @@ use crate::tree::utils::CommaSeparated;
 pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     let comments = state.iterator.comments();
     let r#if = utils::skip_keyword(state, TokenKind::If)?;
-    let condition = expression::create(state)?;
 
+    let conditions = utils::comma_separated(state, &expression::create, TokenKind::LeftBrace)?;
     let statement = block::block_statement(state)?;
 
     let mut elseifs: Vec<IfElseIfStatement> = vec![];
@@ -51,7 +51,7 @@ pub fn if_statement(state: &mut State) -> ParseResult<IfStatement> {
     Ok(IfStatement {
         comments,
         r#if,
-        condition,
+        conditions,
         block: statement,
         elseifs,
         r#else,

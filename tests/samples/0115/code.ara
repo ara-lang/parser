@@ -1,0 +1,13 @@
+function foo(): void {
+    do {
+    
+    } while;
+    
+    do {
+    
+    } while $a, ;
+    
+    do {
+    
+    } while $a, $b, $c, ;
+}

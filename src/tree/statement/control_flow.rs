@@ -15,7 +15,7 @@ use crate::tree::Node;
 pub struct IfStatement {
     pub comments: CommentGroup,
     pub r#if: Keyword,
-    pub condition: Expression,
+    pub conditions: CommaSeparated<Expression>,
     pub block: BlockStatement,
     pub elseifs: Vec<IfElseIfStatement>,
     pub r#else: Option<IfElseStatement>,
@@ -86,7 +86,12 @@ impl Node for IfStatement {
     }
 
     fn children(&self) -> Vec<&dyn Node> {
-        let mut children: Vec<&dyn Node> = vec![&self.r#if, &self.condition, &self.block];
+        let mut children: Vec<&dyn Node> = vec![&self.r#if, &self.block];
+
+        for condition in &self.conditions.inner {
+            children.push(condition);
+        }
+
         for elseif in &self.elseifs {
             children.push(elseif);
         }

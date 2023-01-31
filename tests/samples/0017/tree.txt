@@ -50,21 +50,26 @@ DefinitionTree {
                                     value: "if",
                                     position: 28,
                                 },
-                                condition: Parenthesized(
-                                    ParenthesizedExpression {
-                                        comments: CommentGroup {
-                                            comments: [],
-                                        },
-                                        left_parenthesis: 30,
-                                        expression: Variable(
-                                            Variable {
-                                                position: 31,
-                                                name: "$foo",
+                                conditions: CommaSeparated {
+                                    inner: [
+                                        Parenthesized(
+                                            ParenthesizedExpression {
+                                                comments: CommentGroup {
+                                                    comments: [],
+                                                },
+                                                left_parenthesis: 30,
+                                                expression: Variable(
+                                                    Variable {
+                                                        position: 31,
+                                                        name: "$foo",
+                                                    },
+                                                ),
+                                                right_parenthesis: 35,
                                             },
                                         ),
-                                        right_parenthesis: 35,
-                                    },
-                                ),
+                                    ],
+                                    commas: [],
+                                },
                                 block: BlockStatement {
                                     comments: CommentGroup {
                                         comments: [],
