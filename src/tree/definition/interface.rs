@@ -1,3 +1,5 @@
+use bincode::Decode;
+use bincode::Encode;
 use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
@@ -13,7 +15,7 @@ use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinition {
     pub comments: CommentGroup,
@@ -25,14 +27,14 @@ pub struct InterfaceDefinition {
     pub body: InterfaceDefinitionBody,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinitionExtends {
     pub extends: Keyword,
     pub parents: CommaSeparated<TemplatedIdentifier>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct InterfaceDefinitionBody {
     pub left_brace: usize,
@@ -40,7 +42,7 @@ pub struct InterfaceDefinitionBody {
     pub right_brace: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case", tag = "type", content = "value")]
 pub enum InterfaceDefinitionMember {
     Constant(ClassishConstantDefinition),

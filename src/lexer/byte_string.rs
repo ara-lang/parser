@@ -1,3 +1,5 @@
+use bincode::Decode;
+use bincode::Encode;
 use std::ops::Deref;
 use std::ops::DerefMut;
 use std::str::from_utf8;
@@ -11,7 +13,7 @@ use serde::Serialize;
 ///
 /// The Trunk lexer and parser work mainly with byte strings because
 /// valid PHP code is not required to be valid UTF-8.
-#[derive(PartialOrd, PartialEq, Eq, Clone, Hash)]
+#[derive(PartialOrd, PartialEq, Eq, Clone, Hash, Encode, Decode)]
 pub struct ByteString {
     pub bytes: Vec<u8>,
     pub length: usize,

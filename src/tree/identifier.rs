@@ -1,3 +1,5 @@
+use bincode::Decode;
+use bincode::Encode;
 use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
@@ -7,14 +9,14 @@ use crate::lexer::byte_string::ByteString;
 use crate::tree::definition::template::TypeTemplateGroupDefinition;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct Identifier {
     pub position: usize,
     pub value: ByteString, // `Bar`
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TemplatedIdentifier {
     pub name: Identifier,                               // `Bar`

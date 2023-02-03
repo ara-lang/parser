@@ -1,3 +1,5 @@
+use bincode::Decode;
+use bincode::Encode;
 use schemars::JsonSchema;
 use serde::Deserialize;
 use serde::Serialize;
@@ -9,21 +11,21 @@ use crate::tree::token::Keyword;
 use crate::tree::utils::CommaSeparated;
 use crate::tree::Node;
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateDefinitionVariance {
     Covariance(usize),
     Invaraint,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateDefinitionTypeConstraint {
     SubType(Keyword, TypeDefinition),
     None,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TemplateDefinition {
     pub variance: TemplateDefinitionVariance,
@@ -31,7 +33,7 @@ pub struct TemplateDefinition {
     pub constraint: TemplateDefinitionTypeConstraint,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TemplateGroupDefinition {
     pub comments: CommentGroup,
@@ -40,7 +42,7 @@ pub struct TemplateGroupDefinition {
     pub greater_than: usize,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct TypeTemplateGroupDefinition {
     pub comments: CommentGroup,
