@@ -1,4 +1,7 @@
-use std::any::{Any, TypeId};
+use bincode::Decode;
+use bincode::Encode;
+use std::any::Any;
+use std::any::TypeId;
 
 use crate::tree::comment::CommentGroup;
 use crate::tree::definition::DefinitionTree;
@@ -23,7 +26,7 @@ impl TreeMap {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Hash, Encode, Decode)]
 pub struct Tree {
     pub source: String,
     pub definitions: DefinitionTree,
