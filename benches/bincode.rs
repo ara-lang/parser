@@ -1,10 +1,12 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
-
-use ara_source::source::Source;
-use ara_source::source::SourceKind;
+use criterion::black_box;
+use criterion::criterion_group;
+use criterion::criterion_main;
+use criterion::Criterion;
 
 use ara_parser::parser;
 use ara_parser::tree::Tree;
+use ara_source::source::Source;
+use ara_source::source::SourceKind;
 
 fn decode_benchmark(criterion: &mut Criterion) {
     let source = Source::inline(SourceKind::Script, CODE_SAMPLE);
@@ -27,10 +29,9 @@ fn decode_benchmark(criterion: &mut Criterion) {
 }
 
 criterion_group!(benches, decode_benchmark);
-
 criterion_main!(benches);
 
-static CODE_SAMPLE: &'static str = r#"
+static CODE_SAMPLE: &str = r#"
     namespace A\B\C\D\E;
 
     function foo(string $s): self {

@@ -1,7 +1,5 @@
 use std::io;
 
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
-
 use ara_source::source::Source;
 use ara_source::source::SourceKind;
 
