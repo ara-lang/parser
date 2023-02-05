@@ -2,7 +2,7 @@
 name = "ara_parser"
 description = "A fault-tolerant, recursive-descent parser for Ara Programming Language 🌲"
 repository = "https://github.com/ara-lang/ara"
-version = "0.6.5"
+version = "0.6.6"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["Saif Eddin Gmati <azjezz@protonmail.com>"]
