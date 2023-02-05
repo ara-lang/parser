@@ -72,3 +72,8 @@ jobs:
         with:
           command: test
           args: -r --all
+
+      - name: bench
+        uses: actions-rs/cargo@v1
+        with:
+          command: bench
