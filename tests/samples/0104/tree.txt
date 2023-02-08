@@ -2,9 +2,6 @@ DefinitionTree {
     definitions: [
         Function(
             FunctionDefinition {
-                comments: CommentGroup {
-                    comments: [],
-                },
                 attributes: [
                     AttributeGroupDefinition {
                         hash_left_bracket: 1,
@@ -48,6 +45,13 @@ DefinitionTree {
                         right_bracket: 14,
                     },
                 ],
+                comments: CommentGroup {
+                    comments: [],
+                },
+                modifiers: ModifierGroupDefinition {
+                    position: 16,
+                    modifiers: [],
+                },
                 function: Keyword {
                     value: "function",
                     position: 16,
@@ -159,9 +163,6 @@ DefinitionTree {
         ),
         Function(
             FunctionDefinition {
-                comments: CommentGroup {
-                    comments: [],
-                },
                 attributes: [
                     AttributeGroupDefinition {
                         hash_left_bracket: 74,
@@ -205,6 +206,13 @@ DefinitionTree {
                         right_bracket: 87,
                     },
                 ],
+                comments: CommentGroup {
+                    comments: [],
+                },
+                modifiers: ModifierGroupDefinition {
+                    position: 89,
+                    modifiers: [],
+                },
                 function: Keyword {
                     value: "function",
                     position: 89,

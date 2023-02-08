@@ -1,4 +1,5 @@
 use crate::lexer::token::TokenKind;
+use crate::parser::internal::definition::modifier;
 use crate::parser::internal::definition::parameter;
 use crate::parser::internal::definition::r#type;
 use crate::parser::internal::definition::template;
@@ -16,12 +17,10 @@ use crate::tree::definition::function::MethodTypeConstraintGroupDefinition;
 use crate::tree::definition::modifier::ModifierGroupDefinition;
 
 pub fn function_definition(state: &mut State) -> ParseResult<FunctionDefinition> {
-    let comments = state.iterator.comments();
-    let attributes = state.get_attributes();
-
     Ok(FunctionDefinition {
-        comments,
-        attributes,
+        comments: state.iterator.comments(),
+        attributes: state.get_attributes(),
+        modifiers: modifier::collect(state)?,
         function: utils::skip_keyword(state, TokenKind::Function)?,
         name: identifier::identifier_maybe_soft_reserved(state)?,
         templates: if state.iterator.current().kind == TokenKind::LessThan {

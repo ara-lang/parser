@@ -94,10 +94,14 @@ DefinitionTree {
         ),
         Function(
             FunctionDefinition {
+                attributes: [],
                 comments: CommentGroup {
                     comments: [],
                 },
-                attributes: [],
+                modifiers: ModifierGroupDefinition {
+                    position: 61,
+                    modifiers: [],
+                },
                 function: Keyword {
                     value: "function",
                     position: 61,

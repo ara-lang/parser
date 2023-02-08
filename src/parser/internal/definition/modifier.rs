@@ -15,6 +15,7 @@ pub fn collect(state: &mut State) -> ParseResult<ModifierGroupDefinition> {
         TokenKind::Abstract,
         TokenKind::Static,
         TokenKind::Readonly,
+        TokenKind::Async,
     ];
 
     let mut current = state.iterator.current().clone();
@@ -43,6 +44,9 @@ pub fn collect(state: &mut State) -> ParseResult<ModifierGroupDefinition> {
             }
             TokenKind::Readonly => {
                 ModifierDefinition::Readonly(utils::skip_keyword(state, TokenKind::Readonly)?)
+            }
+            TokenKind::Async => {
+                ModifierDefinition::Async(utils::skip_keyword(state, TokenKind::Async)?)
             }
             _ => unreachable!(),
         });

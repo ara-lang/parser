@@ -76,7 +76,7 @@ pub fn definition(state: &mut State) -> ParseResult<Definition> {
         )));
     }
 
-    if current.kind == TokenKind::Function {
+    if matches!(current.kind, TokenKind::Async | TokenKind::Function) {
         return Ok(Definition::Function(Box::new(
             function::function_definition(state)?,
         )));

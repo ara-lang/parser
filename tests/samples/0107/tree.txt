@@ -113,34 +113,44 @@ DefinitionTree {
                                             comments: [],
                                         },
                                         attributes: [],
-                                        static: None,
+                                        modifiers: ModifierGroupDefinition {
+                                            position: 72,
+                                            modifiers: [
+                                                Static(
+                                                    Keyword {
+                                                        value: "static",
+                                                        position: 65,
+                                                    },
+                                                ),
+                                            ],
+                                        },
                                         fn: Keyword {
                                             value: "fn",
-                                            position: 65,
+                                            position: 72,
                                         },
                                         parameters: FunctionLikeParameterListDefinition {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
-                                            left_parenthesis: 67,
+                                            left_parenthesis: 74,
                                             parameters: CommaSeparated {
                                                 inner: [],
                                                 commas: [],
                                             },
-                                            right_parenthesis: 68,
+                                            right_parenthesis: 75,
                                         },
                                         return_type: FunctionLikeReturnTypeDefinition {
-                                            colon: 69,
+                                            colon: 76,
                                             type_definition: SignedInteger(
                                                 Default(
                                                     Keyword {
                                                         value: "int",
-                                                        position: 71,
+                                                        position: 78,
                                                     },
                                                 ),
                                             ),
                                         },
-                                        double_arrow: 75,
+                                        double_arrow: 82,
                                         body: Literal(
                                             Integer(
                                                 LiteralInteger {
@@ -148,67 +158,67 @@ DefinitionTree {
                                                         comments: [],
                                                     },
                                                     value: "1",
-                                                    position: 78,
+                                                    position: 85,
                                                 },
                                             ),
                                         ),
                                     },
                                 ),
-                                semicolon: 79,
+                                semicolon: 86,
                             },
                         ),
                         Property(
                             PropertyDefinition {
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 152,
+                                    position: 159,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 86,
+                                                position: 93,
                                             },
                                         ),
                                         Static(
                                             Keyword {
                                                 value: "static",
-                                                position: 93,
-                                            },
-                                        ),
-                                        Abstract(
-                                            Keyword {
-                                                value: "abstract",
                                                 position: 100,
                                             },
                                         ),
                                         Abstract(
                                             Keyword {
+                                                value: "abstract",
+                                                position: 107,
+                                            },
+                                        ),
+                                        Abstract(
+                                            Keyword {
                                                 value: "Abstract",
-                                                position: 109,
+                                                position: 116,
                                             },
                                         ),
                                         Readonly(
                                             Keyword {
                                                 value: "readonly",
-                                                position: 118,
+                                                position: 125,
                                             },
                                         ),
                                         Private(
                                             Keyword {
                                                 value: "private",
-                                                position: 127,
+                                                position: 134,
                                             },
                                         ),
                                         Static(
                                             Keyword {
                                                 value: "static",
-                                                position: 135,
+                                                position: 142,
                                             },
                                         ),
                                         Protected(
                                             Keyword {
                                                 value: "protected",
-                                                position: 142,
+                                                position: 149,
                                             },
                                         ),
                                     ],
@@ -216,15 +226,15 @@ DefinitionTree {
                                 type_definition: String(
                                     Keyword {
                                         value: "string",
-                                        position: 152,
+                                        position: 159,
                                     },
                                 ),
                                 entry: Initialized {
                                     variable: Variable {
-                                        position: 159,
+                                        position: 166,
                                         name: "$baz",
                                     },
-                                    equals: 164,
+                                    equals: 171,
                                     value: Literal(
                                         String(
                                             LiteralString {
@@ -232,24 +242,24 @@ DefinitionTree {
                                                     comments: [],
                                                 },
                                                 value: "'baz'",
-                                                position: 166,
+                                                position: 173,
                                             },
                                         ),
                                     ),
                                 },
-                                semicolon: 171,
+                                semicolon: 178,
                             },
                         ),
                         Property(
                             PropertyDefinition {
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 185,
+                                    position: 192,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 178,
+                                                position: 185,
                                             },
                                         ),
                                     ],
@@ -258,51 +268,54 @@ DefinitionTree {
                                     Default(
                                         Keyword {
                                             value: "int",
-                                            position: 185,
+                                            position: 192,
                                         },
                                     ),
                                 ),
                                 entry: Initialized {
                                     variable: Variable {
-                                        position: 189,
+                                        position: 196,
                                         name: "$bar",
                                     },
-                                    equals: 194,
+                                    equals: 201,
                                     value: ArrowFunction(
                                         ArrowFunctionExpression {
                                             comments: CommentGroup {
                                                 comments: [],
                                             },
                                             attributes: [],
-                                            static: None,
+                                            modifiers: ModifierGroupDefinition {
+                                                position: 203,
+                                                modifiers: [],
+                                            },
                                             fn: Keyword {
                                                 value: "fn",
-                                                position: 196,
+                                                position: 203,
                                             },
                                             parameters: FunctionLikeParameterListDefinition {
                                                 comments: CommentGroup {
                                                     comments: [],
                                                 },
-                                                left_parenthesis: 198,
+                                                left_parenthesis: 205,
                                                 parameters: CommaSeparated {
                                                     inner: [],
                                                     commas: [],
                                                 },
-                                                right_parenthesis: 199,
+                                                right_parenthesis: 206,
                                             },
                                             return_type: FunctionLikeReturnTypeDefinition {
-                                                colon: 200,
+                                                colon: 207,
                                                 type_definition: Identifier(
                                                     TemplatedIdentifier {
                                                         name: Identifier {
-                                                            position: 202,
+                                                            position: 209,
                                                             value: "Foo",
                                                         },
                                                         templates: None,
                                                     },
                                                 ),
                                             },
-                                            double_arrow: 206,
+                                            double_arrow: 213,
                                             body: ClassOperation(
                                                 Initialization {
                                                     comments: CommentGroup {
@@ -310,11 +323,11 @@ DefinitionTree {
                                                     },
                                                     new: Keyword {
                                                         value: "new",
-                                                        position: 209,
+                                                        position: 216,
                                                     },
                                                     class: Identifier(
                                                         Identifier {
-                                                            position: 213,
+                                                            position: 220,
                                                             value: "Foo",
                                                         },
                                                     ),
@@ -323,31 +336,31 @@ DefinitionTree {
                                                         comments: CommentGroup {
                                                             comments: [],
                                                         },
-                                                        left_parenthesis: 216,
+                                                        left_parenthesis: 223,
                                                         arguments: CommaSeparated {
                                                             inner: [],
                                                             commas: [],
                                                         },
-                                                        right_parenthesis: 217,
+                                                        right_parenthesis: 224,
                                                     },
                                                 },
                                             ),
                                         },
                                     ),
                                 },
-                                semicolon: 218,
+                                semicolon: 225,
                             },
                         ),
                         Property(
                             PropertyDefinition {
                                 attributes: [],
                                 modifiers: ModifierGroupDefinition {
-                                    position: 232,
+                                    position: 239,
                                     modifiers: [
                                         Public(
                                             Keyword {
                                                 value: "public",
-                                                position: 225,
+                                                position: 232,
                                             },
                                         ),
                                     ],
@@ -356,16 +369,16 @@ DefinitionTree {
                                     Default(
                                         Keyword {
                                             value: "int",
-                                            position: 232,
+                                            position: 239,
                                         },
                                     ),
                                 ),
                                 entry: Initialized {
                                     variable: Variable {
-                                        position: 236,
+                                        position: 243,
                                         name: "$foo",
                                     },
-                                    equals: 241,
+                                    equals: 248,
                                     value: ObjectOperation(
                                         PropertyFetch {
                                             comments: CommentGroup {
@@ -373,26 +386,26 @@ DefinitionTree {
                                             },
                                             object: Variable(
                                                 Variable {
-                                                    position: 243,
+                                                    position: 250,
                                                     name: "$this",
                                                 },
                                             ),
-                                            arrow: 248,
+                                            arrow: 255,
                                             property: Identifier {
-                                                position: 250,
+                                                position: 257,
                                                 value: "bar",
                                             },
                                         },
                                     ),
                                 },
-                                semicolon: 253,
+                                semicolon: 260,
                             },
                         ),
                     ],
-                    right_brace: 255,
+                    right_brace: 262,
                 },
             },
         ),
     ],
-    eof: 257,
+    eof: 264,
 }

@@ -43,7 +43,7 @@ function example(): int {
     $collection
       ->filter(fn(num $n): bool => $n < 8)
       ->map::<float>(
-        fn(num $n): float => $n is float ? $n : $n + 0.0
+        static fn(num $n): float => $n is float ? $n : $n + 0.0
       )
       ->sum()
 }

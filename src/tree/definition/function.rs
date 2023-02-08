@@ -54,8 +54,9 @@ pub struct FunctionLikeParameterListDefinition {
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Deserialize, Serialize, Encode, Decode, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct FunctionDefinition {
-    pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
+    pub comments: CommentGroup,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub name: Identifier,
     pub templates: Option<TemplateGroupDefinition>,
@@ -255,6 +256,7 @@ impl Node for FunctionDefinition {
             children.push(templates);
         }
 
+        children.push(&self.modifiers);
         children.push(&self.parameters);
         children.push(&self.return_type);
         children.push(&self.body);

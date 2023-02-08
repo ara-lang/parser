@@ -1,4 +1,5 @@
 use crate::lexer::token::TokenKind;
+use crate::parser::internal::definition::modifier;
 use crate::parser::internal::definition::parameter;
 use crate::parser::internal::definition::r#type;
 use crate::parser::internal::expression;
@@ -18,12 +19,7 @@ pub fn anonymous_function_expression(
 ) -> ParseResult<AnonymousFunctionExpression> {
     let comments = state.iterator.comments();
     let attributes = state.get_attributes();
-    let current = state.iterator.current();
-    let r#static = if current.kind == TokenKind::Static {
-        Some(utils::skip_keyword(state, TokenKind::Static)?)
-    } else {
-        None
-    };
+    let modifiers = modifier::collect(state)?;
 
     let function = utils::skip_keyword(state, TokenKind::Function)?;
     let parameters = parameter::function_like_parameter_list_definition(state)?;
@@ -55,9 +51,9 @@ pub fn anonymous_function_expression(
 
     Ok(AnonymousFunctionExpression {
         comments,
-        r#static,
-        function,
         attributes,
+        modifiers,
+        function,
         parameters,
         use_clause: uses,
         return_type: FunctionLikeReturnTypeDefinition {
@@ -69,19 +65,14 @@ pub fn anonymous_function_expression(
 }
 
 pub fn arrow_function_expression(state: &mut State) -> ParseResult<ArrowFunctionExpression> {
-    let current = state.iterator.current();
-
     let comments = state.iterator.comments();
     let attributes = state.get_attributes();
+    let modifiers = modifier::collect(state)?;
 
     Ok(ArrowFunctionExpression {
         comments,
         attributes,
-        r#static: if current.kind == TokenKind::Static {
-            Some(utils::skip_keyword(state, TokenKind::Static)?)
-        } else {
-            None
-        },
+        modifiers,
         r#fn: utils::skip_keyword(state, TokenKind::Fn)?,
         parameters: parameter::function_like_parameter_list_definition(state)?,
         return_type: FunctionLikeReturnTypeDefinition {
