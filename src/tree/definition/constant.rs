@@ -102,3 +102,95 @@ impl Node for ClassishConstantDefinition {
         "classish constant definition".to_string()
     }
 }
+
+impl std::fmt::Display for ConstantDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {} {} = {};",
+            self.r#const, self.type_definition, self.name, self.value
+        )
+    }
+}
+
+impl std::fmt::Display for ClassishConstantDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {} {} {} = {};",
+            self.modifiers, self.r#const, self.type_definition, self.name, self.value
+        )
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::definition::modifier::ModifierDefinition;
+    use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
+    use crate::tree::expression::literal::Literal::Integer;
+    use crate::tree::expression::literal::LiteralInteger;
+
+    #[test]
+    fn test_constant_definition_display() {
+        let constant_definition = ConstantDefinition {
+            comments: CommentGroup { comments: vec![] },
+            r#const: Keyword::new(ByteString::from("const"), 0),
+            type_definition: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(
+                Keyword::new(ByteString::from("i64"), 15),
+            )),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("FOO"),
+            },
+            equals: 0,
+            value: Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("1"),
+            })),
+            semicolon: 0,
+        };
+
+        assert_eq!(
+            constant_definition.to_string(),
+            "const i64 FOO = 1;".to_string()
+        );
+    }
+
+    #[test]
+    fn test_classish_constant_definition_display() {
+        let classish_constant_definition = ClassishConstantDefinition {
+            comments: CommentGroup { comments: vec![] },
+            attributes: vec![],
+            modifiers: ModifierGroupDefinition {
+                position: 0,
+                modifiers: vec![ModifierDefinition::Private(Keyword::new(
+                    ByteString::from("private"),
+                    0,
+                ))],
+            },
+            r#const: Keyword::new(ByteString::from("const"), 0),
+            type_definition: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(
+                Keyword::new(ByteString::from("i64"), 15),
+            )),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("FOO"),
+            },
+            equals: 0,
+            value: Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("1"),
+            })),
+            semicolon: 0,
+        };
+
+        assert_eq!(
+            classish_constant_definition.to_string(),
+            "private const i64 FOO = 1;".to_string()
+        );
+    }
+}

@@ -1888,3 +1888,2030 @@ impl Node for RangeOperationExpression {
         }
     }
 }
+
+impl std::fmt::Display for ArithmeticOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Addition { left, right, .. } => {
+                write!(f, "{} + {}", left, right)
+            }
+            Self::Subtraction { left, right, .. } => {
+                write!(f, "{} - {}", left, right)
+            }
+            Self::Multiplication { left, right, .. } => {
+                write!(f, "{} * {}", left, right)
+            }
+            Self::Division { left, right, .. } => {
+                write!(f, "{} / {}", left, right)
+            }
+            Self::Exponentiation { left, right, .. } => {
+                write!(f, "{} ** {}", left, right)
+            }
+            Self::Modulo { left, right, .. } => {
+                write!(f, "{} % {}", left, right)
+            }
+            Self::Negative { right, .. } => {
+                write!(f, "-{}", right)
+            }
+            Self::Positive { right, .. } => {
+                write!(f, "+{}", right)
+            }
+            Self::PostDecrement { left, .. } => {
+                write!(f, "{}--", left)
+            }
+            Self::PostIncrement { left, .. } => {
+                write!(f, "{}++", left)
+            }
+            Self::PreDecrement { right, .. } => {
+                write!(f, "--{}", right)
+            }
+            Self::PreIncrement { right, .. } => {
+                write!(f, "++{}", right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ComparisonOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Equal { left, right, .. } => {
+                write!(f, "{} == {}", left, right)
+            }
+            Self::Identical { left, right, .. } => {
+                write!(f, "{} === {}", left, right)
+            }
+            Self::NotIdentical { left, right, .. } => {
+                write!(f, "{} !== {}", left, right)
+            }
+            Self::NotEqual { left, right, .. } => {
+                write!(f, "{} != {}", left, right)
+            }
+            Self::LessThan { left, right, .. } => {
+                write!(f, "{} < {}", left, right)
+            }
+            Self::LessThanOrEqual { left, right, .. } => {
+                write!(f, "{} <= {}", left, right)
+            }
+            Self::GreaterThan { left, right, .. } => {
+                write!(f, "{} > {}", left, right)
+            }
+            Self::GreaterThanOrEqual { left, right, .. } => {
+                write!(f, "{} >= {}", left, right)
+            }
+            Self::Spaceship { left, right, .. } => {
+                write!(f, "{} <=> {}", left, right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for LogicalOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::And { left, right, .. } => {
+                write!(f, "{} && {}", left, right)
+            }
+            Self::Or { left, right, .. } => {
+                write!(f, "{} || {}", left, right)
+            }
+            Self::Not { right, .. } => {
+                write!(f, "!{}", right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for AssignmentOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Assignment { left, right, .. } => {
+                write!(f, "{} = {}", left, right)
+            }
+            Self::Addition { left, right, .. } => {
+                write!(f, "{} += {}", left, right)
+            }
+            Self::Subtraction { left, right, .. } => {
+                write!(f, "{} -= {}", left, right)
+            }
+            Self::Multiplication { left, right, .. } => {
+                write!(f, "{} *= {}", left, right)
+            }
+            Self::Division { left, right, .. } => {
+                write!(f, "{} /= {}", left, right)
+            }
+            Self::Exponentiation { left, right, .. } => {
+                write!(f, "{} **= {}", left, right)
+            }
+            Self::Modulo { left, right, .. } => {
+                write!(f, "{} %= {}", left, right)
+            }
+            Self::Concat { left, right, .. } => {
+                write!(f, "{} .= {}", left, right)
+            }
+            Self::BitwiseAnd { left, right, .. } => {
+                write!(f, "{} &= {}", left, right)
+            }
+            Self::BitwiseOr { left, right, .. } => {
+                write!(f, "{} |= {}", left, right)
+            }
+            Self::BitwiseXor { left, right, .. } => {
+                write!(f, "{} ^= {}", left, right)
+            }
+            Self::LeftShift { left, right, .. } => {
+                write!(f, "{} <<= {}", left, right)
+            }
+            Self::RightShift { left, right, .. } => {
+                write!(f, "{} >>= {}", left, right)
+            }
+            Self::Coalesce { left, right, .. } => {
+                write!(f, "{} ??= {}", left, right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for BitwiseOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::LeftShift { left, right, .. } => {
+                write!(f, "{} << {}", left, right)
+            }
+            Self::RightShift { left, right, .. } => {
+                write!(f, "{} >> {}", left, right)
+            }
+            Self::And { left, right, .. } => {
+                write!(f, "{} & {}", left, right)
+            }
+            Self::Or { left, right, .. } => {
+                write!(f, "{} | {}", left, right)
+            }
+            Self::Xor { left, right, .. } => {
+                write!(f, "{} ^ {}", left, right)
+            }
+            Self::Not { right, .. } => {
+                write!(f, "~{}", right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for AsyncOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Await {
+                r#await,
+                expression,
+                ..
+            } => {
+                write!(f, "{} {}", r#await, expression)
+            }
+            Self::Async {
+                r#async,
+                expression,
+                ..
+            } => {
+                write!(f, "{} {}", r#async, expression)
+            }
+            Self::Concurrently { concurrently, .. } => {
+                write!(f, "{} {{{{ /* ... */ }}}}", concurrently)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for RangeOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Between { from, to, .. } => {
+                write!(f, "{}..{}", from, to)
+            }
+            Self::BetweenInclusive { from, to, .. } => {
+                write!(f, "{}..={}", from, to)
+            }
+            Self::To { to, .. } => {
+                write!(f, "..{}", to)
+            }
+            Self::ToInclusive { to, .. } => {
+                write!(f, "..={}", to)
+            }
+            Self::From { from, .. } => {
+                write!(f, "{}..", from)
+            }
+            Self::Full { .. } => {
+                write!(f, "..")
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for FunctionalOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Expression {
+                generics,
+                expression,
+                ..
+            } => {
+                write!(f, "$(")?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", expression)?;
+                write!(f, ")")
+            }
+            Self::Pipe { left, right, .. } => write!(f, "{} |> {}", left, right),
+        }
+    }
+}
+
+impl std::fmt::Display for StringOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Concat { left, right, .. } => {
+                write!(f, "{}.{}", left, right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ArrayOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Access { array, index, .. } => {
+                write!(f, "{}[{}]", array, index)
+            }
+            Self::Push { array, .. } => {
+                write!(f, "{}[]", array)
+            }
+            Self::Unset { item, .. } => {
+                write!(f, "unset {}", item)
+            }
+            Self::Isset { item, .. } => {
+                write!(f, "isset {}", item)
+            }
+            Self::In { item, array, .. } => {
+                write!(f, "{} in {}", item, array)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for CoalesceOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Coalesce { left, right, .. } => {
+                write!(f, "{} ?? {}", left, right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for TernaryOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Ternary {
+                condition,
+                if_true,
+                if_false,
+                ..
+            } => {
+                write!(f, "{} ? {} : {}", condition, if_true, if_false)
+            }
+            Self::ShortTernary {
+                condition,
+                if_false,
+                ..
+            } => {
+                write!(f, "{} ?: {}", condition, if_false)
+            }
+            Self::ImplicitShortTernary {
+                condition,
+                if_false,
+                ..
+            } => {
+                write!(f, "{} ? : {}", condition, if_false)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for TypeOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Instanceof { left, right, .. } => {
+                write!(f, "{} instanceof {}", left, right)
+            }
+            Self::Is { left, right, .. } => {
+                write!(f, "{} is {}", left, right)
+            }
+            Self::Into { left, right, .. } => {
+                write!(f, "{} into {}", left, right)
+            }
+            Self::As { left, right, .. } => {
+                write!(f, "{} as {}", left, right)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for GeneratorOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Yield { .. } => {
+                write!(f, "yield")
+            }
+            Self::YieldFrom { value, .. } => {
+                write!(f, "yield from {}", value)
+            }
+            Self::YieldValue { value, .. } => {
+                write!(f, "yield {}", value)
+            }
+            Self::YieldKeyValue { key, value, .. } => {
+                write!(f, "yield {} => {}", key, value)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ExceptionOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Throw { value, .. } => {
+                write!(f, "throw {}", value)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ObjectOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Clone { object, .. } => {
+                write!(f, "clone {}", object)
+            }
+            Self::MethodCall {
+                object,
+                method,
+                generics,
+                arguments,
+                ..
+            } => {
+                write!(f, "{}->{}", object, method)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", arguments)
+            }
+            Self::NullsafeMethodCall {
+                object,
+                method,
+                generics,
+                arguments,
+                ..
+            } => {
+                write!(f, "{}?->{}", object, method)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", arguments)
+            }
+            Self::MethodClosureCreation {
+                object,
+                method,
+                generics,
+                placeholder,
+                ..
+            } => {
+                write!(f, "{}->{}", object, method)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", placeholder)
+            }
+            Self::PropertyFetch {
+                object, property, ..
+            } => {
+                write!(f, "{}->{}", object, property)
+            }
+            Self::NullsafePropertyFetch {
+                object, property, ..
+            } => {
+                write!(f, "{}?->{}", object, property)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ClassOperationInitializationClassExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Identifier(identifier) => {
+                write!(f, "new {}", identifier)
+            }
+            Self::Variable(variable) => {
+                write!(f, "new {}", variable)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for ClassOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Initialization {
+                class,
+                generics,
+                arguments,
+                ..
+            } => {
+                write!(f, "{}", class)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", arguments)
+            }
+            Self::AnonymousInitialization { class, .. } => write!(f, "new {}", class),
+            Self::StaticMethodCall {
+                class,
+                method,
+                generics,
+                arguments,
+                ..
+            } => {
+                write!(f, "{}::{}", class, method)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", arguments)
+            }
+            Self::StaticMethodClosureCreation {
+                class,
+                method,
+                generics,
+                placeholder,
+                ..
+            } => {
+                write!(f, "{}::{}", class, method)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", placeholder)
+            }
+            Self::StaticPropertyFetch {
+                class, property, ..
+            } => {
+                write!(f, "{}::{}", class, property)
+            }
+            Self::ConstantFetch {
+                class, constant, ..
+            } => {
+                write!(f, "{}::{}", class, constant)
+            }
+        }
+    }
+}
+
+impl std::fmt::Display for FunctionOperationExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Call {
+                function,
+                generics,
+                arguments,
+                ..
+            } => {
+                write!(f, "{}", function)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", arguments)
+            }
+            Self::ClosureCreation {
+                function,
+                generics,
+                placeholder,
+                ..
+            } => {
+                write!(f, "{}", function)?;
+                if let Some(generics) = generics {
+                    write!(f, "{}", generics)?;
+                }
+                write!(f, "{}", placeholder)
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::definition::class::ClassDefinitionBody;
+    use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
+    use crate::tree::expression::argument::ArgumentExpression;
+    use crate::tree::expression::literal::Literal::Integer;
+    use crate::tree::expression::literal::LiteralInteger;
+
+    #[test]
+    fn test_functional_operation_expression_display() {
+        let pipe = FunctionalOperationExpression::Pipe {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            pipe: 0,
+            greater_than: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(pipe.to_string(), "$foo |> $bar");
+
+        let expression = FunctionalOperationExpression::Expression {
+            comments: CommentGroup { comments: vec![] },
+            dollar: 0,
+            generics: None,
+            left_parenthesis: 0,
+            expression: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right_parenthesis: 0,
+        };
+
+        assert_eq!(expression.to_string(), "$($foo)");
+    }
+
+    #[test]
+    fn test_assignment_operation_expression_display() {
+        let assignment = AssignmentOperationExpression::Assignment {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            equals: 0,
+        };
+
+        assert_eq!(assignment.to_string(), "$foo = $bar");
+
+        let addition = AssignmentOperationExpression::Addition {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            plus_equals: 0,
+        };
+
+        assert_eq!(addition.to_string(), "$foo += $bar");
+
+        let subtraction = AssignmentOperationExpression::Subtraction {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            minus_equals: 0,
+        };
+
+        assert_eq!(subtraction.to_string(), "$foo -= $bar");
+
+        let multiplication = AssignmentOperationExpression::Multiplication {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            asterisk_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(multiplication.to_string(), "$foo *= $bar");
+
+        let division = AssignmentOperationExpression::Division {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            slash_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(division.to_string(), "$foo /= $bar");
+
+        let modulo = AssignmentOperationExpression::Modulo {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            percent_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(modulo.to_string(), "$foo %= $bar");
+
+        let bitwise_and = AssignmentOperationExpression::BitwiseAnd {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            ampersand_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_and.to_string(), "$foo &= $bar");
+
+        let bitwise_or = AssignmentOperationExpression::BitwiseOr {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            pipe_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_or.to_string(), "$foo |= $bar");
+
+        let bitwise_xor = AssignmentOperationExpression::BitwiseXor {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            caret_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_xor.to_string(), "$foo ^= $bar");
+
+        let left_shift = AssignmentOperationExpression::LeftShift {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            left_shift_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(left_shift.to_string(), "$foo <<= $bar");
+
+        let right_shift = AssignmentOperationExpression::RightShift {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right_shift_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(right_shift.to_string(), "$foo >>= $bar");
+
+        let exponentiation = AssignmentOperationExpression::Exponentiation {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            pow_equals: 0,
+        };
+
+        assert_eq!(exponentiation.to_string(), "$foo **= $bar");
+
+        let concat = AssignmentOperationExpression::Concat {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            dot_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(concat.to_string(), "$foo .= $bar");
+
+        let coalesce = AssignmentOperationExpression::Coalesce {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            coalesce_equals: 0,
+        };
+
+        assert_eq!(coalesce.to_string(), "$foo ??= $bar");
+    }
+
+    #[test]
+    fn test_arithmetic_operation_expression_display() {
+        let addition = ArithmeticOperationExpression::Addition {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            plus: 0,
+        };
+
+        assert_eq!(addition.to_string(), "$foo + $bar");
+
+        let subtraction = ArithmeticOperationExpression::Subtraction {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            minus: 0,
+        };
+
+        assert_eq!(subtraction.to_string(), "$foo - $bar");
+
+        let multiplication = ArithmeticOperationExpression::Multiplication {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            asterisk: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(multiplication.to_string(), "$foo * $bar");
+
+        let division = ArithmeticOperationExpression::Division {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            slash: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(division.to_string(), "$foo / $bar");
+
+        let modulo = ArithmeticOperationExpression::Modulo {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            percent: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(modulo.to_string(), "$foo % $bar");
+
+        let exponentiation = ArithmeticOperationExpression::Exponentiation {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            pow: 0,
+        };
+
+        assert_eq!(exponentiation.to_string(), "$foo ** $bar");
+
+        let negative = ArithmeticOperationExpression::Negative {
+            comments: CommentGroup { comments: vec![] },
+            minus: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(negative.to_string(), "-$bar");
+
+        let positive = ArithmeticOperationExpression::Positive {
+            comments: CommentGroup { comments: vec![] },
+            plus: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(positive.to_string(), "+$bar");
+
+        let pre_increment = ArithmeticOperationExpression::PreIncrement {
+            comments: CommentGroup { comments: vec![] },
+            increment: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(pre_increment.to_string(), "++$bar");
+
+        let pre_decrement = ArithmeticOperationExpression::PreDecrement {
+            comments: CommentGroup { comments: vec![] },
+            decrement: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(pre_decrement.to_string(), "--$bar");
+
+        let post_increment = ArithmeticOperationExpression::PostIncrement {
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            increment: 0,
+        };
+
+        assert_eq!(post_increment.to_string(), "$bar++");
+
+        let post_decrement = ArithmeticOperationExpression::PostDecrement {
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            decrement: 0,
+        };
+
+        assert_eq!(post_decrement.to_string(), "$bar--");
+    }
+
+    #[test]
+    fn test_bitwise_operation_expression_display() {
+        let bitwise_and = BitwiseOperationExpression::And {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            and: 0,
+        };
+
+        assert_eq!(bitwise_and.to_string(), "$foo & $bar");
+
+        let bitwise_or = BitwiseOperationExpression::Or {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            or: 0,
+        };
+
+        assert_eq!(bitwise_or.to_string(), "$foo | $bar");
+
+        let bitwise_xor = BitwiseOperationExpression::Xor {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            xor: 0,
+        };
+
+        assert_eq!(bitwise_xor.to_string(), "$foo ^ $bar");
+
+        let bitwise_not = BitwiseOperationExpression::Not {
+            comments: CommentGroup { comments: vec![] },
+            not: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_not.to_string(), "~$bar");
+
+        let bitwise_left_shift = BitwiseOperationExpression::LeftShift {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            left_shift: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_left_shift.to_string(), "$foo << $bar");
+
+        let bitwise_right_shift = BitwiseOperationExpression::RightShift {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right_shift: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(bitwise_right_shift.to_string(), "$foo >> $bar");
+    }
+
+    #[test]
+    fn test_comparison_operation_expression_display() {
+        let equal = ComparisonOperationExpression::Equal {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            double_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(equal.to_string(), "$foo == $bar");
+
+        let identical = ComparisonOperationExpression::Identical {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            triple_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(identical.to_string(), "$foo === $bar");
+
+        let not_equal = ComparisonOperationExpression::NotEqual {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            bang_equals: 0,
+        };
+
+        assert_eq!(not_equal.to_string(), "$foo != $bar");
+
+        let not_identical = ComparisonOperationExpression::NotIdentical {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            bang_double_equals: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(not_identical.to_string(), "$foo !== $bar");
+
+        let less_than = ComparisonOperationExpression::LessThan {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            less_than: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(less_than.to_string(), "$foo < $bar");
+
+        let greater_than = ComparisonOperationExpression::GreaterThan {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            greater_than: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(greater_than.to_string(), "$foo > $bar");
+
+        let less_than_or_equal = ComparisonOperationExpression::LessThanOrEqual {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            less_than_equals: 0,
+        };
+
+        assert_eq!(less_than_or_equal.to_string(), "$foo <= $bar");
+
+        let greater_than_or_equal = ComparisonOperationExpression::GreaterThanOrEqual {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            greater_than_equals: 0,
+        };
+
+        assert_eq!(greater_than_or_equal.to_string(), "$foo >= $bar");
+
+        let spaceship = ComparisonOperationExpression::Spaceship {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            spaceship: 0,
+        };
+
+        assert_eq!(spaceship.to_string(), "$foo <=> $bar");
+    }
+
+    #[test]
+    fn test_logical_operation_expression_display() {
+        let logical_and = LogicalOperationExpression::And {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            double_ampersand: 0,
+        };
+
+        assert_eq!(logical_and.to_string(), "$foo && $bar");
+
+        let logical_or = LogicalOperationExpression::Or {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            double_pipe: 0,
+        };
+
+        assert_eq!(logical_or.to_string(), "$foo || $bar");
+
+        let logical_not = LogicalOperationExpression::Not {
+            comments: CommentGroup { comments: vec![] },
+            bang: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(logical_not.to_string(), "!$foo");
+    }
+
+    #[test]
+    fn test_string_operation_expression_display() {
+        let concat = StringOperationExpression::Concat {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            dot: 0,
+        };
+
+        assert_eq!(concat.to_string(), "$foo.$bar");
+    }
+
+    #[test]
+    fn test_array_operation_expression_display() {
+        let access = ArrayOperationExpression::Access {
+            comments: CommentGroup { comments: vec![] },
+            array: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            left_bracket: 0,
+            index: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            right_bracket: 0,
+        };
+
+        assert_eq!(access.to_string(), "$foo[$bar]");
+
+        let push = ArrayOperationExpression::Push {
+            comments: CommentGroup { comments: vec![] },
+            array: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            left_bracket: 0,
+            right_bracket: 0,
+        };
+
+        assert_eq!(push.to_string(), "$foo[]");
+
+        let unset = ArrayOperationExpression::Unset {
+            comments: CommentGroup { comments: vec![] },
+            unset: Keyword::new(ByteString::from("unset"), 0),
+            item: Box::new(Expression::ArrayOperation(
+                ArrayOperationExpression::Access {
+                    comments: CommentGroup { comments: vec![] },
+                    array: Box::new(Expression::Variable(Variable {
+                        position: 0,
+                        name: ByteString::from("foo"),
+                    })),
+                    left_bracket: 0,
+                    index: Box::new(Expression::Variable(Variable {
+                        position: 0,
+                        name: ByteString::from("bar"),
+                    })),
+                    right_bracket: 0,
+                },
+            )),
+        };
+
+        assert_eq!(unset.to_string(), "unset $foo[$bar]");
+
+        let isset = ArrayOperationExpression::Isset {
+            comments: CommentGroup { comments: vec![] },
+            isset: Keyword::new(ByteString::from("isset"), 0),
+            item: Box::new(Expression::ArrayOperation(
+                ArrayOperationExpression::Access {
+                    comments: CommentGroup { comments: vec![] },
+                    array: Box::new(Expression::Variable(Variable {
+                        position: 0,
+                        name: ByteString::from("foo"),
+                    })),
+                    left_bracket: 0,
+                    index: Box::new(Expression::Variable(Variable {
+                        position: 0,
+                        name: ByteString::from("bar"),
+                    })),
+                    right_bracket: 0,
+                },
+            )),
+        };
+
+        assert_eq!(isset.to_string(), "isset $foo[$bar]");
+
+        let r#in = ArrayOperationExpression::In {
+            comments: CommentGroup { comments: vec![] },
+            item: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("1"),
+            }))),
+            r#in: Keyword::new(ByteString::from("in"), 0),
+            array: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(r#in.to_string(), "1 in $foo");
+    }
+
+    #[test]
+    fn test_coalesce_operation_expression_display() {
+        let coalesce = CoalesceOperationExpression::Coalesce {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            double_question: 0,
+            right: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(coalesce.to_string(), "$foo ?? $bar");
+    }
+
+    #[test]
+    fn test_ternary_operation_expression_display() {
+        let ternary = TernaryOperationExpression::Ternary {
+            comments: CommentGroup { comments: vec![] },
+            condition: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            question: 0,
+            if_true: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            colon: 0,
+            if_false: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("baz"),
+            })),
+        };
+
+        assert_eq!(ternary.to_string(), "$foo ? $bar : $baz");
+
+        let short_ternary = TernaryOperationExpression::ShortTernary {
+            comments: CommentGroup { comments: vec![] },
+            condition: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            if_false: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+            question_colon: 0,
+        };
+
+        assert_eq!(short_ternary.to_string(), "$foo ?: $bar");
+
+        let implicit_short_ternary = TernaryOperationExpression::ImplicitShortTernary {
+            comments: CommentGroup { comments: vec![] },
+            condition: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            question: 0,
+            colon: 0,
+            if_false: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(implicit_short_ternary.to_string(), "$foo ? : $bar");
+    }
+
+    #[test]
+    fn test_type_operation_expression_display() {
+        let instance_of = TypeOperationExpression::Instanceof {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            instanceof: Keyword::new(ByteString::from("instanceof"), 0),
+            right: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+        };
+
+        assert_eq!(instance_of.to_string(), "$foo instanceof Foo");
+
+        let is = TypeOperationExpression::Is {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            is: Keyword::new(ByteString::from("is"), 0),
+            right: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(Keyword::new(
+                ByteString::from("i64"),
+                0,
+            ))),
+        };
+
+        assert_eq!(is.to_string(), "$foo is i64");
+
+        let into = TypeOperationExpression::Into {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            into: Keyword::new(ByteString::from("into"), 0),
+            right: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(Keyword::new(
+                ByteString::from("i64"),
+                0,
+            ))),
+        };
+
+        assert_eq!(into.to_string(), "$foo into i64");
+
+        let r#as = TypeOperationExpression::As {
+            comments: CommentGroup { comments: vec![] },
+            left: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            r#as: Keyword::new(ByteString::from("as"), 0),
+            right: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(Keyword::new(
+                ByteString::from("i64"),
+                0,
+            ))),
+        };
+
+        assert_eq!(r#as.to_string(), "$foo as i64");
+    }
+
+    #[test]
+    fn test_generator_operation_expression_display() {
+        let r#yield = GeneratorOperationExpression::Yield {
+            comments: CommentGroup { comments: vec![] },
+            r#yield: Keyword::new(ByteString::from("yield"), 0),
+        };
+
+        assert_eq!(r#yield.to_string(), "yield");
+
+        let yield_value = GeneratorOperationExpression::YieldValue {
+            comments: CommentGroup { comments: vec![] },
+            r#yield: Keyword::new(ByteString::from("yield"), 0),
+            value: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(yield_value.to_string(), "yield $foo");
+
+        let yield_key_value = GeneratorOperationExpression::YieldKeyValue {
+            comments: CommentGroup { comments: vec![] },
+            r#yield: Keyword::new(ByteString::from("yield"), 0),
+            key: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            double_arrow: 0,
+            value: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            })),
+        };
+
+        assert_eq!(yield_key_value.to_string(), "yield $foo => $bar");
+
+        let yield_from = GeneratorOperationExpression::YieldFrom {
+            comments: CommentGroup { comments: vec![] },
+            r#yield: Keyword::new(ByteString::from("yield"), 0),
+            from: Keyword::new(ByteString::from("from"), 0),
+            value: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(yield_from.to_string(), "yield from $foo");
+    }
+
+    #[test]
+    fn test_exception_operation_expression_display() {
+        let throw = ExceptionOperationExpression::Throw {
+            comments: CommentGroup { comments: vec![] },
+            r#throw: Keyword::new(ByteString::from("throw"), 0),
+            value: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(throw.to_string(), "throw $foo");
+    }
+
+    #[test]
+    fn test_object_operation_expression_display() {
+        let clone = ObjectOperationExpression::Clone {
+            comments: CommentGroup { comments: vec![] },
+            clone: Keyword::new(ByteString::from("clone"), 0),
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(clone.to_string(), "clone $foo");
+
+        let method_call = ObjectOperationExpression::MethodCall {
+            comments: CommentGroup { comments: vec![] },
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            arrow: 0,
+            method: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+            generics: None,
+            arguments: ArgumentListExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                arguments: CommaSeparated {
+                    inner: vec![ArgumentExpression::Value {
+                        comments: CommentGroup { comments: vec![] },
+                        value: Expression::Literal(Integer(LiteralInteger {
+                            comments: CommentGroup { comments: vec![] },
+                            position: 0,
+                            value: ByteString::from("1"),
+                        })),
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(method_call.to_string(), "$foo->bar(1)");
+
+        let nullsafe_method_call = ObjectOperationExpression::NullsafeMethodCall {
+            comments: CommentGroup { comments: vec![] },
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            question_arrow: 0,
+            method: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+            generics: None,
+            arguments: ArgumentListExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                arguments: CommaSeparated {
+                    inner: vec![ArgumentExpression::Value {
+                        comments: CommentGroup { comments: vec![] },
+                        value: Expression::Literal(Integer(LiteralInteger {
+                            comments: CommentGroup { comments: vec![] },
+                            position: 0,
+                            value: ByteString::from("1"),
+                        })),
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(nullsafe_method_call.to_string(), "$foo?->bar(1)");
+
+        let method_closure_creation = ObjectOperationExpression::MethodClosureCreation {
+            comments: CommentGroup { comments: vec![] },
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            arrow: 0,
+            method: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+            generics: None,
+            placeholder: ArgumentPlaceholderExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                ellipsis: 0,
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(method_closure_creation.to_string(), "$foo->bar(...)");
+
+        let property_fetch = ObjectOperationExpression::PropertyFetch {
+            comments: CommentGroup { comments: vec![] },
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            arrow: 0,
+            property: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+        };
+
+        assert_eq!(property_fetch.to_string(), "$foo->bar");
+
+        let nullsafe_property_fetch = ObjectOperationExpression::NullsafePropertyFetch {
+            comments: CommentGroup { comments: vec![] },
+            object: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+            question_arrow: 0,
+            property: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+        };
+
+        assert_eq!(nullsafe_property_fetch.to_string(), "$foo?->bar");
+    }
+
+    #[test]
+    fn test_class_operation_initialization_class_expression_display() {
+        let identifier = ClassOperationInitializationClassExpression::Identifier(Identifier {
+            position: 0,
+            value: ByteString::from("Foo"),
+        });
+
+        assert_eq!(identifier.to_string(), "new Foo");
+
+        let variable = ClassOperationInitializationClassExpression::Variable(Variable {
+            position: 0,
+            name: ByteString::from("foo"),
+        });
+
+        assert_eq!(variable.to_string(), "new $foo");
+    }
+
+    #[test]
+    fn test_class_operation_expression() {
+        let initialization = ClassOperationExpression::Initialization {
+            comments: CommentGroup { comments: vec![] },
+            new: Keyword::new(ByteString::from("new"), 0),
+            class: ClassOperationInitializationClassExpression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            }),
+            generics: None,
+            arguments: ArgumentListExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                arguments: CommaSeparated {
+                    inner: vec![ArgumentExpression::Value {
+                        comments: CommentGroup { comments: vec![] },
+                        value: Expression::Literal(Integer(LiteralInteger {
+                            comments: CommentGroup { comments: vec![] },
+                            position: 0,
+                            value: ByteString::from("1"),
+                        })),
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(initialization.to_string(), "new Foo(1)");
+
+        let anonymous_initialization = ClassOperationExpression::AnonymousInitialization {
+            comments: CommentGroup { comments: vec![] },
+            new: Keyword::new(ByteString::from("new"), 0),
+            class: AnonymousClassExpression {
+                comments: CommentGroup { comments: vec![] },
+                attributes: vec![],
+                class: Keyword::new(ByteString::from("class"), 0),
+                arguments: ArgumentListExpression {
+                    comments: CommentGroup { comments: vec![] },
+                    left_parenthesis: 0,
+                    arguments: CommaSeparated {
+                        inner: vec![],
+                        commas: vec![],
+                    },
+                    right_parenthesis: 0,
+                },
+                extends: None,
+                implements: None,
+                body: ClassDefinitionBody {
+                    left_brace: 0,
+                    members: vec![],
+                    right_brace: 0,
+                },
+            },
+        };
+
+        assert_eq!(
+            anonymous_initialization.to_string(),
+            "new class { /* ... */ }"
+        );
+
+        let anonymous_initialization_with_argument =
+            ClassOperationExpression::AnonymousInitialization {
+                comments: CommentGroup { comments: vec![] },
+                new: Keyword::new(ByteString::from("new"), 0),
+                class: AnonymousClassExpression {
+                    comments: CommentGroup { comments: vec![] },
+                    attributes: vec![],
+                    class: Keyword::new(ByteString::from("class"), 0),
+                    arguments: ArgumentListExpression {
+                        comments: CommentGroup { comments: vec![] },
+                        left_parenthesis: 0,
+                        arguments: CommaSeparated {
+                            inner: vec![ArgumentExpression::Value {
+                                comments: CommentGroup { comments: vec![] },
+                                value: Expression::Literal(Integer(LiteralInteger {
+                                    comments: CommentGroup { comments: vec![] },
+                                    position: 0,
+                                    value: ByteString::from("1"),
+                                })),
+                            }],
+                            commas: vec![],
+                        },
+                        right_parenthesis: 0,
+                    },
+                    extends: None,
+                    implements: None,
+                    body: ClassDefinitionBody {
+                        left_brace: 0,
+                        members: vec![],
+                        right_brace: 0,
+                    },
+                },
+            };
+
+        assert_eq!(
+            anonymous_initialization_with_argument.to_string(),
+            "new class(1) { /* ... */ }"
+        );
+
+        let static_method_call = ClassOperationExpression::StaticMethodCall {
+            comments: CommentGroup { comments: vec![] },
+            class: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            })),
+            double_colon: 0,
+            method: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+            generics: None,
+            arguments: ArgumentListExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                arguments: CommaSeparated {
+                    inner: vec![ArgumentExpression::Value {
+                        comments: CommentGroup { comments: vec![] },
+                        value: Expression::Literal(Integer(LiteralInteger {
+                            comments: CommentGroup { comments: vec![] },
+                            position: 0,
+                            value: ByteString::from("1"),
+                        })),
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(static_method_call.to_string(), "Foo::bar(1)");
+
+        let static_method_closure = ClassOperationExpression::StaticMethodClosureCreation {
+            comments: CommentGroup { comments: vec![] },
+            class: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            })),
+            double_colon: 0,
+            method: Identifier {
+                position: 0,
+                value: ByteString::from("bar"),
+            },
+            generics: None,
+            placeholder: ArgumentPlaceholderExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                ellipsis: 0,
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(static_method_closure.to_string(), "Foo::bar(...)");
+
+        let static_property_fetch = ClassOperationExpression::StaticPropertyFetch {
+            comments: CommentGroup { comments: vec![] },
+            class: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            })),
+            double_colon: 0,
+            property: Variable {
+                position: 0,
+                name: ByteString::from("bar"),
+            },
+        };
+
+        assert_eq!(static_property_fetch.to_string(), "Foo::$bar");
+
+        let constant_fetch = ClassOperationExpression::ConstantFetch {
+            comments: CommentGroup { comments: vec![] },
+            class: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            })),
+            double_colon: 0,
+            constant: Identifier {
+                position: 0,
+                value: ByteString::from("BAR"),
+            },
+        };
+
+        assert_eq!(constant_fetch.to_string(), "Foo::BAR");
+    }
+
+    #[test]
+    fn test_function_operation_expression() {
+        let function_call = FunctionOperationExpression::Call {
+            comments: CommentGroup { comments: vec![] },
+            function: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("foo"),
+            })),
+            generics: None,
+            arguments: ArgumentListExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                arguments: CommaSeparated {
+                    inner: vec![ArgumentExpression::Value {
+                        comments: CommentGroup { comments: vec![] },
+                        value: Expression::Literal(Integer(LiteralInteger {
+                            comments: CommentGroup { comments: vec![] },
+                            position: 0,
+                            value: ByteString::from("1"),
+                        })),
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(function_call.to_string(), "foo(1)");
+
+        let function_closure = FunctionOperationExpression::ClosureCreation {
+            comments: CommentGroup { comments: vec![] },
+            function: Box::new(Expression::Identifier(Identifier {
+                position: 0,
+                value: ByteString::from("foo"),
+            })),
+            generics: None,
+            placeholder: ArgumentPlaceholderExpression {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                ellipsis: 0,
+                right_parenthesis: 0,
+            },
+        };
+
+        assert_eq!(function_closure.to_string(), "foo(...)");
+    }
+
+    #[test]
+    fn test_async_operation_expression() {
+        let r#async = AsyncOperationExpression::Async {
+            comments: CommentGroup { comments: vec![] },
+            r#async: Keyword::new(ByteString::from("async"), 0),
+            expression: Box::new(Expression::FunctionOperation(
+                FunctionOperationExpression::Call {
+                    comments: CommentGroup { comments: vec![] },
+                    function: Box::new(Expression::Identifier(Identifier {
+                        position: 0,
+                        value: ByteString::from("foo"),
+                    })),
+                    generics: None,
+                    arguments: ArgumentListExpression {
+                        comments: CommentGroup { comments: vec![] },
+                        left_parenthesis: 0,
+                        arguments: CommaSeparated {
+                            inner: vec![ArgumentExpression::Value {
+                                comments: CommentGroup { comments: vec![] },
+                                value: Expression::Literal(Integer(LiteralInteger {
+                                    comments: CommentGroup { comments: vec![] },
+                                    position: 0,
+                                    value: ByteString::from("1"),
+                                })),
+                            }],
+                            commas: vec![],
+                        },
+                        right_parenthesis: 0,
+                    },
+                },
+            )),
+        };
+
+        assert_eq!(r#async.to_string(), "async foo(1)");
+
+        let r#await = AsyncOperationExpression::Await {
+            comments: CommentGroup { comments: vec![] },
+            r#await: Keyword::new(ByteString::from("await"), 0),
+            expression: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(r#await.to_string(), "await $foo");
+
+        let concurrently = AsyncOperationExpression::Concurrently {
+            comments: CommentGroup { comments: vec![] },
+            concurrently: Keyword::new(ByteString::from("concurrently"), 0),
+            left_brace: 0,
+            expressions: CommaSeparated {
+                inner: vec![],
+                commas: vec![],
+            },
+            right_brace: 0,
+        };
+
+        assert_eq!(concurrently.to_string(), "concurrently {{ /* ... */ }}");
+    }
+
+    #[test]
+    fn test_range_operation_expression() {
+        let between = RangeOperationExpression::Between {
+            comments: CommentGroup { comments: vec![] },
+            from: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("1"),
+            }))),
+            double_dot: 0,
+            to: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+        };
+
+        assert_eq!(between.to_string(), "1..10");
+
+        let between_inclusive = RangeOperationExpression::BetweenInclusive {
+            comments: CommentGroup { comments: vec![] },
+            from: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("1"),
+            }))),
+            double_dot: 0,
+            to: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+            equals: 0,
+        };
+
+        assert_eq!(between_inclusive.to_string(), "1..=10");
+
+        let to = RangeOperationExpression::To {
+            comments: CommentGroup { comments: vec![] },
+            double_dot: 0,
+            to: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+        };
+
+        assert_eq!(to.to_string(), "..10");
+
+        let to_inclusive = RangeOperationExpression::ToInclusive {
+            comments: CommentGroup { comments: vec![] },
+            double_dot: 0,
+            to: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+            equals: 0,
+        };
+
+        assert_eq!(to_inclusive.to_string(), "..=10");
+
+        let from = RangeOperationExpression::From {
+            comments: CommentGroup { comments: vec![] },
+            from: Box::new(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+            double_dot: 0,
+        };
+
+        assert_eq!(from.to_string(), "10..");
+
+        let full = RangeOperationExpression::Full {
+            comments: CommentGroup { comments: vec![] },
+            double_dot: 0,
+        };
+
+        assert_eq!(full.to_string(), "..");
+    }
+}

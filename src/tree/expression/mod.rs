@@ -427,3 +427,46 @@ impl Node for Expression {
         }
     }
 }
+
+impl std::fmt::Display for Expression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match &self {
+            Self::Parenthesized(expression) => write!(f, "{}", expression),
+            Self::ExitConstruct(expression) => write!(f, "{}", expression),
+            Self::Literal(expression) => write!(f, "{}", expression),
+            Self::ArithmeticOperation(expression) => write!(f, "{}", expression),
+            Self::AsyncOperation(expression) => write!(f, "{}", expression),
+            Self::ArrayOperation(expression) => write!(f, "{}", expression),
+            Self::AssignmentOperation(expression) => write!(f, "{}", expression),
+            Self::BitwiseOperation(expression) => write!(f, "{}", expression),
+            Self::ClassOperation(expression) => write!(f, "{}", expression),
+            Self::CoalesceOperation(expression) => write!(f, "{}", expression),
+            Self::ComparisonOperation(expression) => write!(f, "{}", expression),
+            Self::ExceptionOperation(expression) => write!(f, "{}", expression),
+            Self::FunctionOperation(expression) => write!(f, "{}", expression),
+            Self::GeneratorOperation(expression) => write!(f, "{}", expression),
+            Self::LogicalOperation(expression) => write!(f, "{}", expression),
+            Self::ObjectOperation(expression) => write!(f, "{}", expression),
+            Self::RangeOperation(expression) => write!(f, "{}", expression),
+            Self::StringOperation(expression) => write!(f, "{}", expression),
+            Self::TypeOperation(expression) => write!(f, "{}", expression),
+            Self::TernaryOperation(expression) => write!(f, "{}", expression),
+            Self::Identifier(expression) => write!(f, "{}", expression),
+            Self::Variable(expression) => write!(f, "{}", expression),
+            Self::Match(expression) => write!(f, "{}", expression),
+            Self::AnonymousFunction(expression) => write!(f, "{}", expression),
+            Self::ArrowFunction(expression) => write!(f, "{}", expression),
+            Self::Vec(expression) => write!(f, "{}", expression),
+            Self::Dict(expression) => write!(f, "{}", expression),
+            Self::Tuple(expression) => write!(f, "{}", expression),
+            Self::MagicConstant(expression) => write!(f, "{}", expression),
+            Self::FunctionalOperation(expression) => write!(f, "{}", expression),
+        }
+    }
+}
+
+impl std::fmt::Display for ParenthesizedExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "({})", self.expression)
+    }
+}

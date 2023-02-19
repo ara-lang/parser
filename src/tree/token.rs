@@ -50,3 +50,15 @@ impl Display for Keyword {
         write!(f, "{}", self.value)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_keyword_display() {
+        let keyword = Keyword::new(ByteString::from("iterable"), 0);
+
+        assert_eq!(keyword.to_string(), "iterable");
+    }
+}

@@ -253,3 +253,105 @@ impl Node for LiteralFalse {
         "literal false expression".to_string()
     }
 }
+
+impl std::fmt::Display for Literal {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Null(inner) => write!(f, "{}", inner),
+            Self::False(inner) => write!(f, "{}", inner),
+            Self::True(inner) => write!(f, "{}", inner),
+            Self::Integer(inner) => write!(f, "{}", inner),
+            Self::Float(inner) => write!(f, "{}", inner),
+            Self::String(inner) => write!(f, "{}", inner),
+        }
+    }
+}
+
+impl std::fmt::Display for LiteralString {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl std::fmt::Display for LiteralInteger {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl std::fmt::Display for LiteralFloat {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl std::fmt::Display for LiteralNull {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "null")
+    }
+}
+
+impl std::fmt::Display for LiteralTrue {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "true")
+    }
+}
+
+impl std::fmt::Display for LiteralFalse {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "false")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_literal_display() {
+        let string = Literal::String(LiteralString {
+            comments: CommentGroup { comments: vec![] },
+            value: ByteString::from("\"foo\""),
+            position: 0,
+        });
+
+        assert_eq!(string.to_string(), "\"foo\"");
+
+        let integer = LiteralInteger {
+            comments: CommentGroup { comments: vec![] },
+            position: 0,
+            value: ByteString::from("123"),
+        };
+
+        assert_eq!(integer.to_string(), "123");
+
+        let float = LiteralFloat {
+            comments: CommentGroup { comments: vec![] },
+            position: 0,
+            value: ByteString::from("3.14"),
+        };
+
+        assert_eq!(float.to_string(), "3.14");
+
+        let null = LiteralNull {
+            comments: CommentGroup { comments: vec![] },
+            null: Keyword::new(ByteString::from("null"), 0),
+        };
+
+        assert_eq!(null.to_string(), "null");
+
+        let r#true = LiteralTrue {
+            comments: CommentGroup { comments: vec![] },
+            r#true: Keyword::new(ByteString::from("true"), 0),
+        };
+
+        assert_eq!(r#true.to_string(), "true");
+
+        let r#false = LiteralFalse {
+            comments: CommentGroup { comments: vec![] },
+            r#false: Keyword::new(ByteString::from("false"), 0),
+        };
+
+        assert_eq!(r#false.to_string(), "false");
+    }
+}

@@ -87,3 +87,56 @@ impl std::fmt::Display for TemplatedIdentifier {
         Ok(())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::tree::comment::CommentGroup;
+    use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
+    use crate::tree::definition::r#type::TypeDefinition;
+    use crate::tree::token::Keyword;
+    use crate::tree::utils::CommaSeparated;
+
+    #[test]
+    fn test_identifier_display() {
+        let identifier = Identifier {
+            position: 0,
+            value: ByteString::from("Foo"),
+        };
+
+        assert_eq!(identifier.to_string(), "Foo");
+    }
+
+    #[test]
+    fn test_templated_identifier_display() {
+        let identifier = TemplatedIdentifier {
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            templates: None,
+        };
+
+        assert_eq!(identifier.to_string(), "Foo");
+
+        let identifier = TemplatedIdentifier {
+            name: Identifier {
+                position: 5,
+                value: ByteString::from("Foo"),
+            },
+            templates: Some(TypeTemplateGroupDefinition {
+                comments: CommentGroup { comments: vec![] },
+                less_than: 10,
+                members: CommaSeparated {
+                    inner: vec![TypeDefinition::SignedInteger(
+                        SignedIntegerTypeDefinition::I64(Keyword::new(ByteString::from("i64"), 15)),
+                    )],
+                    commas: vec![1],
+                },
+                greater_than: 20,
+            }),
+        };
+
+        assert_eq!(identifier.to_string(), "Foo<i64>");
+    }
+}

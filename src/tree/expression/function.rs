@@ -198,3 +198,169 @@ impl Node for AnonymousFunctionUseClauseVariableExpression {
         "anonymous function use clause variable expression".to_string()
     }
 }
+
+impl std::fmt::Display for ArrowFunctionExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        if let Some(r#static) = &self.r#static {
+            write!(f, "{} ", r#static)?;
+        }
+        write!(
+            f,
+            "{} {}{} => {};",
+            self.r#fn, self.parameters, self.return_type, self.body
+        )
+    }
+}
+
+impl std::fmt::Display for AnonymousFunctionExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        if let Some(r#static) = &self.r#static {
+            write!(f, "{} ", r#static)?;
+        }
+        write!(f, "{} {}", self.function, self.parameters)?;
+
+        if let Some(use_clause) = &self.use_clause {
+            write!(f, " {}", use_clause)?;
+        }
+
+        write!(f, "{} {}", self.return_type, self.body)
+    }
+}
+
+impl std::fmt::Display for AnonymousFunctionUseClauseExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} ({})", self.r#use, self.variables)
+    }
+}
+
+impl std::fmt::Display for AnonymousFunctionUseClauseVariableExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.variable)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::definition::function::FunctionLikeParameterDefinition;
+    use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
+    use crate::tree::definition::r#type::TypeDefinition;
+
+    #[test]
+    fn arrow_function_expression_display() {
+        let arrow_function_expression = ArrowFunctionExpression {
+            attributes: vec![],
+            comments: CommentGroup { comments: vec![] },
+            r#static: Some(Keyword::new(ByteString::from("static"), 0)),
+            r#fn: Keyword::new(ByteString::from("fn"), 0),
+            parameters: FunctionLikeParameterListDefinition {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                parameters: CommaSeparated {
+                    inner: vec![FunctionLikeParameterDefinition {
+                        attributes: vec![],
+                        comments: CommentGroup { comments: vec![] },
+                        type_definition: TypeDefinition::SignedInteger(
+                            SignedIntegerTypeDefinition::I64(Keyword::new(
+                                ByteString::from("i64"),
+                                15,
+                            )),
+                        ),
+                        ellipsis: None,
+                        variable: Variable {
+                            position: 0,
+                            name: ByteString::from("foo"),
+                        },
+                        default: None,
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+            return_type: FunctionLikeReturnTypeDefinition {
+                colon: 0,
+                type_definition: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(
+                    Keyword::new(ByteString::from("i64"), 15),
+                )),
+            },
+            double_arrow: 0,
+            body: Box::new(Expression::Variable(Variable {
+                position: 0,
+                name: ByteString::from("foo"),
+            })),
+        };
+
+        assert_eq!(
+            arrow_function_expression.to_string(),
+            "static fn (i64 $foo): i64 => $foo;"
+        );
+    }
+
+    #[test]
+    fn anonymous_function_expression_display() {
+        let anonymous_function_expression = AnonymousFunctionExpression {
+            attributes: vec![],
+            comments: CommentGroup { comments: vec![] },
+            r#static: Some(Keyword::new(ByteString::from("static"), 0)),
+            function: Keyword::new(ByteString::from("function"), 0),
+            parameters: FunctionLikeParameterListDefinition {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                parameters: CommaSeparated {
+                    inner: vec![FunctionLikeParameterDefinition {
+                        attributes: vec![],
+                        comments: CommentGroup { comments: vec![] },
+                        type_definition: TypeDefinition::SignedInteger(
+                            SignedIntegerTypeDefinition::I32(Keyword::new(
+                                ByteString::from("i32"),
+                                15,
+                            )),
+                        ),
+                        ellipsis: None,
+                        variable: Variable {
+                            position: 0,
+                            name: ByteString::from("foo"),
+                        },
+                        default: None,
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+            return_type: FunctionLikeReturnTypeDefinition {
+                colon: 0,
+                type_definition: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(
+                    Keyword::new(ByteString::from("i64"), 15),
+                )),
+            },
+            use_clause: Some(AnonymousFunctionUseClauseExpression {
+                comments: CommentGroup { comments: vec![] },
+                r#use: Keyword::new(ByteString::from("use"), 0),
+                variables: CommaSeparated {
+                    inner: vec![AnonymousFunctionUseClauseVariableExpression {
+                        comments: CommentGroup { comments: vec![] },
+                        variable: Variable {
+                            position: 0,
+                            name: ByteString::from("bar"),
+                        },
+                    }],
+                    commas: vec![],
+                },
+                left_parenthesis: 0,
+                right_parenthesis: 0,
+            }),
+            body: BlockStatement {
+                comments: CommentGroup { comments: vec![] },
+                left_brace: 0,
+                statements: vec![],
+                right_brace: 0,
+            },
+        };
+
+        assert_eq!(
+            anonymous_function_expression.to_string(),
+            "static function (i32 $foo) use ($bar): i64 { /* ... */ }"
+        );
+    }
+}

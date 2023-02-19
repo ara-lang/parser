@@ -41,3 +41,34 @@ impl Node for NamespaceDefinition {
         "namespace definition".to_string()
     }
 }
+
+impl std::fmt::Display for NamespaceDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{} {};", self.namespace, self.name)?;
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+
+    #[test]
+    fn test_namespace_definition_display() {
+        let namespace_definition = NamespaceDefinition {
+            namespace: Keyword {
+                value: ByteString::from("namespace"),
+                position: 0,
+            },
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo\\Bar"),
+            },
+            semicolon: 14,
+            definitions: vec![],
+        };
+
+        assert_eq!(namespace_definition.to_string(), "namespace Foo\\Bar;");
+    }
+}

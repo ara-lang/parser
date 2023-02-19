@@ -438,3 +438,139 @@ impl Node for BackedEnumCaseDefinition {
         "backed enum case definition".to_string()
     }
 }
+
+impl std::fmt::Display for EnumDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Unit(unit) => write!(f, "{}", unit),
+            Self::Backed(backed) => write!(f, "{}", backed),
+        }
+    }
+}
+
+impl std::fmt::Display for UnitEnumDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {} {}", self.r#enum, self.name, self.body)
+    }
+}
+
+impl std::fmt::Display for UnitEnumBodyDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{{ /* ... */ }}")
+    }
+}
+
+impl std::fmt::Display for UnitEnumMemberDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Case(case) => write!(f, "{}", case),
+            Self::Method(method) => write!(f, "{}", method),
+            Self::Constant(constant) => write!(f, "{}", constant),
+        }
+    }
+}
+
+impl std::fmt::Display for UnitEnumCaseDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.case)
+    }
+}
+
+impl std::fmt::Display for BackedEnumDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {}{} {}",
+            self.r#enum, self.name, self.backed_type, self.body
+        )
+    }
+}
+
+impl std::fmt::Display for BackedEnumTypeDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::String(.., identifier) => write!(f, ": {}", identifier),
+            Self::Int(.., identifier) => write!(f, ": {}", identifier),
+        }
+    }
+}
+
+impl std::fmt::Display for BackedEnumBodyDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{{ /* ... */ }}")
+    }
+}
+
+impl std::fmt::Display for EnumImplementsDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {}", self.implements, self.interfaces)
+    }
+}
+
+impl std::fmt::Display for BackedEnumMemberDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Case(case) => write!(f, "{}", case),
+            Self::Method(method) => write!(f, "{}", method),
+            Self::Constant(constant) => write!(f, "{}", constant),
+        }
+    }
+}
+
+impl std::fmt::Display for BackedEnumCaseDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {} = {}", self.case, self.name, self.value)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+
+    #[test]
+    fn test_enum_definition_display() {
+        let backed = BackedEnumDefinition {
+            comments: CommentGroup { comments: vec![] },
+            attributes: vec![],
+            r#enum: Keyword::new(ByteString::from("enum"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            backed_type: BackedEnumTypeDefinition::String(
+                0,
+                Identifier {
+                    position: 0,
+                    value: ByteString::from("string"),
+                },
+            ),
+            implements: None,
+            body: BackedEnumBodyDefinition {
+                left_brace: 0,
+                members: vec![],
+                right_brace: 0,
+            },
+        };
+
+        assert_eq!(backed.to_string(), "enum Foo: string { /* ... */ }");
+
+        let unit = UnitEnumDefinition {
+            comments: CommentGroup { comments: vec![] },
+            attributes: vec![],
+            r#enum: Keyword::new(ByteString::from("enum"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            implements: None,
+            body: UnitEnumBodyDefinition {
+                left_brace: 0,
+                members: vec![],
+                right_brace: 0,
+            },
+        };
+
+        assert_eq!(unit.to_string(), "enum Foo { /* ... */ }");
+    }
+}

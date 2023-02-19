@@ -121,3 +121,23 @@ impl Node for Statement {
         }
     }
 }
+
+impl std::fmt::Display for Statement {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::DoWhile(statement) => write!(f, "{}", statement),
+            Self::While(statement) => write!(f, "{}", statement),
+            Self::For(statement) => write!(f, "{}", statement),
+            Self::Foreach(statement) => write!(f, "{}", statement),
+            Self::Break(statement) => write!(f, "{}", statement),
+            Self::Continue(statement) => write!(f, "{}", statement),
+            Self::If(statement) => write!(f, "{}", statement),
+            Self::Using(statement) => write!(f, "{}", statement),
+            Self::Try(statement) => write!(f, "{}", statement),
+            Self::Expression(statement) => write!(f, "{}", statement),
+            Self::Return(statement) => write!(f, "{}", statement),
+            Self::Block(statement) => write!(f, "{}", statement),
+            Self::Empty(_) => write!(f, ";"),
+        }
+    }
+}

@@ -118,3 +118,18 @@ impl Node for Definition {
         }
     }
 }
+
+impl std::fmt::Display for Definition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Namespace(definition) => write!(f, "{}", definition),
+            Self::Use(definition) => write!(f, "{}", definition),
+            Self::TypeAlias(definition) => write!(f, "{}", definition),
+            Self::Constant(definition) => write!(f, "{}", definition),
+            Self::Function(definition) => write!(f, "{}", definition),
+            Self::Interface(definition) => write!(f, "{}", definition),
+            Self::Enum(definition) => write!(f, "{}", definition),
+            Self::Class(definition) => write!(f, "{}", definition),
+        }
+    }
+}

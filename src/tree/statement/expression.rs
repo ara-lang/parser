@@ -37,3 +37,9 @@ impl Node for ExpressionStatement {
         "expression statement".to_string()
     }
 }
+
+impl std::fmt::Display for ExpressionStatement {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{};", self.expression)
+    }
+}
