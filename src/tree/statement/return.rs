@@ -70,3 +70,57 @@ impl Node for ReturnStatement {
         }
     }
 }
+
+impl std::fmt::Display for ReturnStatement {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Explicit {
+                r#return,
+                expression,
+                ..
+            } => {
+                if let Some(expression) = expression {
+                    write!(f, "{} {};", r#return, expression)
+                } else {
+                    write!(f, "{};", r#return)
+                }
+            }
+            Self::Implicit { expression, .. } => write!(f, "{}", expression),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::expression::literal::Literal::Integer;
+    use crate::tree::expression::literal::LiteralInteger;
+
+    #[test]
+    pub fn test_return_statement_display() {
+        let explicit_return_statement = ReturnStatement::Explicit {
+            comments: CommentGroup { comments: vec![] },
+            r#return: Keyword::new(ByteString::from("return"), 0),
+            expression: Some(Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            }))),
+            semicolon: 0,
+        };
+
+        assert_eq!(explicit_return_statement.to_string(), "return 10;");
+
+        let implicit_return_statement = ReturnStatement::Implicit {
+            comments: CommentGroup { comments: vec![] },
+            expression: Expression::Literal(Integer(LiteralInteger {
+                comments: CommentGroup { comments: vec![] },
+                position: 0,
+                value: ByteString::from("10"),
+            })),
+        };
+
+        assert_eq!(implicit_return_statement.to_string(), "10");
+    }
+}

@@ -122,3 +122,76 @@ impl Node for UseDefinitionSymbolAlias {
         "use symbol alias definition".to_string()
     }
 }
+
+impl std::fmt::Display for UseDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Default { r#use, name, .. } => write!(f, "{} {}", r#use, name),
+            Self::Function {
+                r#use,
+                function: r#type,
+                name,
+                ..
+            } => write!(f, "{} {} {}", r#use, r#type, name),
+            Self::Constant {
+                r#use,
+                r#const: r#type,
+                name,
+                ..
+            } => write!(f, "{} {} {}", r#use, r#type, name),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+
+    #[test]
+    fn test_use_definition_display() {
+        let use_definition = UseDefinition::Default {
+            r#use: Keyword::new(ByteString::from("use"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            alias: None,
+            semicolon: 0,
+        };
+
+        assert_eq!(use_definition.to_string(), "use Foo");
+    }
+
+    #[test]
+    fn test_use_function_definition_display() {
+        let use_definition = UseDefinition::Function {
+            r#use: Keyword::new(ByteString::from("use"), 0),
+            function: Keyword::new(ByteString::from("function"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("foo_bar"),
+            },
+            alias: None,
+            semicolon: 0,
+        };
+
+        assert_eq!(use_definition.to_string(), "use function foo_bar");
+    }
+
+    #[test]
+    fn test_use_const_definition_display() {
+        let use_definition = UseDefinition::Constant {
+            r#use: Keyword::new(ByteString::from("use"), 0),
+            r#const: Keyword::new(ByteString::from("const"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("FOO"),
+            },
+            alias: None,
+            semicolon: 0,
+        };
+
+        assert_eq!(use_definition.to_string(), "use const FOO");
+    }
+}

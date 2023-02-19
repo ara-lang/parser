@@ -66,3 +66,52 @@ impl Node for ExitConstructExpression {
         "exit construct expression".to_string()
     }
 }
+
+impl std::fmt::Display for ExitConstructExpression {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            Self::Exit { .. } => write!(f, "exit;"),
+            Self::ExitWith { value, .. } => {
+                if let Some(value) = value {
+                    write!(f, "exit({});", value)
+                } else {
+                    write!(f, "exit;")
+                }
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::expression::literal::Literal::Integer;
+    use crate::tree::expression::literal::LiteralInteger;
+
+    #[test]
+    fn test_exit_display() {
+        let exit = ExitConstructExpression::Exit {
+            comments: CommentGroup { comments: vec![] },
+            exit: Keyword::new(ByteString::from("exit"), 0),
+        };
+
+        assert_eq!(exit.to_string(), "exit;");
+
+        let value = Expression::Literal(Integer(LiteralInteger {
+            comments: CommentGroup { comments: vec![] },
+            position: 0,
+            value: ByteString::from("1"),
+        }));
+
+        let exit_with = ExitConstructExpression::ExitWith {
+            comments: CommentGroup { comments: vec![] },
+            exit: Keyword::new(ByteString::from("exit"), 0),
+            left_parenthesis: 0,
+            value: Some(Box::new(value)),
+            right_parenthesis: 0,
+        };
+
+        assert_eq!(exit_with.to_string(), "exit(1);");
+    }
+}
