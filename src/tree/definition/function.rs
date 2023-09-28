@@ -507,6 +507,10 @@ impl std::fmt::Display for FunctionLikeParameterDefaultValueDefinition {
 
 impl std::fmt::Display for FunctionDefinition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        if !self.modifiers.modifiers.is_empty() {
+            write!(f, "{} ", self.modifiers)?;
+        }
+
         write!(f, "{} {}", self.function, self.name)?;
 
         if let Some(templates) = &self.templates {
@@ -598,6 +602,13 @@ mod tests {
     #[test]
     fn test_function_definition_display() {
         let function_definition = FunctionDefinition {
+            modifiers: ModifierGroupDefinition {
+                position: 0,
+                modifiers: vec![ModifierDefinition::Async(Keyword::new(
+                    ByteString::from("async"),
+                    0,
+                ))],
+            },
             function: Keyword::new(ByteString::from("function"), 0),
             name: Identifier {
                 position: 0,
@@ -646,7 +657,7 @@ mod tests {
 
         assert_eq!(
             function_definition.to_string(),
-            "function Foo(i32 $foo): i64 { /* ... */ }"
+            "async function Foo(i32 $foo): i64 { /* ... */ }"
         );
     }
 

@@ -195,9 +195,10 @@ impl Node for AnonymousFunctionUseClauseVariableExpression {
 
 impl std::fmt::Display for ArrowFunctionExpression {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        if let Some(r#static) = &self.r#static {
-            write!(f, "{} ", r#static)?;
+        if !self.modifiers.modifiers.is_empty() {
+            write!(f, "{} ", self.modifiers)?;
         }
+
         write!(
             f,
             "{} {}{} => {};",
@@ -208,9 +209,10 @@ impl std::fmt::Display for ArrowFunctionExpression {
 
 impl std::fmt::Display for AnonymousFunctionExpression {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        if let Some(r#static) = &self.r#static {
-            write!(f, "{} ", r#static)?;
+        if !self.modifiers.modifiers.is_empty() {
+            write!(f, "{} ", self.modifiers)?;
         }
+
         write!(f, "{} {}", self.function, self.parameters)?;
 
         if let Some(use_clause) = &self.use_clause {
@@ -238,6 +240,7 @@ mod tests {
     use super::*;
     use crate::lexer::byte_string::ByteString;
     use crate::tree::definition::function::FunctionLikeParameterDefinition;
+    use crate::tree::definition::modifier::ModifierDefinition;
     use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
     use crate::tree::definition::r#type::TypeDefinition;
 
@@ -246,7 +249,13 @@ mod tests {
         let arrow_function_expression = ArrowFunctionExpression {
             attributes: vec![],
             comments: CommentGroup { comments: vec![] },
-            r#static: Some(Keyword::new(ByteString::from("static"), 0)),
+            modifiers: ModifierGroupDefinition {
+                position: 0,
+                modifiers: vec![ModifierDefinition::Static(Keyword::new(
+                    ByteString::from("static"),
+                    0,
+                ))],
+            },
             r#fn: Keyword::new(ByteString::from("fn"), 0),
             parameters: FunctionLikeParameterListDefinition {
                 comments: CommentGroup { comments: vec![] },
@@ -296,7 +305,13 @@ mod tests {
         let anonymous_function_expression = AnonymousFunctionExpression {
             attributes: vec![],
             comments: CommentGroup { comments: vec![] },
-            r#static: Some(Keyword::new(ByteString::from("static"), 0)),
+            modifiers: ModifierGroupDefinition {
+                position: 0,
+                modifiers: vec![ModifierDefinition::Static(Keyword::new(
+                    ByteString::from("static"),
+                    0,
+                ))],
+            },
             function: Keyword::new(ByteString::from("function"), 0),
             parameters: FunctionLikeParameterListDefinition {
                 comments: CommentGroup { comments: vec![] },
