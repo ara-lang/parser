@@ -468,3 +468,296 @@ impl Node for MethodDefinition {
         "concrete method definition".to_string()
     }
 }
+
+impl std::fmt::Display for FunctionLikeReturnTypeDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, ": {}", self.type_definition)
+    }
+}
+
+impl std::fmt::Display for FunctionLikeParameterDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.type_definition)?;
+
+        if self.ellipsis.is_some() {
+            write!(f, "...")?;
+        }
+
+        write!(f, " {}", self.variable)?;
+
+        if let Some(default) = self.default.as_ref() {
+            write!(f, " = {}", default)?;
+        }
+
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for FunctionLikeParameterListDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "({})", self.parameters)
+    }
+}
+
+impl std::fmt::Display for FunctionLikeParameterDefaultValueDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl std::fmt::Display for FunctionDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {}", self.function, self.name)?;
+
+        if let Some(templates) = &self.templates {
+            write!(f, "{}", templates)?;
+        }
+
+        write!(f, "{}{} {}", self.parameters, self.return_type, self.body)
+    }
+}
+
+impl std::fmt::Display for MethodParameterDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.modifiers)?;
+
+        write!(f, "{} {}", self.type_definition, self.variable,)?;
+
+        if let Some(default_value) = &self.default {
+            write!(f, " = {}", default_value)?;
+        }
+
+        Ok(())
+    }
+}
+
+impl std::fmt::Display for MethodParameterListDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "({})", self.parameters)
+    }
+}
+
+impl std::fmt::Display for MethodTypeConstraintDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {} {}",
+            self.type_definition, self.r#is, self.type_definition
+        )
+    }
+}
+
+impl std::fmt::Display for MethodTypeConstraintGroupDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {}", self.r#where, self.constraints)
+    }
+}
+
+impl std::fmt::Display for MethodBodyDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self {
+            MethodBodyDefinition::Concrete(block) => write!(f, "{}", block),
+            MethodBodyDefinition::Abstract(..) => write!(f, ";"),
+        }
+    }
+}
+
+impl std::fmt::Display for MethodDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {} {}", self.modifiers, self.function, self.name)?;
+
+        if let Some(templates) = &self.templates {
+            write!(f, "{}", templates)?;
+        }
+
+        write!(f, "{}", self.parameters)?;
+
+        if let Some(return_type) = &self.return_type {
+            write!(f, "{}", return_type)?;
+        }
+
+        if let Some(constraints) = &self.constraints {
+            write!(f, "{}", constraints)?;
+        }
+
+        write!(f, " {}", self.body)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lexer::byte_string::ByteString;
+    use crate::tree::definition::modifier::ModifierDefinition;
+    use crate::tree::definition::r#type::SignedIntegerTypeDefinition;
+    use crate::tree::definition::template::TemplateDefinition;
+    use crate::tree::definition::template::TemplateDefinitionTypeConstraint;
+    use crate::tree::definition::template::TemplateDefinitionVariance;
+    use crate::tree::identifier::TemplatedIdentifier;
+
+    #[test]
+    fn test_function_definition_display() {
+        let function_definition = FunctionDefinition {
+            function: Keyword::new(ByteString::from("function"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            templates: None,
+            parameters: FunctionLikeParameterListDefinition {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                parameters: CommaSeparated {
+                    inner: vec![FunctionLikeParameterDefinition {
+                        attributes: vec![],
+                        comments: CommentGroup { comments: vec![] },
+                        type_definition: TypeDefinition::SignedInteger(
+                            SignedIntegerTypeDefinition::I32(Keyword::new(
+                                ByteString::from("i32"),
+                                15,
+                            )),
+                        ),
+                        ellipsis: None,
+                        variable: Variable {
+                            position: 0,
+                            name: ByteString::from("foo"),
+                        },
+                        default: None,
+                    }],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+            return_type: FunctionLikeReturnTypeDefinition {
+                colon: 0,
+                type_definition: TypeDefinition::SignedInteger(SignedIntegerTypeDefinition::I64(
+                    Keyword::new(ByteString::from("i64"), 15),
+                )),
+            },
+            body: BlockStatement {
+                comments: CommentGroup { comments: vec![] },
+                left_brace: 0,
+                statements: vec![],
+                right_brace: 0,
+            },
+            comments: CommentGroup { comments: vec![] },
+            attributes: vec![],
+        };
+
+        assert_eq!(
+            function_definition.to_string(),
+            "function Foo(i32 $foo): i64 { /* ... */ }"
+        );
+    }
+
+    #[test]
+    fn test_method_definition_display() {
+        let method_definition = MethodDefinition {
+            modifiers: ModifierGroupDefinition {
+                position: 0,
+                modifiers: vec![ModifierDefinition::Public(Keyword::new(
+                    ByteString::from("public"),
+                    0,
+                ))],
+            },
+            function: Keyword::new(ByteString::from("function"), 0),
+            name: Identifier {
+                position: 0,
+                value: ByteString::from("Foo"),
+            },
+            templates: Some(TemplateGroupDefinition {
+                comments: CommentGroup { comments: vec![] },
+                less_than: 0,
+                members: CommaSeparated {
+                    inner: vec![
+                        TemplateDefinition {
+                            variance: TemplateDefinitionVariance::Invaraint,
+                            name: Identifier {
+                                position: 1,
+                                value: ByteString::from("T"),
+                            },
+                            constraint: TemplateDefinitionTypeConstraint::None,
+                        },
+                        TemplateDefinition {
+                            variance: TemplateDefinitionVariance::Invaraint,
+                            name: Identifier {
+                                position: 1,
+                                value: ByteString::from("U"),
+                            },
+                            constraint: TemplateDefinitionTypeConstraint::None,
+                        },
+                    ],
+                    commas: vec![],
+                },
+                greater_than: 4,
+            }),
+            parameters: MethodParameterListDefinition {
+                comments: CommentGroup { comments: vec![] },
+                left_parenthesis: 0,
+                parameters: CommaSeparated {
+                    inner: vec![
+                        MethodParameterDefinition {
+                            attributes: vec![],
+                            comments: CommentGroup { comments: vec![] },
+                            modifiers: ModifierGroupDefinition {
+                                position: 0,
+                                modifiers: vec![],
+                            },
+                            type_definition: TypeDefinition::Identifier(TemplatedIdentifier {
+                                name: Identifier {
+                                    position: 0,
+                                    value: ByteString::from("T"),
+                                },
+                                templates: None,
+                            }),
+                            ellipsis: None,
+                            variable: Variable {
+                                position: 0,
+                                name: ByteString::from("bar"),
+                            },
+                            default: None,
+                        },
+                        MethodParameterDefinition {
+                            attributes: vec![],
+                            comments: CommentGroup { comments: vec![] },
+                            modifiers: ModifierGroupDefinition {
+                                position: 0,
+                                modifiers: vec![],
+                            },
+                            type_definition: TypeDefinition::Identifier(TemplatedIdentifier {
+                                name: Identifier {
+                                    position: 0,
+                                    value: ByteString::from("U"),
+                                },
+                                templates: None,
+                            }),
+                            ellipsis: None,
+                            variable: Variable {
+                                position: 0,
+                                name: ByteString::from("baz"),
+                            },
+                            default: None,
+                        },
+                    ],
+                    commas: vec![],
+                },
+                right_parenthesis: 0,
+            },
+            return_type: None,
+            constraints: None,
+            body: MethodBodyDefinition::Concrete(BlockStatement {
+                comments: CommentGroup { comments: vec![] },
+                left_brace: 0,
+                statements: vec![],
+                right_brace: 0,
+            }),
+            comments: CommentGroup { comments: vec![] },
+            attributes: vec![],
+        };
+
+        assert_eq!(
+            method_definition.to_string(),
+            "public function Foo<T, U>(T $bar, U $baz) { /* ... */ }"
+        );
+    }
+}

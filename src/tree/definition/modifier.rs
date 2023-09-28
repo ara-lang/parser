@@ -122,3 +122,17 @@ impl std::fmt::Display for ModifierDefinition {
         }
     }
 }
+
+impl std::fmt::Display for ModifierGroupDefinition {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        if let Some(modifier) = self.modifiers.first() {
+            write!(f, "{}", modifier)?;
+        }
+
+        for modifier in self.modifiers.iter().skip(1) {
+            write!(f, " {}", modifier)?;
+        }
+
+        Ok(())
+    }
+}

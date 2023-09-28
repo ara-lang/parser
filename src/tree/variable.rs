@@ -16,12 +16,6 @@ pub struct Variable {
     pub name: ByteString,
 }
 
-impl Display for Variable {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.name)
-    }
-}
-
 impl Node for Variable {
     fn initial_position(&self) -> usize {
         self.position
@@ -37,5 +31,26 @@ impl Node for Variable {
 
     fn get_description(&self) -> String {
         "variable".to_string()
+    }
+}
+
+impl Display for Variable {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "${}", self.name)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_variable_display() {
+        let variable = Variable {
+            position: 0,
+            name: ByteString::from("foo"),
+        };
+
+        assert_eq!(variable.to_string(), "$foo");
     }
 }
