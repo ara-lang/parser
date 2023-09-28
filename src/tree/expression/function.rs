@@ -8,6 +8,7 @@ use crate::tree::comment::CommentGroup;
 use crate::tree::definition::attribute::AttributeGroupDefinition;
 use crate::tree::definition::function::FunctionLikeParameterListDefinition;
 use crate::tree::definition::function::FunctionLikeReturnTypeDefinition;
+use crate::tree::definition::modifier::ModifierGroupDefinition;
 use crate::tree::expression::Expression;
 use crate::tree::statement::block::BlockStatement;
 use crate::tree::token::Keyword;
@@ -20,7 +21,7 @@ use crate::tree::Node;
 pub struct ArrowFunctionExpression {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub r#static: Option<Keyword>,
+    pub modifiers: ModifierGroupDefinition,
     pub r#fn: Keyword,
     pub parameters: FunctionLikeParameterListDefinition,
     pub return_type: FunctionLikeReturnTypeDefinition,
@@ -33,7 +34,7 @@ pub struct ArrowFunctionExpression {
 pub struct AnonymousFunctionExpression {
     pub comments: CommentGroup,
     pub attributes: Vec<AttributeGroupDefinition>,
-    pub r#static: Option<Keyword>,
+    pub modifiers: ModifierGroupDefinition,
     pub function: Keyword,
     pub parameters: FunctionLikeParameterListDefinition,
     pub use_clause: Option<AnonymousFunctionUseClauseExpression>,
@@ -68,8 +69,8 @@ impl Node for ArrowFunctionExpression {
             return attribute.initial_position();
         }
 
-        if let Some(r#static) = &self.r#static {
-            return r#static.initial_position();
+        if !&self.modifiers.modifiers.is_empty() {
+            return self.modifiers.initial_position();
         }
 
         self.r#fn.initial_position()
@@ -86,12 +87,8 @@ impl Node for ArrowFunctionExpression {
             children.push(attribute);
         }
 
-        if let Some(r#static) = &self.r#static {
-            children.push(r#static);
-        }
-
         children.push(&self.r#fn);
-
+        children.push(&self.modifiers);
         children.push(&self.parameters);
         children.push(&self.return_type);
         children.push(self.body.as_ref());
@@ -114,8 +111,8 @@ impl Node for AnonymousFunctionExpression {
             return attribute.initial_position();
         }
 
-        if let Some(r#static) = &self.r#static {
-            return r#static.initial_position();
+        if !&self.modifiers.modifiers.is_empty() {
+            return self.modifiers.initial_position();
         }
 
         self.function.initial_position()
@@ -132,11 +129,8 @@ impl Node for AnonymousFunctionExpression {
             children.push(attribute);
         }
 
-        if let Some(r#static) = &self.r#static {
-            children.push(r#static);
-        }
-
         children.push(&self.function);
+        children.push(&self.modifiers);
         children.push(&self.parameters);
         children.push(&self.return_type);
         children.push(&self.body);

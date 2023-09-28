@@ -1,7 +1,7 @@
 const Foo ONE = new Foo();
 
 class Foo {
-    const \Closure FOO = fn(): int => 1;
+    const \Closure FOO = static fn(): int => 1;
 
     public static abstract Abstract readonly private static protected string $baz = 'baz';
 
